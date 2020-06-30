@@ -2,70 +2,19 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
 	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/index_%20responsive.css">
 
-	<link rel="stylesheet" type="text/css" href="/scss/global.css">
-
 	<title>아바</title>
-
-	<%-- `font` resources --%>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-	<%--`jquery` resrouce --%>
-	<script src="/js/jquery-1.7.2.min.js"></script>
-	<script src="/js/jquery-ui.min.js"></script>
 </head>
 
 <body>
 <div id="wrap">
-<!-- 헤드부분 -->
-	<header id="header">
-		<a href="/" class="logo">
-			<img src="/img/aboutus_logo.png" alt="로고">
-		</a>
-		<div class="login">
-			<a href="login.html" class="nav">로그인 &middot; 회원가입</a>
-			<!--<div class="name-box">
-				<ul>
-					<li>
-						<a href="#">김다언 님 ▼</a>
-						<ul>
-							<li><a href="#">마이페이지</a></li>
-							<li><a href="#">계약완료신고</a></li>
-							<li><a href="#">쪽지보내기</a></li>
-							<li><a href="#">로그아웃 →</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>-->
-
-		</div>
-		<ul class="menu">
-			<li class="menu01"><a href="#">매물찾기</a>
-				<ul class="sub">
-					<li><a href="#">원룸</a></li>
-					<li><a href="#">투&middot;쓰리룸</a></li>
-					<li><a href="#">오피스텔</a></li>
-					<li><a href="#">아파트</a></li>
-					<li><a href="#">분양권</a></li>
-					<li><a href="#">주택</a></li>
-					<li><a href="#">상가</a></li>
-					<li><a href="#">사무실</a></li>
-					<li><a href="#">토지</a></li>
-					<li><a href="#">공장</a></li>
-					<li><a href="#">건물</a></li>
-					<li><a href="#">재개발</a></li>
-				</ul>
-			</li>
-			<li><a href="index.html">회사소개</a></li>
-			<li><a href="notice.html">공지사항</a></li>
-		</ul>
-	</header>
+	<!-- 헤드부분 -->
+	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 
 	<!-- 메인이미지 -->
 	<section id="main_img">
