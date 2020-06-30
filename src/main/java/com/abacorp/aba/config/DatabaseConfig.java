@@ -1,4 +1,4 @@
-package com.abacorp.aba.configuration;
+package com.abacorp.aba.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
-public class DatabaseConfiguration {
+public class DatabaseConfig {
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {

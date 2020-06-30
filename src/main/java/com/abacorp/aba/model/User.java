@@ -18,4 +18,5 @@ public class User extends ModelMapper {
     private String email;
     private String phone;
     private String birth;
+    private String role;
 }
