@@ -33,3 +33,4 @@ build/
 # Project exclude paths
 /.mvn/
 /src/main/resources/db.properties
+/logs/

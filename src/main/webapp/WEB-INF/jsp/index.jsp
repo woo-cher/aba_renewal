@@ -25,7 +25,7 @@
 <div id="wrap">
 <!-- 헤드부분 -->
 	<header id="header">
-		<a href="main.html" class="logo">
+		<a href="/" class="logo">
 			<img src="/img/aboutus_logo.png" alt="로고">
 		</a>
 		<div class="login">
