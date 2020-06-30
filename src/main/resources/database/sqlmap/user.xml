@@ -5,7 +5,15 @@
     <!-- Mapper -->
     <resultMap id="User" type="User" />
 
-    <select id="selectAll" resultMap="User">
-        SELECT * FROM users;
+    <select id="createUser" parameterType="User">
+        #
+    </select>
+
+    <select id="findAllUser" resultMap="User">
+        SELECT id, user_id, password, name, nick_name FROM users;
+    </select>
+
+    <select id="findUserById" resultMap="User" parameterType="int">
+        SELECT id, user_id, password, name, nick_name FROM users WHERE user_id = #{id};
     </select>
 </mapper>

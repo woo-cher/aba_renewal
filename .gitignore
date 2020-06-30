@@ -35,3 +35,4 @@ build/
 /src/main/resources/db.properties
 /logs/
 /work/**
+/work/

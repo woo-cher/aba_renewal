@@ -1,5 +1,6 @@
 package com.abacorp.aba.model;
 
+import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.*;
 
 @Getter
@@ -8,8 +9,7 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private int id;
+public class User extends ModelMapper {
     private String userId;
     private String password;
     private String name;
