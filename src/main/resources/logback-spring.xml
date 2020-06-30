@@ -29,19 +29,19 @@
         <appender-ref ref="dailyRollingFileAppender" />
     </root>
 
-    <logger name="org.springframework" level="on"/>
-    <logger name="com.gargoylesoftware" level="off"/>
-    <logger name="org.apache" level="off"/>
-    <logger name="c.DefaultCacheAwareContextLoaderDelegate" level="off"/>
-    <logger name="org.springframework.test.context.cache" level="off"/>
-    <logger name="tractDirtiesContextTestExecutionListener" level="off"/>
-    <logger name="o.s.t.c.w.ServletTestExecutionListener" level="off"/>
+    <logger name="org.springframework" level="ON"/>
+    <logger name="com.gargoylesoftware" level="OFF"/>
+    <logger name="org.apache" level="OFF"/>
+    <logger name="c.DefaultCacheAwareContextLoaderDelegate" level="OFF"/>
+    <logger name="org.springframework.test.context.cache" level="OFF"/>
+    <logger name="tractDirtiesContextTestExecutionListener" level="OFF"/>
+    <logger name="o.s.t.c.w.ServletTestExecutionListener" level="OFF"/>
 
     <!-- 좀 더 보기 좋은 MyBatis 쿼리 Log : log4jdbc -->
-    <logger name="jdbc.sqlonly" level="debug" />
-    <logger name="jdbc.sqltiming" level="off" />
-    <logger name="jdbc.audit" level="off" />
-    <logger name="jdbc.resultset" level="off" />
-    <logger name="jdbc.resultsettable" level="debug" />
-    <logger name="jdbc.connection" level="off" />
+    <logger name="jdbc.sqlonly" level="DEBUG" />
+    <logger name="jdbc.sqltiming" level="OFF" />
+    <logger name="jdbc.audit" level="OFF" />
+    <logger name="jdbc.resultset" level="OFF" />
+    <logger name="jdbc.resultsettable" level="DEBUG" />
+    <logger name="jdbc.connection" level="OFF" />
 </configuration>
