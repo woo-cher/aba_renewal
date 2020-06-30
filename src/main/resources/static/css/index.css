@@ -1,0 +1,445 @@
+@charset "utf-8";
+@import url("S-Core-Dream-light/s-core-dream.css");
+
+/* CSS Document */
+#wrap {
+    position: relative;
+    width: 100%;
+}
+
+/* header */
+#header {
+    position: absolute;
+    width: 100%;
+    height: 8rem;
+    z-index: 500;
+}
+
+/* 로고 */
+#header .logo {
+    width: 100%;
+}
+
+.logo img {
+    padding: 2.5rem 0 0 7.5rem;
+}
+
+/* 로그인 회원가입 */
+#header .login {
+    float: right;
+    width: 10%;
+    height: 30%;
+    padding: 4rem 5.5rem 0 0;
+}
+
+#header .login .nav {
+    font-size:1.41em;
+    color: #ccc;
+}
+
+#header .login .nav:hover {
+    font-weight: 900;
+}
+
+
+/* 메인 메뉴*/
+.menu {
+    float: right;
+    width: 19.4%;
+    height: auto;
+    padding-top: 3.75rem;
+    margin-right: 1rem;
+}
+
+.menu li {
+    float: left;
+    width: 25%;
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    text-align: center;
+}
+
+.menu li:last-child {
+    padding-right: 0px;
+}
+
+.menu > li a {
+    font-size: 20px;
+    text-align: center;
+    color: #ccc;
+}
+
+.menu > li:hover {
+    border-bottom: 9px solid #00adef;
+}
+
+.menu > li.on {
+    border-bottom: 9px solid #00adef;
+}
+
+.menu > li:hover a {
+    color: #00adef;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+/* 매물 서브메뉴 */
+.menu > li .sub {
+    position: absolute;
+    top: 100%;
+    right: 20%;
+    width: 25%;
+    height: auto;
+    z-index: 1000;
+    background-color: #121922;
+}
+
+.menu > li .sub li {
+    float: left;
+    width: 18%;
+    padding-top: 1.25rem;
+    line-height: 2.09rem;
+}
+
+.menu > li .sub li a {
+    display: block;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.menu > li .sub li a:hover {
+    color: #00adef;
+}
+
+
+/* 메인이미지 */
+#main_img {
+    position: relative;
+    width: 100%;
+    height: 850px;
+    background: url(/img/company_main.jpg) no-repeat 50% 0;
+}
+
+#main_img .txt-box {
+    width:45%;
+    margin: 0 auto;
+    padding-top:20%;
+    text-align: center;
+}
+
+.txt-box h3 {
+    font-size:5.417rem;
+    font-weight: 900;
+    color: #00adef;
+    font-family: s-core-dream-black;
+    line-height: 85px;
+}
+
+.txt-box p {
+    font-size:2rem;
+    color: #fff;
+    font-family: s-core-dream-regular;
+    padding-top:4%;
+}
+
+
+/* 회사소개 */
+#contents01 {
+    position: relative;
+    width: 100%;
+    padding-bottom:7%;
+}
+
+#contents01 .txt_box {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 6%;
+    z-index:10000;
+    text-align: center;
+}
+
+.txt_box h3 {
+    font-size:3.8em;
+    font-family: s-core-dream-extrabold;
+    color: #00adef;
+}
+
+.txt_box .box_in {
+    width:100%;
+    margin-top:7%;
+}
+
+.box_in img {
+    float: left;
+    width:5.5%;
+}
+
+.box_in p {
+    font-size:1.9rem;
+    font-weight: 700;
+    line-height:1.5em;
+    color: #333;
+    padding-top:2%;
+}
+
+#contents01 .bg-img {
+    position: absolute;
+    top:12%;
+    right:8%;
+    z-index: -10;
+}
+
+
+/* 회사연혁*/
+#history {
+    position: relative;
+    width: 100%;
+    padding-bottom:6%;
+    background-color: #00adef;
+}
+
+#history .in {
+    width:88%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top:7%;
+}
+
+.in h3 {
+    font-size:3.8rem;
+    font-family: s-core-dream-extrabold;
+    color: #fff;
+}
+
+.in .graph {
+    width:67%;
+    padding-top:6%;
+}
+
+/* 회사연혁 텍스트 01 */
+.txt .txt01 {
+    position: absolute;
+    top: 47%;
+    left:28%;
+}
+
+.txt .txt01 h4 {
+    font-size:2rem;
+    color: #fff;
+}
+
+.txt .txt01 p {
+    font-size:1.67rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* 회사연혁 텍스트 02 */
+.txt .txt02 {
+    position: absolute;
+    top:72%;
+    left:46%;
+}
+
+.txt .txt02 h4 {
+    font-size:2rem;
+    color: #fff;
+}
+
+.txt .txt02 p {
+    font-size:1.67rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* 회사연혁 텍스트 03 */
+.txt .txt03 {
+    position: absolute;
+    top: 47%;
+    left:64%;
+}
+
+.txt .txt03 h4 {
+    font-size:2rem;
+    color: #fff;
+}
+
+.txt .txt03 p {
+    font-size:1.67rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+
+/* 서비스 */
+#service {
+    position: relative;
+    width: 100%;
+    padding-bottom:11%;
+    background-color: #e6e6e6;
+}
+
+#service .service_in {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.service_in h3 {
+    font-size:3.8rem;
+    font-family: s-core-dream-extrabold;
+    color: #00adef;
+    padding-top:15%;
+}
+
+.service_in img {
+    width:60%;
+    margin-top:12%;
+}
+
+#service .in_txt {
+    width:88%;
+}
+
+.in_txt .txt01 {
+    position: absolute;
+    top:32%;
+    left:62%;
+}
+
+.in_txt .txt01 h5 {
+    font-size:2rem;
+    color: #444;
+    letter-spacing: -1px;
+}
+
+.in_txt .txt01 p {
+    font-size:1.5rem;
+    color: #666;
+    letter-spacing: -1px;
+    padding-top:4%;
+
+}
+
+.in_txt .txt02 {
+    position: absolute;
+    top:38%;
+    right:62%;
+}
+
+.in_txt .txt02 h5 {
+    font-size:2rem;
+    color: #444;
+    letter-spacing: -1px;
+}
+
+.in_txt .txt02 p {
+    font-size:1.5rem;
+    color: #666;
+    letter-spacing: -1px;
+    padding-top:4%;
+}
+
+.in_txt .txt03 {
+    position: absolute;
+    top:70%;
+    left:62%;
+}
+
+.in_txt .txt03 h5 {
+    font-size: 2rem;
+    color: #444;
+    letter-spacing: -1px;
+}
+
+.in_txt .txt03 p {
+    font-size:1.5rem;
+    color: #666;
+    letter-spacing: -1px;
+    padding-top:4%;
+}
+
+/*컨텍트*/
+#contact{
+        width:100%;
+        height:850px;
+
+}
+
+#contact .contact_in{
+        width:62%;
+        margin:0 auto;
+}
+
+.contact_in .head{
+        width:100%;
+        font-size:3.8rem;
+        font-family: s-core-dream-extrabold;
+        color: #00adef;
+        padding-top:9%;
+        text-align: center;
+}
+
+.contact_in .info-box{
+    width:100%;
+    padding-top:8%;
+}
+
+.info-box .text-box{
+        float:left;
+        width:43%;
+        padding-left:5%;
+        padding-top:3%;
+
+}
+
+.text-box .box01 h5{
+        font-size:2rem;
+        padding:3% 0 2% 3%;
+        font-family: s-core-dream-extrabold
+
+}
+.text-box .box01 p{
+        font-size:1.5rem;
+        font-weight:600;
+        padding-left:5%;
+}
+
+.text-box .box02{
+        font-size:1.5rem;
+        font-weight:600;
+        padding:12% 0 0 3%;
+}
+
+.text-box .box03{
+        width:80%;
+        padding-left:3%;
+        padding-top:1.5%;
+}
+
+.box03 li{
+        width:100%;
+        height:2.5rem;
+        padding-bottom:12%;
+}
+
+.box03 li h5{
+        float:left;
+        font-size:2rem;
+        font-family: s-core-dream-extrabold
+}
+
+.box03 li p{
+        float:left;
+        font-size:1.667rem;
+        font-weight:600;
+        padding-left:4%;
+}
+
+.info-box .map{
+        float:right;
+        margin-top:2%;
+}
+
+.info-box .map img{
+    width:90%;
+}
