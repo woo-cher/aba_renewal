@@ -15,7 +15,7 @@
         </filter>
 
         <encoder>
-            <pattern>%d{yyyy:MM:dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+            <pattern>%d{YY:MM:dd HH:mm} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
         </encoder>
     </appender>
 
@@ -30,8 +30,12 @@
     </root>
 
     <logger name="org.springframework" level="on"/>
-    <logger name="com.gargoylesoftware" level="OFF"/>
-    <logger name="org.apache" level="OFF"/>
+    <logger name="com.gargoylesoftware" level="off"/>
+    <logger name="org.apache" level="off"/>
+    <logger name="c.DefaultCacheAwareContextLoaderDelegate" level="off"/>
+    <logger name="org.springframework.test.context.cache" level="off"/>
+    <logger name="tractDirtiesContextTestExecutionListener" level="off"/>
+    <logger name="o.s.t.c.w.ServletTestExecutionListener" level="off"/>
 
     <!-- 좀 더 보기 좋은 MyBatis 쿼리 Log : log4jdbc -->
     <logger name="jdbc.sqlonly" level="debug" />
