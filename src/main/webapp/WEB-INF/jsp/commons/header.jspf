@@ -13,6 +13,7 @@
 
     <%-- 'css' --%>
     <link rel="stylesheet" type="text/css" href="/scss/global.css">
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
 </head>
 
 <header id="header">
@@ -36,7 +37,7 @@
                 <li><a href="#">재개발</a></li>
             </ul>
         </li>
-        <li><a href="#">회사소개</a></li>
+        <li><a href="/intro">회사소개</a></li>
         <li><a href="#">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li><a href="/auth/login">로그인 &middot; 회원가입</a></li>
@@ -54,3 +55,30 @@
         </sec:authorize>
     </ul>
 </header>
+
+<script>
+    /* 매물 서브메뉴 */
+    $(document).ready(function(){
+        $(".sub").hide();
+
+        $(".menu01").mouseenter(function(){
+            $(this).find(".sub").slideDown(1000);
+        });
+        $(".menu01").mouseleave(function(){
+            $(".sub").slideUp();
+        });
+    });
+
+    $(document).ready(function(){
+        $(".sub").hide();
+
+        $(".menu01 > li").mouseover(function(){
+            $(this).addClass("on");
+            //$(this).find(".sub").show();
+        });
+        $(".menu01 > li").mouseout(function(){
+            $(this).removeClass("on");
+            //$(".sub_mn").hide();
+        });
+    });
+</script>

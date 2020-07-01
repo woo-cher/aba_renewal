@@ -21,4 +21,9 @@ public class HomeController {
     private String index() {
         return "index";
     }
+
+    @RequestMapping(value = "/intro")
+    private String intro() {
+        return "intro";
+    }
 }

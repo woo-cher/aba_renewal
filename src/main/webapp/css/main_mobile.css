@@ -1,0 +1,868 @@
+@charset "utf-8";
+@import url("S-Core-Dream-light/s-core-dream.css");
+/* CSS Document */
+
+
+/*------------------------------------모바일 디자인 ----------------------------------------*/
+/* 1024px 이하 */
+@media screen and (max-width: 1024px){
+    #main_img {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        background: url(/img/main_img_tablet.jpg) no-repeat 50% 0;
+    }
+
+    /* 검색하기 */
+    #search {
+        position: relative;
+        width: 100%;
+        padding-top: 47%;
+    }
+
+    #search .box {
+        display: block;
+        position: relative;
+        width:65%;
+
+        border-radius: 1.3rem;
+        margin: 0 auto;
+        z-index: 100;
+        background-color: #fff;
+    }
+
+    .box label{
+        border: 0;
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .box label input{
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .box .button {
+        position: relative;
+        width: 21%;
+        height: 100%;
+        margin-left: 7.7%;
+        background-color: #00adef;
+        border-bottom-right-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+        border: 0px;
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    /* 컨텐츠1 pc버전 안보이기 */
+    #contents1{
+        display: none;
+    }
+
+    /* 컨텐츠1 모바일 버전 */
+    #contents1-mobile{
+        display: block;
+        width:100%;
+        padding-top:7%;
+        padding-bottom:8%;
+        background-color: #f2f2f2;
+    }
+
+    #con_in_mobile{
+        width:85%;
+        margin:0 auto;
+    }
+    /* 모바일 타이틀 */
+    #con_in_mobile .top{
+        width:100%;
+    }
+
+    /* 모바일 타이틀 - 왼쪽 아바서치 */
+    .top .left{
+        float: left;
+        width:50%;
+    }
+
+    .top .line{
+        width:20%;
+        border:6px solid #00adef;
+        margin-left:5%;
+    }
+
+    .top h3{
+        font-size:2.5rem;
+        font-family: s-core-dream-extrabold;
+        padding:7% 0 0 15%;
+    }
+
+    .top p{
+        font-size:1.25rem;
+        color:#999;
+        font-family: s-core-dream-regular;
+        padding:2% 0 0 17%;
+    }
+
+    /* 모바일 타이틀 - 매물전체보기 버튼 */
+    .top .btn{
+        float: right;
+        width:10%;
+        padding:1.5% 4%;
+        border:1px solid #00adef;
+        border-radius: 20px;
+        margin-top:6%;
+        margin-right:5%;
+    }
+
+    .btn a{
+        font-size:1.16rem;
+        font-weight: 800;
+        color:#00adef;
+        text-align: center;
+    }
+
+    /* 아바서치 이미지부분 */
+    #con_in_mobile .mobile-img{
+        width:100%;
+    }
+
+    .mobile-img .img-box{
+        width:86%;
+        margin:0 auto;
+        padding-top:20%;
+    }
+
+    #contents2{
+        width:100%;
+
+    }
+
+    /*pc공지사항 고객센터 숨김*/
+    #contents2{
+        display: none;
+    }
+
+    #notice-mobile{
+        display: block;
+        width:100%;
+        padding:10% 0 15% 0;
+
+    }
+
+    #notice-mobile .notice-in{
+        width:80%;
+        margin:0 auto;
+    }
+
+    .notice-in .top{
+        width:100%;
+    }
+
+    .top .top-line{
+        width:10%;
+        border:6px solid #00adef;
+    }
+
+    .top h2{
+        float: left;
+        font-size:2.5rem;
+        font-family: s-core-dream-extrabold;
+        padding:3.5% 0 0 5%;
+    }
+
+    .top .top-btn{
+        float: right;
+        font-size:1.25rem;
+        font-weight: 900;
+        padding-top:5%;
+    }
+
+    .notice-in .con-box{
+        width:80%;
+        margin:0 auto;
+        padding-top:15%;
+    }
+
+    .con-box li{
+        width:100%;
+        border:1px solid #f2f2f2;
+        box-shadow: 1rem 1rem 1.5rem #ccc;
+        padding:5%;
+        border-radius:20px;
+        margin-top:3%;
+        text-align: center;
+    }
+
+    .con-box li a{
+        font-size:1.34rem;
+    }
+
+
+    #cs-mobile{
+        display: block;
+        width:100%;
+        padding:10% 0 15% 0;
+        background-color:#f2f2f2;
+
+    }
+
+    #cs-mobile .cs-in{
+        width:80%;
+        margin:0 auto;
+    }
+
+    .cs-in .top{
+        width:100%;
+    }
+
+    .top .top-line{
+        width:10%;
+        border:6px solid #00adef;
+    }
+
+    .top h2{
+        float: left;
+        font-size:2.5rem;
+        font-family: s-core-dream-extrabold;
+        padding:3.5% 0 0 5%;
+    }
+    .cs-in .call{
+        padding-top:19%;
+        text-align: center;
+    }
+
+
+}
+
+
+
+
+@media screen and (max-width: 768px){
+    #main_img {
+        position: relative;
+        width: 100%;
+        height:516px;
+        background: url(/img/mobile_bg.jpg) no-repeat 50% 0;
+    }
+
+    #main_img .mobile-txt{
+        padding:12% 0 0 10%;
+    }
+
+    /* 검색하기 */
+    #search {
+        position: relative;
+        width: 100%;
+        padding-top: 27%;
+    }
+
+    #search .box {
+        display: block;
+        position: relative;
+        width:75%;
+        height:5rem;
+        border-radius: 1.3rem;
+        margin: 0 auto;
+        z-index: 100;
+        background-color: #fff;
+    }
+
+    .box label{
+        border: 0;
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .box label input{
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .box .button {
+        position: relative;
+        width: 21%;
+        height: 100%;
+        margin-left: 7.7%;
+        background-color: #00adef;
+        border-bottom-right-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+        border: 0px;
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    /* 컨텐츠1 pc버전 안보이기 */
+    #contents1{
+        display: none;
+    }
+
+    /* 컨텐츠1 모바일 버전 */
+    #contents1-mobile{
+        display: block;
+        width:100%;
+        height:43rem;
+        padding-top:10%;
+        background-color: #f2f2f2;
+    }
+
+    #con_in_mobile{
+        width:85%;
+        margin:0 auto;
+    }
+    /* 모바일 타이틀 */
+    #con_in_mobile .top{
+        width:100%;
+    }
+
+    /* 모바일 타이틀 - 왼쪽 아바서치 */
+    .top .left{
+        float: left;
+        width:50%;
+    }
+
+    .top .line{
+        width:20%;
+        border:6px solid #00adef;
+        margin-left:5%;
+    }
+
+    .top h3{
+        font-size:2.2rem;
+        font-family: s-core-dream-extrabold;
+        padding:7% 0 0 15%;
+    }
+
+    .top p{
+        font-size:1.2rem;
+        color:#999;
+        font-family: s-core-dream-regular;
+        padding:2% 0 0 17%;
+    }
+
+    /* 모바일 타이틀 - 매물전체보기 버튼 */
+    .top .btn{
+        float: right;
+        width:12%;
+        padding:1.5% 3.5%;
+        border:1px solid #00adef;
+        border-radius: 18px;
+        margin-top:8%;
+        margin-right:6%;
+    }
+
+    .btn a{
+        font-size:1rem;
+        font-weight: 800;
+        color:#00adef;
+        text-align: center;
+    }
+
+    /* 아바서치 이미지부분 */
+    #con_in_mobile .mobile-img{
+        width:100%;
+
+    }
+
+    .mobile-img .img-box{
+        width:90%;
+        margin:0 auto;
+        padding-top:20%;
+    }
+    .img-box img{
+        float:left;
+        width:48%;
+        margin-top: 1%;
+        margin-right: 1%;
+    }
+
+
+    #cs-mobile{
+        display: block;
+        float:left;
+        width:100%;
+        padding:10% 0 15% 0;
+        background-color:#f2f2f2;
+
+    }
+
+
+    }
+
+@media screen and (max-width:414px) and (min-width:380px){
+    #main_img {
+        position: relative;
+        width: 100%;
+        height:360px;
+        background: url(/img/mobile_bg02.jpg) no-repeat 50% 0;
+    }
+
+    #main_img .mobile-txt{
+        padding:18% 0 0 8%;
+    }
+
+    .mobile-txt img{
+        width:90%;
+    }
+
+    /* 검색하기 */
+    #search {
+        position: relative;
+        width: 100%;
+        padding-top:36%;
+    }
+
+    #search .box {
+        display: block;
+        position: relative;
+        width:85%;
+        height:4.8rem;
+        border-radius: 1.1rem;
+        margin: 0 auto;
+        z-index: 100;
+        background-color: #fff;
+    }
+
+    .box .search-box{
+        border: 0;
+        color: #ccc;
+    }
+
+
+
+    .box .button {
+        position: relative;
+        width:18%;
+        height: 100%;
+        margin-left: 7.7%;
+        background-color: #00adef;
+        border-bottom-right-radius: 1.1rem;
+        border-top-right-radius: 1.1rem;
+        border: 0px;
+    }
+
+    .button img{
+        width:60%;
+    }
+
+    /* 컨텐츠1 pc버전 안보이기 */
+    #contents1{
+        display: none;
+    }
+
+    /* 컨텐츠1 모바일 버전 */
+    #contents1-mobile{
+        display: block;
+        width:100%;
+        height:28rem;
+        padding-top:18%;
+        background-color: #f2f2f2;
+    }
+
+    #con_in_mobile{
+        width:88%;
+        margin:0 auto;
+    }
+    /* 모바일 타이틀 */
+    #con_in_mobile .top{
+        width:100%;
+    }
+
+    /* 모바일 타이틀 - 왼쪽 아바서치 */
+    .top .left{
+        float: left;
+        width:68%;
+    }
+
+    .top .line{
+        width:20%;
+        border:3px solid #00adef;
+    }
+
+    .top h3{
+        font-size:1.45rem;
+        font-family: s-core-dream-extrabold;
+        padding:7% 0 0 9%;
+    }
+
+    .top p{
+        font-size:0.7rem;
+        color:#999;
+        font-family: s-core-dream-regular;
+        padding:13% 0 0 10%;
+    }
+
+    /* 모바일 타이틀 - 매물전체보기 버튼 */
+    .top .btn{
+        float: right;
+        width:19%;
+        padding:1% 1.5%;
+        border:1px solid #00adef;
+        border-radius: 10px;
+        margin-top:4%;
+
+    }
+
+    .btn a{
+        font-size:0.8rem;
+        font-weight: 800;
+        color:#00adef;
+        text-align: center;
+    }
+
+    /* 아바서치 이미지부분 */
+    #con_in_mobile .mobile-img{
+        width:100%;
+
+    }
+
+    .mobile-img .img-box{
+        width:90%;
+        margin:0 auto;
+        padding-top:27%;
+    }
+    .img-box img{
+        float:left;
+        width:49%;
+        margin-top: 1%;
+        margin-right: 1%;
+    }
+
+
+    /*pc공지사항 고객센터 숨김*/
+    #contents2{
+        display: none;
+    }
+
+    #notice-mobile{
+        display: block;
+        width:100%;
+        height:28rem;
+        padding:10% 0 15% 0;
+
+
+    }
+
+    #notice-mobile .notice-in{
+        width:80%;
+        margin:0 auto;
+
+    }
+
+    .notice-in .top{
+        width:100%;
+        margin-top:5%;
+
+    }
+
+    .top .top-line{
+        width:15%;
+        border:3px solid #00adef;
+    }
+
+    .top h2{
+        float: left;
+        font-size:1.45rem;
+        font-family: s-core-dream-extrabold;
+        padding:3.5% 0 0 5%;
+    }
+
+    .top .top-btn{
+        float: right;
+        font-size:1rem;
+        font-weight: 900;
+        padding-top:5%;
+    }
+
+    .notice-in .con-box{
+        width:100%;
+        padding-top:22%;
+    }
+
+    .con-box li{
+        width:90%;
+        border-radius:20px;
+        margin-top:5%;
+        text-align: center;
+    }
+
+    .con-box li a{
+        font-size:1rem;
+    }
+
+
+    #cs-mobile{
+        display: block;
+        width:100%;
+        padding:10% 0 15% 0;
+        background-color:#f2f2f2;
+
+    }
+
+    #cs-mobile .cs-in{
+        width:80%;
+        margin:0 auto;
+    }
+
+    .cs-in .top{
+        width:100%;
+    }
+
+    .top .top-line{
+        width:15%;
+        border:3px solid #00adef;
+    }
+
+    .top h2{
+        float: left;
+        font-size:1.45rem;
+        font-family: s-core-dream-extrabold;
+        padding:3.5% 0 0 5%;
+    }
+    .cs-in .call{
+        padding-top:19%;
+        text-align: center;
+    }
+
+    .call img{
+        width:88%;
+    }
+}
+
+@media screen and (max-width:380px) and (min-width:360px){
+    #main_img {
+        position: relative;
+        width: 100%;
+        height:360px;
+        background: url(/img/mobile_bg02.jpg) no-repeat 50% 0;
+    }
+
+    #main_img .mobile-txt{
+        padding:18% 0 0 8%;
+    }
+
+    .mobile-txt img{
+        width:90%;
+    }
+
+    /* 검색하기 */
+    #search {
+        position: relative;
+        width: 100%;
+        padding-top:42%;
+    }
+
+    #search .box {
+        display: block;
+        position: relative;
+        width:85%;
+        height:4.8rem;
+        border-radius: 1.1rem;
+        margin: 0 auto;
+        z-index: 100;
+        background-color: #fff;
+    }
+
+    .box .search-box{
+        border: 0;
+        color: #ccc;
+    }
+
+
+
+    .box .button {
+        position: relative;
+        width:18%;
+        height: 100%;
+        margin-left: 7.7%;
+        background-color: #00adef;
+        border-bottom-right-radius: 1.1rem;
+        border-top-right-radius: 1.1rem;
+        border: 0px;
+    }
+
+    .button img{
+        width:60%;
+    }
+
+    /* 컨텐츠1 pc버전 안보이기 */
+    #contents1{
+        display: none;
+    }
+
+    /* 컨텐츠1 모바일 버전 */
+    #contents1-mobile{
+        display: block;
+        width:100%;
+        height:25rem;
+        padding-top:15%;
+        background-color: #f2f2f2;
+    }
+
+    #con_in_mobile{
+        width:88%;
+        margin:0 auto;
+    }
+    /* 모바일 타이틀 */
+    #con_in_mobile .top{
+        width:100%;
+    }
+
+    /* 모바일 타이틀 - 왼쪽 아바서치 */
+    .top .left{
+        float: left;
+        width:68%;
+    }
+
+    .top .line{
+        width:20%;
+        border:3px solid #00adef;
+    }
+
+    .top h3{
+        font-size:1.45rem;
+        font-family: s-core-dream-extrabold;
+        padding:7% 0 0 9%;
+    }
+
+    .top p{
+        font-size:0.7rem;
+        color:#999;
+        font-family: s-core-dream-regular;
+        padding:13% 0 0 10%;
+    }
+
+    /* 모바일 타이틀 - 매물전체보기 버튼 */
+    .top .btn{
+        float: right;
+        width:19%;
+        padding:1% 1.5%;
+        border:1px solid #00adef;
+        border-radius: 10px;
+        margin-top:4%;
+
+    }
+
+    .btn a{
+        font-size:0.8rem;
+        font-weight: 800;
+        color:#00adef;
+        text-align: center;
+    }
+
+    /* 아바서치 이미지부분 */
+    #con_in_mobile .mobile-img{
+        width:100%;
+
+    }
+
+    .mobile-img .img-box{
+        width:90%;
+        margin:0 auto;
+        padding-top:27%;
+    }
+    .img-box img{
+        float:left;
+        width:49%;
+        margin-top: 1%;
+        margin-right: 1%;
+    }
+
+
+    /*pc공지사항 고객센터 숨김*/
+    #contents2{
+        display: none;
+    }
+
+    #notice-mobile{
+        display: block;
+        width:100%;
+        height:25rem;
+        padding:10% 0 15% 0;
+
+
+    }
+
+    #notice-mobile .notice-in{
+        width:80%;
+        margin:0 auto;
+
+    }
+
+    .notice-in .top{
+        width:100%;
+
+    }
+
+    .top .top-line{
+        width:15%;
+        border:3px solid #00adef;
+    }
+
+    .top h2{
+        float: left;
+        font-size:1.45rem;
+        font-family: s-core-dream-extrabold;
+        padding:3.5% 0 0 5%;
+    }
+
+    .top .top-btn{
+        float: right;
+        font-size:1rem;
+        font-weight: 900;
+        padding-top:5%;
+    }
+
+    .notice-in .con-box{
+        width:100%;
+        padding-top:22%;
+    }
+
+    .con-box li{
+        width:90%;
+        border-radius:20px;
+        margin-top:5%;
+        text-align: center;
+    }
+
+    .con-box li a{
+        font-size:1rem;
+    }
+
+
+    #cs-mobile{
+        display: block;
+        width:100%;
+        padding:10% 0 15% 0;
+        background-color:#f2f2f2;
+
+    }
+
+    #cs-mobile .cs-in{
+        width:80%;
+        margin:0 auto;
+    }
+
+    .cs-in .top{
+        width:100%;
+    }
+
+    .top .top-line{
+        width:15%;
+        border:3px solid #00adef;
+    }
+
+    .top h2{
+        float: left;
+        font-size:1.45rem;
+        font-family: s-core-dream-extrabold;
+        padding:3.5% 0 0 5%;
+    }
+    .cs-in .call{
+        padding-top:19%;
+        text-align: center;
+    }
+
+    .call img{
+        width:88%;
+    }
+}

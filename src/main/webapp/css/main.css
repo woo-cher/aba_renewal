@@ -1,0 +1,409 @@
+@charset "utf-8";
+@import url("S-Core-Dream-light/s-core-dream.css");
+/* CSS Document */
+#wrap {
+    position: relative;
+    width: 100%;
+}
+
+/* 메인이미지*/
+#main_img {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    background: url(/img/main_img.jpg) no-repeat 50% 0;
+}
+
+#main_img .mobile-txt{
+    display: none;
+}
+
+/* 검색하기 */
+#search {
+    position: relative;
+    width: 100%;
+    height: 11%;
+    padding-top: 47.5rem;
+}
+
+#search .box {
+    display: block;
+    position: relative;
+    width: 36%;
+    height: 100%;
+    border-radius: 1.3rem;
+    margin: 0 auto;
+    z-index: 100;
+    background-color: #fff;
+}
+
+.box .search-box {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    margin-left: 4.17rem;
+    margin-top: 2%;
+    border: 0px;
+    font-size: 1.3rem;
+    color: #ccc;
+}
+
+.box .button {
+    position: relative;
+    float: right;
+    width: 21%;
+    height: 100%;
+    background-color: #00adef;
+    border-bottom-right-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    border: 0px;
+    font-size: 1.59rem;
+    color: #fff;
+}
+
+/* 사이드 바
+#side{
+    position: absolute;
+    width:100%;
+}
+
+#side .side-bar{
+    display: block;
+    width:60px;
+    height: 200px;
+    border:1px solid #ccc;
+}
+*/
+
+#sidebar{
+    display: none;
+    width:120px;
+    height:300px;
+    border:1px solid #333;
+    background-color:#fff;
+    position:fixed;
+    top:50%;
+    right:7%;
+    z-index: 9999;
+}
+
+#sidebar .bar-view{
+    width:100%;
+}
+
+#sidebar .btn1{
+    padding-top:8%;
+    padding-bottom:8%;
+    text-align: center;
+    border-bottom:1px solid #ccc;
+    background-color:#333;
+}
+
+#sidebar .btn1 a{
+    font-size:12px;
+    color:#fff;
+}
+
+#sidebar .btn2{
+    padding-top:8%;
+    padding-bottom:8%;
+    text-align: center;
+    border-bottom:1px solid #ccc;
+    background-color:#333;
+}
+
+#sidebar .btn2 a{
+    font-size:12px;
+    color:#fff;
+}
+
+#sidebar .btn3{
+    padding-top:70%;
+    text-align: center;
+    font-size:10px;
+    color:#ccc;
+}
+
+/* 아바서치 컨텐츠 */
+#contents1 {
+    position: relative;
+    width: 100%;
+    padding:0 0 35% 0;
+    background-color: #f2f2f2;
+}
+
+#con_in {
+    position: relative;
+    width:62%;
+    margin: 0 auto;
+    padding-top:9%;
+}
+
+/* 아바서치 컨텐츠 텍스트 */
+#con_in .txt {
+    float: left;
+    width: 24%;
+    padding: 5% 0 0 6%;
+}
+
+#con_in .txt .line{
+    width:23%;
+    border:4px solid #00adef;
+}
+
+#con_in .txt h3{
+    font-size:30px;
+    font-family: s-core-dream-extrabold;
+    padding:5% 0 0 3%;
+}
+
+.txt p {
+    font-size:1.8rem;
+    font-family: s-core-dream-regular;
+    line-height: 33px;
+    color: #333;
+    padding:18% 0 25% 10%;
+}
+
+.txt .btn {
+    width: 45%;
+    padding:5%;
+    margin-left:13%;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #00adef;
+}
+
+.txt .btn a {
+    font-size:1.45rem;
+    color: #fff;
+}
+
+.txt .btn:hover {
+    background-color: #f2f2f2;
+    border: 2px solid #00adef;
+}
+
+.txt .btn:hover a {
+    color: #00adef;
+    font-weight: 800;
+}
+
+
+/* 아바서치 컨텐츠 이미지*/
+
+#con_in .img {
+    float: right;
+    width: 65%;
+}
+
+/* 진행중매물 이미지 */
+#con_in .img .img01 {
+    position: absolute;
+    top:200px;
+    left:420px;
+    z-index: 1000;
+}
+
+/* hover */
+.img01:hover .in02 {
+    display: block;
+    opacity: 0.6;
+}
+
+.img01 .in02 {
+    display: none;
+    position: absolute;
+    float: left;
+    width:100%;
+}
+
+.img01 .in01 {
+    display: block;
+    float: left;
+    width:100%;
+}
+
+.img01 .in01:hover {
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/* 급매물 이미지 */
+#con_in .img .img02 {
+    position: absolute;
+    top:220px;
+    left:795px;
+    z-index: 1000;
+}
+
+/* hover */
+.img02:hover .in02 {
+    display: block;
+    opacity: 0.6;
+}
+
+.img02 .in02 {
+    display: none;
+    position: absolute;
+    float: left;
+}
+
+.img02 .in01 {
+    display: block;
+    float: left;
+}
+
+.img02 .in01:hover {
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/* 모든매물 이미지 */
+#con_in .img .img03 {
+    position: absolute;
+    top:440px;
+    left:420px;
+    z-index: 1000;
+}
+
+/* hover */
+.img03:hover .in02 {
+    display: block;
+    opacity: 0.6;
+}
+
+.img03 .in02 {
+    display: none;
+    position: absolute;
+    float: left;
+}
+
+.img03 .in01 {
+    display: block;
+    float: left;
+}
+
+.img03 .in01:hover {
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/* 집주인매물등록 이미지 */
+#con_in .img .img04 {
+    position: absolute;
+    top:460px;
+    left:795px;
+    z-index: 1000;
+}
+
+/* hover */
+.img04:hover .in02 {
+    display: block;
+    opacity: 0.6;
+}
+
+.img04 .in02 {
+    display: none;
+    position: absolute;
+    float: left;
+}
+
+.img04 .in01 {
+    display: block;
+    float: left;
+}
+
+.img04 .in01:hover {
+    opacity: 0;
+    transition: 0.8s;
+}
+
+#contents1-mobile{
+    display: none;
+}
+
+/*  contents2 - 공지사항&고객센터 */
+#contents2 {
+    width:64%;
+    margin: 0 auto;
+    padding:7% 0 30% 0;
+}
+
+/* 공지사항 */
+#contents2 .notice {
+    float: left;
+    width: 50%;
+    border-right: 1.5px solid #EFEFEF;
+    padding-right:2%;
+}
+
+.notice h3 {
+    float: left;
+    padding-top:5%;
+}
+
+.notice .btn {
+    width: 20%;
+    padding:14% 0 0 80%;
+}
+
+.notice .btn a {
+    font-size:1.34rem;
+    font-weight: 800;
+}
+
+.notice .txt {
+    position: relative;
+    width: 100%;
+    padding-top:10%;
+    text-align: center;
+}
+
+.txt .txt01 {
+    width:87%;
+    background-color: #fff;
+    box-shadow: 1rem 1rem 3rem #f2f2f2;
+    margin-bottom:5%;
+    border-radius: 35px;
+    padding:4% 0 4% 0;
+    z-index: 9999;
+}
+
+.txt .txt01 a {
+    font-size: 1.417rem;
+    color: #333;
+}
+
+.txt .txt01:hover {
+    background-color: #00adef;
+}
+
+.txt .txt01:hover a {
+    color: #fff;
+    font-weight: 800;
+}
+
+/*고객센터*/
+#contents2 .cs {
+    float: right;
+    width: 45%;
+    padding-left:2.5%;
+}
+
+.cs .title {
+    float: left;
+    padding-top: 5%;
+}
+
+.cs .info {
+    padding-top:32%;
+}
+
+/*모바일 공지사항 고객센터 */
+#notice-mobile{
+    display: none;
+}
+#cs-mobile{
+    display: none;
+}

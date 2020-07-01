@@ -1,0 +1,650 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media screen and (max-width: 1550px) {
+    /* 메인이미지*/
+    #main_img {
+        position: relative;
+        width: 100%;
+        height: 650px;
+        background: url(/img/main_img.jpg) no-repeat 50% 0;
+    }
+
+    /* 검색하기 */
+    #search {
+        position: relative;
+        width: 100%;
+        height: 10%;
+        padding-top: 37%;
+    }
+
+    #search .box {
+        display: block;
+        position: relative;
+        width:45%;
+        border-radius: 1.3rem;
+        margin: 0 auto;
+        z-index: 100;
+
+    }
+
+    .box .search-box {
+        position: relative;
+        width: 65.4%;
+        margin-left: 3%;
+        border: 0px;
+        font-size: 1.1rem;
+        color: #ccc;
+    }
+
+    .box .button {
+        position: relative;
+        width:18%;
+        margin-left: 7.7%;
+        background-color: #00adef;
+        border-bottom-right-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+        border: 0px;
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    /* 아바서치 컨텐츠 */
+    #contents1 {
+        position: relative;
+        width: 100%;
+        padding:0 0 38% 0;
+        background-color: #f2f2f2;
+    }
+
+    #con_in {
+        position: relative;
+        width:77%;
+        margin: 0 auto;
+        padding-top:8%;
+    }
+
+    /* 아바서치 컨텐츠 텍스트 */
+    #con_in .txt {
+        float: left;
+        width: 24%;
+        padding: 5% 0 0 6%;
+    }
+
+    #con_in .txt img{
+        width:80%;
+    }
+
+    .txt p {
+        font-size:1.6rem;
+        font-family: s-core-dream-regular;
+        line-height: 33px;
+        color: #333;
+        padding:18% 0 25% 10%;
+    }
+
+    .txt .btn {
+        width: 45%;
+        padding:5%;
+        margin-left:13%;
+        text-align: center;
+        border-radius: 25px;
+        background-color: #00adef;
+    }
+
+    .txt .btn a {
+        font-size:1.584rem;
+        color: #fff;
+    }
+
+    .txt .btn:hover {
+        background-color: #f2f2f2;
+        border: 2px solid #00adef;
+    }
+
+    .txt .btn:hover a {
+        color: #00adef;
+        font-weight: 800;
+    }
+
+
+    /* 아바서치 컨텐츠 이미지*/
+
+    #con_in .img {
+        float: right;
+        width: 65%;
+        background-color: #2e9cdf;
+    }
+
+    /* 진행중매물 이미지 */
+    #con_in .img .img01 {
+        position: absolute;
+        top:220px;
+        left:420px;
+        z-index: 1000;
+    }
+
+    /* hover */
+    .img01:hover .in02 {
+        display: block;
+        opacity: 0.6;
+    }
+
+    .img01 .in02 {
+        display: none;
+        position: absolute;
+        float: left;
+    }
+
+    .img01 .in01 {
+        display: block;
+        float: left;
+    }
+
+    .img01 .in01:hover {
+        opacity: 0;
+        transition: 0.8s;
+    }
+
+    /* 급매물 이미지 */
+    #con_in .img .img02 {
+        position: absolute;
+        top:235px;
+        left:795px;
+        z-index: 1000;
+    }
+
+    /* hover */
+    .img02:hover .in02 {
+        display: block;
+        opacity: 0.6;
+    }
+
+    .img02 .in02 {
+        display: none;
+        position: absolute;
+        float: left;
+    }
+
+    .img02 .in01 {
+        display: block;
+        float: left;
+    }
+
+    .img02 .in01:hover {
+        opacity: 0;
+        transition: 0.8s;
+    }
+
+    /* 모든매물 이미지 */
+    #con_in .img .img03 {
+        position: absolute;
+        top:460px;
+        left:420px;
+        z-index: 1000;
+    }
+
+    /* hover */
+    .img03:hover .in02 {
+        display: block;
+        opacity: 0.6;
+    }
+
+    .img03 .in02 {
+        display: none;
+        position: absolute;
+        float: left;
+    }
+
+    .img03 .in01 {
+        display: block;
+        float: left;
+    }
+
+    .img03 .in01:hover {
+        opacity: 0;
+        transition: 0.8s;
+    }
+
+    /* 집주인매물등록 이미지 */
+    #con_in .img .img04 {
+        position: absolute;
+        top: 475px;
+        left:795px;
+        z-index: 1000;
+    }
+
+    /* hover */
+    .img04:hover .in02 {
+        display: block;
+        opacity: 0.6;
+    }
+
+    .img04 .in02 {
+        display: none;
+        position: absolute;
+        float: left;
+    }
+
+    .img04 .in01 {
+        display: block;
+        float: left;
+    }
+
+    .img04 .in01:hover {
+        opacity: 0;
+        transition: 0.8s;
+    }
+    #contents1-mobile{
+        display: none;
+    }
+
+    /*  contents2 - 공지사항&고객센터 */
+    #contents2 {
+        width:77%;
+        margin: 0 auto;
+        padding:7% 0 35% 0;
+    }
+
+    /* 공지사항 */
+    #contents2 .notice {
+        float: left;
+        width: 50%;
+        border-right: 1.5px solid #EFEFEF;
+        padding-right:2%;
+    }
+
+    .notice h3 {
+        float: left;
+        padding-top:5%;
+    }
+
+    .notice h3 img{
+        width:90%;
+    }
+
+    .notice .btn {
+        width: 20%;
+        padding:14% 0 0 80%;
+    }
+
+    .notice .btn a {
+        font-size:1.34rem;
+        font-weight: 800;
+    }
+
+    .notice .txt {
+        position: relative;
+        width: 100%;
+        padding-top:10%;
+        text-align: center;
+    }
+
+    .txt .txt01 {
+        width:87%;
+        background-color: #fff;
+        box-shadow: 1rem 1rem 3rem #f2f2f2;
+        margin-bottom:5%;
+        border-radius: 35px;
+        padding:3% 0 3% 0;
+        z-index: 9999;
+    }
+
+    .txt .txt01 a {
+        font-size: 1.34rem;
+        color: #333;
+    }
+
+    .txt .txt01:hover {
+        background-color: #00adef;
+    }
+
+    .txt .txt01:hover a {
+        color: #fff;
+        font-weight: 800;
+    }
+
+    /*고객센터*/
+    #contents2 .cs {
+        float: right;
+        width: 45%;
+        padding-left:2%;
+    }
+
+    .cs .title {
+        float: left;
+        padding-top: 5%;
+    }
+
+    .cs .title img{
+        width:90%;
+    }
+
+    .cs .info {
+        padding-top:32%;
+        padding-left:5%;
+    }
+
+    .cs .info img{
+        width:88%;
+    }
+    #notice-mobile{
+        display: none;
+    }
+    #cs-mobile{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 1400px) {
+	#main_img {
+		position: relative;
+		width: 100%;
+		height: 600px;
+		background: url(/img/main_img_w1024bg.jpg) no-repeat 50% 0;
+	}
+    #contents1-mobile{
+        display: none;
+    }
+    /*  contents2 - 공지사항&고객센터 */
+    .notice h3 {
+        float: left;
+        padding-top:5%;
+    }
+
+    .notice h3 img{
+        width:85%;
+    }
+
+    .notice .btn {
+        width: 20%;
+        padding:14% 0 0 78%;
+    }
+
+    .notice .txt {
+        position: relative;
+        width: 100%;
+        padding-top:10%;
+        text-align: center;
+    }
+
+    .txt .txt01 a {
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    /*고객센터*/
+    .cs .title img{
+        width:83%;
+    }
+
+    .cs .info {
+        padding-top:32%;
+        padding-left:5%;
+    }
+
+    .cs .info img{
+        width:88%;
+    }
+    #notice-mobile{
+        display: none;
+    }
+    #cs-mobile{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    #main_img {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        background: url(/img/main_img_w1024bg.jpg) no-repeat 50% 0;
+    }
+
+    /* 검색하기 */
+    #search {
+        position: relative;
+        width: 100%;
+        height: 10%;
+        padding-top: 44%;
+    }
+
+    #search .box {
+        display: block;
+        position: relative;
+        width:50%;
+        height: 100%;
+        border-radius: 1.3rem;
+        margin: 0 auto;
+        z-index: 100;
+        background-color: #fff;
+    }
+
+    .box .search-box {
+        position: relative;
+        width: 65.4%;
+        height: 78%;
+        margin-left: 5%;
+        border: 0px;
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .box .button {
+        position: relative;
+        width: 20%;
+        height: 100%;
+        margin-left: 7.7%;
+        background-color: #00adef;
+        border-bottom-right-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+        border: 0px;
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    .button img{
+        width:35%;
+    }
+
+    /* 아바서치 컨텐츠 */
+    #contents1 {
+        position: relative;
+        width: 100%;
+        background-color: #f2f2f2;
+    }
+
+    #con_in {
+        position: relative;
+        width: 85%;
+        margin: 0 auto;
+        margin-bottom: 5%;
+    }
+
+    /* 아바서치 컨텐츠 텍스트 */
+    #con_in .txt {
+        float: left;
+        width: 24%;
+        padding:6% 0 0 7%;
+    }
+    #con_in .txt img{
+        width:67%;
+    }
+
+    .txt p {
+        font-size:1.3rem;
+        line-height:29px;
+        color: #333;
+        padding:10% 0 25% 10%;
+    }
+
+    .txt .btn {
+        width: 40%;
+        padding: 4%;
+        margin-left: 10%;
+        text-align: center;
+        border-radius: 17px;
+        background-color: #00adef;
+    }
+
+    .txt .btn a {
+        font-size:1.08rem;
+        color: #fff;
+    }
+
+    .txt .btn:hover {
+        background-color: #f2f2f2;
+        border: 2px solid #00adef;
+    }
+
+    .txt .btn:hover a {
+        color: #00adef;
+        font-weight: 800;
+    }
+
+
+    /* 아바서치 컨텐츠 이미지*/
+
+    #con_in .img {
+        float: right;
+        width:45%;
+    }
+
+    /* 진행중매물 이미지 */
+    #con_in .img .img01{
+        position: absolute;
+        top:110%;
+        left:33.5%;
+        z-index: 1000;
+    }
+
+    /* 급매물 이미지 */
+    #con_in .img .img02{
+        position: absolute;
+        top:125%;
+        left:63%;
+        z-index: 1000;
+    }
+
+    /* 모든매물 이미지 */
+    #con_in .img .img03{
+        position: absolute;
+        top:313%;
+        left:33.5%;
+        z-index: 1000;
+    }
+
+
+    /* 집주인매물등록 이미지 */
+    #con_in .img .img04{
+        position: absolute;
+        top:327%;
+        left:63%;
+        z-index: 1000;
+    }
+
+    #contents1-mobile{
+        display: none;
+    }
+
+    /*  contents2 - 공지사항&고객센터 */
+    #contents2 {
+        width: 88%;
+        margin: 0 auto;
+        padding:10% 0 44% 0;
+    }
+
+    /* 공지사항 */
+    #contents2 .notice {
+        float: left;
+        width: 50%;
+        border-right: 1.5px solid #EFEFEF;
+        padding-right:1.5%;
+    }
+
+    .notice h3 {
+        float: left;
+        padding-top:4%;
+    }
+    .notice h3 img{
+        width:77%;
+    }
+
+    .notice .btn {
+        width: 20%;
+        padding:11% 0 0 85%;
+    }
+
+    .notice .btn a {
+        font-size: 1.16rem;
+        font-weight: 800;
+    }
+
+    .notice .txt {
+        position: relative;
+        width: 100%;
+        padding-top:12%;
+        text-align: center;
+    }
+
+    .txt .txt01 {
+        width: 85%;
+        background-color: #fff;
+        box-shadow: 1rem 1rem 3rem #f2f2f2;
+        margin-bottom: 5%;
+        margin-left:5%;
+        border-radius: 35px;
+        padding-top:3.5%;
+        z-index: 9999;
+    }
+
+    .txt .txt01 a {
+        font-size:1.2rem;
+        color: #333;
+    }
+
+    .txt .txt01:hover {
+        background-color: #00adef;
+    }
+
+    .txt .txt01:hover a {
+        color: #fff;
+        font-weight: 800;
+    }
+
+    /*고객센터*/
+    #contents2 .cs {
+        float: right;
+        width: 45%;
+        padding-left:2.5%;
+    }
+
+    .cs .title {
+        float: left;
+        padding-top:4%;
+    }
+
+    .cs .title img{
+        width:76%;
+    }
+
+    .cs .info {
+        padding-top:32%;
+    }
+
+    .cs .info img{
+        width:85%;
+    }
+    #notice-mobile{
+        display: none;
+    }
+    #cs-mobile{
+        display: none;
+    }
+}
+
+
+
+
