@@ -6,14 +6,15 @@
     <resultMap id="User" type="User" />
 
     <select id="createUser" parameterType="User">
-        #
+        INSERT INTO users (user_id, password, name, nick_name, role, created_at)
+        VALUES (#{userId}, #{password}, #{name}, #{nickName}, #{role}, current_timestamp)
     </select>
 
     <select id="findAllUser" resultMap="User">
-        SELECT user_id, password, name, nick_name FROM users;
+        SELECT user_id, password, name, nick_name, role FROM users;
     </select>
 
     <select id="findUserById" resultMap="User" parameterType="String">
-        SELECT user_id, password, name, nick_name FROM users WHERE user_id = #{id};
+        SELECT user_id, password, name, nick_name, role FROM users WHERE user_id = #{id};
     </select>
 </mapper>

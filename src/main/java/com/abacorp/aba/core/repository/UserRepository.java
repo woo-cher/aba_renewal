@@ -26,7 +26,7 @@ public class UserRepository implements BasicQueryStrategy<User> {
 
     @Override
     public int create(User model) {
-        return 0;
+        return sqlSession.insert("createUser", model);
     }
 
     @Override

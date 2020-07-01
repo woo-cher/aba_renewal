@@ -3,12 +3,12 @@ package com.abacorp.aba.model;
 import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.*;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class User extends ModelMapper {
     private String userId;
     private String password;

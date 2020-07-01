@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,5 +30,16 @@ public class UserService implements UserDetailsService {
 
     public User findById(String userId) {
         return this.repository.selectById(userId);
+    }
+
+    public int createUser(User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        String natural = user.getPassword();
+
+        user.setPassword(encoder.encode(natural));
+        user.setRole(CustomUserDetails.ROLE_PREFIX + user.getRole());
+
+        return this.repository.create(user);
     }
 }
