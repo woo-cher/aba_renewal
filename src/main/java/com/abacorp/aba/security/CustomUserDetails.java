@@ -17,6 +17,10 @@ public class CustomUserDetails implements UserDetails {
     public static final String ROLE_PREFIX = "ROLE_";
     private User user;
 
+    public CustomUserDetails(User user) {
+        this.user = user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();

@@ -20,8 +20,8 @@ public class UserRepository implements BasicQueryStrategy<User> {
     }
 
     @Override
-    public User selectById(int id) {
-        return sqlSession.selectOne("findUserById", id);
+    public User selectById(Object id) {
+        return sqlSession.selectOne("findUserById", (String)id);
     }
 
     @Override

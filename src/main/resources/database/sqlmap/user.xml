@@ -10,10 +10,10 @@
     </select>
 
     <select id="findAllUser" resultMap="User">
-        SELECT id, user_id, password, name, nick_name FROM users;
+        SELECT user_id, password, name, nick_name FROM users;
     </select>
 
-    <select id="findUserById" resultMap="User" parameterType="int">
-        SELECT id, user_id, password, name, nick_name FROM users WHERE user_id = #{id};
+    <select id="findUserById" resultMap="User" parameterType="String">
+        SELECT user_id, password, name, nick_name FROM users WHERE user_id = #{id};
     </select>
 </mapper>

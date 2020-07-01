@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BasicQueryStrategy<M extends ModelMapper> {
     List<M> findAll();
-    M selectById(int id);
+    M selectById(Object id);
     int create(M model);
     int update(M model);
     int delete(M model);

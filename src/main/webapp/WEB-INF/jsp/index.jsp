@@ -7,15 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/index_%20responsive.css">
-
 	<title>아바</title>
 </head>
 
 <body>
-<div id="wrap">
-	<!-- 헤드부분 -->
-	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
+<!-- 헤드부분 -->
+<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 
+<div id="wrap">
 	<!-- 메인이미지 -->
 	<section id="main_img">
 		<div class="txt-box">
