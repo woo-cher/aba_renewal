@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <head>
     <meta charset="utf-8">
@@ -18,23 +19,6 @@
     <a href="/" class="logo">
         <img src="/img/aboutus_logo.png" alt="로고">
     </a>
-    <div class="login">
-        <a href="/auth/login" class="nav">로그인 &middot; 회원가입</a>
-        <!--<div class="name-box">
-            <ul>
-                <li>
-                    <a href="#">김다언 님 ▼</a>
-                    <ul>
-                        <li><a href="#">마이페이지</a></li>
-                        <li><a href="#">계약완료신고</a></li>
-                        <li><a href="#">쪽지보내기</a></li>
-                        <li><a href="#">로그아웃 →</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>-->
-
-    </div>
     <ul class="menu">
         <li class="menu01"><a href="#">매물찾기</a>
             <ul class="sub">
@@ -54,5 +38,19 @@
         </li>
         <li><a href="#">회사소개</a></li>
         <li><a href="#">공지사항</a></li>
+        <sec:authorize access="!isAuthenticated()">
+            <li><a href="/auth/login">로그인 &middot; 회원가입</a></li>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <li class="menu01">
+                <a href="#">김다언 님 <h5 style="display: inline">▼<h5/></a>
+                <ul class="sub">
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="#">계약완료신고</a></li>
+                    <li><a href="#">쪽지보내기</a></li>
+                    <li><a href="/auth/logout">로그아웃 →</a></li>
+                </ul>
+            </li>
+        </sec:authorize>
     </ul>
 </header>
