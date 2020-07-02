@@ -14,6 +14,10 @@ body {
     color: #333;
 }
 
+header {
+    border-top: 1px solid #777;
+}
+
 img {
     border: 0;
 }
@@ -31,4 +35,5 @@ button {
     cursor: pointer;
 }
 
-button:hover { zoom: 1.025; }
+button:hover,
+.logo > img:hover { zoom: 1.025; }

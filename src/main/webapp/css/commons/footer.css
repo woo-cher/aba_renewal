@@ -1,0 +1,55 @@
+#footer {
+    width: 100%;
+    background-color: #333;
+    margin-top: 8%;
+}
+
+/* 윗부분*/
+#footer .top {
+    width:62%;
+    margin: 0 auto;
+    padding-top:1.2%;
+    padding-bottom:2.3%;
+    border-bottom: 1px solid #666;
+}
+
+.top li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding-right:4.7%;
+}
+
+.top li:last-child {
+    padding-right: 0px;
+}
+
+.top li a {
+    font-size:1.4rem;
+    color: #ccc;
+}
+
+/* 아랫 부분*/
+#footer .bottom {
+    width: 62%;
+    padding:2.9% 0 5% 4.8%;
+    margin: 0 auto;
+}
+
+.bottom pre {
+    font-size:1.084rem;
+    color: #8B8B8B;
+    line-height: 14px;
+}
+
+.bottom p {
+    font-size: 1.167rem;
+    color: #666;
+    padding-top:3%;
+}
+
+.bottom p strong {
+    font-size:1.25rem;
+    color: #ccc;
+    font-weight: 800;
+}

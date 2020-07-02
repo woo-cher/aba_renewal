@@ -9,14 +9,12 @@
 
 #contents {
     width: 100%;
-    border-top: 1px solid #777;
-    padding-bottom: 8%;
 }
 
 #contents #con-box {
     width: 40%;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 #con-box .login-name {

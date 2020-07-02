@@ -133,9 +133,8 @@
 		</article>
 	</section>
 
-	<!-- 하단부분 -->
-	<section id="footer"></section>
-
+	<%-- footer --%>
+	<%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
 </div>
 </body>
 </html>
