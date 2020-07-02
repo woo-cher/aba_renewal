@@ -23,6 +23,11 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         User user = this.repository.selectById(userId);
+
+        if(user == null) {
+            throw new UsernameNotFoundException("Not Found User : " + userId);
+        }
+
         logger.info("find db user : {}", user);
 
         return new CustomUserDetails(user);

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -8,12 +10,14 @@
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
+
+
 <body>
-
 <div id="wrap">
-
-    <header id="header"></header>
     <section id="contents">
+        <a href="/" class="logo" style="position: absolute; padding: 45px;">
+            <img src="/img/aboutus_logo.png" alt="로고">
+        </a>
         <article id="con-box">
             <header class="login-name">
                 <h3>회원 로그인</h3>
@@ -21,11 +25,23 @@
             <section class="box">
                 <form class="id-pw" action="/auth/doLogin" method="post">
                     <label>
-                        <input type="text" class="id" placeholder="아이디" name="username">
+                        <input required autofocus type="text" class="id" placeholder="아이디" name="username"
+                               pattern="^([A-Za-z0-9])+"
+                               oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
+                               oninput="this.setCustomValidity(''); this.checkValidity()"
+                        >
                     </label>
                     <label>
-                        <input type="password" class="pw" placeholder="비밀번호" name="password">
+                        <input required autofocus type="password" class="pw" placeholder="비밀번호" name="password"
+                               oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
+                               oninput="this.setCustomValidity(''); this.checkValidity()"
+                        >
                     </label>
+                    <p class="error">
+                        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+                            아이디 또는 비밀번호가 일치하지 않네요 :(
+                        </c:if>
+                    </p>
                     <div class="check-box">
                         <input type="checkbox" class="login-save" name="" value="save">&nbsp; 아이디 저장
                         <input type="checkbox" class="auto-login" name="" value="auto">&nbsp; 자동로그인
@@ -46,7 +62,8 @@
             </section>
         </article>
     </section>
-    <footer id="footer"></footer>
+
+    <%-- footer --%>
 </div>
 
 </body>

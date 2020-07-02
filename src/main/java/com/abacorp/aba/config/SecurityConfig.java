@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.ForwardAuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -24,7 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/auth/login")
-                .failureForwardUrl("/auth/login")
+//                .failureForwardUrl("/auth/login")
+                .failureHandler(new ForwardAuthenticationFailureHandler("/auth/login"))
                 .loginProcessingUrl("/auth/doLogin")
                 .defaultSuccessUrl("/")
                 .permitAll()

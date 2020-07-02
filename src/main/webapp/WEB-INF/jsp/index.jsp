@@ -7,7 +7,6 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/main1492px.css">
 	<link rel="stylesheet" type="text/css" href="/css/main_mobile.css">
 </head>
