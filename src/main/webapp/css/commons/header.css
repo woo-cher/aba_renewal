@@ -1,18 +1,18 @@
 /* header */
 #header {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 8rem;
-    z-index: 500;
 }
 
 /* 로고 */
 #header .logo {
-    width: 100%;
+    position: absolute;
 }
 
-.logo img {
-    padding: 2.5rem 0 0 7.5rem;
+#header .logo,
+#header .menu {
+    padding: 20px 40px;
 }
 
 /* 로그인 회원가입 */
@@ -38,7 +38,7 @@
     float: right;
     width: auto;
     height: auto;
-    padding: 40px 45px;
+    margin-top: 15px;
 }
 
 .menu li {

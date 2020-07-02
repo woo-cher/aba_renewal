@@ -2,16 +2,15 @@
 
 <html>
 <head>
+	<title>아바소개</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/index_%20responsive.css">
-	<title>아바소개</title>
 </head>
 
 <body>
-<!-- 헤드부분 -->
 <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 
 <div id="wrap">

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:app.properties")
 public class AbaApplication {
 
     public static void main(String[] args) {

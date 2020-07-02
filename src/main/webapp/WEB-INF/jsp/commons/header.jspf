@@ -22,7 +22,7 @@
         <img src="/img/aboutus_logo.png" alt="로고">
     </a>
     <ul class="menu">
-        <li class="menu01"><a href="#">매물찾기</a>
+        <li class="menu01"><a href="/maps">매물찾기</a>
             <ul class="sub">
                 <li><a href="#">원룸</a></li>
                 <li><a href="#">투&middot;쓰리룸</a></li>

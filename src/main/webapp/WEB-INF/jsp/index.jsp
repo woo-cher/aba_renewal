@@ -12,7 +12,6 @@
 </head>
 
 <body>
-	<!-- 헤드부분 -->
 	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 
 	<div id="wrap">

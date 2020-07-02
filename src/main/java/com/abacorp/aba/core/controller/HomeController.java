@@ -26,4 +26,9 @@ public class HomeController {
     private String intro() {
         return "intro";
     }
+
+    @RequestMapping(value = "/maps")
+    private String kakaoMap() {
+        return "map/map";
+    }
 }

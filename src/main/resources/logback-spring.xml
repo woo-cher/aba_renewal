@@ -24,18 +24,12 @@
     <logger name="org.hibernate.SQL" level="INFO"/>
     <logger name="org.quartz.core" level="INFO"/>
     <logger name="org.h2.server.web" level="INFO"/>
+    <logger name="org.springframework.boot.autoconfigure" level="INFO"/>
+    <logger name="org.springframework.beans.factory" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="dailyRollingFileAppender" />
     </root>
-
-    <logger name="org.springframework" level="ON"/>
-    <logger name="com.gargoylesoftware" level="OFF"/>
-    <logger name="org.apache" level="OFF"/>
-    <logger name="c.DefaultCacheAwareContextLoaderDelegate" level="OFF"/>
-    <logger name="org.springframework.test.context.cache" level="OFF"/>
-    <logger name="tractDirtiesContextTestExecutionListener" level="OFF"/>
-    <logger name="o.s.t.c.w.ServletTestExecutionListener" level="OFF"/>
 
     <!-- 좀 더 보기 좋은 MyBatis 쿼리 Log : log4jdbc -->
     <logger name="jdbc.sqlonly" level="DEBUG" />

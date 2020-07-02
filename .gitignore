@@ -32,7 +32,7 @@ build/
 
 # Project exclude paths
 /.mvn/
-/src/main/resources/db.properties
+/src/main/resources/app.properties
 /logs/
 /work/**
 /work/

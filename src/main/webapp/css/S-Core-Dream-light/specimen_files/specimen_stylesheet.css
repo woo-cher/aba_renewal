@@ -54,7 +54,6 @@ h2{
 	margin: 0px auto;
 }
 
-
 #header {
 	padding: 20px;
 	font-size: 36px;
@@ -65,11 +64,11 @@ h2{
 #header span {
 	color: #666;
 }
+
 #main_content {
 	background-color: #fff;
 	padding: 60px 20px 20px;
 }
-
 
 #footer p {
 	margin: 0;
@@ -84,12 +83,14 @@ h2{
 	height: 31px;
 	background-color: #444;
 }
+
 .tabs li {
 	float:  left;
 	margin: 0;
 	overflow: hidden;
 	background-color: #444;
 }
+
 .tabs li a {
 	display: block;
 	color: #fff;
