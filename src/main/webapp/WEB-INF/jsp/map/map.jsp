@@ -12,15 +12,30 @@
     </head>
 
     <body>
+        <div class="overlay" hidden></div>
         <%@include file="/WEB-INF/jsp/map/filter_bar.jsp"%>
 
         <div class="map-container">
             <div id="map" class="map">
                 <div class="search-bar">
-                    <input type="text" placeholder="지역, 매물번호를 입력하세요!">
+                    <input type="text" placeholder="지역, 매물번호를 입력하세요!"
+                           onfocus="location.href=`javascript:searchToggle()`"
+                           onfocusout="location.href=`javascript:searchToggle()`"
+                    >
                     <button type="button" class="search-btn">
                         <img src="/img/svg/search-24px.svg" class="search-icon">
                     </button>
+                    <div class="search-result">
+                        <header class="result-header">
+                            <span>
+                                <i class="fas fa-map-marker-alt"></i>
+                                행정구역
+                            </span>
+                        </header>
+                        <div class="result">
+                            <h2>결과가 존재하지 않아요 :(</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
             <%@include file="/WEB-INF/jsp/map/offer_list.jsp"%>
@@ -43,4 +58,9 @@
             $("#offer-map").addClass("active")
         }
     })
+
+    function searchToggle() {
+        $(".search-result").toggle();
+        $(".overlay").toggle();
+    }
 </script>

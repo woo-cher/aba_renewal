@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" crossorigin="anonymous">
 
     <%--`jquery` resrouce --%>
     <script src="/js/jquery-1.7.2.min.js"></script>
@@ -10,6 +11,7 @@
 
     <%-- `font` resources --%>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
 
     <%-- 'css' --%>
     <link rel="stylesheet" type="text/css" href="/css/commons/header.css">

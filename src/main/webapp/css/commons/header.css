@@ -47,6 +47,7 @@
 .menu li {
     width: auto;
     padding: 0 20px;
+    margin: 0 5px;
     text-align: center;
 }
 
@@ -62,11 +63,11 @@
 
 .menu > li:hover,
 .menu > li.active {
-    border-bottom: 9px solid #00adef;
+    border-bottom: 6px solid #00adef;
 }
 
 .menu > li.on {
-    border-bottom: 9px solid #00adef;
+    border-bottom: 6px solid #00adef;
 }
 
 .menu > li:hover a,
@@ -78,6 +79,7 @@
 
 /* 매물 서브메뉴 */
 .menu > li .sub {
+    font-size: 12px;
     position: absolute;
     top: 100%;
     right: 20%;
@@ -96,7 +98,7 @@
 
 .menu > li .sub li a {
     display: block;
-    font-size: 1.25rem;
+    font-size: 14px;
     color: #fff;
 }
 

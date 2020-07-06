@@ -4,4 +4,38 @@
 .filter-bar {
   height: 60px;
   border: 1px solid lightblue;
+
+  .filter-group {
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    padding: 0px 30px;
+
+    li {
+      align-self: center;
+
+      & a {
+        position: relative;
+        border-radius: 22px;
+        color: #fff;
+        font-size: 15px;
+        text-align: center;
+        background: #00adef;
+        padding: 12.5px 35px;
+        margin-right: 8.5px;
+
+        span {
+          position: absolute;
+          right: 15px;
+          top: 15px;
+        }
+
+        &:hover {
+          background: white;
+          border: 1px solid #00adef;
+          color: #00adef;
+        }
+      }
+    }
+  }
 }

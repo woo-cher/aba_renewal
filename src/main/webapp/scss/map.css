@@ -5,6 +5,35 @@
   height: 60px;
   border: 1px solid lightblue;
 }
+.filter-bar .filter-group {
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  padding: 0px 30px;
+}
+.filter-bar .filter-group li {
+  align-self: center;
+}
+.filter-bar .filter-group li a {
+  position: relative;
+  border-radius: 22px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  background: #00adef;
+  padding: 12.5px 35px;
+  margin-right: 8.5px;
+}
+.filter-bar .filter-group li a span {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.filter-bar .filter-group li a:hover {
+  background: white;
+  border: 1px solid #00adef;
+  color: #00adef;
+}
 
 /**
     Offer list area
@@ -47,6 +76,40 @@
   width: 30%;
   height: 100%;
   display: inline-block;
+}
+
+/* Search result area */
+.search-result {
+  position: absolute;
+  top: 55px;
+  left: -1px;
+  width: 350px;
+  height: auto;
+  min-height: 200px;
+  border: 1px solid lightblue;
+  z-index: 1001;
+  box-shadow: rgba(0, 0, 0, 0.06) 30px 1px 19px 0px, rgba(0, 0, 0, 0.12) 0px 20px 15px -12px;
+  background-color: white;
+}
+.search-result .result-header {
+  display: flex;
+  align-items: center;
+  height: 58px;
+  border-bottom: 1px solid lightblue;
+}
+.search-result .result-header span {
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+}
+.search-result .result-header span i {
+  color: inherit;
+}
+.search-result .result {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 200px;
 }
 
 /*# sourceMappingURL=map.css.map */

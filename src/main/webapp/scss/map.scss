@@ -46,3 +46,40 @@
   }
 }
 
+/* Search result area */
+.search-result {
+  position: absolute;
+  top: 55px;
+  left: -1px;
+  width: 350px;
+  height: auto;
+  min-height: 200px;
+  border: 1px solid lightblue;
+  z-index: 1001;
+  box-shadow: rgba(0, 0, 0, 0.06) 30px 1px 19px 0px, rgba(0, 0, 0, 0.12) 0px 20px 15px -12px;
+  background-color: rgb(255, 255, 255);
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    height: 58px;
+    border-bottom: 1px solid lightblue;
+
+    & span {
+      width: 100%;
+      padding: 20px;
+      font-size: 18px;
+
+      & i {
+        color: inherit;
+      }
+    }
+  }
+
+  .result {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+  }
+}
