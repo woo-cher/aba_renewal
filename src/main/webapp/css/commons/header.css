@@ -7,11 +7,6 @@
 }
 
 /* 로고 */
-#header > img {
-    width: 100px;
-    height: auto;
-}
-
 #header .logo {
     align-items: center;
     display: inline-flex;
@@ -19,6 +14,9 @@
     /*padding: 0px 10px;*/
 }
 
+.logo > img {
+    zoom: 0.8;
+}
 
 /* 로그인 회원가입 */
 #header .login {
@@ -62,7 +60,8 @@
     color: #ccc;
 }
 
-.menu > li:hover {
+.menu > li:hover,
+.menu > li.active {
     border-bottom: 9px solid #00adef;
 }
 
@@ -70,7 +69,8 @@
     border-bottom: 9px solid #00adef;
 }
 
-.menu > li:hover a {
+.menu > li:hover a,
+.menu > li.active a {
     color: #00adef;
     font-weight: 800;
     font-size: 20px;

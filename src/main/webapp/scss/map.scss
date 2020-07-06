@@ -1,0 +1,48 @@
+@import "filter-bar", "offer-list";
+
+/**
+    Map area
+ */
+.map-container {
+  width: 100% !important;
+  height: calc(100% - 134px) !important;
+  display: inline-flex;
+
+  .map {
+    width: 70% !important;
+    height: 100%;
+    display: inline-block;
+
+    .search-bar {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 350px;
+      z-index: 3;
+      display: inline-flex;
+
+      .search-btn {
+        width: 50px;
+        background: white;
+        padding: 10px;
+
+        .search-icon {
+          width: 30px;
+        }
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        padding: 0 25px;
+      }
+    }
+  }
+
+  .offer-list {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+  }
+}
+

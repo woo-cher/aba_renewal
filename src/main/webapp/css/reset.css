@@ -1,15 +1,19 @@
 @charset "utf-8";
+
+
 /* CSS Document */
 * {
     margin: 0;
     padding: 0;
     font-size: 12px;
+    font-family: 'Noto Sans KR', sans-serif !important;
 }
 
+/* Custom */
+input:focus, button:focus { outline: none; }
+input::placeholder { color: #00adef; font-weight: 500; font-size: 15px; text-align: center; }
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Noto Sans KR', sans-serif;
     font-size: 12px;
     color: #333;
 }
@@ -33,7 +37,8 @@ a {
 
 button {
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
-button:hover,
-.logo > img:hover { zoom: 1.025; }
+

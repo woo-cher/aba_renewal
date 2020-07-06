@@ -1,0 +1,52 @@
+/**
+    Filter area
+ */
+.filter-bar {
+  height: 60px;
+  border: 1px solid lightblue;
+}
+
+/**
+    Offer list area
+ */
+/**
+    Map area
+ */
+.map-container {
+  width: 100% !important;
+  height: calc(100% - 134px) !important;
+  display: inline-flex;
+}
+.map-container .map {
+  width: 70% !important;
+  height: 100%;
+  display: inline-block;
+}
+.map-container .map .search-bar {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 350px;
+  z-index: 3;
+  display: inline-flex;
+}
+.map-container .map .search-bar .search-btn {
+  width: 50px;
+  background: white;
+  padding: 10px;
+}
+.map-container .map .search-bar .search-btn .search-icon {
+  width: 30px;
+}
+.map-container .map .search-bar input {
+  width: 100%;
+  border: none;
+  padding: 0 25px;
+}
+.map-container .offer-list {
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=map.css.map */
