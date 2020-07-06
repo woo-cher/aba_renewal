@@ -22,6 +22,7 @@
         <img src="/img/aboutus_logo.png" alt="로고">
     </a>
     <ul class="menu">
+        <sec:authorize access="isAuthenticated()">
         <li class="menu01"><a href="/maps">매물찾기</a>
             <ul class="sub">
                 <li><a href="#">원룸</a></li>
@@ -38,6 +39,7 @@
                 <li><a href="#">재개발</a></li>
             </ul>
         </li>
+        </sec:authorize>
         <li><a href="/intro">회사소개</a></li>
         <li><a href="#">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">
