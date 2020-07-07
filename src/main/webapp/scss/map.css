@@ -38,11 +38,85 @@
 /**
     Offer list area
  */
+.offer-list {
+  overflow-y: auto;
+}
+
+.list-header {
+  height: 49px;
+  font-size: 19px;
+  margin: 0px 30px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+}
+.list-header strong {
+  font-size: 22px;
+}
+
+.list-container {
+  width: 100%;
+  height: calc(100% - 70px);
+  padding-top: 25px;
+}
+.list-container .list-item {
+  width: 48%;
+  display: list-item;
+  position: relative;
+  float: left;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.list-container .list-item .offer-like img {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 50;
+}
+
+.offer {
+  position: relative;
+  color: black;
+  cursor: pointer;
+}
+.offer label {
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  color: #fff;
+  font-size: 0.875rem;
+  letter-spacing: -0.05em;
+  background-color: #00adef;
+}
+.offer:hover {
+  background: lightblue;
+  opacity: 0.7;
+}
+.offer p {
+  font-size: 16px;
+  font-weight: normal;
+}
+.offer .offer-thumb > img {
+  width: 100%;
+  height: auto;
+}
+.offer .offer-deal {
+  font-size: 20px;
+  margin: 5px 0;
+}
+.offer .offer-summary,
+.offer .label-info {
+  margin: 5px 0;
+}
+
 /**
     Map area
  */
 .map-container {
   width: 100% !important;
+  min-width: 1920px;
   height: calc(100% - 134px) !important;
   display: inline-flex;
 }

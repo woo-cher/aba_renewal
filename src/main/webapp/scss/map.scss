@@ -5,6 +5,7 @@
  */
 .map-container {
   width: 100% !important;
+  min-width: 1920px;
   height: calc(100% - 134px) !important;
   display: inline-flex;
 

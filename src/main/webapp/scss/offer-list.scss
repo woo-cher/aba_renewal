@@ -1,3 +1,90 @@
+
 /**
     Offer list area
  */
+$height: calc(100% - 70px);
+
+.offer-list {
+  overflow-y: auto;
+}
+
+.list-header {
+  height: 49px;
+  font-size: 19px;
+  margin: 0px 30px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(238, 238, 238);
+
+  & strong {
+    font-size: 22px;
+  }
+}
+
+.list-container {
+  width: 100%;
+  height: $height;
+  padding-top: 25px;
+
+  .list-item {
+    width: 48%;
+    display: list-item;
+    position: relative;
+    float: left;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    z-index: 1;
+
+    .offer-like {
+      & img {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 50;
+      }
+    }
+  }
+}
+
+.offer {
+  & label {
+    padding: 0 .25rem;
+    border-radius: .25rem;
+    color: #fff;
+    font-size: .875rem;
+    letter-spacing: -.05em;
+    background-color: #00adef;
+  }
+
+  position: relative;
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    background: lightblue;
+    opacity: .7;
+  }
+
+  & p {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .offer-thumb > img {
+    width: 100%;
+    height: auto;
+  }
+
+  .offer-deal {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+
+  .offer-summary,
+  .label-info {
+    margin: 5px 0;
+  }
+}
+
