@@ -17,8 +17,9 @@
                     <img src="/img/detail_slide01.jpg">
                 </div>
                 <p class="offer-deal">
-                    <label class="tag-label">월세</label>
+                    <label>월세</label>
                     <strong>200/35 +0</strong>
+                    <label class="r-float">확인일자 YY-MM-DD</label>
                 </p>
                 <p class="offer-addr">진주시 상대동 202-50 화이트원룸</p>
                 <div class="offer-summary">

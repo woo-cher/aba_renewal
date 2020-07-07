@@ -90,6 +90,9 @@
   letter-spacing: -0.05em;
   background-color: #00adef;
 }
+.offer label.r-float {
+  float: right;
+}
 .offer:hover {
   background: lightblue;
   opacity: 0.7;

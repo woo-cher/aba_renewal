@@ -54,6 +54,10 @@
     font-size: .875rem;
     letter-spacing: -.05em;
     background-color: #00adef;
+
+    &.r-float {
+      float: right;
+    }
   }
 
   position: relative;

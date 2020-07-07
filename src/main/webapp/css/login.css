@@ -61,8 +61,8 @@
 }
 
 .box .check-box {
+    color: black;
     width: 100%;
-    margin: 3% 0 0 10%;
 }
 
 .check-box .login-save {
@@ -71,7 +71,7 @@
 }
 
 .check-box .auto-login {
-    margin: 0 3px 0 50px;
+    margin-left: 20px;
 }
 
 .box .login-button {
@@ -100,7 +100,6 @@
 }
 
 .nav-box .join button {
-    margin-left: 39px;
     border: 0px;
     background-color: #333;
     font-size: 11px;
@@ -115,7 +114,6 @@
 }
 
 .nav-box .find .id-find {
-    margin-left: 15px;
     border: 0px;
     background-color: #333;
     font-size: 11px;
@@ -140,4 +138,21 @@
     font-size: 15px;
     color: #00adef;
     margin: 25px 0;
+}
+
+.join, .find {
+    display: flex;
+    align-items: center;
+}
+
+.join > h3,
+.find > h3 {
+    width: 50%;
+}
+
+.join > button,
+.id-find,
+.pw-find {
+    float: left;
+    margin-right: 2.5px;
 }

@@ -9,15 +9,10 @@
 
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
+
+    <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
-
 <body>
-    <header>
-        <a href="/" class="logo">
-            <img src="/img/aboutus_logo.png" alt="로고" style="padding: 2.5rem 0 0 7.5rem;">
-        </a>
-    </header>
-
     <div id="wrap">
         <section id="contents">
             <article id="con-box">
@@ -52,13 +47,13 @@
                     </form>
                     <div class="nav-box">
                         <div class="join">
-                            아직도 회원이 아니신가요?
-                            <button>회원가입&nbsp;&nbsp;&nbsp;&nbsp;></button>
+                            <h3>아직도 회원이 아니신가요?</h3>
+                            <button>회원가입</button>
                         </div>
                         <div class="find">
-                            아이디/비밀번호를 잊으셨나요?
-                            <button class="id-find">아이디 찾기 ></button>
-                            <button class="pw-find">비밀번호 찾기 ></button>
+                            <h3>아이디/비밀번호를 잊으셨나요?</h3>
+                            <button class="id-find">아이디 찾기</button>
+                            <button class="pw-find">비밀번호 찾기</button>
                         </div>
                     </div>
                 </section>
