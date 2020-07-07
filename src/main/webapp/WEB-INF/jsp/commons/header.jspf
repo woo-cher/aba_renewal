@@ -24,7 +24,7 @@
     </a>
     <ul class="menu">
         <sec:authorize access="!isAuthenticated()">
-        <li class="menu01" id="offer-map"><a href="/maps">매물찾기</a>
+        <li class="menu01" id="maps"><a href="/maps">매물찾기</a>
             <ul class="sub">
                 <li><a href="#">원룸</a></li>
                 <li><a href="#">투&middot;쓰리룸</a></li>
@@ -41,10 +41,10 @@
             </ul>
         </li>
         </sec:authorize>
-        <li><a href="/intro">회사소개</a></li>
-        <li><a href="#">공지사항</a></li>
+        <li id="intro"><a href="/intro">회사소개</a></li>
+        <li id=""><a href="#">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">
-            <li><a href="/auth/login">로그인 &middot; 회원가입</a></li>
+            <li id="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <li class="menu01">
@@ -85,4 +85,9 @@
             //$(".sub_mn").hide();
         });
     });
+
+    $(document).ready(function() {
+        const el = window.location.pathname.replace(/\//g, "");
+        $("#" + el).addClass("active");
+    })
 </script>

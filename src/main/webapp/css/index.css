@@ -16,14 +16,14 @@
 }
 
 #main_img .txt-box {
-    width:45%;
+    width: 45%;
     margin: 0 auto;
-    padding-top:20%;
+    padding-top: 20%;
     text-align: center;
 }
 
 .txt-box h3 {
-    font-size:5.417rem;
+    font-size: 4rem;
     font-weight: 900;
     color: #00adef;
     font-family: s-core-dream-black;
@@ -31,10 +31,10 @@
 }
 
 .txt-box p {
-    font-size:2rem;
+    font-size: 2rem;
     color: #fff;
     font-family: s-core-dream-regular;
-    padding-top:4%;
+    padding-top: 4%;
 }
 
 
@@ -42,45 +42,45 @@
 #contents01 {
     position: relative;
     width: 100%;
-    padding-bottom:7%;
+    padding-bottom: 7%;
 }
 
 #contents01 .txt_box {
     width: 50%;
     margin: 0 auto;
     padding-top: 6%;
-    z-index:10000;
+    z-index: 10000;
     text-align: center;
 }
 
 .txt_box h3 {
-    font-size:3.8em;
+    font-size: 3.8em;
     font-family: s-core-dream-extrabold;
     color: #00adef;
 }
 
 .txt_box .box_in {
-    width:100%;
-    margin-top:7%;
+    width: 100%;
+    margin-top: 7%;
 }
 
 .box_in img {
     float: left;
-    width:5.5%;
+    width: 5.5%;
 }
 
 .box_in p {
-    font-size:1.9rem;
+    font-size: 1.9rem;
     font-weight: 700;
-    line-height:1.5em;
+    line-height: 1.5em;
     color: #333;
-    padding-top:2%;
+    padding-top: 2%;
 }
 
 #contents01 .bg-img {
     position: absolute;
-    top:12%;
-    right:8%;
+    top: 12%;
+    right: 8%;
     z-index: -10;
 }
 
@@ -89,42 +89,42 @@
 #history {
     position: relative;
     width: 100%;
-    padding-bottom:6%;
+    padding-bottom: 6%;
     background-color: #00adef;
 }
 
 #history .in {
-    width:88%;
+    width: 88%;
     margin: 0 auto;
     text-align: center;
-    padding-top:7%;
+    padding-top: 7%;
 }
 
 .in h3 {
-    font-size:3.8rem;
+    font-size: 3.8rem;
     font-family: s-core-dream-extrabold;
     color: #fff;
 }
 
 .in .graph {
-    width:67%;
-    padding-top:6%;
+    width: 67%;
+    padding-top: 6%;
 }
 
 /* 회사연혁 텍스트 01 */
 .txt .txt01 {
     position: absolute;
     top: 47%;
-    left:28%;
+    left: 28%;
 }
 
 .txt .txt01 h4 {
-    font-size:2rem;
+    font-size: 2rem;
     color: #fff;
 }
 
 .txt .txt01 p {
-    font-size:1.67rem;
+    font-size: 1.67rem;
     font-weight: 600;
     color: #fff;
 }
@@ -132,17 +132,17 @@
 /* 회사연혁 텍스트 02 */
 .txt .txt02 {
     position: absolute;
-    top:72%;
-    left:46%;
+    top: 72%;
+    left: 46%;
 }
 
 .txt .txt02 h4 {
-    font-size:2rem;
+    font-size: 2rem;
     color: #fff;
 }
 
 .txt .txt02 p {
-    font-size:1.67rem;
+    font-size: 1.67rem;
     font-weight: 600;
     color: #fff;
 }
@@ -151,16 +151,16 @@
 .txt .txt03 {
     position: absolute;
     top: 47%;
-    left:64%;
+    left: 64%;
 }
 
 .txt .txt03 h4 {
-    font-size:2rem;
+    font-size: 2rem;
     color: #fff;
 }
 
 .txt .txt03 p {
-    font-size:1.67rem;
+    font-size: 1.67rem;
     font-weight: 600;
     color: #fff;
 }
@@ -170,7 +170,7 @@
 #service {
     position: relative;
     width: 100%;
-    padding-bottom:11%;
+    padding-bottom: 11%;
     background-color: #e6e6e6;
 }
 
@@ -181,64 +181,64 @@
 }
 
 .service_in h3 {
-    font-size:3.8rem;
+    font-size: 3.8rem;
     font-family: s-core-dream-extrabold;
     color: #00adef;
-    padding-top:15%;
+    padding-top: 15%;
 }
 
 .service_in img {
-    width:60%;
-    margin-top:12%;
+    width: 60%;
+    margin-top: 12%;
 }
 
 #service .in_txt {
-    width:88%;
+    width: 88%;
 }
 
 .in_txt .txt01 {
     position: absolute;
-    top:32%;
-    left:62%;
+    top: 32%;
+    left: 62%;
 }
 
 .in_txt .txt01 h5 {
-    font-size:2rem;
+    font-size: 2rem;
     color: #444;
     letter-spacing: -1px;
 }
 
 .in_txt .txt01 p {
-    font-size:1.5rem;
+    font-size: 1.5rem;
     color: #666;
     letter-spacing: -1px;
-    padding-top:4%;
+    padding-top: 4%;
 
 }
 
 .in_txt .txt02 {
     position: absolute;
-    top:38%;
-    right:62%;
+    top: 38%;
+    right: 62%;
 }
 
 .in_txt .txt02 h5 {
-    font-size:2rem;
+    font-size: 2rem;
     color: #444;
     letter-spacing: -1px;
 }
 
 .in_txt .txt02 p {
-    font-size:1.5rem;
+    font-size: 1.5rem;
     color: #666;
     letter-spacing: -1px;
-    padding-top:4%;
+    padding-top: 4%;
 }
 
 .in_txt .txt03 {
     position: absolute;
-    top:70%;
-    left:62%;
+    top: 70%;
+    left: 62%;
 }
 
 .in_txt .txt03 h5 {
@@ -248,94 +248,96 @@
 }
 
 .in_txt .txt03 p {
-    font-size:1.5rem;
+    font-size: 1.5rem;
     color: #666;
     letter-spacing: -1px;
-    padding-top:4%;
+    padding-top: 4%;
 }
 
 /*컨텍트*/
-#contact{
-        width:100%;
-        height:850px;
+#contact {
+    width: 100%;
+    height: 850px;
 
 }
 
-#contact .contact_in{
-        width:62%;
-        margin:0 auto;
+#contact .contact_in {
+    width: 62%;
+    margin: 0 auto;
 }
 
-.contact_in .head{
-        width:100%;
-        font-size:3.8rem;
-        font-family: s-core-dream-extrabold;
-        color: #00adef;
-        padding-top:9%;
-        text-align: center;
+.contact_in .head {
+    width: 100%;
+    font-size: 3.8rem;
+    font-family: s-core-dream-extrabold;
+    color: #00adef;
+    padding-top: 9%;
+    text-align: center;
 }
 
-.contact_in .info-box{
-    width:100%;
-    padding-top:8%;
+.contact_in .info-box {
+    width: 100%;
+    padding-top: 8%;
 }
 
-.info-box .text-box{
-        float:left;
-        width:43%;
-        padding-left:5%;
-        padding-top:3%;
+.info-box .text-box {
+    color: black;
+    float: left;
+    width: 43%;
+    padding-left: 5%;
+    padding-top: 3%;
 
 }
 
-.text-box .box01 h5{
-        font-size:2rem;
-        padding:3% 0 2% 3%;
-        font-family: s-core-dream-extrabold
+.text-box .box01 h5 {
+    font-size: 2rem;
+    padding: 3% 0 2% 3%;
+    font-family: s-core-dream-extrabold
 
 }
-.text-box .box01 p{
-        font-size:1.5rem;
-        font-weight:600;
-        padding-left:5%;
+
+.text-box .box01 p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding-left: 5%;
 }
 
-.text-box .box02{
-        font-size:1.5rem;
-        font-weight:600;
-        padding:12% 0 0 3%;
+.text-box .box02 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 12% 0 0 3%;
 }
 
-.text-box .box03{
-        width:80%;
-        padding-left:3%;
-        padding-top:1.5%;
+.text-box .box03 {
+    width: 80%;
+    padding-left: 3%;
+    padding-top: 1.5%;
 }
 
-.box03 li{
-        width:100%;
-        height:2.5rem;
-        padding-bottom:12%;
+.box03 li {
+    width: 100%;
+    height: 2.5rem;
+    padding-bottom: 12%;
 }
 
-.box03 li h5{
-        float:left;
-        font-size:2rem;
-        font-family: s-core-dream-extrabold
+.box03 li h5 {
+    float: left;
+    font-size: 2rem;
+    font-family: s-core-dream-extrabold
 }
 
-.box03 li p{
-        float:left;
-        font-size:1.667rem;
-        font-weight:600;
-        padding-left:4%;
+.box03 li p {
+    float: left;
+    font-size: 1.667rem;
+    font-weight: 600;
+    padding-left: 4%;
 }
 
-.info-box .map{
-        float:right;
-        margin-top:2%;
+.info-box .map {
+    float: right;
+    margin-top: 2%;
 }
 
-.info-box .map img{
-    width:90%;
+.info-box .map img {
+    width: 90%;
 }

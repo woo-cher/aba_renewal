@@ -53,12 +53,6 @@
 
     var map = new kakao.maps.Map(container, options);
 
-    $(document).ready(function() {
-        if(window.location.pathname == "/maps") {
-            $("#offer-map").addClass("active")
-        }
-    })
-
     function searchToggle() {
         $(".search-result").toggle();
         $(".overlay").toggle();
