@@ -2,8 +2,6 @@
 /**
     Offer list area
  */
-$height: calc(100% - 70px);
-
 .offer-list {
   overflow-y: auto;
 }
@@ -24,7 +22,7 @@ $height: calc(100% - 70px);
 
 .list-container {
   width: 100%;
-  height: $height;
+  display: inline-block;
   padding-top: 25px;
 
   .list-item {
@@ -87,4 +85,68 @@ $height: calc(100% - 70px);
     margin: 5px 0;
   }
 }
+
+/* Paginator */
+.paginator {
+  @extend .list-header;
+  text-align: center;
+  display: block !important;
+
+  .page-wrap {
+    display: inline-flex;
+  }
+
+  button {
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.25;
+    }
+
+    &.disabled img {
+      pointer-events: none;
+    }
+
+    &:hover {
+      zoom: 1.05;
+    }
+
+    cursor: pointer;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(170, 170, 170);
+    border-image: initial;
+    border-radius: 50%;
+  }
+
+  ul {
+    display: contents;
+  }
+
+  ul > li {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    text-align: center;
+
+    color: #00adef;
+
+    &:hover,
+    &.active {
+      color: white;
+      border-radius: 50%;
+      zoom: 1.1;
+    }
+
+    &:hover {
+      background: #cccccc;
+    }
+
+    &.active {
+      background: #00adef;
+    }
+  }
+}
+
 

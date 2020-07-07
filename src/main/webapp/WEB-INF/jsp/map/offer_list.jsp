@@ -37,4 +37,21 @@
         </li>
         </c:forEach>
     </ul>
+    <div class="paginator">
+        <div class="page-wrap">
+            <button class="page prev">
+                <img src="/img/basic/keyboard_arrow_left-24px.svg">
+            </button>
+            <ul style="display: contents;">
+                <li class="active"><h6>1</h6></li>
+                <li><h5>2</h5></li>
+                <li><h5>3</h5></li>
+                <li><h5>4</h5></li>
+                <li><h5>5</h5></li>
+            </ul>
+            <button class="page prev">
+                <img src="/img/basic/keyboard_arrow_right-24px.svg">
+            </button>
+        </div>
+    </div>
 </div>
