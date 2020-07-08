@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="filter-bar">
     <ul class="filter-group">
@@ -8,19 +9,23 @@
                 매물분류
             </a>
             <div class="filter-detail">
-                <div class="detail-container">
+                <div class="detail-container offer-type">
                     <header class="detail-header">
                         <p class="title">매물분류</p>
                         <p class="caption">중복선택이 가능해요 :)</p>
                     </header>
 
                     <ul class="checkbox-container">
-                        <li class="checkbox-list">
-                            <input id="category1" type="checkbox" name="category" value="" class="check">
-                            <label for="category1">
-                                원룸
-                            </label>
-                        </li>
+                        <c:if test="${not empty offerTypes}">
+                            <c:forEach var="offerType" items="${offerTypes}" begin="1" varStatus="vs">
+                            <li class="checkbox-list">
+                                <input id="offerType${vs.index}" type="checkbox" name="offerType" value="${vs.index}" class="check">
+                                <label for="offerType${vs.index}">
+                                    ${offerType.value}
+                                </label>
+                            </li>
+                            </c:forEach>
+                        </c:if>
                     </ul>
                 </div>
             </div>

@@ -1,9 +1,14 @@
 package com.abacorp.aba.core.controller;
 
+import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/")
@@ -28,7 +33,12 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/maps")
-    private String kakaoMap() {
-        return "map/map";
+    private ModelAndView kakaoMap() {
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("offerTypes", OfferType.values());
+        mv.setViewName("map/map");
+
+        return mv;
     }
 }

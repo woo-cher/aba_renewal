@@ -2,9 +2,12 @@ package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum OfferType implements TypeMapper {
+
+    UNKNOWN("UNKNOWN"),
 
     /**
      * 유저 권한
@@ -17,9 +20,7 @@ public enum OfferType implements TypeMapper {
     HOUSING("주택"),
     OFFICE("사무실"),
     LAND("사무실"),
-    BUILDING("건물"),
-
-    UNKNOWN("UNKNOWN");
+    BUILDING("건물");
 
     private String value;
 
