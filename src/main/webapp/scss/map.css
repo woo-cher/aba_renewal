@@ -19,7 +19,7 @@
 .filter-detail {
   position: absolute;
   z-index: 20;
-  margin-top: 15px;
+  margin-top: 20px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -63,6 +63,14 @@
 /**
     Size of `detail-container` per number of filters
  */
+.detail-container.offer-type {
+  width: 300px;
+  height: 250px;
+}
+.detail-container.deal {
+  width: 200px;
+  height: 150px;
+}
 /**
     Filter-bar area
  */
@@ -112,8 +120,6 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
 }
 .filter-detail .detail-container {
-  width: 300px;
-  height: 350px;
   padding: 25px 35px 0px;
 }
 .filter-detail .detail-header {

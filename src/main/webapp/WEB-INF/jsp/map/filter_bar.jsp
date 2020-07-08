@@ -35,7 +35,27 @@
                 <i class="fas fa-handshake fa-sm"></i>
                 거래유형
             </a>
-            <div class="filter-detail">ggg</div>
+            <div class="filter-detail">
+                <div class="detail-container deal">
+                    <header class="detail-header">
+                        <p class="title">거래유형</p>
+                        <p class="caption">중복선택이 가능해요 :)</p>
+                    </header>
+
+                    <ul class="checkbox-container">
+                        <c:if test="${not empty dealTypes}">
+                            <c:forEach var="dealType" items="${dealTypes}" begin="1" varStatus="vs">
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="dealType${vs.index}" type="checkbox" name="dealType" value="${vs.index}" class="check">
+                                    <label for="dealType${vs.index}">
+                                            ${dealType.value}
+                                    </label>
+                                </li>
+                            </c:forEach>
+                        </c:if>
+                    </ul>
+                </div>
+            </div>
         </li>
         <li class="filter-el">
             <a class="collapsible" href="#">
@@ -70,12 +90,22 @@
 
 <script>
     var coll = document.getElementsByClassName("collapsible");
+    var last;
     var i;
 
     for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
+            if(last != undefined && last != this) {
+                console.log(last, this, last === this);
+                last.classList.toggle("active");
+                last.nextElementSibling.style.maxHeight = null;
+                last.nextElementSibling.style.border = null;
+            }
+
             this.classList.toggle("active");
-            var content = this.nextElementSibling;
+            last = this;
+
+            const content = this.nextElementSibling;
 
             if (content.style.maxHeight){
                 content.style.maxHeight = null;

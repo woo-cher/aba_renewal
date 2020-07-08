@@ -1,5 +1,6 @@
 package com.abacorp.aba.core.controller;
 
+import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,8 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
 
         mv.addObject("offerTypes", OfferType.values());
+        mv.addObject("dealTypes", DealType.values());
+
         mv.setViewName("map/map");
 
         return mv;
