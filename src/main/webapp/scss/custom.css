@@ -1,0 +1,31 @@
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.checkbox-container .checkbox-list {
+  width: 22%;
+  display: flex;
+  margin: 0.25rem;
+  letter-spacing: -0.05em;
+}
+.checkbox-container .checkbox-container .check:checked + label {
+  color: #7300a9;
+  border: 1px solid #7300a9;
+}
+.checkbox-container .checkbox-container .check + label {
+  padding: 0.5rem 0.25rem;
+  border-width: 1px;
+  border-color: #cbd5e0;
+  border-radius: 0.5rem;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+/*# sourceMappingURL=custom.css.map */

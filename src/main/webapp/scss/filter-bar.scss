@@ -1,12 +1,27 @@
+@import "collapsibles", "custom";
+
+$abaColor: #00adef;
+
 /**
-    Filter area
+    Size of `detail-container` per number of filters
+ */
+.detail-container {
+  &.category {}
+  &.deal {}
+  &.deposit {}
+  &.manage {}
+  &.completion {}
+  &.all {}
+}
+
+/**
+    Filter-bar area
  */
 .filter-bar {
   height: 60px;
   border: 1px solid lightblue;
 
   .filter-group {
-    cursor: pointer;
     display: flex;
     height: 100%;
     padding: 0px 30px;
@@ -20,7 +35,7 @@
         color: #fff;
         font-size: 15px;
         text-align: center;
-        background: #00adef;
+        background: $abaColor;
         padding: 12.5px 35px;
         margin-right: 8.5px;
 
@@ -30,12 +45,50 @@
           top: 15px;
         }
 
-        &:hover {
+        &:hover,
+        &.active {
           background: white;
-          border: 1px solid #00adef;
-          color: #00adef;
+          border: 1px solid $abaColor;
+          color: $abaColor;
+
+          &.collapsible:after {
+            background: white;
+            color: $abaColor;
+          }
         }
       }
+    }
+  }
+}
+
+/**
+    Filter-detail common
+ */
+.filter-detail {
+  color: black;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
+
+  .detail-container {
+    width: 300px;
+    height: 350px;
+    padding: 25px 35px 0px;
+  }
+
+  .detail-header {
+    width: 100%;
+    height: 70px;
+    line-height: 30px;
+    margin-bottom: 15px;
+
+    .title {
+      color: $abaColor;
+      font-size: 20px;
+    }
+
+    .caption {
+      color: darkgray;
+      font-size: 14px;
     }
   }
 }

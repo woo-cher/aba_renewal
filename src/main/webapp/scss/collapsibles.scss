@@ -1,0 +1,33 @@
+/* Collapse */
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  outline: none;
+
+  &:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
+  &.active:after {
+    content: "\2212";
+  }
+}
+
+.filter-detail {
+  position: absolute;
+  z-index: 20;
+  margin-top: 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #ffffff;
+
+  user-select: none;
+  border-color: rgb(187, 187, 187);
+  border-image: initial;
+  border-radius: 3px;
+}

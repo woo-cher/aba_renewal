@@ -1,0 +1,36 @@
+/* Checkbox */
+
+$abaColor: #00adef;
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+
+  .checkbox-list {
+    width: 22%;
+    display: flex;
+    margin: .25rem;
+    letter-spacing: -.05em;
+  }
+
+  & .check {
+    display: none;
+  }
+
+  & .check:checked+label {
+    color: $abaColor;
+    border: 1px solid $abaColor;
+  }
+
+  & .check+label {
+    padding: .5rem .25rem;
+    border: 1px solid #cbd5e0;
+    border-radius: .5rem;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+}
