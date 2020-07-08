@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Hello!</title>
-    <link rel="stylesheet" href="/scss/sample.css">
 </head>
 <body>
 <p>hello jsp!</p>

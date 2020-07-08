@@ -6,7 +6,7 @@
         <title>매물찾기</title>
         <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
-        <link rel="stylesheet" type="text/css" href="/scss/map.css">
+        <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
 
         <script type="text/javascript" src="/js/kakao/kakao-map.js"></script>
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>

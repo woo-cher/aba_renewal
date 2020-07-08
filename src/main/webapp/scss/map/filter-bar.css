@@ -1,0 +1,140 @@
+@charset "UTF-8";
+/* Collapse */
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.collapsible:after {
+  content: "+";
+  color: white;
+  font-weight: bold;
+  margin-left: 5px;
+}
+.collapsible.active:after {
+  content: "−";
+}
+
+.filter-detail {
+  position: absolute;
+  z-index: 20;
+  margin-top: 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #ffffff;
+  user-select: none;
+  border-color: #bbbbbb;
+  border-image: initial;
+  border-radius: 3px;
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.checkbox-container .checkbox-list {
+  width: 22%;
+  display: flex;
+  margin: 0.25rem;
+  letter-spacing: -0.05em;
+}
+.checkbox-container .check {
+  display: none;
+}
+.checkbox-container .check:checked + label {
+  color: #00adef;
+  border: 1px solid #00adef;
+}
+.checkbox-container .check + label {
+  padding: 0.5rem 0.25rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+/**
+    Size of `detail-container` per number of filters
+ */
+.detail-container.offer-type {
+  width: 300px;
+  height: 250px;
+}
+.detail-container.deal {
+  width: 200px;
+  height: 150px;
+}
+/**
+    Filter-bar area
+ */
+.filter-bar {
+  height: 60px;
+  border: 1px solid lightblue;
+}
+.filter-bar .filter-group {
+  display: flex;
+  height: 100%;
+  padding: 0px 30px;
+}
+.filter-bar .filter-group li {
+  align-self: center;
+}
+.filter-bar .filter-group li a {
+  position: relative;
+  border-radius: 22px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  background: #00adef;
+  padding: 12.5px 35px;
+  margin-right: 8.5px;
+}
+.filter-bar .filter-group li a span {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.filter-bar .filter-group li a:hover, .filter-bar .filter-group li a.active {
+  background: white;
+  border: 1px solid #00adef;
+  color: #00adef;
+}
+.filter-bar .filter-group li a:hover.collapsible:after, .filter-bar .filter-group li a.active.collapsible:after {
+  background: white;
+  color: #00adef;
+}
+
+/**
+    Filter-detail common
+ */
+.filter-detail {
+  color: black;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
+}
+.filter-detail .detail-container {
+  padding: 25px 35px 0px;
+}
+.filter-detail .detail-header {
+  width: 100%;
+  height: 70px;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+.filter-detail .detail-header .title {
+  color: #00adef;
+  font-size: 20px;
+}
+.filter-detail .detail-header .caption {
+  color: darkgray;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=filter-bar.css.map */
