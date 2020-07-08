@@ -1,0 +1,40 @@
+package com.abacorp.aba.model.type;
+
+import com.abacorp.aba.model.mapper.TypeMapper;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum HeatingMethodType implements TypeMapper {
+
+    UNKNOWN("UNKNOWN"),
+
+    /**
+     * 난방 방식
+     */
+    INDIVIDUAL("개별난방"),
+    CENTERAL("중앙난방"),
+    LOCAL("지역난방");
+
+    private String value;
+
+    HeatingMethodType(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String getCode() {
+        return name();
+    }
+
+    @Override
+    public String toString() {
+        return "HeatingMethodType {" +
+                "value='" + value + '\'' +
+                '}';
+    }
+}
