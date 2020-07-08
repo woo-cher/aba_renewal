@@ -62,7 +62,27 @@
                 <i class="fas fa-hand-holding-usd fa-sm"></i>
                 보증금
             </a>
-            <div class="filter-detail">ggg</div>
+            <div class="filter-detail">
+                <div class="detail-container deal">
+                    <header class="detail-header">
+                        <p class="title">
+                            보증금
+                            <span class="caption slide" id="deposit-val">무제한</span>
+                        </p>
+                    </header>
+
+                    <div class="custom-slider">
+                        <input type="range" min="0" max="20000" value="20000" step="10000" list="deposit-vals"
+                               class="slider" id="deposit" onchange="set_slide_value(this.value)"
+                        />
+                        <datalist id="deposit-vals">
+                            <option value="0">0</option>
+                            <option value="10000" style="">1억</option>
+                            <option value="-1" style="">∞</option>
+                        </datalist>
+                    </div>
+                </div>
+            </div>
         </li>
         <li class="filter-el">
             <a class="collapsible" href="#">
@@ -103,17 +123,30 @@
             }
 
             this.classList.toggle("active");
-            last = this;
 
             const content = this.nextElementSibling;
 
             if (content.style.maxHeight){
                 content.style.maxHeight = null;
                 content.style.border = null;
+                last = undefined
             } else {
                 content.style.maxHeight = "100%";
                 content.style.border = "1px solid rgb(187, 187, 187)";
+                last = this;
             }
         });
+    }
+
+    function set_slide_value(value) {
+        console.log(value);
+
+        if(value == 0 || value == 20000) {
+            value = "무제한"
+        } else {
+            value = "~" + (value / 10000) + "억"
+        }
+
+        $('#deposit-val').text(value);
     }
 </script>
