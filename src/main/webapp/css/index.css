@@ -70,7 +70,7 @@
 }
 
 .box_in p {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     font-weight: 700;
     line-height: 1.5em;
     color: #333;
@@ -300,6 +300,15 @@
     font-size: 1.3rem;
     font-weight: 500;
     padding-left: 5%;
+}
+
+.text-box .box01 {
+    font-size: 1.2rem;
+}
+
+.text-box .box01 h5,
+.text-box .box01 p {
+    padding: 1.5% 0;
 }
 
 .text-box .box02 {

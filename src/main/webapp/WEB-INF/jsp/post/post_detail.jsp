@@ -36,7 +36,7 @@
                                 -매매물건은 유료기간인 21일부터 매물 등록됩니다-</p>
                         </article>
                         <article class="back-btn">
-                            <a href="notice.html">
+                            <a href="/posts">
                                 <img src="/img/notice_back_btn.png" alt="">
                             </a>
                         </article>

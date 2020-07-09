@@ -1,6 +1,8 @@
 /* 공지사항이름 & 전체보기 상자  */
 input, select { padding: 1% 0 1% 1%; height: 45px; }
 
+$abaColor: #00adef;
+
 .post-header {
   width: 100%;
 
@@ -11,7 +13,7 @@ input, select { padding: 1% 0 1% 1%; height: 45px; }
 
     & .line {
       width: 35.6%;
-      border: 5px solid #00adef;
+      border: 5px solid $abaColor;
       margin: 0 auto;
     }
 
@@ -89,10 +91,13 @@ input, select { padding: 1% 0 1% 1%; height: 45px; }
   }
 }
 
+table .notice {
+  color: $abaColor;
+}
+
 /* 공지사항 테이블*/
 #table {
   width: 100%;
-  padding-bottom: 18%;
 }
 
 #table table {
@@ -119,13 +124,13 @@ input, select { padding: 1% 0 1% 1%; height: 45px; }
 }
 
 #table table tbody td .td02:hover {
-  color: #00adef;
+  color: $abaColor;
   font-weight: 700;
 }
 
 #table .page-num {
   text-align: center;
-  padding-top: 12%;
+  margin-top: 3%;
 }
 
 #table .page-num .num {

@@ -165,19 +165,19 @@
 					<img src="/img/notice.png" alt="공지사항">
 				</h3>
 				<div class="btn">
-					<a href="notice.html">더보기 +</a>
+					<a href="/posts">더보기 +</a>
 				</div>
 
 
 				<ul class="txt">
 					<li class="txt01">
-						<a href="notice_sub.html">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>
+						<a href="/posts/1">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>
 					</li>
 					<li class="txt01">
-						<a href="notice_sub.html">아바가 경남도민일보에 기사가 나왔습니다. 감사합니다..</a>
+						<a href="/posts/1">아바가 경남도민일보에 기사가 나왔습니다. 감사합니다..</a>
 					</li>
 					<li class="txt01">
-						<a href="notice_sub.html">공인중개사를 위한 최고의 솔루션 "부동산매물 정보제공 업체"..</a>
+						<a href="/posts/1">공인중개사를 위한 최고의 솔루션 "부동산매물 정보제공 업체"..</a>
 					</li>
 				</ul>
 

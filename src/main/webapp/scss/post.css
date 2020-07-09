@@ -80,10 +80,13 @@ input, select {
   width: 70%;
 }
 
+table .notice {
+  color: #00adef;
+}
+
 /* 공지사항 테이블*/
 #table {
   width: 100%;
-  padding-bottom: 18%;
 }
 
 #table table {
@@ -115,7 +118,7 @@ input, select {
 
 #table .page-num {
   text-align: center;
-  padding-top: 12%;
+  margin-top: 3%;
 }
 
 #table .page-num .num {
