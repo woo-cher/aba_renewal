@@ -1,5 +1,6 @@
 package com.abacorp.aba.core.controller;
 
+
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
@@ -10,35 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/")
-public class ViewController {
-    private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
-
-    @RequestMapping(value = "/home")
-    private String home() {
-        logger.info("Welcome home.jsp !!");
-
-        return "home";
-    }
-
-    @RequestMapping(value = "/")
-    private String index() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/intro")
-    private String intro() {
-        return "intro";
-    }
-
-    @RequestMapping(value = "/guide")
-    private String guide() {
-        return "guide";
-    }
-
-    @RequestMapping(value = "/notice")
-    private String notice() {
-        return "notice";
-    }
+public class MapController {
+    private static final Logger logger = LoggerFactory.getLogger(MapController.class);
 
     @RequestMapping(value = "/maps")
     private ModelAndView kakaoMap() {

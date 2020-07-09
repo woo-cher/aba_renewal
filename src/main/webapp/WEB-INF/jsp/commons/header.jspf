@@ -9,10 +9,6 @@
     <script src="/js/jquery-1.7.2.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
 
-    <%-- `font` resources --%>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-
     <%-- 'css' --%>
     <link rel="stylesheet" type="text/css" href="/css/commons/header.css">
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
@@ -41,8 +37,8 @@
             </ul>
         </li>
         </sec:authorize>
-        <li id="intro"><a href="/WEB-INF/jsp/intro.jsp">회사소개</a></li>
-        <li id=""><a href="#">공지사항</a></li>
+        <li><a href="/intro">회사소개</a></li>
+        <li><a href="/posts">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li id="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>

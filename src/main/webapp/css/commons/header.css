@@ -26,12 +26,12 @@
     padding: 4rem 5.5rem 0 0;
 }
 
-#header .login .nav {
+#header .login .filter {
     font-size:1.41em;
     color: #ccc;
 }
 
-#header .login .nav:hover {
+#header .login .filter:hover {
     font-weight: 900;
 }
 

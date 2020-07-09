@@ -28,12 +28,12 @@
         padding: 4rem 4rem 0 0;
     }
 
-    #header .login .nav {
+    #header .login .filter {
         font-size:1.08em;
         color: #ccc;
     }
 
-    #header .login .nav:hover {
+    #header .login .filter:hover {
         font-weight: 900;
     }
 
@@ -308,13 +308,13 @@
 
     }
 
-    .text-box .box01 h5{
+    .text-box .filter-wrap h5{
         font-size:1.7rem;
         padding:3% 0 2% 3%;
         font-family: s-core-dream-extrabold
 
     }
-    .text-box .box01 p{
+    .text-box .filter-wrap p{
         font-size:1.2rem;
         font-weight:600;
         padding-left:5%;
@@ -412,13 +412,13 @@
 
     }
 
-    .text-box .box01 h5{
+    .text-box .filter-wrap h5{
         font-size:1.7rem;
         padding:3% 0 2% 3%;
         font-family: s-core-dream-extrabold
 
     }
-    .text-box .box01 p{
+    .text-box .filter-wrap p{
         font-size:1.2rem;
         font-weight:600;
         padding-left:5%;
