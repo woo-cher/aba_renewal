@@ -12,7 +12,7 @@
 <div id="wrap">
     <div id="guide">
             <header class="logo">
-                <img src="/img/logo.png" alt="아바로고" onclick="location.href='/'">
+                <img src="/img/logo.png" alt="아바로고" onclick="location.href='../..'">
             </header>
             <div class="title">
                 <div class="txt-box">

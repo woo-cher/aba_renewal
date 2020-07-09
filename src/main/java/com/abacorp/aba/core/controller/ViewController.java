@@ -8,13 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Controller
 @RequestMapping(value = "/")
-public class HomeController {
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+public class ViewController {
+    private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
 
     @RequestMapping(value = "/home")
     private String home() {
@@ -31,6 +28,16 @@ public class HomeController {
     @RequestMapping(value = "/intro")
     private String intro() {
         return "intro";
+    }
+
+    @RequestMapping(value = "/guide")
+    private String guide() {
+        return "guide";
+    }
+
+    @RequestMapping(value = "/notice")
+    private String notice() {
+        return "notice";
     }
 
     @RequestMapping(value = "/maps")
