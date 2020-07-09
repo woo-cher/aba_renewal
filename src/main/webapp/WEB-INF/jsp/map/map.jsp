@@ -28,7 +28,7 @@
                     <button type="button" class="search-btn">
                         <img src="/img/svg/search-24px.svg" class="search-icon">
                     </button>
-                    <div class="search-result">
+                    <div class="search-result" hidden>
                         <header class="result-header">
                             <span>
                                 <i class="fas fa-map-marker-alt"></i>

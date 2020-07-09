@@ -84,7 +84,7 @@
 				<p>각 테마별로 원하시는<br>
 				   매물을 검색해보세요!</p>
 				 <div class="btn">
-					<a href="#">이용가이드</a>
+					<a href="/page/guide.jsp">이용가이드</a>
 				 </div>
 			</article>
 

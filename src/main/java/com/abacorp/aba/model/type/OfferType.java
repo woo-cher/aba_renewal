@@ -19,8 +19,8 @@ public enum OfferType implements TypeMapper {
     SHOP("상가"),
     HOUSING("주택"),
     OFFICE("사무실"),
-    LAND("사무실"),
-    BUILDING("건물");
+    BUILDING("건물"),
+    LAND("토지");
 
     private String value;
 
