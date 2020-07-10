@@ -11,11 +11,15 @@
 
   .title {
     width: max-content !important;
+
+    h2 {
+      padding-top: 2vh;
+    }
   }
 
   a {
     position: fixed;
-    top: 12vh;
+    top: 22vh;
     cursor: pointer;
 
     img {
@@ -27,11 +31,11 @@
     }
 
     &.prev {
-      left: 35px;
+      left: 15%;
     }
 
     &.next {
-      right: 35px;
+      right: 15%;
     }
   }
 }
