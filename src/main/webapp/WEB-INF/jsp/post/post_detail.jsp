@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <div id="wrap">
+    <div class="main-container">
             <!-- 공지사항 페이지 내용 -->
             <section id="notice-con">
                 <article class="contents">
@@ -43,9 +43,9 @@
                     </section>
                 </article>
             </section>
-
-            <!-- footer -->
-            <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
         </div>
+
+        <!-- footer -->
+        <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
     </body>
 </html>

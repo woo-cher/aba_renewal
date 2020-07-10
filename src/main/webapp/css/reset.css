@@ -9,6 +9,9 @@
     font-weight: 300;
 }
 
+.aba { color: #00adef; font-weight: bold; }
+.header.mini { color: gray; font-size: 22px; }
+
 /* Tag css */
 body { font-size: 14px; color: #000; min-width: 1334px; }
 img { border: 0; }
@@ -24,10 +27,6 @@ input:focus, button:focus { outline: none; }
 input::placeholder { color: #00adef; font-weight: 500; font-size: 15px; }
 input { font-weight: 800; font-size: 15px;}
 
-#wrap {
-    border-top: 3px solid #777;
-}
-
 .overlay {
     z-index: 3;
     position: fixed;
@@ -35,6 +34,11 @@ input { font-weight: 800; font-size: 15px;}
     left: 0; top: 0;
     background-color: white;
     opacity: .2;
+}
+
+.main-container {
+    border-top: 3px solid #777;
+    padding: 5% 0;
 }
 
 

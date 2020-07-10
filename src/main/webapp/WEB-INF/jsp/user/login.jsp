@@ -3,23 +3,24 @@
 
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Login</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 <body>
-    <div id="wrap">
+<div class="main-container">
         <section id="contents">
-            <article id="con-box">
-                <div class="login-name">
-                    <h3>회원 로그인</h3>
+            <article id="form-box">
+                <div class="content-name">
+                    <h3>
+                        <span class="aba">아바</span>
+                        <span class="header mini">로그인</span>
+                    </h3>
                 </div>
-                <section class="box">
+                <section class="form-control">
                     <form class="id-pw" action="/auth/doLogin" method="post">
                         <label>
                             <input required autofocus type="text" class="id" placeholder="아이디" name="username"
@@ -34,11 +35,12 @@
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                             >
                         </label>
+                        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
                         <p class="error">
-                            <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
-                                아이디 또는 비밀번호가 일치하지 않네요 :(
-                            </c:if>
+                            <i class="fas fa-exclamation-circle"></i>
+                            아이디 또는 비밀번호가 일치하지 않아요 :(
                         </p>
+                        </c:if>
                         <div class="check-box">
                             <input type="checkbox" class="login-save" name="" value="save">&nbsp; 아이디 저장
                             <input type="checkbox" class="auto-login" name="" value="auto">&nbsp; 자동로그인
@@ -48,7 +50,7 @@
                     <div class="nav-box">
                         <div class="join">
                             <h3>아직도 회원이 아니신가요?</h3>
-                            <button>회원가입</button>
+                            <button onclick="location.href='/auth/register'">회원가입</button>
                         </div>
                         <div class="find">
                             <h3>아이디/비밀번호를 잊으셨나요?</h3>
@@ -59,10 +61,9 @@
                 </section>
             </article>
         </section>
-
-        <%-- footer --%>
-        <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
     </div>
 
+    <%-- footer --%>
+    <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
 </body>
 </html>

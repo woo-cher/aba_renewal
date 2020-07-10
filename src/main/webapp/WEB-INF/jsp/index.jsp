@@ -14,7 +14,7 @@
 <body>
 	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 
-	<div id="wrap">
+	<div>
 		<!-- 메인이미지 -->
 		<section id="main_img">
 			<div class="mobile-txt">
@@ -233,9 +233,9 @@
 			</article>
 		</section>
 
-		<!-- footer -->
-		<%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
 	</div>
+	<!-- footer -->
+	<%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
 </body>
 
 </html>

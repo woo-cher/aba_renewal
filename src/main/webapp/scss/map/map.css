@@ -38,6 +38,15 @@
   -webkit-box-align: center;
   align-items: center;
 }
+.checkbox-container.form {
+  justify-content: center;
+}
+.checkbox-container.form li {
+  width: 30%;
+}
+.checkbox-container.form .check + label {
+  padding: 10px;
+}
 .checkbox-container .checkbox-list {
   width: 22%;
   display: flex;

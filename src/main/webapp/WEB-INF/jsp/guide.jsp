@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
 </head>
 <body>
-<div id="wrap">
+<div class="main-container">
     <div id="guide">
             <header class="logo">
                 <img src="/img/logo.png" alt="아바로고" onclick="location.href='../..'">

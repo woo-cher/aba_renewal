@@ -9,6 +9,18 @@ $abaColor: #00adef;
   -webkit-box-align: center;
   align-items: center;
 
+  &.form {
+    justify-content: center;
+
+    li {
+      width: 30%;
+    }
+
+    .check + label {
+      padding: 10px;
+    }
+  }
+
   .checkbox-list {
     width: 22%;
     display: flex;

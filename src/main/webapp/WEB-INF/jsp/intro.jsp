@@ -13,7 +13,7 @@
 <body>
 <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 
-<div id="wrap">
+<div>
 	<!-- 메인이미지 -->
 	<section id="main_img">
 		<div class="txt-box">

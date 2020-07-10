@@ -18,7 +18,7 @@
         padding-top: 37%;
     }
 
-    #search .box {
+    #search .form-control {
         display: block;
         position: relative;
         width:45%;
@@ -28,7 +28,7 @@
 
     }
 
-    .box .search-box {
+    .form-control .search-box {
         position: relative;
         width: 65.4%;
         margin-left: 3%;
@@ -37,7 +37,7 @@
         color: #ccc;
     }
 
-    .box .button {
+    .form-control .button {
         position: relative;
         width:18%;
         margin-left: 7.7%;
@@ -411,7 +411,7 @@
         padding-top: 44%;
     }
 
-    #search .box {
+    #search .form-control {
         display: block;
         position: relative;
         width:50%;
@@ -422,7 +422,7 @@
         background-color: #fff;
     }
 
-    .box .search-box {
+    .form-control .search-box {
         position: relative;
         width: 65.4%;
         height: 78%;
@@ -432,7 +432,7 @@
         color: #ccc;
     }
 
-    .box .button {
+    .form-control .button {
         position: relative;
         width: 20%;
         height: 100%;

@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/auth")
-public class LoginController {
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+public class AuthController {
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @RequestMapping(value = "/login")
     public String login() {
-        return "/user/login";
+        return "user/login";
+    }
+
+    @RequestMapping(value = "/register")
+    public String register() {
+        return "user/register";
     }
 
     @RequestMapping(value = "/denied")

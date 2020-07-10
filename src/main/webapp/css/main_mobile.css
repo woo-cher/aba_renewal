@@ -20,7 +20,7 @@
         padding-top: 47%;
     }
 
-    #search .box {
+    #search .form-control {
         display: block;
         position: relative;
         width:65%;
@@ -31,18 +31,18 @@
         background-color: #fff;
     }
 
-    .box label{
+    .form-control label{
         border: 0;
         font-size: 1rem;
         color: #ccc;
     }
 
-    .box label input{
+    .form-control label input{
         font-size: 1rem;
         color: #ccc;
     }
 
-    .box .button {
+    .form-control .button {
         position: relative;
         width: 21%;
         height: 100%;
@@ -256,7 +256,7 @@
         padding-top: 27%;
     }
 
-    #search .box {
+    #search .form-control {
         display: block;
         position: relative;
         width:75%;
@@ -267,18 +267,18 @@
         background-color: #fff;
     }
 
-    .box label{
+    .form-control label{
         border: 0;
         font-size: 1rem;
         color: #ccc;
     }
 
-    .box label input{
+    .form-control label input{
         font-size: 1rem;
         color: #ccc;
     }
 
-    .box .button {
+    .form-control .button {
         position: relative;
         width: 21%;
         height: 100%;
@@ -411,7 +411,7 @@
         padding-top:36%;
     }
 
-    #search .box {
+    #search .form-control {
         display: block;
         position: relative;
         width:85%;
@@ -422,14 +422,14 @@
         background-color: #fff;
     }
 
-    .box .search-box{
+    .form-control .search-box{
         border: 0;
         color: #ccc;
     }
 
 
 
-    .box .button {
+    .form-control .button {
         position: relative;
         width:18%;
         height: 100%;
@@ -651,7 +651,7 @@
         padding-top:42%;
     }
 
-    #search .box {
+    #search .form-control {
         display: block;
         position: relative;
         width:85%;
@@ -662,14 +662,14 @@
         background-color: #fff;
     }
 
-    .box .search-box{
+    .form-control .search-box{
         border: 0;
         color: #ccc;
     }
 
 
 
-    .box .button {
+    .form-control .button {
         position: relative;
         width:18%;
         height: 100%;

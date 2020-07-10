@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <div id="wrap">
+    <div class="main-container">
             <!-- 공지사항이름 & 전체보기 상자 -->
             <div class="main-header">
                 <a class="prev" onclick="navigator(this, ${viewIndex})">
