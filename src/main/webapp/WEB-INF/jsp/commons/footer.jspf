@@ -8,10 +8,10 @@
     <!-- 윗부분 -->
     <article class="top">
         <ul>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보취급 방침</a></li>
-            <li><a href="#">위치기반서비스 이용약관</a></li>
-            <li><a href="#">책임한계 및 법적고지</a></li>
+            <li><a href="/agree/1">이용약관</a></li>
+            <li><a href="/agree/2">개인정보취급 방침</a></li>
+            <li><a href="/agree/3">위치기반서비스 이용약관</a></li>
+            <li><a href="/agree/4">책임한계 및 법적고지</a></li>
         </ul>
     </article>
 

@@ -29,6 +29,12 @@
     color: #ccc;
 }
 
+.top li a:hover {
+    font-size:1.25rem;
+    font-width: 700;
+    color: white;
+}
+
 /* 아랫 부분*/
 #footer .bottom {
     width: 62%;

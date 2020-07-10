@@ -1,0 +1,43 @@
+@import "post";
+
+#wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.main-header {
+  @extend .post-header;
+  position: relative;
+
+  .title {
+    width: max-content !important;
+  }
+
+  a {
+    position: fixed;
+    top: 12vh;
+    cursor: pointer;
+
+    img {
+      width: 50px;
+    }
+
+    &:hover {
+      zoom: 1.05;
+    }
+
+    &.prev {
+      left: 35px;
+    }
+
+    &.next {
+      right: 35px;
+    }
+  }
+}
+
+.main-content {
+  padding: 5% 20%;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}

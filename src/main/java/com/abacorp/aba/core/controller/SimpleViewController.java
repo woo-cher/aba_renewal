@@ -5,6 +5,7 @@ import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,5 +27,15 @@ public class SimpleViewController {
     @RequestMapping(value = "/guide")
     private String guide() {
         return "guide";
+    }
+
+    @RequestMapping(value = "/agree/{index}")
+    private ModelAndView servicePolicy(@PathVariable int index) {
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("viewIndex", index);
+        mv.setViewName("agree_view");
+
+        return mv;
     }
 }
