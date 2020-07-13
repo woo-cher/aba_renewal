@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>아바시스템</title>
+	<title>아바</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
