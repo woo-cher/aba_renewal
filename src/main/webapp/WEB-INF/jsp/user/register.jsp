@@ -19,27 +19,13 @@
                 </h3>
             </div>
             <section class="form-control">
-                <form action="/user/create" method="post">
+                <form action="/user/create" m3ethod="post">
                     <div class="form-warp">
                         <div class="form-label">
                             <i class="fas fa-circle"></i>
                             <span>기본항목</span>
                         </div>
                         <div class="form-category">
-                            <input required autofocus type="text" placeholder="아이디" name="username"
-                                   pattern="^([A-Za-z0-9])+"
-                                   oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
-                                   oninput="this.setCustomValidity(''); this.checkValidity()"
-                            >
-                            <input required autofocus type="password" placeholder="비밀번호" name="password"
-                                   oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
-                                   oninput="this.setCustomValidity(''); this.checkValidity()"
-                            >
-                            <input required autofocus type="password" placeholder="비밀번호 확인" name="password"
-                                   oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
-                                   oninput="this.setCustomValidity(''); this.checkValidity()"
-                            >
-                            <input required autofocus type="text" placeholder="닉네임" name="">
                             <div class="form-label">
                                 <span class="form-label mini">
                                     <i class="fas fa-users"></i>
@@ -60,6 +46,20 @@
                                     <label for="ee">중개보조원</label>
                                 </li>
                             </ul>
+                            <input required autofocus type="text" placeholder="아이디" name="username"
+                                   pattern="^([A-Za-z0-9])+"
+                                   oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                            >
+                            <input required autofocus type="password" placeholder="비밀번호" name="password"
+                                   oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                            >
+                            <input required autofocus type="password" placeholder="비밀번호 확인" name="password"
+                                   oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                            >
+                            <input required autofocus type="text" placeholder="닉네임" name="">
                             <p class="error" hidden>
                                 <i class="fas fa-exclamation-circle">
                                 Error Message
@@ -122,7 +122,7 @@
                                 <li class="checkbox-list">
                                     <input id="3" type="checkbox" name="isProfileOpen" value="" class="check">
                                     <label for="3">
-                                        프로필 정보 공개허용
+                                        프로필 공개 동의
                                     </label>
                                 </li>
                             </ul>

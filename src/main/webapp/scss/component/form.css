@@ -5,6 +5,7 @@
   width: 100%;
   -webkit-box-align: center;
   align-items: center;
+  padding-bottom: 4%;
 }
 .checkbox-container.form {
   justify-content: center;
@@ -68,6 +69,7 @@
   margin-top: 3%;
 }
 .form-control .form-label {
+  color: gray;
   font-size: 18px;
   padding: 4%;
 }

@@ -21,7 +21,7 @@
 				<img src="/img/mobile_bg_txt.png" alt="">
 			</div>
 			<form id="search">
-					<div class="box">
+					<div class="form-control">
 						<label>
 							<input type="text" placeholder="원하시는 지역별 혹은 매물을 검색해보세요" class="search-box">
 						</label>
