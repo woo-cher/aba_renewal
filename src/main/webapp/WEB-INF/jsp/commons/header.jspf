@@ -37,6 +37,7 @@
             </ul>
         </li>
         </sec:authorize>
+        <li><a href="/offers/1">매물상세</a></li>
         <li><a href="/intro">회사소개</a></li>
         <li><a href="/posts">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">

@@ -1,0 +1,371 @@
+$abaColor: #00adef;
+
+h3 { font-size: 23px; padding: 3%; width: unset; }
+.offer-option, .offer-location, .offer-desc { padding: 2% 15%; }
+.desc-wrap, .location-wrap { padding: 0 5%; }
+.line { width: 70px; border: 4px solid $abaColor; }
+
+@mixin flex-align($justify: center) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin top-el() {
+  float: left;
+  width: 20%;
+  border-left: 6px solid $abaColor;
+}
+
+@mixin h-el($fontSize, $color, $padding) {
+  font-size: $fontSize;
+  color: $color;
+  padding: $padding;
+}
+
+.offer-header {
+  width: 100%;
+
+  & .header-warp {
+    width: 50%;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 4px 3px 10px #ccc;
+    background-color: #f6f6f6;
+  }
+
+  li {
+    float: left;
+    width: 25%;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16.5px;
+    cursor: pointer;
+
+    &:hover {
+      width: 25%;
+      border-radius: 20px;
+      text-align: center;
+      padding-top: 16px;
+      padding-bottom: 16.5px;
+      background-color: $abaColor;
+      box-shadow: 4px 3px 10px #ccc;
+
+      & > a {
+        color: #fff;
+      }
+    }
+  }
+
+  a {
+    font-size: 20px;
+    color: #777;
+  }
+}
+
+.offer-info.container {
+  width: 100%;
+  padding-top: 3%;
+
+  .info-summary,
+  .info-table {
+    @include flex-align;
+    padding: 2% 0;
+  }
+}
+
+.info-summary {
+  .top01 {
+    @include top-el;
+
+    h3 {
+      @include h-el(1.5rem, #777, 1.2% 0 1.8% 12%);
+    }
+
+    h4 {
+      @include h-el(1.75rem, #000, 0 0 0 12%);
+    }
+
+    strong {
+      font-size: 2rem;
+      font-width: 500;
+      color: $abaColor;
+    }
+  }
+
+  .top02 {
+    @include top-el;
+
+    h3 {
+      @include h-el(1.5rem, #000, 2% 0 1.8% 12%);
+    }
+
+    h2 {
+      @include h-el(16px, $abaColor, 0 0 2% 12%);
+    }
+  }
+
+  .top03 {
+    width: 20%;
+
+    .icon-wrap {
+      width: 100%;
+    }
+
+    .icon-group {
+      @include flex-align(flex-end);
+
+      a {
+        padding-right: 10px;
+        @include flex-align;
+
+        img {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: $abaColor;
+        }
+      }
+    }
+  }
+}
+
+.search-warp {
+  @include flex-align(flex-end);
+
+  .search {
+    @include flex-align;
+
+    width: 70%;
+    border: 1px solid $abaColor;
+    margin-top: 15px;
+
+    input {
+      width: 100%;
+      border: 0;
+    }
+
+    .search-box {
+      font-size: 11px;
+      padding: 10px;
+      border: 0;
+      opacity: 0.4;
+    }
+
+    .button {
+      padding: 2%;
+      border: 0;
+      background-color: $abaColor;
+    }
+  }
+}
+
+.table-wrap {
+  display: table;
+  width: 55%;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 2px solid $abaColor;
+  border-bottom: 2px solid $abaColor;
+
+  & > div {
+    height: 50px;
+  }
+
+  .row {
+    @include flex-align(start);
+  }
+
+  .lg {
+    width: 100%;
+  }
+
+  .row.bb {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .sm {
+    width: 33%;
+  }
+
+  p {
+    @include flex-align;
+    height: 100%;
+
+    &.key {
+      width: 20%;
+      font-weight: 600;
+    }
+
+    &.value {
+      width: 30%;
+    }
+  }
+}
+
+#jquery-script-menu {
+  .container {
+    position: relative;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 3%;
+  }
+
+  .pagination-container {
+    position: relative;
+    width: 780px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 5px 0;
+
+    .pagination-wrapper {
+      width: 1210px;
+      position: relative;
+      height: auto;
+
+      .pagination-item {
+        position: relative;
+        float: left;
+        cursor: pointer;
+
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+.img-caption {
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px 0;
+
+  .caption-group {
+    width: 100%;
+    @include flex-align;
+
+    .caption {
+      width: 70%;
+    }
+
+    .download {
+      display: inline-block;
+      text-align: center;
+      width: 15%;
+      border: 1px solid #ccc;
+      padding: 10px 13px;
+      border-radius: 10px;
+
+      &:hover {
+          border: 2px solid $abaColor;
+      }
+    }
+  }
+}
+
+.caption p {
+  line-height: 1.5rem;
+
+  strong {
+    font-size: 1.16rem;
+    color: $abaColor;
+  }
+}
+
+.download .btn {
+  width: 70%;
+}
+
+.offer-option {
+  display: flex;
+
+  ul > li {
+    float: left;
+    width: 16%;
+    padding: 3% 2%;
+    text-align: center;
+
+    img {
+      width: 55%;
+    }
+
+    h2 {
+      line-height: 2rem;
+      font-size: 12px;
+      color: #777;
+    }
+  }
+
+  .option,
+  .management-category {
+    width: 50%;
+    padding: 0 5%;
+    display: inline-block;
+  }
+
+
+  .list {
+    display: flow-root;
+    padding: 3%;
+  }
+
+  .option {
+    border-right: 1px solid #ccc;
+  }
+}
+
+.offer-location {
+  .map {
+    position: relative;
+
+    h2 {
+      font-size: 16px;
+      color: #444;
+      padding: 0 0 1.5% 1%;
+    }
+
+    .map-icon {
+      position: absolute;
+      top: 36%;
+      left: 45%;
+    }
+
+    p {
+      font-size: 12px;
+      color: #ccc;
+      padding: 2% 0 0 2%;
+    }
+  }
+
+  .road-map {
+    padding: 3% 0;
+  }
+
+  .map,
+  .road-map {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.offer-desc {
+  .desc {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  p {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .desc, p {
+    padding: 3%;
+  }
+}

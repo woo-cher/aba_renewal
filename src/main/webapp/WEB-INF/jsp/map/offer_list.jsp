@@ -13,8 +13,8 @@
                 <img src="/img/offer/detail_head_icon-01.png">
             </div>
             <div class="offer">
-                <div class="offer-thumb">
-                    <img src="/img/detail_slide01.jpg">
+                <div class="offer-thumbs">
+                    <img src="/img/offer/detail_slide01.jpg">
                 </div>
                 <p class="offer-deal">
                     <label>월세</label>

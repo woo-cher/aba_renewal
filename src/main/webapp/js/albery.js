@@ -17,6 +17,7 @@
       imgWidth: "780",
       paginationBorder: 5,
       paginationItemWidth: 116,
+      paginationItemHeight: 80.33,
     }, options);
 
 
@@ -34,6 +35,8 @@
     var myleft = 0;
     var myleftPagination = 0;
     $(".pagination-item").css("width", settings.paginationItemWidth);
+    $(".pagination-item").css("height", settings.paginationItemHeight);
+    $(".pagination-item").css("marginRight", settings.paginationBorder);
     $(".pagination-item").css("marginRight", settings.paginationBorder);
     var allPagination = (settings.paginationItemWidth + settings.paginationBorder) * childrenImg;
     var onePagination = settings.paginationItemWidth + settings.paginationBorder;
