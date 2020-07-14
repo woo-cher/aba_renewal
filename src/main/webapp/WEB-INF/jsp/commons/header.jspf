@@ -19,68 +19,64 @@
         <img src="/img/logo.png" alt="로고">
     </a>
     <ul class="menu">
-        <sec:authorize access="!isAuthenticated()">
-        <li class="menu01" id="maps"><a href="/maps">매물찾기</a>
-            <ul class="sub">
-                <li><a href="#">원룸</a></li>
-                <li><a href="#">투&middot;쓰리룸</a></li>
-                <li><a href="#">오피스텔</a></li>
-                <li><a href="#">아파트</a></li>
-                <li><a href="#">분양권</a></li>
-                <li><a href="#">주택</a></li>
-                <li><a href="#">상가</a></li>
-                <li><a href="#">사무실</a></li>
-                <li><a href="#">토지</a></li>
-                <li><a href="#">공장</a></li>
-                <li><a href="#">건물</a></li>
-                <li><a href="#">재개발</a></li>
-            </ul>
-        </li>
-        </sec:authorize>
-        <li><a href="/offers/1">매물상세</a></li>
-        <li><a href="/intro">회사소개</a></li>
-        <li><a href="/posts">공지사항</a></li>
+        <li class="menu01" id="maps"><a href="/maps">매물찾기</a></li>
+        <li id="intro"><a href="/intro">회사소개</a></li>
+        <li id="posts"><a href="/posts">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li id="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-            <li class="menu01">
-                <a href="#">김다언 님 <h5 style="display: inline">▼<h5/></a>
-                <ul class="sub">
-                    <li><a href="#">마이페이지</a></li>
-                    <li><a href="#">계약완료신고</a></li>
-                    <li><a href="#">쪽지보내기</a></li>
-                    <li><a href="/auth/logout">로그아웃 →</a></li>
-                </ul>
+            <li class="menu01" id="user">
+                <a href="#">김다언 님
+                    <h5 style="display: inline">▼</h5>
+                </a>
             </li>
         </sec:authorize>
+    </ul>
+
+    <ul class="sub user" hidden>
+        <li onclick="location.href='#'">마이페이지</li>
+        <li onclick="location.href='#'">계약신고</li>
+        <li onclick="location.href='/auth/logout'">로그아웃</li>
+    </ul>
+
+    <%--
+         Index of `<li>` order to `/model/type/OfferType`
+    --%>
+    <ul class="sub offer" hidden>
+        <li onclick="map_navigate()">원룸</li>
+        <li onclick="map_navigate()">투&middot;쓰리룸</li>
+        <li onclick="map_navigate()">오피스텔</li>
+        <li onclick="map_navigate()">아파트</li>
+        <li onclick="map_navigate()">상가</li>
+        <li onclick="map_navigate()">주택</li>
+        <li onclick="map_navigate()">사무실</li>
+        <li onclick="map_navigate()">건물</li>
+        <li onclick="map_navigate()">토지</li>
+<%--        <li><a href="/maps">분양권</a></li>--%>
+<%--        <li><a href="/maps">공장</a></li>--%>
+<%--        <li><a href="/maps">재개발</a></li>--%>
     </ul>
 </header>
 
 <script>
+    function map_navigate(offer_type_code = 0) {
+        location.href = '/maps?type=' + offer_type_code;
+    }
+
     /* 매물 서브메뉴 */
     $(document).ready(function(){
-        $(".sub").hide();
+        $("#maps > a").mouseenter(function(){
+            $(".sub.offer").slideDown(500);
+        });
 
-        $("#offer-map > a").mouseenter(function(){
-            $(".sub").slideDown(1000);
+        $("#user > a").mouseenter(function(){
+            $(".sub.user").slideDown(500);
         });
-        $("#offer-map > a").mouseleave(function(){
-            $(".sub").slideUp();
-        });
-    });
 
-    $(document).ready(function(){
-        $(".sub").hide();
-
-        $(".menu01 > li").mouseover(function(){
-            $(this).addClass("on");
-            //$(this).find(".sub").show();
-        });
-        $(".menu01 > li").mouseout(function(){
-            $(this).removeClass("on");
-            //$(".sub_mn").hide();
-        });
+        $('#main_img, .menu > li').mouseenter(function () {
+            $('.sub').slideUp()
+        })
     });
 
     $(document).ready(function() {

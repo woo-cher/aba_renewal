@@ -35,7 +35,7 @@
                                 행정구역
                             </span>
                         </header>
-                        <div class="result">
+                        <div class="result aba">
                             <h2>결과가 존재하지 않아요 :(</h2>
                         </div>
                     </div>

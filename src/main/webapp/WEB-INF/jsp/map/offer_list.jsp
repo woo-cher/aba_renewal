@@ -4,20 +4,20 @@
 <div class="offer-list">
     <div class="list-header">
         전체 방
-        <strong>&nbsp;1234개</strong>
+        <strong class="aba">&nbsp;1234개</strong>
     </div>
     <ul class="list-container">
         <c:forEach var="item" begin="0" end="10">
         <li class="list-item">
             <div class="offer-like">
-                <img src="/img/offer/detail_head_icon-01.png">
+                <img src="/img/offer/detail_head_icon-01.png" onclick="alert('준비중이예요 :)')">
             </div>
-            <div class="offer">
+            <div class="offer" onclick="window.open('/offers/1')">
                 <div class="offer-thumbs">
                     <img src="/img/offer/detail_slide01.jpg">
                 </div>
                 <p class="offer-deal">
-                    <label>월세</label>
+                    <label>월세</label
                     <strong>200/35 +0</strong>
                     <label class="r-float">확인일자 YY-MM-DD</label>
                 </p>
