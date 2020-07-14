@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+    <script src="/js/jquery-utils.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
@@ -169,10 +170,6 @@
 </html>
 
 <script>
-    function getErrorBox() {
-        var errorBox = new Document();
-    }
-
     function agreeChecker() {
         let selector;
 
@@ -181,22 +178,22 @@
 
             selector.click(function() {
                 selector.next().removeClass('invalid');
-                console.log(selector.si)
                 selector.parent().siblings('.error').remove();
             });
 
             if( ! selector.is(':checked')) {
-                selector.next().addClass("invalid");
-                $('html, body').animate({
-                    scrollTop: selector.parent().offset().top - 15
-                }, 500);
+                moveScroll(selector.parent().offset().top - 15);
 
-                selector.parents('ul')
-                    .append(
-                        '<p class="error agree">' +
-                        '<i class="fas fa-exclamation-circle">' +
-                        '</i> 항목에 동의해주세요 :)</p>'
-                    );
+                if(!selector.next().hasClass('invalid')) {
+                    selector.parents('ul')
+                        .append(
+                            '<p class="error agree">' +
+                            '<i class="fas fa-exclamation-circle">' +
+                            '</i> 항목에 동의해주세요 :)</p>'
+                        );
+                }
+
+                selector.next().addClass('invalid');
 
                 return
             }
@@ -205,8 +202,6 @@
         $('#agree-area').hide();
         $("#register-area").show();
 
-        $('html, body').animate({
-            scrollTop: $("#top").offset().top
-        }, 500);
+        moveScroll($("#top").offset().top);
     }
 </script>

@@ -3,6 +3,11 @@ $abaColor: #00adef;
 /* Input invalid */
 .invalid {
   border: 1px solid red !important;
+  color: red;
+
+  .aba {
+    color: red;
+  }
 }
 
 /* Checkbox */
