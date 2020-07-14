@@ -1,14 +1,22 @@
-/* Checkbox */
-
 $abaColor: #00adef;
 
+/* Input invalid */
+.invalid {
+  border: 1px solid red !important;
+}
+
+/* Checkbox */
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   -webkit-box-align: center;
   align-items: center;
-  padding-bottom: 4%;
+  padding: 4% 0;
+
+  &.agree {
+    padding: 6% 0;
+  }
 
   &.form {
     justify-content: center;
@@ -17,9 +25,9 @@ $abaColor: #00adef;
       width: 30%;
     }
 
-    .check + label {
-      padding: 10px;
-    }
+    //.check + label {
+    //  padding: 10px;
+    //}
   }
 
   .checkbox-list {
@@ -33,17 +41,43 @@ $abaColor: #00adef;
     display: none;
   }
 
-  & .check:checked+label {
+  & .check:checked + label {
     color: $abaColor;
     border: 1px solid $abaColor;
   }
 
-  & .check+label {
+  & .check + label {
     padding: .5rem .25rem;
     border: 1px solid #cbd5e0;
     border-radius: .5rem;
     height: 100%;
     width: 100%;
     text-align: center;
+    cursor: pointer;
+  }
+}
+
+/* Scroll Bar */
+@mixin bg-radius($bgColor: #000, $radius: 0) {
+  background-color: $bgColor;
+  border-radius: $radius;
+}
+
+@mixin scroll-bar($class) {
+  #{$class} {
+    &::-webkit-scrollbar {
+      width: 17.5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @include bg-radius($abaColor, 12.5px);
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      @include bg-radius(#f3f3f3, 12.5px);
+      box-shadow: inset 0 0 5px white;
+    }
   }
 }
