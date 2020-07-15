@@ -16,6 +16,14 @@
   align-items: center;
   padding: 4% 0;
 }
+.checkbox-container li.absolute {
+  position: absolute;
+  top: 1%;
+  right: 5%;
+}
+.checkbox-container.p-0 {
+  padding: 0;
+}
 .checkbox-container.agree {
   padding: 6% 0;
 }
@@ -98,6 +106,7 @@
 
 .form-control {
   margin-top: 3%;
+  position: relative;
 }
 .form-control .form-label {
   color: gray;

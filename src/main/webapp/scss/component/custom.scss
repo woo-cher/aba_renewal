@@ -19,6 +19,16 @@ $abaColor: #00adef;
   align-items: center;
   padding: 4% 0;
 
+  & li.absolute {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+  }
+
+  &.p-0 {
+    padding: 0;
+  }
+
   &.agree {
     padding: 6% 0;
   }

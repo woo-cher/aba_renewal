@@ -22,6 +22,14 @@
         </div>
 
         <section class="form-control" id="agree-area">
+            <ul class="checkbox-container p-0">
+                <li class="absolute">
+                    <input id="agree-all" type="checkbox" name="agree" value="" class="check">
+                    <label for="agree-all" onclick="agreeAll()">
+                        <span class="aba">'모든 약관'</span> 에 동의합니다.
+                    </label>
+                </li>
+            </ul>
             <%-- Agree --%>
             <form id="agree-form">
             <c:forEach begin="0" end="3" varStatus="status">
@@ -35,8 +43,8 @@
                     </div>
                     <ul class="checkbox-container agree">
                         <li>
-                            <input id="agree${status.index}" type="checkbox" name="a${status.index}" value="" class="check">
-                            <label for="agree${status.index}"">
+                            <input id="agree${status.index}" type="checkbox" name="agree" value="" class="check">
+                            <label for="agree${status.index}">
                                 <span class="aba">'${keys[status.index]}'</span> 에 동의합니다.
                             </label>
                         </li>
@@ -170,6 +178,17 @@
 </html>
 
 <script>
+    function agreeAll() {
+        let x = $('input[name="agree"]');
+        let isAgreeAllChecked = $('#agree-all').prop("checked");
+
+        isAgreeAllChecked === true ? x.prop("checked", false) : x.prop("checked", true);
+        $("#agree-all").click();
+
+        x.next().removeClass('invalid');
+        $('.error').remove();
+    }
+
     function agreeChecker() {
         let selector;
 
