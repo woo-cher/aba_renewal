@@ -1,7 +1,5 @@
 package com.abacorp.aba.core.controller;
 
-import com.abacorp.aba.model.type.DealType;
-import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +35,7 @@ public class SimpleViewController {
     private ModelAndView servicePolicy(@PathVariable int index) {
 
         mv.addObject("viewIndex", index);
-        mv.setViewName("agree_view");
+        mv.setViewName("agree/agree_view");
 
         return mv;
     }

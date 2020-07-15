@@ -23,6 +23,6 @@ public class UserController {
 
     @RequestMapping("/me")
     public String me() {
-        return "user/me";
+        return "me/me";
     }
 }

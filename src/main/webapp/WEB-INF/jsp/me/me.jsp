@@ -10,20 +10,22 @@
 </head>
 <body>
     <div class="main-container">
-        <header class="content-header">
-            <ul class="">
-                <li id><a href="">마이페이지</a></li>
-                <li id><a href="">매물찾기</a></li>
-                <li id><a href="">회사소개</a></li>
-                <li id><a href="">공지사항</a></li>
-            </ul>
-        </header>
-        <div class="content-wrap">
-            <div class="content-left">
+        <div class="container-wrap">
+            <header class="content-header">
+                <ul class="">
+                    <li id><a href="">마이아바</a></li>
+                    <li id><a href="">매물관리</a></li>
+                    <li id><a href="">계정관리</a></li>
+                    <li id><a href="">결제관리</a></li>
+                </ul>
+            </header>
+            <div class="content-wrap">
+                <div class="content-left">
 
-            </div>
-            <div class="content-right">
+                </div>
+                <div class="content-right">
 
+                </div>
             </div>
         </div>
     </div>
