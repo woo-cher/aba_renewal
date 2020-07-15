@@ -3,16 +3,19 @@ $abaColor: #00adef;
 /* Nav bar (`ul`) in content-header */
 .content-header {
   & ul {
-    font-size: 1rem;
-    padding: 0 2%;
+    font-size: 1.25rem;
     display: flex;
     margin: 0;
 
     & li {
-      padding: .5% 1% 0 1%;
+      padding: .5% 2% 1% 2%;
+      margin-right: 1px;
+      border-radius: 15px 15px 0 0;
 
-      &:hover {
+      &:hover,
+      &.active {
         border-top: 3px solid #00adef;
+        background: #fafafa;
 
         a {
           color: $abaColor;

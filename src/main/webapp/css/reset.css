@@ -27,9 +27,11 @@
 body { font-size: 14px; color: #000; min-width: 1334px; }
 img { border: 0; }
 ul, li { list-style: none; }
+li { cursor: pointer; }
 a { text-decoration: none; color: #333; }
 button { cursor: pointer; background: none; border: none; }
 h1, h2, h3, h4 { width: 100%; }
+span { display: inline-block; }
 .fa, .far, .fas { font-family: "Font Awesome 5 Free" !important; font-weight: 700 !important; }
 
 /* Custom */
@@ -48,12 +50,23 @@ input { font-weight: 800; font-size: 15px;}
 }
 
 .main-container {
-    border-top: 3px solid #777;
+    border-top: 1px solid #777;
     padding: 5% 0;
 }
 
 .main-container.p-0 {
     padding: 0 !important;
+}
+
+.container-wrap {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.content-name {
+    padding-bottom: 3%;
+    border-bottom: 3px solid #00adef;
 }
 
 .go-top {

@@ -39,32 +39,32 @@ $abaColor: #00adef;
     li {
       width: 30%;
     }
+  }
 
-    .checkbox-list {
-      width: 22%;
-      display: flex;
-      margin: .25rem;
-      letter-spacing: -.05em;
-    }
+  .checkbox-list {
+    width: 22%;
+    display: flex;
+    margin: .25rem;
+    letter-spacing: -.05em;
+  }
 
-    & .check {
-      display: none;
-    }
+  & .check {
+    display: none;
+  }
 
-    & .check:checked + label {
-      color: $abaColor;
-      border: 1px solid $abaColor;
-    }
+  & .check:checked + label {
+    color: $abaColor;
+    border: 1px solid $abaColor;
+  }
 
-    & .check + label {
-      padding: .5rem .25rem;
-      border: 1px solid #cbd5e0;
-      border-radius: .5rem;
-      height: 100%;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-    }
+  & .check + label {
+    padding: .5rem .25rem;
+    border: 1px solid #cbd5e0;
+    border-radius: .5rem;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
   }
 }
 

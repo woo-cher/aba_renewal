@@ -65,20 +65,20 @@
 .checkbox-container.form li {
   width: 30%;
 }
-.checkbox-container.form .checkbox-list {
+.checkbox-container .checkbox-list {
   width: 22%;
   display: flex;
   margin: 0.25rem;
   letter-spacing: -0.05em;
 }
-.checkbox-container.form .check {
+.checkbox-container .check {
   display: none;
 }
-.checkbox-container.form .check:checked + label {
+.checkbox-container .check:checked + label {
   color: #00adef;
   border: 1px solid #00adef;
 }
-.checkbox-container.form .check + label {
+.checkbox-container .check + label {
   padding: 0.5rem 0.25rem;
   border: 1px solid #cbd5e0;
   border-radius: 0.5rem;
@@ -162,7 +162,7 @@ datalist option {
  */
 .filter-bar {
   height: 60px;
-  border: 1px solid lightblue;
+  border-bottom: 1px solid lightblue;
 }
 .filter-bar .filter-group {
   display: flex;

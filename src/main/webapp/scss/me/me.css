@@ -1,3 +1,74 @@
+.content-wrap, .content-left, .content-right {
+  height: 100%;
+}
 
+.rank {
+  padding: 2px 8px;
+  border-radius: 100%;
+  font-weight: 800;
+}
+.rank.d {
+  background-color: lightblue;
+}
+
+.content {
+  padding: 2% 0;
+  margin: 2% 0;
+}
+
+.panel {
+  padding: 5%;
+}
+
+.frame {
+  padding: 2.5%;
+}
+
+.content-wrap {
+  display: inline-flex;
+  background: #fafafa;
+  width: 100%;
+}
+.content-wrap .content-left {
+  font-size: 1rem;
+  display: inline-block;
+  text-align: center;
+  width: 25%;
+  border-right: 1px solid lightgray;
+}
+.content-wrap .content-right {
+  font-size: 1rem;
+  display: inline-block;
+  text-align: center;
+  width: 75%;
+}
+
+.user-box, .point-box {
+  border: 1px solid lightgray;
+}
+
+.user-box {
+  display: inline-flex;
+  width: 100%;
+}
+.user-box .avatar {
+  font-size: 1rem;
+  display: inline-block;
+  text-align: inherit;
+  width: 60%;
+}
+.user-box .avatar img {
+  width: 100%;
+}
+.user-box .profile {
+  font-size: 1rem;
+  display: inline-block;
+  text-align: inherit;
+  width: 40%;
+}
+
+.point-box {
+  padding: 4%;
+}
 
 /*# sourceMappingURL=me.css.map */

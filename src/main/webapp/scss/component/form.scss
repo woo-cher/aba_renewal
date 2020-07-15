@@ -23,7 +23,6 @@
 }
 
 .content-name,
-
 .form-control {
   width: 80%;
   margin: 0 auto;
@@ -36,11 +35,6 @@
 
   h3 {
     font-size: 27px;
-  }
-
-  &.content-name {
-    padding-bottom: 3%;
-    border-bottom: 3px solid #00adef;
   }
 
   @include scroll-bar(".form-category.agree");

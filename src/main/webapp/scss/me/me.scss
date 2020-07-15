@@ -1,0 +1,75 @@
+@mixin h-full() {
+  height: 100%;
+}
+
+@mixin content($textAlign, $width) {
+  font-size: 1rem;
+  display: inline-block;
+  text-align: $textAlign;
+  width: $width;
+}
+
+.content-wrap, .content-left, .content-right { @include h-full }
+
+.rank {
+  padding: 2px 8px;
+  border-radius: 100%;
+  font-weight: 800;
+
+  &.d {
+    background-color: lightblue;
+  }
+}
+
+.content {
+  padding: 2% 0;
+  margin: 2% 0;
+}
+
+.panel {
+  padding: 5%;
+}
+
+.frame {
+  padding: 2.5%;
+}
+
+.content-wrap {
+  display: inline-flex;
+  background: #fafafa;
+  width: 100%;
+
+  .content-left {
+    @include content(center, 25%);
+    border-right: 1px solid lightgray;
+  }
+
+  .content-right {
+    @include content(center, 75%);
+  }
+}
+
+.user-box, .point-box {
+  border: 1px solid lightgray;
+}
+
+.user-box {
+  display: inline-flex;
+  width: 100%;
+
+  .avatar {
+    @include content(inherit, 60%);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .profile {
+    @include content(inherit, 40%);
+  }
+}
+
+.point-box {
+  padding: 4%;
+}
