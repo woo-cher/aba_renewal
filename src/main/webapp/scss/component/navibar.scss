@@ -1,0 +1,25 @@
+$abaColor: #00adef;
+
+/* Nav bar (`ul`) in content-header */
+.content-header {
+  & ul {
+    font-size: 1rem;
+    padding: 0 2%;
+    display: flex;
+    margin: 0;
+
+    & li {
+      padding: .5% 1% 0 1%;
+
+      &:hover {
+        border-top: 3px solid #00adef;
+
+        a {
+          color: $abaColor;
+          font-weight: 800;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

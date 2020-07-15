@@ -9,12 +9,12 @@
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/main1492px.css">
 	<link rel="stylesheet" type="text/css" href="/css/main_mobile.css">
+
+	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 
 <body>
-	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
-
-	<div>
+	<div class="main-container p-0">
 		<!-- 메인이미지 -->
 		<section id="main_img">
 			<div class="mobile-txt">
@@ -237,7 +237,6 @@
 	<!-- footer -->
 	<%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
 </body>
-
 </html>
 
 <script src="/js/main.js"></script>

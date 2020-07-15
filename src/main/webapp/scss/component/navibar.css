@@ -1,0 +1,20 @@
+/* Nav bar (`ul`) in content-header */
+.content-header ul {
+  font-size: 1rem;
+  padding: 0 2%;
+  display: flex;
+  margin: 0;
+}
+.content-header ul li {
+  padding: 0.5% 1% 0 1%;
+}
+.content-header ul li:hover {
+  border-top: 3px solid #00adef;
+}
+.content-header ul li:hover a {
+  color: #00adef;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=navibar.css.map */

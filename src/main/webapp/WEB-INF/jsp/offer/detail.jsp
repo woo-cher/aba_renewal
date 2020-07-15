@@ -10,7 +10,7 @@
 
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/css/albery.css">
-    <link rel="stylesheet" type="text/css" href="/scss/offer-detail.css">
+    <link rel="stylesheet" type="text/css" href="/scss/offer_detail.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     <script src="/js/albery.js"></script>

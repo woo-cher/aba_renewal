@@ -33,20 +33,20 @@
 .checkbox-container.form li {
   width: 30%;
 }
-.checkbox-container .checkbox-list {
+.checkbox-container.form .checkbox-list {
   width: 22%;
   display: flex;
   margin: 0.25rem;
   letter-spacing: -0.05em;
 }
-.checkbox-container .check {
+.checkbox-container.form .check {
   display: none;
 }
-.checkbox-container .check:checked + label {
+.checkbox-container.form .check:checked + label {
   color: #00adef;
   border: 1px solid #00adef;
 }
-.checkbox-container .check + label {
+.checkbox-container.form .check + label {
   padding: 0.5rem 0.25rem;
   border: 1px solid #cbd5e0;
   border-radius: 0.5rem;

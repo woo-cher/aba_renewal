@@ -20,4 +20,9 @@ public class UserController {
     public String create() {
         return "";
     }
+
+    @RequestMapping("/me")
+    public String me() {
+        return "user/me";
+    }
 }
