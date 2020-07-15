@@ -4,6 +4,7 @@ import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/")
 public class SimpleViewController {
     private static final Logger logger = LoggerFactory.getLogger(SimpleViewController.class);
+
+    @Autowired
+    private ModelAndView mv;
 
     @RequestMapping(value = "/")
     private String index() {
@@ -31,7 +35,6 @@ public class SimpleViewController {
 
     @RequestMapping(value = "/agree/{index}")
     private ModelAndView servicePolicy(@PathVariable int index) {
-        ModelAndView mv = new ModelAndView();
 
         mv.addObject("viewIndex", index);
         mv.setViewName("agree_view");

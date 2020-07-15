@@ -5,6 +5,7 @@ import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,10 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class MapController {
     private static final Logger logger = LoggerFactory.getLogger(MapController.class);
 
+    @Autowired
+    private ModelAndView mv;
+
     @RequestMapping(value = "/maps")
     private ModelAndView kakaoMap() {
-        ModelAndView mv = new ModelAndView();
-
         mv.addObject("offerTypes", OfferType.values());
         mv.addObject("dealTypes", DealType.values());
 
