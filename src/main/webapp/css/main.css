@@ -142,8 +142,8 @@
 /* 아바서치 컨텐츠 텍스트 */
 #con_in .txt {
     float: left;
-    width: 24%;
-    padding: 5% 0 0 6%;
+    width: 45%;
+    padding: 3% 0;
 }
 
 #con_in .txt .line{

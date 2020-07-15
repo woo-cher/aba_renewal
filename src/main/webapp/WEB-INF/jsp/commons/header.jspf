@@ -19,14 +19,14 @@
         <img src="/img/logo.png" alt="로고">
     </a>
     <ul class="menu">
-        <li class="menu01" id="maps"><a href="/maps">매물찾기</a></li>
+        <li id="maps"><a href="/maps">매물찾기</a></li>
         <li id="intro"><a href="/intro">회사소개</a></li>
         <li id="posts"><a href="/posts">공지사항</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li id="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-            <li class="menu01" id="user">
+            <li id="user">
                 <a href="#">김다언 님
                     <h5 style="display: inline">▼</h5>
                 </a>
@@ -74,7 +74,7 @@
             $(".sub.user").slideDown(500);
         });
 
-        $('#main_img, .menu > li').mouseenter(function () {
+        $('#main_img').mouseenter(function () {
             $('.sub').slideUp()
         })
     });
