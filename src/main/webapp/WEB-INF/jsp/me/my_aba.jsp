@@ -9,7 +9,7 @@
             <div class="frame avatar">
                 <img class="" src="/img/guide.jpg">
                 <p class="content">
-                    <span class="aba txt-lg">아바 님</span>
+                    <span class="txt-lg">아바</span> 님
                 </p>
                 <p class="d-label">Diamond</p>
             </div>

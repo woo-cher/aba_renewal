@@ -44,7 +44,7 @@
     <%--
          Index of `<li>` order to `/model/type/OfferType`
     --%>
-    <ul class="sub offer" hidden>
+    <ul class="sub offer-category" hidden>
         <li onclick="map_navigate()">원룸</li>
         <li onclick="map_navigate()">투&middot;쓰리룸</li>
         <li onclick="map_navigate()">오피스텔</li>
@@ -68,7 +68,7 @@
     /* 매물 서브메뉴 */
     $(document).ready(function(){
         $("#maps > a").mouseenter(function(){
-            $(".sub.offer").slideDown(500);
+            $(".sub.offer-category").slideDown(500);
         });
 
         $("#user > a").mouseenter(function(){

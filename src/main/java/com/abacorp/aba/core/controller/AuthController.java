@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/auth")
+@RequestMapping("/auth")
 public class AuthController {
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
     private ModelAndView mv;
 
-    @RequestMapping(value = "/login")
+    @RequestMapping("/login")
     public String login() {
         return "user/login";
     }
 
-    @RequestMapping(value = "/register")
+    @RequestMapping("/register")
     public ModelAndView register() {
         String[] keys = {"이용약관", "개인정보취급 방침", "위치기반서비스 이용약관", "책임한계 및 법적고지"};
         String[] values = {"provision", "personal_info", "location_based", "responsibility"};
@@ -34,7 +34,7 @@ public class AuthController {
         return mv;
     }
 
-    @RequestMapping(value = "/denied")
+    @RequestMapping("/denied")
     public String denied() {
         return "error/denied";
     }

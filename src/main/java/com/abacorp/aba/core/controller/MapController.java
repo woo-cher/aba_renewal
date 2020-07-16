@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping("/")
 public class MapController {
     private static final Logger logger = LoggerFactory.getLogger(MapController.class);
 
     @Autowired
     private ModelAndView mv;
 
-    @RequestMapping(value = "/maps")
+    @RequestMapping("/maps")
     private ModelAndView kakaoMap() {
         mv.addObject("offerTypes", OfferType.values());
         mv.addObject("dealTypes", DealType.values());

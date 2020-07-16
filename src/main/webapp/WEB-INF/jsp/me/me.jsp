@@ -18,14 +18,21 @@
         <div class="container-wrap">
             <header class="content-header">
                 <ul class="">
-                    <li class="active"><a href="">마이아바</a></li>
-                    <li class=""><a href="">결제관리</a></li>
-                    <li class=""><a href="">계정관리</a></li>
+                    <li class="active"><a href="/users/me">마이아바</a></li>
+                    <li class=""><a href="/users/me/payment">결제관리</a></li>
+                    <li class=""><a href="/users/me/account">계정관리</a></li>
                     <li class=""><a href="">매물관리</a></li>
                 </ul>
             </header>
             <div class="content-wrap">
-                <c:import url="my_aba.jsp" />
+                <c:choose>
+                    <c:when test="${not empty view}">
+                        <c:import url="${view}.jsp" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:import url="my_aba.jsp" />
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>

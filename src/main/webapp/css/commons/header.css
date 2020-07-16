@@ -71,7 +71,7 @@
     background-color: #121922;
 }
 
-.sub.offer {
+.sub.offer-category {
     right: 20%;
 }
 
@@ -87,7 +87,7 @@
     color: #fff;
 }
 
-.sub.offer li {
+.sub.offer-category li {
     width: 25%;
 }
 

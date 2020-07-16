@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping("/")
 public class SimpleViewController {
     private static final Logger logger = LoggerFactory.getLogger(SimpleViewController.class);
 
     @Autowired
     private ModelAndView mv;
 
-    @RequestMapping(value = "/")
+    @RequestMapping("/")
     private String index() {
         return "index";
     }
 
-    @RequestMapping(value = "/intro")
+    @RequestMapping("/intro")
     private String intro() {
         return "intro";
     }
 
-    @RequestMapping(value = "/guide")
+    @RequestMapping("/guide")
     private String guide() {
         return "guide";
     }
 
-    @RequestMapping(value = "/agree/{index}")
+    @RequestMapping("/agree/{index}")
     private ModelAndView servicePolicy(@PathVariable int index) {
 
         mv.addObject("viewIndex", index);

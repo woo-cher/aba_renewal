@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping("/")
 public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
     @Autowired
     private ModelAndView mv;
 
-    @RequestMapping(value = "/posts")
+    @RequestMapping("/posts")
     private String index() {
         return "post/post";
     }
