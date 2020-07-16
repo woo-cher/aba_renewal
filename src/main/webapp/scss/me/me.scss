@@ -1,32 +1,17 @@
 @import "../mixin/mixin";
 
-.content-wrap, .content-left, .content-right { @include h-full }
+.content-left, .content-right { @include h-full }
 
-.rank {
-  padding: 2px 8px;
-  border-radius: 100%;
-  font-weight: 800;
-}
+.panel { padding: 5%; }
+.frame { padding: 2.5%; }
 
-.d-mark {
-  background-color: $diaColor;
-}
-
-.d-label {
-  color: $diaColor;
-}
+.rank { padding: 2px 8px; border-radius: 100%; font-weight: 800; }
+.d-mark { background-color: $diaColor; }
+.d-label { color: $diaColor; }
 
 .content {
   padding: 2% 0;
   margin: 2% 0;
-}
-
-.panel {
-  padding: 5%;
-}
-
-.frame {
-  padding: 2.5%;
 }
 
 .content-wrap {
@@ -37,9 +22,84 @@
   .content-left {
     @include content(center, 25%);
     border-right: 1px solid lightgray;
+    height: auto;
   }
 
   .content-right {
     @include content(center, 75%);
+
+    .label {
+      border-bottom: 1px solid $borderColor;
+      margin-bottom: 0;
+
+      .label-wrap {
+        @include flex-align(left, 50%, 1.5rem);
+
+        &:before {
+          content: '●';
+          padding: 0 2%;
+          color: #00adef;
+        }
+      }
+    }
+  }
+}
+
+.point-box {
+  @include border-radius(1px solid $borderColor)
+}
+
+.box-left, .box-right, .point {
+  padding: 0 5%;
+
+  &.p-0 {
+    padding: 0 !important;
+  }
+}
+
+.box-left {
+  @include flex-align(left, 50%);
+}
+
+.box-right {
+  @include flex-align(flex-end, 50%);
+}
+
+.point-box {
+  display: flex;
+
+  .point {
+    @include fontsize-color(1.5rem)
+  }
+
+  i {
+    @include aba-point-label(1.25rem, 5px 8px)
+  }
+}
+
+.activity,
+.payment-list {
+  li {
+    display: flex;
+    padding: 1.5%;
+    margin: 5px;
+    border-bottom: 1px solid $borderColor;
+
+    &.none {
+      height: 25%;
+
+      & p {
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.payment-list span {
+  width: 20%;
+
+  &.title {
+    font-size: 1.15rem;
   }
 }

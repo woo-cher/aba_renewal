@@ -57,6 +57,16 @@
 }
 
 /* Scroll Bar */
+.btn {
+  padding: 1% !important;
+}
+.btn.lg {
+  width: 50%;
+}
+.btn.sm {
+  width: 15%;
+}
+
 .form-warp {
   margin-bottom: 3%;
 }
@@ -179,8 +189,8 @@ article[class=content-wrap] .form-category.agree {
   cursor: pointer;
 }
 .form-control .input-group p.addr:hover {
-  background: #fff;
-  border: 1px solid #00adef;
+  background: #f3f3f3 !important;
+  border: 0.1px solid #00adef;
   color: #00adef;
 }
 .form-control .input-group p.addr:hover i {
@@ -204,8 +214,8 @@ button[type=submit] {
   width: 70%;
 }
 button[type=submit]:hover {
-  background: #fff;
-  border: 1px solid #00adef;
+  background: #f3f3f3 !important;
+  border: 0.1px solid #00adef;
   color: #00adef;
 }
 

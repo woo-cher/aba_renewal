@@ -14,7 +14,7 @@
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 <body>
-    <div class="main-container">
+    <div class="main-container pt-3">
         <div class="container-wrap">
             <header class="content-header">
                 <ul id="navigator">

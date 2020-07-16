@@ -4,16 +4,8 @@
   padding: 4%;
 }
 
-.box-left {
-  @include flex-align(left, 50%);
-}
-
-.box-right {
-  @include flex-align(flex-end, 50%);
-}
-
 /* Content Left */
-.user-box, .point-box {
+.user-box {
   @include border-radius(1px solid $borderColor)
 }
 
@@ -34,26 +26,6 @@
   }
 }
 
-.point-box {
-  display: flex;
-
-  .point {
-    @include fontsize-color(1.5rem)
-  }
-
-  span {
-    padding: 0 10px;
-  }
-
-  i {
-    background: $abaColor;
-    color: white;
-    font-size: 1.5rem;
-    padding: 5px 8px;
-    border-radius: 100%;
-  }
-}
-
 /* Content Right */
 .content-right {
   .dashboard-box {
@@ -71,33 +43,6 @@
 
       &.b-r {
         border-right: 1px solid $abaColor;
-      }
-    }
-  }
-
-  .label {
-    border-bottom: 1px solid $borderColor;
-    margin-bottom: 0;
-
-    .label-wrap {
-      @include flex-align(left, 50%, 1.5rem);
-    }
-  }
-
-  .activity {
-    li {
-      display: flex;
-      padding: 1.5%;
-      margin: 5px;
-      border-bottom: 1px solid $borderColor;
-
-      &.none {
-        height: 25%;
-
-        & p {
-          justify-content: center;
-          font-size: 1.5rem;
-        }
       }
     }
   }

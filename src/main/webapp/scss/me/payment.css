@@ -1,0 +1,57 @@
+/* Tier */
+/* Tier */
+/* Nav bar (`ul`) in content-header */
+.content-header ul {
+  font-size: 1.25rem;
+  display: flex;
+  margin: 0;
+}
+.content-header ul li {
+  padding: 0.5% 2% 1% 2%;
+  margin-right: 1px;
+  border-radius: 15px 15px 0 0;
+}
+.content-header ul li:hover, .content-header ul li.active {
+  border-top: 3px solid #00adef;
+  background: #fafafa;
+}
+.content-header ul li:hover a, .content-header ul li.active a {
+  color: #00adef;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.nav-bar-col li {
+  padding: 4%;
+}
+.nav-bar-col li:hover {
+  color: #00adef;
+  font-weight: 600;
+}
+
+.point-label {
+  background: #00adef;
+  color: white;
+  font-size: 1rem;
+  padding: 2px 4px;
+  border-radius: 100%;
+}
+
+.payment-list li.expired span {
+  opacity: 0.4;
+}
+.payment-list li.expired:hover {
+  cursor: not-allowed;
+}
+.payment-list button {
+  width: 10%;
+  padding: 0;
+}
+.payment-list button:hover {
+  border: 0;
+}
+.payment-list button.repay {
+  background: orange;
+}
+
+/*# sourceMappingURL=payment.css.map */

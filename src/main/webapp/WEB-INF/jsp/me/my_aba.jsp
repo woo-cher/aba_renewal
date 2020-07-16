@@ -64,14 +64,14 @@
             </div>
             <ul class="activity">
                 <li>
-                    <p class="box-left w-full">
+                    <p class="box-left p-0 w-full">
                         <span class="aba">`유료 매물 30일`</span>
                         상품을 결제 하셨습니다.
                     </p>
                     <p class="box-right">2012.01.12 오후 3시</p>
                 </li>
                 <li>
-                    <p class="box-left w-full">
+                    <p class="box-left p-0 w-full">
                         <span class="aba">'아바'</span> 님께 쪽지를 보내셨습니다.
                     </p>
                     <p class="box-right">2012.01.12 오후 3시</p>

@@ -1,0 +1,30 @@
+@import "../mixin/mixin", "../component/navibar";
+
+.point-label {
+  @include aba-point-label(1rem, 2px 4px)
+}
+
+.payment-list {
+  & li.expired {
+    span {
+      opacity: .4;
+    }
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  & button {
+    width: 10%;
+    padding: 0;
+
+    &:hover {
+      border: 0;
+    }
+
+    &.repay {
+      background: orange;
+    }
+  }
+}

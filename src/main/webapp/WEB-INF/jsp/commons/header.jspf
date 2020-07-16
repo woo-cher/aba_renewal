@@ -81,7 +81,7 @@
     });
 
     $(document).ready(function() {
-        const el = window.location.pathname.replace(/\//g, "");
+        let el = window.location.pathname.replace(/\//g, "").slice(0, 7);
         $("#" + el).addClass("active");
     })
 </script>

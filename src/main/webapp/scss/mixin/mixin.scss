@@ -22,6 +22,14 @@ $bronzeColor: goldenrod;
   }
 }
 
+@mixin aba-point-label($fontSize, $padding) {
+  background: $abaColor;
+  color: white;
+  font-size: $fontSize;
+  padding: $padding;
+  border-radius: 100%;
+}
+
 @mixin h-full() {
   height: 100%;
 }

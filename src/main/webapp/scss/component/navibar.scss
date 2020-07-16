@@ -1,4 +1,4 @@
-$abaColor: #00adef;
+@import "../mixin/mixin";
 
 /* Nav bar (`ul`) in content-header */
 .content-header {
@@ -23,6 +23,17 @@ $abaColor: #00adef;
           font-size: 20px;
         }
       }
+    }
+  }
+}
+
+.nav-bar-col {
+  li {
+    padding: 4%;
+
+    &:hover {
+      color: $abaColor;
+      font-weight: 600;
     }
   }
 }
