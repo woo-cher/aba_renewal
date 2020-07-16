@@ -17,22 +17,15 @@
     <div class="main-container">
         <div class="container-wrap">
             <header class="content-header">
-                <ul class="">
-                    <li class="active"><a href="/users/me">마이아바</a></li>
-                    <li class=""><a href="/users/me/payment">결제관리</a></li>
-                    <li class=""><a href="/users/me/account">계정관리</a></li>
-                    <li class=""><a href="">매물관리</a></li>
+                <ul id="navigator">
+                    <li id="my_aba"><a href="/users/me/my_aba">마이아바</a></li>
+                    <li id="payment"><a href="/users/me/payment">결제관리</a></li>
+                    <li id="account"><a href="/users/me/account">계정관리</a></li>
+                    <li><a href="">매물관리</a></li>
                 </ul>
             </header>
             <div class="content-wrap">
-                <c:choose>
-                    <c:when test="${not empty view}">
-                        <c:import url="${view}.jsp" />
-                    </c:when>
-                    <c:otherwise>
-                        <c:import url="my_aba.jsp" />
-                    </c:otherwise>
-                </c:choose>
+                <c:import url="${view}.jsp" />
             </div>
         </div>
     </div>
@@ -41,3 +34,15 @@
     <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
 </body>
 </html>
+
+<script>
+    $('#navigator > li').click(function (e) {
+        $('#navigator').find('.active').removeClass('active');
+        console.log(e.currentTarget.classList.add('active'));
+    });
+
+    $(document).ready(function() {
+        const el = window.location.pathname.replace(/.+\//g, "");
+        $("#" + el).addClass("active");
+    });
+</script>

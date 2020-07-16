@@ -19,7 +19,7 @@
         <img src="/img/logo.png" alt="로고">
     </a>
     <ul class="menu">
-        <li id="usersme"><a href="/users/me">마이페이지</a></li>
+        <li id="usersme"><a href="/users/me/my_aba">마이페이지</a></li>
         <li id="maps"><a href="/maps">매물찾기</a></li>
         <li id="intro"><a href="/intro">회사소개</a></li>
         <li id="posts"><a href="/posts">공지사항</a></li>
