@@ -60,6 +60,7 @@
     </ul>
 </header>
 
+<script src="/js/utils.js"></script>
 <script>
     function map_navigate(offer_type_code = 0) {
         location.href = '/maps?type=' + offer_type_code;
@@ -80,8 +81,7 @@
         })
     });
 
-    $(document).ready(function() {
-        let el = window.location.pathname.replace(/\//g, "").slice(0, 7);
-        $("#" + el).addClass("active");
-    })
+    activate_with_url(/\//g, (el) => {
+        return el.slice(0, 7);
+    });
 </script>

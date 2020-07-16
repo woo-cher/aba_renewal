@@ -36,13 +36,6 @@
 </html>
 
 <script>
-    $('#navigator > li').click(function (e) {
-        $('#navigator').find('.active').removeClass('active');
-        console.log(e.currentTarget.classList.add('active'));
-    });
-
-    $(document).ready(function() {
-        const el = window.location.pathname.replace(/.+\//g, "");
-        $("#" + el).addClass("active");
-    });
+    activate_with_selector($('#navigator > li'));
+    activate_with_url(/.+\//g);
 </script>

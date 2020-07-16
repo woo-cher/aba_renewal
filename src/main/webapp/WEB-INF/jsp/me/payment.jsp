@@ -6,8 +6,8 @@
 
 <div class="content-left">
     <div class="panel left-wrap">
-        <ul class="nav-bar-col">
-            <li class="txt-md">My *</li>
+        <ul id="nav" class="nav-bar-col">
+            <li class="txt-md active">My *</li>
             <li class="txt-md">사용내역 조회</li>
             <li class="txt-md">결제이력 조회</li>
         </ul>
@@ -67,3 +67,7 @@
         </ul>
     </div>
 </div>
+
+<script>
+    activate_with_selector($('#nav > li'));
+</script>

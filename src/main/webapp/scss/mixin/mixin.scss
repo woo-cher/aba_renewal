@@ -8,7 +8,7 @@ $goldColor: gold;
 $silverColor: silver;
 $bronzeColor: goldenrod;
 
-@mixin set-Tier($tierClazz) {
+@mixin set-tier($tierClazz) {
   @if ($tierClazz == 'd') {
 
   } @else if ($tierClazz == 'p') {
