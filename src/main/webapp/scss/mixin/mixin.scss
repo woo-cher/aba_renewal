@@ -1,0 +1,58 @@
+$abaColor: #00adef;
+$borderColor: lightgrey;
+
+/* Tier */
+$diaColor: lightblue;
+$platinumColor: skyblue;
+$goldColor: gold;
+$silverColor: silver;
+$bronzeColor: goldenrod;
+
+@mixin set-Tier($tierClazz) {
+  @if ($tierClazz == 'd') {
+
+  } @else if ($tierClazz == 'p') {
+
+  } @else if ($tierClazz == 'g') {
+
+  } @else if ($tierClazz == 's') {
+
+  } @else if ($tierClazz == 'b') {
+
+  }
+}
+
+@mixin h-full() {
+  height: 100%;
+}
+
+@mixin fontsize-color($size, $color: grey) {
+  font-size: $size;
+  color: $color;
+}
+
+@mixin border-radius($border, $px: 15px) {
+  border: $border;
+  border-radius: $px;
+}
+
+@mixin flex-align($justify: centerm, $width: 0, $fontSize: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+
+  @if($width != 0) {
+    width: $width;
+  }
+
+  @if($fontSize != 0) {
+    font-size: $fontSize;
+  }
+}
+
+@mixin content($textAlign, $width) {
+  font-size: 1rem;
+  display: inline-block;
+  text-align: $textAlign;
+  width: $width;
+}

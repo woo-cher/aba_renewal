@@ -1,3 +1,4 @@
+/* Tier */
 .content-wrap, .content-left, .content-right {
   height: 100%;
 }
@@ -7,8 +8,13 @@
   border-radius: 100%;
   font-weight: 800;
 }
-.rank.d {
+
+.d-mark {
   background-color: lightblue;
+}
+
+.d-label {
+  color: lightblue;
 }
 
 .content {
@@ -41,34 +47,6 @@
   display: inline-block;
   text-align: center;
   width: 75%;
-}
-
-.user-box, .point-box {
-  border: 1px solid lightgray;
-}
-
-.user-box {
-  display: inline-flex;
-  width: 100%;
-}
-.user-box .avatar {
-  font-size: 1rem;
-  display: inline-block;
-  text-align: inherit;
-  width: 60%;
-}
-.user-box .avatar img {
-  width: 100%;
-}
-.user-box .profile {
-  font-size: 1rem;
-  display: inline-block;
-  text-align: inherit;
-  width: 40%;
-}
-
-.point-box {
-  padding: 4%;
 }
 
 /*# sourceMappingURL=me.css.map */

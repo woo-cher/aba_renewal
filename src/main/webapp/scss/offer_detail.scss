@@ -1,15 +1,11 @@
+@import "mixin/mixin";
+
 $abaColor: #00adef;
 
 h3 { font-size: 23px; padding: 3%; width: unset; }
 .offer-option, .offer-location, .offer-desc { padding: 2% 15%; }
 .desc-wrap, .location-wrap { padding: 0 5%; }
 .line { width: 70px; border: 4px solid $abaColor; }
-
-@mixin flex-align($justify: center) {
-  display: flex;
-  align-items: center;
-  justify-content: $justify;
-}
 
 @mixin top-el() {
   float: left;

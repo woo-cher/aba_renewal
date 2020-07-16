@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="/scss/component/navibar.css">
     <link rel="stylesheet" type="text/css" href="/scss/me/me.css">
+    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
@@ -18,9 +19,9 @@
             <header class="content-header">
                 <ul class="">
                     <li class="active"><a href="">마이아바</a></li>
-                    <li class=""><a href="">매물관리</a></li>
-                    <li class=""><a href="">계정관리</a></li>
                     <li class=""><a href="">결제관리</a></li>
+                    <li class=""><a href="">계정관리</a></li>
+                    <li class=""><a href="">매물관리</a></li>
                 </ul>
             </header>
             <div class="content-wrap">

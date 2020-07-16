@@ -20,7 +20,9 @@
     font-weight: 300;
 }
 
+.w-full { width: 100% !important; }
 .aba { color: #00adef; font-weight: bold; }
+.txt-lg { font-size: 1.35rem; }
 .header.mini { color: gray; font-size: 22px; }
 
 /* Tag css */
