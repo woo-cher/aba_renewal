@@ -13,6 +13,7 @@
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
+
 <body>
     <div class="main-container pt-3">
         <div class="container-wrap">
@@ -21,7 +22,7 @@
                     <li id="my_aba" onclick="nav('my_aba')"><a>마이아바</a></li>
                     <li id="payment" onclick="nav('payment')"><a>결제관리</a></li>
                     <li id="account" onclick="nav('account')"><a>계정관리</a></li>
-                    <li><a>매물관리</a></li>
+<%--                    <li><a>매물관리</a></li>--%>
                 </ul>
             </header>
             <div class="content-wrap">
@@ -40,6 +41,8 @@
         location.href = "/users/me/" + url;
     }
 
-    activateWithSelector($('#navigator > li'));
+    activateWithSelector('#nav > li');
+    activateWithSelector('#navigator > li');
     activateWithUrl(/.+\//g);
+    switchContentViewWithIndex('#nav > li', '.right-wrap', '.content-right');
 </script>

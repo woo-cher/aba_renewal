@@ -22,6 +22,12 @@ $bronzeColor: goldenrod;
   }
 }
 
+@mixin before-css() {
+  content: '●';
+  padding: 0 2%;
+  color: #00adef;
+}
+
 @mixin aba-point-label($fontSize, $padding) {
   background: $abaColor;
   color: white;
@@ -44,7 +50,7 @@ $bronzeColor: goldenrod;
   border-radius: $px;
 }
 
-@mixin flex-align($justify: centerm, $width: 0, $fontSize: 0) {
+@mixin flex-align($justify: center, $width: 0, $fontSize: 0) {
   display: flex;
   align-items: center;
   justify-content: $justify;

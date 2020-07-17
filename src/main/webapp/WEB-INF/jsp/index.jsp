@@ -55,7 +55,7 @@
 				</div>
 			</article>
 
-		</section>-->
+		</section>
 
 		<aside id="sidebar">
 			<ul class="bar-view">

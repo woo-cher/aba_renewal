@@ -63,7 +63,7 @@ h3 {
 .offer-info.container .info-table {
   display: flex;
   align-items: center;
-  justify-content: centerm;
+  justify-content: center;
   padding: 2% 0;
 }
 
@@ -117,7 +117,7 @@ h3 {
   padding-right: 10px;
   display: flex;
   align-items: center;
-  justify-content: centerm;
+  justify-content: center;
 }
 .info-summary .top03 .icon-group a img {
   margin-right: 5px;
@@ -134,7 +134,7 @@ h3 {
 .search-warp .search {
   display: flex;
   align-items: center;
-  justify-content: centerm;
+  justify-content: center;
   width: 70%;
   border: 1px solid #00adef;
   margin-top: 15px;
@@ -183,7 +183,7 @@ h3 {
 .table-wrap p {
   display: flex;
   align-items: center;
-  justify-content: centerm;
+  justify-content: center;
   height: 100%;
 }
 .table-wrap p.key {
@@ -232,7 +232,7 @@ h3 {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: centerm;
+  justify-content: center;
 }
 .img-caption .caption-group .caption {
   width: 70%;

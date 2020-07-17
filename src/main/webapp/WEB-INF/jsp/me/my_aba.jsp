@@ -35,6 +35,7 @@
         </div>
     </div>
 </div>
+
 <div class="content-right">
     <div class="panel right-wrap">
         <ul class="content dashboard-box">
@@ -58,9 +59,7 @@
 
         <div class="content activity-box">
             <div class="content label">
-                <div class="label-wrap">
-                    나의 활동
-                </div>
+                <div class="label-wrap">나의 활동</div>
             </div>
             <ul class="activity">
                 <li>

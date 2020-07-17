@@ -1,4 +1,4 @@
-@import "../mixin/mixin", "../component/navibar";
+@import "../mixin/mixin";
 
 .point-label {
   @include aba-point-label(1rem, 2px 4px)

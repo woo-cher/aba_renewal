@@ -52,7 +52,7 @@
                 </div>
             </c:forEach>
             </form>
-            <button class="login-button" type="submit" onclick="agreeChecker()">가입하기</button>
+            <button class="login-button" id="join" type="submit" onclick="agreeChecker()">가입하기</button>
         </section>
 
         <section class="form-control" id="register-area" hidden>
@@ -179,14 +179,21 @@
 
 <script>
     function agreeAll() {
-        let x = $('input[name="agree"]');
-        let isAgreeAllChecked = $('#agree-all').prop("checked");
+        let agrees = $('input[name="agree"]');
+        let isChecked = $('#agree-all').prop("checked");
 
-        isAgreeAllChecked === true ? x.prop("checked", false) : x.prop("checked", true);
+        isChecked === true ? agrees.prop("checked", false) : agrees.prop("checked", true);
+
+        // '모든약관' 라벨 체크 인식이 안되는 현상 임시 조치
         $("#agree-all").click();
+        isChecked = true;
 
-        x.next().removeClass('invalid');
+        agrees.next().removeClass('invalid');
         $('.error').remove();
+
+        if(isChecked) {
+            moveScroll($("#join").offset().top);
+        }
     }
 
     function agreeChecker() {

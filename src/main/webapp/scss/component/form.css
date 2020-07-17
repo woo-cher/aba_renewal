@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Input invalid */
 .invalid {
   border: 1px solid red !important;
@@ -20,9 +21,6 @@
   position: absolute;
   top: 1%;
   right: 5%;
-}
-.checkbox-container.p-0 {
-  padding: 0;
 }
 .checkbox-container.agree {
   padding: 6% 0;
@@ -57,6 +55,7 @@
 }
 
 /* Scroll Bar */
+/* Tier */
 .btn {
   padding: 1% !important;
 }
@@ -118,6 +117,11 @@ article[class=content-wrap] .form-category.agree {
   color: gray;
   font-size: 18px;
   padding: 2%;
+}
+.form-control .form-label.before:before {
+  content: "●";
+  padding: 0 2%;
+  color: #00adef;
 }
 .form-control .form-label.mini {
   font-size: 15px;

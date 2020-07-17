@@ -1,4 +1,4 @@
-@import "../mixin/mixin";
+@import "../mixin/mixin",  "../component/navibar";
 
 .content-left, .content-right { @include h-full }
 
@@ -36,25 +36,40 @@
         @include flex-align(left, 50%, 1.5rem);
 
         &:before {
-          content: '●';
-          padding: 0 2%;
-          color: #00adef;
+          @include before-css;
         }
       }
     }
   }
 }
 
-.point-box {
+.user-box, .point-box, .border-box {
   @include border-radius(1px solid $borderColor)
+}
+
+.user-box {
+  display: inline-flex;
+  width: 100%;
+
+  .profile {
+    @include content(inherit, 40%);
+  }
+}
+
+.avatar {
+  @include content(inherit, 60%);
+
+  img {
+    width: 100%;
+
+    &.w-65 {
+      width: 65%;
+    }
+  }
 }
 
 .box-left, .box-right, .point {
   padding: 0 5%;
-
-  &.p-0 {
-    padding: 0 !important;
-  }
 }
 
 .box-left {

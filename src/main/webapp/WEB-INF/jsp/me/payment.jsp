@@ -18,9 +18,7 @@
     <div class="panel pt-1 right-wrap">
         <div class="box">
             <div class="content label">
-                <div class="label-wrap">
-                    내 포인트
-                </div>
+                <div class="label-wrap">내 포인트</div>
             </div>
             <div class="content box point-box">
                 <div class="box-left">
@@ -35,9 +33,7 @@
             </div>
         </div>
         <div class="content label">
-            <div class="label-wrap">
-                이용중인 상품
-            </div>
+            <div class="label-wrap">이용중인 상품</div>
         </div>
         <ul class="payment-list">
             <li>
@@ -144,8 +140,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    activateWithSelector($('#nav > li'));
-    switchContentViewWithIndex('#nav > li', '.right-wrap', '.content-right');
-</script>
