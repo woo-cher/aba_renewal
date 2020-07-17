@@ -128,7 +128,7 @@
                     </span>
                     <span>2012.01.12</span>
                     <span class="failure">결제실패</span>
-                    <span class="failure">시스템 오류로 요청이 반려됨</span>
+                    <span class="failure">시스템 오류로 요청 반려됨</span>
                 </li>
                 <c:forEach begin="0" end="4">
                     <li class="expired">
@@ -147,11 +147,5 @@
 
 <script>
     activateWithSelector($('#nav > li'));
-
-    $('#nav > li').click(function () {
-        let i = $('#nav > li').index(this);
-
-        $('.right-wrap').hide();
-        $('.content-right').children().eq(i).show();
-    })
+    switchContentViewWithIndex('#nav > li', '.right-wrap', '.content-right');
 </script>
