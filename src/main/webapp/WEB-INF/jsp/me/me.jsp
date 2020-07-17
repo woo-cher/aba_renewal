@@ -40,6 +40,6 @@
         location.href = "/users/me/" + url;
     }
 
-    activate_with_selector($('#navigator > li'));
-    activate_with_url(/.+\//g);
+    activateWithSelector($('#navigator > li'));
+    activateWithUrl(/.+\//g);
 </script>

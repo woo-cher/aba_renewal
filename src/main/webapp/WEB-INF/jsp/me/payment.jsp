@@ -146,7 +146,7 @@
 </div>
 
 <script>
-    activate_with_selector($('#nav > li'));
+    activateWithSelector($('#nav > li'));
 
     $('#nav > li').click(function () {
         let i = $('#nav > li').index(this);

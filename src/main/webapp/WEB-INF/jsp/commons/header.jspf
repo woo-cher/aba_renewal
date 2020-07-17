@@ -45,15 +45,15 @@
          Index of `<li>` order to `/model/type/OfferType`
     --%>
     <ul class="sub offer-category" hidden>
-        <li onclick="map_navigate()">원룸</li>
-        <li onclick="map_navigate()">투&middot;쓰리룸</li>
-        <li onclick="map_navigate()">오피스텔</li>
-        <li onclick="map_navigate()">아파트</li>
-        <li onclick="map_navigate()">상가</li>
-        <li onclick="map_navigate()">주택</li>
-        <li onclick="map_navigate()">사무실</li>
-        <li onclick="map_navigate()">건물</li>
-        <li onclick="map_navigate()">토지</li>
+        <li onclick="navigateMap()">원룸</li>
+        <li onclick="navigateMap()">투&middot;쓰리룸</li>
+        <li onclick="navigateMap()">오피스텔</li>
+        <li onclick="navigateMap()">아파트</li>
+        <li onclick="navigateMap()">상가</li>
+        <li onclick="navigateMap()">주택</li>
+        <li onclick="navigateMap()">사무실</li>
+        <li onclick="navigateMap()">건물</li>
+        <li onclick="navigateMap()">토지</li>
 <%--        <li><a href="/maps">분양권</a></li>--%>
 <%--        <li><a href="/maps">공장</a></li>--%>
 <%--        <li><a href="/maps">재개발</a></li>--%>
@@ -62,7 +62,7 @@
 
 <script src="/js/utils.js"></script>
 <script>
-    function map_navigate(offer_type_code = 0) {
+    function navigateMap(offer_type_code = 0) {
         location.href = '/maps?type=' + offer_type_code;
     }
 
@@ -81,7 +81,7 @@
         })
     });
 
-    activate_with_url(/\//g, (el) => {
+    activateWithUrl(/\//g, (el) => {
         return el.slice(0, 7);
     });
 </script>

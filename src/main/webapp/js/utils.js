@@ -8,7 +8,7 @@
  *
  * @param selector
  */
-function activate_with_selector(selector) {
+function activateWithSelector(selector) {
     $(selector).click((e) => {
         selector.parent()
             .find('.active')
@@ -31,7 +31,7 @@ function activate_with_selector(selector) {
  * @param regex
  * @param callback
  */
-function activate_with_url(regex, callback = null) {
+function activateWithUrl(regex, callback = null) {
     $(document).ready(() => {
         let el = window.location.pathname.replace(regex, "");
 
