@@ -18,10 +18,10 @@
         <div class="container-wrap">
             <header class="content-header">
                 <ul id="navigator">
-                    <li id="my_aba"><a href="/users/me/my_aba">마이아바</a></li>
-                    <li id="payment"><a href="/users/me/payment">결제관리</a></li>
-                    <li id="account"><a href="/users/me/account">계정관리</a></li>
-                    <li><a href="">매물관리</a></li>
+                    <li id="my_aba" onclick="nav('my_aba')"><a>마이아바</a></li>
+                    <li id="payment" onclick="nav('payment')"><a>결제관리</a></li>
+                    <li id="account" onclick="nav('account')"><a>계정관리</a></li>
+                    <li><a>매물관리</a></li>
                 </ul>
             </header>
             <div class="content-wrap">
@@ -36,6 +36,10 @@
 </html>
 
 <script>
+    function nav(url) {
+        location.href = "/users/me/" + url;
+    }
+
     activate_with_selector($('#navigator > li'));
     activate_with_url(/.+\//g);
 </script>

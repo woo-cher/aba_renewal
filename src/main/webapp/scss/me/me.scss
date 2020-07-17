@@ -102,4 +102,9 @@
   &.title {
     font-size: 1.15rem;
   }
+
+  &.failure {
+    color: red;
+    font-weight: bold;
+  }
 }
