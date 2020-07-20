@@ -16,7 +16,7 @@ public class MapService {
     @Autowired
     private MapRepository repository;
 
-    public List<Overlay> getSiOverlays() {
-        return repository.findAll();
+    public List<Overlay> getAllOverlays(int weight) {
+        return repository.findAll(weight);
     }
 }

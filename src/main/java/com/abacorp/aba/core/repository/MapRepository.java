@@ -16,7 +16,7 @@ public class MapRepository {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<Overlay> findAll() {
-        return sqlSession.selectList("findSiOverlays");
+    public List<Overlay> findAll(int weight) {
+        return sqlSession.selectList("findOverlaysByWeight", weight);
     }
 }

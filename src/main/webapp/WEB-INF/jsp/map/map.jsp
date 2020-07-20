@@ -9,7 +9,8 @@
         <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
 
         <script type="text/javascript" src="/js/kakao/kakao-map.js"></script>
-        <script type="text/javascript" src="/js/kakao/map-service.js"></script>
+        <script type="text/javascript" src="/js/kakao/overlay-manager.js"></script>
+
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
 
@@ -50,8 +51,12 @@
 </html>
 
 <script>
-    const container = document.getElementById('map');
-    const map = new kakaoMap(container);
+    $(document).ready(() => {
+        const container = document.getElementById('map');
+
+        const overlayManager = new OverlayManager(getAllOverlays(1), container);
+        overlayManager.drawOverlays(1);
+    });
 
     function searchToggle() {
         $(".search-result").toggle();

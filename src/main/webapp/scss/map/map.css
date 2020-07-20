@@ -352,6 +352,123 @@ datalist option {
   background: #00adef;
 }
 
+#title,
+#stitle {
+  text-align: left !important;
+}
+
+#stitle {
+  padding: 10px 15px;
+  color: #00adef;
+  display: inline-flex;
+  background: #fff;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+#name {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+#count {
+  color: white;
+  display: inline-block;
+  background: #00adef;
+  border-radius: 11%;
+  position: absolute;
+  left: 97%;
+  padding: 0.5rem;
+}
+
+.customoverlay {
+  position: relative;
+  border-radius: 6px;
+  float: left;
+}
+
+.customoverlay:nth-of-type(n) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+
+.customoverlay a {
+  display: block;
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.customoverlay #title {
+  display: inline-flex;
+  text-align: center;
+  background: #fff;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.customoverlay:after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 51%;
+  bottom: -12px;
+  width: 22px;
+  height: 12px;
+}
+
+#stitle:hover {
+  color: white;
+  background: #00adef;
+}
+
+.inner.clickable #stitle {
+  color: white;
+  background: #00adef;
+}
+.inner.clickable #name {
+  color: #00adef;
+}
+.inner.clickable #count {
+  color: white;
+}
+
+#title:hover #name,
+#title.clickable #name {
+  color: #00adef;
+}
+#title:hover #count,
+#title.clickable #count {
+  color: white;
+}
+
+#customSpot {
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+  background: #00adef;
+  border-radius: 50%;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+}
+#customSpot #spotCount {
+  color: white;
+  position: relative;
+  font-size: 17px;
+  font-weight: 800;
+  top: 10px;
+}
+
+#customSpot:hover,
+#customSpot.clickable {
+  border: 2px solid white;
+  color: white;
+  opacity: 1;
+  zoom: 1.2;
+}
+
 /**
     Map area
  */

@@ -5,11 +5,9 @@
     <!-- Mapper -->
     <resultMap id="Overlay" type="Overlay" />
 
-    <select id="findSiOverlays" resultMap="Overlay">
-        SELECT * FROM overlays WHERE weight = 1;
-    </select>
-
-    <select id="findOverlayByWeight" resultMap="Overlay" parameterType="String">
-        SELECT * FROM overlays WHERE weight = #{weight};
+    <select id="findOverlaysByWeight" resultMap="Overlay" parameterType="int">
+        SELECT id, center_x, center_y, name, count, weight
+        FROM overlays
+        WHERE weight = #{weight};
     </select>
 </mapper>

@@ -1,72 +1,123 @@
-window.kakao = window.kakao || {}, window.kakao.maps = window.kakao.maps || {}, window.daum && window.daum.maps ? window.kakao.maps = window.daum.maps : (window.daum = window.daum || {}, window.daum.maps = window.kakao.maps), function () {
-    function a() {
-        if (E.length) {
-            t(S[E.shift()], a).start()
-        } else e()
+document.write("<script src='/js/kakao/kakao.js'></script>");
+
+const mapWeightType = { Si: 1, Gu: 2, Dong: 3, Spot: 4 };
+
+class KakaoMap {
+    constructor(element) {
+        this.propertiesInRect = [];
+        this.doUpdate = false;
+
+        if (element === null) {
+            throw new Error("Map Constructor argument is null")
+        }
+
+        this.map = new kakao.maps.Map(element, {
+            center: new kakao.maps.LatLng(35.163975, 128.11347),
+            level: 12
+        });
+
+        this.setMaxLevel(12);
+        this.setMinLevel(1);
+        this.setZoomControl(this.getZoomControl())
     }
 
-    function t(a, t) {
-        var e = document.createElement("script");
-        return e.charset = "utf-8", e.onload = t, e.onreadystatechange = function () {
-            /loaded|complete/.test(this.readyState) && t()
-        }, {
-            start: function () {
-                e.src = a || "",
-                    document.getElementsByTagName("head")[0].appendChild(e), e = null
-            }
+    getKakaoMap() {
+        this.undefinedChecker();
+        return this.map
+    }
+
+    getCustomOverlay(overlayOptions) {
+        this.undefinedChecker();
+        return new kakao.maps.CustomOverlay(overlayOptions)
+    }
+
+    getZoomControl() {
+        this.undefinedChecker();
+        return new kakao.maps.ZoomControl()
+    }
+
+    getClusterer(clustererOptions) {
+        this.undefinedChecker();
+        return new kakao.maps.MarkerClusterer(clustererOptions)
+    }
+
+    getBoundElement() {
+        this.undefinedChecker();
+        this.bounds = this.map.getBounds();
+        return this.bounds
+    }
+
+    getMapLevel() {
+        this.undefinedChecker();
+        return this.map.getLevel()
+    }
+
+    getNorthEast() {
+        this.undefinedChecker();
+        return this.bounds.getNorthEast()
+    }
+
+    getSouthWest() {
+        this.undefinedChecker();
+        return this.bounds.getSouthWest()
+    }
+
+    setCenter(latitude, longitude) {
+        this.undefinedChecker();
+        this.map.setCenter(new kakao.maps.LatLng(latitude, longitude))
+    }
+
+    setLevel(level, mapOptions) {
+        this.undefinedChecker();
+        return this.map.setLevel(level, mapOptions)
+    }
+
+    setMaxLevel(level) {
+        this.undefinedChecker();
+        this.map.setMaxLevel(level)
+    }
+
+    setMinLevel(level) {
+        this.undefinedChecker();
+        this.map.setMinLevel(level)
+    }
+
+    setZoomControl(zoomControl) {
+        this.undefinedChecker();
+        this.map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT) // fix
+    }
+
+    relayout() {
+        this.undefinedChecker();
+        this.map.relayout()
+    }
+
+    convertToLatlng(x, y) {
+        return new kakao.maps.LatLng(x, y)
+    }
+
+    eventTrigger() {
+        kakao.maps.event.trigger(this.map, 'dragend')
+    }
+
+    kakaoEventListener(evt, callback) {
+        kakao.maps.event.addListener(this.map, evt, () => {
+            callback()
+        })
+    }
+
+    undefinedChecker() {
+        if (this.map === undefined) {
+            throw DOMException('Map object is undefined. Please initializing using constructor(element, options)')
         }
     }
 
-    function e() {
-        for (; c[0];) c.shift()();
-        o.readyState = 2
-    }
-
-    var o = kakao.maps = kakao.maps || {};
-    if (void 0 === o.readyState) o.onloadcallbacks = [], o.readyState = 0; else if (2 === o.readyState) return;
-    o.VERSION = {
-        ROADMAP: "1912uow",
-        ROADMAP_SUFFIX: "",
-        HYBRID: "1912uow",
-        SR: "3.00",
-        ROADVIEW: "7.00",
-        ROADVIEW_FLASH: "200402",
-        BICYCLE: "6.00",
-        USE_DISTRICT: "1912uow",
-        SKYVIEW_VERSION: "160114",
-        SKYVIEW_HD_VERSION: "160107"
-    }, o.RESOURCE_PATH = {ROADVIEW_AJAX: "//t1.daumcdn.net/roadviewjscore/core/css3d/200204/standard/1580795088957/roadview.js"};
-    for (var n, r = "https:" == location.protocol ? "https:" : "http:", s = "", i = document.getElementsByTagName("script"), d = i.length; n = i[--d];) if (/\/(beta-)?dapi\.kakao\.com\/v2\/maps\/sdk\.js\b/.test(n.src)) {
-        s = n.src;
-        break
-    }
-    i = null;
-    var c = o.onloadcallbacks, E = ["v3"], I = "", S = {
-        v3: r + "//t1.daumcdn.net/mapjsapi/js/main/4.2.0/kakao.js",
-        services: r + "//s1.daumcdn.net/svc/attach/U03/cssjs/mapapi/libs/1.0.1/1515130215283/services.js",
-        drawing: r + "//t1.daumcdn.net/mapjsapi/js/libs/drawing/1.2.5/drawing.js",
-        clusterer: r + "//s1.daumcdn.net/svc/attach/U03/cssjs/mapapi/libs/1.0.6/1460434272434/clusterer.js"
-    }, _ = function (a) {
-        var t = {};
-        return a.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (a, e, o) {
-            t[e] = o
-        }), t
-    }(s);
-    I = _.appkey, I && (o.apikey = I), o.version = "4.2.0";
-    var R = _.libraries;
-    if (R && (E = E.concat(R.split(","))), "false" !== _.autoload) {
-        for (var d = 0, l = E.length; d < l; d++) !function (a) {
-            a && document.write('<script charset="UTF-8" src="' + a + '"><\/script>')
-        }(S[E[d]]);
-        o.readyState = 2
-    }
-    o.load = function (t) {
-        switch (c.push(t), o.readyState) {
-            case 0:
-                o.readyState = 1, a();
-                break;
-            case 2:
-                e()
+    gps() {
+        if (navigator.geolocation) {
+            console.log('gps init');
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                return new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
+            })
         }
     }
-}();
+}
