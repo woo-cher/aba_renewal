@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.controller;
 
 
+import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
 import org.slf4j.Logger;
@@ -17,6 +18,9 @@ public class MapController {
 
     @Autowired
     private ModelAndView mv;
+
+    @Autowired
+    private MapService service;
 
     @RequestMapping("/maps")
     private ModelAndView kakaoMap() {

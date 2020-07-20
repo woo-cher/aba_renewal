@@ -9,6 +9,7 @@
 
 	<typeAliases>
 		<typeAlias alias="User" type="com.abacorp.aba.model.User"/>
+		<typeAlias alias="Overlay" type="com.abacorp.aba.model.Overlay"/>
 	</typeAliases>
 
 	<typeHandlers>
