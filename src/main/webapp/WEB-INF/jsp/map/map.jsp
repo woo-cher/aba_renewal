@@ -8,8 +8,11 @@
 
         <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
 
-        <script type="text/javascript" src="/js/kakao/kakao-map.js"></script>
-        <script type="text/javascript" src="/js/kakao/overlay-manager.js"></script>
+        <script type="text/javascript" src="/js/kakao/modules/polygon-module.js"></script>
+        <script type="text/javascript" src="/js/kakao/modules/kakao-map.js"></script>
+        <script type="text/javascript" src="/js/kakao/modules/overlay.js"></script>
+        <script type="text/javascript" src="/js/kakao/modules/spot.js"></script>
+        <script type="text/javascript" src="/js/kakao/map-manager.js"></script>
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -54,8 +57,12 @@
     $(document).ready(() => {
         const container = document.getElementById('map');
 
-        const overlayManager = new OverlayManager(getAllOverlays(1), container);
-        overlayManager.drawOverlays(1);
+        // const overlayManager = new Overlay(getAllOverlays(1), container);
+        // overlayManager.drawOverlays(1);
+
+        const test = new MapManager(getAllOverlays(1), container);
+        test.drawOverlays(1);
+        console.log(test.map)
     });
 
     function searchToggle() {

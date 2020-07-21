@@ -1,14 +1,18 @@
-document.write("<script src='/js/kakao/dom-factory.js'></script>");
+document.write("<script src='/js/kakao/factory/dom-factory.js'></script>");
 
 class CustomDomCreator {
     constructor(overlayId) {
         this.factory = new CustomDomFactory();
         this.wrapper = this.factory.getWrapper();
-        this.inner = this.factory.getInner(overlayId);
 
-        this.title = document.createElement('span');
-        this.count = document.createElement('span');
-        this.spotContents = document.createElement('span');
+        this.title = document.createDocumentFragment();
+        this.count = document.createDocumentFragment();
+        this.spotContents = document.createDocumentFragment();
+        this.inner = document.createDocumentFragment();
+
+        if(!isNaN(overlayId)) {
+            this.inner = this.factory.getInner(overlayId);
+        }
     }
 
     getInner() {

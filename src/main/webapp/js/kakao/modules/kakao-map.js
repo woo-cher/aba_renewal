@@ -1,24 +1,30 @@
-document.write("<script src='/js/kakao/kakao.js'></script>");
+document.write("<script src='/js/kakao/modules/kakao.js'></script>");
 
 const mapWeightType = { Si: 1, Gu: 2, Dong: 3, Spot: 4 };
 
-class KakaoMap {
+class KakaoMap extends PolygonModule {
+
+    mapOptions = {
+        center: new kakao.maps.LatLng(35.163975, 128.11347),
+        level: 12
+    };
+
     constructor(element) {
-        this.propertiesInRect = [];
-        this.doUpdate = false;
+        super();
 
         if (element === null) {
             throw new Error("Map Constructor argument is null")
         }
 
-        this.map = new kakao.maps.Map(element, {
-            center: new kakao.maps.LatLng(35.163975, 128.11347),
-            level: 12
-        });
+        this.map = new kakao.maps.Map(element, this.mapOptions);
 
         this.setMaxLevel(12);
         this.setMinLevel(1);
-        this.setZoomControl(this.getZoomControl())
+        this.setZoomControl(this.getZoomControl());
+
+        this.propertiesInRect = [];
+        this.doUpdate = false;
+        this.weight = this.getMapLevel();
     }
 
     getKakaoMap() {
@@ -92,7 +98,7 @@ class KakaoMap {
         this.map.relayout()
     }
 
-    convertToLatlng(x, y) {
+    getKakaoLatlng(x, y) {
         return new kakao.maps.LatLng(x, y)
     }
 
@@ -102,7 +108,7 @@ class KakaoMap {
 
     kakaoEventListener(evt, callback) {
         kakao.maps.event.addListener(this.map, evt, () => {
-            callback()
+            callback();
         })
     }
 

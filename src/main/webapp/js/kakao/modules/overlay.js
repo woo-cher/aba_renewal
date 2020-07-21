@@ -1,13 +1,23 @@
-document.write("<script src='/js/kakao/dom-creator.js'></script>");
-document.write("<script src='/js/kakao/ajax-repository.js'></script>");
+document.write("<script src='/js/kakao/factory/dom-creator.js'></script>");
+document.write("<script src='/js/kakao/ajax/ajax-repository.js'></script>");
 
-class OverlayManager extends KakaoMap {
+class Overlay extends KakaoMap {
     constructor(overlayList, mapElement) {
         super(mapElement);
 
         this.overlays = overlayList;
         this.eventManager = null;
         this.cacheMap = new Map();
+    }
+
+    clear() {
+        if (this.overlays.length === 0) {
+            return;
+        }
+
+        for (let index = 0; index < this.overlays.length; index++) {
+            this.overlays[index].setMap(null)
+        }
     }
 
     drawOverlays(weightType) {
@@ -26,7 +36,7 @@ class OverlayManager extends KakaoMap {
 
             const overlay = super.getCustomOverlay({
                 map: this.map,
-                position: super.convertToLatlng(ovl.centerX, ovl.centerY),
+                position: super.getKakaoLatlng(ovl.centerX, ovl.centerY),
                 content: overlayElement.getOverlayContents(weightType),
                 clickable: true,
                 yAnchor: 1

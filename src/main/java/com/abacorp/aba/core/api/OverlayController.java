@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class OverlayController {
     @Autowired
     MapService service;
 
-    @RequestMapping("/{weight}")
+    @RequestMapping(value = "/{weight}", method = RequestMethod.GET)
     public List<Overlay> overlays(@PathVariable int weight) {
         return service.getAllOverlays(weight);
     }
