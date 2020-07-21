@@ -18,7 +18,7 @@ public class OverlayController {
     @Autowired
     MapService service;
 
-    @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public List<Overlay> overlays(@RequestBody MapFiltersDto dto) {
         return service.getAllOverlays(dto);
     }

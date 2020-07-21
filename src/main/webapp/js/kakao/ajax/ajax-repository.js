@@ -7,13 +7,14 @@ function getAllOverlays(weight, southWest, northEast) {
         url: '/overlays',
         type: 'POST',
         async: false,
-        data: {
+        contentType: 'application/json',
+        data: JSON.stringify({
             weight: weight,
             south: southWest.Ga,
             west: southWest.Ha,
             north: northEast.Ga,
             east: northEast.Ha,
-        },
+        }),
         success: function (overlays) {
             result = overlays;
         },
