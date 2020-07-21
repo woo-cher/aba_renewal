@@ -26,19 +26,33 @@ class MapManager extends Spot {
 
             if (evt === 'zoom_changed') {
                 if (this.weight > 9) {
-                    // this.getOverlaysAndDrawTemplate(1, WeightCustomType.Sd)
+
                 }
             }
 
             if (this.weight > 7 && this.weight < 10) {
-                // this.getOverlaysAndDrawTemplate(2, WeightCustomType.Sgg)
+
             } else if (this.weight > 4 && this.weight < 8) {
-                // this.getOverlaysAndDrawTemplate(3, WeightCustomType.Emd)
+
             } else if (this.weight < 5) {
-                // this.drawBuildingSpots()
+
             }
 
             // this.getPropertiesByPage()
         })
+    }
+
+    updateMapElements(weight) {
+        switch (weight) {
+            case 1:
+                this.drawOverlays(weight);
+        }
+        if (weight === 1) {
+            this.drawOverlays(weight);
+        } else if (weight === 2) {
+
+        } else if (weight === 3) {
+
+        }
     }
 }

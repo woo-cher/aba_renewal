@@ -61,7 +61,7 @@
         // overlayManager.drawOverlays(1);
 
         const mapManager = new MapManager(container);
-        mapManager.drawOverlays(1);
+        mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
     });
 
     function searchToggle() {

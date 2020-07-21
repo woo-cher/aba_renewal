@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.repository;
 
 import com.abacorp.aba.model.Overlay;
+import com.abacorp.aba.model.dto.MapFiltersDto;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,7 @@ public class MapRepository {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<Overlay> findAll(int weight) {
-        return sqlSession.selectList("findOverlaysByWeight", weight);
+    public List<Overlay> findAll(MapFiltersDto mapFiltersDto) {
+        return sqlSession.selectList("findOverlays", mapFiltersDto);
     }
 }

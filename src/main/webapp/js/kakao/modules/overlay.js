@@ -25,8 +25,8 @@ class Overlay extends KakaoMap {
         // }
     }
 
-    drawOverlays(weightType) {
-        getAllOverlays(weightType).map((ovl) => {
+    drawOverlays(weightType, southWest, northEast) {
+        getAllOverlays(weightType, southWest, northEast).map((ovl) => {
             const overlayElement = new CustomDomCreator(ovl.id);
 
             overlayElement.setTitle(weightType, ovl.name);

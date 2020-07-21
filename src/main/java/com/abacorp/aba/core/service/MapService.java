@@ -2,6 +2,7 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.MapRepository;
 import com.abacorp.aba.model.Overlay;
+import com.abacorp.aba.model.dto.MapFiltersDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ public class MapService {
     @Autowired
     private MapRepository repository;
 
-    public List<Overlay> getAllOverlays(int weight) {
-        return repository.findAll(weight);
+
+    public List<Overlay> getAllOverlays(MapFiltersDto dto) {
+        return repository.findAll(dto);
     }
 }

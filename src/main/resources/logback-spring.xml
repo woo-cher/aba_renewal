@@ -32,10 +32,10 @@
     </root>
 
     <!-- 좀 더 보기 좋은 MyBatis 쿼리 Log : log4jdbc -->
-    <logger name="jdbc.sqlonly" level="DEBUG" />
+    <logger name="jdbc.sqlonly" level="INFO" />
     <logger name="jdbc.sqltiming" level="OFF" />
     <logger name="jdbc.audit" level="OFF" />
     <logger name="jdbc.resultset" level="OFF" />
-    <logger name="jdbc.resultsettable" level="DEBUG" />
+    <logger name="jdbc.resultsettable" level="INFO" />
     <logger name="jdbc.connection" level="OFF" />
 </configuration>

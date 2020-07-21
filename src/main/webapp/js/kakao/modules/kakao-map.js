@@ -21,6 +21,7 @@ class KakaoMap extends PolygonModule {
         this.setMinLevel(1);
         this.setZoomControl(this.getZoomControl());
 
+        this.bounds = this.getBoundElement();
         this.propertiesInRect = [];
         this.doUpdate = false;
         this.weight = this.getMapLevel();
@@ -46,7 +47,7 @@ class KakaoMap extends PolygonModule {
         return new kakao.maps.MarkerClusterer(clustererOptions)
     }
 
-    getBoundElement() {
+     getBoundElement() {
         this.undefinedChecker();
         this.bounds = this.map.getBounds();
         return this.bounds

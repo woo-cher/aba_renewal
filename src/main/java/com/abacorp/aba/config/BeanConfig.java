@@ -4,7 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.lang.model.type.PrimitiveType;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class BeanConfig {
@@ -16,5 +21,11 @@ public class BeanConfig {
         mv.clear();
 
         return mv;
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Map<String, String> getHashMap() {
+        return new HashMap<>();
     }
 }
