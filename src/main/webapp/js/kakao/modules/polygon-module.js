@@ -82,17 +82,17 @@ class PolygonModule {
         let level;
 
         switch (typeOrCode) {
-            case mapWeightType.Si: {
+            case Object.keys(mapWeightType[0]): {
                 level = 9;
                 break
             }
 
-            case mapWeightType.Gu: {
+            case Object.keys(mapWeightType[1]): {
                 level = 7;
                 break
             }
 
-            case mapWeightType.Dong: {
+            case Object.keys(mapWeightType[2]): {
                 level = 4;
                 break
             }

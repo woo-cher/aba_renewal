@@ -3,9 +3,8 @@ document.write("<script src='/js/kakao/modules/kakao.js'></script>");
 const mapWeightType = { Si: 1, Gu: 2, Dong: 3, Spot: 4 };
 
 class KakaoMap extends PolygonModule {
-
     mapOptions = {
-        center: new kakao.maps.LatLng(35.163975, 128.11347),
+        center: this.getKakaoLatlng(35.163975, 128.11347),
         level: 12
     };
 

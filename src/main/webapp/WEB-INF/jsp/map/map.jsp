@@ -60,9 +60,8 @@
         // const overlayManager = new Overlay(getAllOverlays(1), container);
         // overlayManager.drawOverlays(1);
 
-        const test = new MapManager(getAllOverlays(1), container);
-        test.drawOverlays(1);
-        console.log(test.map)
+        const mapManager = new MapManager(container);
+        mapManager.drawOverlays(1);
     });
 
     function searchToggle() {

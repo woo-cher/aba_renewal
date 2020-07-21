@@ -1,5 +1,5 @@
 class Spot extends Overlay {
-    constructor(overlayList, mapElement) {
-        super(overlayList, mapElement);
+    constructor(mapElement) {
+        super(mapElement);
     }
 }

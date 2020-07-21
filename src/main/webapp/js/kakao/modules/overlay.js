@@ -2,26 +2,31 @@ document.write("<script src='/js/kakao/factory/dom-creator.js'></script>");
 document.write("<script src='/js/kakao/ajax/ajax-repository.js'></script>");
 
 class Overlay extends KakaoMap {
-    constructor(overlayList, mapElement) {
+    constructor(mapElement) {
         super(mapElement);
 
-        this.overlays = overlayList;
+        this.overlays = [];
         this.eventManager = null;
         this.cacheMap = new Map();
     }
 
     clear() {
         if (this.overlays.length === 0) {
+            console.log('0');
             return;
         }
 
-        for (let index = 0; index < this.overlays.length; index++) {
-            this.overlays[index].setMap(null)
-        }
+        this.overlays.map((overlay) => {
+            // noinspection JSUnresolvedFunction
+            overlay.setMap(null);
+        });
+        // for (let index = 0; index < this.overlays.length; index++) {
+        //     this.overlays[index].setMap(null)
+        // }
     }
 
     drawOverlays(weightType) {
-        this.overlays.map((ovl) => {
+        getAllOverlays(weightType).map((ovl) => {
             const overlayElement = new CustomDomCreator(ovl.id);
 
             overlayElement.setTitle(weightType, ovl.name);
