@@ -24,7 +24,7 @@ class KakaoMap extends PolygonModule {
         this.bounds = this.getBoundElement();
         this.propertiesInRect = [];
         this.doUpdate = false;
-        this.weight = this.getMapLevel();
+        this.zoomLevel = this.getMapLevel();
     }
 
     getKakaoMap() {

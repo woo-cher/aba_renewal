@@ -12,47 +12,35 @@ class MapManager extends Spot {
 
     mapEventListener(evt) {
         this.kakaoEventListener(evt, () => {
-            this.weight = this.getMapLevel();
-            this.getBoundElement();
+            const level = this.getMapLevel();
+
             this.recover(this.cacheMap.get(this.targetId));
             this.relayout();
 
+            this.getBoundElement();
             this.southWest = this.getSouthWest();
             this.northEast = this.getNorthEast();
 
-            console.log('evt active !! : ', evt, this.weight);
+            console.log('evt active !! : ', evt, level, this.southWest, this.northEast);
 
             this.clear();
+            const weight = this.getWeightByZoomLevel(level);
 
-            if (evt === 'zoom_changed') {
-                if (this.weight > 9) {
-
-                }
-            }
-
-            if (this.weight > 7 && this.weight < 10) {
-
-            } else if (this.weight > 4 && this.weight < 8) {
-
-            } else if (this.weight < 5) {
-
-            }
-
+            this.drawOverlays(weight, this.southWest, this.northEast);
             // this.getPropertiesByPage()
         })
     }
 
-    updateMapElements(weight) {
-        switch (weight) {
-            case 1:
-                this.drawOverlays(weight);
-        }
-        if (weight === 1) {
-            this.drawOverlays(weight);
-        } else if (weight === 2) {
-
-        } else if (weight === 3) {
-
+    getWeightByZoomLevel(nowLevel) {
+        if (nowLevel > 9) {
+            console.log('시/도');
+            return 1;
+        } else if (nowLevel > 7 && nowLevel < 10) {
+            console.log('시/군/구');
+            return 2;
+        } else if (nowLevel > 3 && nowLevel < 8) {
+            console.log('읍/면/동');
+            return 3;
         }
     }
 }

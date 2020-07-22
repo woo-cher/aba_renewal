@@ -8,9 +8,7 @@
     <select id="findOverlays" resultMap="Overlay" parameterType="MapFiltersDto">
         SELECT id, center_x, center_y, name, count, weight
         FROM overlays WHERE (weight = #{weight})
-        <if test="#{east} != null">
-            AND (center_x BETWEEN #{west} AND #{east})
-            AND (center_y BETWEEN #{south} AND #{north})
-        </if>
+                      AND (center_x BETWEEN #{west} AND #{east})
+                      AND (center_y BETWEEN #{south} AND #{north})
     </select>
 </mapper>

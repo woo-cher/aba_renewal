@@ -1,8 +1,6 @@
 function getAllOverlays(weight, southWest, northEast) {
     let result;
 
-    console.log(southWest, northEast);
-
     $.ajax({
         url: '/overlays',
         type: 'POST',
@@ -13,7 +11,7 @@ function getAllOverlays(weight, southWest, northEast) {
             south: southWest.Ga,
             west: southWest.Ha,
             north: northEast.Ga,
-            east: northEast.Ha,
+            east: northEast.Ha
         }),
         success: function (overlays) {
             result = overlays;

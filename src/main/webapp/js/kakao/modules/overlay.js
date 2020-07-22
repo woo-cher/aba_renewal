@@ -17,12 +17,8 @@ class Overlay extends KakaoMap {
         }
 
         this.overlays.map((overlay) => {
-            // noinspection JSUnresolvedFunction
             overlay.setMap(null);
         });
-        // for (let index = 0; index < this.overlays.length; index++) {
-        //     this.overlays[index].setMap(null)
-        // }
     }
 
     drawOverlays(weightType, southWest, northEast) {

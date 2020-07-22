@@ -20,6 +20,7 @@ public class OverlayController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public List<Overlay> overlays(@RequestBody MapFiltersDto dto) {
+        logger.info("dto : {}", dto);
         return service.getOverlays(dto);
     }
 }
