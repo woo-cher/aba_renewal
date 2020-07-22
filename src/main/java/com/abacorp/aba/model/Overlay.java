@@ -15,8 +15,8 @@ public class Overlay extends ModelMapper {
     private static final Logger logger = LoggerFactory.getLogger(Overlay.class);
     private int count;
     private int weight;
-    private float centerX;
-    private float centerY;
+    private float latitude;
+    private float longitude;
     private String coordinates;
     private String name;
     private String belongs;

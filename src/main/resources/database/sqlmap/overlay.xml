@@ -6,10 +6,10 @@
     <resultMap id="Overlay" type="Overlay" />
 
     <select id="findOverlays" resultMap="Overlay" parameterType="MapFiltersDto">
-        SELECT id, center_x, center_y, name, count, weight
+        SELECT id, latitude, longitude, name, count, weight
         FROM overlays WHERE (weight = #{weight})
-                      AND (center_x BETWEEN #{west} AND #{east})
-                      AND (center_y BETWEEN #{south} AND #{north})
+                      AND (latitude BETWEEN #{west} AND #{east})
+                      AND (longitude BETWEEN #{south} AND #{north})
     </select>
 
     <select id="findOverlay" resultMap="Overlay" parameterType="int">

@@ -41,7 +41,7 @@ class Overlay extends KakaoMap {
 
             const kakaoOverlay = super.getCustomOverlay({
                 map: this.map,
-                position: super.getKakaoLatlng(overlay.centerX, overlay.centerY),
+                position: super.getKakaoLatlng(overlay.latitude, overlay.longitude),
                 content: overlayElement.getOverlayContents(weight),
                 clickable: true,
                 yAnchor: 1
@@ -121,7 +121,7 @@ class Overlay extends KakaoMap {
     mouseDblClickListener(overlayDom, overlay, weightCode) {
         overlayDom.customEventListener(weightCode,'dblclick', () => {
             this.recover(this.cacheMap.get(this.targetId));
-            this.setCenter(overlay.centerX, overlay.centerY);
+            this.setCenter(overlay.latitude, overlay.longitude);
             this.setLevel(this.getLevelWhenOverlayDoubleClick(weightCode), {
                 animate: {
                     duration: 350
