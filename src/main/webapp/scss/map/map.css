@@ -435,12 +435,14 @@ datalist option {
 }
 
 #title:hover #name,
-#title.clickable #name {
-  color: #00adef;
+.inner.clickable #name {
+  color: white;
+  background: #00adef;
 }
 #title:hover #count,
-#title.clickable #count {
-  color: white;
+.inner.clickable #count {
+  color: #00adef;
+  background: white;
 }
 
 #customSpot {

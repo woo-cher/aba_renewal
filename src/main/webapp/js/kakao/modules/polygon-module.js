@@ -3,8 +3,7 @@ class PolygonModule {
         return
     }
 
-    getPolygons(overlay) {
-        const coordinates = JSON.parse(overlay.coordinate); // json to array
+    getPolygons(coordinates) {
         const polygons = [];
 
         let paths = [];
@@ -44,8 +43,8 @@ class PolygonModule {
 
         polygons.map((polygon) => {
             polygon.setOptions({
-                fillColor: '#8353a9',
-                strokeColor: '#7300a9',
+                fillColor: '#00adef',
+                strokeColor: '#0088ff',
                 strokeOpacity: 0.5,
                 fillOpacity: 0.4
             })
@@ -128,7 +127,7 @@ class PolygonModule {
         }
     }
 
-     addClassElement(target) {
+     addClassElement(target, clazz) {
         target.classList.add(clazz)
     }
 

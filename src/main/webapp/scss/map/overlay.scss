@@ -87,13 +87,15 @@
 }
 
 #title:hover,
-#title.clickable {
+.inner.clickable {
   #name {
-    color: $abaColor;
+    color: white;
+    background: $abaColor;
   }
 
   #count {
-    color: white;
+    color: $abaColor;
+    background: white;
   }
 }
 

@@ -21,9 +21,10 @@ class MapManager extends Spot {
             this.southWest = this.getSouthWest();
             this.northEast = this.getNorthEast();
 
-            console.log('evt active !! : ', evt, level, this.southWest, this.northEast);
+            console.log('on ' + evt + ' active');
 
             this.clear();
+            this.fieldClear();
             const weight = this.getWeightByZoomLevel(level);
 
             this.drawOverlays(weight, this.southWest, this.northEast);

@@ -3,6 +3,9 @@ document.write("<script src='/js/kakao/ajax/ajax-repository.js'></script>");
 
 class Overlay extends KakaoMap {
     polygons = [];
+    target = undefined;
+    targetId = NaN;
+    last = [];
 
     constructor(mapElement) {
         super(mapElement);
@@ -14,7 +17,6 @@ class Overlay extends KakaoMap {
 
     clear() {
         if (this.overlays.length === 0) {
-            console.log('0');
             return;
         }
 
@@ -30,13 +32,12 @@ class Overlay extends KakaoMap {
             overlayElement.setTitle(weight, overlay.name);
             overlayElement.setCount(weight, overlay.count);
 
+            this.mouseEnterListener(overlayElement, overlay, weight);
+            this.mouseLeaveListener(overlayElement, overlay, weight);
+            this.mouseClickListener(overlayElement, overlay, weight);
+
             let weightCode = Object.keys(mapWeightType)[weight - 1];
-
-            // this.focusInListener(overlayElement, weight);
-            // this.focusOutListener(overlayElement, weight);
-            // this.clickListener(overlayElement, weight);
-
-            this.dbClickListener(overlayElement, overlay, weightCode);
+            this.mouseDblClickListener(overlayElement, overlay, weightCode);
 
             const kakaoOverlay = super.getCustomOverlay({
                 map: this.map,
@@ -52,89 +53,85 @@ class Overlay extends KakaoMap {
         })
     }
 
-    // focusInListener(overlayDom, overlay, weight) {
-    //     overlayDom.customEventListener(weight, 'mouseenter', () => {
-    //         clearTimeout(this.eventManager);
-    //
-    //         if (this.last !== null) {
-    //             this.recover(this.last)
-    //         }
-    //
-    //         this.eventManager = setTimeout(() => {
-    //             if (!this.cacheMap.has(ovl.id)) {
-    //                 Promise.resolve(this.repository.getCoordinates(ovl.id)).then(
-    //                     async (ovl: any) => {
-    //                         this.polygons = KakaoMap.getPolygons(ovl);
-    //                         this.last = polygons;
-    //                         this.cacheMap.set(ovl.id, polygons);
-    //                         paint(polygons)
-    //                     }
-    //                 )
-    //             } else {
-    //                 this.paint(this.cacheMap.get(ovl.id))
-    //             }
-    //         }, 0)
-    //     });
-    // }
-    //
-    // focusOutListener(overlay, weight) {
-    //     overlay.customEventListener(weight, 'mouseleave', async () => {
-    //         // this.eventManager = await setTimeout(async () => {
-    //         if (this.target === undefined) {
-    //             await recover(this.cacheMap.get(ovl.id));
-    //             return
-    //         }
-    //
-    //         if (!isContainClass(overlayElement.getInner(), 'clickable')) {
-    //             recover(this.cacheMap.get(ovl.id))
-    //         }
-    //         // }, 50)
-    //     });
-    // }
-    //
-    // clickListener(overlay, weight) {
-    //     overlay.customEventListener(weight, 'click', async () => {
-    //         // this.saleList.showLoading();
-    //         // this.saleList.pageReset();
-    //
-    //         if (ovl.id === this.targetId) {
-    //             return
-    //         }
-    //
-    //         if (this.target !== undefined) {
-    //             removeClassElement(this.target, 'clickable');
-    //             recover(this.cacheMap.get(this.targetId))
-    //         }
-    //
-    //         if (event !== undefined) {
-    //             this.target = event.currentTarget;
-    //             this.targetId = ovl.id
-    //         }
-    //
-    //         Promise.resolve(
-    //             await this.repository.getPropertiesByBelongs(ovl.name, this.filterDto)
-    //         ).then((data) => {
-    //             KakaoMap.propertiesInRect = data;
-    //             KakaoMap.doUpdated = false
-    //         });
-    //
-    //         addClassElement(this.target, 'clickable');
-    //
-    //         // 로딩바 숨김
-    //         // await setTimeout(this.saleList.hideLoading(), 1000)
-    //     });
-    // }
-    //
-    dbClickListener(overlayDom, overlay, weightCode) {
-        overlayDom.customEventListener(weightCode,'dblclick', () => {
-            // this.recover(this.cacheMap.get(overlayDom.id));
+    mouseEnterListener(overlayDom, overlay, weight) {
+        overlayDom.customEventListener(weight, 'mouseenter', () => {
+            clearTimeout(this.eventManager);
 
+            if(!this.target) {
+                this.recover(this.last);
+            }
+
+            this.eventManager = setTimeout(() => {
+                if (!this.cacheMap.has(overlay.id)) {
+                    this.polygons = this.getPolygons(getCoordinates(overlay.id));
+                    this.last = this.polygons;
+                    this.cacheMap.set(overlay.id, this.polygons);
+                    this.paint(this.polygons)
+                } else {
+                    this.polygons = this.cacheMap.get(overlay.id);
+
+                    this.paint(this.polygons);
+                    this.last = this.polygons;
+                }
+            }, 0)
+        });
+    }
+
+    mouseLeaveListener(overlayDom, overlay, weight) {
+        overlayDom.customEventListener(weight, 'mouseleave', () => {
+            if (!this.isContainClass(overlayDom.getInner(), 'clickable')) {
+                this.recover(this.cacheMap.get(overlay.id))
+            }
+        });
+    }
+
+    mouseClickListener(overlayDom, overlay, weight) {
+        overlayDom.customEventListener(weight, 'click', () => {
+            // this.saleList.showLoading();
+            // this.saleList.pageReset();
+
+            if (overlay.id === this.targetId) {
+                return
+            }
+
+            if (this.target !== undefined) {
+                this.removeClassElement(this.target, 'clickable');
+                this.recover(this.cacheMap.get(this.targetId))
+            }
+
+            if (event !== undefined) {
+                this.target = event.currentTarget;
+                this.targetId = overlay.id
+            }
+
+            // Promise.resolve(
+            //     await this.repository.getPropertiesByBelongs(ovl.name, this.filterDto)
+            // ).then((data) => {
+            //     KakaoMap.propertiesInRect = data;
+            //     KakaoMap.doUpdated = false
+            // });
+
+            this.addClassElement(this.target, 'clickable');
+
+            // 로딩바 숨김
+            // await setTimeout(this.saleList.hideLoading(), 1000)
+        });
+    }
+
+    mouseDblClickListener(overlayDom, overlay, weightCode) {
+        overlayDom.customEventListener(weightCode,'dblclick', () => {
+            this.recover(this.cacheMap.get(this.targetId));
             this.setCenter(overlay.centerX, overlay.centerY);
             this.setLevel(this.getLevelWhenOverlayDoubleClick(weightCode), {
                 animate: {
                     duration: 350
                 }
-            })
+            });
         });
+    }
+
+    fieldClear() {
+        this.target = undefined;
+        this.targetId = NaN;
     }
 }
