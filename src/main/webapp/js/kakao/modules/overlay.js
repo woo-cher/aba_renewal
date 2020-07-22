@@ -2,6 +2,8 @@ document.write("<script src='/js/kakao/factory/dom-creator.js'></script>");
 document.write("<script src='/js/kakao/ajax/ajax-repository.js'></script>");
 
 class Overlay extends KakaoMap {
+    polygons = [];
+
     constructor(mapElement) {
         super(mapElement);
 
@@ -21,61 +23,62 @@ class Overlay extends KakaoMap {
         });
     }
 
-    drawOverlays(weightType, southWest, northEast) {
-        getAllOverlays(weightType, southWest, northEast).map((ovl) => {
-            const overlayElement = new CustomDomCreator(ovl.id);
+    drawOverlays(weight, southWest, northEast) {
+        getAllOverlays(weight, southWest, northEast).map((overlay) => {
+            const overlayElement = new CustomDomCreator(overlay.id);
 
-            overlayElement.setTitle(weightType, ovl.name);
-            overlayElement.setCount(weightType, ovl.count);
+            overlayElement.setTitle(weight, overlay.name);
+            overlayElement.setCount(weight, overlay.count);
 
-            let polygons = [];
+            let weightCode = Object.keys(mapWeightType)[weight - 1];
 
-            // this.focusInListener(overlayElement, weightType);
-            // this.focusOutListener(overlayElement, weightType);
-            // this.clickListener(overlayElement, weightType);
-            // this.dbClickListener(overlayElement, weightType);
+            // this.focusInListener(overlayElement, weight);
+            // this.focusOutListener(overlayElement, weight);
+            // this.clickListener(overlayElement, weight);
 
-            const overlay = super.getCustomOverlay({
+            this.dbClickListener(overlayElement, overlay, weightCode);
+
+            const kakaoOverlay = super.getCustomOverlay({
                 map: this.map,
-                position: super.getKakaoLatlng(ovl.centerX, ovl.centerY),
-                content: overlayElement.getOverlayContents(weightType),
+                position: super.getKakaoLatlng(overlay.centerX, overlay.centerY),
+                content: overlayElement.getOverlayContents(weight),
                 clickable: true,
                 yAnchor: 1
             });
 
-            this.overlays.push(overlay);
+            this.overlays.push(kakaoOverlay);
 
-            polygons = []
+            this.polygons = []
         })
     }
 
-    // focusInListener(overlay, weightType) {
-    //     overlay.customEventListener(weightType, 'mouseenter', async () => {
-    //         await clearTimeout(this.eventManager);
+    // focusInListener(overlayDom, overlay, weight) {
+    //     overlayDom.customEventListener(weight, 'mouseenter', () => {
+    //         clearTimeout(this.eventManager);
     //
     //         if (this.last !== null) {
-    //             await recover(this.last)
+    //             this.recover(this.last)
     //         }
     //
-    //         this.eventManager = await setTimeout(() => {
+    //         this.eventManager = setTimeout(() => {
     //             if (!this.cacheMap.has(ovl.id)) {
     //                 Promise.resolve(this.repository.getCoordinates(ovl.id)).then(
     //                     async (ovl: any) => {
-    //                         polygons = await KakaoMap.getPolygons(ovl);
+    //                         this.polygons = KakaoMap.getPolygons(ovl);
     //                         this.last = polygons;
     //                         this.cacheMap.set(ovl.id, polygons);
     //                         paint(polygons)
     //                     }
     //                 )
     //             } else {
-    //                 paint(this.cacheMap.get(ovl.id))
+    //                 this.paint(this.cacheMap.get(ovl.id))
     //             }
     //         }, 0)
     //     });
     // }
     //
-    // focusOutListener(overlay, weightType) {
-    //     overlay.customEventListener(weightType, 'mouseleave', async () => {
+    // focusOutListener(overlay, weight) {
+    //     overlay.customEventListener(weight, 'mouseleave', async () => {
     //         // this.eventManager = await setTimeout(async () => {
     //         if (this.target === undefined) {
     //             await recover(this.cacheMap.get(ovl.id));
@@ -89,8 +92,8 @@ class Overlay extends KakaoMap {
     //     });
     // }
     //
-    // clickListener(overlay, weightType) {
-    //     overlay.customEventListener(weightType, 'click', async () => {
+    // clickListener(overlay, weight) {
+    //     overlay.customEventListener(weight, 'click', async () => {
     //         // this.saleList.showLoading();
     //         // this.saleList.pageReset();
     //
@@ -122,15 +125,16 @@ class Overlay extends KakaoMap {
     //     });
     // }
     //
-    // dbClickListener(overlay, weightType) {
-    //     overlay.customEventListener(weightType, 'dblclick', () => {
-    //         recover(this.cacheMap.get(ovl.id));
-    //         KakaoMap.map.setCenter(ovl.centerX, ovl.centerY);
-    //         KakaoMap.map.setLevel(getZoomLevelByTypeAndCode(weightType), {
-    //             animate: {
-    //                 duration: 350
-    //             }
-    //         })
-    //     });
-    // }
+    dbClickListener(overlayDom, overlay, weightCode) {
+        overlayDom.customEventListener(weightCode,'dblclick', () => {
+            // this.recover(this.cacheMap.get(overlayDom.id));
+
+            this.setCenter(overlay.centerX, overlay.centerY);
+            this.setLevel(this.getLevelWhenOverlayDoubleClick(weightCode), {
+                animate: {
+                    duration: 350
+                }
+            })
+        });
+    }
 }
