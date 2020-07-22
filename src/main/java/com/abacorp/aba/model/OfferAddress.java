@@ -8,12 +8,14 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Overlay extends ModelMapper {
-    private int count;
-    private int weight;
+public class OfferAddress {
+    private int offerId;
     private float latitude;
     private float longitude;
-    private String coordinates;
-    private String name;
-    private String belongs;
+    private String jibun;
+    private String road;
+    private String dong;
+    private String ho;
+    private String door;
+    private String nearLocation;
 }

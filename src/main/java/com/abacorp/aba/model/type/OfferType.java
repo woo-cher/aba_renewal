@@ -1,6 +1,7 @@
 package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
@@ -36,6 +37,16 @@ public enum OfferType implements TypeMapper {
     @Override
     public String getCode() {
         return name();
+    }
+
+    @JsonCreator
+    public static OfferType create(String code) {
+        for (OfferType offerType : values()) {
+            if (offerType.getCode().equals(code)) {
+                return offerType;
+            }
+        }
+        return UNKNOWN;
     }
 
     @Override

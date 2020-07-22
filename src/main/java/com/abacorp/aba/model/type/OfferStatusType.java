@@ -4,22 +4,20 @@ import com.abacorp.aba.model.mapper.TypeMapper;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum HeatingType implements TypeMapper {
+public enum OfferStatusType implements TypeMapper {
 
-    UNKOWN("UNKOWN"),
+    UNKNOWN("UNKNOWN"),
 
     /**
-     * 난방유형
+     * 거래 유형
      */
-    GAS("도시가스"),
-    LPG("LPG"),
-    OIL("기름보일러"),
-    ELECT("심야전기"),
-    PANEL("판넬");
+    ON("진행중"),
+    OFF("미진행"),
+    HIDE("숨김");
 
     private String value;
 
-    HeatingType(String value) {
+    OfferStatusType(String value) {
         this.value = value;
     }
 
@@ -35,7 +33,7 @@ public enum HeatingType implements TypeMapper {
 
     @Override
     public String toString() {
-        return "HeatingType {" +
+        return "OfferStatusType {" +
                 "value='" + value + '\'' +
                 '}';
     }

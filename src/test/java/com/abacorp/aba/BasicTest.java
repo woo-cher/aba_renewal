@@ -1,6 +1,7 @@
 package com.abacorp.aba;
 
 import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.abacorp.aba.model.type.OfferType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -15,5 +16,11 @@ public class BasicTest {
     public void noArgsConstructor() {
         MapFiltersDto filtersDto = new MapFiltersDto();
         logger.error("a : {}", filtersDto.getEast());
+    }
+
+    @Test
+    public void enumTest() {
+        String code = "ONE_ROOM";
+        logger.info("result : {}", OfferType.create(code).getValue());
     }
 }
