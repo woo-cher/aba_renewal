@@ -16,11 +16,16 @@ public class OverlayController {
     private static final Logger logger = LoggerFactory.getLogger(OverlayController.class);
 
     @Autowired
-    MapService service;
+    private MapService service;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public List<Overlay> overlays(@RequestBody MapFiltersDto dto) {
         logger.info("dto : {}", dto);
         return service.getOverlays(dto);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Overlay show(@PathVariable int id) {
+        return service.getOverlay(id);
     }
 }

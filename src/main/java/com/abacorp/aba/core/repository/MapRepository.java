@@ -17,7 +17,11 @@ public class MapRepository {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<Overlay> findAll(MapFiltersDto mapFiltersDto) {
+    public List<Overlay> findOverlaysByFilters(MapFiltersDto mapFiltersDto) {
         return sqlSession.selectList("findOverlays", mapFiltersDto);
+    }
+
+    public Overlay findOverlayById(int id) {
+        return sqlSession.selectOne("findOverlay", id);
     }
 }

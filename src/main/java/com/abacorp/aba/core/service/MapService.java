@@ -18,6 +18,10 @@ public class MapService {
     private MapRepository repository;
 
     public List<Overlay> getOverlays(MapFiltersDto dto) {
-        return repository.findAll(dto);
+        return repository.findOverlaysByFilters(dto);
+    }
+
+    public Overlay getOverlay(int id) {
+        return repository.findOverlayById(id);
     }
 }

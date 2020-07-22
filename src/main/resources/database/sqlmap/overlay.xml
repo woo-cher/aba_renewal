@@ -11,4 +11,8 @@
                       AND (center_x BETWEEN #{west} AND #{east})
                       AND (center_y BETWEEN #{south} AND #{north})
     </select>
+
+    <select id="findOverlay" resultMap="Overlay" parameterType="int">
+        SELECT id, coordinates, name FROM overlays WHERE (id = #{id})
+    </select>
 </mapper>
