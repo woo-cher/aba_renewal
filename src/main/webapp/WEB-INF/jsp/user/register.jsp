@@ -89,13 +89,13 @@
                     </div>
                     <div class="form-category">
                         <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="아이디" name="userId"
+                            <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
                                    pattern="^([A-Za-z0-9])+"
                                    oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                             >
-                            <p class="addr"><i class="fas fa-user-check"></i></p>
-                            <p class="aba m-auto">사용 가능해요 :)</p>
+                            <p class="icon" onclick="checkUserExist(userId.value)"><i class="fas fa-user-check"></i></p>
+                            <p class="aba m-auto check-user"></p>
                         </div>
                         <input required autofocus type="password" placeholder="비밀번호" name="password"
                                oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
@@ -134,7 +134,7 @@
                         </div>
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="주소 or 사무실주소" name="jibunAddr">
-                            <p class="addr"><i class="fas fa-search"></i></p>
+                            <p class="icon"><i class="fas fa-search"></i></p>
                         </div>
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="아바아파트 3동" name="extraAddr">
@@ -154,14 +154,14 @@
                         <span>추가정보</span>
                     </div>
                     <div class="form-category agent" hidden>
-                        <input required autofocus type="text" placeholder="중개업소 상호명" name="agentName">
-                        <input required autofocus type="text" placeholder="중개업소 등록번호" name="agentNumber">
+                        <input type="text" placeholder="중개업소 상호명" name="agentName">
+                        <input type="text" placeholder="중개업소 등록번호" name="agentNumber">
                         <div class="input-group">
-                            <input required autofocus type="text" class="short" placeholder="사무실 연락처" name="agentPhone">
+                            <input type="text" class="short" placeholder="사무실 연락처" name="agentPhone">
                             <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="agentPhone">
+                            <input type="text" class="short" placeholder="####" name="agentPhone">
                             <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="agentPhone">
+                            <input type="text" class="short" placeholder="####" name="agentPhone">
                         </div>
                     </div>
                     <div class="form-category">
@@ -197,6 +197,8 @@
 </html>
 
 <script>
+    let isChecked = false;
+
     $(document).ready(() => {
         $('input[type="radio"]').click(function (e) {
             $('.error').remove();
@@ -206,14 +208,50 @@
 
             if(current.value === "BROKER" || current.value === "ASSISTANT") {
                 $('.agent').show();
+                $('.agent > input').attr("required", "true");
             }
         });
     });
+
+    function checkUserExist(userId) {
+        if(userId === '') {
+            alert("ID를 입력안했어요 :)");
+            return;
+        }
+
+        $.ajax({
+            url: '/users/' + userId,
+            type: 'GET',
+            async: false,
+            success: function (isExist) {
+                if(isExist) {
+                    isChecked = false;
+                    $('.check-user').text("사용 불가한 아이디예요 :(");
+                    $('.check-user').css("color", "red");
+                    $('#userId').css("border", "2px solid red");
+                } else {
+                    isChecked = true;
+                    $('.check-user').text("사용 가능해요 :)");
+                    $('.check-user').css("color", "#00adef");
+                    $('#userId').css("border", "1px solid #ccc");
+                }
+            },
+            error: () => { alert('error') }
+        })
+    }
 
     function formValidator() {
         let userTypes = $('input[type="radio"]');
         let doSubmit = false;
 
+        if(!isChecked) {
+            $('.check-user').text('중복을 확인해주세요! :)');
+            moveScroll($("#userId").offset().top);
+
+            return false;
+        }
+
+        // User type check
         for(let i = 0; i < userTypes.length; i++) {
             if($(userTypes[i]).prop("checked")) {
                 doSubmit = true;
@@ -227,7 +265,7 @@
             selector.append(
                 '<p class="error">' +
                 '<i class="fas fa-exclamation-circle">' +
-                '</i> 유형을 하나 골라주세요! :)</p>'
+                '</i> 회원 유형을 선택해주세요! :)</p>'
             );
 
             moveScroll(selector.offset().top);

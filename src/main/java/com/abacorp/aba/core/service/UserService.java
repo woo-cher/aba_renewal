@@ -40,11 +40,22 @@ public class UserService implements UserDetailsService {
         user.setPassword(encoder.encode(natural));
 
         user.setPhone(user.getPhone().replaceAll(",", ""));
+        user.setAgentPhone(user.getAgentPhone().replaceAll(",", ""));
         user.setEmail(user.getEmail().replaceAll(",", "@"));
         user.setExtraAddr(user.getExtraAddr().replaceAll(",", " "));
 
         logger.error("after user : {}", user);
 
         return this.repository.create(user);
+    }
+
+    public boolean isExistUser(String userId) {
+        User user = repository.selectById(userId);
+
+        if(user == null) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -178,7 +178,7 @@ article[class=content-wrap] .form-category.agree {
 .form-control .input-group p.none {
   width: 20px;
 }
-.form-control .input-group p.mail, .form-control .input-group p.addr {
+.form-control .input-group p.mail, .form-control .input-group p.icon {
   width: 30px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
@@ -188,16 +188,16 @@ article[class=content-wrap] .form-category.agree {
 .form-control .input-group p.short {
   margin: 0 2%;
 }
-.form-control .input-group p.addr {
+.form-control .input-group p.icon {
   width: 50px;
   cursor: pointer;
 }
-.form-control .input-group p.addr:hover {
+.form-control .input-group p.icon:hover {
   background: #f3f3f3 !important;
   border: 0.1px solid #00adef;
   color: #00adef;
 }
-.form-control .input-group p.addr:hover i {
+.form-control .input-group p.icon:hover i {
   zoom: 1.25;
 }
 .form-control .input-group input {

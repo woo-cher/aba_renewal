@@ -37,4 +37,12 @@ public class UserTest {
         assertNotNull(dbUser);
         assertThat(TEST_USER, is(dbUser));
     }
+
+    @Test
+    public void checkForUserExist() {
+        String noneUserId = "none";
+        User dbUser = repository.selectById(noneUserId);
+
+        assertNull(dbUser);
+    }
 }
