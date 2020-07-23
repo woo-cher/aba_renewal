@@ -57,12 +57,8 @@
 
         <section class="form-control" id="register-area" hidden>
             <%-- Form --%>
-            <form id="registerForm" action="/users/create" method="post">
+            <form id="registerForm" action="/users/create" method="post" onsubmit="return formValidator()">
                 <div class="form-warp">
-                    <div class="form-label">
-                        <i class="fas fa-circle"></i>
-                        <span>기본항목</span>
-                    </div>
                     <div class="form-category">
                         <div class="form-label">
                             <span class="form-label mini">
@@ -70,7 +66,7 @@
                                 회원유형
                             </span>
                         </div>
-                        <ul class="checkbox-container form">
+                        <ul class="checkbox-container form type">
                             <li class="checkbox-list">
                                 <input id="qq" type="radio" name="type" value="OWNER" class="check">
                                 <label for="qq">집주인</label>
@@ -84,11 +80,23 @@
                                 <label for="ee">중개보조원</label>
                             </li>
                         </ul>
-                        <input required autofocus type="text" placeholder="아이디" name="userId"
-                               pattern="^([A-Za-z0-9])+"
-                               oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
-                               oninput="this.setCustomValidity(''); this.checkValidity()"
-                        >
+                    </div>
+                </div>
+                <div class="form-warp">
+                    <div class="form-label">
+                        <i class="fas fa-circle"></i>
+                        <span>기본항목</span>
+                    </div>
+                    <div class="form-category">
+                        <div class="input-group">
+                            <input required autofocus type="text" class="middle" placeholder="아이디" name="userId"
+                                   pattern="^([A-Za-z0-9])+"
+                                   oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                            >
+                            <p class="addr"><i class="fas fa-user-check"></i></p>
+                            <p class="aba m-auto">사용 가능해요 :)</p>
+                        </div>
                         <input required autofocus type="password" placeholder="비밀번호" name="password"
                                oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -125,11 +133,12 @@
                             <input required autofocus type="text" class="short" placeholder="####" name="phone">
                         </div>
                         <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="주소" name="jibunAddr">
+                            <input required autofocus type="text" class="middle" placeholder="주소 or 사무실주소" name="jibunAddr">
                             <p class="addr"><i class="fas fa-search"></i></p>
                         </div>
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="아바아파트 3동" name="extraAddr">
+                            &nbsp;
                             <input required autofocus type="text" class="short" placeholder="510호" name="extraAddr">
                         </div>
                         <p class="error" hidden>
@@ -143,6 +152,17 @@
                     <div class="form-label">
                         <i class="fas fa-circle"></i>
                         <span>추가정보</span>
+                    </div>
+                    <div class="form-category agent" hidden>
+                        <input required autofocus type="text" placeholder="중개업소 상호명" name="agentName">
+                        <input required autofocus type="text" placeholder="중개업소 등록번호" name="agentNumber">
+                        <div class="input-group">
+                            <input required autofocus type="text" class="short" placeholder="사무실 연락처" name="agentPhone">
+                            <p class="short">-</p>
+                            <input required autofocus type="text" class="short" placeholder="####" name="agentPhone">
+                            <p class="short">-</p>
+                            <input required autofocus type="text" class="short" placeholder="####" name="agentPhone">
+                        </div>
                     </div>
                     <div class="form-category">
                         <ul class="checkbox-container form">
@@ -177,6 +197,45 @@
 </html>
 
 <script>
+    $(document).ready(() => {
+        $('input[type="radio"]').click(function (e) {
+            $('.error').remove();
+            $('.agent').hide();
+
+            const current = e.currentTarget;
+
+            if(current.value === "BROKER" || current.value === "ASSISTANT") {
+                $('.agent').show();
+            }
+        });
+    });
+
+    function formValidator() {
+        let userTypes = $('input[type="radio"]');
+        let doSubmit = false;
+
+        for(let i = 0; i < userTypes.length; i++) {
+            if($(userTypes[i]).prop("checked")) {
+                doSubmit = true;
+                return;
+            }
+        }
+
+        if(!doSubmit) {
+            const selector = $('.checkbox-container.type').parent();
+
+            selector.append(
+                '<p class="error">' +
+                '<i class="fas fa-exclamation-circle">' +
+                '</i> 유형을 하나 골라주세요! :)</p>'
+            );
+
+            moveScroll(selector.offset().top);
+        }
+
+        return doSubmit;
+    }
+
     function agreeAll() {
         let agrees = $('input[name="agree"]');
         let isChecked = $('#agree-all').prop("checked");
@@ -188,7 +247,7 @@
         isChecked = true;
 
         agrees.next().removeClass('invalid');
-        $('.error').remove();
+        $('.error.agree').remove();
 
         if(isChecked) {
             moveScroll($("#join").offset().top);
