@@ -1,6 +1,8 @@
 package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
+import com.abacorp.aba.security.CustomUserDetails;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -9,8 +11,12 @@ public enum UserRoleType implements TypeMapper {
     /**
      * 유저 권한
      */
-    ADMIN("ADMIN"),
-    USER("USER"),
+    UNKNOWN("UNKNOWN"),
+
+    MASTER("대표"),
+    ADMIN("관리자"),
+    USER("일반사용자"),
+    PREMIUM("유료사용자"),
 
     ANONYMOUS("ANONYMOUS");
 
@@ -27,12 +33,23 @@ public enum UserRoleType implements TypeMapper {
 
     @Override
     public String getCode() {
-        return name();
+        return CustomUserDetails.ROLE_PREFIX + name();
+    }
+
+    @JsonCreator
+    public static UserRoleType create(String code) {
+        for (UserRoleType userType : values()) {
+            if (userType.equals(UserRoleType.valueOf(code))) {
+                return userType;
+            }
+        }
+        return UNKNOWN;
     }
 
     @Override
     public String toString() {
-        return "PropertyType {" +
+        return "UserRoleType {" +
+                "code='" + getCode() + '\'' +
                 "value='" + value + '\'' +
                 '}';
     }

@@ -1,6 +1,6 @@
 package com.abacorp.aba.model.mapper;
 
 public interface TypeMapper {
-    String getCode();
-    String getValue();
+    String getCode();   // Key
+    String getValue();  // Value
 }

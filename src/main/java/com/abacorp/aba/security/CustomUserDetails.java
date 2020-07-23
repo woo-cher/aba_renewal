@@ -1,6 +1,7 @@
 package com.abacorp.aba.security;
 
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.type.UserRoleType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +25,8 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+
+        authorities.add(new SimpleGrantedAuthority(user.getRole().getCode()));
 
         return authorities;
     }

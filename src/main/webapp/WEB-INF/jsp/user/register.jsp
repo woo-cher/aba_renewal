@@ -57,7 +57,7 @@
 
         <section class="form-control" id="register-area" hidden>
             <%-- Form --%>
-            <form action="/user/create" method="post">
+            <form id="registerForm" action="/users/create" method="post">
                 <div class="form-warp">
                     <div class="form-label">
                         <i class="fas fa-circle"></i>
@@ -72,19 +72,19 @@
                         </div>
                         <ul class="checkbox-container form">
                             <li class="checkbox-list">
-                                <input id="qq" type="radio" name="userType" value="" class="check">
+                                <input id="qq" type="radio" name="type" value="OWNER" class="check">
                                 <label for="qq">집주인</label>
                             </li>
                             <li class="checkbox-list">
-                                <input id="ww" type="radio" name="userType" value="" class="check">
+                                <input id="ww" type="radio" name="type" value="BROKER" class="check">
                                 <label for="ww">공인중개사</label>
                             </li>
                             <li class="checkbox-list">
-                                <input id="ee" type="radio" name="userType" value="" class="check">
+                                <input id="ee" type="radio" name="type" value="ASSISTANT" class="check">
                                 <label for="ee">중개보조원</label>
                             </li>
                         </ul>
-                        <input required autofocus type="text" placeholder="아이디" name="username"
+                        <input required autofocus type="text" placeholder="아이디" name="userId"
                                pattern="^([A-Za-z0-9])+"
                                oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -93,11 +93,11 @@
                                oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
                         >
-                        <input required autofocus type="password" placeholder="비밀번호 확인" name="password"
+                        <input required autofocus type="password" placeholder="비밀번호 확인"
                                oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
                         >
-                        <input required autofocus type="text" placeholder="닉네임" name="">
+                        <input required autofocus type="text" placeholder="닉네임" name="nickName">
                         <p class="error" hidden>
                             <i class="fas fa-exclamation-circle">
                             Error Message
@@ -111,27 +111,26 @@
                         <span>개인정보</span>
                     </div>
                     <div class="form-category">
-                        <input required autofocus type="text" placeholder="이름" name="">
+                        <input required autofocus type="text" placeholder="이름" name="name">
                         <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="이메일" name="">
+                            <input required autofocus type="text" class="middle" placeholder="이메일" name="email">
                             <p class="mail"><i class="fas fa-at"></i></p>
-                            <input required autofocus type="text" class="middle" placeholder="도메인" name="">
+                            <input required autofocus type="text" class="middle" placeholder="도메인" name="email">
                         </div>
                         <div class="input-group">
-                            <input required autofocus type="text" class="short" placeholder="010" name="">
+                            <input required autofocus type="text" class="short" placeholder="010" name="phone">
                             <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="">
+                            <input required autofocus type="text" class="short" placeholder="####" name="phone">
                             <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="">
+                            <input required autofocus type="text" class="short" placeholder="####" name="phone">
                         </div>
                         <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="주소" name="">
+                            <input required autofocus type="text" class="middle" placeholder="주소" name="jibunAddr">
                             <p class="addr"><i class="fas fa-search"></i></p>
                         </div>
                         <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="아바아파트 3동" name="">
-                            &nbsp;
-                            <input required autofocus type="text" class="short" placeholder="510호" name="">
+                            <input required autofocus type="text" class="middle" placeholder="아바아파트 3동" name="extraAddr">
+                            <input required autofocus type="text" class="short" placeholder="510호" name="extraAddr">
                         </div>
                         <p class="error" hidden>
                             <i class="fas fa-exclamation-circle">

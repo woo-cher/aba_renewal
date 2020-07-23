@@ -2,6 +2,7 @@ package com.abacorp.aba;
 
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.UserRoleType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -22,5 +23,8 @@ public class BasicTest {
     public void enumTest() {
         String code = "ONE_ROOM";
         logger.info("result : {}", OfferType.create(code).getValue());
+
+        String dbValue = "MASTER";
+        logger.info("result : {}", UserRoleType.create(dbValue).getCode());
     }
 }

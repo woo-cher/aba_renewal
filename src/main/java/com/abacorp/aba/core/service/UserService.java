@@ -33,17 +33,17 @@ public class UserService implements UserDetailsService {
         return new CustomUserDetails(user);
     }
 
-    public User findById(String userId) {
-        return this.repository.selectById(userId);
-    }
-
     public int createUser(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         String natural = user.getPassword();
-
         user.setPassword(encoder.encode(natural));
-        user.setRole(CustomUserDetails.ROLE_PREFIX + user.getRole());
+
+        user.setPhone(user.getPhone().replaceAll(",", ""));
+        user.setEmail(user.getEmail().replaceAll(",", "@"));
+        user.setExtraAddr(user.getExtraAddr().replaceAll(",", " "));
+
+        logger.error("after user : {}", user);
 
         return this.repository.create(user);
     }
