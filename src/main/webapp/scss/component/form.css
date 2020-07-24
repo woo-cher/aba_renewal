@@ -1,8 +1,10 @@
 @charset "UTF-8";
 /* Input invalid */
 .invalid {
+  color: red !important;
+}
+.invalid.b-1r {
   border: 1px solid red !important;
-  color: red;
 }
 .invalid .aba {
   color: red;
@@ -155,6 +157,9 @@ article[class=content-wrap] .form-category.agree {
 }
 .form-control input::placeholder {
   color: gray;
+}
+.form-control input.large {
+  width: 70%;
 }
 .form-control input.middle {
   width: 50%;

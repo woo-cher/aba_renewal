@@ -2,8 +2,11 @@ $abaColor: #00adef;
 
 /* Input invalid */
 .invalid {
-  border: 1px solid red !important;
-  color: red;
+  color: red !important;
+
+  &.b-1r {
+    border: 1px solid red !important;
+  }
 
   .aba {
     color: red;

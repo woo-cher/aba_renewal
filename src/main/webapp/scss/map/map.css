@@ -32,8 +32,10 @@
 
 /* Input invalid */
 .invalid {
+  color: red !important;
+}
+.invalid.b-1r {
   border: 1px solid red !important;
-  color: red;
 }
 .invalid .aba {
   color: red;

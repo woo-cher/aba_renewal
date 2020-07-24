@@ -93,19 +93,22 @@
                                    pattern="^[A-Za-z][A-Za-z0-9]{0,11}"
                                    oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="userIdValidator(this)"
+                                   onkeyup="userIdValidator($(this))"
                             >
-                            <p class="icon" onclick="checkUserExist(userId.value)"><i class="fas fa-user-check"></i></p>
+                            <p class="icon" onclick="checkUserExist($(this).prev())"><i class="fas fa-user-check"></i></p>
                             <p class="aba m-auto check-user"></p>
                         </div>
-                        <input required autofocus type="password" placeholder="비밀번호" name="password"
+                        <input required autofocus type="password" placeholder="비밀번호" id="password" name="password"
                                oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
+                               onkeyup="passwordValidator()"
                         >
-                        <input required autofocus type="password" placeholder="비밀번호 확인"
+                        <input required autofocus type="password" placeholder="비밀번호 확인" id="cPassword"
                                oninvalid="this.setCustomValidity(`비밀번호를 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
+                               onkeyup="passwordValidator()"
                         >
+                        <p class="aba m-auto check-password" hidden></p>
                         <input required autofocus type="text" placeholder="닉네임" name="nickName">
                         <p class="error" hidden>
                             <i class="fas fa-exclamation-circle">
@@ -124,21 +127,21 @@
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="이메일" name="email">
                             <p class="mail"><i class="fas fa-at"></i></p>
-                            <input required autofocus type="text" class="middle" placeholder="도메인" name="email">
+                            <input required autofocus type="text" class="middle" placeholder="도메인 (옵션으로바꿀껏)" name="email">
                         </div>
                         <div class="input-group">
                             <input required disabled autofocus type="text" class="short" placeholder="010" name="phone">
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{1,4}"
-                                   oninvalid="this.setCustomValidity(`숫자만 입력해주세요 :)`)"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="phoneNumberValidator(this)"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{1,4}"
-                                   oninvalid="this.setCustomValidity(`숫자만 입력해주세요 :)`)"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="phoneNumberValidator(this)"
                             >
@@ -208,7 +211,8 @@
 </html>
 
 <script>
-    let isChecked = false;
+    let isUserTypeChecked = false;
+    let canSubmit = false;
 
     $(document).ready(() => {
         $('input[type="radio"]').click(function (e) {
@@ -224,15 +228,19 @@
         });
     });
 
-    function checkUserExist(userId) {
-        if(userIdValidator(userId) === null) {
-            alert("영문, 숫자만 입력 가능해요!");
+    function checkUserExist(selector) {
+        const errorArea = $('.check-user');
+        const userId = selector.val();
+
+        if(userId === '') {
+            errorArea.text('ID를 입력해주세요 :)');
+            errorArea.removeClass('invalid b-1r');
             return;
         }
 
-        if(userId === '') {
-            alert("ID를 입력안했어요 :)");
-            $('.check-user').text("");
+        if(userIdValidator(selector).length < 4) {
+            errorArea.text('최소 4자 이상입니다! :P');
+            errorArea.addClass('invalid');
             return;
         }
 
@@ -242,15 +250,15 @@
             async: false,
             success: function (isExist) {
                 if(isExist) {
-                    isChecked = false;
-                    $('.check-user').text("사용 불가한 아이디예요 :(");
-                    $('.check-user').css("color", "red");
-                    $('#userId').css("border", "2px solid red");
+                    isUserTypeChecked = false;
+                    errorArea.text("사용 불가한 아이디예요 :(");
+                    errorArea.addClass("invalid");
+                    selector.addClass("invalid b-1r");
                 } else {
-                    isChecked = true;
-                    $('.check-user').text("사용 가능해요 :)");
-                    $('.check-user').css("color", "#00adef");
-                    $('#userId').css("border", "1px solid #ccc");
+                    isUserTypeChecked = true;
+                    errorArea.text("사용 가능해요 :)");
+                    errorArea.removeClass("invalid");
+                    selector.removeClass("invalid b-1r");
                 }
             },
             error: () => { alert('error') }
@@ -261,7 +269,7 @@
         let userTypes = $('input[type="radio"]');
         let doSubmit = false;
 
-        if(!isChecked) {
+        if(!isUserTypeChecked) {
             $('.check-user').text("중복을 확인해주세요! :)");
             moveScroll($("#userId").offset().top);
 
@@ -332,7 +340,7 @@
                         );
                 }
 
-                selector.next().addClass('invalid');
+                selector.next().addClass('invalid b-1r');
 
                 return
             }
@@ -345,18 +353,21 @@
     }
 
     function userIdValidator(focus) {
-        let idRegex = new RegExp(focus.pattern);
-        let result = idRegex.exec(focus.value);
+        let idRegex = new RegExp(focus.attr('pattern'));
+        let result = idRegex.exec(focus.val());
 
         if(result === null) {
             $(focus).val('');
         } else {
-            if(result[0].length === 12) {
+            if(result.length === 12) {
                 $('.check-user').text("최대 12자까지 가능해요 :)")
             }
 
-            $(focus).val(result);
+            $('#userId').text(result['0']);
         }
+
+
+        return result['0'];
     }
 
     function phoneNumberValidator(focus) {
@@ -364,5 +375,36 @@
         let result = idRegex.exec(focus.value);
 
         $(focus).val(result);
+    }
+
+    function passwordValidator() {
+        const errorArea = $('.check-password');
+        const focus = $('#cPassword');
+        const clazz = "invalid b-1r";
+
+        const matcher = focus.prev().val();
+        const actual = focus.val();
+
+        if(actual === '') {
+            errorArea.hide();
+        } else if(matcher === actual) {
+            errorArea.removeClass('invalid');
+            errorArea.text('비밀번호가 일치해요 :D');
+
+            focus.removeClass(clazz);
+            focus.prev().removeClass(clazz);
+
+            canSubmit = true;
+        } else {
+            errorArea.addClass('invalid');
+            errorArea.text('두 비밀번호가 틀려요 :(');
+
+            focus.addClass(clazz);
+            focus.prev().addClass(clazz);
+
+            canSubmit = false;
+        }
+
+        errorArea.show();
     }
 </script>
