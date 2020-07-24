@@ -13,6 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Service
 public class UserService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -53,6 +56,7 @@ public class UserService implements UserDetailsService {
         User user = repository.selectById(userId);
 
         if(user == null) {
+            logger.info("user not found at database");
             return false;
         }
 

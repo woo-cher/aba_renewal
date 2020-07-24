@@ -90,9 +90,10 @@
                     <div class="form-category">
                         <div class="input-group">
                             <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
-                                   pattern="^([A-Za-z0-9])+"
+                                   pattern="^[A-Za-z][A-Za-z0-9]{0,11}"
                                    oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="userIdValidator(this)"
                             >
                             <p class="icon" onclick="checkUserExist(userId.value)"><i class="fas fa-user-check"></i></p>
                             <p class="aba m-auto check-user"></p>
@@ -126,11 +127,21 @@
                             <input required autofocus type="text" class="middle" placeholder="도메인" name="email">
                         </div>
                         <div class="input-group">
-                            <input required autofocus type="text" class="short" placeholder="010" name="phone">
+                            <input required disabled autofocus type="text" class="short" placeholder="010" name="phone">
                             <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="phone">
+                            <input required autofocus type="text" class="short" placeholder="####" name="phone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자만 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="phoneNumberValidator(this)"
+                            >
                             <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="phone">
+                            <input required autofocus type="text" class="short" placeholder="####" name="phone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자만 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="phoneNumberValidator(this)"
+                            >
                         </div>
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="주소 or 사무실주소" name="jibunAddr">
@@ -214,8 +225,14 @@
     });
 
     function checkUserExist(userId) {
+        if(userIdValidator(userId) === null) {
+            alert("영문, 숫자만 입력 가능해요!");
+            return;
+        }
+
         if(userId === '') {
             alert("ID를 입력안했어요 :)");
+            $('.check-user').text("");
             return;
         }
 
@@ -245,7 +262,7 @@
         let doSubmit = false;
 
         if(!isChecked) {
-            $('.check-user').text('중복을 확인해주세요! :)');
+            $('.check-user').text("중복을 확인해주세요! :)");
             moveScroll($("#userId").offset().top);
 
             return false;
@@ -325,5 +342,27 @@
         $("#register-area").show();
 
         moveScroll($("#top").offset().top);
+    }
+
+    function userIdValidator(focus) {
+        let idRegex = new RegExp(focus.pattern);
+        let result = idRegex.exec(focus.value);
+
+        if(result === null) {
+            $(focus).val('');
+        } else {
+            if(result[0].length === 12) {
+                $('.check-user').text("최대 12자까지 가능해요 :)")
+            }
+
+            $(focus).val(result);
+        }
+    }
+
+    function phoneNumberValidator(focus) {
+        let idRegex = new RegExp(focus.pattern);
+        let result = idRegex.exec(focus.value);
+
+        $(focus).val(result);
     }
 </script>
