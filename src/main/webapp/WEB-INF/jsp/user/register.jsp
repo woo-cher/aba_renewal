@@ -151,15 +151,24 @@
                                    onkeyup="keywordConverter(this)"
                             >
                         </div>
-                        <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="주소 or 사무실주소" name="jibunAddr">
+                        <div class="input-group owner">
+                            <input autofocus type="text" class="middle" placeholder="자택주소" name="jibunAddr">
                             <p class="icon"><i class="fas fa-search"></i></p>
                         </div>
-                        <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="아바아파트 3동" name="extraAddr">
+                        <div class="input-group owner">
+                            <input autofocus type="text" class="middle" placeholder="아바아파트 3동" name="extraAddr">
                             &nbsp;
-                            <input required autofocus type="text" class="short" placeholder="510호" name="extraAddr">
+                            <input autofocus type="text" class="short" placeholder="510호" name="extraAddr">
                         </div>
+
+                        <div class="input-group agent" style="display: none !important;">
+                            <input autofocus type="text" class="middle" placeholder="사무실주소" name="jibunAddr">
+                            <p class="icon"><i class="fas fa-search"></i></p>
+                        </div>
+                        <div class="input-group agent" style="display: none !important;">
+                            <input autofocus type="text" class="middle" placeholder="아바공인중개사" name="extraAddr">
+                        </div>
+
                         <p class="error" hidden>
                             <i class="fas fa-exclamation-circle">
                                 Error Message
@@ -252,8 +261,13 @@
             const current = e.currentTarget;
 
             if(current.value === "BROKER" || current.value === "ASSISTANT") {
+                $('.owner').hide();
+
                 $('.agent').show();
                 $('.agent > input').attr("required", "true");
+            } else {
+                $('.owner').show();
+                $('.owner > input').attr("required", "true");
             }
         });
     });
@@ -404,10 +418,6 @@
         }
 
         errorArea.show();
-    }
-
-    function userTypeValidator() {
-
     }
 
     function submitValidator() {
