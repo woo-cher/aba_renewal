@@ -130,20 +130,25 @@
                             <input required autofocus type="text" class="middle" placeholder="도메인 (옵션으로바꿀껏)" name="email">
                         </div>
                         <div class="input-group">
-                            <input required disabled autofocus type="text" class="short" placeholder="010" name="phone">
-                            <p class="short">-</p>
-                            <input required autofocus type="text" class="short" placeholder="####" name="phone"
-                                   pattern="^[0-9]{1,4}"
+                            <input required disabled autofocus type="text" class="short" placeholder="010" name="phone"
+                                   pattern="^[0-9]{1,3}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="phoneNumberValidator(this)"
+                                   onkeyup="keywordConverter(this)"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="phoneNumberValidator(this)"
+                                   onkeyup="keywordConverter(this)"
+                            >
+                            <p class="short">-</p>
+                            <input required autofocus type="text" class="short" placeholder="####" name="phone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="keywordConverter(this)"
                             >
                         </div>
                         <div class="input-group">
@@ -168,14 +173,39 @@
                         <span>추가정보</span>
                     </div>
                     <div class="form-category agent" hidden>
-                        <input type="text" placeholder="중개업소 상호명" name="agentName">
-                        <input type="text" placeholder="중개업소 등록번호" name="agentNumber">
+                        <input type="text" placeholder="중개업소 상호명" name="agentName"
+                               pattern="^[가-힣A-Za-z0-9]*"
+                               oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
+                               oninput="this.setCustomValidity(''); this.checkValidity()"
+                               onkeyup="keywordConverter(this)"
+                        >
+                        <input type="text" placeholder="중개업소 등록번호" name="agentNumber"
+                               pattern="^[가-힣0-9-]*"
+                               oninvalid="this.setCustomValidity(`등록번호 형식에 맞지 않아요 :(`)"
+                               oninput="this.setCustomValidity(''); this.checkValidity()"
+                               onkeyup="keywordConverter(this)"
+                        >
                         <div class="input-group">
-                            <input type="text" class="short" placeholder="사무실 연락처" name="agentPhone">
+                            <input type="text" class="short" placeholder="사무실 연락처" name="agentPhone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="keywordConverter(this)"
+                            >
                             <p class="short">-</p>
-                            <input type="text" class="short" placeholder="####" name="agentPhone">
+                            <input type="text" class="short" placeholder="####" name="agentPhone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="keywordConverter(this)"
+                            >
                             <p class="short">-</p>
-                            <input type="text" class="short" placeholder="####" name="agentPhone">
+                            <input type="text" class="short" placeholder="####" name="agentPhone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="keywordConverter(this)"
+                            >
                         </div>
                     </div>
                     <div class="form-category">
@@ -338,7 +368,7 @@
         return result['0'];
     }
 
-    function phoneNumberValidator(focus) {
+    function keywordConverter(focus) {
         let idRegex = new RegExp(focus.pattern);
         let result = idRegex.exec(focus.value);
 
