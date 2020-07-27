@@ -7,7 +7,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+
     <script src="/js/jquery-utils.js"></script>
+    <script src="/js/kakao/kakao-address.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
@@ -93,8 +95,7 @@
                                    pattern="^[A-Za-z][A-Za-z0-9]{0,11}"
                                    oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="userIdValidator($(this))"
-                            >
+                                   onkeyup="userIdValidator($(this))"                            >
                             <p class="icon" onclick="checkUserExist($(this).prev())"><i class="fas fa-user-check"></i></p>
                             <p class="aba m-auto check-user"></p>
                         </div>
@@ -110,11 +111,6 @@
                         >
                         <p class="aba m-auto check-password" hidden></p>
                         <input required autofocus type="text" placeholder="닉네임" name="nickName">
-                        <p class="error" hidden>
-                            <i class="fas fa-exclamation-circle">
-                            Error Message
-                            </i>
-                        </p>
                     </div>
                 </div>
                 <div class="form-warp">
@@ -151,25 +147,16 @@
                                    onkeyup="keywordConverter(this)"
                             >
                         </div>
-                        <div class="input-group owner">
-                            <input autofocus type="text" class="middle" placeholder="자택주소" name="jibunAddr">
-                            <p class="icon"><i class="fas fa-search"></i></p>
+                        <div class="input-group">
+                            <input autofocus disabled type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr">
+                            <input autofocus disabled type="text" class="middle" id="road" placeholder="도로명" name="jibunAddr">
+                            <p class="icon addr" onclick="getAddress()"><i class="fas fa-search"></i></p>
                         </div>
-                        <div class="input-group owner">
-                            <input autofocus type="text" class="middle" placeholder="아바아파트 3동" name="extraAddr">
-                            &nbsp;
-                            <input autofocus type="text" class="short" placeholder="510호" name="extraAddr">
-                        </div>
-
-                        <div class="input-group agent" style="display: none !important;">
-                            <input autofocus type="text" class="middle" placeholder="사무실주소" name="jibunAddr">
-                            <p class="icon"><i class="fas fa-search"></i></p>
-                        </div>
-                        <div class="input-group agent" style="display: none !important;">
-                            <input autofocus type="text" class="middle" placeholder="아바공인중개사" name="extraAddr">
+                        <div class="input-group">
+                            <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr">
                         </div>
 
-                        <p class="error" hidden>
+                        <p class="error" id="privateInfoError" hidden>
                             <i class="fas fa-exclamation-circle">
                                 Error Message
                             </i>
@@ -249,25 +236,31 @@
 </body>
 </html>
 
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     let isCanUsingId = false;
     let isPassMatch = false;
+    let isFindAddress = false;
 
     $(document).ready(() => {
         $('input[type="radio"]').click(function (e) {
-            $('.error').remove();
+            $('#userTypeError').remove();
             $('.agent').hide();
 
             const current = e.currentTarget;
 
             if(current.value === "BROKER" || current.value === "ASSISTANT") {
-                $('.owner').hide();
-
                 $('.agent').show();
-                $('.agent > input').attr("required", "true");
+
+                $('.agent > input').attr("required", true);
+
+                $('#jibun').attr("placeholder", "사무실 주소");
+                $('#extra').attr("placeholder", "아바공인중개사");
             } else {
-                $('.owner').show();
-                $('.owner > input').attr("required", "true");
+                $('.agent > input').attr("required", false);
+
+                $('#jibun').attr("placeholder", "자택 주소");
+                $('#extra').attr("placeholder", "아바아파트 3동 101호 or 아바빌 401호");
             }
         });
     });
@@ -370,6 +363,7 @@
 
         if(result === null) {
             $(focus).val('');
+            return
         } else {
             if(result.length === 12) {
                 $('.check-user').text("최대 12자까지 가능해요 :)")
@@ -377,7 +371,6 @@
 
             $('#userId').text(result['0']);
         }
-
 
         return result['0'];
     }
@@ -434,10 +427,9 @@
         if(!isSelectedUserType) {
             const selector = $('.checkbox-container.type').parent();
 
-            console.log(!selector.children().hasClass('error'));
             if(!selector.children().hasClass('error')) {
                 selector.append(
-                    '<p class="error">' +
+                    '<p class="error" id="userTypeError">' +
                     '<i class="fas fa-exclamation-circle">' +
                     '</i> 회원 유형을 선택해주세요! :)</p>'
                 );
@@ -459,6 +451,27 @@
         // Is password passed?
         if(!isPassMatch) {
             moveScroll($("#password").offset().top);
+
+            return false;
+        }
+
+        if(!isFindAddress) {
+            $('#jibun').addClass('invalid b-1r');
+            $('#road').addClass('invalid b-1r');
+            $('#privateInfoError > i').text(' 주소를 검색해주세요!');
+            $('#privateInfoError').show();
+
+            moveScroll($("#jibun").offset().top);
+
+            return false;
+        }
+
+        if($('#extra').val() === '') {
+            $('#extra').addClass('invalid b-1r');
+            $('#privateInfoError > i').text(' 상세주소를 입력해주세요!');
+            $('#privateInfoError').show();
+
+            moveScroll($("#extra").offset().top);
 
             return false;
         }
