@@ -148,8 +148,8 @@
                             >
                         </div>
                         <div class="input-group">
-                            <input autofocus disabled type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr">
-                            <input autofocus disabled type="text" class="middle" id="road" placeholder="도로명" name="jibunAddr">
+                            <input autofocus readonly type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr">
+                            <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명" name="roadAddr">
                             <p class="icon addr" onclick="getAddress()"><i class="fas fa-search"></i></p>
                         </div>
                         <div class="input-group">
@@ -171,6 +171,12 @@
                     <div class="form-category agent" hidden>
                         <input type="text" placeholder="중개업소 상호명" name="agentName"
                                pattern="^[가-힣A-Za-z0-9]*"
+                               oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
+                               oninput="this.setCustomValidity(''); this.checkValidity()"
+                               onkeyup="keywordConverter(this)"
+                        >
+                        <input type="text" placeholder="중개업소 대표자명" id="agentLeader" name="agentLeader" hidden
+                               pattern="^[가-힣]*"
                                oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
                                onkeyup="keywordConverter(this)"
@@ -256,6 +262,14 @@
 
                 $('#jibun').attr("placeholder", "사무실 주소");
                 $('#extra').attr("placeholder", "아바공인중개사");
+
+                if(current.value === "ASSISTANT") {
+                    $('#agentLeader').show();
+                    $('#agentLeader').attr("required", true);
+                } else {
+                    $('#agentLeader').hide();
+                    $('#agentLeader').attr("required", false);
+                }
             } else {
                 $('.agent > input').attr("required", false);
 

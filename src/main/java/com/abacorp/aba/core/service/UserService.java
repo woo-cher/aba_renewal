@@ -52,6 +52,7 @@ public class UserService implements UserDetailsService {
             user.setAgentPhone(null);
             user.setAgentNumber(null);
             user.setAgentName(null);
+            user.setAgentLeader(null);
         }
 
         logger.error("after user : {}", user);

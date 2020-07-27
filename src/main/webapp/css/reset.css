@@ -85,6 +85,7 @@ span { display: inline-block; }
 
 input:focus, button:focus { outline: none; }
 input::placeholder { color: #00adef; font-weight: 500; font-size: 15px; }
+input:read-only { background: #fafafa; cursor: auto; }
 input { font-weight: 800; font-size: 15px;}
 
 .overlay {

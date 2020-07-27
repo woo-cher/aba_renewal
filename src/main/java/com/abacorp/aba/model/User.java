@@ -33,6 +33,7 @@ public class User extends ModelMapper {
     private String agentName;
     private String agentNumber;
     private String agentPhone;
+    private String agentLeader;
     private float latitude;
     private float longitude;
 }
