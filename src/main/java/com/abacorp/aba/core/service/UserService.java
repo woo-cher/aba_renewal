@@ -3,6 +3,7 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.type.UserType;
 import com.abacorp.aba.security.CustomUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +47,12 @@ public class UserService implements UserDetailsService {
         user.setAgentPhone(user.getAgentPhone().replaceAll(",", ""));
         user.setEmail(user.getEmail().replaceAll(",", "@"));
         user.setExtraAddr(user.getExtraAddr().replaceAll(",", " "));
+
+        if(user.getType().equals(UserType.OWNER)) {
+            user.setAgentPhone(null);
+            user.setAgentNumber(null);
+            user.setAgentName(null);
+        }
 
         logger.error("after user : {}", user);
 

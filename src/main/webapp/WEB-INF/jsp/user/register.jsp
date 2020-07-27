@@ -52,12 +52,12 @@
                 </div>
             </c:forEach>
             </form>
-            <button class="login-button" id="join" type="submit" onclick="agreeChecker()">가입하기</button>
+            <button class="login-button" id="join" type="submit" onclick="agreeValidator()">가입하기</button>
         </section>
 
         <section class="form-control" id="register-area" hidden>
             <%-- Form --%>
-            <form id="registerForm" action="/users/create" method="post" onsubmit="return formValidator()">
+            <form id="registerForm" action="/users/create" method="post" onsubmit="return submitValidator()">
                 <div class="form-warp">
                     <div class="form-category">
                         <div class="form-label">
@@ -211,8 +211,8 @@
 </html>
 
 <script>
-    let isUserTypeChecked = false;
-    let canSubmit = false;
+    let isCanUsingId = false;
+    let isPassMatch = false;
 
     $(document).ready(() => {
         $('input[type="radio"]').click(function (e) {
@@ -228,77 +228,7 @@
         });
     });
 
-    function checkUserExist(selector) {
-        const errorArea = $('.check-user');
-        const userId = selector.val();
-
-        if(userId === '') {
-            errorArea.text('ID를 입력해주세요 :)');
-            errorArea.removeClass('invalid b-1r');
-            return;
-        }
-
-        if(userIdValidator(selector).length < 4) {
-            errorArea.text('최소 4자 이상입니다! :P');
-            errorArea.addClass('invalid');
-            return;
-        }
-
-        $.ajax({
-            url: '/users/' + userId,
-            type: 'GET',
-            async: false,
-            success: function (isExist) {
-                if(isExist) {
-                    isUserTypeChecked = false;
-                    errorArea.text("사용 불가한 아이디예요 :(");
-                    errorArea.addClass("invalid");
-                    selector.addClass("invalid b-1r");
-                } else {
-                    isUserTypeChecked = true;
-                    errorArea.text("사용 가능해요 :)");
-                    errorArea.removeClass("invalid");
-                    selector.removeClass("invalid b-1r");
-                }
-            },
-            error: () => { alert('error') }
-        })
-    }
-
-    function formValidator() {
-        let userTypes = $('input[type="radio"]');
-        let doSubmit = false;
-
-        if(!isUserTypeChecked) {
-            $('.check-user').text("중복을 확인해주세요! :)");
-            moveScroll($("#userId").offset().top);
-
-            return false;
-        }
-
-        // User type check
-        for(let i = 0; i < userTypes.length; i++) {
-            if($(userTypes[i]).prop("checked")) {
-                doSubmit = true;
-                return;
-            }
-        }
-
-        if(!doSubmit) {
-            const selector = $('.checkbox-container.type').parent();
-
-            selector.append(
-                '<p class="error">' +
-                '<i class="fas fa-exclamation-circle">' +
-                '</i> 회원 유형을 선택해주세요! :)</p>'
-            );
-
-            moveScroll(selector.offset().top);
-        }
-
-        return doSubmit;
-    }
-
+    // Agree
     function agreeAll() {
         let agrees = $('input[name="agree"]');
         let isChecked = $('#agree-all').prop("checked");
@@ -317,7 +247,7 @@
         }
     }
 
-    function agreeChecker() {
+    function agreeValidator() {
         let selector;
 
         for(let i = 0; i < 4; i++) {
@@ -350,6 +280,44 @@
         $("#register-area").show();
 
         moveScroll($("#top").offset().top);
+    }
+
+    // Sign up
+    function checkUserExist(selector) {
+        const errorArea = $('.check-user');
+        const userId = selector.val();
+
+        if(userId === '') {
+            errorArea.text('ID를 입력해주세요 :)');
+            errorArea.removeClass('invalid b-1r');
+            return;
+        }
+
+        if(userIdValidator(selector).length < 4) {
+            errorArea.text('최소 4자 이상입니다! :P');
+            errorArea.addClass('invalid');
+            return;
+        }
+
+        $.ajax({
+            url: '/users/' + userId,
+            type: 'GET',
+            async: false,
+            success: function (isExist) {
+                if(isExist) {
+                    isCanUsingId = false;
+                    errorArea.text("사용 불가한 아이디예요 :(");
+                    errorArea.addClass("invalid");
+                    selector.addClass("invalid b-1r");
+                } else {
+                    isCanUsingId = true;
+                    errorArea.text("사용 가능해요 :)");
+                    errorArea.removeClass("invalid");
+                    selector.removeClass("invalid b-1r");
+                }
+            },
+            error: () => { alert('error') }
+        })
     }
 
     function userIdValidator(focus) {
@@ -394,7 +362,7 @@
             focus.removeClass(clazz);
             focus.prev().removeClass(clazz);
 
-            canSubmit = true;
+            isPassMatch = true;
         } else {
             errorArea.addClass('invalid');
             errorArea.text('두 비밀번호가 틀려요 :(');
@@ -402,9 +370,59 @@
             focus.addClass(clazz);
             focus.prev().addClass(clazz);
 
-            canSubmit = false;
+            isPassMatch = false;
         }
 
         errorArea.show();
+    }
+
+    function userTypeValidator() {
+
+    }
+
+    function submitValidator() {
+        let userTypes = $('input[type="radio"]');
+        let isSelectedUserType = false;
+
+        // User type check
+        for(let i = 0; i < userTypes.length; i++) {
+            if($(userTypes[i]).prop("checked")) {
+                isSelectedUserType = true;
+            }
+        }
+
+        if(!isSelectedUserType) {
+            const selector = $('.checkbox-container.type').parent();
+
+            console.log(!selector.children().hasClass('error'));
+            if(!selector.children().hasClass('error')) {
+                selector.append(
+                    '<p class="error">' +
+                    '<i class="fas fa-exclamation-circle">' +
+                    '</i> 회원 유형을 선택해주세요! :)</p>'
+                );
+            }
+
+            moveScroll(selector.offset().top);
+
+            return false;
+        }
+
+        // UserId check
+        if(!isCanUsingId) {
+            $('.check-user').text("중복을 확인해주세요! :)");
+            moveScroll($("#userId").offset().top);
+
+            return false;
+        }
+
+        // Is password passed?
+        if(!isPassMatch) {
+            moveScroll($("#password").offset().top);
+
+            return false;
+        }
+
+        return true;
     }
 </script>
