@@ -144,7 +144,7 @@
                                onkeyup="keywordConverter($(this))"
                         >
                         <div class="input-group">
-                            <input required disabled autofocus type="text" class="short" placeholder="010" name="phone"
+                            <input required readonly autofocus type="text" class="short" placeholder="010" name="phone" value="010"
                                    pattern="^[0-9]{1,3}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -152,15 +152,15 @@
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
-                                   pattern="^[0-9]{1,4}"
-                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   pattern="^[0-9]{4}"
+                                   oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="keywordConverter($(this), 'phone')"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
-                                   pattern="^[0-9]{1,4}"
-                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   pattern="^[0-9]{4}"
+                                   oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="keywordConverter($(this), 'phone')"
                             >
@@ -216,17 +216,17 @@
                             >
                             <p class="short">-</p>
                             <input type="text" class="short" placeholder="####" name="agentPhone"
-                                   pattern="^[0-9]{1,4}"
-                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   pattern="^[0-9]{4}"
+                                   oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this))"
+                                   onkeyup="keywordConverter($(this), 'phone')"
                             >
                             <p class="short">-</p>
                             <input type="text" class="short" placeholder="####" name="agentPhone"
-                                   pattern="^[0-9]{1,4}"
-                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   pattern="^[0-9]{4}"
+                                   oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this))"
+                                   onkeyup="keywordConverter($(this), 'phone')"
                             >
                         </div>
                     </div>
@@ -367,6 +367,7 @@
         if(userIdValidator(selector).length < 4) {
             errorArea.text('최소 4자 이상입니다! :P');
             errorArea.addClass('invalid');
+            isCanUsingId = false;
             return;
         }
 
