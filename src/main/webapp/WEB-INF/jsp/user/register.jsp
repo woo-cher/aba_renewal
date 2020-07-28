@@ -124,8 +124,24 @@
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="이메일" name="email">
                             <p class="mail"><i class="fas fa-at"></i></p>
-                            <input required autofocus type="text" class="middle" placeholder="도메인 (옵션으로바꿀껏)" name="email">
+                            <select class="w-half" required name="email" onchange="watchSelect($(this))"
+                                    oninvalid="this.setCustomValidity(`도메인을 선택해주세요 :)`)"
+                                    oninput="this.setCustomValidity(''); this.checkValidity()"
+                            >
+                                <option value="">도메인</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="nate.com">nate.com</option>
+                                <option id="self" value="">직접입력</option>
+                            </select>
                         </div>
+                        <input hidden disabled autofocus type="text" placeholder="도메인을 입력해주세요 :)" name="email"
+                               pattern="^[a-z.]*"
+                               oninvalid="this.setCustomValidity(`도메인을 입력해주세요 :)`)"
+                               oninput="this.setCustomValidity(''); this.checkValidity()"
+                               onkeyup="keywordConverter(this)"
+                        >
                         <div class="input-group">
                             <input required disabled autofocus type="text" class="short" placeholder="010" name="phone"
                                    pattern="^[0-9]{1,3}"
@@ -428,6 +444,26 @@
         }
 
         errorArea.show();
+    }
+
+    function watchSelect(focuz) {
+        const selfDomainDom = focuz.parent().next();
+
+        if($('#self').prop('selected')) {
+            focuz.removeAttr('name');
+            focuz.attr('required', false);
+
+            selfDomainDom.show();
+            selfDomainDom.removeAttr("disabled");
+            selfDomainDom.attr("required", true);
+        } else {
+            focuz.attr('name', 'email');
+            focuz.attr('required', true);
+
+            selfDomainDom.hide();
+            selfDomainDom.removeAttr("required");
+            selfDomainDom.attr("disabled", true);
+        }
     }
 
     function submitValidator() {

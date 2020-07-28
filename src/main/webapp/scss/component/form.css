@@ -58,6 +58,12 @@
 
 /* Scroll Bar */
 /* Tier */
+select {
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  padding: 1% 0 1% 1%;
+}
+
 .btn {
   padding: 1% !important;
 }
