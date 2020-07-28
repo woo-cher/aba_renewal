@@ -2,7 +2,7 @@ function getAllOverlays(weight, southWest, northEast) {
     let result;
 
     $.ajax({
-        url: '/overlays',
+        url: '/apis/overlays',
         type: 'POST',
         async: false,
         contentType: 'application/json',
@@ -26,7 +26,7 @@ function getCoordinates(id) {
     let result;
 
     $.ajax({
-        url: '/overlays/' + id,
+        url: '/apis/overlays/' + id,
         type: 'GET',
         async: false,
         contentType: 'application/json',
