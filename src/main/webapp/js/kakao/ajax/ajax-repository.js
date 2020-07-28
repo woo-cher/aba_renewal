@@ -36,8 +36,22 @@ function getCoordinates(id) {
         error:ajaxError
     });
 
-    // string to json
     return JSON.parse(result.coordinates);
+}
+
+function searchKakaoAddress(keyword) {
+    let result;
+
+    $.ajax({
+        url: '/apis/kakao/address?keyword=' + keyword,
+        type: 'GET',
+        async: false,
+        success: function (resultEntity) {
+            result = JSON.parse(resultEntity)
+        }
+    });
+
+    return result;
 }
 
 function ajaxError() {

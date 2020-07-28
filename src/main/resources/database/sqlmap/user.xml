@@ -6,8 +6,16 @@
     <resultMap id="User" type="User" />
 
     <select id="createUser" parameterType="User">
-        INSERT INTO users (user_id, password, type, name, nick_name, email, phone, role, created_at, jibun_addr, road_addr, extra_addr, agent_name, agent_number, agent_phone, agent_leader)
-        VALUES (#{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role.name}, current_timestamp, #{jibunAddr}, #{roadAddr}, #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader})
+        INSERT INTO users
+        (
+             user_id, password, type, name, nick_name, email, phone, role, created_at, jibun_addr, road_addr,
+             extra_addr, agent_name, agent_number, agent_phone, agent_leader, latitude, longitude
+        )
+        VALUES
+        (
+                #{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role.name}, current_timestamp, #{jibunAddr}, #{roadAddr},
+                #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader}, #{latitude}, #{longitude}
+        )
     </select>
 
     <select id="findAllUser" resultMap="User">

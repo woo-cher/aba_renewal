@@ -55,8 +55,6 @@ public class UserService implements UserDetailsService {
             user.setAgentLeader(null);
         }
 
-        logger.error("after user : {}", user);
-
         return this.repository.create(user);
     }
 

@@ -8,12 +8,7 @@
 
         <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
 
-        <script type="text/javascript" src="/js/kakao/modules/polygon-module.js"></script>
-        <script type="text/javascript" src="/js/kakao/modules/kakao-map.js"></script>
-        <script type="text/javascript" src="/js/kakao/modules/overlay.js"></script>
-        <script type="text/javascript" src="/js/kakao/modules/spot.js"></script>
-        <script type="text/javascript" src="/js/kakao/map-manager.js"></script>
-
+        <%@include file="../commons/map.jspf"%>
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
 

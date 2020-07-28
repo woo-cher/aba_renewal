@@ -10,6 +10,7 @@
 
     <script src="/js/jquery-utils.js"></script>
     <script src="/js/kakao/kakao-address.js"></script>
+    <script src="/js/kakao/ajax/ajax-repository.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
@@ -154,6 +155,8 @@
                         </div>
                         <div class="input-group">
                             <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr">
+                            <input type="hidden" id="latitude" name="latitude">
+                            <input type="hidden" id="longitude" name="longitude">
                         </div>
 
                         <p class="error" id="privateInfoError" hidden>

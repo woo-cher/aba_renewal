@@ -1,0 +1,5 @@
+<script type="text/javascript" src="/js/kakao/modules/polygon-module.js"></script>
+<script type="text/javascript" src="/js/kakao/modules/kakao-map.js"></script>
+<script type="text/javascript" src="/js/kakao/modules/overlay.js"></script>
+<script type="text/javascript" src="/js/kakao/modules/spot.js"></script>
+<script type="text/javascript" src="/js/kakao/map-manager.js"></script>

@@ -22,6 +22,11 @@ function getAddress() {
             $('#jibun').removeClass('invalid b-1r');
             $('#road').removeClass('invalid b-1r');
 
+            let result = searchKakaoAddress(data.jibunAddress)['documents'][0];
+
+            $('#latitude').val(result['y']);
+            $('#longitude').val(result['x']);
+
             isFindAddress = true;
         }
     }).open({
