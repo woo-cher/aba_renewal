@@ -93,10 +93,11 @@
                     <div class="form-category">
                         <div class="input-group">
                             <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
-                                   pattern="^[A-Za-z][A-Za-z0-9]{0,11}"
+                                   pattern="^[A-Za-z][A-Za-z0-9]{1,12}"
                                    oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="userIdValidator($(this))"                            >
+                                   onkeyup="userIdValidator($(this))"
+                            >
                             <p class="icon" onclick="checkUserExist($(this).prev())"><i class="fas fa-user-check"></i></p>
                             <p class="aba m-auto check-user"></p>
                         </div>
@@ -140,28 +141,28 @@
                                pattern="^[a-z.]*"
                                oninvalid="this.setCustomValidity(`도메인을 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter(this)"
+                               onkeyup="keywordConverter($(this))"
                         >
                         <div class="input-group">
                             <input required disabled autofocus type="text" class="short" placeholder="010" name="phone"
                                    pattern="^[0-9]{1,3}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter(this)"
+                                   onkeyup="keywordConverter($(this))"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter(this)"
+                                   onkeyup="keywordConverter($(this), 'phone')"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter(this)"
+                                   onkeyup="keywordConverter($(this), 'phone')"
                             >
                         </div>
                         <div class="input-group">
@@ -192,40 +193,40 @@
                                pattern="^[가-힣A-Za-z0-9]*"
                                oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter(this)"
+                               onkeyup="keywordConverter($(this))"
                         >
                         <input type="text" placeholder="중개업소 대표자명" id="agentLeader" name="agentLeader" hidden
                                pattern="^[가-힣]*"
                                oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter(this)"
+                               onkeyup="keywordConverter($(this))"
                         >
                         <input type="text" placeholder="중개업소 등록번호" name="agentNumber"
                                pattern="^[가-힣0-9-]*"
                                oninvalid="this.setCustomValidity(`등록번호 형식에 맞지 않아요 :(`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter(this)"
+                               onkeyup="keywordConverter($(this))"
                         >
                         <div class="input-group">
                             <input type="text" class="short" placeholder="사무실 연락처" name="agentPhone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter(this)"
+                                   onkeyup="keywordConverter($(this))"
                             >
                             <p class="short">-</p>
                             <input type="text" class="short" placeholder="####" name="agentPhone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter(this)"
+                                   onkeyup="keywordConverter($(this))"
                             >
                             <p class="short">-</p>
                             <input type="text" class="short" placeholder="####" name="agentPhone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter(this)"
+                                   onkeyup="keywordConverter($(this))"
                             >
                         </div>
                     </div>
@@ -396,23 +397,31 @@
 
         if(result === null) {
             $(focus).val('');
+            console.log('1111111111111');
             return
         } else {
-            if(result.length === 12) {
+            if(result[0].length > 12) {
+                console.log('222222222)');
                 $('.check-user').text("최대 12자까지 가능해요 :)")
             }
-
-            $('#userId').text(result['0']);
         }
+        console.log('3333333)', result[0]);
+        $(focus).val(result);
 
-        return result['0'];
+        return result[0];
     }
 
-    function keywordConverter(focus) {
-        let idRegex = new RegExp(focus.pattern);
-        let result = idRegex.exec(focus.value);
+    function keywordConverter(focus, mode) {
+        let idRegex = new RegExp(focus.attr('pattern'));
+        let result = idRegex.exec(focus.val());
 
-        $(focus).val(result);
+        if(mode === 'phone') {
+            if(focus.val().length > 3) {
+                $(focus).val(result);
+            }
+        } else {
+            $(focus).val(result);
+        }
     }
 
     function passwordValidator() {
@@ -446,19 +455,19 @@
         errorArea.show();
     }
 
-    function watchSelect(focuz) {
-        const selfDomainDom = focuz.parent().next();
+    function watchSelect(focus) {
+        const selfDomainDom = focus.parent().next();
 
         if($('#self').prop('selected')) {
-            focuz.removeAttr('name');
-            focuz.attr('required', false);
+            focus.removeAttr('name');
+            focus.attr('required', false);
 
             selfDomainDom.show();
             selfDomainDom.removeAttr("disabled");
             selfDomainDom.attr("required", true);
         } else {
-            focuz.attr('name', 'email');
-            focuz.attr('required', true);
+            focus.attr('name', 'email');
+            focus.attr('required', true);
 
             selfDomainDom.hide();
             selfDomainDom.removeAttr("required");
