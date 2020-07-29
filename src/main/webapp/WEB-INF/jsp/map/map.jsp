@@ -58,8 +58,11 @@
     $(document).ready(() => {
         const container = document.getElementById('map');
         const mapManager = new MapManager(container);
+
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
-        updateOffers(mapManager.getSouthWest(), mapManager.getNorthEast());
+
+        const offers = getOffers(mapManager.getSouthWest(), mapManager.getNorthEast());
+        mapManager.updateOffers(offers);
     });
 
     function searchToggle() {

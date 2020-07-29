@@ -25,7 +25,10 @@ class MapManager extends Spot {
 
             const weight = this.getWeightByZoomLevel(level);
             this.drawOverlays(weight, this.southWest, this.northEast);
-            updateOffers(this.southWest, this.northEast)
+
+            const offers = getOffers(this.southWest, this.northEast);
+
+            this.updateOffers(offers);
         })
     }
 

@@ -106,11 +106,15 @@ class Overlay extends KakaoMap {
 
             this.addClassElement(this.target, 'clickable');
 
+            let offers = [];
+
             if(weight === 1) {
-                updateOffers(null, null, overlay.belongsTo);
+                offers = getOffers(null, null, overlay.belongsTo);
             } else {
-                updateOffers(null, null, overlay.name);
+                offers = getOffers(null, null, overlay.name);
             }
+
+            this.updateOffers(offers);
 
             // 로딩바 숨김
             // await setTimeout(this.saleList.hideLoading(), 1000)
