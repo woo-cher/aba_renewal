@@ -1,6 +1,5 @@
 package com.abacorp.aba.model;
 
-import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.*;
 
 @Data
@@ -18,4 +17,5 @@ public class OfferAddress {
     private String ho;
     private String door;
     private String nearLocation;
+    private String belongsTo;
 }
