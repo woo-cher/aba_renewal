@@ -3,21 +3,19 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.UserService;
 import com.abacorp.aba.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/users")
+@Slf4j
 public class UserController {
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private ModelAndView mv;
@@ -27,7 +25,7 @@ public class UserController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String save(User user, Model model) {
-        logger.info("USER : {}", user);
+        log.info("USER : {}", user);
         userService.createUser(user);
 
         return "/user/login";

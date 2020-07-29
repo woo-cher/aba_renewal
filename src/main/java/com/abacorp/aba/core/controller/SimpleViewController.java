@@ -1,7 +1,6 @@
 package com.abacorp.aba.core.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class SimpleViewController {
-    private static final Logger logger = LoggerFactory.getLogger(SimpleViewController.class);
 
     @Autowired
     private ModelAndView mv;

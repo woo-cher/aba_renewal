@@ -1,19 +1,13 @@
 package com.abacorp.aba.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.lang.model.type.PrimitiveType;
-import java.util.HashMap;
-import java.util.Map;
-
 @Configuration
+@Slf4j
 public class BeanConfig {
-    private static final Logger logger = LoggerFactory.getLogger(BeanConfig.class);
 
     @Bean
     public ModelAndView getModelAndView() {
@@ -21,11 +15,5 @@ public class BeanConfig {
         mv.clear();
 
         return mv;
-    }
-
-    @Bean
-    @Scope("prototype")
-    public Map<String, String> getHashMap() {
-        return new HashMap<>();
     }
 }

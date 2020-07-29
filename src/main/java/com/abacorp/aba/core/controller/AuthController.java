@@ -1,8 +1,7 @@
 package com.abacorp.aba.core.controller;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/auth")
+@Slf4j
 public class AuthController {
-    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
     private ModelAndView mv;

@@ -4,8 +4,7 @@ import com.abacorp.aba.core.service.KakaoRestApiHelper;
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/apis")
+@Slf4j
 public class KakaoMapApi {
-    private static final Logger logger = LoggerFactory.getLogger(KakaoMapApi.class);
 
     @Autowired
     private MapService service;
@@ -24,7 +23,7 @@ public class KakaoMapApi {
 
     @RequestMapping(value = "/overlays", method = RequestMethod.POST)
     public List<Overlay> overlays(@RequestBody MapFiltersDto dto) {
-        logger.info("dto : {}", dto);
+        log.info("dto : {}", dto);
         return service.getOverlays(dto);
     }
 

@@ -3,10 +3,6 @@ package com.abacorp.aba.model;
 import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.*;
 import lombok.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.sql.Timestamp;
 
 @Data
 @Builder

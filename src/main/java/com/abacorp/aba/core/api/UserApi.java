@@ -1,8 +1,7 @@
 package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
+@Slf4j
 public class UserApi {
-    private static final Logger logger = LoggerFactory.getLogger(UserApi.class);
 
     @Autowired
     private UserService service;

@@ -1,7 +1,6 @@
 package com.abacorp.aba.core.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -11,9 +10,8 @@ import java.net.URI;
 import java.net.URLEncoder;
 
 @Component
+@Slf4j
 public class KakaoRestApiHelper {
-    private static final Logger logger = LoggerFactory.getLogger(KakaoRestApiHelper.class);
-
     @Value("${kakao.map.appkey}")
     private String appKey;
 

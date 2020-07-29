@@ -5,8 +5,7 @@ import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.type.UserType;
 import com.abacorp.aba.security.CustomUserDetails;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,12 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 @Service
+@Slf4j
 public class UserService implements UserDetailsService {
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserRepository repository;
@@ -32,7 +28,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("Not Found User : " + userId);
         }
 
-        logger.info("find db user : {}", user);
+        log.info("find db user : {}", user);
 
         return new CustomUserDetails(user);
     }
@@ -62,7 +58,7 @@ public class UserService implements UserDetailsService {
         User user = repository.selectById(userId);
 
         if(user == null) {
-            logger.info("user not found at database");
+            log.info("user not found at database");
             return false;
         }
 

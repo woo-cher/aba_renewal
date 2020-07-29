@@ -1,14 +1,10 @@
 package com.abacorp.aba;
 
-import static junit.framework.TestCase.assertNotNull;
-import static org.junit.Assert.*;
-
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -17,10 +13,12 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 
+import static junit.framework.TestCase.assertNotNull;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class DbTest {
-    private static final Logger logger = LoggerFactory.getLogger(DbTest.class);
 
     @Autowired
     private DataSource dataSource;
@@ -30,14 +28,14 @@ public class DbTest {
 
     @Test
     public void dataSource() throws SQLException {
-        logger.warn("Datasource : {}", dataSource.getConnection());
+        log.warn("Datasource : {}", dataSource.getConnection());
         assertNotNull(dataSource.getConnection());
     }
 
     @Test
     public void findAllUser() {
         List<User> users = repository.findAll();
-        logger.info("size : {}", users.size());
+        log.info("size : {}", users.size());
         assertNotNull(users);
     }
 }
