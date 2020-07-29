@@ -244,6 +244,7 @@ datalist option {
 }
 .list-header strong, .paginator strong {
   font-size: 22px;
+  margin-left: 1%;
 }
 
 .list-container {
@@ -297,11 +298,11 @@ datalist option {
   height: auto;
 }
 .offer .offer-deal {
-  font-size: 20px;
+  font-size: 18px;
   margin: 5px 0;
 }
 .offer .offer-summary,
-.offer .label-info {
+.offer .offer-building .label-info {
   margin: 5px 0;
 }
 

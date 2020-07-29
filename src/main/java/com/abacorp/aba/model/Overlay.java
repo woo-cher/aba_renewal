@@ -15,5 +15,5 @@ public class Overlay extends ModelMapper {
     private float longitude;
     private String coordinates;
     private String name;
-    private String belongs;
+    private String belongsTo;
 }

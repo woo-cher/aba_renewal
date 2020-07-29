@@ -2,6 +2,7 @@ package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.KakaoRestApiHelper;
 import com.abacorp.aba.core.service.MapService;
+import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +29,19 @@ public class KakaoMapApi {
     }
 
     @RequestMapping(value = "/overlays/{id}", method = RequestMethod.GET)
-    public Overlay show(@PathVariable int id) {
+    public Overlay coordinates(@PathVariable int id) {
         return service.getOverlay(id);
+    }
+
+    @RequestMapping(value = "/offers", method = RequestMethod.POST)
+    public List<Offer> offers(@RequestBody MapFiltersDto dto) {
+        String region = dto.getBelongsTo();
+
+        if(region != null) {
+            return service.getOffersInRegion(region);
+        } else {
+            return service.getOffers(dto);
+        }
     }
 
     @RequestMapping(value = "/kakao/address")

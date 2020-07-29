@@ -42,7 +42,13 @@
                         </div>
                     </div>
                 </div>
-                <%@include file="/WEB-INF/jsp/map/offer_list.jsp"%>
+                <div class="offer-list">
+                    <div class="list-header">
+                        전체 방
+                        <strong class="aba">1234개</strong>
+                    </div>
+                    <ul class="list-container"></ul>
+                </div>
             </div>
         </div>
     </body>
@@ -53,6 +59,7 @@
         const container = document.getElementById('map');
         const mapManager = new MapManager(container);
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
+        updateOffers(mapManager.getSouthWest(), mapManager.getNorthEast());
     });
 
     function searchToggle() {

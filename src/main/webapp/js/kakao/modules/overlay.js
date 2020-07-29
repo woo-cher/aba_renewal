@@ -104,14 +104,13 @@ class Overlay extends KakaoMap {
                 this.targetId = overlay.id
             }
 
-            // Promise.resolve(
-            //     await this.repository.getPropertiesByBelongs(ovl.name, this.filterDto)
-            // ).then((data) => {
-            //     KakaoMap.propertiesInRect = data;
-            //     KakaoMap.doUpdated = false
-            // });
-
             this.addClassElement(this.target, 'clickable');
+
+            if(weight === 1) {
+                updateOffers(null, null, overlay.belongsTo);
+            } else {
+                updateOffers(null, null, overlay.name);
+            }
 
             // 로딩바 숨김
             // await setTimeout(this.saleList.hideLoading(), 1000)
