@@ -1,8 +1,5 @@
 package com.abacorp.aba.model;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.core.service.UserService;
 import com.abacorp.aba.model.type.UserRoleType;
@@ -11,7 +8,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

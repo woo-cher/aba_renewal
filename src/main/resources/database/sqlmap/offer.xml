@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MAPPER 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abacorp.aba.model.Offer">
+
+    <!-- Mapper -->
+    <resultMap id="offer" type="Offer">
+        <id property="id" column="id" />
+        <result property="deposit" column="deposit" />
+        <result property="monthlyPrice" column="monthly_price" />
+        <result property="managementPrice" column="management_price" />
+        <result property="completionYear" column="completion_year" />
+        <result property="type" column="type" />
+        <result property="dealType" column="deal_type" />
+        <result property="heatingType" column="heating_type" />
+        <result property="heatingMethodType" column="heating_method_type" />
+        <result property="status" column="status" />
+        <association property="dealer" resultMap="dealer" />
+        <association property="offerAddress" resultMap="offerAddress" />
+        <association property="offerAddition" resultMap="offerAddition" />
+    </resultMap>
+
+    <resultMap id="offerAddress" type="OfferAddress">
+        <id property="offerId" column="offer_id" />
+        <result property="latitude" column="latitude" />
+        <result property="longitude" column="longitude" />
+        <result property="jibun" column="jibun" />
+        <result property="road" column="road" />
+        <result property="dong" column="dong" />
+        <result property="ho" column="ho" />
+        <result property="door" column="door" />
+        <result property="nearLocation" column="near_location" />
+        <result property="belongsTo" column="belongs_to" />
+    </resultMap>
+
+    <resultMap id="offerAddition" type="OfferAddition">
+        <id property="offerId" column="offer_id" />
+        <result property="term" column="term" />
+        <result property="tenant" column="tenant" />
+        <result property="optionCategory" column="option_category" />
+        <result property="managementCategory" column="management_category" />
+        <result property="hasElevator" column="has_elevator" />
+        <result property="isParking" column="is_parking" />
+        <result property="isPet" column="is_pet" />
+    </resultMap>
+
+    <resultMap id="dealer" type="User">
+        <id property="userId" column="user_id" />
+        <result property="phone" column="phone" />
+        <result property="agentPhone" column="agent_phone" />
+    </resultMap>
+
+    <!-- Commons `sql` -->
+    <sql id="offerJoin">
+        LEFT JOIN users ON ofs.dealer = users.user_id
+        LEFT JOIN offer_addresses AS addrs ON ofs.id = addrs.offer_id
+        LEFT JOIN offer_additions AS adds ON ofs.id = adds.offer_id
+    </sql>
+
+    <sql id="latitudeQualify">
+        (addrs.latitude BETWEEN #{west} AND #{east})
+    </sql>
+
+    <sql id="longitudeQualify">
+        (addrs.latitude BETWEEN #{west} AND #{east})
+    </sql>
+
+    <select id="selectOffersByFilters" resultMap="offer" parameterType="MapFiltersDto">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE <include refid="latitudeQualify" />
+        AND   <include refid="longitudeQualify" />
+        /* If filters ... */
+    </select>
+
+    <select id="selectOffersByRegion" resultMap="offer" parameterType="String">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+    </select>
+</mapper>

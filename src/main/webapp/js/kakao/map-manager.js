@@ -20,7 +20,7 @@ class MapManager extends Spot {
             this.getBoundElement();
             this.southWest = this.getSouthWest();
             this.northEast = this.getNorthEast();
-
+            console.log(this.southWest, this.northEast);
             this.clear();
             this.fieldClear();
 

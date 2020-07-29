@@ -10,6 +10,9 @@
 	<typeAliases>
 		<typeAlias alias="User" type="com.abacorp.aba.model.User"/>
 		<typeAlias alias="Overlay" type="com.abacorp.aba.model.Overlay"/>
+		<typeAlias alias="Offer" type="com.abacorp.aba.model.Offer"/>
+		<typeAlias alias="OfferAddress" type="com.abacorp.aba.model.OfferAddress"/>
+		<typeAlias alias="OfferAddition" type="com.abacorp.aba.model.OfferAddition"/>
 		<typeAlias alias="MapFiltersDto" type="com.abacorp.aba.model.dto.MapFiltersDto" />
 	</typeAliases>
 

@@ -5,14 +5,14 @@
     <!-- Mapper -->
     <resultMap id="Overlay" type="Overlay" />
 
-    <select id="findOverlays" resultMap="Overlay" parameterType="MapFiltersDto">
+    <select id="selectOverlays" resultMap="Overlay" parameterType="MapFiltersDto">
         SELECT id, latitude, longitude, name, count, weight
         FROM overlays WHERE (weight = #{weight})
                       AND (latitude BETWEEN #{west} AND #{east})
                       AND (longitude BETWEEN #{south} AND #{north})
     </select>
 
-    <select id="findOverlay" resultMap="Overlay" parameterType="int">
+    <select id="selectOverlay" resultMap="Overlay" parameterType="int">
         SELECT id, coordinates, name FROM overlays WHERE (id = #{id})
     </select>
 </mapper>

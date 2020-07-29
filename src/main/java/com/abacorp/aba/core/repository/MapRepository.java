@@ -1,5 +1,6 @@
 package com.abacorp.aba.core.repository;
 
+import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import org.apache.ibatis.session.SqlSession;
@@ -17,11 +18,19 @@ public class MapRepository {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<Overlay> findOverlaysByFilters(MapFiltersDto mapFiltersDto) {
-        return sqlSession.selectList("findOverlays", mapFiltersDto);
+    public List<Overlay> selectOverlaysByFilters(MapFiltersDto dto) {
+        return sqlSession.selectList("selectOverlays", dto);
     }
 
-    public Overlay findOverlayById(int id) {
-        return sqlSession.selectOne("findOverlay", id);
+    public Overlay selectOverlayById(int id) {
+        return sqlSession.selectOne("selectOverlay", id);
+    }
+
+    public List<Offer> selectOffersUsingFilter(MapFiltersDto dto) {
+        return sqlSession.selectList("selectOffersByFilters", dto);
+    }
+
+    public List<Offer> selectOffersByBelongsTo(String region) {
+        return sqlSession.selectList("selectOffersByRegion", region);
     }
 }
