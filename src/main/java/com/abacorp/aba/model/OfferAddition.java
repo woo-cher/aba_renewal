@@ -23,6 +23,7 @@ public class OfferAddition {
     private String tenant;
     private String optionCategory;
     private String managementCategory;
+    private boolean hasElevator;
     private boolean isParking;
     private boolean isPet;
 }

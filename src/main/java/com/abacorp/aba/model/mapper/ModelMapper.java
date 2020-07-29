@@ -9,5 +9,6 @@ import java.sql.Timestamp;
 @Setter
 public class ModelMapper {
     protected int id;
-    protected Timestamp created_at;
+    protected Timestamp createdAt;
+    protected Timestamp updatedAt;
 }

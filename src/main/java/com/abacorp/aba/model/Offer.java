@@ -6,6 +6,8 @@ import lombok.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Timestamp;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,4 +24,6 @@ public class Offer extends ModelMapper {
     private HeatingType heatingType;
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;
+    private OfferAddition offerAddition;
+    private OfferAddress offerAddress;
 }
