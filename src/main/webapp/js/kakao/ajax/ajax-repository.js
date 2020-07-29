@@ -103,6 +103,7 @@ function updateOffers(southWest, northEast, region = null) {
             const offersArea = $('.list-container');
 
             offersArea.empty();
+            $('.paginator').remove();
 
             if (offers.length === 0) {
                 $('.list-header > strong').text(`없음`)
@@ -116,7 +117,7 @@ function updateOffers(southWest, northEast, region = null) {
                             <div class="offer-like">
                                 <img src="/img/offer/detail_head_icon-01.png" onclick="alert('준비중이예요 :)')">
                             </div>
-                            <div class="offer" onclick="window.open('/offers/1')">
+                            <div class="offer" onclick="window.open('/offers/${offer.id}')">
                                 <div class="offer-thumbs">
                                     <img src="/img/offer/detail_slide01.jpg">
                                 </div>
@@ -128,7 +129,7 @@ function updateOffers(southWest, northEast, region = null) {
                                 <p class="offer-addr">${offer.offerAddress.jibun}</p>
                                 <p class="offer-building">화이트원룸</p>
                                 <div class="offer-summary">
-                                    <strong>${offer.type.value} | ${offer.offerAddress.ho} | ${offer.heatingType.value}</strong>
+                                    <strong>${offer.type.value} | ${offer.offerAddress.ho}호 | ${offer.heatingType.value}</strong>
                                 </div>
                                 <div class="label-info">
                                     <label>세입자: ${offer.offerAddition.tenant}</label>
@@ -144,25 +145,27 @@ function updateOffers(southWest, northEast, region = null) {
                     `)
                 }
 
-                offersArea.append(`
-                        <div class="paginator">
-                            <div class="page-wrap">
-                                <button class="page prev">
-                                    <img src="/img/basic/keyboard_arrow_left-24px.svg">
-                                </button>
-                                <ul style="display: contents;">
-                                    <li class="active"><h6>1</h6></li>
-                                    <li><h5>2</h5></li>
-                                    <li><h5>3</h5></li>
-                                    <li><h5>4</h5></li>
-                                    <li><h5>5</h5></li>
-                                </ul>
-                                <button class="page prev">
-                                    <img src="/img/basic/keyboard_arrow_right-24px.svg">
-                                </button>
+                if(!offersArea.parent().hasClass("paginator")) {
+                    offersArea.parent().append(`
+                            <div class="paginator">
+                                <div class="page-wrap">
+                                    <button class="page prev">
+                                        <img src="/img/basic/keyboard_arrow_left-24px.svg">
+                                    </button>
+                                    <ul style="display: contents;">
+                                        <li class="active"><h6>1</h6></li>
+                                        <li><h5>2</h5></li>
+                                        <li><h5>3</h5></li>
+                                        <li><h5>4</h5></li>
+                                        <li><h5>5</h5></li>
+                                    </ul>
+                                    <button class="page prev">
+                                        <img src="/img/basic/keyboard_arrow_right-24px.svg">
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                `)
+                    `)
+                }
             }
         },
         error: ajaxError
