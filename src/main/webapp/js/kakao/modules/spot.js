@@ -21,7 +21,6 @@ class Spot extends Overlay {
      * @param offers
      */
     drawSpots(offers) {
-        console.log(offers);
         const size = offers.length;
 
         if(size === 0) {

@@ -61,8 +61,8 @@
 
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
 
-        const offers = getOffers(mapManager.getSouthWest(), mapManager.getNorthEast());
-        mapManager.updateOffers(offers);
+        const pageInfo = getOffersPageInfo(mapManager.getSouthWest(), mapManager.getNorthEast());
+        mapManager.updateOffers(pageInfo['list']);
     });
 
     function searchToggle() {

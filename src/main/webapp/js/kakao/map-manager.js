@@ -26,13 +26,14 @@ class MapManager extends Spot {
             const weight = this.getWeightByZoomLevel(level);
             this.drawOverlays(weight, this.southWest, this.northEast);
 
-            const offers = getOffers(this.southWest, this.northEast);
+            let pageInfo = getOffersPageInfo(this.southWest, this.northEast);
 
-            this.updateOffers(offers);
+            this.updateOffers(pageInfo['list']);
 
             /* If `spot` level */
             if(level < 4) {
-                this.drawSpots(offers);
+                pageInfo = getOffersPageInfo(this.southWest, this.northEast, null, 0);
+                this.drawSpots(pageInfo['list']);
             }
         })
     }

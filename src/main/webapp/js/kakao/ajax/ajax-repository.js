@@ -74,7 +74,7 @@ function getOffersByRegion(region) {
     return result;
 }
 
-function getOffers(southWest, northEast, region = null) {
+function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
     let requestBody;
     let result;
 
@@ -87,7 +87,8 @@ function getOffers(southWest, northEast, region = null) {
             south: southWest.Ga,
             west: southWest.Ha,
             north: northEast.Ga,
-            east: northEast.Ha
+            east: northEast.Ha,
+            page: page
         }
     }
 
@@ -99,8 +100,8 @@ function getOffers(southWest, northEast, region = null) {
         async: false,
         contentType: 'application/json',
         data: requestBody,
-        success: function (offers) {
-            result = offers;
+        success: function (pageInfo) {
+            result = pageInfo;
         },
         error: ajaxError
     });
