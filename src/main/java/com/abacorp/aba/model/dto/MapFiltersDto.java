@@ -11,6 +11,8 @@ import lombok.*;
 @ToString
 public class MapFiltersDto {
     private int weight;
+    @Builder.Default
+    private int page = 1;
     private String east;
     private String west;
     private String south;

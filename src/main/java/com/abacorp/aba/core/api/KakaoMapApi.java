@@ -5,6 +5,8 @@ import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ import java.util.Map;
 @RequestMapping("/apis")
 @Slf4j
 public class KakaoMapApi {
+    private final int OFFERS_PER_PAGE = 1;
+    private final int MAXIMUM_PAGE = 999;
 
     @Autowired
     private MapService service;
@@ -36,13 +40,19 @@ public class KakaoMapApi {
     }
 
     @RequestMapping(value = "/offers", method = RequestMethod.POST)
-    public List<Offer> offers(@RequestBody MapFiltersDto dto) {
+    public PageInfo<Offer> offers(@RequestBody MapFiltersDto dto) {
         String region = dto.getBelongsTo();
 
-        if(region != null) {
-            return service.getOffersInRegion(region);
+        if (region != null) {
+            return PageHelper.startPage(dto.getPage(), OFFERS_PER_PAGE).doSelectPageInfo(
+                    () -> service.getOffersInRegion(region)
+            );
         } else {
-            return service.getOffers(dto);
+            int limit = dto.getPage() == 0 ? MAXIMUM_PAGE : OFFERS_PER_PAGE;
+
+            return PageHelper.startPage(dto.getPage(), limit).doSelectPageInfo(
+                    () -> service.getOffers(dto)
+            );
         }
     }
 
@@ -63,5 +73,4 @@ public class KakaoMapApi {
     public String searchAddress(@RequestParam(value = "keyword") String address) throws Exception {
         return helper.getPlaceGeoByKeyword(address).getBody();
     }
-
 }
