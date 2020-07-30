@@ -172,8 +172,8 @@
                         </div>
                         <div class="input-group">
                             <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr">
-                            <input type="hidden" id="latitude" name="latitude">
-                            <input type="hidden" id="longitude" name="longitude">
+                            <input type="hidden" id="latitude" name="locationX">
+                            <input type="hidden" id="longitude" name="locationY">
                         </div>
 
                         <p class="error" id="privateInfoError" hidden>

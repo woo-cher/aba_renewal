@@ -102,7 +102,7 @@ class MapModule {
             }
 
             case keys[2]: {
-                level = 4;
+                level = 3;
                 break
             }
         }

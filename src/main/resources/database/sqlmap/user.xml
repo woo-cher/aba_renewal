@@ -9,12 +9,12 @@
         INSERT INTO users
         (
              user_id, password, type, name, nick_name, email, phone, role, created_at, jibun_addr, road_addr,
-             extra_addr, agent_name, agent_number, agent_phone, agent_leader, latitude, longitude
+             extra_addr, agent_name, agent_number, agent_phone, agent_leader, location_x, location_y
         )
         VALUES
         (
                 #{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role.name}, current_timestamp, #{jibunAddr}, #{roadAddr},
-                #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader}, #{latitude}, #{longitude}
+                #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader}, #{locationX}, #{locationY}
         )
     </select>
 

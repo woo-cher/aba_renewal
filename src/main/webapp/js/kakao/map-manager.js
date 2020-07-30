@@ -29,6 +29,11 @@ class MapManager extends Spot {
             const offers = getOffers(this.southWest, this.northEast);
 
             this.updateOffers(offers);
+
+            /* If `spot` level */
+            if(level < 4) {
+                this.drawSpots(offers);
+            }
         })
     }
 

@@ -3,12 +3,15 @@ document.write("<script src='/js/kakao/factory/dom-factory.js'></script>");
 class CustomDomCreator {
     constructor(overlayId) {
         this.factory = new CustomDomFactory();
-        this.wrapper = this.factory.getWrapper();
 
+        /* Overlay dom */
+        this.wrapper = this.factory.getWrapper();
+        this.inner = document.createDocumentFragment();
         this.title = document.createDocumentFragment();
         this.count = document.createDocumentFragment();
+
+        /* Spot dom */
         this.spotContents = document.createDocumentFragment();
-        this.inner = document.createDocumentFragment();
 
         if(!isNaN(overlayId)) {
             this.inner = this.factory.getInner(overlayId);
