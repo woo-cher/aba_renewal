@@ -21,6 +21,7 @@ class Spot extends Overlay {
      * @param offers
      */
     drawSpots(offers) {
+        console.log(offers);
         const size = offers.length;
 
         if(size === 0) {
@@ -53,25 +54,26 @@ class Spot extends Overlay {
                 spot.setContent(spotElement.getSpotContents());
 
                 this.spotMap.set(key, spot);
+
+                spotElement.customEventListener(mapWeightType.Spot, 'click', () => {
+                    const offersOfSpot = getOffersByLatLng(lat, lng);
+                    this.updateOffers(offersOfSpot);
+
+                    if (this.target === event.currentTarget) {
+                        return
+                    }
+
+                    if (this.target !== undefined) {
+                        this.removeClassElement(this.target, 'clickable')
+                    }
+
+                    this.target = event.currentTarget;
+                    this.targetId = offers[i].id;
+                    this.addClassElement(this.target, 'clickable');
+                })
             }
 
             this.overlays.push(spot); // for clear()
-
-            spotElement.customEventListener(mapWeightType.Spot, 'click', () => {
-                // getOffersByLatLng and updateOffers()
-
-                if (this.target === event.currentTarget) {
-                    return
-                }
-
-                if (this.target !== undefined) {
-                    this.removeClassElement(this.target, 'clickable')
-                }
-
-                this.target = event.currentTarget;
-                this.targetId = offers[i].id;
-                this.addClassElement(this.target, 'clickable');
-            })
         }
 
         this.spotMap.clear(); // reset

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -31,5 +32,9 @@ public class MapService {
 
     public List<Offer> getOffersInRegion(String region) {
         return repository.selectOffersByBelongsTo(region);
+    }
+
+    public List<Offer> getOffersByLatLng(Map<String, String> latLng) {
+        return repository.selectOffersByLatLng(latLng);
     }
 }

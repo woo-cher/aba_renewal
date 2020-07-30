@@ -76,4 +76,9 @@
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
     </select>
+
+    <select id="selectOffersByLatLng" resultMap="offer" parameterType="map">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE addrs.latitude = #{latitude} AND addrs.longitude = #{longitude}
+    </select>
 </mapper>

@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/apis")
@@ -44,8 +46,22 @@ public class KakaoMapApi {
         }
     }
 
+    @RequestMapping(value = "/offers", method = RequestMethod.GET)
+    public List<Offer> offersOfLatLng(@RequestParam(value = "latitude") String lat,
+                                      @RequestParam(value = "longitude") String lng) {
+        Map<String, String> latLng = new HashMap<>();
+
+        latLng.put("latitude", lat);
+        latLng.put("longitude", lng);
+
+        log.info("dto map : {}", latLng);
+
+        return service.getOffersByLatLng(latLng);
+    }
+
     @RequestMapping(value = "/kakao/address")
     public String searchAddress(@RequestParam(value = "keyword") String address) throws Exception {
         return helper.getPlaceGeoByKeyword(address).getBody();
     }
+
 }

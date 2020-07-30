@@ -108,6 +108,24 @@ function getOffers(southWest, northEast, region = null) {
     return result;
 }
 
+function getOffersByLatLng(latitude, longitude) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers?latitude=' + latitude + '&longitude=' + longitude,
+        type: 'GET',
+        async: false,
+        contentType: 'application/json',
+        success: function (offers) {
+            result = offers;
+            console.log(result);
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 function ajaxError() {
     alert("Error !");
 }
