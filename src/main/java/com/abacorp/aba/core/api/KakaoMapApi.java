@@ -19,7 +19,7 @@ import java.util.Map;
 @RequestMapping("/apis")
 @Slf4j
 public class KakaoMapApi {
-    private final int OFFERS_PER_PAGE = 1;
+    private final int OFFERS_PER_PAGE = 2;
     private final int MAXIMUM_PAGE = 999;
 
     @Autowired

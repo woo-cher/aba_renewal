@@ -55,15 +55,24 @@
 </html>
 
 <script>
+    let mapManager = new MapManager(document.getElementById('map'));
+
     $(document).ready(() => {
-        const container = document.getElementById('map');
-        const mapManager = new MapManager(container);
-
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
-
-        const pageInfo = getOffersPageInfo(mapManager.getSouthWest(), mapManager.getNorthEast());
-        mapManager.updateOffers(pageInfo['list']);
+        mapManager.updateOffersAndPages();
     });
+
+    function pagingCaller(pageNum, isPrev = null) {
+        if(isPrev !== null) {
+            if(isPrev) {
+                mapManager.startPage -= 5;
+            } else {
+                mapManager.startPage += 5;
+            }
+        }
+
+        mapManager.updateOffersAndPages(pageNum);
+    }
 
     function searchToggle() {
         $(".search-result").toggle();
