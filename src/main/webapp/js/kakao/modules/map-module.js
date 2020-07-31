@@ -123,7 +123,12 @@ class MapModule {
         $('.paginator').remove();
 
         if (offers.length === 0) {
-            $('.list-header > strong').text(`없음`)
+            $('.list-header > strong').text("없음");
+            $('.list-container').append(`
+                <div class="align-center" style="padding: 40% 0;">
+                    <p class="aba txt-lg">이 지역엔 매물이 없어요 :(</p>
+                </div>
+            `);
         } else {
             $('.list-header > strong').text(`${offers.length}개`);
             for (let i = 0; i < offers.length; i++) {
