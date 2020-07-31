@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN", "MASTER")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -25,7 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/auth/login")
-//                .failureForwardUrl("/auth/login")
                 .failureHandler(new ForwardAuthenticationFailureHandler("/auth/login"))
                 .loginProcessingUrl("/auth/doLogin")
                 .defaultSuccessUrl("/")
