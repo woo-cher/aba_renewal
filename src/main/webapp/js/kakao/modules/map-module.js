@@ -1,5 +1,8 @@
 class MapModule {
     constructor() {
+        this.startPage = 1;
+        this.endPage = 0;
+        this.pageLength = 5;
     }
 
     getPolygons(coordinates) {
@@ -109,19 +112,68 @@ class MapModule {
         return level
     }
 
+    updateOffersAndPages(page, pageInfo = [], region) {
+        const offers = pageInfo['size'] !== 0 ? pageInfo['list'] : [];
+        this.endPage = pageInfo['pages'];
+        this.updateOffers(offers, pageInfo['total']);
+
+        if(pageInfo['size'] !== 0) {
+            this.bindPagination(pageInfo, $('.offer-list'), region);
+        }
+    }
+
+    bindPagination (pageInfo, offerArea, region = "") {
+        const pageNum = pageInfo['pageNum'];
+
+        if(this.startPage + 5 === pageNum) {
+            this.startPage = pageNum;
+        }
+
+        if (!offerArea.hasClass("paginator")) {
+            offerArea.append(`
+                <div class="paginator">
+                    <div class="page-wrap">
+                        <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
+                            <img src="/img/basic/keyboard_arrow_left-24px.svg">
+                        </button>
+                        <ul class="pages" style="display: contents;"></ul>
+                        <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
+                            <img src="/img/basic/keyboard_arrow_right-24px.svg">
+                        </button>
+                    </div>
+                </div>
+            `)
+        }
+
+        let count = 0;
+        const pageArea = $('.pages');
+
+        for(let num = this.startPage; num <= pageInfo['pages']; num++) {
+            if(count !== this.pageLength) {
+                pageArea.append(num === pageNum ?
+                    `<li class="active">${num}</li>` :
+                    `<li onclick="pagingCaller(${num}, null, '${region}')">${num}</li>`
+                );
+
+                count++;
+            }
+        }
+    }
+
     /**
      * Update `offers`
      * when `zoom_changed`, `dragend`, `overlay click` ...
      *
      * @param offers
+     * @param total
      */
-    updateOffers(offers) {
+    updateOffers(offers, total) {
         const offersArea = $('.list-container');
 
         offersArea.empty();
         $('.paginator').remove();
 
-        if (offers.length === 0) {
+        if (total === 0) {
             $('.list-header > strong').text("없음");
             $('.list-container').append(`
                 <div class="align-center" style="padding: 40% 0;">
@@ -129,7 +181,7 @@ class MapModule {
                 </div>
             `);
         } else {
-            $('.list-header > strong').text(`${offers.length}개`);
+            $('.list-header > strong').text(`${total}개`);
 
             for (let i = 0; i < offers.length; i++) {
                 let offer = offers[i];

@@ -89,6 +89,7 @@ class Overlay extends KakaoMap {
         overlayDom.customEventListener(weight, 'click', () => {
             // this.saleList.showLoading();
             // this.saleList.pageReset();
+            this.startPage = 1;
 
             if (overlay.id === this.targetId) {
                 return
@@ -107,14 +108,11 @@ class Overlay extends KakaoMap {
             this.addClassElement(this.target, 'clickable');
 
             let pageInfo;
+            let region = weight === 1 ? overlay.belongsTo : overlay.name;
 
-            if(weight === 1) {
-                pageInfo = getOffersPageInfo(null, null, overlay.belongsTo);
-            } else {
-                pageInfo = getOffersPageInfo(null, null, overlay.name);
-            }
+            pageInfo = getOffersPageInfo(null, null, region);
 
-            this.updateOffers(pageInfo['list']);
+            this.updateOffersAndPages(1, pageInfo, region);
 
             // 로딩바 숨김
             // await setTimeout(this.saleList.hideLoading(), 1000)
@@ -136,5 +134,6 @@ class Overlay extends KakaoMap {
     fieldClear() {
         this.target = undefined;
         this.targetId = NaN;
+        this.startPage = 1;
     }
 }

@@ -56,7 +56,7 @@ class Spot extends Overlay {
 
                 spotElement.customEventListener(mapWeightType.Spot, 'click', () => {
                     const offersOfSpot = getOffersByLatLng(lat, lng);
-                    this.updateOffers(offersOfSpot);
+                    this.updateOffers(offersOfSpot, offersOfSpot.length);
 
                     if (this.target === event.currentTarget) {
                         return

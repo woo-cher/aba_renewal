@@ -398,15 +398,12 @@
 
         if(result === null) {
             $(focus).val('');
-            console.log('1111111111111');
             return
         } else {
             if(result[0].length > 12) {
-                console.log('222222222)');
                 $('.check-user').text("최대 12자까지 가능해요 :)")
             }
         }
-        console.log('3333333)', result[0]);
         $(focus).val(result);
 
         return result[0];

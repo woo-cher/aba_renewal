@@ -59,11 +59,17 @@
 
     $(document).ready(() => {
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
-        mapManager.updateOffersAndPages();
+
+        const pageInfo = getOffersPageInfo(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);
+        mapManager.updateOffersAndPages(1, pageInfo);
     });
 
-    function pagingCaller(pageNum, isPrev = null) {
+    function pagingCaller(page, isPrev = null, region = "") {
         if(isPrev !== null) {
+            if(page < 0 || page > mapManager.endPage) {
+                return
+            }
+
             if(isPrev) {
                 mapManager.startPage -= 5;
             } else {
@@ -71,7 +77,10 @@
             }
         }
 
-        mapManager.updateOffersAndPages(pageNum);
+        let pageInfo = region !== "" ?
+            getOffersPageInfo(null, null, region, page) :
+            getOffersPageInfo(mapManager.southWest, mapManager.northEast, null, page);
+        mapManager.updateOffersAndPages(page, pageInfo, region);
     }
 
     function searchToggle() {

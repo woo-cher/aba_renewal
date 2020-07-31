@@ -80,7 +80,8 @@ function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
 
     if (region !== null) {
         requestBody = {
-            belongsTo: region
+            belongsTo: region,
+            page: page
         }
     } else {
         requestBody = {
@@ -119,7 +120,6 @@ function getOffersByLatLng(latitude, longitude) {
         contentType: 'application/json',
         success: function (offers) {
             result = offers;
-            console.log(result);
         },
         error: ajaxError
     });
