@@ -19,8 +19,8 @@
                         <c:if test="${not empty offerTypes}">
                             <c:forEach var="offerType" items="${offerTypes}" begin="1" varStatus="vs">
                             <li class="checkbox-list">
-                                <input id="offerType${vs.index}" type="checkbox" name="offerType" value="${vs.index}" class="check">
-                                <label for="offerType${vs.index}">
+                                <input id="offerType${vs.index}" type="checkbox" name="offerType" value="${offerType}" class="check">
+                                <label for="offerType${vs.index}" onclick="updateDtoModel($(this).prev())">
                                     ${offerType.value}
                                 </label>
                             </li>
@@ -46,8 +46,8 @@
                         <c:if test="${not empty dealTypes}">
                             <c:forEach var="dealType" items="${dealTypes}" begin="1" varStatus="vs">
                                 <li class="checkbox-list" style="width: 28%;">
-                                    <input id="dealType${vs.index}" type="checkbox" name="dealType" value="${vs.index}" class="check">
-                                    <label for="dealType${vs.index}">
+                                    <input id="dealType${vs.index}" type="checkbox" name="dealType" value="${dealType}" class="check">
+                                    <label for="dealType${vs.index}" onclick="updateDtoModel($(this).prev())">
                                             ${dealType.value}
                                     </label>
                                 </li>
@@ -72,13 +72,16 @@
                     </header>
 
                     <div class="custom-slider">
-                        <input type="range" min="0" max="20000" value="20000" step="10000" list="deposit-vals"
-                               class="slider" id="deposit" onchange="set_slide_value(this, $('#deposit-val'))"
+                        <input type="range" min="0" max="50000" value="50000" step="5000" list="deposit-vals" name="deposit"
+                               class="slider" id="deposit" onchange="set_slide_value($(this), $('#deposit-val'))"
                         />
                         <datalist id="deposit-vals">
-                            <option value="0">0</option>
-                            <option value="10000" style="">1억</option>
-                            <option value="-1" style="">∞</option>
+                            <option value="0">(억)</option>
+                            <option value="10000">1</option>
+                            <option value="20000">2</option>
+                            <option value="30000">3</option>
+                            <option value="40000">4</option>
+                            <option value="-1">∞</option>
                         </datalist>
                     </div>
                 </div>
@@ -99,8 +102,8 @@
                     </header>
 
                     <div class="custom-slider">
-                        <input type="range" min="0" max="105" value="105" step="5" list="monthly-vals"
-                               class="slider" id="monthly" onchange="set_slide_value(this, $('#monthly-val'))"
+                        <input type="range" min="0" max="105" value="105" step="5" list="monthly-vals" name="monthlyPrice"
+                               class="slider" id="monthly" onchange="set_slide_value($(this), $('#monthly-val'))"
                         />
                         <datalist id="monthly-vals">
                             <option value="0">0</option>
@@ -122,46 +125,76 @@
 </div>
 
 <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var last;
-    var i;
+    const filtersDto = {
+        offerType: [],
+        dealType: [],
+        deposit: '0',
+        monthlyPrice: '0'
+    };
 
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            if(last != undefined && last != this) {
-                last.classList.toggle("active");
-                last.nextElementSibling.style.maxHeight = null;
-                last.nextElementSibling.style.border = null;
-            }
+    function updateDtoModel(focus) {
+        const key = focus.attr('name');
+        let element = filtersDto[key];
 
-            this.classList.toggle("active");
+        if(typeof element !== 'string') {
+            console.log(typeof element)
+            focus.is(":checked") ? // 이게 이상하게 반대로 작동함
+            removeSpecifiedElement(filtersDto[key], filtersDto[key].indexOf(focus.val())) :
+            filtersDto[key].push(focus.val())
+        } else {
+            filtersDto[key] = focus.val();
+        }
 
-            const content = this.nextElementSibling;
-
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
-                content.style.border = null;
-                last = undefined
-            } else {
-                content.style.maxHeight = "100%";
-                content.style.border = "1px solid rgb(187, 187, 187)";
-                last = this;
-            }
-        });
+        mapManager.eventTrigger();
     }
 
+    function removeSpecifiedElement(array, indexOf) {
+        array.splice(indexOf, 1);
+    }
+
+    $(document).ready(function () {
+        let coll = document.getElementsByClassName("collapsible");
+        let last;
+
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                if(last !== undefined && last !== this) {
+                    last.classList.toggle("active");
+                    last.nextElementSibling.style.maxHeight = null;
+                    last.nextElementSibling.style.border = null;
+                }
+
+                this.classList.toggle("active");
+
+                const content = this.nextElementSibling;
+
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.style.border = null;
+                    last = undefined
+                } else {
+                    content.style.maxHeight = "100%";
+                    content.style.border = "1px solid rgb(187, 187, 187)";
+                    last = this;
+                }
+            });
+        }
+    });
+
     function set_slide_value(focus, value_area) {
-        let value = focus.value;
+        let value = focus.val();
         console.log(value);
 
-        if (value === '0' || value === '20000' || value === '105') {
+        if (value === '0' || value === '50000' || value === '105') {
             value = "무제한";
-        } else if (value.toString().length <= 3) {
+        } else if (value.toString().length <= 4) {
             value = "~" + value + "만원"
         } else {
             value = "~" + (value / 10000) + "억";
         }
 
         value_area.text(value);
+
+        updateDtoModel(focus);
     }
 </script>

@@ -34,7 +34,7 @@ public class MapService {
         return repository.selectOffersByBelongsTo(region);
     }
 
-    public List<Offer> getOffersByLatLng(Map<String, String> latLng) {
+    public List<Offer> getOffersByLatLng(MapFiltersDto latLng) {
         return repository.selectOffersByLatLng(latLng);
     }
 }

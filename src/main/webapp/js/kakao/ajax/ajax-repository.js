@@ -1,4 +1,4 @@
-function getAllOverlays(weight, southWest, northEast) {
+function getAllOgverlays(weight, southWest, northEast) {
     let result;
 
     $.ajax({
@@ -54,42 +54,26 @@ function searchKakaoAddress(keyword) {
     return result;
 }
 
-function getOffersByRegion(region) {
-    let result;
-
-    $.ajax({
-        url: '/apis/offers',
-        type: 'POST',
-        async: false,
-        contentType: 'application/json',
-        data: JSON.stringify({
-            belongsTo: region
-        }),
-        success: function (offers) {
-            result = offers;
-        },
-        error: ajaxError
-    });
-
-    return result;
-}
-
 function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
     let requestBody;
     let result;
 
     if (region !== null) {
         requestBody = {
-            belongsTo: region,
-            page: page
+            page: page,
+            belongsTo: region
         }
     } else {
         requestBody = {
+            page: page,
             south: southWest.Ga,
             west: southWest.Ha,
             north: northEast.Ga,
             east: northEast.Ha,
-            page: page
+            offerTypes: filtersDto.offerType,
+            dealTypes: filtersDto.dealType,
+            maxDeposit: filtersDto.deposit,
+            maxMonthlyPrice: filtersDto.monthlyPrice
         }
     }
 
@@ -114,10 +98,18 @@ function getOffersByLatLng(latitude, longitude) {
     let result;
 
     $.ajax({
-        url: '/apis/offers?latitude=' + latitude + '&longitude=' + longitude,
-        type: 'GET',
+        url: '/apis/offers/spot',
+        type: 'POST',
         async: false,
         contentType: 'application/json',
+        data: JSON.stringify({
+            latitude: latitude,
+            longitude: longitude,
+            offerTypes: filtersDto.offerType,
+            dealTypes: filtersDto.dealType,
+            maxDeposit: filtersDto.deposit,
+            maxMonthlyPrice: filtersDto.monthlyPrice
+        }),
         success: function (offers) {
             result = offers;
         },

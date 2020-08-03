@@ -57,19 +57,35 @@
         LEFT JOIN offer_additions AS adds ON ofs.id = adds.offer_id
     </sql>
 
-    <sql id="latitudeQualify">
-        (addrs.latitude BETWEEN #{west} AND #{east})
-    </sql>
-
-    <sql id="longitudeQualify">
-        (addrs.latitude BETWEEN #{west} AND #{east})
+    <sql id="latitudeQualify">(addrs.latitude BETWEEN #{west} AND #{east})</sql>
+    <sql id="longitudeQualify">(addrs.latitude BETWEEN #{west} AND #{east})</sql>
+    <sql id="filtersQuery">
+        /**
+        If filters ...
+        */
+        <if test="offerTypes.length != 0">
+            AND (
+            <foreach collection="offerTypes" item="type" index="i">
+                ofs.type = #{type} <if test="i != offerTypes.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
+        <if test="dealTypes.length != 0">
+            AND (
+            <foreach collection="dealTypes" item="type" index="i">
+                ofs.deal_type = #{type} <if test="i != dealTypes.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
+        <if test="maxDeposit != 0">AND (ofs.deposit BETWEEN 0 AND #{maxDeposit})</if>
+        <if test="maxMonthlyPrice != 0">AND (ofs.monthly_price BETWEEN 0 AND #{maxMonthlyPrice})</if>
     </sql>
 
     <select id="selectOffersByFilters" resultMap="offer" parameterType="MapFiltersDto">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE <include refid="latitudeQualify" />
         AND   <include refid="longitudeQualify" />
-        /* If filters ... */
+        <include refid="filtersQuery" />
     </select>
 
     <select id="selectOffersByRegion" resultMap="offer" parameterType="String">
@@ -77,8 +93,9 @@
         WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
     </select>
 
-    <select id="selectOffersByLatLng" resultMap="offer" parameterType="map">
+    <select id="selectOffersByLatLng" resultMap="offer" parameterType="MapFiltersDto">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.latitude = #{latitude} AND addrs.longitude = #{longitude}
+        <include refid="filtersQuery" />
     </select>
 </mapper>

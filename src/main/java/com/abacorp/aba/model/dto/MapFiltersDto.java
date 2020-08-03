@@ -20,4 +20,10 @@ public class MapFiltersDto {
     private String belongsTo;
 
     /* Added Filters .. */
+    private String latitude;
+    private String longitude;
+    private String[] offerTypes;
+    private String[] dealTypes;
+    private String maxDeposit;
+    private String maxMonthlyPrice;
 }

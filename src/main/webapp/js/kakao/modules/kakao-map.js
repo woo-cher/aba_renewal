@@ -22,9 +22,6 @@ class KakaoMap extends MapModule {
         this.setZoomControl(this.getZoomControl());
 
         this.bounds = this.getBoundElement();
-        this.propertiesInRect = [];
-        this.doUpdate = false;
-        this.zoomLevel = this.getMapLevel();
     }
 
     getKakaoMap() {

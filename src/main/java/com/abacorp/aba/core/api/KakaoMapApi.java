@@ -42,6 +42,7 @@ public class KakaoMapApi {
     @RequestMapping(value = "/offers", method = RequestMethod.POST)
     public PageInfo<Offer> offers(@RequestBody MapFiltersDto dto) {
         String region = dto.getBelongsTo();
+        log.info("Dto : {}", dto);
 
         if (region != null) {
             return PageHelper.startPage(dto.getPage(), OFFERS_PER_PAGE).doSelectPageInfo(
@@ -56,17 +57,10 @@ public class KakaoMapApi {
         }
     }
 
-    @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    public List<Offer> offersOfLatLng(@RequestParam(value = "latitude") String lat,
-                                      @RequestParam(value = "longitude") String lng) {
-        Map<String, String> latLng = new HashMap<>();
-
-        latLng.put("latitude", lat);
-        latLng.put("longitude", lng);
-
-        log.info("dto map : {}", latLng);
-
-        return service.getOffersByLatLng(latLng);
+    @RequestMapping(value = "/offers/spot", method = RequestMethod.POST)
+    public List<Offer> offersOfLatLng(@RequestBody MapFiltersDto dto) {
+        log.info("dto : {}", dto);
+        return service.getOffersByLatLng(dto);
     }
 
     @RequestMapping(value = "/kakao/address")
