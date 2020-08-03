@@ -1,22 +1,19 @@
 function getAllOverlays(weight, southWest, northEast) {
     let result;
+    let requestBody = {
+        weight: weight,
+        south: southWest.Ga,
+        west: southWest.Ha,
+        north: northEast.Ga,
+        east: northEast.Ha
+    }
 
     $.ajax({
         url: '/apis/overlays',
         type: 'POST',
         async: false,
         contentType: 'application/json',
-        data: JSON.stringify({
-            weight: weight,
-            south: southWest.Ga,
-            west: southWest.Ha,
-            north: northEast.Ga,
-            east: northEast.Ha,
-            offerTypes: filtersDto.offerType,
-            dealTypes: filtersDto.dealType,
-            maxDeposit: filtersDto.deposit,
-            maxMonthlyPrice: filtersDto.monthlyPrice
-        }),
+        data: addFiltersOfReqBody(requestBody),
         success: function (overlays) {
             result = overlays;
         },
@@ -66,10 +63,6 @@ function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
         requestBody = {
             page: page,
             belongsTo: region,
-            offerTypes: filtersDto.offerType,
-            dealTypes: filtersDto.dealType,
-            maxDeposit: filtersDto.deposit,
-            maxMonthlyPrice: filtersDto.monthlyPrice
         }
     } else {
         requestBody = {
@@ -78,21 +71,15 @@ function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
             west: southWest.Ha,
             north: northEast.Ga,
             east: northEast.Ha,
-            offerTypes: filtersDto.offerType,
-            dealTypes: filtersDto.dealType,
-            maxDeposit: filtersDto.deposit,
-            maxMonthlyPrice: filtersDto.monthlyPrice
         }
     }
-
-    requestBody = JSON.stringify(requestBody);
 
     $.ajax({
         url: '/apis/offers',
         type: 'POST',
         async: false,
         contentType: 'application/json',
-        data: requestBody,
+        data: addFiltersOfReqBody(requestBody),
         success: function (pageInfo) {
             result = pageInfo;
         },
@@ -104,20 +91,17 @@ function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
 
 function getOffersByLatLng(latitude, longitude) {
     let result;
+    let requestBody = {
+        latitude: latitude,
+        longitude: longitude
+    };
 
     $.ajax({
         url: '/apis/offers/spot',
         type: 'POST',
         async: false,
         contentType: 'application/json',
-        data: JSON.stringify({
-            latitude: latitude,
-            longitude: longitude,
-            offerTypes: filtersDto.offerType,
-            dealTypes: filtersDto.dealType,
-            maxDeposit: filtersDto.deposit,
-            maxMonthlyPrice: filtersDto.monthlyPrice
-        }),
+        data: addFiltersOfReqBody(requestBody),
         success: function (offers) {
             result = offers;
         },
@@ -129,4 +113,13 @@ function getOffersByLatLng(latitude, longitude) {
 
 function ajaxError() {
     alert("Error !");
+}
+
+function addFiltersOfReqBody(reqBody) {
+    reqBody['offerTypes'] = filtersDto.offerType;
+    reqBody['dealTypes'] = filtersDto.dealType;
+    reqBody['maxDeposit'] = filtersDto.deposit;
+    reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
+
+    return JSON.stringify(reqBody);
 }
