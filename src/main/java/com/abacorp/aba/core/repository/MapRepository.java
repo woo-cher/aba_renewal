@@ -33,8 +33,8 @@ public class MapRepository {
         return sqlSession.selectList("selectOffersByFilters", dto);
     }
 
-    public List<Offer> selectOffersByBelongsTo(String region) {
-        return sqlSession.selectList("selectOffersByRegion", region);
+    public List<Offer> selectOffersByBelongsTo(MapFiltersDto dto) {
+        return sqlSession.selectList("selectOffersByRegion", dto);
     }
 
     public List<Offer> selectOffersByLatLng(MapFiltersDto latLng) {

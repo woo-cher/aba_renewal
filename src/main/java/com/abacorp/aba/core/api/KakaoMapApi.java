@@ -41,12 +41,11 @@ public class KakaoMapApi {
 
     @RequestMapping(value = "/offers", method = RequestMethod.POST)
     public PageInfo<Offer> offers(@RequestBody MapFiltersDto dto) {
-        String region = dto.getBelongsTo();
         log.info("Dto : {}", dto);
 
-        if (region != null) {
+        if (dto.getBelongsTo() != null) {
             return PageHelper.startPage(dto.getPage(), OFFERS_PER_PAGE).doSelectPageInfo(
-                    () -> service.getOffersInRegion(region)
+                    () -> service.getOffersInRegion(dto) // <<<<<<<<<<<<<<<<<<<
             );
         } else {
             int limit = dto.getPage() == 0 ? MAXIMUM_PAGE : OFFERS_PER_PAGE;

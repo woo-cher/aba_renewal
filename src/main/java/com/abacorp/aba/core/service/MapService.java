@@ -38,8 +38,8 @@ public class MapService {
         return repository.selectOffersUsingFilter(dto);
     }
 
-    public List<Offer> getOffersInRegion(String region) {
-        return repository.selectOffersByBelongsTo(region);
+    public List<Offer> getOffersInRegion(MapFiltersDto dto) {
+        return repository.selectOffersByBelongsTo(dto);
     }
 
     public List<Offer> getOffersByLatLng(MapFiltersDto latLng) {

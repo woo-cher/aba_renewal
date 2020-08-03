@@ -20,6 +20,7 @@ public class OfferTest {
             .east("35.170247905919645")
             .south("128.1038512961487")
             .north("128.13354775681677")
+            .belongsTo("호탄동")
             .build();
 
     @Autowired
@@ -33,7 +34,7 @@ public class OfferTest {
 
     @Test
     public void getOffersByRegion() {
-        List<Offer> offers = repository.selectOffersByBelongsTo("호탄동");
+        List<Offer> offers = repository.selectOffersByBelongsTo(testDto);
         log.info("\noffers.. : {}", offers);
    }
 }

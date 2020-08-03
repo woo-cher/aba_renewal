@@ -65,7 +65,11 @@ function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
     if (region !== null) {
         requestBody = {
             page: page,
-            belongsTo: region
+            belongsTo: region,
+            offerTypes: filtersDto.offerType,
+            dealTypes: filtersDto.dealType,
+            maxDeposit: filtersDto.deposit,
+            maxMonthlyPrice: filtersDto.monthlyPrice
         }
     } else {
         requestBody = {

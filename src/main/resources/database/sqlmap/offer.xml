@@ -88,9 +88,10 @@
         <include refid="filtersQuery" />
     </select>
 
-    <select id="selectOffersByRegion" resultMap="offer" parameterType="String">
+    <select id="selectOffersByRegion" resultMap="offer" parameterType="MapFiltersDto">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+        <include refid="filtersQuery" />
     </select>
 
     <select id="selectOffersByLatLng" resultMap="offer" parameterType="MapFiltersDto">
