@@ -2,8 +2,7 @@ package com.abacorp.aba.core.controller;
 
 
 import com.abacorp.aba.core.service.MapService;
-import com.abacorp.aba.model.type.DealType;
-import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +24,8 @@ public class MapController {
     private ModelAndView kakaoMap() {
         mv.addObject("offerTypes", OfferType.values());
         mv.addObject("dealTypes", DealType.values());
+        mv.addObject("options", OptionType.values());
+//        mv.addObject("manages", ManagementCategoryType.values());
 
         mv.setViewName("map/map");
 

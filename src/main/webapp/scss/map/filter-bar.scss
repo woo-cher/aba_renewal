@@ -11,7 +11,9 @@ $abaColor: #00adef;
   &.deposit {}
   &.manage {}
   &.completion {}
-  &.all {}
+  &.all { width: 990px; height: auto; display: inline-block; }
+
+  .detail-wrap { padding: 1%; width: 31%; display: inline-block; }
 }
 
 /**
@@ -77,6 +79,10 @@ $abaColor: #00adef;
     width: 100%;
     height: 70px;
     line-height: 30px;
+
+    &.h-half {
+      height: 30px !important;
+    }
 
     .title {
       color: $abaColor;

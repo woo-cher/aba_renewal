@@ -156,6 +156,17 @@ datalist option {
   width: 200px;
   height: 150px;
 }
+.detail-container.all {
+  width: 990px;
+  height: auto;
+  display: inline-block;
+}
+.detail-container .detail-wrap {
+  padding: 1%;
+  width: 31%;
+  display: inline-block;
+}
+
 /**
     Filter-bar area
  */
@@ -211,6 +222,9 @@ datalist option {
   width: 100%;
   height: 70px;
   line-height: 30px;
+}
+.filter-detail .detail-header.h-half {
+  height: 30px !important;
 }
 .filter-detail .detail-header .title {
   color: #00adef;

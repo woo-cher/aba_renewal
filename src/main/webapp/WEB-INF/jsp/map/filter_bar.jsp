@@ -115,11 +115,124 @@
             </div>
         </li>
         <li class="filter-el">
-            <a class="collapsible" href="#" style="cursor: not-allowed;" onclick="alert('준비중이예요 :)')">
+            <a class="collapsible" href="#">
                 <i class="fas fa-sort-amount-down-alt fa-sm"></i>
                 상세필터
             </a>
-            <div class="filter-detail"></div>
+            <div class="filter-detail">
+                <div class="detail-container all">
+                    <div class="detail-wrap">
+                        <header class="detail-header">
+                            <p class="title">추가 항목</p>
+                            <p class="caption">복수 선택</p>
+                        </header>
+
+                        <ul class="checkbox-container">
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="parking" type="checkbox" name="parking" value="1" class="check">
+                                <label for="parking" onclick="updateDtoModel($(this).prev())">주차 가능</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="tenaunt" type="checkbox" name="tenaunt" value="1" class="check">
+                                <label for="tenaunt" onclick="updateDtoModel($(this).prev())">세입자 없음</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="elvator" type="checkbox" name="hasElevator" value="1" class="check">
+                                <label for="elvator" onclick="updateDtoModel($(this).prev())">승강기 있음</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="term" type="checkbox" name="term" value="1" class="check">
+                                <label for="term" onclick="updateDtoModel($(this).prev())">단기 가능</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail-wrap">
+                        <header class="detail-header">
+                            <p class="title">층수</p>
+                            <p class="caption">단일 선택</p>
+                        </header>
+
+                        <ul class="checkbox-container">
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor0" type="radio" name="floor" value="1" class="check">
+                                <label for="floor0" onclick="updateDtoModel($(this).prev())">반지하</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor1" type="radio" name="floor" value="1" class="check">
+                                <label for="floor1" onclick="updateDtoModel($(this).prev())">1층</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor2" type="radio" name="floor" value="2" class="check">
+                                <label for="floor2" onclick="updateDtoModel($(this).prev())">2층</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor3" type="radio" name="floor" value="3" class="check">
+                                <label for="floor3" onclick="updateDtoModel($(this).prev())">3층</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor4" type="radio" name="floor" value="3" class="check">
+                                <label for="floor4" onclick="updateDtoModel($(this).prev())">4층 이상</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor5" type="radio" name="floor" value="100" class="check">
+                                <label for="floor5" onclick="updateDtoModel($(this).prev())">옥탑</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-wrap">
+                    <header class="detail-header">
+                        <p class="title">준공년도</p>
+                        <p class="caption">단일 선택</p>
+                    </header>
+
+                    <ul class="checkbox-container">
+                        <li class="checkbox-list" style="width: 28%;">
+                            <input id="year0" type="radio" name="year" value="0" class="check" checked>
+                            <label for="year0" onclick="updateDtoModel($(this).prev())">전체</label>
+                        </li>
+                        <li class="checkbox-list" style="width: 28%;">
+                            <input id="year1" type="radio" name="year" value="1" class="check">
+                            <label for="year1" onclick="updateDtoModel($(this).prev())">1년 이내</label>
+                        </li>
+                        <li class="checkbox-list" style="width: 28%;">
+                            <input id="year2" type="radio" name="year" value="2" class="check">
+                            <label for="year2" onclick="updateDtoModel($(this).prev())">5년 이내</label>
+                        </li>
+                        <li class="checkbox-list" style="width: 28%;">
+                            <input id="year3" type="radio" name="year" value="3" class="check">
+                            <label for="year3" onclick="updateDtoModel($(this).prev())">10년 이내</label>
+                        </li>
+                        <li class="checkbox-list" style="width: 28%;">
+                            <input id="year4" type="radio" name="year" value="3" class="check">
+                            <label for="year4" onclick="updateDtoModel($(this).prev())">15년 이내</label>
+                        </li>
+                        <li class="checkbox-list" style="width: 28%;">
+                            <input id="year5" type="radio" name="year" value="100" class="check">
+                            <label for="year5" onclick="updateDtoModel($(this).prev())">15년 이상</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-wrap w-full">
+                    <header class="detail-header h-half">
+                        <p class="title inline">옵션<span class="caption">복수 선택</span></p>
+                    </header>
+                    <ul class="checkbox-container p-1">
+                        <c:if test="${not empty options}">
+                            <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
+                                <li class="checkbox-list" style="width: 15%;">
+                                    <input id="option${vs.index}" type="checkbox" name="option" value="${option}" class="check">
+                                    <label for="option${vs.index}" onclick="updateDtoModel($(this).prev())">
+                                            ${option.value}
+                                    </label>
+                                </li>
+                            </c:forEach>
+                        </c:if>
+                    </ul>
+                </div>
+
+            </div>
         </li>
     </ul>
 </div>
