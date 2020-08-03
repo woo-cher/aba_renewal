@@ -98,4 +98,10 @@
         WHERE addrs.latitude = #{latitude} AND addrs.longitude = #{longitude}
         <include refid="filtersQuery" />
     </select>
+
+    <select id="selectCountByBelongsAndFilters" resultType="int" parameterType="MapFiltersDto">
+        SELECT count(*) FROM offers AS ofs <include refid="offerJoin" />
+        WHERE addrs.belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+        <include refid="filtersQuery" />
+    </select>
 </mapper>

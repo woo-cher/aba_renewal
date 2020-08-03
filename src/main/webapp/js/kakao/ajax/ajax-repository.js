@@ -1,4 +1,4 @@
-function getAllOgverlays(weight, southWest, northEast) {
+function getAllOverlays(weight, southWest, northEast) {
     let result;
 
     $.ajax({
@@ -11,7 +11,11 @@ function getAllOgverlays(weight, southWest, northEast) {
             south: southWest.Ga,
             west: southWest.Ha,
             north: northEast.Ga,
-            east: northEast.Ha
+            east: northEast.Ha,
+            offerTypes: filtersDto.offerType,
+            dealTypes: filtersDto.dealType,
+            maxDeposit: filtersDto.deposit,
+            maxMonthlyPrice: filtersDto.monthlyPrice
         }),
         success: function (overlays) {
             result = overlays;

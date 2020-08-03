@@ -40,4 +40,8 @@ public class MapRepository {
     public List<Offer> selectOffersByLatLng(MapFiltersDto latLng) {
         return sqlSession.selectList("selectOffersByLatLng", latLng);
     }
+
+    public int selectCountByFilters(MapFiltersDto dto) {
+        return sqlSession.selectOne("selectCountByBelongsAndFilters", dto);
+    }
 }

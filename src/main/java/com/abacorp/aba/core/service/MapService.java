@@ -7,9 +7,9 @@ import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Slf4j
@@ -18,8 +18,16 @@ public class MapService {
     @Autowired
     private MapRepository repository;
 
+    @Transactional
     public List<Overlay> getOverlays(MapFiltersDto dto) {
-        return repository.selectOverlaysByFilters(dto);
+        List<Overlay> overlays = repository.selectOverlaysByFilters(dto);
+
+        for(Overlay overlay : overlays) {
+            dto.setBelongsTo(overlay.getName());
+            overlay.setCount(repository.selectCountByFilters(dto));
+        }
+
+        return overlays;
     }
 
     public Overlay getOverlay(int id) {

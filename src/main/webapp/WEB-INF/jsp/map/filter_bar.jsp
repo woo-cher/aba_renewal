@@ -137,7 +137,6 @@
         let element = filtersDto[key];
 
         if(typeof element !== 'string') {
-            console.log(typeof element)
             focus.is(":checked") ? // 이게 이상하게 반대로 작동함
             removeSpecifiedElement(filtersDto[key], filtersDto[key].indexOf(focus.val())) :
             filtersDto[key].push(focus.val())
