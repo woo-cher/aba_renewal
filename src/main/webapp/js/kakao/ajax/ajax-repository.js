@@ -120,6 +120,14 @@ function addFiltersOfReqBody(reqBody) {
     reqBody['dealTypes'] = filtersDto.dealType;
     reqBody['maxDeposit'] = filtersDto.deposit;
     reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
+    reqBody['isParking'] = filtersDto.isParking;
+    reqBody['isNotTenant'] = filtersDto.isNotTenant;
+    reqBody['isPet'] = filtersDto.isPet;
+    reqBody['hasElevator'] = filtersDto.hasElevator;
+    reqBody['isCanTerm'] = filtersDto.isCanTerm;
+    reqBody['floor'] = filtersDto.floor;
+    reqBody['completionYear'] = filtersDto.year;
+    reqBody['options'] = filtersDto.option;
 
     return JSON.stringify(reqBody);
 }

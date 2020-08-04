@@ -203,7 +203,11 @@ class MapModule {
                             <p class="offer-addr">${offer.offerAddress.jibun}</p>
                             <p class="offer-building">화이트원룸</p>
                             <div class="offer-summary">
-                                <strong>${offer.type.value} | ${offer.offerAddress.ho}호 | ${offer.heatingType.value}</strong>
+                                <strong>
+                                    ${offer.type.value} |
+                                    ${offer.offerAddress.ho} |
+                                    ${offer.heatingType.value}
+                                </strong>
                             </div>
                             <div class="label-info">
                                 <label>세입자: ${offer.offerAddition.tenant}</label>

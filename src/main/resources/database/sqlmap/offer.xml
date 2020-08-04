@@ -65,20 +65,32 @@
         */
         <if test="offerTypes.length != 0">
             AND (
-            <foreach collection="offerTypes" item="type" index="i">
-                ofs.type = #{type} <if test="i != offerTypes.length - 1">OR</if>
+            <foreach collection="offerTypes" item="offerType" index="i">
+                ofs.type = #{offertype} <if test="i != offerTypes.length - 1">OR</if>
             </foreach>
             )
         </if>
         <if test="dealTypes.length != 0">
             AND (
-            <foreach collection="dealTypes" item="type" index="i">
-                ofs.deal_type = #{type} <if test="i != dealTypes.length - 1">OR</if>
+            <foreach collection="dealTypes" item="dealType" index="i">
+                ofs.deal_type = #{dealtype} <if test="i != dealTypes.length - 1">OR</if>
             </foreach>
             )
         </if>
         <if test="maxDeposit != 0">AND (ofs.deposit BETWEEN 0 AND #{maxDeposit})</if>
         <if test="maxMonthlyPrice != 0">AND (ofs.monthly_price BETWEEN 0 AND #{maxMonthlyPrice})</if>
+        <if test="isParking">AND (adds.is_parking = TRUE)</if>
+        <if test="isNotTenant">AND (adds.tenant LIKE '%무%')</if>
+        <if test="hasElevator">AND (adds.has_elevator = TRUE)</if>
+        <if test="isPet">AND (adds.is_pet = TRUE)</if>
+        <if test="isCanTerm">AND (adds.term > 0)</if>
+        <if test="floor != 0">AND (addrs.floor = #{floor})</if>
+        <if test="completionYear != 0">AND (ofs.completion_year = #{completionYear})</if>
+        <if test="options.length != 0">
+            <foreach collection="options" item="option">
+            AND (adds.option_category LIKE CONCAT('%',#{option},'%'))
+            </foreach>
+       </if>
     </sql>
 
     <select id="selectOffersByFilters" resultMap="offer" parameterType="MapFiltersDto">

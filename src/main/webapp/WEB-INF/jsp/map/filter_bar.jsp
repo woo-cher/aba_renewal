@@ -129,20 +129,24 @@
 
                         <ul class="checkbox-container">
                             <li class="checkbox-list" style="width: 28%;">
-                                <input id="parking" type="checkbox" name="parking" value="1" class="check">
+                                <input id="parking" type="checkbox" name="isParking" value=true class="check">
                                 <label for="parking" onclick="updateDtoModel($(this).prev())">주차 가능</label>
                             </li>
                             <li class="checkbox-list" style="width: 28%;">
-                                <input id="tenaunt" type="checkbox" name="tenaunt" value="1" class="check">
+                                <input id="tenaunt" type="checkbox" name="isNotTenant" value=true class="check">
                                 <label for="tenaunt" onclick="updateDtoModel($(this).prev())">세입자 없음</label>
                             </li>
                             <li class="checkbox-list" style="width: 28%;">
-                                <input id="elvator" type="checkbox" name="hasElevator" value="1" class="check">
+                                <input id="elvator" type="checkbox" name="hasElevator" value=true class="check">
                                 <label for="elvator" onclick="updateDtoModel($(this).prev())">승강기 있음</label>
                             </li>
                             <li class="checkbox-list" style="width: 28%;">
-                                <input id="term" type="checkbox" name="term" value="1" class="check">
+                                <input id="term" type="checkbox" name="isCanTerm" value=true class="check">
                                 <label for="term" onclick="updateDtoModel($(this).prev())">단기 가능</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="pet" type="checkbox" name="isPet" value=true class="check">
+                                <label for="pet" onclick="updateDtoModel($(this).prev())">반려 가능</label>
                             </li>
                         </ul>
                     </div>
@@ -154,29 +158,28 @@
 
                         <ul class="checkbox-container">
                             <li class="checkbox-list" style="width: 28%;">
-                                <input id="floor0" type="radio" name="floor" value="1" class="check">
+                                <input id="floor" type="radio" name="floor" value="0" class="check" checked>
+                                <label for="floor" onclick="updateDtoModel($(this).prev())">전체</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%;">
+                                <input id="floor0" type="radio" name="floor" value="-1" class="check">
                                 <label for="floor0" onclick="updateDtoModel($(this).prev())">반지하</label>
                             </li>
                             <li class="checkbox-list" style="width: 28%;">
-                                <input id="floor1" type="radio" name="floor" value="1" class="check">
-                                <label for="floor1" onclick="updateDtoModel($(this).prev())">1층</label>
+                                <input id="floorT" type="radio" name="floor" value="100" class="check">
+                                <label for="floorT" onclick="updateDtoModel($(this).prev())">옥탑</label>
                             </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="floor2" type="radio" name="floor" value="2" class="check">
-                                <label for="floor2" onclick="updateDtoModel($(this).prev())">2층</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="floor3" type="radio" name="floor" value="3" class="check">
-                                <label for="floor3" onclick="updateDtoModel($(this).prev())">3층</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="floor4" type="radio" name="floor" value="3" class="check">
-                                <label for="floor4" onclick="updateDtoModel($(this).prev())">4층 이상</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="floor5" type="radio" name="floor" value="100" class="check">
-                                <label for="floor5" onclick="updateDtoModel($(this).prev())">옥탑</label>
-                            </li>
+                            <c:forEach begin="1" end="6" varStatus="vs">
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="floor${vs.index}" type="radio" name="floor" value="${vs.index}" class="check">
+                                    <label for="floor${vs.index}" onclick="updateDtoModel($(this).prev())">
+                                        <c:choose>
+                                            <c:when test="${vs.index eq 6}">${vs.index}층 이상</c:when>
+                                            <c:otherwise>${vs.index}층</c:otherwise>
+                                        </c:choose>
+                                    </label>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
 
@@ -196,15 +199,15 @@
                             <label for="year1" onclick="updateDtoModel($(this).prev())">1년 이내</label>
                         </li>
                         <li class="checkbox-list" style="width: 28%;">
-                            <input id="year2" type="radio" name="year" value="2" class="check">
+                            <input id="year2" type="radio" name="year" value="5" class="check">
                             <label for="year2" onclick="updateDtoModel($(this).prev())">5년 이내</label>
                         </li>
                         <li class="checkbox-list" style="width: 28%;">
-                            <input id="year3" type="radio" name="year" value="3" class="check">
+                            <input id="year3" type="radio" name="year" value="10" class="check">
                             <label for="year3" onclick="updateDtoModel($(this).prev())">10년 이내</label>
                         </li>
                         <li class="checkbox-list" style="width: 28%;">
-                            <input id="year4" type="radio" name="year" value="3" class="check">
+                            <input id="year4" type="radio" name="year" value="15" class="check">
                             <label for="year4" onclick="updateDtoModel($(this).prev())">15년 이내</label>
                         </li>
                         <li class="checkbox-list" style="width: 28%;">
@@ -222,7 +225,7 @@
                         <c:if test="${not empty options}">
                             <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
                                 <li class="checkbox-list" style="width: 15%;">
-                                    <input id="option${vs.index}" type="checkbox" name="option" value="${option}" class="check">
+                                    <input id="option${vs.index}" type="checkbox" name="option" value="${vs.index}" class="check">
                                     <label for="option${vs.index}" onclick="updateDtoModel($(this).prev())">
                                             ${option.value}
                                     </label>
@@ -242,17 +245,27 @@
         offerType: [],
         dealType: [],
         deposit: '0',
-        monthlyPrice: '0'
+        monthlyPrice: '0',
+        isParking: false,
+        isNotTenant: false,
+        hasElevator: false,
+        isCanTerm: false,
+        isPet: false,
+        floor: '0',
+        year: '0',
+        option: []
     };
 
     function updateDtoModel(focus) {
         const key = focus.attr('name');
         let element = filtersDto[key];
 
-        if(typeof element !== 'string') {
+        if(typeof element === 'object') {
             focus.is(":checked") ? // 이게 이상하게 반대로 작동함
             removeSpecifiedElement(filtersDto[key], filtersDto[key].indexOf(focus.val())) :
             filtersDto[key].push(focus.val())
+        } else if(typeof element === 'boolean') {
+            filtersDto[key] = !focus.is(":checked");
         } else {
             filtersDto[key] = focus.val();
         }

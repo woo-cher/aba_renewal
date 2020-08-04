@@ -16,6 +16,7 @@ public class OfferAddress {
     private String dong;
     private String ho;
     private String door;
+    private String floor;
     private String nearLocation;
     private String belongsTo;
 }
