@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="filter-bar">
+    <form>
     <ul class="filter-group">
         <li class="filter-el">
             <a class="collapsible" href="#">
@@ -182,7 +183,6 @@
                             </c:forEach>
                         </ul>
                     </div>
-
                     <div class="detail-wrap">
                     <header class="detail-header">
                         <p class="title">준공년도</p>
@@ -216,7 +216,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <div class="detail-wrap w-full">
                     <header class="detail-header h-half">
                         <p class="title inline">옵션<span class="caption">복수 선택</span></p>
@@ -234,14 +233,15 @@
                         </c:if>
                     </ul>
                 </div>
-
+            </div>
             </div>
         </li>
     </ul>
+    </form>
 </div>
 
 <script>
-    const filtersDto = {
+    let filtersDto = {
         offerType: [],
         dealType: [],
         deposit: '0',
@@ -255,6 +255,23 @@
         year: '0',
         option: []
     };
+
+    function resetDtoValues() {
+        filtersDto['offerTypes'] = [];
+        filtersDto['dealTypes'] = [];
+        filtersDto['maxDeposit'] = '0';
+        filtersDto['maxMonthlyPrice'] = '0';
+        filtersDto['isParking'] = false;
+        filtersDto['isNotTenant'] = false;
+        filtersDto['isPet'] = false;
+        filtersDto['hasElevator'] = false;
+        filtersDto['isCanTerm'] = false;
+        filtersDto['floor'] = '0';
+        filtersDto['completionYear'] = '0';
+        filtersDto['options'] = [];
+
+        mapManager.eventTrigger();
+    }
 
     function updateDtoModel(focus) {
         const key = focus.attr('name');
