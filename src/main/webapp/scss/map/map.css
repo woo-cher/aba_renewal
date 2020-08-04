@@ -160,6 +160,7 @@ datalist option {
   width: 990px;
   height: auto;
   display: inline-block;
+  position: relative;
 }
 .detail-container .detail-wrap {
   padding: 1%;

@@ -11,7 +11,7 @@ $abaColor: #00adef;
   &.deposit {}
   &.manage {}
   &.completion {}
-  &.all { width: 990px; height: auto; display: inline-block; }
+  &.all { width: 990px; height: auto; display: inline-block; position: relative; }
 
   .detail-wrap { padding: 1%; width: 31%; display: inline-block; }
 }
