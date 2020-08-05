@@ -639,6 +639,7 @@ datalist option {
 }
 .result li {
   padding: 3%;
+  position: relative;
 }
 .result li:hover {
   background: #00adef;
