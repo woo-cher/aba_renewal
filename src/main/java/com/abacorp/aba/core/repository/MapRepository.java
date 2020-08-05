@@ -48,4 +48,8 @@ public class MapRepository {
     public List<Overlay> selectOverlaysByKeyword(String keyword) {
         return sqlSession.selectList("selectOverlaysByKeyword", keyword);
     }
+
+    public List<Offer> selectOffersByIdKeyword(String idKey) {
+        return sqlSession.selectList("selectOffersByIdKey", idKey);
+    }
 }

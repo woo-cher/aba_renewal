@@ -72,4 +72,9 @@ public class KakaoMapApi {
     public List<Overlay> overlaysByKeyword(@RequestParam(value = "keyword") String keyword) {
         return service.getOverlayByKeyword(keyword);
     }
+
+    @RequestMapping(value = "/offers")
+    public List<Offer> offersByIdKeyword(@RequestParam(value = "idKey") String idKey) {
+        return service.getOffersByIdKeyword(idKey);
+    }
 }

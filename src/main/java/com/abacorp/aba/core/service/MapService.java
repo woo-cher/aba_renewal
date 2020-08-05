@@ -53,4 +53,8 @@ public class MapService {
     public List<Overlay> getOverlayByKeyword(String keyword) {
         return repository.selectOverlaysByKeyword(keyword);
     }
+
+    public List<Offer> getOffersByIdKeyword(String idKey) {
+        return repository.selectOffersByIdKeyword(idKey);
+    }
 }
