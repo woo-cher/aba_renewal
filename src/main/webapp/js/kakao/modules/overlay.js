@@ -64,15 +64,13 @@ class Overlay extends KakaoMap {
             this.eventManager = setTimeout(() => {
                 if (!this.cacheMap.has(overlay.id)) {
                     this.polygons = this.getPolygons(getCoordinates(overlay.id));
-                    this.last = this.polygons;
                     this.cacheMap.set(overlay.id, this.polygons);
-                    this.paint(this.polygons)
                 } else {
                     this.polygons = this.cacheMap.get(overlay.id);
-
-                    this.paint(this.polygons);
-                    this.last = this.polygons;
                 }
+
+                this.last = this.polygons;
+                this.paint(this.polygons);
             }, 0)
         });
     }
@@ -95,6 +93,13 @@ class Overlay extends KakaoMap {
                 return
             }
 
+            /* When search result element (overlay) clicked */
+            if (!this.cacheMap.has(overlay.id)) {
+                this.polygons = this.getPolygons(getCoordinates(overlay.id));
+                this.cacheMap.set(overlay.id, this.polygons);
+                this.paint(this.polygons);
+            }
+
             if (this.target !== undefined) {
                 this.removeClassElement(this.target, 'clickable');
                 this.recover(this.cacheMap.get(this.targetId))
@@ -107,10 +112,8 @@ class Overlay extends KakaoMap {
 
             this.addClassElement(this.target, 'clickable');
 
-            let pageInfo;
             let region = weight === 1 ? overlay.belongsTo : overlay.name;
-
-            pageInfo = getOffersPageInfo(null, null, region);
+            let pageInfo = getOffersPageInfo(null, null, region);
 
             this.updateOffersAndPages(1, pageInfo, region);
 

@@ -126,8 +126,21 @@
             overlays.map((overlay) => {
                 area = overlay.weight !== 1 ? overlay.belongsTo + ' ' + overlay.name : overlay.name;
 
-                selector.append(`<li>` + area + `</li>`);
+                const element = $(`<li>` + area + `</li>`);
+                element.on('click', () => { clickOfSearchResult(overlay); });
+
+                selector.append(element);
             })
         }, 300);
+    }
+
+    function clickOfSearchResult(clicked) {
+        const level = mapManager.getLevelByWeight(clicked.weight);
+
+        mapManager.setCenter(clicked.latitude, clicked.longitude);
+        mapManager.setLevel(level, {});
+        mapManager.eventTrigger();
+
+        $('#' + clicked.id).children().click();
     }
 </script>
