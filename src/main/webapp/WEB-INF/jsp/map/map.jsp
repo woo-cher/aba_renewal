@@ -45,7 +45,7 @@
                 <div class="offer-list">
                     <div class="list-header">
                         전체 방
-                        <strong class="aba">1234개</strong>
+                        <strong class="aba">? 개</strong>
                     </div>
                     <ul class="list-container"></ul>
                 </div>

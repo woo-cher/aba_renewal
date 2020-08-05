@@ -5,6 +5,7 @@ import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.abacorp.aba.model.mapper.ModelMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -65,5 +66,10 @@ public class KakaoMapApi {
     @RequestMapping(value = "/kakao/address")
     public String searchAddress(@RequestParam(value = "keyword") String address) throws Exception {
         return helper.getPlaceGeoByKeyword(address).getBody();
+    }
+
+    @RequestMapping(value = "/overlays")
+    public List<Overlay> overlaysByKeyword(@RequestParam(value = "keyword") String keyword) {
+        return service.getOverlayByKeyword(keyword);
     }
 }

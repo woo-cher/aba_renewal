@@ -4,6 +4,7 @@ import com.abacorp.aba.core.repository.MapRepository;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,9 @@ public class MapService {
 
     public List<Offer> getOffersByLatLng(MapFiltersDto latLng) {
         return repository.selectOffersByLatLng(latLng);
+    }
+
+    public List<Overlay> getOverlayByKeyword(String keyword) {
+        return repository.selectOverlaysByKeyword(keyword);
     }
 }

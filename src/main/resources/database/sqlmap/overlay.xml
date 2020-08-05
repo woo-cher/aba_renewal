@@ -16,4 +16,10 @@
     <select id="selectOverlay" resultMap="Overlay" parameterType="int">
         SELECT id, coordinates, name FROM overlays WHERE (id = #{id})
     </select>
+
+    <select id="selectOverlaysByKeyword" resultType="Overlay" parameterType="string">
+        SELECT id, latitude, longitude, name, weight, belongs_to
+        FROM overlays
+        WHERE name LIKE CONCAT('%', #{keyword}, '%');
+    </select>
 </mapper>

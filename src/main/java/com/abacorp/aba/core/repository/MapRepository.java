@@ -44,4 +44,8 @@ public class MapRepository {
     public int selectCountByFilters(MapFiltersDto dto) {
         return sqlSession.selectOne("selectCountByBelongsAndFilters", dto);
     }
+
+    public List<Overlay> selectOverlaysByKeyword(String keyword) {
+        return sqlSession.selectList("selectOverlaysByKeyword", keyword);
+    }
 }
