@@ -23,21 +23,24 @@
                 <div id="map" class="map">
                     <div class="search-bar">
                         <input type="text" placeholder="지역, 매물번호를 입력하세요!"
-                               onfocus="location.href=`javascript:searchToggle()`"
-                               onfocusout="location.href=`javascript:searchToggle()`"
+                               onfocus="searchOverlays($(this).val())"
+                               onkeyup="searchOverlays($(this).val())"
                         >
                         <button type="button" class="search-btn">
                             <img src="/img/svg/search-24px.svg" class="search-icon">
                         </button>
                         <div class="search-result" hidden>
                             <header class="result-header">
+                                <div class="f-c" id="toggle" style="position: absolute; right: 15px; top: 20px; cursor: pointer">
+                                    <i class="aba fas" onclick="searchToggle('hide')">&nbsp;닫기</i>
+                                </div>
                                 <span>
                                     <i class="fas fa-map-marker-alt"></i>
                                     행정구역
                                 </span>
                             </header>
-                            <div class="result aba">
-                                <h2>결과가 존재하지 않아요 :(</h2>
+                            <div class="result">
+                                <ul></ul>
                             </div>
                         </div>
                     </div>
@@ -56,12 +59,15 @@
 
 <script>
     let mapManager = new MapManager(document.getElementById('map'));
+    let timeOut;
 
     $(document).ready(() => {
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
 
         const pageInfo = getOffersPageInfo(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);
         mapManager.updateOffersAndPages(1, pageInfo);
+
+        $(".overlay").click(function () { searchToggle('hide'); })
     });
 
     function pagingCaller(page, isPrev = null, region = "") {
@@ -80,11 +86,48 @@
         let pageInfo = region !== "" ?
             getOffersPageInfo(null, null, region, page) :
             getOffersPageInfo(mapManager.southWest, mapManager.northEast, null, page);
+
         mapManager.updateOffersAndPages(page, pageInfo, region);
     }
 
-    function searchToggle() {
-        $(".search-result").toggle();
-        $(".overlay").toggle();
+    function searchToggle(action) {
+        if(action === 'hide') {
+            $(".search-result").hide();
+            $(".overlay").hide();
+        } else {
+            $(".search-result").show();
+            $(".overlay").show();
+        }
+    }
+
+    function searchOverlays(keyword) {
+        clearTimeout(timeOut);
+
+        if (keyword === '' || keyword === ' ') {
+            return
+        }
+
+        timeOut = setTimeout(() => {
+            let overlays = getOverlaysByKeyword(keyword);
+            let area = '';
+
+            const selector = $('.result > ul');
+            selector.empty();
+            selector.removeClass('f-c aba');
+            searchToggle('show');
+
+            if(overlays.length === 0) {
+                selector.addClass('f-c aba');
+                selector.html(`<h2 class="align-center">결과가 존재하지 않아요 :(</h2>`);
+
+                return
+            }
+
+            overlays.map((overlay) => {
+                area = overlay.weight !== 1 ? overlay.belongsTo + ' ' + overlay.name : overlay.name;
+
+                selector.append(`<li>` + area + `</li>`);
+            })
+        }, 300);
     }
 </script>

@@ -6,7 +6,7 @@ function getAllOverlays(weight, southWest, northEast) {
         west: southWest.Ha,
         north: northEast.Ga,
         east: northEast.Ha
-    }
+    };
 
     $.ajax({
         url: '/apis/overlays',
@@ -104,6 +104,22 @@ function getOffersByLatLng(latitude, longitude) {
         data: addFiltersOfReqBody(requestBody),
         success: function (offers) {
             result = offers;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
+function getOverlaysByKeyword(keyword) {
+    let result;
+
+    $.ajax({
+        url: '/apis/overlays?keyword=' + keyword,
+        type: 'GET',
+        async: false,
+        success: function (overlays) {
+            result = overlays;
         },
         error: ajaxError
     });

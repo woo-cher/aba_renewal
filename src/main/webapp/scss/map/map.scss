@@ -1,4 +1,4 @@
-@import "filter-bar", "offer-list", "overlay";
+@import "filter-bar", "offer-list", "overlay", "../component/custom";
 
 /**
     Map area
@@ -61,6 +61,7 @@
   background-color: rgb(255, 255, 255);
 
   .result-header {
+    position: relative;
     display: flex;
     align-items: center;
     height: 58px;
@@ -76,11 +77,24 @@
       }
     }
   }
+}
 
-  .result {
-    display: flex;
-    align-items: center;
-    text-align: center;
+/* Search-bar */
+.result {
+  @include scroll-bar("ul");
+
+  ul {
+    width: 100%;
     height: 200px;
+    overflow-y: auto;
+  }
+
+  li {
+    padding: 3%;
+
+    &:hover {
+      background: #00adef;
+      color: white;
+    }
   }
 }
