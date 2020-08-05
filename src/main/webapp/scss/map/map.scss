@@ -95,6 +95,12 @@
     &:hover {
       background: #00adef;
       color: white;
+
+      &:hover::after {
+        position: absolute;
+        right: 25px;
+        content: '▶';
+      }
     }
   }
 }

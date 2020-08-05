@@ -127,6 +127,22 @@ function getOverlaysByKeyword(keyword) {
     return result;
 }
 
+function getOffersByIdKeyword(idKey) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers?idKey=' + idKey,
+        type: 'GET',
+        async: false,
+        success: function (offers) {
+            result = offers;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 function ajaxError() {
     alert("Error !");
 }

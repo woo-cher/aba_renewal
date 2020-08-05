@@ -463,7 +463,7 @@ datalist option {
   background: white;
 }
 
-#customSpot {
+.custom-spot-overlay {
   width: 40px;
   height: 40px;
   opacity: 0.7;
@@ -473,7 +473,7 @@ datalist option {
   text-align: center;
   cursor: pointer;
 }
-#customSpot #spotCount {
+.custom-spot-overlay #spotCount {
   color: white;
   position: relative;
   font-size: 17px;
@@ -481,8 +481,8 @@ datalist option {
   top: 10px;
 }
 
-#customSpot:hover,
-#customSpot.clickable {
+.custom-spot-overlay:hover,
+.custom-spot-overlay.clickable {
   border: 2px solid white;
   color: white;
   opacity: 1;
@@ -643,6 +643,11 @@ datalist option {
 .result li:hover {
   background: #00adef;
   color: white;
+}
+.result li:hover:hover::after {
+  position: absolute;
+  right: 25px;
+  content: "▶";
 }
 
 /*# sourceMappingURL=map.css.map */

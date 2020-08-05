@@ -51,8 +51,9 @@ class CustomDomCreator {
         return this.wrapper
     }
 
-    setSpotContents(countValue) {
-        this.spotContents = this.factory.getSpotContents(countValue)
+    setSpotContents(countValue, idValue) {
+        idValue = idValue.toString().replace('.', '');
+        this.spotContents = this.factory.getSpotContents(countValue, idValue)
     }
 
     getSpotContents() {

@@ -197,7 +197,9 @@ class MapModule {
                             </div>
                             <p class="offer-deal">
                                 <label>${offer.dealType.value}</label>
-                                <strong>${offer.deposit}/${offer.monthlyPrice} +${offer.managementPrice}</strong>
+                                <strong>${offer.deposit}/${offer.monthlyPrice}
+                                    <span class="aba"> +${offer.managementPrice}</span>
+                                </strong>
                                 <label class="r-float">확인일자 ${offer.updatedAt.slice(2, 10)}</label>
                             </p>
                             <p class="offer-addr">${offer.offerAddress.jibun}</p>
@@ -238,6 +240,10 @@ class MapModule {
             case 3: {
                 return 7;
                 break
+            }
+            case 4: {
+                return 3;
+                break;
             }
         }
     }

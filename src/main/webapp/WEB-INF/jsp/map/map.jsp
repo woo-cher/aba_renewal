@@ -8,6 +8,8 @@
 
         <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+
         <%@include file="../commons/map.jspf"%>
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -23,8 +25,8 @@
                 <div id="map" class="map">
                     <div class="search-bar">
                         <input type="text" placeholder="지역, 매물번호를 입력하세요!"
-                               onfocus="searchOverlays($(this).val())"
-                               onkeyup="searchOverlays($(this).val())"
+                               onfocus="searchResults($(this).val())"
+                               onkeyup="searchResults($(this).val())"
                         >
                         <button type="button" class="search-btn">
                             <img src="/img/svg/search-24px.svg" class="search-icon">
@@ -36,7 +38,7 @@
                                 </div>
                                 <span>
                                     <i class="fas fa-map-marker-alt"></i>
-                                    행정구역
+                                    <label id="result-type"></label>
                                 </span>
                             </header>
                             <div class="result">
@@ -100,47 +102,77 @@
         }
     }
 
-    function searchOverlays(keyword) {
+    function searchResults(keyword) {
         clearTimeout(timeOut);
 
+        let idRegex = new RegExp("^[0-9]*");
+        let matcher = idRegex.exec(keyword);
+
         if (keyword === '' || keyword === ' ') {
+            searchToggle('hide');
             return
         }
 
         timeOut = setTimeout(() => {
-            let overlays = getOverlaysByKeyword(keyword);
-            let area = '';
-
             const selector = $('.result > ul');
+            let results = [];
+            let result = '';
+
             selector.empty();
             selector.removeClass('f-c aba');
-            searchToggle('show');
 
-            if(overlays.length === 0) {
-                selector.addClass('f-c aba');
-                selector.html(`<h2 class="align-center">결과가 존재하지 않아요 :(</h2>`);
+            if(matcher[0].length !== 0) {
+                results = getOffersByIdKeyword(matcher[0]);
 
-                return
+                $('#result-type').text('매물번호');
+                errorBind(results, selector);
+
+                results.map((offer) => {
+                    result = offer.offerId + '번 매물 => ' + offer.jibun;
+
+                    const element = $(`<li>` + result + `</li>`);
+                    element.on('click', () => { clickOfSearchResult(4, offer)});
+
+                    selector.append(element);
+                })
+            } else {
+                results = getOverlaysByKeyword(keyword);
+
+                $('#result-type').text('행정구역');
+                errorBind(results, selector);
+
+                results.map((overlay) => {
+                    result = overlay.weight !== 1 ? overlay.belongsTo + ' ' + overlay.name : overlay.name;
+
+                    const element = $(`<li>` + result + `</li>`);
+                    element.on('click', () => { clickOfSearchResult(overlay.weight, overlay); });
+
+                    selector.append(element);
+                })
             }
 
-            overlays.map((overlay) => {
-                area = overlay.weight !== 1 ? overlay.belongsTo + ' ' + overlay.name : overlay.name;
-
-                const element = $(`<li>` + area + `</li>`);
-                element.on('click', () => { clickOfSearchResult(overlay); });
-
-                selector.append(element);
-            })
+            searchToggle('show');
         }, 300);
     }
 
-    function clickOfSearchResult(clicked) {
-        const level = mapManager.getLevelByWeight(clicked.weight);
+    function errorBind(results, selector) {
+        if(results.length === 0) {
+            selector.addClass('f-c aba');
+            selector.html(`<h2 class="align-center">결과가 존재하지 않아요 :(</h2>`);
+            return
+        }
+    }
 
-        mapManager.setCenter(clicked.latitude, clicked.longitude);
+    function clickOfSearchResult(weight, clicked) {
+        const level = mapManager.getLevelByWeight(weight);
+
         mapManager.setLevel(level, {});
+        mapManager.setCenter(clicked.latitude, clicked.longitude);
+        mapManager.relayout();
         mapManager.eventTrigger();
 
-        $('#' + clicked.id).children().click();
+        const clickTargetId = (clicked.latitude + clicked.longitude).toString().replace('.', '');
+
+        $('#' + clickTargetId).children().click();
     }
 </script>

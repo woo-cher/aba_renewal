@@ -49,10 +49,10 @@ class CustomDomFactory {
         return count
     }
 
-    getSpotContents(countValue) {
+    getSpotContents(countValue, idValue) {
         const spot = document.createElement('div');
 
-        spot.id = 'customSpot';
+        spot.id = idValue;
         spot.classList.add('custom-spot-overlay');
         spot.setAttribute('value', countValue.toString());
 

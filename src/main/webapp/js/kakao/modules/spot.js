@@ -49,7 +49,7 @@ class Spot extends Overlay {
                 value = node.getAttribute('value');
                 node.setAttribute('value', value++);
             } else {
-                spotElement.setSpotContents(1);
+                spotElement.setSpotContents(1, lat + lng);
                 spot.setContent(spotElement.getSpotContents());
 
                 this.spotMap.set(key, spot);

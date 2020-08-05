@@ -26,7 +26,8 @@ class Overlay extends KakaoMap {
 
     drawOverlays(weight, southWest, northEast) {
         getAllOverlays(weight, southWest, northEast).map((overlay) => {
-            const overlayElement = new CustomDomCreator(overlay.id);
+            let id = (overlay.latitude + overlay.longitude).toString().replace(".", "");
+            const overlayElement = new CustomDomCreator(id);
 
             overlayElement.setTitle(weight, overlay.name);
             overlayElement.setCount(weight, overlay.count);
@@ -93,7 +94,6 @@ class Overlay extends KakaoMap {
 
             /* When search result element (overlay) clicked */
             if (!this.cacheMap.has(overlay.id)) {
-                console.log('뀨?')
                 this.polygons = this.getPolygons(getCoordinates(overlay.id));
                 this.cacheMap.set(overlay.id, this.polygons);
             }
@@ -113,7 +113,6 @@ class Overlay extends KakaoMap {
             this.addClassElement(this.target, 'clickable');
 
             let region = weight === 1 ? overlay.belongsTo : overlay.belongsTo.concat(' ', overlay.name);
-            console.log(region);
             let pageInfo = getOffersPageInfo(null, null, region);
 
             this.updateOffersAndPages(1, pageInfo, region);
