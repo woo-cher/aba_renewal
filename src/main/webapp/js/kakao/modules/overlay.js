@@ -5,7 +5,6 @@ class Overlay extends KakaoMap {
     polygons = [];
     target = undefined;
     targetId = NaN;
-    last = [];
 
     constructor(mapElement) {
         super(mapElement);
@@ -61,7 +60,7 @@ class Overlay extends KakaoMap {
                 this.recover(this.last);
             }
 
-            this.eventManager = setTimeout(() => {
+             this.eventManager = setTimeout(() => {
                 if (!this.cacheMap.has(overlay.id)) {
                     this.polygons = this.getPolygons(getCoordinates(overlay.id));
                     this.cacheMap.set(overlay.id, this.polygons);
@@ -69,7 +68,6 @@ class Overlay extends KakaoMap {
                     this.polygons = this.cacheMap.get(overlay.id);
                 }
 
-                this.last = this.polygons;
                 this.paint(this.polygons);
             }, 0)
         });
@@ -95,10 +93,12 @@ class Overlay extends KakaoMap {
 
             /* When search result element (overlay) clicked */
             if (!this.cacheMap.has(overlay.id)) {
+                console.log('뀨?')
                 this.polygons = this.getPolygons(getCoordinates(overlay.id));
                 this.cacheMap.set(overlay.id, this.polygons);
-                this.paint(this.polygons);
             }
+
+            this.paint(this.cacheMap.get(overlay.id));
 
             if (this.target !== undefined) {
                 this.removeClassElement(this.target, 'clickable');

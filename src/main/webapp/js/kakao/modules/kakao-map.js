@@ -100,7 +100,7 @@ class KakaoMap extends MapModule {
     }
 
     eventTrigger() {
-        kakao.maps.event.trigger(this.map, 'dragend')
+        kakao.maps.event.trigger(this.map, 'dragend');
         this.relayout()
     }
 
