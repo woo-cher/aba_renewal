@@ -4,58 +4,71 @@
 <div class="filter-bar">
     <ul class="filter-group">
         <li class="filter-el">
-            <a class="collapsible" href="#">
-                <i class="fas fa-home fa-sm"></i>
-                매물분류
-            </a>
-            <div class="filter-detail">
-                <div class="detail-container offer-type">
-                    <header class="detail-header">
-                        <p class="title">매물분류</p>
-                        <p class="caption">중복선택이 가능해요 ;)</p>
-                    </header>
+            <form>
+                <a class="collapsible" href="#">
+                    <i class="fas fa-home fa-sm"></i>
+                    매물분류
+                </a>
+                <div class="filter-detail">
+                    <div class="f-c" style="position: absolute; right: 25px; top: 20px;">
+                        <i class="fas fa-undo-alt aba" onclick="resetDtoValues($(this))"></i>
+                    </div>
 
-                    <ul class="checkbox-container" id="offerType">
-                        <c:if test="${not empty offerTypes}">
-                            <c:forEach var="offerType" items="${offerTypes}" begin="1" varStatus="vs">
-                            <li class="checkbox-list">
-                                <input id="offerType${vs.index}" type="checkbox" name="offerType" value="${offerType}" class="check">
-                                <label for="offerType${vs.index}" onclick="updateDtoModel($(this).prev())">
-                                    ${offerType.value}
-                                </label>
-                            </li>
-                            </c:forEach>
-                        </c:if>
-                    </ul>
-                </div>
-            </div>
-        </li>
-        <li class="filter-el">
-            <a class="collapsible" href="#">
-                <i class="fas fa-handshake fa-sm"></i>
-                거래유형
-            </a>
-            <div class="filter-detail">
-                <div class="detail-container deal">
-                    <header class="detail-header">
-                        <p class="title">거래유형</p>
-                        <p class="caption">중복선택이 가능해요 ;)</p>
-                    </header>
+                    <div class="detail-container offer-type">
+                        <header class="detail-header">
+                            <p class="title">매물분류</p>
+                            <p class="caption">중복선택이 가능해요 ;)</p>
+                        </header>
 
-                    <ul class="checkbox-container">
-                        <c:if test="${not empty dealTypes}">
-                            <c:forEach var="dealType" items="${dealTypes}" begin="1" varStatus="vs">
-                                <li class="checkbox-list" style="width: 28%;">
-                                    <input id="dealType${vs.index}" type="checkbox" name="dealType" value="${dealType}" class="check">
-                                    <label for="dealType${vs.index}" onclick="updateDtoModel($(this).prev())">
-                                            ${dealType.value}
+                        <ul class="checkbox-container" id="offerType">
+                            <c:if test="${not empty offerTypes}">
+                                <c:forEach var="offerType" items="${offerTypes}" begin="1" varStatus="vs">
+                                <li class="checkbox-list">
+                                    <input id="offerType${vs.index}" type="checkbox" name="offerType" value="${offerType}" class="check">
+                                    <label for="offerType${vs.index}" onclick="updateDtoModel($(this).prev())">
+                                        ${offerType.value}
                                     </label>
                                 </li>
-                            </c:forEach>
-                        </c:if>
-                    </ul>
+                                </c:forEach>
+                            </c:if>
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </form>
+        </li>
+        <li class="filter-el">
+            <form>
+                <a class="collapsible" href="#">
+                    <i class="fas fa-handshake fa-sm"></i>
+                    거래유형
+                </a>
+                <div class="filter-detail">
+                    <div class="detail-container deal">
+                        <div class="f-c" style="position: absolute; right: 25px; top: 20px;">
+                            <i class="fas fa-undo-alt aba" onclick="resetDtoValues($(this))"></i>
+                        </div>
+
+                        <header class="detail-header">
+                            <p class="title">거래유형</p>
+                            <p class="caption">중복선택이 가능해요 ;)</p>
+                        </header>
+
+                        <ul class="checkbox-container">
+                            <c:if test="${not empty dealTypes}">
+                                <c:forEach var="dealType" items="${dealTypes}" begin="1" varStatus="vs">
+                                    <li class="checkbox-list" style="width: 28%;">
+                                        <input id="dealType${vs.index}" type="checkbox" name="dealType" value="${dealType}" class="check">
+                                        <label for="dealType${vs.index}" onclick="updateDtoModel($(this).prev())">
+                                                ${dealType.value}
+                                        </label>
+                                    </li>
+                                </c:forEach>
+                            </c:if>
+                        </ul>
+                    </div>
+                </div>
+            </form>
         </li>
         <li class="filter-el">
             <a class="collapsible" href="#">
@@ -115,7 +128,7 @@
             </div>
         </li>
         <li class="filter-el">
-            <form id="filter-form">
+            <form>
                 <a class="collapsible" href="#">
                     <i class="fas fa-sort-amount-down-alt fa-sm"></i>
                     상세필터
@@ -123,8 +136,9 @@
                 <div class="filter-detail">
                     <div class="detail-container all">
                         <div class="f-c" style="position: absolute; right: 25px; top: 20px;">
-                            <i class="fas fa-undo-alt aba" onclick="resetDtoValues()">&nbsp;초기화</i>
+                            <i class="fas fa-undo-alt aba" onclick="resetDtoValues($(this))">&nbsp;초기화</i>
                         </div>
+
                         <div class="detail-wrap">
                             <header class="detail-header">
                                 <p class="title">추가 항목</p>
@@ -260,7 +274,7 @@
         option: []
     };
 
-    function resetDtoValues() {
+    function resetDtoValues(focus) {
         filtersDto = {
             offerType: [],
             dealType: [],
@@ -276,7 +290,7 @@
             option: []
         };
 
-        $('#filter-form').each(function () {
+        focus.parents('form').each(function () {
             this.reset();
         });
 
@@ -333,7 +347,7 @@
         }
     });
 
-    function set_slide_value(focus, value_area) {
+    function set_slide_value(focus, valueArea) {
         let value = focus.val();
         console.log(value);
 
@@ -345,8 +359,7 @@
             value = "~" + (value / 10000) + "억";
         }
 
-        value_area.text(value);
-
+        valueArea.text(value);
         updateDtoModel(focus);
     }
 </script>
