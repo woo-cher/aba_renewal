@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/scss/offer_detail.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
+    <%@include file="../commons/map.jspf"%>
     <script src="/js/albery.js"></script>
 </head>
 
@@ -231,14 +232,13 @@
             <div class="line"></div>
             <h3>매물 위치</h3>
             <div class="map">
-                <h2>경상남도 진주시 인사동 </h2>
-                <img src="/img/offer/detail_map.jpg" alt="매물 지도" class="map-img">
-                <img src="/img/offer/detail_map_icon.png" alt="매물 위치 아이콘" class="map-icon">
+                <h2>${offer.offerAddress.jibun}</h2>
+                <div id="map-location" style="width: 75%; height: 400px; margin: 0 auto"></div>
                 <p>본 매물의 위치는 반경 가로 100m x 세로 100m 의 임의 설정 값으로 정확한 위치가 아닙니다.</p>
             </div>
-            <div class="road-map">
-                <img src="/img/offer/roadview.jpg" alt="">
-            </div>
+<%--            <div class="road-map">--%>
+<%--                <img src="/img/offer/roadview.jpg" alt="">--%>
+<%--            </div>--%>
         </div>
     </div>
 </div>
@@ -249,17 +249,25 @@
 </html>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        let map = new kakao.maps.Map(document.getElementById("map-location"), {
+            center: new kakao.maps.LatLng(${offer.offerAddress.latitude}, ${offer.offerAddress.longitude}),
+            level: 3,
+            minLevel: 2,
+            maxLevel: 3
+        });
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36251023-1']);
-    _gaq.push(['_setDomainName', 'jqueryscript.net']);
-    _gaq.push(['_trackPageview']);
+        let imageSrc = '/img/offer/detail_map_icon.png',
+            imageSize = new kakao.maps.Size(25, 35),
+            imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
 
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+        let marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(${offer.offerAddress.latitude}, ${offer.offerAddress.longitude}),
+            image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+        });
+
+        marker.setMap(map);
+    });
 
     $(".albery-container").albery({
         speed: 500,
