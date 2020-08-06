@@ -20,12 +20,15 @@
 			<div class="mobile-txt">
 				<img src="/img/mobile_bg_txt.png" alt="">
 			</div>
-			<form id="search">
+			<form id="search" onsubmit="return false">
 					<div class="form-control">
 						<label>
-							<input type="text" placeholder="원하시는 지역별 혹은 매물을 검색해보세요" class="search-box">
+							<input type="text" class="search-box" name="keyword"
+								   placeholder="원하시는 지역별 혹은 매물을 검색해보세요"
+								   onkeypress="watchEnterAction(event.keyCode)"
+							>
 						</label>
-						<button type="button" class="button" onclick="location.href='/maps'">
+						<button type="button" class="button" onclick="navigateMapWithKeyword(keyword.value)">
 							<img src="/img/notice_search-01.png">
 						</button>
 					</div>
@@ -242,3 +245,18 @@
 </html>
 
 <script src="/js/main.js"></script>
+<script>
+	function navigateMapWithKeyword(keyword) {
+		if(keyword === '' || keyword === ' ') {
+			location.href = '/maps'
+		} else {
+			location.href = '/maps?keyword=' + keyword;
+		}
+	}
+
+	function watchEnterAction(pressed) {
+		if(pressed === 13) {
+			$('#search').find('button').click();
+		}
+	}
+</script>

@@ -24,7 +24,7 @@
             <div class="map-container">
                 <div id="map" class="map">
                     <div class="search-bar">
-                        <input type="text" placeholder="지역, 매물번호를 입력하세요!"
+                        <input id="searchForm" type="text" placeholder="지역, 매물번호를 입력하세요!"
                                onfocus="searchResults($(this).val())"
                                onkeyup="searchResults($(this).val())"
                         >
@@ -74,6 +74,12 @@
         let offerTypeIndex = getUrlParameter('type');
         if(offerTypeIndex !== undefined) {
             $('#offerType').children().eq(offerTypeIndex).find('label').click();
+        }
+
+        let keyword = getUrlParameter('keyword');
+        if(keyword !== undefined) {
+            $('#searchForm').val(keyword);
+            searchResults(keyword);
         }
     });
 
