@@ -8,11 +8,40 @@
   min-width: 1920px;
   height: calc(100% - 134px) !important;
   display: inline-flex;
+  position: relative;
 
   .map {
     width: 70% !important;
     height: 100%;
     display: inline-block;
+
+    .gps-control {
+      position: absolute;
+      right: 4px;
+      top: 185px;
+      padding: 5px;
+      border-radius: 5px;
+      background: #fff;
+      cursor: pointer;
+      z-index: 2;
+
+      span {
+        font-size: 1px;
+      }
+
+      i {
+        font-size: 21px;
+      }
+
+      &:hover {
+        background: $abaColor;
+        color: #fff !important;
+
+        i {
+          color: #fff;
+        }
+      }
+    }
 
     .search-bar {
       position: absolute;

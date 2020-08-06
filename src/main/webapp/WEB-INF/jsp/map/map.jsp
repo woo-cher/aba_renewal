@@ -23,6 +23,12 @@
 
             <div class="map-container">
                 <div id="map" class="map">
+                    <div class="gps-control" onclick="mapManager.gps()">
+                        <span>
+                            <i class="fas fa-dot-circle aba"></i>
+                            <p>GPS</p>
+                        </span>
+                    </div>
                     <div class="search-bar">
                         <input id="searchForm" type="text" placeholder="지역, 매물번호를 입력하세요!"
                                onfocus="searchResults($(this).val())"

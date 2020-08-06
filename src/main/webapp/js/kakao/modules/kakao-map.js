@@ -120,10 +120,9 @@ class KakaoMap extends MapModule {
         if (navigator.geolocation) {
             console.log('gps init');
             navigator.geolocation.getCurrentPosition((pos) => {
-                return this.getKakaoLatlng(pos.coords.latitude, pos.coords.longitude);
-            })
-        } else {
-            return this.getKakaoLatlng(35.163975, 128.11347);
+                mapManager.setCenter(pos.coords.latitude, pos.coords.longitude);
+                this.eventTrigger();
+            });
         }
     }
 }
