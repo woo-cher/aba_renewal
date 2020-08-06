@@ -220,7 +220,7 @@
             <div class="line"></div>
             <h3>상세설명</h3>
             <div class="desc">
-                <p>201호 세입자 010-2548-4546</p>
+                <p>${offer.description}</p>
             </div>
         </div>
     </div>

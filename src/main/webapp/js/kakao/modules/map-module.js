@@ -195,16 +195,18 @@ class MapModule {
                             <div class="offer-thumbs">
                                 <img src="/img/offer/detail_slide01.jpg">
                             </div>
+                            <p class="offer-summary">
+                                매물번호 : ${offer.id}
+                                <label class="r-float">확인일자 ${offer.updatedAt.slice(2, 10)}</label>
+                            </p>
                             <p class="offer-deal">
                                 <label>${offer.dealType.value}</label>
                                 <strong>${offer.deposit}/${offer.monthlyPrice}
                                     <span class="aba"> +${offer.managementPrice}</span>
                                 </strong>
-                                <label class="r-float">확인일자 ${offer.updatedAt.slice(2, 10)}</label>
                             </p>
                             <p class="offer-addr">${offer.offerAddress.jibun}</p>
                             <p class="offer-building">화이트원룸</p>
-                            <p class="offer-summary">매물번호 : ${offer.id}</p>
                             <div class="offer-summary">
                                 <strong>
                                     ${offer.type.value} |

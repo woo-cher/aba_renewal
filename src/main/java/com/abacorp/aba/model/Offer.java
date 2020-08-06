@@ -20,6 +20,7 @@ public class Offer extends ModelMapper {
     private HeatingType heatingType;
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;
+    private String description;
     private OfferAddition offerAddition;
     private OfferAddress offerAddress;
 }
