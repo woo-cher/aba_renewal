@@ -15,7 +15,7 @@
                         <p class="caption">중복선택이 가능해요 ;)</p>
                     </header>
 
-                    <ul class="checkbox-container">
+                    <ul class="checkbox-container" id="offerType">
                         <c:if test="${not empty offerTypes}">
                             <c:forEach var="offerType" items="${offerTypes}" begin="1" varStatus="vs">
                             <li class="checkbox-list">

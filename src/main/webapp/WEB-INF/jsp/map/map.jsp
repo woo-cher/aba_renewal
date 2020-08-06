@@ -69,7 +69,12 @@
         const pageInfo = getOffersPageInfo(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);
         mapManager.updateOffersAndPages(1, pageInfo);
 
-        $(".overlay").click(function () { searchToggle('hide'); })
+        $(".overlay").click(function () { searchToggle('hide'); });
+
+        let offerTypeIndex = getUrlParameter('type');
+        if(offerTypeIndex !== undefined) {
+            $('#offerType').children().eq(offerTypeIndex).find('label').click();
+        }
     });
 
     function pagingCaller(page, isPrev = null, region = "") {

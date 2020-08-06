@@ -25,7 +25,9 @@
 						<label>
 							<input type="text" placeholder="원하시는 지역별 혹은 매물을 검색해보세요" class="search-box">
 						</label>
-						<button class="button"><img src="/img/notice_search-01.png" alt=""> </button>
+						<button type="button" class="button" onclick="location.href='/maps'">
+							<img src="/img/notice_search-01.png">
+						</button>
 					</div>
 			</form>
 		</section>

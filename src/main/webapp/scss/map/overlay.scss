@@ -122,8 +122,12 @@
 
 .custom-spot-overlay:hover,
 .custom-spot-overlay.clickable {
-  border: 2px solid white;
-  color: white;
+  border: 1px solid $abaColor;
   opacity: 1;
   zoom: 1.2;
+  background: white;
+
+  #spotCount{
+    color: $abaColor;
+  }
 }

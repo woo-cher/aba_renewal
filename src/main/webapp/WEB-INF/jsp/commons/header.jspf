@@ -50,15 +50,15 @@
          Index of `<li>` order to `/model/type/OfferType`
     --%>
     <ul class="sub offer-category" hidden>
-        <li onclick="navigateMap()">원룸</li>
-        <li onclick="navigateMap()">투&middot;쓰리룸</li>
-        <li onclick="navigateMap()">오피스텔</li>
-        <li onclick="navigateMap()">아파트</li>
-        <li onclick="navigateMap()">상가</li>
-        <li onclick="navigateMap()">주택</li>
-        <li onclick="navigateMap()">사무실</li>
-        <li onclick="navigateMap()">건물</li>
-        <li onclick="navigateMap()">토지</li>
+        <li onclick="navigateMap(0)">원룸</li>
+        <li onclick="navigateMap(1)">투&middot;쓰리룸</li>
+        <li onclick="navigateMap(2)">오피스텔</li>
+        <li onclick="navigateMap(3)">아파트</li>
+        <li onclick="navigateMap(4)">상가</li>
+        <li onclick="navigateMap(5)">주택</li>
+        <li onclick="navigateMap(6)">사무실</li>
+        <li onclick="navigateMap(7)">건물</li>
+        <li onclick="navigateMap(8)">토지</li>
 <%--        <li><a href="/maps">분양권</a></li>--%>
 <%--        <li><a href="/maps">공장</a></li>--%>
 <%--        <li><a href="/maps">재개발</a></li>--%>
@@ -67,8 +67,8 @@
 
 <script src="/js/utils.js"></script>
 <script>
-    function navigateMap(offer_type_code = 0) {
-        location.href = '/maps?type=' + offer_type_code;
+    function navigateMap(offerTypeIndex = 0) {
+        location.href = '/maps?type=' + offerTypeIndex;
     }
 
     /* 매물 서브메뉴 */

@@ -71,6 +71,21 @@ function switchContentViewWithIndex(eventTarget, hideWhat, showWhat) {
     })
 }
 
+function getUrlParameter(reqParam) {
+    let pageUrl = window.location.search.substring(1),
+        value = pageUrl.split('&'),
+        name,
+        i;
+
+    for (i = 0; i < value.length; i++) {
+        name = value[i].split('=');
+
+        if (name[0] === reqParam) {
+            return name[1] === undefined ? true : decodeURIComponent(name[1]);
+        }
+    }
+}
+
 function getElement() {
     return `<div class="box">
             <div class="content label">
