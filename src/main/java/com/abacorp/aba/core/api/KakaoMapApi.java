@@ -40,6 +40,11 @@ public class KakaoMapApi {
         return service.getOverlay(id);
     }
 
+    @RequestMapping(value = "/overlays")
+    public List<Overlay> overlaysByKeyword(@RequestParam(value = "keyword") String keyword) {
+        return service.getOverlayByKeyword(keyword);
+    }
+
     @RequestMapping(value = "/offers", method = RequestMethod.POST)
     public PageInfo<Offer> offers(@RequestBody MapFiltersDto dto) {
         log.info("Dto : {}", dto);
@@ -63,18 +68,18 @@ public class KakaoMapApi {
         return service.getOffersByLatLng(dto);
     }
 
+    @RequestMapping(value = "/offers")
+    public List<Offer> offersByIdKeyword(@RequestParam(value = "idKey") String idKey) {
+        return service.getOffersByIdKeyword(idKey);
+    }
+
     @RequestMapping(value = "/kakao/address")
     public String searchAddress(@RequestParam(value = "keyword") String address) throws Exception {
         return helper.getPlaceGeoByKeyword(address).getBody();
     }
 
-    @RequestMapping(value = "/overlays")
-    public List<Overlay> overlaysByKeyword(@RequestParam(value = "keyword") String keyword) {
-        return service.getOverlayByKeyword(keyword);
-    }
-
-    @RequestMapping(value = "/offers")
-    public List<Offer> offersByIdKeyword(@RequestParam(value = "idKey") String idKey) {
-        return service.getOffersByIdKeyword(idKey);
+    @RequestMapping(value = "/offers/{offer}", method = RequestMethod.GET)
+    public Offer test(@PathVariable(value = "offer") int id) {
+        return service.getOfferById(id);
     }
 }

@@ -119,9 +119,11 @@ class KakaoMap extends MapModule {
     gps() {
         if (navigator.geolocation) {
             console.log('gps init');
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                return new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
+            navigator.geolocation.getCurrentPosition((pos) => {
+                return this.getKakaoLatlng(pos.coords.latitude, pos.coords.longitude);
             })
+        } else {
+            return this.getKakaoLatlng(35.163975, 128.11347);
         }
     }
 }

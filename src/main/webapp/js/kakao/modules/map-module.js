@@ -204,6 +204,7 @@ class MapModule {
                             </p>
                             <p class="offer-addr">${offer.offerAddress.jibun}</p>
                             <p class="offer-building">화이트원룸</p>
+                            <p class="offer-summary">매물번호 : ${offer.id}</p>
                             <div class="offer-summary">
                                 <strong>
                                     ${offer.type.value} |

@@ -4,6 +4,8 @@ import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
 import lombok.*;
 
+import java.util.List;
+
 /**
  * @see OptionType
  * @see ManagementCategoryType
@@ -25,4 +27,7 @@ public class OfferAddition {
     private boolean hasElevator;
     private boolean isParking;
     private boolean isPet;
+
+    private List<OptionType> optionTypes;
+    private List<ManagementCategoryType> managementTypes;
 }

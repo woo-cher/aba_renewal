@@ -21,12 +21,23 @@ public class MapRepository {
     @Autowired
     private SqlSession sqlSession;
 
+    /* --------------------------- Overlays ------------------------------ */
     public List<Overlay> selectOverlaysByFilters(MapFiltersDto dto) {
         return sqlSession.selectList("selectOverlays", dto);
     }
 
     public Overlay selectOverlayById(int id) {
         return sqlSession.selectOne("selectOverlay", id);
+    }
+
+    public List<Overlay> selectOverlaysByKeyword(String keyword) {
+        return sqlSession.selectList("selectOverlaysByKeyword", keyword);
+    }
+    /* ------------------------------------------------------------------- */
+
+    /* ---------------------------- Offers ------------------------------- */
+    public Offer selectOfferById(int id) {
+        return sqlSession.selectOne("selectOfferById", id);
     }
 
     public List<Offer> selectOffersUsingFilter(MapFiltersDto dto) {
@@ -41,15 +52,12 @@ public class MapRepository {
         return sqlSession.selectList("selectOffersByLatLng", latLng);
     }
 
-    public int selectCountByFilters(MapFiltersDto dto) {
-        return sqlSession.selectOne("selectCountByBelongsAndFilters", dto);
-    }
-
-    public List<Overlay> selectOverlaysByKeyword(String keyword) {
-        return sqlSession.selectList("selectOverlaysByKeyword", keyword);
-    }
-
     public List<Offer> selectOffersByIdKeyword(String idKey) {
         return sqlSession.selectList("selectOffersByIdKey", idKey);
+    }
+    /* --------------------------------------------------------------------- */
+
+    public int selectCountByFilters(MapFiltersDto dto) {
+        return sqlSession.selectOne("selectCountByBelongsAndFilters", dto);
     }
 }

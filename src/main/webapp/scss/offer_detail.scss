@@ -129,36 +129,6 @@ h3 { font-size: 23px; padding: 3%; width: unset; }
   }
 }
 
-.search-warp {
-  @include flex-align(flex-end);
-
-  .search {
-    @include flex-align;
-
-    width: 70%;
-    border: 1px solid $abaColor;
-    margin-top: 15px;
-
-    input {
-      width: 100%;
-      border: 0;
-    }
-
-    .search-box {
-      font-size: 11px;
-      padding: 10px;
-      border: 0;
-      opacity: 0.4;
-    }
-
-    .button {
-      padding: 2%;
-      border: 0;
-      background-color: $abaColor;
-    }
-  }
-}
-
 .table-wrap {
   display: table;
   width: 55%;

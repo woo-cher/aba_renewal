@@ -93,6 +93,11 @@
        </if>
     </sql>
 
+    <select id="selectOfferById" resultMap="offer" parameterType="int">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE ofs.id = #{id}
+    </select>
+
     <select id="selectOffersByFilters" resultMap="offer" parameterType="MapFiltersDto">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE <include refid="latitudeQualify" />

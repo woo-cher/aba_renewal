@@ -126,35 +126,6 @@ h3 {
   color: #00adef;
 }
 
-.search-warp {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.search-warp .search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70%;
-  border: 1px solid #00adef;
-  margin-top: 15px;
-}
-.search-warp .search input {
-  width: 100%;
-  border: 0;
-}
-.search-warp .search .search-box {
-  font-size: 11px;
-  padding: 10px;
-  border: 0;
-  opacity: 0.4;
-}
-.search-warp .search .button {
-  padding: 2%;
-  border: 0;
-  background-color: #00adef;
-}
-
 .table-wrap {
   display: table;
   width: 55%;

@@ -38,12 +38,15 @@
         <!-- 매물정보 헤드부분 -->
         <div class="info-summary">
             <div class="top01">
-                <h3>원룸</h3>
-                <h4>월세 500/35 + <strong>3</strong></h4>
+                <h3>${offer.type.value}</h3>
+                <h4>
+                    ${offer.dealType.value} ${offer.deposit}/${offer.monthlyPrice} +
+                    <strong>${offer.managementPrice}</strong>
+                </h4>
             </div>
             <div class="top02">
-                <h3>매물번호 12340</h3>
-                <h2>매물진행중</h2>
+                <h3>매물번호 ${offer.id}</h3>
+                <h2>매물상태 : ${offer.status.value}</h2>
             </div>
             <div class="top03">
                 <!-- 공인중개사 페이지 신고아이콘 부분 -->
@@ -63,16 +66,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- 매물번호 조회 검색창 -->
-                <div class="search-warp">
-                    <form class="search">
-                        <input type="text" placeholder="매물번호 조회" class="search-box">
-                        <button class="button">
-                            <img src="/img/offer/detail_search.png" alt="검색하기 버튼">
-                        </button>
-                    </form>
-                </div>
             </div>
         </div>
 
@@ -81,33 +74,36 @@
             <div class="table-wrap">
                 <div class="row bb">
                     <p class="key">소재지</p>
-                    <p class="value">경상남도 진주시 인사동 301-102 라임빌</p>
+                    <p class="value">${offer.offerAddress.jibun}</p>
                     <p class="key">도로명</p>
-                    <p class="value">경상남도 진주시 돗골로112번길 12-2</p>
+                    <p class="value">${offer.offerAddress.road}</p>
                 </div>
                 <div class="row bb">
                     <p class="key">관리비</p>
-                    <p class="value">0</p>
+                    <p class="value aba">${offer.managementPrice} 만원</p>
                     <p class="key">준공년도</p>
-                    <p class="value">2010년</p>
+                    <p class="value">${offer.completionYear} 년</p>
                 </div>
                 <div class="row bb">
                     <p class="key">반려동물</p>
-                    <p class="value">불가능</p>
+                    <p class="value">${offer.offerAddition.pet ? "가능" : "불가능"}</p>
                     <p class="key">주차</p>
-                    <p class="value">가능</p>
+                    <p class="value">${offer.offerAddition.parking ? "가능" : "불가능"}</p>
                 </div>
                 <div class="row bb">
                     <p class="key">룸호실</p>
-                    <p class="value">201호</p>
+                    <p class="value">${offer.offerAddress.ho}</p>
                     <p class="key">세입자</p>
-                    <p class="value">유(즉)</p>
+                    <p class="value">${offer.offerAddition.tenant}</p>
                 </div>
                 <div class="row">
                     <p class="key">단기임대</p>
-                    <p class="value">정보없음</p>
+                    <p class="value">
+                        ${offer.offerAddition.term == 0 ? "불가능" : offer.offerAddition.term}
+                        ${offer.offerAddition.term == 0 ? "" : "개월"}
+                    </p>
                     <p class="key">중요위치</p>
-                    <p class="value">이마트 부근</p>
+                    <p class="value">${offer.offerAddress.nearLocation} 부근</p>
                 </div>
             </div>
         </div>
@@ -177,7 +173,7 @@
         <div class="caption-group">
             <div class="caption">
                 <p>아바에서 직접 확인한 정보입니다<br>
-                    매물상태 <strong>최종 확인일 2019-11-12 14:11:40</strong><br>
+                    <strong>최종 확인일 ${offer.updatedAt.toLocaleString()}</strong><br>
                     거래가능 여부는 시시각각 변하며, 방호수에 따라 구조, 옵션의 차이가<br>
                     있을 수 있으니 정확한 정보는 직접 문의를 통해 확인해주세요.
                 </p>
@@ -196,60 +192,24 @@
             <div class="line"></div>
             <h3>옵션</h3>
             <ul class="list">
-                <li>
-                    <img src="/img/offer/option_air_conditioner.png" alt="에어컨">
-                    <h2>에어컨</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_bed.png" alt="침대">
-                    <h2>침대</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_closet.png" alt="옷장">
-                    <h2>옷장</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_desk.png" alt="책상">
-                    <h2>책상</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_doorlock.png" alt="도어락">
-                    <h2>도어락</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_frige.png" alt="냉장고">
-                    <h2>냉장고</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_gas_range.png" alt="가스레인지">
-                    <h2>가스레인지</h2>
-                </li>
+                <c:forEach var="optionType" items="${offer.offerAddition.optionTypes}" varStatus="vs">
+                    <li>
+                        <img src="/img/offer/option-${vs.index + 1}.png">
+                        <h2>${optionType.value}</h2>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
         <div class="management-category">
             <div class="line"></div>
             <h3>관리비 포함 항목</h3>
             <ul class="list">
-                <li>
-                    <img src="/img/offer/option_set_top_box.png" alt="셋톱박스">
-                    <h2>셋톱박스</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_internet.png" alt="인터넷">
-                    <h2>인터넷</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_wifi.png" alt="와이파이">
-                    <h2>와이파이</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_desk.png" alt="책상">
-                    <h2>책상</h2>
-                </li>
-                <li>
-                    <img src="/img/offer/option_water.png" alt="수도세">
-                    <h2>수도세</h2>
-                </li>
+                <c:forEach var="manageType" items="${offer.offerAddition.managementTypes}" varStatus="vs">
+                    <li>
+                        <img src="/img/offer/manage-${vs.index + 1}.png">
+                        <h2>${manageType.value}</h2>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
     </div>
