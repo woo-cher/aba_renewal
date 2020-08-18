@@ -23,11 +23,12 @@
     </a>
 
     <ul class="menu">
-        <li id="usersme"><a href="/users/me/my_aba">마이페이지</a></li>
-        <li id="usersme"><a href="/admin">관리자 테스트</a></li>
+        <li id="usersmemyaba"><a href="/users/me/my_aba">마이페이지</a></li>
+        <li id="admin"><a href="/admin">관리자 테스트</a></li>
         <li id="maps"><a href="/maps">매물찾기</a></li>
         <li id="intro"><a href="/intro">회사소개</a></li>
         <li id="posts"><a href="/posts">공지사항</a></li>
+        <li id="offerscreate"><a href="/offers/create">매물등록</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li id="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
@@ -86,7 +87,7 @@
         })
     });
 
-    activateWithUrl(/\//g, (el) => {
-        return el.slice(0, 7);
+    activateWithUrl(/[\/_]/g, (el) => {
+        return el;
     });
 </script>

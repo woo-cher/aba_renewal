@@ -8,9 +8,7 @@
 <body>
 <div class="main-container">
     ADMIN PAGE, <a href="/">GO HOME</a>
-    <input type="file" class="multi with-preview" multiple />
 </div>
 </body>
 </html>
-
 

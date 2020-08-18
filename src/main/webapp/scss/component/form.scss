@@ -185,7 +185,8 @@ article[class='content-wrap'] {
   }
 }
 
-button[type="submit"] {
+button[type="submit"],
+label.button {
     @include form_button;
     font-size: 19px;
     width: 70%;
