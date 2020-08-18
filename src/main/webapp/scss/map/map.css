@@ -59,10 +59,13 @@
   padding: 6% 0;
 }
 .checkbox-container.form {
-  justify-content: center;
+  padding-left: 5%;
 }
 .checkbox-container.form li {
   width: 30%;
+}
+.checkbox-container.form li.half {
+  width: 17%;
 }
 .checkbox-container .checkbox-list {
   width: 22%;
@@ -522,10 +525,13 @@ datalist option {
   padding: 6% 0;
 }
 .checkbox-container.form {
-  justify-content: center;
+  padding-left: 5%;
 }
 .checkbox-container.form li {
   width: 30%;
+}
+.checkbox-container.form li.half {
+  width: 17%;
 }
 .checkbox-container .checkbox-list {
   width: 22%;

@@ -33,10 +33,14 @@ $abaColor: #00adef;
   }
 
   &.form {
-    justify-content: center;
+    padding-left: 5%;
 
     li {
       width: 30%;
+
+      &.half {
+        width: 17%;
+      }
     }
   }
 

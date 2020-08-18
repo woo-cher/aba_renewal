@@ -3,7 +3,7 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,12 @@ public class OfferController {
     @RequestMapping("/create")
     public ModelAndView create() {
         mv.setViewName("/admin/offer_create");
+
         mv.addObject("offerTypes", OfferType.values());
+        mv.addObject("dealTypes", DealType.values());
+        mv.addObject("options", OptionType.values());
+        mv.addObject("heatingTypes", HeatingType.values());
+        mv.addObject("manages", ManagementCategoryType.values());
 
         return mv;
     }
