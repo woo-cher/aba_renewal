@@ -67,7 +67,6 @@ article[class='content-wrap'] {
       padding: 2% 0;
       overflow-y: auto;
     }
-
   }
 }
 
@@ -170,6 +169,12 @@ article[class='content-wrap'] {
           @include hover_action();
           i { zoom: 1.25; }
         }
+      }
+
+      &.icon-with-check {
+        @extend .mail;
+        width: 50px;
+        cursor: pointer;
       }
     }
 

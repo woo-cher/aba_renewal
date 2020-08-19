@@ -110,9 +110,8 @@
 
             <div id="formWrap">
                 <section class="form-control mt-0">
-                    <form action="/aws/s3/upload" method="post" enctype="multipart/form-data" onsubmit="return test();">
+                    <form action="/aws/s3/upload" method="post" enctype="multipart/form-data" onsubmit="return false;">
                         <div class="form-warp">
-
                             <div class="deal-type">
                                 <div class="form-label">
                                     <i class="fas fa-circle"></i>
@@ -206,7 +205,94 @@
                 </section>
 
                 <section class="form-control mt-0" hidden>
-                    SEC 2
+                    <div class="form-label">
+                        <i class="fas fa-circle"></i>
+                        <span>소재지</span>
+                    </div>
+                    <div class="input-group">
+                        <input autofocus readonly type="text" class="middle" id="jibun" placeholder="지번주소" name="jibunAddr">
+                        <p class="short">/</p>
+                        <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명주소" name="roadAddr">
+                        <p class="icon addr" onclick="getAddress()"><i class="fas fa-search"></i></p>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="middle" placeholder="예) 아바아파트, 아바빌, 아바빌딩">
+                        <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
+                    </div>
+
+                    <div class="form-label">
+                        <i class="fas fa-circle"></i>
+                        <span>호실 정보</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="hidden" id="latitude" name="locationX">
+                        <input type="hidden" id="longitude" name="locationY">
+                        <input type="text" class="short" placeholder="예) 3동" name="dong" id="dong">
+                        <p class="icon"><i class="fas">동</i></p>
+                        <p class="short"></p>
+                        <input type="text" class="short" placeholder="예) 401호" name="">
+                        <p class="icon"><i class="fas">호</i></p>
+                    </div>
+                    <ul class="checkbox-container p-0 w-half">
+                        <li class="checkbox-list w-65">
+                            <input type="checkbox" class="check" id="isExistDong"
+                                   onclick="dongTrigger($('#dong'))"
+                            >
+                            <label for="isExistDong">등본에 동 정보가 없습니다</label>
+                        </li>
+                    </ul>
+
+                    <div class="form-label">
+                        <i class="fas fa-circle"></i>
+                        <span>입구 / 호실 비밀번호</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="short" placeholder="123* 또는 전화문의" name="dong" id="entrance">
+                        <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
+                        <p class="short">/</p>
+                        <input type="text" class="short" placeholder="1234* 또는 전화문의" name="dong" id="door">
+                        <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
+                    </div>
+
+                    <div class="form-label">
+                        <i class="fas fa-circle"></i>
+                        <span>해당층</span>
+                    </div>
+                    <div class="input-group">
+                        <ul class="checkbox-container p-0 w-half">
+                            <li class="checkbox-list w-25">
+                                <input type="radio" class="check" id="floorUp" name="none" checked
+                                       onchange="floorTrigger()"
+                                >
+                                <label for="floorUp">지상</label>
+                            </li>
+                            <li class="checkbox-list w-25">
+                                <input type="radio" class="check" id="floorUnder" name="none"
+                                       onchange="floorTrigger()"
+                                >
+                                <label for="floorUnder">반지하</label>
+                            </li>
+                            <li class="checkbox-list w-25">
+                                <input type="radio" class="check" id="floorTop" name="none"
+                                       onchange="floorTrigger()"
+                                >
+                                <label for="floorTop">옥탑방</label>
+                            </li>
+                        </ul>
+                        <input type="text" class="short" placeholder="예) 3층" name="" id="floor">
+                        <p class="icon"><i class="fas">층</i></p>
+                    </div>
+
+                    <div class="form-label">
+                        <i class="fas fa-circle"></i>
+                        <span>주요위치</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="short" placeholder="아바경찰서" name="">
+                        <p class="icon"><i class="fas">부근</i></p>
+                    </div>
                 </section>
 
                 <section class="form-control mt-0" hidden>
@@ -279,10 +365,31 @@
         }
     }
 
+    function dongTrigger(selector) {
+        selector.prop('readonly', !selector.prop('readonly'));
+    }
+
+    function floorTrigger() {
+        let isFloorUp = $('#floorUp').prop('checked');
+        let selector = $('#floor');
+
+        selector.prop('readonly', !isFloorUp)
+
+        if($('#floorUnder').prop('checked')) {
+            selector.prop('placeholder', '반지하')
+        } else if($('#floorTop').prop('checked')) {
+            selector.prop('placeholder', '옥탑방')
+        } else {
+            selector.prop('placeholder', '예) 3층')
+        }
+    }
+
+    function noneAction(focus) {
+        let bool = focus.css('background-color') === 'rgb(0, 173, 239)';
+        bool ? focus.css('background', 'red') : focus.css('background', '#00adef');
+        focus.prev('input').prop('readonly', bool)
+    }
+
     activateWithSelector('#leftNav > li');
     switchContentViewWithIndex('#leftNav > li', '.form-control', '#formWrap');
-
-    function test() {
-        return true;
-    }
 </script>

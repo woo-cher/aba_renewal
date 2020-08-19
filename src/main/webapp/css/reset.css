@@ -29,10 +29,14 @@
 .pt-1 { padding-top: 1% !important; }
 .pt-3 { padding-top: 3% !important; }
 .pb-1 { padding-bottom: 1% !important; }
+.pl-1 { padding-left: 1% !important;}
+.pl-3 { padding-left: 3% !important;}
 .mt-0 { margin-top: 0 !important; }
 .m-auto { margin: 0 auto; }
 .w-full { width: 100% !important; }
+.w-65 { width: 65% !important; }
 .w-half { width: 50% !important; }
+.w-35 { width: 35% !important; }
 .w-25 { width: 25% !important; }
 .w-10 { width: 10% !important;}
 .inline { display: inline-block !important; }
