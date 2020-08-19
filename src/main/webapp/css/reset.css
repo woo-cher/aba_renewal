@@ -45,6 +45,7 @@
 .align-right { text-align: right !important; }
 .align-center { text-align: center !important; }
 .align-left { text-align: left !important; }
+.flex-center { justify-content: center !important; }
 .relative { position: relative !important; }
 
 /* font */
