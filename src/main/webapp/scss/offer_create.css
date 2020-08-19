@@ -1,0 +1,57 @@
+/* Tier */
+.left-navbar {
+  position: fixed;
+  text-align: center;
+  left: 12.5%;
+  top: 10%;
+}
+.left-navbar .active {
+  background: #00adef;
+  font-weight: bold;
+  color: white;
+  border: none;
+}
+
+.nav-left {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 40px 20px;
+  margin: 100px 0;
+  background: #fff;
+  border: 1px solid gray;
+  border-radius: 100%;
+  cursor: pointer;
+  animation-name: go;
+  animation-delay: 0s;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+.nav-left:hover {
+  background: white;
+  border: 1px solid #00adef;
+  color: #00adef;
+}
+
+.bottom-navbar {
+  position: absolute;
+  bottom: 5%;
+  cursor: pointer;
+}
+.bottom-navbar.prev {
+  left: 25vw;
+}
+.bottom-navbar.next, .bottom-navbar.submit {
+  right: 25vw;
+}
+
+.nav-bottom {
+  color: #000 !important;
+}
+.nav-bottom:hover {
+  color: #00adef;
+}
+
+/*# sourceMappingURL=offer_create.css.map */

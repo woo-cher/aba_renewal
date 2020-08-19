@@ -6,73 +6,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/scss/offer_create.css">
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
-
-<style>
-    .left-navbar {
-        position: fixed;
-        text-align: center;
-        left: 12.5%;
-        top: 10%;
-    }
-
-    .left-navbar .active {
-        background: #00adef;
-        font-weight: bold;
-        color: white;
-        border: none;
-    }
-
-    .nav-left {
-        font-size: 16px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        padding: 40px 20px;
-        margin: 100px 0;
-        background: #fff;
-        border: 1px solid gray;
-        border-radius: 100%;
-        cursor: pointer;
-        animation-name: go;
-        animation-delay: 0s;
-        animation-duration: 0.7s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        animation-direction: alternate;
-    }
-
-    .nav-left:hover {
-        background: white;
-        border: 1px solid #00adef;
-        color: #00adef;
-    }
-
-    .bottom-navbar {
-        position: absolute;
-        bottom: 5%;
-        cursor: pointer;
-    }
-
-    .nav-bottom:hover {
-        color: #00adef;
-    }
-
-    .bottom-navbar.prev {
-        left: 25vw;
-    }
-
-    .bottom-navbar.next,
-    .bottom-navbar.submit {
-        right: 25vw;
-    }
-
-    .nav-bottom {
-        color: black;
-    }
-</style>
 
 <body>
     <div class="main-container p-1">
@@ -117,7 +55,7 @@
                                     <i class="fas fa-circle"></i>
                                     <span>거래유형</span>
                                 </div>
-                                <ul class="checkbox-container form type">
+                                <ul class="checkbox-container form type pt-1">
                                     <c:forEach begin="1" var="type" items="${dealTypes}" varStatus="vs">
                                         <li class="checkbox-list">
                                             <input id="dealType${vs.index}" type="radio" name="dealType" value="${type.code}" class="check">
@@ -132,7 +70,7 @@
                                     <i class="fas fa-circle"></i>
                                     <span>매물분류</span>
                                 </div>
-                                <ul class="checkbox-container form type">
+                                <ul class="checkbox-container form type pt-1">
                                     <c:forEach begin="1" var="type" items="${offerTypes}" varStatus="vs">
                                         <li class="checkbox-list half">
                                             <input id="offerType${vs.index}" type="radio" name="offerType" value="${type.code}" class="check">
@@ -147,7 +85,7 @@
                                     <i class="fas fa-circle"></i>
                                     <span>난방방식</span>
                                 </div>
-                                <ul class="checkbox-container form type">
+                                <ul class="checkbox-container form type pt-1">
                                     <c:forEach begin="1" var="type" items="${heatingTypes}" varStatus="vs">
                                         <li class="checkbox-list half">
                                             <input id="heatingType${vs.index}" type="radio" name="heatingType" value="${type.code}" class="check">

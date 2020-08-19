@@ -1,0 +1,62 @@
+@import "mixin/mixin";
+
+.left-navbar {
+  position: fixed;
+  text-align: center;
+  left: 12.5%;
+  top: 10%;
+
+  & .active {
+    background: $abaColor;
+    font-weight: bold;
+    color: white;
+    border: none;
+  }
+}
+
+.nav-left {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 40px 20px;
+  margin: 100px 0;
+  background: #fff;
+  border: 1px solid gray;
+  border-radius: 100%;
+  cursor: pointer;
+  animation-name: go;
+  animation-delay: 0s;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+
+  &:hover {
+    background: white;
+    border: 1px solid $abaColor;
+    color: $abaColor;
+  }
+}
+
+.bottom-navbar {
+  position: absolute;
+  bottom: 5%;
+  cursor: pointer;
+
+  &.prev {
+    left: 25vw;
+  }
+
+  &.next,
+  &.submit {
+    right: 25vw;
+  }
+}
+
+.nav-bottom {
+  color: #000 !important;
+
+  &:hover {
+    color: $abaColor;
+  }
+}

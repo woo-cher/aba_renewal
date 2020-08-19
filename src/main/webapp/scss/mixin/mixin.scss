@@ -25,7 +25,7 @@ $bronzeColor: goldenrod;
 @mixin before-css() {
   content: '●';
   padding: 0 2%;
-  color: #00adef;
+  color: $abaColor;
 }
 
 @mixin aba-point-label($fontSize, $padding) {
