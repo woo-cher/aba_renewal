@@ -14,9 +14,9 @@ import java.util.List;
  *    => ["1", "3", "5", "7"]
  */
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
 @ToString
 public class OfferAddition {
     private int offerId;
@@ -25,8 +25,8 @@ public class OfferAddition {
     private String optionCategory;
     private String managementCategory;
     private boolean hasElevator;
-    private boolean isParking;
-    private boolean isPet;
+    private boolean canParking;
+    private boolean canPet;
 
     private List<OptionType> optionTypes;
     private List<ManagementCategoryType> managementTypes;

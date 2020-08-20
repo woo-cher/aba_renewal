@@ -3,9 +3,10 @@ package com.abacorp.aba.model;
 import lombok.*;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @ToString
 public class OfferAddress {
     private int offerId;

@@ -55,13 +55,13 @@
             </div>
             <div class="form-category full">
                 <div class="input-group">
-                    <input type="text" class="short" id="deposit" placeholder="보증금" name="">
+                    <input type="text" class="short" id="deposit" placeholder="보증금" name="deposit">
                     <p class="icon"><i class="fas">만</i></p>
                     <p class="short">/</p>
-                    <input type="text" class="short" id="monthlyPrice" placeholder="달세" name="">
+                    <input type="text" class="short" id="monthlyPrice" placeholder="달세" name="monthlyPrice">
                     <p class="icon"><i class="fas">만</i></p>
                     <p class="short">+</p>
-                    <input type="text" class="short" id="managementPrice" placeholder="관리비" name="">
+                    <input type="text" class="short" id="managementPrice" placeholder="관리비" name="managementPrice">
                     <p class="icon"><i class="fas">만</i></p>
                 </div>
             </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="form-category">
                 <div class="input-group">
-                    <input type="text" class="short" id="completionYear" placeholder="1991" name="">
+                    <input type="text" class="short" id="completionYear" placeholder="1991" name="completionYear">
                     <p class="icon"><i class="fas">년</i></p>
                 </div>
             </div>

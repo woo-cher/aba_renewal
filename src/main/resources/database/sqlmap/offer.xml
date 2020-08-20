@@ -42,8 +42,8 @@
         <result property="optionCategory" column="option_category" />
         <result property="managementCategory" column="management_category" />
         <result property="hasElevator" column="has_elevator" />
-        <result property="isParking" column="is_parking" />
-        <result property="isPet" column="is_pet" />
+        <result property="canParking" column="can_parking" />
+        <result property="canPet" column="can_pet" />
     </resultMap>
 
     <resultMap id="dealer" type="User">

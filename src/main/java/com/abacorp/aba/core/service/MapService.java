@@ -53,8 +53,6 @@ public class MapService {
         Offer offer = offerRepository.selectOfferById(id);
 
         OfferAddition addition = offer.getOfferAddition();
-        String optionIndexStr = addition.getOptionCategory().replaceAll("[\\[|\\]]", "");
-        String manageIndexStr = addition.getManagementCategory().replaceAll("[\\[|\\]]", "");
 
         OptionType[] optionTypes = OptionType.values();
         ManagementCategoryType[] managementTypes = ManagementCategoryType.values();
@@ -64,12 +62,12 @@ public class MapService {
 
         int i = 0;
 
-        for(String indexStr : optionIndexStr.split(",")) { // 1, 2, 3
+        for(String indexStr :  addition.getOptionCategory().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             optionTypeList.add(optionTypes[i]);
         }
 
-        for(String indexStr : manageIndexStr.split(",")) { // 1, 2, 3
+        for(String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             managementTypeList.add(managementTypes[i]);
         }

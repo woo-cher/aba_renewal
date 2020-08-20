@@ -8,8 +8,7 @@ import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,8 +52,8 @@ public class OfferController {
         return mv;
     }
 
-    @RequestMapping("/create")
-    public String create(Offer offer, MultipartFile files) {
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String create(@ModelAttribute Offer offer) {
         log.info("Model of Offer : {}", offer);
 
         // required `create` flow.

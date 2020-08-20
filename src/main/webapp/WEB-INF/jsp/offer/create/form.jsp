@@ -37,7 +37,7 @@
                 <i class="fas fa-arrow-alt-circle-right"></i>
             </p>
         </div>
-        <div class="bottom-navbar submit" hidden>
+        <div class="bottom-navbar submit" onclick="$('form').submit()" hidden>
             <p class="nav-bottom aba txt-lg">
                 등록하기
                 <i class="fas fa-check-circle"></i>
@@ -52,7 +52,7 @@
                 </h3>
             </div>
 
-            <form action="/offers/create" method="post" enctype="multipart/form-data" onsubmit="return false;">
+            <form action="/offers/create" method="post" enctype="multipart/form-data">
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>
                     <%@include file="/WEB-INF/jsp/offer/create/addresses.jsp"%>
@@ -124,15 +124,16 @@
         }
     }
 
-    function dongTrigger(selector) {
-        selector.prop('readonly', !selector.prop('readonly'));
+    function dongTrigger(dong) {
+        dong.prop('readonly', !dong.prop('readonly'));
+        dong.val('');
     }
 
     function floorTrigger() {
         let isFloorUp = $('#floorUp').prop('checked');
         let selector = $('#floor');
 
-        selector.prop('readonly', !isFloorUp)
+        selector.prop('readonly', !isFloorUp);
 
         if($('#floorUnder').prop('checked')) {
             selector.prop('placeholder', '반지하')
@@ -164,6 +165,11 @@
         console.log(elementId);
 
         elementId === 'tenant' ? $('#tenantDesc').toggle() : $('#howTerm').toggle();
+    }
+
+    function booleanHelper(focus) {
+        let isChecked = focus.prop('checked');
+        focus.val(isChecked);
     }
 
     activateWithSelector('#leftNav > li');

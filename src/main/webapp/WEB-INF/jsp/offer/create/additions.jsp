@@ -9,7 +9,7 @@
     <ul class="checkbox-container p-1">
         <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
             <li class="checkbox-list" style="width: 15%;">
-                <input id="option${vs.index}" type="checkbox" name="optionCategory" value="${vs.index}" class="check">
+                <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check">
                 <label for="option${vs.index}">
                         ${option.value}
                 </label>
@@ -31,17 +31,17 @@
             <label for="term">단기 가능</label>
         </li>
         <li class="checkbox-list" style="width: 15%;">
-            <input id="elvator" type="checkbox" name="hasElevator" value=true class="check"
+            <input id="elvator" type="checkbox" name="offerAddition.hasElevator" value=true class="check"
                    onchange="elevatorTrigger($(this))"
             >
             <label for="elvator">승강기 있음</label>
         </li>
         <li class="checkbox-list" style="width: 15%;">
-            <input id="parking" type="checkbox" name="isParking" value=true class="check">
+            <input id="parking" type="checkbox" name="offerAddition.canParking" class="check">
             <label for="parking">주차 가능</label>
         </li>
         <li class="checkbox-list" style="width: 15%;">
-            <input id="pet" type="checkbox" name="isPet" value=true class="check">
+            <input id="pet" type="checkbox" name="offerAddition.canPet" class="check">
             <label for="pet">반려 가능</label>
         </li>
     </ul>
@@ -49,14 +49,14 @@
     <div id="tenantDesc" hidden>
         <div class="input-group">
             <label class="form-label">* 세입자 : </label>
-            <input type="text" class="short" name="tenant" placeholder="예) 유(3월말)">
+            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)">
         </div>
     </div>
 
     <div id="howTerm" hidden>
         <div class="input-group">
             <label class="form-label">* 단기 가능일 : <span class="aba">최대</span></label>
-            <input type="text" class="short" name="term" placeholder="예) 3">
+            <input type="text" class="short" name="offerAddition.term" placeholder="예) 3">
             <p class="icon"><i class="fas">개월</i></p>
         </div>
     </div>
@@ -68,7 +68,7 @@
     <ul class="checkbox-container p-1">
         <c:forEach var="manage" items="${manages}" begin="1" varStatus="vs">
             <li class="checkbox-list" style="width: 15%;">
-                <input id="manage${vs.index}" type="checkbox" name="managementCategory" value="${vs.index}" class="check">
+                <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check">
                 <label for="manage${vs.index}">
                         ${manage.value}
                 </label>
