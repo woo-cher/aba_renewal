@@ -11,6 +11,7 @@
     <script src="/js/jquery-utils.js"></script>
     <script src="/js/kakao/kakao-address.js"></script>
     <script src="/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
@@ -262,7 +263,6 @@
 </body>
 </html>
 
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     let isCanUsingId = false;
     let isPassMatch = false;

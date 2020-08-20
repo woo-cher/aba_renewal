@@ -9,6 +9,12 @@
     <link rel="stylesheet" type="text/css" href="/scss/offer_create.css">
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
+    <script src="/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="/js/kakao/kakao-address.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 
@@ -58,7 +64,6 @@
 </body>
 </html>
 
-<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <script>
     Dropzone.options.dropzone = {
         url: '/aws/s3/upload',
