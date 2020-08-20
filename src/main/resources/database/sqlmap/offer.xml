@@ -27,6 +27,7 @@
         <result property="longitude" column="longitude" />
         <result property="jibun" column="jibun" />
         <result property="road" column="road" />
+        <result property="buildingName" column="building_name" />
         <result property="dong" column="dong" />
         <result property="ho" column="ho" />
         <result property="door" column="door" />

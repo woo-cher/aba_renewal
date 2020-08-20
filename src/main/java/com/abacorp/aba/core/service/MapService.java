@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.service;
 
-import com.abacorp.aba.core.repository.MapRepository;
+import com.abacorp.aba.core.repository.OverlayRepository;
+import com.abacorp.aba.core.repository.OfferRepository;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.OfferAddition;
 import com.abacorp.aba.model.Overlay;
@@ -20,17 +21,20 @@ import java.util.List;
 public class MapService {
 
     @Autowired
-    private MapRepository repository;
+    private OverlayRepository overlayRepository;
+
+    @Autowired
+    private OfferRepository offerRepository;
 
     @Transactional
     public List<Overlay> getOverlays(MapFiltersDto dto) {
-        List<Overlay> overlays = repository.selectOverlaysByFilters(dto);
+        List<Overlay> overlays = overlayRepository.selectOverlaysByFilters(dto);
 
         for(Overlay overlay : overlays) {
             dto.setBelongsTo(overlay.getName());
 
             if(overlay.getCount() != 0) {
-                overlay.setCount(repository.selectCountByFilters(dto));
+                overlay.setCount(offerRepository.selectCountByFilters(dto));
             }
         }
 
@@ -38,15 +42,15 @@ public class MapService {
     }
 
     public Overlay getOverlay(int id) {
-        return repository.selectOverlayById(id);
+        return overlayRepository.selectOverlayById(id);
     }
 
     public List<Overlay> getOverlayByKeyword(String keyword) {
-        return repository.selectOverlaysByKeyword(keyword);
+        return overlayRepository.selectOverlaysByKeyword(keyword);
     }
 
     public Offer getOfferById(int id) {
-        Offer offer = repository.selectOfferById(id);
+        Offer offer = offerRepository.selectOfferById(id);
 
         OfferAddition addition = offer.getOfferAddition();
         String optionIndexStr = addition.getOptionCategory().replaceAll("[\\[|\\]]", "");
@@ -77,18 +81,18 @@ public class MapService {
     }
 
     public List<Offer> getOffers(MapFiltersDto dto) {
-        return repository.selectOffersUsingFilter(dto);
+        return offerRepository.selectOffersUsingFilter(dto);
     }
 
     public List<Offer> getOffersInRegion(MapFiltersDto dto) {
-        return repository.selectOffersByBelongsTo(dto);
+        return offerRepository.selectOffersByBelongsTo(dto);
     }
 
     public List<Offer> getOffersByLatLng(MapFiltersDto latLng) {
-        return repository.selectOffersByLatLng(latLng);
+        return offerRepository.selectOffersByLatLng(latLng);
     }
 
     public List<Offer> getOffersByIdKeyword(String idKey) {
-        return repository.selectOffersByIdKeyword(idKey);
+        return offerRepository.selectOffersByIdKeyword(idKey);
     }
 }

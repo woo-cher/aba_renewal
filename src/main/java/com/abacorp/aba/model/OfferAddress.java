@@ -11,6 +11,7 @@ public class OfferAddress {
     private int offerId;
     private float latitude;
     private float longitude;
+    private String buildingName;
     private String jibun;
     private String road;
     private String dong;

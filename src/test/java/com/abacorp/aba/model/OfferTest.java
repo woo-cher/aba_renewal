@@ -1,6 +1,7 @@
 package com.abacorp.aba.model;
 
-import com.abacorp.aba.core.repository.MapRepository;
+import com.abacorp.aba.core.repository.OfferRepository;
+import com.abacorp.aba.core.repository.OverlayRepository;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class OfferTest {
             .build();
 
     @Autowired
-    private MapRepository repository;
+    private OfferRepository repository;
 
     @Test
     public void getOffersUsingFilters() {
