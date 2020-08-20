@@ -169,6 +169,7 @@ class MapModule {
      */
     updateOffers(offers, total) {
         const offersArea = $('.list-container');
+        console.log(offers);
 
         offersArea.empty();
         $('.paginator').remove();

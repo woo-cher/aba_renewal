@@ -22,8 +22,8 @@ public class Offer extends ModelMapper {
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;
     private String description;
-    @JsonProperty("OfferAddition")
+    @JsonProperty("offerAddition")
     private OfferAddition offerAddition;
-    @JsonProperty("OfferAddress")
+    @JsonProperty("offerAddress")
     private OfferAddress offerAddress;
 }

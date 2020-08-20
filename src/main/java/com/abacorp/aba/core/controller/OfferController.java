@@ -54,9 +54,11 @@ public class OfferController {
     }
 
     @RequestMapping("/create")
-    public ModelAndView create(Offer offer, MultipartFile files) {
+    public String create(Offer offer, MultipartFile files) {
         log.info("Model of Offer : {}", offer);
 
-        return mv;
+        // required `create` flow.
+
+        return "/offer/create/form";
     }
 }
