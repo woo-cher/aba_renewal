@@ -35,7 +35,7 @@ public class OfferController {
     // 관리자가 아니면, 매물 등록이 안되므로 차후 /admin/** 로 옮겨야 한다.
     @RequestMapping("/create")
     public ModelAndView create() {
-        mv.setViewName("/admin/offer_create");
+        mv.setViewName("/offer/create/form");
 
         mv.addObject("offerTypes", OfferType.values());
         mv.addObject("dealTypes", DealType.values());

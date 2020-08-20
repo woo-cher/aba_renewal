@@ -13,7 +13,7 @@
 
     <body>
     <div class="main-container">
-            <!-- 공지사항이름 & 전체보기 상자 -->
+            <!-- 공지사항 이름 & 전체보기 상자 -->
             <div class="main-header">
                 <a class="prev" onclick="navigator(this, ${viewIndex})">
                     <img src="/img/basic/keyboard_arrow_left-24px.svg">

@@ -36,15 +36,15 @@
 }
 
 .bottom-navbar {
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   cursor: pointer;
 }
 .bottom-navbar.prev {
-  left: 25vw;
+  left: 20vw;
 }
 .bottom-navbar.next, .bottom-navbar.submit {
-  right: 25vw;
+  right: 20vw;
 }
 
 .nav-bottom {
