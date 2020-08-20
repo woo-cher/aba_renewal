@@ -46,7 +46,7 @@
                 </h3>
             </div>
 
-            <form action="/aws/s3/upload" method="post" enctype="multipart/form-data" onsubmit="return false;">
+            <form action="/offers/create" method="post" enctype="multipart/form-data" onsubmit="return false;">
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>
                     <%@include file="/WEB-INF/jsp/offer/create/addresses.jsp"%>

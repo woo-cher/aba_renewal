@@ -28,7 +28,7 @@
         <input type="text" class="short" placeholder="예) 3동" name="dong" id="dong">
         <p class="icon"><i class="fas">동</i></p>
         <p class="short"></p>
-        <input type="text" class="short" placeholder="예) 401호" name="">
+        <input type="text" class="short" placeholder="예) 401호" name="ho">
         <p class="icon"><i class="fas">호</i></p>
     </div>
     <ul class="checkbox-container p-0 w-half">
@@ -74,10 +74,10 @@
         <span>입구 / 호실 비밀번호</span>
     </div>
     <div class="input-group">
-        <input type="text" class="short" placeholder="123* 또는 전화문의" name="dong" id="entrance">
+        <input type="text" class="short" placeholder="123* 또는 전화문의" name="entrance" id="entrance">
         <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
         <p class="short">/</p>
-        <input type="text" class="short" placeholder="1234* 또는 전화문의" name="dong" id="door">
+        <input type="text" class="short" placeholder="1234* 또는 전화문의" name="door" id="door">
         <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
     </div>
 
@@ -86,7 +86,7 @@
         <span>주요 위치</span>
     </div>
     <div class="input-group">
-        <input type="text" class="short" placeholder="아바경찰서" name="">
+        <input type="text" class="short" placeholder="아바경찰서" name="nearLocation">
         <p class="icon"><i class="fas">부근</i></p>
     </div>
 </section>

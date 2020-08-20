@@ -26,7 +26,7 @@
             <ul class="checkbox-container form type pt-1">
                 <c:forEach begin="1" var="type" items="${offerTypes}" varStatus="vs">
                     <li class="checkbox-list half">
-                        <input id="offerType${vs.index}" type="radio" name="offerType" value="${type.code}" class="check">
+                        <input id="offerType${vs.index}" type="radio" name="type" value="${type.code}" class="check">
                         <label for="offerType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
@@ -36,7 +36,7 @@
         <div class="heating-type">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>난방방식</span>
+                <span>난방유형</span>
             </div>
             <ul class="checkbox-container form type pt-1">
                 <c:forEach begin="1" var="type" items="${heatingTypes}" varStatus="vs">

@@ -9,7 +9,7 @@
     <ul class="checkbox-container p-1">
         <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
             <li class="checkbox-list" style="width: 15%;">
-                <input id="option${vs.index}" type="checkbox" name="option" value="${vs.index}" class="check">
+                <input id="option${vs.index}" type="checkbox" name="optionCategory" value="${vs.index}" class="check">
                 <label for="option${vs.index}">
                         ${option.value}
                 </label>
@@ -56,7 +56,7 @@
     <div id="howTerm" hidden>
         <div class="input-group">
             <label class="form-label">* 단기 가능일 : <span class="aba">최대</span></label>
-            <input type="text" class="short" placeholder="예) 3">
+            <input type="text" class="short" name="term" placeholder="예) 3">
             <p class="icon"><i class="fas">개월</i></p>
         </div>
     </div>
@@ -68,7 +68,7 @@
     <ul class="checkbox-container p-1">
         <c:forEach var="manage" items="${manages}" begin="1" varStatus="vs">
             <li class="checkbox-list" style="width: 15%;">
-                <input id="manage${vs.index}" type="checkbox" name="management" value="${vs.index}" class="check">
+                <input id="manage${vs.index}" type="checkbox" name="managementCategory" value="${vs.index}" class="check">
                 <label for="manage${vs.index}">
                         ${manage.value}
                 </label>
@@ -83,7 +83,7 @@
         <i class="fas fa-circle"></i>
         <span>부가 설명</span>
     </div>
-    <input type="text" placeholder="예) 벽지 재공사 예정이라고 합니다~">
+    <input type="text" name="description" placeholder="예) 벽지 재공사 예정이라고 합니다~">
 
     <div class="form-label">
         <i class="fas fa-circle"></i>

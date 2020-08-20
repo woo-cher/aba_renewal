@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.controller;
 
 
+import com.abacorp.aba.core.service.AwsS3Service;
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.type.*;
@@ -9,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/offers")
@@ -22,6 +26,9 @@ public class OfferController {
     @Autowired
     private MapService service;
 
+    @Autowired
+    private AwsS3Service s3Service;
+
     @RequestMapping("/{id}")
     public ModelAndView show(@PathVariable int id) {
         Offer offer = service.getOfferById(id);
@@ -33,8 +40,8 @@ public class OfferController {
     }
 
     // 관리자가 아니면, 매물 등록이 안되므로 차후 /admin/** 로 옮겨야 한다.
-    @RequestMapping("/create")
-    public ModelAndView create() {
+    @RequestMapping("/create/form")
+    public ModelAndView createView() {
         mv.setViewName("/offer/create/form");
 
         mv.addObject("offerTypes", OfferType.values());
@@ -42,6 +49,13 @@ public class OfferController {
         mv.addObject("options", OptionType.values());
         mv.addObject("heatingTypes", HeatingType.values());
         mv.addObject("manages", ManagementCategoryType.values());
+
+        return mv;
+    }
+
+    @RequestMapping("/create")
+    public ModelAndView create(Offer offer, MultipartFile files) {
+        log.info("Model of Offer : {}", offer);
 
         return mv;
     }
