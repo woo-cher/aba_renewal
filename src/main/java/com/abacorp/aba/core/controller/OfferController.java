@@ -3,16 +3,17 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.AwsS3Service;
 import com.abacorp.aba.core.service.MapService;
+import com.abacorp.aba.core.service.OfferService;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/offers")
@@ -26,7 +27,7 @@ public class OfferController {
     private MapService service;
 
     @Autowired
-    private AwsS3Service s3Service;
+    private OfferService offerService;
 
     @RequestMapping("/{id}")
     public ModelAndView show(@PathVariable int id) {
@@ -53,11 +54,11 @@ public class OfferController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute Offer offer) {
+    public ModelAndView create(@ModelAttribute Offer offer) {
         log.info("Model of Offer : {}", offer);
 
-        // required `create` flow.
+        offerService.createOffer(offer);
 
-        return "/offer/create/form";
+        return createView();
     }
 }

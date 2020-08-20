@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -57,5 +56,20 @@ public class BasicTest {
         log.info("result arr : {}", optionIndex.size());
 
         log.info("type : {}", OptionType.values()[0]);
+    }
+
+    @Test
+    public void convertJibunToBelongsTo() {
+        String regex = "[0-9\\\\-]";
+        String jibun = "경남 진주시 호탄동 123-1";
+        String jibun2 = "경기 고양시 일산동구 XX동 123-1";
+
+        String result = jibun.replaceAll(regex, "");
+        result = result.substring(0, result.length() - 1);
+        log.info("result and size : {}, {}", result, result.length());
+
+        result = jibun2.replaceAll(regex, "");
+        result = result.substring(0, result.length() - 1);
+        log.info("result2 and size : {}, {}", result, result.length());
     }
 }
