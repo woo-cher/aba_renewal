@@ -87,9 +87,12 @@
 
     $('#leftNav > li').click(function(e) {
         let navIndex = $(e.currentTarget).index();
+        console.log(navIndex)
 
         if(navIndex === 0) {
             $('.prev').hide();
+            $('.submit').hide();
+            $('.next').show();
         } else if(navIndex === 2) {
             $('.next').hide();
             $('.submit').show();
