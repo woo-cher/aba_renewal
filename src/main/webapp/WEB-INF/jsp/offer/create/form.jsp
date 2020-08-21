@@ -125,8 +125,8 @@
     }
 
     function dongTrigger(dong) {
-        dong.prop('readonly', !dong.prop('readonly'));
-        dong.val('');
+        dong.prop('disabled', !dong.prop('disabled'));
+        dong.val('동 정보 없음');
     }
 
     function floorTrigger() {
@@ -160,8 +160,8 @@
     function noneAction(focus) {
         let bool = focus.css('background-color') === 'rgb(0, 173, 239)';
         bool ? focus.css('background', 'red') : focus.css('background', '#00adef');
-        focus.prev('input').prop('readonly', bool);
-        focus.prev('input').val(null);
+        focus.prev('input').prop('disabled', bool);
+        focus.prev('input').val('없음');
     }
 
     function elevatorTrigger(focus) {

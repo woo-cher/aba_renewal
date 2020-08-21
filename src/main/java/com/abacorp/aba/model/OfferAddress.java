@@ -18,6 +18,7 @@ public class OfferAddress {
     private String road;
     private String dong;
     private String ho;
+    private String entrance;
     private String door;
     private String floor;
     private String nearLocation;

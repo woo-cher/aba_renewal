@@ -30,6 +30,7 @@
         <result property="buildingName" column="building_name" />
         <result property="dong" column="dong" />
         <result property="ho" column="ho" />
+        <result property="entrance" column="entrance" />
         <result property="door" column="door" />
         <result property="floor" column="floor" />
         <result property="nearLocation" column="near_location" />
@@ -85,7 +86,7 @@
         <if test="isParking">AND (adds.is_parking = TRUE)</if>
         <if test="isNotTenant">AND (adds.tenant LIKE '%무%')</if>
         <if test="hasElevator">AND (adds.has_elevator = TRUE)</if>
-        <if test="isPet">AND (adds.is_pet = TRUE)</if>
+        <if test="isPet">AND (adds.can_pet = TRUE)</if>
         <if test="isCanTerm">AND (adds.term > 0)</if>
         <if test="floor != 0">AND (addrs.floor = #{floor})</if>
         <if test="completionYear != 0">AND (ofs.completion_year = #{completionYear})</if>
@@ -144,7 +145,7 @@
     <insert id="insertOfferAddress" parameterType="offerAddress">
         INSERT INTO offer_addresses
         VALUES (
-            #{offerId}, #{latitude}, #{longitude}, #{buildingName}, #{jibun}, #{road}, #{dong}, #{ho}, #{door},
+            #{offerId}, #{latitude}, #{longitude}, #{buildingName}, #{jibun}, #{road}, #{dong}, #{ho}, #{entrance}, #{door},
             #{floor}, #{nearLocation}, #{belongsTo}
          )
     </insert>

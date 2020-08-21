@@ -2,6 +2,7 @@ package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;

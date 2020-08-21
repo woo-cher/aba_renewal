@@ -87,9 +87,9 @@
                 </div>
                 <div class="row bb">
                     <p class="key">반려동물</p>
-                    <p class="value">${offer.offerAddition.pet ? "가능" : "불가능"}</p>
+                    <p class="value">${offer.offerAddition.canPet ? "가능" : "불가능"}</p>
                     <p class="key">주차</p>
-                    <p class="value">${offer.offerAddition.parking ? "가능" : "불가능"}</p>
+                    <p class="value">${offer.offerAddition.canParking ? "가능" : "불가능"}</p>
                 </div>
                 <div class="row bb">
                     <p class="key">룸호실</p>
