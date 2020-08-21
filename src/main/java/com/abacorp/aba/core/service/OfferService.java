@@ -2,6 +2,8 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OfferRepository;
 import com.abacorp.aba.model.Offer;
+import com.abacorp.aba.model.OfferAddition;
+import com.abacorp.aba.model.OfferAddress;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +22,34 @@ public class OfferService {
     @Transactional
     public int createOffer(Offer offer) {
 
-        /**
-         * NOTE)
-         *  1. belongsTo 서비스 로직 (O)
-         *  2. images path 필드 추가 / 업로드 처리 로직
-         */
-        String belongsTo = convertJibunToBelongsTo(offer.getOfferAddress().getJibun());
-        offer.getOfferAddress().setBelongsTo(belongsTo);
+        // TODO) images path 필드 추가 / 업로드 처리 로직
+        OfferAddress offerAddress = offer.getOfferAddress();
+        OfferAddition offerAddition = offer.getOfferAddition();
 
-        // do something ...
+        String belongsTo = convertJibunToBelongsTo(offerAddress.getJibun());
+        offerAddress.setBelongsTo(belongsTo);
+
+        String floorType = offerAddress.getFloor();
+        offerAddress.setFloor(convertFloor(floorType));
+
+        // TODO) insert row 가 0을 리턴하는 경우, Exception 처리
+        if(offerRepository.insertOffer(offer) == 0) {
+            return 0;
+        }
+
+        log.info("generatedKey : {}", offer.getId());
+
+        offerAddress.setOfferId(offer.getId());
+        offerAddition.setOfferId(offer.getId());
+
+        // TODO) insert row 가 0을 리턴하는 경우, Exception 처리
+        if(offerRepository.insertOfferAddress(offerAddress) == 0) {
+            return 0;
+        }
+
+        if(offerRepository.insertOfferAddition(offerAddition) == 0) {
+            return 0;
+        }
 
         return 1;
     }
@@ -46,5 +67,23 @@ public class OfferService {
 
         // For remove the last string is `blank`
         return result.substring(0, result.length() - 1);
+    }
+
+    private String convertFloor(String floorType) {
+        String floor = "";
+
+        switch (floorType) {
+            case "반지하":
+                floor = "-1";
+                break;
+            case "옥탑":
+                floor = "100";
+                break;
+            default:
+                floor = floorType;
+                break;
+        }
+
+        return floor;
     }
 }

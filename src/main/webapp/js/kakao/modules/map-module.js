@@ -207,11 +207,12 @@ class MapModule {
                                 </strong>
                             </p>
                             <p class="offer-addr">${offer.offerAddress.jibun}</p>
-                            <p class="offer-building">화이트원룸</p>
+                            <p class="offer-building">${offer.offerAddress.buildingName}</p>
                             <div class="offer-summary">
                                 <strong>
                                     ${offer.type.value} |
-                                    ${offer.offerAddress.ho} |
+                                    ${offer.offerAddress.floor === '-1' ? offer.offerAddress.ho : 
+                                        offer.offerAddress.floor === '100' ? offer.offerAddress.ho : offer.offerAddress.ho + '호'} |
                                     ${offer.heatingType.value}
                                 </strong>
                             </div>

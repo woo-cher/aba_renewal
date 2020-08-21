@@ -56,7 +56,7 @@
     <div id="howTerm" hidden>
         <div class="input-group">
             <label class="form-label">* 단기 가능일 : <span class="aba">최대</span></label>
-            <input type="text" class="short" name="offerAddition.term" placeholder="예) 3">
+            <input type="text" class="short" name="offerAddition.term" placeholder="예) 3" value="0">
             <p class="icon"><i class="fas">개월</i></p>
         </div>
     </div>

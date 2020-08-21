@@ -1,5 +1,6 @@
 package com.abacorp.aba.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data

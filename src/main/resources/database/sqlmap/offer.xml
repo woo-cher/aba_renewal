@@ -31,6 +31,7 @@
         <result property="dong" column="dong" />
         <result property="ho" column="ho" />
         <result property="door" column="door" />
+        <result property="floor" column="floor" />
         <result property="nearLocation" column="near_location" />
         <result property="belongsTo" column="belongs_to" />
     </resultMap>
@@ -130,15 +131,28 @@
         WHERE offer_id LIKE CONCAT('%', #{idKey}, '%');
     </select>
 
-    <insert id="insertOffer" parameterMap="offer" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        #
+    <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO offers (
+            deposit, monthly_price, management_price, type, deal_type, heating_type, status, dealer,
+            completion_year, description, created_at, updated_at
+        ) VALUES (
+            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, 'ON', 'test',
+            #{completionYear}, #{description}, current_timestamp, current_timestamp
+        )
     </insert>
 
-    <insert id="insertOfferAddress" parameterMap="offerAddress">
-        #
+    <insert id="insertOfferAddress" parameterType="offerAddress">
+        INSERT INTO offer_addresses
+        VALUES (
+            #{offerId}, #{latitude}, #{longitude}, #{buildingName}, #{jibun}, #{road}, #{dong}, #{ho}, #{door},
+            #{floor}, #{nearLocation}, #{belongsTo}
+         )
     </insert>
 
-    <insert id="insertOfferAddition" parameterMap="offerAddition">
-        #
+    <insert id="insertOfferAddition" parameterType="offerAddition">
+        INSERT INTO offer_additions
+        VALUES (
+            #{offerId}, #{term}, #{tenant}, #{optionCategory}, #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet}
+        )
     </insert>
 </mapper>

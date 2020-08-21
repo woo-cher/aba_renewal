@@ -28,7 +28,7 @@
         <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong">
         <p class="icon"><i class="fas">동</i></p>
         <p class="short"></p>
-        <input type="text" class="short" placeholder="예) 401호" name="offerAddress.ho">
+        <input type="text" class="short" id="ho" placeholder="예) 401호" name="offerAddress.ho">
         <p class="icon"><i class="fas">호</i></p>
     </div>
     <ul class="checkbox-container p-0 w-half">

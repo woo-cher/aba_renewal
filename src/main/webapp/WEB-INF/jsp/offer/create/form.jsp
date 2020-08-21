@@ -133,13 +133,26 @@
         let isFloorUp = $('#floorUp').prop('checked');
         let selector = $('#floor');
 
+        let hoInput = $('#ho');
+
         selector.prop('readonly', !isFloorUp);
 
         if($('#floorUnder').prop('checked')) {
-            selector.prop('placeholder', '반지하')
+            hoInput.val('반지하');
+            hoInput.hide();
+            hoInput.next().hide();
+            selector.val('반지하');
         } else if($('#floorTop').prop('checked')) {
-            selector.prop('placeholder', '옥탑방')
+            hoInput.val('옥탑');
+            hoInput.hide();
+            hoInput.next().hide();
+            selector.val('옥탑');
         } else {
+            hoInput.val('');
+            hoInput.show();
+            hoInput.next().show();
+
+            selector.val('');
             selector.prop('placeholder', '예) 3층')
         }
     }
@@ -147,7 +160,8 @@
     function noneAction(focus) {
         let bool = focus.css('background-color') === 'rgb(0, 173, 239)';
         bool ? focus.css('background', 'red') : focus.css('background', '#00adef');
-        focus.prev('input').prop('readonly', bool)
+        focus.prev('input').prop('readonly', bool);
+        focus.prev('input').val(null);
     }
 
     function elevatorTrigger(focus) {
@@ -164,7 +178,13 @@
 
         console.log(elementId);
 
-        elementId === 'tenant' ? $('#tenantDesc').toggle() : $('#howTerm').toggle();
+        if(elementId === 'tenant') {
+            $('#tenantDesc').toggle();
+            $('#tenantDesc').val('무');
+        } else {
+            $('#howTerm').toggle();
+            $('#howTerm').attr('placeholder', '개월 수');
+        }
     }
 
     function booleanHelper(focus) {
