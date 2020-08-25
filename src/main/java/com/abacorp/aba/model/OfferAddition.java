@@ -21,7 +21,7 @@ import java.util.List;
 @ToString
 public class OfferAddition {
     private int offerId;
-    private int term; // term = 0 ? `단기불가` : 'term 개월 가능'
+    private String term;
     private String tenant;
     private String optionCategory;
     private String managementCategory;

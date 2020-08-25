@@ -12,9 +12,9 @@ import lombok.*;
 @ToString
 public class Offer extends ModelMapper {
     private User dealer;
-    private int deposit;
-    private int monthlyPrice;
-    private int managementPrice;
+    private String deposit;
+    private String monthlyPrice;
+    private String managementPrice;
     private String completionYear;
     private OfferType type;
     private DealType dealType;

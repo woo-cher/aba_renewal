@@ -38,12 +38,6 @@
                 <i class="fas fa-arrow-alt-circle-right"></i>
             </p>
         </div>
-        <div class="bottom-navbar" onclick="$('#submit').click()">
-            <p class="nav-bottom aba txt-lg">
-                test
-                <i class="fas fa-arrow-alt-circle-right"></i>
-            </p>
-        </div>
         <div class="bottom-navbar submit" onclick="$('#submit').click()" hidden>
             <p class="nav-bottom aba txt-lg">
                 등록하기

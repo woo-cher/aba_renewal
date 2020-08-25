@@ -11,8 +11,8 @@ import lombok.*;
 @ToString
 public class OfferAddress {
     private int offerId;
-    private float latitude;
-    private float longitude;
+    private String latitude;
+    private String longitude;
     private String buildingName;
     private String jibun;
     private String road;
