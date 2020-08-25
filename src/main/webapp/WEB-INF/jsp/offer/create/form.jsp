@@ -11,6 +11,7 @@
 
     <script src="/js/kakao/ajax/ajax-repository.js"></script>
     <script src="/js/kakao/kakao-address.js"></script>
+    <script src="/js/validator.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
@@ -37,7 +38,13 @@
                 <i class="fas fa-arrow-alt-circle-right"></i>
             </p>
         </div>
-        <div class="bottom-navbar submit" onclick="$('form').submit()" hidden>
+        <div class="bottom-navbar" onclick="$('#submit').click()">
+            <p class="nav-bottom aba txt-lg">
+                test
+                <i class="fas fa-arrow-alt-circle-right"></i>
+            </p>
+        </div>
+        <div class="bottom-navbar submit" onclick="$('#submit').click()" hidden>
             <p class="nav-bottom aba txt-lg">
                 등록하기
                 <i class="fas fa-check-circle"></i>
@@ -52,7 +59,8 @@
                 </h3>
             </div>
 
-            <form action="/offers/create" method="post" enctype="multipart/form-data">
+            <form action="/offers/create" id="offerForm" method="post" enctype="multipart/form-data">
+                <input type="submit" id="submit" hidden>
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>
                     <%@include file="/WEB-INF/jsp/offer/create/addresses.jsp"%>
@@ -87,7 +95,7 @@
 
     $('#leftNav > li').click(function(e) {
         let navIndex = $(e.currentTarget).index();
-        console.log(navIndex)
+        console.log(navIndex);
 
         if(navIndex === 0) {
             $('.prev').hide();
@@ -120,6 +128,13 @@
             return;
         }
 
+        let dom = $("#completionYear")[0]
+        console.log($("#completionYear")[0].checkValidity());
+
+        if(!dom.checkValidity()) {
+            dom.setCustomValidity("라뉘")
+        }
+
         if(isNext) {
             $('#leftNav').children().eq(findNavIndex() + 1).click();
         } else if(findNavIndex() !== 0){
@@ -128,8 +143,13 @@
     }
 
     function dongTrigger(dong) {
-        dong.prop('disabled', !dong.prop('disabled'));
-        dong.val('동 정보 없음');
+        if(dong.prop('disabled')) {
+            dong.prop('disabled', false);
+            dong.val('');
+        } else {
+            dong.prop('disabled', true);
+            dong.val('동 정보 없음');
+        }
     }
 
     function floorTrigger() {

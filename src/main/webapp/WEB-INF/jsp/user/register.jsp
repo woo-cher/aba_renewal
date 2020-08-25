@@ -11,6 +11,7 @@
     <script src="/js/jquery-utils.js"></script>
     <script src="/js/kakao/kakao-address.js"></script>
     <script src="/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="/js/validator.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
@@ -142,28 +143,28 @@
                                pattern="^[a-z.]*"
                                oninvalid="this.setCustomValidity(`도메인을 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter($(this))"
+                               onkeyup="formValidatorWithRegex($(this))"
                         >
                         <div class="input-group">
                             <input required readonly autofocus type="text" class="short" placeholder="010" name="phone" value="010"
                                    pattern="^[0-9]{1,3}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this))"
+                                   onkeyup="formValidatorWithRegex($(this))"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this), 'phone')"
+                                   onkeyup="formValidatorWithRegex($(this), 'phone')"
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this), 'phone')"
+                                   onkeyup="formValidatorWithRegex($(this), 'phone')"
                             >
                         </div>
                         <div class="input-group">
@@ -194,40 +195,40 @@
                                pattern="^[가-힣A-Za-z0-9]*"
                                oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter($(this))"
+                               onkeyup="formValidatorWithRegex($(this))"
                         >
                         <input type="text" placeholder="중개업소 대표자명" id="agentLeader" name="agentLeader" hidden
                                pattern="^[가-힣]*"
                                oninvalid="this.setCustomValidity(`공백 또는 특수문자가 포함되나 봅니다 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter($(this))"
+                               onkeyup="formValidatorWithRegex($(this))"
                         >
                         <input type="text" placeholder="중개업소 등록번호" name="agentNumber"
                                pattern="^[가-힣0-9-]*"
                                oninvalid="this.setCustomValidity(`등록번호 형식에 맞지 않아요 :(`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
-                               onkeyup="keywordConverter($(this))"
+                               onkeyup="formValidatorWithRegex($(this))"
                         >
                         <div class="input-group">
                             <input type="text" class="short" placeholder="사무실 연락처" name="agentPhone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this))"
+                                   onkeyup="formValidatorWithRegex($(this))"
                             >
                             <p class="short">-</p>
                             <input type="text" class="short" placeholder="####" name="agentPhone"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this), 'phone')"
+                                   onkeyup="formValidatorWithRegex($(this), 'phone')"
                             >
                             <p class="short">-</p>
                             <input type="text" class="short" placeholder="####" name="agentPhone"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="keywordConverter($(this), 'phone')"
+                                   onkeyup="formValidatorWithRegex($(this), 'phone')"
                             >
                         </div>
                     </div>
@@ -407,19 +408,6 @@
         $(focus).val(result);
 
         return result[0];
-    }
-
-    function keywordConverter(focus, mode) {
-        let idRegex = new RegExp(focus.attr('pattern'));
-        let result = idRegex.exec(focus.val());
-
-        if(mode === 'phone') {
-            if(focus.val().length > 3) {
-                $(focus).val(result);
-            }
-        } else {
-            $(focus).val(result);
-        }
     }
 
     function passwordValidator() {

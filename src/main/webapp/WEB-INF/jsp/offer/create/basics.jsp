@@ -55,13 +55,16 @@
             </div>
             <div class="form-category full">
                 <div class="input-group">
-                    <input type="text" class="short" id="deposit" placeholder="보증금" name="deposit">
+                    <input type="text" class="short" id="deposit" placeholder="보증금" name="deposit"
+                           pattern="^[0-9]{1,5}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
                     <p class="short">/</p>
-                    <input type="text" class="short" id="monthlyPrice" placeholder="달세" name="monthlyPrice">
+                    <input type="text" class="short" id="monthlyPrice" placeholder="달세" name="monthlyPrice"
+                           pattern="^[0-9]{1,3}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
                     <p class="short">+</p>
-                    <input type="text" class="short" id="managementPrice" placeholder="관리비" name="managementPrice">
+                    <input type="text" class="short" id="managementPrice" placeholder="관리비" name="managementPrice"
+                           pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
                 </div>
             </div>
@@ -74,7 +77,8 @@
             </div>
             <div class="form-category">
                 <div class="input-group">
-                    <input type="text" class="short" id="completionYear" placeholder="1991" name="completionYear">
+                    <input type="text" class="short" id="completionYear" placeholder="1991" name="completionYear"
+                           pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">년</i></p>
                 </div>
             </div>

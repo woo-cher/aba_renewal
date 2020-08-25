@@ -14,7 +14,8 @@
     </div>
 
     <div class="input-group">
-        <input type="text" class="middle" placeholder="예) 아바아파트, 아바빌, 아바빌딩" name="offerAddress.buildingName">
+        <input type="text" class="middle" placeholder="예) 아바아파트, 아바빌, 아바빌딩" name="offerAddress.buildingName"
+               pattern="^[가-힣A-Za-z0-9() ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
     </div>
 
@@ -25,17 +26,17 @@
     <div class="input-group">
         <input type="hidden" id="latitude" name="offerAddress.latitude">
         <input type="hidden" id="longitude" name="offerAddress.longitude">
-        <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong">
+        <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong"
+               pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon"><i class="fas">동</i></p>
         <p class="short"></p>
-        <input type="text" class="short" id="ho" placeholder="예) 401호" name="offerAddress.ho">
+        <input type="text" class="short" id="ho" placeholder="예) 401호" name="offerAddress.ho"
+               pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon"><i class="fas">호</i></p>
     </div>
     <ul class="checkbox-container p-0 w-half">
         <li class="checkbox-list w-65">
-            <input type="checkbox" class="check" id="isExistDong"
-                   onclick="dongTrigger($('#dong'))"
-            >
+            <input type="checkbox" class="check" id="isExistDong" onclick="dongTrigger($('#dong'))">
             <label for="isExistDong">등본에 동 정보가 없습니다</label>
         </li>
     </ul>
@@ -65,7 +66,8 @@
                 <label for="floorTop">옥탑방</label>
             </li>
         </ul>
-        <input type="text" class="short" placeholder="예) 3층" name="offerAddress.floor" id="floor">
+        <input type="text" class="short" placeholder="예) 3층" name="offerAddress.floor" id="floor"
+               pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon"><i class="fas">층</i></p>
     </div>
 
@@ -74,10 +76,12 @@
         <span>입구 / 호실 비밀번호</span>
     </div>
     <div class="input-group">
-        <input type="text" class="short" placeholder="123* 또는 전화문의" name="offerAddress.entrance" id="entrance">
+        <input type="text" class="short" placeholder="123* 또는 전화문의" name="offerAddress.entrance" id="entrance"
+               pattern="^[가-힣#*0-9]{1,8}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
         <p class="short">/</p>
-        <input type="text" class="short" placeholder="1234* 또는 전화문의" name="offerAddress.door" id="door">
+        <input type="text" class="short" placeholder="1234* 또는 전화문의" name="offerAddress.door" id="door"
+               pattern="^[가-힣#*0-9]{1,8}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon-with-check" onclick="noneAction($(this))"><i class="fas">없음</i></p>
     </div>
 
@@ -86,7 +90,8 @@
         <span>주요 위치</span>
     </div>
     <div class="input-group">
-        <input type="text" class="short" placeholder="아바경찰서" name="offerAddress.nearLocation">
+        <input type="text" class="short" placeholder="예) 아바경찰서" name="offerAddress.nearLocation"
+               pattern="^[가-힣 ]{1,7}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon"><i class="fas">부근</i></p>
     </div>
 </section>

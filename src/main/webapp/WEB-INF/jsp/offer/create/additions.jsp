@@ -83,7 +83,8 @@
         <i class="fas fa-circle"></i>
         <span>부가 설명</span>
     </div>
-    <input type="text" name="description" placeholder="예) 벽지 재공사 예정이라고 합니다~">
+    <input type="text" name="description" placeholder="예) 벽지 재공사 예정이라고 합니다~"
+           pattern="^[가-힣#*~!() ]{1,50}" onkeyup="formValidatorWithRegex($(this))">
 
     <div class="form-label">
         <i class="fas fa-circle"></i>
