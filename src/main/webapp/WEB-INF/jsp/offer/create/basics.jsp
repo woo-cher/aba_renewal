@@ -21,6 +21,7 @@
                         <label for="dealType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
+                <div class="error-box"></div>
             </ul>
         </div>
 
@@ -43,6 +44,7 @@
                         <label for="offerType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
+                <div class="error-box"></div>
             </ul>
         </div>
 
@@ -65,6 +67,7 @@
                         <label for="heatingType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
+                <div class="error-box"></div>
             </ul>
         </div>
 
@@ -86,6 +89,7 @@
                     <input type="text" class="short" id="managementPrice" placeholder="관리비" name="managementPrice" value="${offer.managementPrice}"
                            pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
+                    <div class="error-box"></div>
                 </div>
             </div>
         </div>
@@ -100,6 +104,7 @@
                     <input type="text" class="short" id="completionYear" placeholder="1991" name="completionYear" value="${offer.completionYear}"
                            pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">년</i></p>
+                    <div class="error-box"></div>
                 </div>
             </div>
         </div>

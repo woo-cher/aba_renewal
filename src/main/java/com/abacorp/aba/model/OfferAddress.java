@@ -20,7 +20,6 @@ public class OfferAddress {
     private String buildingName;
     @NotBlank(message = "주소를 검색해주세요")
     private String jibun;
-    @NotBlank(message = "주소를 검색해주세요")
     private String road;
     private String dong;
     @NotBlank(message = "호수를 알려주세요")

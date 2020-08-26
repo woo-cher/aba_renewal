@@ -81,8 +81,8 @@
                 errorMessage = `${error.getDefaultMessage()}`;
                 selector = $('input[name="' + fieldName + '"]').parents('.check-area');
                 selector.addClass('invalid b-1r');
-                selector.append(
-                    '<p class="error" style="position: fixed; right: 18%;">' +
+                selector.find('.error-box').append(
+                    '<p class="error" style="margin-bottom: 2px;">' +
                     '<i class="fas fa-exclamation-circle">' +
                     '</i>' + errorMessage + '</p>'
                 );

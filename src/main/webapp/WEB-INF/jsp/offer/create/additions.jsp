@@ -22,6 +22,7 @@
                 </label>
             </li>
         </c:forEach>
+        <div class="error-box"></div>
     </ul>
 
     <div class="form-label">
@@ -87,6 +88,7 @@
                         ${manage.value}
                 </label>
             </li>
+            <div class="error-box"></div>
             <c:if test="${manage.value eq '엘리베이터'}">
                 <script>$('#manage5').parent().hide()</script>
             </c:if>

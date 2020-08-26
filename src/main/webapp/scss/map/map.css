@@ -41,6 +41,11 @@
   color: red;
 }
 
+.error-box {
+  position: fixed;
+  right: 18%;
+}
+
 /* Checkbox */
 .checkbox-container {
   display: flex;
@@ -505,6 +510,11 @@ datalist option {
 }
 .invalid .aba {
   color: red;
+}
+
+.error-box {
+  position: fixed;
+  right: 18%;
 }
 
 /* Checkbox */
