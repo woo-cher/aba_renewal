@@ -16,18 +16,18 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class Offer extends ModelMapper {
     private User dealer;
-    @NotBlank(message = "보증금을 알려주세요 :)")
+    @NotBlank(message = "보증금을 알려주세요")
     private String deposit;
-    @NotBlank(message = "월세를 알려주세요 :)")
+    @NotBlank(message = "월세를 알려주세요")
     private String monthlyPrice;
-    @NotBlank(message = "관리비를 알려주세요 :)")
+    @NotBlank(message = "관리비를 알려주세요")
     private String managementPrice;
     private String completionYear;
-    @NotNull(message = "매물분류를 선택하세요 :)")
+    @NotNull(message = "매물분류를 선택하세요")
     private OfferType type;
-    @NotNull(message = "거래유형을 선택하세요 :)")
+    @NotNull(message = "거래유형을 선택하세요")
     private DealType dealType;
-    @NotNull(message = "난방유형을 선택하세요 :)")
+    @NotNull(message = "난방유형을 선택하세요")
     private HeatingType heatingType;
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;

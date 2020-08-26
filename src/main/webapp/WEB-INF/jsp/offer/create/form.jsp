@@ -74,11 +74,18 @@
         </c:if>
 
         <c:if test="${not empty errors}">
-        let fieldName, errorMessage;
+        $('.error').remove();
+        let fieldName, errorMessage, selector;
             <c:forEach var="error" items="${errors}">
                 fieldName = `${error.getField()}`;
                 errorMessage = `${error.getDefaultMessage()}`;
-                $('input[name="' + fieldName + '"]').parents('.check-area').addClass('invalid b-1r');
+                selector = $('input[name="' + fieldName + '"]').parents('.check-area');
+                selector.addClass('invalid b-1r');
+                selector.append(
+                    '<p class="error" style="position: fixed; right: 18%;">' +
+                    '<i class="fas fa-exclamation-circle">' +
+                    '</i>' + errorMessage + '</p>'
+                );
             </c:forEach>
         </c:if>
     });

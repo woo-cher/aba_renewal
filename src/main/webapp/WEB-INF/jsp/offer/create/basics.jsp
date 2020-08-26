@@ -73,7 +73,7 @@
                 <i class="fas fa-circle"></i>
                 <span>매물가격 (보증금 / 달세 + 관리비)</span>
             </div>
-            <div class="form-category p-1 full check-area">
+            <div class="form-category flex p-1 full check-area">
                 <div class="input-group">
                     <input type="text" class="short" id="deposit" placeholder="보증금" name="deposit" value="${offer.deposit}"
                            pattern="^[0-9]{1,5}" onkeyup="formValidatorWithRegex($(this))">

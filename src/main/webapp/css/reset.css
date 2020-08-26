@@ -40,6 +40,7 @@
 .w-25 { width: 25% !important; }
 .w-10 { width: 10% !important;}
 .inline { display: inline-block !important; }
+.flex { display: flex !important; }
 .f-c { display: inline-flex !important; justify-content: center; align-items: center; }
 .f-l { display: inline-flex !important; justify-content: start; align-items: center; }
 .align-right { text-align: right !important; }

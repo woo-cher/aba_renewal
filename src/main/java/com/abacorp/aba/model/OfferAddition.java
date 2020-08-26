@@ -24,13 +24,13 @@ import java.util.List;
 @ToString
 public class OfferAddition {
     private int offerId;
-    @NotBlank(message = "단기 개월을 알려주세요 :)")
+    @NotBlank(message = "단기 개월을 알려주세요")
     private String term;
-    @NotBlank(message = "세입자 정보를 알려주세요 :)")
+    @NotBlank(message = "세입자 정보를 알려주세요")
     private String tenant;
-    @NotNull(message = "옵션을 선택해주세요 :)")
+    @NotNull(message = "옵션을 선택해주세요")
     private String optionCategory;
-    @NotNull(message = "관리비 항목을 선택해주세요 :)")
+    @NotNull(message = "관리비 항목을 선택해주세요")
     private String managementCategory;
     private boolean hasElevator;
     private boolean canParking;
