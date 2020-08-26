@@ -1,7 +1,6 @@
 package com.abacorp.aba.core.controller;
 
 
-import com.abacorp.aba.core.service.AwsS3Service;
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.core.service.OfferService;
 import com.abacorp.aba.model.Offer;
@@ -9,11 +8,16 @@ import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/offers")
@@ -54,11 +58,25 @@ public class OfferController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@ModelAttribute Offer offer) {
-        log.info("Model of Offer : {}", offer);
+    public ModelAndView create(@ModelAttribute @Valid Offer offer, BindingResult bindingResult) {
+        log.info("offer : {}", offer);
+
+        if(bindingResult.hasErrors()) {
+            List<FieldError> errors = bindingResult.getFieldErrors();
+            offerService.getCreateProcessIndex(errors);
+
+            mv = createView();
+            mv.setViewName("/offer/create/form");
+            mv.addObject("processIndex", offerService.getCreateProcessIndex(errors));
+            mv.addObject("errors", errors);
+            mv.addObject("offer", offer);
+
+            return mv;
+        }
 
         offerService.createOffer(offer);
+        mv.setViewName("/");
 
-        return createView();
+        return mv;
     }
 }

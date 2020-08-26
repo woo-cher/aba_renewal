@@ -1,15 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <section class="form-control mt-0" hidden>
     <div class="form-label">
         <i class="fas fa-circle"></i>
         <span>옵션 정보</span>
     </div>
-    <ul class="checkbox-container p-1">
+    <ul class="checkbox-container p-1 check-area">
         <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
             <li class="checkbox-list" style="width: 15%;">
-                <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check">
+                <c:choose>
+                    <c:when test="${fn:contains(offer.offerAddition.optionCategory, vs.index)}">
+                        <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check" checked>
+                    </c:when>
+                    <c:otherwise>
+                        <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check">
+                    </c:otherwise>
+                </c:choose>
                 <label for="option${vs.index}">
                         ${option.value}
                 </label>
@@ -49,7 +56,7 @@
     <div id="tenantDesc" hidden>
         <div class="input-group">
             <label class="form-label">* 세입자 : </label>
-            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)">
+            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)" value="무">
         </div>
     </div>
 
@@ -65,10 +72,17 @@
         <i class="fas fa-circle"></i>
         <span>관리비 항목</span>
     </div>
-    <ul class="checkbox-container p-1">
+    <ul class="checkbox-container p-1 check-area">
         <c:forEach var="manage" items="${manages}" begin="1" varStatus="vs">
             <li class="checkbox-list" style="width: 15%;">
-                <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check">
+                <c:choose>
+                    <c:when test="${fn:contains(offer.offerAddition.managementCategory, vs.index)}">
+                        <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check" checked>
+                    </c:when>
+                    <c:otherwise>
+                        <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check">
+                    </c:otherwise>
+                </c:choose>
                 <label for="manage${vs.index}">
                         ${manage.value}
                 </label>
@@ -83,7 +97,7 @@
         <i class="fas fa-circle"></i>
         <span>부가 설명</span>
     </div>
-    <input type="text" name="description" placeholder="예) 벽지 재공사 예정이라고 합니다~"
+    <input type="text" name="description" placeholder="예) 벽지 재공사 예정이라고 합니다~" value="${offer.description}"
            pattern="^[가-힣#*~!() ]{1,50}" onkeyup="formValidatorWithRegex($(this))">
 
     <div class="form-label">

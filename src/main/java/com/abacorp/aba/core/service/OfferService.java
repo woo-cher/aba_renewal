@@ -8,6 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.FieldError;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -85,5 +90,31 @@ public class OfferService {
         }
 
         return floor;
+    }
+
+    public int getCreateProcessIndex(List<FieldError> errors) {
+        Map<String, Boolean> clazzMap = new HashMap<>();
+
+        clazzMap.put("offer", false);
+        clazzMap.put("offerAddress", false);
+        clazzMap.put("offerAddition", false);
+
+        for(FieldError error : errors) {
+            if(error.getField().contains("offerAddress")) {
+                clazzMap.put("offerAddress", true);
+            } else if(error.getField().contains("offerAddition")) {
+                clazzMap.put("offerAddition", true);
+            } else {
+                clazzMap.put("offer", true);
+            }
+        }
+
+        if(clazzMap.get("offer")) {
+            return 0;
+        } else if(clazzMap.get("offerAddress")) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -67,6 +68,21 @@
 </html>
 
 <script>
+    $(document).ready(function () {
+        <c:if test="${not empty processIndex}">
+            $('#leftNav').children().eq(${processIndex}).click();
+        </c:if>
+
+        <c:if test="${not empty errors}">
+        let fieldName, errorMessage;
+            <c:forEach var="error" items="${errors}">
+                fieldName = `${error.getField()}`;
+                errorMessage = `${error.getDefaultMessage()}`;
+                $('input[name="' + fieldName + '"]').parents('.check-area').addClass('invalid b-1r');
+            </c:forEach>
+        </c:if>
+    });
+
     Dropzone.options.dropzone = {
         url: '/aws/s3/upload',
         autoProcessQueue: false,
@@ -192,15 +208,16 @@
 
     function dynamicFormTrigger(focus) {
         let elementId = focus.attr('id');
-
-        console.log(elementId);
+        let target;
 
         if(elementId === 'tenant') {
-            $('#tenantDesc').toggle();
-            $('#tenantDesc').val('무');
+            target = $('#tenantDesc');
+            target.toggle();
+            target.css('display') === 'none' ? target.find('input').val('무') : target.find('input').val('');
         } else {
-            $('#howTerm').toggle();
-            $('#howTerm').attr('placeholder', '개월 수');
+            target = $('#howTerm');
+            target.toggle();
+            target.css('display') === 'none' ? target.find('input').val('0') : target.find('input').val('');
         }
     }
 

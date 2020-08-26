@@ -4,6 +4,8 @@ import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -14,6 +16,7 @@ import java.util.List;
  *    => ["1", "3", "5", "7"]
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -21,9 +24,13 @@ import java.util.List;
 @ToString
 public class OfferAddition {
     private int offerId;
+    @NotBlank(message = "단기 개월을 알려주세요 :)")
     private String term;
+    @NotBlank(message = "세입자 정보를 알려주세요 :)")
     private String tenant;
+    @NotNull(message = "옵션을 선택해주세요 :)")
     private String optionCategory;
+    @NotNull(message = "관리비 항목을 선택해주세요 :)")
     private String managementCategory;
     private boolean hasElevator;
     private boolean canParking;
