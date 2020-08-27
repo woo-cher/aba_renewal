@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.DigestUtils;
 
 import java.io.File;
 
@@ -61,5 +62,13 @@ public class AwsS3Test {
                 break;
             }
         }
+    }
+
+    @Test
+    public void fileToHash() {
+        String offerId = "1";
+        String hashKey = DigestUtils.md5DigestAsHex(offerId.getBytes());
+
+        log.info("hash : {}", hashKey);
     }
 }

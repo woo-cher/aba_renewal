@@ -106,14 +106,11 @@
         <i class="fas fa-circle"></i>
         <span>사진 등록</span>
     </div>
-    <div class="image-area pt-3">
-        <div id="dropzone" class="dropzone align-center">
-            <div class="dz-default dz-message">
-                <img src="/img/offer/add_image.png">
-                <p class="aba pt-3">사진을 끌어다 놓거나 눌러서 업로드 해주세요 :)</p>
-            </div>
-            <input type="hidden" name="offerIdForDirectory" value="1234"/>
-            <input hidden type="file" id="files" name="files" multiple />
+    <div id="dropzone" class="dropzone align-center  pt-3">
+        <div class="dz-default dz-message">
+            <img src="/img/offer/add_image.png">
+            <p class="aba pt-3">사진을 끌어다 놓거나 눌러서 업로드 해주세요 :)</p>
         </div>
+        <input hidden type="file" id="files" name="files" multiple />
     </div>
 </section>

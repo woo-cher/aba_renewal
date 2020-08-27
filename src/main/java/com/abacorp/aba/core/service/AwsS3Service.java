@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -25,28 +27,51 @@ public class AwsS3Service {
     @Autowired
     private AmazonS3 amazonS3;
 
+    @Value("${aws.images.prefix}")
+    private String pathEndPoint;
+
     @Value("${aws.bucket}")
     private String bucketName;
 
-    public void upload(List<MultipartFile> multipartFiles, String offerId) throws IOException {
-        log.info("directory [offerId] : {}", offerId);
+    /**
+     * `Thumbnail` is the First uploaded image.
+     *
+     * @param multipartFiles
+     * @param offerId
+     * @return thumbnail
+     * @throws IOException
+     */
+    public String upload(List<MultipartFile> multipartFiles, String offerId) throws IOException {
+        log.info("directory [offerIdHash] : {}", offerId);
+        String hashIdValue = getMd5Hash(offerId);
+        String hashFileName = "";
+        String thumbnail = "";
         ObjectMetadata metadata = new ObjectMetadata();
 
+        int index = 0;
         for(MultipartFile file : multipartFiles) {
-            log.info("file : {}", file.getOriginalFilename());
+            hashFileName = getMd5Hash(file.getOriginalFilename());
+
+            if(index == 0) {
+                thumbnail = hashFileName;
+            }
+
             metadata.setContentType(file.getContentType());
             metadata.setContentLength(file.getSize());
 
-            String key = offerId + "/" + file.getOriginalFilename();
+            String key = pathEndPoint + hashIdValue + "/" + hashFileName;
 
             PutObjectRequest req = new PutObjectRequest(bucketName, key, file.getInputStream(), metadata);
-
             amazonS3.putObject(req.withCannedAcl(CannedAccessControlList.PublicRead));
+
+            index++;
         }
+
+        return thumbnail;
     }
 
     public void deleteOne(String offerId, String fileName) {
-        String key = offerId + "/" + fileName;
+        String key = pathEndPoint + offerId + "/" + fileName;
 
         amazonS3.deleteObject(bucketName, key);
     }
@@ -54,7 +79,7 @@ public class AwsS3Service {
     public void deleteAll(String offerId) {
         ListObjectsRequest req = new ListObjectsRequest()
                 .withBucketName(bucketName)
-                .withPrefix(offerId);
+                .withPrefix(pathEndPoint + offerId);
 
         ObjectListing objectListing = amazonS3.listObjects(req);
 
@@ -69,5 +94,9 @@ public class AwsS3Service {
                 break;
             }
         }
+    }
+
+    public String getMd5Hash(String value) {
+        return DigestUtils.md5DigestAsHex(value.getBytes());
     }
 }

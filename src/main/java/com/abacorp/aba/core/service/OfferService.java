@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.FieldError;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +28,7 @@ public class OfferService {
     private AwsS3Service awsS3Service;
 
     @Transactional
-    public int createOffer(Offer offer) {
-
-        // TODO) images path 필드 추가 / 업로드 처리 로직
+    public int createOffer(Offer offer) throws IOException {
         OfferAddress offerAddress = offer.getOfferAddress();
         OfferAddition offerAddition = offer.getOfferAddition();
 
@@ -53,6 +53,18 @@ public class OfferService {
 
         if(offerRepository.insertOfferAddition(offerAddition) == 0) {
             return 0;
+        }
+
+        /**
+         * TODO) images path 필드 추가 / 업로드 처리 로직
+         */
+        List<MultipartFile> offerImages = offer.getFiles();
+
+        if(!offerImages.get(0).getOriginalFilename().isEmpty()) {
+            String thumbnail = awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
+            offer.setThumbnail(thumbnail);
+
+            offerRepository.updateOfferThumbnailById(offer);
         }
 
         return 1;

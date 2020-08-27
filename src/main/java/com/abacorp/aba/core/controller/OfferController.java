@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -59,7 +61,14 @@ public class OfferController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@ModelAttribute @Valid Offer offer, BindingResult bindingResult) {
+    public ModelAndView create(@ModelAttribute @Valid Offer offer, BindingResult bindingResult) throws IOException {
+        if(!offer.getFiles().get(0).getOriginalFilename().isEmpty()) {
+            log.info("size : {}", offer.getFiles().size());
+            for(MultipartFile file : offer.getFiles()) {
+                log.info("\tname : {}", file.getOriginalFilename());
+            }
+        }
+
         log.info("offer : {}", offer);
 
         if(bindingResult.hasErrors()) {
@@ -75,7 +84,8 @@ public class OfferController {
             return mv;
         }
 
-        offerService.createOffer(offer);
+        int row = offerService.createOffer(offer);
+
         mv.setViewName("admin/admin");
 
         return mv;

@@ -65,4 +65,8 @@ public class OfferRepository {
     public int deleteOfferById(int offerId) {
         return sqlSession.delete("deleteOfferById", offerId);
     }
+
+    public int updateOfferThumbnailById(Offer offer) {
+        return sqlSession.update("updateThumbnailById", offer);
+    }
 }

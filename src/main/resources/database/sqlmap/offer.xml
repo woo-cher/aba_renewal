@@ -16,6 +16,7 @@
         <result property="status" column="status" />
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="description" column="description" />
+        <result property="thumbnail" column="thumbnail" />
         <association property="dealer" resultMap="dealer" />
         <association property="offerAddress" resultMap="offerAddress" />
         <association property="offerAddition" resultMap="offerAddition" />
@@ -161,4 +162,8 @@
     <delete id="deleteOfferById" parameterType="int">
         DELETE FROM offers WHERE id = #{offerId};
     </delete>
+
+    <update id="updateThumbnailById" parameterType="offer">
+        UPDATE offers SET thumbnail = #{thumbnail} WHERE id = #{id}
+    </update>
 </mapper>

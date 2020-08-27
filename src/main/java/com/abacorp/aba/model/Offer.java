@@ -4,10 +4,12 @@ import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @Builder
@@ -33,6 +35,9 @@ public class Offer extends ModelMapper {
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;
     private String description;
+    private String thumbnail;
+    @Builder.Default
+    private List<MultipartFile> files = null;
     @Valid
     @JsonProperty("offerAddition")
     private OfferAddition offerAddition;

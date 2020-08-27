@@ -50,7 +50,6 @@
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   -webkit-box-align: center;
   align-items: center;
   padding: 4% 0;
@@ -521,7 +520,6 @@ datalist option {
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   -webkit-box-align: center;
   align-items: center;
   padding: 4% 0;
