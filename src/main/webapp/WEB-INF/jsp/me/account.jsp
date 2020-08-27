@@ -25,37 +25,37 @@
                 <img class="w-65" src="/img/guide.jpg">
             </div>
             <div class="frame form-control p-0">
-                <div class="input-group f-c">
+                <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">아이디</span>
                     </div>
                     <input class="w-half" type="text" disabled value="abasystem">
                 </div>
-                <div class="input-group f-c">
+                <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">이름</span>
                     </div>
                     <input class="w-half" type="text" disabled value="아바시스템">
                 </div>
-                <div class="input-group f-c">
+                <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">연락처</span>
                     </div>
                     <input class="w-half" type="text" disabled value="010-1234-1234">
                 </div>
-                <div class="input-group f-c">
+                <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">이메일</span>
                     </div>
                     <input class="w-half" type="text" disabled value="cs@abasystem.com">
                 </div>
-                <div class="input-group f-c">
+                <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">인증서류</span>
                     </div>
                     <input class="w-half" type="text" disabled value="중개.pdf">
                 </div>
-                <div class="input-group p-0">
+                <div class="input-group w-full p-0">
                     <div class="box-left"></div>
                     <div class="box-right">
                         <button class="btn inline txt-sm" type="submit">서류보기</button>
@@ -80,19 +80,19 @@
             <div class="label-wrap">비밀번호 변경</div>
         </div>
         <form class="frame form-control p-0">
-            <div class="input-group f-c">
+            <div class="input-group w-full f-c">
                 <div class="form-label w-25">
                     <span class="form-label before w-full">새 비밀번호</span>
                 </div>
                 <input class="w-half" type="text">
             </div>
-            <div class="input-group f-c">
+            <div class="input-group w-full f-c">
                 <div class="form-label w-25">
                     <span class="form-label before w-full">새 비밀번호 확인</span>
                 </div>
                 <input class="w-half" type="text">
             </div>
-            <div class="input-group p-0">
+            <div class="input-group w-full p-0">
                 <div class="box-left"></div>
                 <div class="box-right">
                     <button class="btn inline txt-sm" type="submit">변경하기</button>
@@ -105,7 +105,7 @@
         <div class="content label">
             <div class="label-wrap">회원탈퇴</div>
         </div>
-        <div class="input-group p-0">
+        <div class="input-group w-full p-0">
             <div class="panel box pt-1 pb-1">
                 <div class="panel content box border-box">
                     <div class="frame" style="line-height: 1.75rem;">
