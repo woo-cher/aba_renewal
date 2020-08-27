@@ -61,4 +61,8 @@ public class OfferRepository {
     public int insertOfferAddition(OfferAddition offerAddition) {
         return sqlSession.insert("insertOfferAddition", offerAddition);
     }
+
+    public int deleteOfferById(int offerId) {
+        return sqlSession.delete("deleteOfferById", offerId);
+    }
 }

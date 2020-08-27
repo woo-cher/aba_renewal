@@ -33,7 +33,7 @@ public class OfferController {
     @Autowired
     private OfferService offerService;
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView show(@PathVariable int id) {
         Offer offer = service.getOfferById(id);
 
@@ -76,7 +76,16 @@ public class OfferController {
         }
 
         offerService.createOffer(offer);
-        mv.setViewName("/");
+        mv.setViewName("admin/admin");
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ModelAndView delete(@PathVariable int id) {
+        offerService.deleteOffer(id);
+
+        mv.setViewName("admin/admin");
 
         return mv;
     }

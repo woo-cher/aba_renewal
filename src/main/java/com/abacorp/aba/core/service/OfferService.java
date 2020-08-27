@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// TODO) insert, delete, update row 가 0을 리턴하는 경우, Exception 처리
 @Service
 @Slf4j
 public class OfferService {
@@ -37,7 +38,6 @@ public class OfferService {
         String floorType = offerAddress.getFloor();
         offerAddress.setFloor(convertFloor(floorType));
 
-        // TODO) insert row 가 0을 리턴하는 경우, Exception 처리
         if(offerRepository.insertOffer(offer) == 0) {
             return 0;
         }
@@ -47,12 +47,19 @@ public class OfferService {
         offerAddress.setOfferId(offer.getId());
         offerAddition.setOfferId(offer.getId());
 
-        // TODO) insert row 가 0을 리턴하는 경우, Exception 처리
         if(offerRepository.insertOfferAddress(offerAddress) == 0) {
             return 0;
         }
 
         if(offerRepository.insertOfferAddition(offerAddition) == 0) {
+            return 0;
+        }
+
+        return 1;
+    }
+
+    public int deleteOffer(int offerId) {
+        if(offerRepository.deleteOfferById(offerId) == 0) {
             return 0;
         }
 

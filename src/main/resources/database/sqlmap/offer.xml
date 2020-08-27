@@ -157,4 +157,8 @@
             #{offerId}, #{term}, #{tenant}, #{optionCategory}, #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet}
         )
     </insert>
+
+    <delete id="deleteOfferById" parameterType="int">
+        DELETE FROM offers WHERE id = #{offerId};
+    </delete>
 </mapper>
