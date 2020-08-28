@@ -39,7 +39,11 @@ function activateWithUrl(regex, callback = null) {
             el = callback(el);
         }
 
-        $("#" + el).addClass("active");
+        if (el.includes("payment") || el.includes("account")) {
+            $('#usersmemyaba').addClass('active');
+        }
+
+        $('#' + el).addClass('active');
     })
 }
 

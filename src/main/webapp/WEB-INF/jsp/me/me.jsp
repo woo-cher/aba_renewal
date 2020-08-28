@@ -43,6 +43,7 @@
 
     activateWithSelector('#nav > li');
     activateWithSelector('#navigator > li');
+    // activateWithUrl(/.+\//g, () => { return "usersmemyaba"});
     activateWithUrl(/.+\//g);
     switchContentViewWithIndex('#nav > li', '.right-wrap', '.content-right');
 </script>
