@@ -30,8 +30,8 @@ class Spot extends Overlay {
         const spotElement = new CustomDomCreator(NaN);
 
         for(let i = 0; i < size; i++) {
-            const lat = offers[i].offerAddress.latitude;
-            const lng = offers[i].offerAddress.longitude;
+            const lat = Number(offers[i].offerAddress.latitude);
+            const lng = Number(offers[i].offerAddress.longitude);
 
             const key = lat + lng;
 

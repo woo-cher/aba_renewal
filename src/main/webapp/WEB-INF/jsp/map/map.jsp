@@ -182,13 +182,15 @@
 
     function clickOfSearchResult(weight, clicked) {
         const level = mapManager.getLevelByWeight(weight);
+        const lat = Number(clicked.latitude);
+        const lng = Number(clicked.longitude);
 
         mapManager.setLevel(level, {});
-        mapManager.setCenter(clicked.latitude, clicked.longitude);
+        mapManager.setCenter(lat, lng);
         mapManager.relayout();
         mapManager.eventTrigger();
 
-        const clickTargetId = (clicked.latitude + clicked.longitude).toString().replace('.', '');
+        const clickTargetId = (lat + lng).toString().replace('.', '');
 
         $('#' + clickTargetId).children().click();
     }
