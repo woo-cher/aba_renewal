@@ -23,6 +23,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class AwsS3Service {
+    private final String S3_END_POINT = "https://abasystem.s3.ap-northeast-2.amazonaws.com/";
 
     @Autowired
     private AmazonS3 amazonS3;
@@ -38,7 +39,7 @@ public class AwsS3Service {
      *
      * @param multipartFiles
      * @param offerId
-     * @return thumbnail
+     * @return path: "offerId/thumbnail" (md5)
      * @throws IOException
      */
     public String upload(List<MultipartFile> multipartFiles, String offerId) throws IOException {
@@ -67,7 +68,7 @@ public class AwsS3Service {
             index++;
         }
 
-        return thumbnail;
+        return (hashIdValue + "/" + thumbnail);
     }
 
     public void deleteOne(String offerId, String fileName) {

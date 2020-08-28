@@ -186,6 +186,7 @@ class MapModule {
 
             for (let i = 0; i < offers.length; i++) {
                 let offer = offers[i];
+                let endpoint = "https://abasystem.s3.ap-northeast-2.amazonaws.com/offer-images/";
 
                 offersArea.append(`
                     <li class="list-item">
@@ -194,7 +195,7 @@ class MapModule {
                         </div>
                         <div class="offer" onclick="window.open('/offers/${offer.id}')">
                             <div class="offer-thumbs">
-                                <img src="/img/offer/detail_slide01.jpg">
+                                <img src="${endpoint + offer.thumbnail}">
                             </div>
                             <p class="offer-summary">
                                 매물번호 : ${offer.id}

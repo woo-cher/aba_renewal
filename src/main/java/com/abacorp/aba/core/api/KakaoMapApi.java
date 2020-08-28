@@ -51,7 +51,7 @@ public class KakaoMapApi {
 
         if (dto.getBelongsTo() != null) {
             return PageHelper.startPage(dto.getPage(), OFFERS_PER_PAGE).doSelectPageInfo(
-                    () -> service.getOffersInRegion(dto) // <<<<<<<<<<<<<<<<<<<
+                    () -> service.getOffersInRegion(dto)
             );
         } else {
             int limit = dto.getPage() == 0 ? MAXIMUM_PAGE : OFFERS_PER_PAGE;
