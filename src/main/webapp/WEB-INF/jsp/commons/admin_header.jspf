@@ -18,20 +18,19 @@
 </head>
 
 <header id="header">
-    <a href="/admin" class="logo">
+    <a href="/" class="logo">
         <img src="/img/logo.png" alt="로고">
     </a>
 
     <ul class="menu">
         <li id="admin"><a href="/admin">HOME</a></li>
-        <li id="adminmanageuser"><a href="/admin/manage/user">회원 관리</a></li>
-        <li id="adminmanageoffer"><a href="/admin/manage/offer">매물 관리</a></li>
-        <li id="adminmanagepay"><a href="/admin/manage/pay">결제 관리</a></li>
+        <li id="adminmanageusers"><a href="/admin/manage/users">회원관리</a></li>
+        <li id="adminmanageoffers"><a href="/admin/manage/offers">매물관리</a></li>
+        <li id="offerscreateform"><a href="/offers/create/form">매물등록</a></li>
+        <li id="adminmanagepays"><a href="/admin/manage/pays">결제관리</a></li>
         <sec:authorize access="isAuthenticated()">
             <li id="user">
-                <a href="#">${principal.user.name} 님
-                    <h5 style="display: inline">▼</h5>
-                </a>
+                <a href="#">${principal.user.name} 님</a>
             </li>
         </sec:authorize>
     </ul>

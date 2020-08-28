@@ -17,7 +17,7 @@
 
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 
-    <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
+    <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
 </head>
 
 <body>
