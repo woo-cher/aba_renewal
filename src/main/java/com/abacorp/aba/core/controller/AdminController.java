@@ -13,4 +13,19 @@ public class AdminController {
     public String index() {
         return "admin/admin";
     }
+
+    @RequestMapping("/manage/offer")
+    public String manageOffer() {
+        return "admin/offer_management";
+    }
+
+    @RequestMapping("/manage/pay")
+    public String managePay() {
+        return "admin/pay_management";
+    }
+
+    @RequestMapping("/manage/user")
+    public String manageUser() {
+        return "admin/user_management";
+    }
 }

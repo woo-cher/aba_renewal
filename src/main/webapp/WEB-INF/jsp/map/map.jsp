@@ -8,8 +8,6 @@
 
         <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
-
         <%@include file="../commons/map.jspf"%>
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>

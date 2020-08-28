@@ -1,0 +1,46 @@
+/* Tier */
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #00adef;
+  color: white;
+  font-weight: 600;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  opacity: 0.8;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 130px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /* Links inside the dropdown */
+}
+.dropdown-content a {
+  color: black !important;
+  font-size: 14px !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/*# sourceMappingURL=dropdown.css.map */

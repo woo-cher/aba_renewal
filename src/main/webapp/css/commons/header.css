@@ -38,9 +38,9 @@
     padding: 10px 0;
 }
 
-.menu li:last-child {
+/*.menu li:last-child {
     padding-right: 0px;
-}
+}*/
 
 .menu > li a {
     font-size: 15px;
