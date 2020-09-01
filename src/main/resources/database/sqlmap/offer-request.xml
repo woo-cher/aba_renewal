@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MAPPER 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abacorp.aba.model.OfferRequest">
+
+    <!-- Mapper -->
+    <resultMap id="offerRequest" type="OfferRequest" />
+
+    <insert id="insertOfferRequest" parameterType="offerRequest">
+        INSERT INTO requests
+        VALUES (
+                #{dealType}, #{offerType}, #{deposit}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location1}, #{location2},
+                #{requiredConditions}, #{request}, #{phone}, #{name}, #{isAgreed}, current_timestamp
+        )
+    </insert>
+
+    <select id="selectOfferRequests" resultMap="offerRequest" parameterType="int">
+        SELECT * FROM requests
+    </select>
+
+    <select id="selectOfferRequestById" resultMap="offerRequest">
+        SELECT * FROM requests WHERE id = #{id}
+    </select>
+
+    <delete id="deleteOfferRequestById" parameterType="int">
+        DELETE FROM requests WHERE id = #{id}
+    </delete>
+</mapper>
