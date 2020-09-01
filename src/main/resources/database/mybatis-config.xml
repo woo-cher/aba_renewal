@@ -14,6 +14,7 @@
 		<typeAlias alias="OfferAddress" type="com.abacorp.aba.model.OfferAddress"/>
 		<typeAlias alias="OfferAddition" type="com.abacorp.aba.model.OfferAddition"/>
 		<typeAlias alias="MapFiltersDto" type="com.abacorp.aba.model.dto.MapFiltersDto" />
+		<typeAlias alias="OfferRequest" type="com.abacorp.aba.model.OfferRequest" />
 	</typeAliases>
 
 	<typeHandlers>
