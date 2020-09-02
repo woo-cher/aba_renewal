@@ -1,0 +1,52 @@
+/* Tier */
+.ui-slider {
+  background: #d3d3d3 !important;
+  opacity: 0.7 !important;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+  border: 0 !important;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+  top: -0.4em !important;
+}
+
+.ui-slider .ui-slider-handle {
+  width: 1.5em !important;
+  height: 1.5em !important;
+  background: #00adef !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  border: 1px solid #d3d3d3;
+  font-weight: normal;
+  color: #555555;
+  border-radius: 25px;
+}
+
+.ui-widget-header {
+  border: 1px solid #aaaaaa;
+  background: #00adef !important;
+  opacity: 0.5;
+  color: #222222;
+  font-weight: bold;
+}
+
+.ui-slider-tick-mark {
+  display: inline-block;
+  width: 1px;
+  background: black;
+  height: 5px;
+  position: absolute;
+  top: 15px;
+}
+.ui-slider-tick-mark h5 {
+  color: gray;
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: max-content;
+}
+
+/*# sourceMappingURL=offer_request_create.css.map */

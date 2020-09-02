@@ -2,6 +2,9 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.repository.OfferRequestRepository;
 import com.abacorp.aba.model.OfferRequest;
+import com.abacorp.aba.model.type.DealType;
+import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.RequiredConditionType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,17 @@ public class OfferRequestController {
 
     @Autowired
     private OfferRequestRepository repository;
+
+    @RequestMapping(value = "/create/form")
+    public ModelAndView createForm() {
+        mv.addObject("conditions", RequiredConditionType.values());
+        mv.addObject("offerTypes", OfferType.values());
+        mv.addObject("dealTypes", DealType.values());
+
+        mv.setViewName("request/create_form");
+
+        return mv;
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public void create(@ModelAttribute OfferRequest offerRequest) {

@@ -128,6 +128,22 @@ article[class=content-wrap] .form-category.agree {
   margin-top: 3%;
   position: relative;
 }
+.form-control .login-button {
+  width: 65%;
+  border: 0;
+  border-radius: 8px;
+  padding: 2.5% 0 2.5% 0;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #00adef;
+}
+.form-control .login-button:hover {
+  color: #00adef;
+  background: #fff;
+  border: 1px solid #00adef;
+}
 .form-control .form-label {
   color: gray;
   font-size: 18px;

@@ -24,6 +24,7 @@
 
     <ul class="menu">
         <li id="usersmemyaba"><a href="/users/me/my_aba">마이페이지</a></li>
+        <li id="requestscreateform"><a href="/requests/create/form">내집찾기</a></li>
         <li id="admin"><a href="/admin">관리자 테스트</a></li>
         <li id="maps"><a href="/maps">매물찾기</a></li>
         <li id="intro"><a href="/intro">회사소개</a></li>
