@@ -30,7 +30,7 @@
                 </h3>
             </div>
 
-            <form action="/offers/create" id="offerForm" method="post" enctype="multipart/form-data">
+            <form action="/offers/create" id="requestForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <div id="formWrap">
                     <section class="form-control mt-0">
@@ -85,18 +85,18 @@
                                 <li class="checkbox-list w-65">
                                     <input id="date" class="middle" type="text" hidden>
                                     <input id="yes" type="radio" name="aa" value="" class="check">
-                                    <label for="yes" onclick="">예, 확정일이 있습니다.
+                                    <label for="yes" onclick="$('#want-move').hide()">예, 확정일이 있습니다.
                                         <span id="date-area" class="aba"></span>
                                     </label>
                                 </li>
                             </ul>
                             <ul class="checkbox-container form type pt-1 pl-0 check-area flex-center">
                                 <li class="checkbox-list w-65">
-                                    <input id="no" type="radio" name="aa" value="" class="check">
-                                    <label for="no" onclick="">아니오, 희망 월만 있어요</label>
+                                    <input id="no" type="radio" name="aa" value="" class="check" onchange="wantMoveTrigger()">
+                                    <label for="no">아니오, 희망 월만 있어요</label>
                                 </li>
                             </ul>
-                            <div class="align-center">
+                            <div class="align-center" id="want-move" hidden>
                                 <select class="w-65">
                                     <option value="">선택</option>
                                     <option>9월</option>
@@ -228,13 +228,14 @@
                         </div>
                     </section>
 
-                    <section class="form-control mt-0" hidden>
-
-                    </section>
-
                     <div class="form-control">
                         <div class="align-center">
-                            <button type="button" class="login-button" onclick="processNavigator(true)">다음</button>
+                            <button type="button" id="prev" class="login-button w-35 fl" onclick="processNavigator(false)" hidden>이전</button>
+                            <button type="button" id="next" class="login-button w-35 fr" onclick="processNavigator(true)">다음</button>
+                            <button type="button" id="request-submit" class="login-button w-35 fr" style="display: none !important;"
+                                    onclick="$('#submit-trigger').click()">의뢰하기
+                            </button>
+                            <input hidden type="submit" id="submit-trigger">
                         </div>
                     </div>
                 </div>
@@ -302,6 +303,10 @@
         })
     });
 
+    function wantMoveTrigger() {
+        $('#no').prop('checked') ? $('#want-move').show() : $('#want-move').hide();
+    }
+
     function test(el) {
         let code = el.prev('input').val();
 
@@ -331,6 +336,7 @@
             return (price / 10000).toString() + "억";
         }
     }
+
     $("#sale-slider-range").slider({
         range: true,
         min: 0,
@@ -434,9 +440,26 @@
         selector.children().eq(formIndex).hide();
 
         if(isNext) {
+            if(formIndex === selector.children('section').length - 2) {
+                $('#next').hide();
+                $('#request-submit').show()
+            }
+
+            $('#prev').show();
             selector.children().eq(++formIndex).show()
         } else {
+            if(formIndex === 0) {
+                selector.children().eq(formIndex).show();
+                return;
+            }
+
+            $('#next').show();
+            $('#request-submit').hide()
             selector.children().eq(--formIndex).show()
+        }
+
+        if(formIndex === 0) {
+            $("#prev").hide();
         }
     }
 
