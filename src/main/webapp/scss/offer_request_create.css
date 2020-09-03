@@ -42,11 +42,55 @@
   top: 15px;
 }
 .ui-slider-tick-mark h5 {
+  font-size: 0.25rem;
   color: gray;
   position: absolute;
   top: 10px;
-  left: -10px;
+  left: -8px;
   width: max-content;
+}
+.ui-slider-tick-mark h5.thous {
+  left: -10px;
+}
+
+.ui-dialog-titlebar {
+  background: #00adef !important;
+  color: #fff !important;
+}
+
+.select-box {
+  cursor: pointer;
+  position: relative;
+  height: 40px;
+  border: 1px solid #d7dbe2;
+  background-color: rgba(235, 238, 242, 0.4);
+  padding: 5px 10px;
+  display: block;
+  font-size: 18px;
+  letter-spacing: -1px;
+  color: #888;
+  line-height: 2.5rem;
+}
+.select-box .icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+#pyeong-dialog,
+#room-dialog {
+  text-align: center;
+  font-size: 1.1rem;
+}
+#pyeong-dialog li,
+#room-dialog li {
+  padding: 15px 5px;
+  border-bottom: 1px solid gainsboro;
+}
+#pyeong-dialog li:hover,
+#room-dialog li:hover {
+  background: lightgrey;
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=offer_request_create.css.map */

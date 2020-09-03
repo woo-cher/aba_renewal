@@ -1,4 +1,4 @@
-function getAddress() {
+function getAddress(target) {
     new daum.Postcode({
         oncomplete: function(data) {
             let roadAddr = data.roadAddress; // 도로명 주소 변수
@@ -16,8 +16,13 @@ function getAddress() {
                 extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
 
-            document.getElementById('road').value = roadAddr;
-            document.getElementById('jibun').value = data.jibunAddress;
+            if(target) {
+                document.getElementById(target).value = data.jibunAddress;
+            } else {
+                document.getElementById('road').value = roadAddr;
+                document.getElementById('jibun').value = data.jibunAddress;
+            }
+
 
             $('#jibun').removeClass('invalid b-1r');
             $('#road').removeClass('invalid b-1r');
