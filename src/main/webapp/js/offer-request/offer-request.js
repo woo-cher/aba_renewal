@@ -139,6 +139,12 @@ function convertPriceToString(price) {
     }
 }
 
+/**
+ * sale-amount
+ * deposit-amount
+ * monthly-deposit-amount
+ * monthly-amount
+ */
 function sliderTrigger(el) {
     let code = el.prev('input').val();
 
@@ -160,39 +166,73 @@ function sliderTrigger(el) {
     }
 }
 
+function dialogEventListener(dialogId, selectBoxId) {
+    $('#' + dialogId).find('li').click(function (e) {
+        let val = e.currentTarget.innerHTML;
+
+        $('#' + selectBoxId).find('input').val(val);
+        $('#' + selectBoxId).find('.txt').text(val);
+
+        $('#' + dialogId).dialog('close');
+    });
+}
+
 function dialogInitialize() {
     $('#select-pyeong').on('click', function () {
-        $('.overlay').toggle();
+        $('.overlay').show();
         $('#pyeong-dialog').dialog({
             close: function (event, ui) {
-                $('.overlay').toggle();
+                $('.overlay').hide();
             }
         });
+
+        dialogEventListener('pyeong-dialog', 'select-pyeong');
     });
 
     $('#select-room').on('click', function () {
-        $('.overlay').toggle();
+        $('.overlay').show();
         $('#room-dialog').dialog({
             close: function (event, ui) {
-                $('.overlay').toggle();
+                $('.overlay').hide();
             }
         });
+
+        dialogEventListener('room-dialog', 'select-room');
     });
 
-    $('#pyeong-dialog > li').click(function (e) {
-        let val = e.currentTarget.innerHTML;
+    $('#select-moveIn').on('click', function () {
+        $('.overlay').show();
 
-        $('#pyeong').val(val);
-        $('#pyeong-txt').text(val);
-        $('#pyeong-dialog').dialog('close');
+        $('#moveIn-dialog').dialog({
+            close: function (event, ui) {
+                $('.overlay').hide();
+            }
+        });
+
+        let month = new Date().getMonth();
+        $('#moveIn-dialog').empty();
+
+        for(let i = 0; i < 4; i++) {
+            $('#moveIn-dialog').append('<li>' + ++month + '월중</li>')
+        }
+
+        dialogEventListener('moveIn-dialog', 'select-moveIn');
     });
-
-    $('#room-dialog > li').click(function (e) {
-        let val = e.currentTarget.innerHTML;
-
-        $('#room').val(val);
-        $('#room-txt').text(val);
-        $('#room-dialog').dialog('close');
-    });
+    //
+    // $('#pyeong-dialog > li').click(function (e) {
+    //     let val = e.currentTarget.innerHTML;
+    //
+    //     $('#pyeong').val(val);
+    //     $('#pyeong-txt').text(val);
+    //     $('#pyeong-dialog').dialog('close');
+    // });
+    //
+    // $('#room-dialog > li').click(function (e) {
+    //     let val = e.currentTarget.innerHTML;
+    //
+    //     $('#room').val(val);
+    //     $('#room-txt').text(val);
+    //     $('#room-dialog').dialog('close');
+    // });
 }
 

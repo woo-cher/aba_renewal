@@ -107,14 +107,15 @@
                                     <label for="no">아니오, 희망 월만 있어요</label>
                                 </li>
                             </ul>
-                            <div class="align-center" id="want-move" hidden>
-                                <select class="w-65" id="moveIn" name="moveIn">
-                                    <option value="">선택</option>
-                                    <option>9월</option>
-                                    <option>10월</option>
-                                    <option>11월</option>
-                                    <option>12월</option>
-                                </select>
+                            <div class="form-control align-center" id="want-move" hidden>
+                                <a class="select-box" id="select-moveIn">
+                                    <span class="txt" id="moveIn-txt">11월중</span>
+                                    <span class="icon">
+                                    <img src="/img/basic/keyboard_arrow_down-24px.svg">
+                                </span>
+                                    <input type="hidden" id="moveIn" name="moveIn">
+                                </a>
+                                <div id="moveIn-dialog" title="" hidden></div>
                             </div>
                         </div>
                     </section>
@@ -234,21 +235,21 @@
                             <span>연락 받으실 전화번호</span>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="short" placeholder="연락처" name="phone"
+                            <input required type="text" class="short" placeholder="연락처" name="phone"
                                    pattern="^[0-9]{1,4}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="formValidatorWithRegex($(this))"
                             >
                             <p class="short">-</p>
-                            <input type="text" class="short" placeholder="####" name="phone"
+                            <input required type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="formValidatorWithRegex($(this), 'phone')"
                             >
                             <p class="short">-</p>
-                            <input type="text" class="short" placeholder="####" name="phone"
+                            <input required type="text" class="short" placeholder="####" name="phone"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -289,6 +290,7 @@
     $(document).ready(function () {
         $('#date').datepicker({
             dateFormat: 'yy.mm.dd',
+            minDate: 0,
             prevText: '이전 달',
             nextText: '다음 달',
             monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
@@ -313,7 +315,14 @@
     });
 
     function wantMoveTrigger() {
-        $('#no').prop('checked') ? $('#want-move').show() : $('#want-move').hide();
+        if($('#no').prop('checked')) {
+            $('#want-move').show();
+            $('#date-area').empty();
+            $('#date').attr('disabled');
+        } else {
+            $('#want-move').hide();
+            $('#date').removeAttr('disabled');
+        }
     }
 
     let formIndex = 0;

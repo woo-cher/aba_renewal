@@ -43,11 +43,6 @@ function moveInValidator() {
         return errorHandle(isPassed, "입주날짜를 선택하세요!");
     }
 
-    if($('#moveIn').val() === "") {
-        isPassed = false;
-        return errorHandle(isPassed, "희망월을 선택하세요!")
-    }
-
     return isPassed;
 }
 
