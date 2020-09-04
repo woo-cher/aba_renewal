@@ -12,8 +12,8 @@
     <script src="/js/kakao/ajax/ajax-repository.js"></script>
     <script src="/js/kakao/kakao-address.js"></script>
     <script src="/js/validator.js"></script>
-    <script src="/js/offer-request/range-slider.js"></script>
-    <script src="/js/offer-request/dialog.js"></script>
+    <script src="/js/offer-request/offer-request.js"></script>
+    <script src="/js/offer-request/request-validator.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
@@ -35,8 +35,8 @@
             <form action="/offers/create" id="requestForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <div id="formWrap">
-                    <section class="form-control mt-0">
-                        <div class="form-warp">
+                    <section class="form-control mt-0 mb-0">
+                        <div class="form-warp mb-0">
                             <div class="form-label align-center">
                                 <span>원하는 계약조건을 선택하세요 :)</span>
                             </div>
@@ -49,7 +49,7 @@
                                 </c:forEach>
                                 <div class="error-box"></div>
                             </ul>
-                            <div id="salePriceBox" class="pt-3" hidden><br>
+                            <div id="salePriceBox" class="" hidden><br>
                                 <div class="form-label align-center">
                                     <span class="px-3">매매가</span>
                                     <input type="text" class="aba middle txt-md" id="sale-amount" readonly style="border:0; font-weight:bold;">
@@ -58,13 +58,22 @@
                                     <div id="sale-slider-range" class="slider"></div>
                                 </div>
                             </div>
-                            <div id="depositBox" class="pt-3" hidden>
-                                <div class="form-label align-center pt-3 my-3">
-                                    <span class="px-3">보증금</span>
+                            <div id="depositBox" class="" hidden>
+                                <div class="form-label align-center my-3">
+                                    <span class="px-3">전세보증금</span>
                                     <input type="text" class="aba middle txt-md" id="deposit-amount" readonly style="border:0; font-weight:bold;">
                                 </div>
                                 <div class="form-control">
                                     <div id="deposit-slider-range" class="slider"></div>
+                                </div>
+                            </div><br>
+                            <div id="monthlyDepositBox" class="" hidden>
+                                <div class="form-label align-center my-3">
+                                    <span class="px-3">월세보증금</span>
+                                    <input type="text" class="aba middle txt-md" id="monthly-deposit-amount" readonly style="border:0; font-weight:bold;">
+                                </div>
+                                <div class="form-control">
+                                    <div id="monthly-deposit-slider-range" class="slider"></div>
                                 </div>
                             </div><br>
                             <div id="monthlyPriceBox" class="pt-3" hidden>
@@ -86,7 +95,7 @@
                             <ul class="checkbox-container form type pt-1 pl-0 check-area flex-center">
                                 <li class="checkbox-list w-65">
                                     <input id="date" class="middle" type="text" hidden>
-                                    <input id="yes" type="radio" name="aa" value="" class="check">
+                                    <input id="yes" type="radio" name="moveIn" value="" class="check">
                                     <label for="yes" onclick="$('#want-move').hide()">예, 확정일이 있습니다.
                                         <span id="date-area" class="aba"></span>
                                     </label>
@@ -94,12 +103,12 @@
                             </ul>
                             <ul class="checkbox-container form type pt-1 pl-0 check-area flex-center">
                                 <li class="checkbox-list w-65">
-                                    <input id="no" type="radio" name="aa" value="" class="check" onchange="wantMoveTrigger()">
+                                    <input id="no" type="radio" name="moveIn" value="" class="check" onchange="wantMoveTrigger()">
                                     <label for="no">아니오, 희망 월만 있어요</label>
                                 </li>
                             </ul>
                             <div class="align-center" id="want-move" hidden>
-                                <select class="w-65">
+                                <select class="w-65" id="moveIn" name="moveIn">
                                     <option value="">선택</option>
                                     <option>9월</option>
                                     <option>10월</option>
@@ -138,7 +147,7 @@
                                 <span class="icon">
                                     <img src="/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>
-                                <input type="hidden" id="pyeong">
+                                <input type="hidden" id="pyeong" name="pyeong">
                             </a>
                             <div id="pyeong-dialog" title="" hidden>
                                 <li>10평 이하</li>
@@ -159,7 +168,7 @@
                                 <span class="icon">
                                     <img src="/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>
-                                <input type="hidden" id="room">
+                                <input type="hidden" id="room" name="room">
                             </a>
                             <div id="room-dialog" title="" hidden>
                                 <li>1개(원룸) 이상</li>
@@ -180,7 +189,7 @@
                                 <span>장소1</span>
                             </div>
                             <a class="select-box" onclick="getAddress()">
-                                <input readonly type="text" class="txt p-0" id="jibun" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
+                                <input readonly type="text" class="txt p-0" id="jibun" name="jibun" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/img/svg/search-24px.svg">
                                 </span>
@@ -194,7 +203,7 @@
                                 <span>장소2</span>
                             </div>
                             <a class="select-box" onclick="getAddress('jibun2')">
-                                <input readonly type="text" class="txt p-0" id="jibun2" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
+                                <input readonly type="text" class="txt p-0" id="jibun2" name="jibun2" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/img/svg/search-24px.svg">
                                 </span>
@@ -220,6 +229,32 @@
                     </section>
 
                     <section class="form-control mt-0" hidden>
+                        <div class="form-label">
+                            <i class="fas fa-circle"></i>
+                            <span>연락 받으실 전화번호</span>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="short" placeholder="연락처" name="phone"
+                                   pattern="^[0-9]{1,4}"
+                                   oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="formValidatorWithRegex($(this))"
+                            >
+                            <p class="short">-</p>
+                            <input type="text" class="short" placeholder="####" name="phone"
+                                   pattern="^[0-9]{4}"
+                                   oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="formValidatorWithRegex($(this), 'phone')"
+                            >
+                            <p class="short">-</p>
+                            <input type="text" class="short" placeholder="####" name="phone"
+                                   pattern="^[0-9]{4}"
+                                   oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
+                                   oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   onkeyup="formValidatorWithRegex($(this), 'phone')"
+                            >
+                        </div>
                         <div class="form-warp">
                             <div class="form-label align-center">
                                 <span>필요한 요구사항을 간단히 적어주세요!</span>
@@ -230,8 +265,11 @@
                         </div>
                     </section>
 
-                    <div class="form-control">
-                        <div class="align-center">
+                    <div class="form-control mt-0">
+                        <p class="error w-half" style="margin: 0 auto !important;" hidden>
+                            <i class="fas fa-exclamation-circle" id="error"></i>
+                        </p>
+                        <div class="align-center my-1">
                             <button type="button" id="prev" class="login-button w-35 fl" onclick="processNavigator(false)" hidden>이전</button>
                             <button type="button" id="next" class="login-button w-35 fr" onclick="processNavigator(true)">다음</button>
                             <button type="button" id="request-submit" class="login-button w-35 fr" style="display: none !important;"
@@ -283,16 +321,19 @@
     function processNavigator(isNext) {
         const selector = $("#formWrap");
 
-        selector.children().eq(formIndex).hide();
-
         if(isNext) {
+            if(!validatorProvider(formIndex)) {
+                return;
+            }
+
             if(formIndex === selector.children('section').length - 2) {
                 $('#next').hide();
                 $('#request-submit').show()
             }
 
             $('#prev').show();
-            selector.children().eq(++formIndex).show()
+            selector.children().eq(formIndex).hide();
+            selector.children().eq(++formIndex).show();
         } else {
             if(formIndex === 0) {
                 selector.children().eq(formIndex).show();
@@ -300,9 +341,12 @@
             }
 
             $('#next').show();
-            $('#request-submit').hide()
-            selector.children().eq(--formIndex).show()
+            $('#request-submit').hide();
+            selector.children().eq(formIndex).hide();
+            selector.children().eq(--formIndex).show();
         }
+
+        $('.error').hide();
 
         if(formIndex === 0) {
             $("#prev").hide();
