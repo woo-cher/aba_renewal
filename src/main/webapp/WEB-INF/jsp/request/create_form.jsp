@@ -241,7 +241,7 @@
                         </div>
                         <div class="input-group">
                             <input required type="text" class="short" placeholder="연락처" name="phone"
-                                   pattern="^[0-9]{1,4}"
+                                   pattern="^[0-9]{1,3}"
                                    oninvalid="this.setCustomValidity(`숫자를 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
                                    onkeyup="formValidatorWithRegex($(this))"

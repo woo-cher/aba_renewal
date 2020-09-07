@@ -8,16 +8,16 @@
     <insert id="insertOfferRequest" parameterType="offerRequest">
         INSERT INTO requests
         VALUES (
-                #{dealType}, #{offerType}, #{deposit}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location1}, #{location2},
-                #{requiredConditions}, #{request}, #{phone}, #{name}, #{isAgreed}, current_timestamp
+                NULL, #{dealType}, #{offerTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location},
+                #{requiredConditions}, #{request}, #{phone}, #{name}, #{isAgree}, current_timestamp
         )
     </insert>
 
-    <select id="selectOfferRequests" resultMap="offerRequest" parameterType="int">
+    <select id="selectOfferRequests" resultMap="offerRequest">
         SELECT * FROM requests
     </select>
 
-    <select id="selectOfferRequestById" resultMap="offerRequest">
+    <select id="selectOfferRequestById" resultMap="offerRequest" parameterType="int">
         SELECT * FROM requests WHERE id = #{id}
     </select>
 

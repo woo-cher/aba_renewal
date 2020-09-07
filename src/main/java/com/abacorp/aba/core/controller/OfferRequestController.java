@@ -1,6 +1,6 @@
 package com.abacorp.aba.core.controller;
 
-import com.abacorp.aba.core.repository.OfferRequestRepository;
+import com.abacorp.aba.core.service.OfferRequestService;
 import com.abacorp.aba.model.OfferRequest;
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.SQLException;
+import java.util.List;
+
 @Controller
 @RequestMapping("/requests")
 @Slf4j
@@ -23,7 +26,7 @@ public class OfferRequestController {
     private ModelAndView mv;
 
     @Autowired
-    private OfferRequestRepository repository;
+    private OfferRequestService service;
 
     @RequestMapping(value = "/create/form")
     public ModelAndView createForm() {
@@ -37,19 +40,36 @@ public class OfferRequestController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@ModelAttribute OfferRequest offerRequest) {
+    public ModelAndView create(@ModelAttribute OfferRequest offerRequest) throws SQLException {
         log.info("offerRequest : {}", offerRequest);
+
+        int row = service.createRequest(offerRequest);
+
+        if(row == 0) {
+            throw new SQLException("OfferRequest insert error.. row : 0");
+        }
 
         return createForm();
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.GET)
     public void read(@PathVariable(value = "request") int requestId) {
+        OfferRequest offerRequest = service.selectRequestById(requestId);
 
+        // Do something about ModelAndView
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public void readAll() {
+        List<OfferRequest> offerRequests = service.selectRequests();
+
+        // Do something about ModelAndView
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.DELETE)
     public void delete(@PathVariable(value = "request") int requestId) {
+        service.deleteRequestById(requestId);
 
+        // Do something about ModelAndView
     }
 }
