@@ -60,10 +60,13 @@ public class OfferRequestController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public void readAll() {
+    public ModelAndView readAll() {
         List<OfferRequest> offerRequests = service.selectRequests();
 
-        // Do something about ModelAndView
+        mv.addObject("requests", offerRequests);
+        mv.setViewName("request/list");
+
+        return mv;
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.DELETE)

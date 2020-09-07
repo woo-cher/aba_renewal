@@ -26,7 +26,9 @@ public class OfferRequest extends ModelMapper {
     private String requiredConditions;
     private String request;
     private String phone;
-    private String name;
+    private String title;
+    @Builder.Default
+    private int hits = 0;
     @JsonProperty("isAgree")
     private boolean isAgree;
 }

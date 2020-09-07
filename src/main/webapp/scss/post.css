@@ -5,19 +5,19 @@ input, select {
   height: 45px;
 }
 
-.post-header {
+.post-header, .main-header {
   width: 100%;
 }
-.post-header .title {
+.post-header .title, .main-header .title {
   width: 15%;
   margin: 0 auto;
 }
-.post-header .title .line {
+.post-header .title .line, .main-header .title .line {
   width: 35.6%;
   border: 5px solid #00adef;
   margin: 0 auto;
 }
-.post-header .title h2 {
+.post-header .title h2, .main-header .title h2 {
   font-size: 2.8rem;
   text-align: center;
   padding-top: 10%;
@@ -100,14 +100,14 @@ table .notice {
 }
 
 #table table tbody td {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-align: center;
   padding: 2.5% 0 2.5% 0;
   border-bottom: 1px solid #ccc;
 }
 
 #table table tbody td .td02 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 #table table tbody td .td02:hover {
@@ -128,4 +128,42 @@ table .notice {
   display: none;
 }
 
-/*# sourceMappingURL=post.css.map */
+#wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.main-header {
+  position: relative;
+}
+.main-header .title {
+  width: max-content !important;
+}
+.main-header .title h2 {
+  padding-top: 2vh;
+}
+.main-header a {
+  position: fixed;
+  top: 22vh;
+  cursor: pointer;
+}
+.main-header a img {
+  width: 50px;
+}
+.main-header a:hover {
+  zoom: 1.05;
+}
+.main-header a.prev {
+  left: 15%;
+}
+.main-header a.next {
+  right: 15%;
+}
+
+.main-content {
+  padding: 5% 20%;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+/*# sourceMappingURL=ttttt.css.map */

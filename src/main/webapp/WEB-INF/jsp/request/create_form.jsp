@@ -237,6 +237,11 @@
                     <section class="form-control mt-0" hidden>
                         <div class="form-label">
                             <i class="fas fa-circle"></i>
+                            <span>게시글 제목</span>
+                        </div>
+                        <input required type="text" placeholder="제목" name="title">
+                        <div class="form-label pt-3">
+                            <i class="fas fa-circle"></i>
                             <span>연락 받으실 전화번호</span>
                         </div>
                         <div class="input-group">
@@ -261,7 +266,7 @@
                                    onkeyup="formValidatorWithRegex($(this), 'phone')"
                             >
                         </div>
-                        <div class="form-warp">
+                        <div class="form-warp pt-3">
                             <div class="form-label align-center">
                                 <span>필요한 요구사항을 간단히 적어주세요!</span>
                             </div>

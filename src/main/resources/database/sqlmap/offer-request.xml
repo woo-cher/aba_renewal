@@ -3,13 +3,33 @@
 <mapper namespace="com.abacorp.aba.model.OfferRequest">
 
     <!-- Mapper -->
-    <resultMap id="offerRequest" type="OfferRequest" />
+    <resultMap id="offerRequest" type="OfferRequest">
+        <id property="id" column="id" />
+        <result property="dealType" column="deal_type" />
+        <result property="offerTypes" column="offer_types" />
+        <result property="deposit" column="deposit" />
+        <result property="salePrice" column="sale_price" />
+        <result property="monthlyDeposit" column="monthly_deposit" />
+        <result property="monthlyPrice" column="monthly_price" />
+        <result property="moveIn" column="move_in" />
+        <result property="room" column="room" />
+        <result property="pyeong" column="pyeong" />
+        <result property="location" column="location" />
+        <result property="phone" column="phone" />
+        <result property="request" column="request" />
+        <result property="title" column="title" />
+        <result property="hits" column="hits" />
+        <result property="isAgree" column="is_agree" />
+        <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+        <result property="requiredConditions" column="required_conditions" />
+
+    </resultMap>
 
     <insert id="insertOfferRequest" parameterType="offerRequest">
         INSERT INTO requests
         VALUES (
                 NULL, #{dealType}, #{offerTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location},
-                #{requiredConditions}, #{request}, #{phone}, #{name}, #{isAgree}, current_timestamp
+                #{requiredConditions}, #{request}, #{phone}, #{title}, ${hits}, #{isAgree}, current_timestamp
         )
     </insert>
 
