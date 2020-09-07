@@ -37,8 +37,10 @@ public class OfferRequestController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public void create(@ModelAttribute OfferRequest offerRequest) {
+    public ModelAndView create(@ModelAttribute OfferRequest offerRequest) {
+        log.info("offerRequest : {}", offerRequest);
 
+        return createForm();
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.GET)

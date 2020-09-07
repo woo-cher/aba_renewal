@@ -30,7 +30,7 @@ function dealTypeValidator() {
 }
 
 function moveInValidator() {
-    let moveIns = $('input[name="moveIn"]');
+    let moveIns = $('input[name="moveInOpener"]');
     let isPassed = false;
 
     for(let i = 0; i < moveIns.length; i++) {
@@ -47,7 +47,7 @@ function moveInValidator() {
 }
 
 function offerTypeValidator() {
-    let offerTypes = $('input[name="type"]');
+    let offerTypes = $('input[name="offerTypes"]');
     let isPassed = false;
 
     for(let i = 0; i < offerTypes.length; i++) {
@@ -86,7 +86,7 @@ function locationValidator() {
 }
 
 function requiredConditionValidator() {
-    let requiredTypes = $('input[name="required"]');
+    let requiredTypes = $('input[name="requiredConditions"]');
     let isPassed = false;
 
     for(let i = 0; i < requiredTypes.length; i++) {

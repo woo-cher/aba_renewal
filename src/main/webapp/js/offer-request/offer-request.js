@@ -149,21 +149,34 @@ function sliderTrigger(el) {
     let code = el.prev('input').val();
 
     if (code === "MONTHLY") {
-        $("#monthlyPriceBox").show();
-        $("#monthlyDepositBox").show();
-        $("#depositBox").hide();
-        $("#salePriceBox").hide();
+        showAndEnabled($('#monthlyPriceBox'));
+        showAndEnabled($('#monthlyDepositBox'));
+
+        hideAndDisabled($('#depositBox'));
+        hideAndDisabled($('#salePriceBox'));
     } else if (code === "SALE") {
-        $("#salePriceBox").show();
-        $("#depositBox").hide();
-        $("#monthlyDepositBox").hide();
-        $("#monthlyPriceBox").hide();
+        showAndEnabled($('#salePriceBox'));
+
+        hideAndDisabled($('#depositBox'));
+        hideAndDisabled($('#monthlyDepositBox'));
+        hideAndDisabled($('#monthlyPriceBox'));
     } else {
-        $("#depositBox").show();
-        $("#salePriceBox").hide();
-        $("#monthlyDepositBox").hide();
-        $("#monthlyPriceBox").hide();
+        showAndEnabled($('#depositBox'));
+
+        hideAndDisabled($('#salePriceBox'));
+        hideAndDisabled($('#monthlyDepositBox'));
+        hideAndDisabled($('#monthlyPriceBox'));
     }
+}
+
+function hideAndDisabled(el) {
+    el.hide();
+    el.find('input').attr('disabled', true);
+}
+
+function showAndEnabled(el) {
+    el.show();
+    el.find('input').removeAttr('disabled');
 }
 
 function dialogEventListener(dialogId, selectBoxId) {
@@ -171,6 +184,7 @@ function dialogEventListener(dialogId, selectBoxId) {
         let val = e.currentTarget.innerHTML;
 
         $('#' + selectBoxId).find('input').val(val);
+        console.log("val : ", val);
         $('#' + selectBoxId).find('.txt').text(val);
 
         $('#' + dialogId).dialog('close');

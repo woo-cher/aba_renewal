@@ -14,14 +14,15 @@ import lombok.*;
 @ToString
 public class OfferRequest extends ModelMapper {
     private DealType dealType;
-    private OfferType offerType;
+    private String offerTypes;
     private String deposit;
+    private String monthlyDeposit;
+    private String monthlyPrice;
     private String salePrice;
     private String moveIn;
     private String room;
     private String pyeong;
-    private String location1;
-    private String location2;
+    private String location;
     private String requiredConditions;
     private String request;
     private String phone;

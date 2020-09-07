@@ -32,7 +32,7 @@
                 </h3>
             </div>
 
-            <form action="/offers/create" id="requestForm" method="post" enctype="multipart/form-data">
+            <form action="/requests/create" id="requestForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <div id="formWrap">
                     <section class="form-control mt-0 mb-0">
@@ -52,7 +52,8 @@
                             <div id="salePriceBox" class="" hidden><br>
                                 <div class="form-label align-center">
                                     <span class="px-3">매매가</span>
-                                    <input type="text" class="aba middle txt-md" id="sale-amount" readonly style="border:0; font-weight:bold;">
+                                    <input type="text" class="aba middle txt-md" id="sale-amount" name="salePrice"
+                                           readonly style="border:0; font-weight:bold;">
                                 </div>
                                 <div class="form-control">
                                     <div id="sale-slider-range" class="slider"></div>
@@ -61,7 +62,8 @@
                             <div id="depositBox" class="" hidden>
                                 <div class="form-label align-center my-3">
                                     <span class="px-3">전세보증금</span>
-                                    <input type="text" class="aba middle txt-md" id="deposit-amount" readonly style="border:0; font-weight:bold;">
+                                    <input type="text" class="aba middle txt-md" id="deposit-amount" name="deposit"
+                                           readonly style="border:0; font-weight:bold;">
                                 </div>
                                 <div class="form-control">
                                     <div id="deposit-slider-range" class="slider"></div>
@@ -70,7 +72,9 @@
                             <div id="monthlyDepositBox" class="" hidden>
                                 <div class="form-label align-center my-3">
                                     <span class="px-3">월세보증금</span>
-                                    <input type="text" class="aba middle txt-md" id="monthly-deposit-amount" readonly style="border:0; font-weight:bold;">
+                                    <input type="text" class="aba middle txt-md" id="monthly-deposit-amount" name="monthlyDeposit"
+                                           readonly style="border:0; font-weight:bold;"
+                                    >
                                 </div>
                                 <div class="form-control">
                                     <div id="monthly-deposit-slider-range" class="slider"></div>
@@ -79,7 +83,8 @@
                             <div id="monthlyPriceBox" class="pt-3" hidden>
                                 <div class="form-label align-center">
                                     <span class="px-3">월세</span>
-                                    <input type="text" class="aba middle txt-md" id="monthly-amount" readonly style="border:0; font-weight:bold;">
+                                    <input type="text" class="aba middle txt-md" id="monthly-amount" name="monthlyPrice"
+                                           readonly style="border:0; font-weight:bold;">
                                 </div>
                                 <div class="form-control">
                                     <div id="monthly-slider-range" class="slider"></div>
@@ -95,7 +100,7 @@
                             <ul class="checkbox-container form type pt-1 pl-0 check-area flex-center">
                                 <li class="checkbox-list w-65">
                                     <input id="date" class="middle" type="text" hidden>
-                                    <input id="yes" type="radio" name="moveIn" value="" class="check">
+                                    <input id="yes" type="radio" name="moveInOpener" class="check">
                                     <label for="yes" onclick="$('#want-move').hide()">예, 확정일이 있습니다.
                                         <span id="date-area" class="aba"></span>
                                     </label>
@@ -103,7 +108,7 @@
                             </ul>
                             <ul class="checkbox-container form type pt-1 pl-0 check-area flex-center">
                                 <li class="checkbox-list w-65">
-                                    <input id="no" type="radio" name="moveIn" value="" class="check" onchange="wantMoveTrigger()">
+                                    <input id="no" type="radio" name="moveInOpener" class="check" onchange="wantMoveTrigger()">
                                     <label for="no">아니오, 희망 월만 있어요</label>
                                 </li>
                             </ul>
@@ -128,7 +133,7 @@
                             <ul class="checkbox-container form type pt-1 check-area">
                                 <c:forEach begin="1" var="type" items="${offerTypes}" varStatus="vs">
                                     <li class="checkbox-list half">
-                                        <input id="offerType${vs.index}" type="checkbox" name="type" value="${type.code}" class="check">
+                                        <input id="offerType${vs.index}" type="checkbox" name="offerTypes" value="${vs.index}" class="check">
                                         <label for="offerType${vs.index}">${type.value}</label>
                                     </li>
                                 </c:forEach>
@@ -190,7 +195,7 @@
                                 <span>장소1</span>
                             </div>
                             <a class="select-box" onclick="getAddress()">
-                                <input readonly type="text" class="txt p-0" id="jibun" name="jibun" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
+                                <input readonly type="text" class="txt p-0" id="jibun" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/img/svg/search-24px.svg">
                                 </span>
@@ -204,7 +209,7 @@
                                 <span>장소2</span>
                             </div>
                             <a class="select-box" onclick="getAddress('jibun2')">
-                                <input readonly type="text" class="txt p-0" id="jibun2" name="jibun2" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
+                                <input readonly type="text" class="txt p-0" id="jibun2" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/img/svg/search-24px.svg">
                                 </span>
@@ -220,7 +225,7 @@
                             <ul class="checkbox-container form type pt-1 check-area">
                                 <c:forEach begin="1" var="type" items="${conditions}" varStatus="vs">
                                     <li class="checkbox-list">
-                                        <input id="required${vs.index}" type="checkbox" name="required" value="${type.code}" class="check">
+                                        <input id="required${vs.index}" type="checkbox" name="requiredConditions" value="${vs.index}" class="check">
                                         <label for="required${vs.index}">${type.value}</label>
                                     </li>
                                 </c:forEach>
@@ -303,6 +308,7 @@
             yearSuffix: '년',
             onSelect: function () {
                 $("#date-area").text("(" + $(this).val() + ")");
+                $("#moveIn").val($(this).val());
             }
         });
 
@@ -318,7 +324,7 @@
         if($('#no').prop('checked')) {
             $('#want-move').show();
             $('#date-area').empty();
-            $('#date').attr('disabled');
+            $('#date').attr('disabled', true);
         } else {
             $('#want-move').hide();
             $('#date').removeAttr('disabled');
