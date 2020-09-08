@@ -3,8 +3,11 @@ package com.abacorp.aba.model;
 import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.RequiredConditionType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -31,4 +34,7 @@ public class OfferRequest extends ModelMapper {
     private int hits = 0;
     @JsonProperty("isAgree")
     private boolean isAgree;
+
+    private List<RequiredConditionType> conditionTypeList;
+    private List<OfferType> offerTypeList;
 }

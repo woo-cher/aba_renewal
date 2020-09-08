@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>의뢰매물</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/css/post_detail.css">
 
@@ -20,15 +21,55 @@
                    </header>
                     <section class="con-in">
                         <article class="in01">
-                            <h4>[매물찾아요]</h4>
-                            <h3>공인중개사를 위한 최고의 솔루션 "부동산매물 정보제공 업체"</h3>
-                            <p>작성일 19-08-17</p>
+                            <h4>[매물찾아요]
+                                <span style="float: right; padding-right: 3.5%; font-size: 1rem;">
+                                    <i class="fas fa-eye"></i>
+                                    ${request.hits}
+                                </span>
+                            </h4>
+                            <h3>${request.title}</h3>
+                            <p>${fn:substring(request.createdAt, 0, 16)}</p>
                         </article>
                         <article class="in02">
-                            <p>do something</p>
+                            <p class="title-desc">원하는 거래유형</p>
+                            <p>${request.dealType.value}</p>
+                            <p class="title-desc">예산</p>
+                            <p>
+                                <c:if test="${not empty request.deposit}">
+                                    전세보증금 ${request.deposit}
+                                </c:if>
+                            </p>
+                            <p>
+                                <c:if test="${not empty request.monthlyDeposit}">
+                                    월세보증금 ${request.monthlyDeposit}
+                                </c:if>
+                            </p>
+                            <p>
+                                <c:if test="${not empty request.monthlyPrice}">
+                                    월세 ${request.monthlyPrice}
+                                </c:if>
+                            </p>
+                            <p class="title-desc">원하는 주거유형</p>
+                            <c:forEach var="offerType" items="${request.offerTypeList}" varStatus="vs">
+                                <span>${offerType.value}</span><c:if test="${vs.index ne fn:length(request.offerTypeList) - 1}">,</c:if>
+                            </c:forEach>
+                            <p class="title-desc">희망 이사날짜</p>
+                            <p>${request.moveIn}</p>
+                            <p class="title-desc">필요한 방 갯수</p>
+                            <p>방 ${request.room}</p>
+                            <p class="title-desc">원하는 평형</p>
+                            <p>${request.pyeong}</p>
+                            <p class="title-desc">선호하는 지역</p>
+                            <p>${request.location}</p>
+                            <p class="title-desc">필수 고려조건</p>
+                            <c:forEach var="condition" items="${request.conditionTypeList}" varStatus="vs">
+                                <span class="condition">${condition.value}</span>
+                            </c:forEach>
+                            <p class="title-desc">제안 받을 연락처</p>
+                            <p>${request.phone}</p>
                         </article>
                         <article class="back-btn">
-                            <a href="/posts">
+                            <a href="/requests/all">
                                 <img src="/img/notice_back_btn.png" alt="">
                             </a>
                         </article>

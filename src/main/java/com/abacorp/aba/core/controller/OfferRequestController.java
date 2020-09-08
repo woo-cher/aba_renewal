@@ -53,10 +53,14 @@ public class OfferRequestController {
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.GET)
-    public void read(@PathVariable(value = "request") int requestId) {
+    public ModelAndView read(@PathVariable(value = "request") int requestId) {
         OfferRequest offerRequest = service.selectRequestById(requestId);
 
-        // Do something about ModelAndView
+        mv.addObject("request", offerRequest);
+        mv.setViewName("request/detail");
+
+
+        return mv;
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
