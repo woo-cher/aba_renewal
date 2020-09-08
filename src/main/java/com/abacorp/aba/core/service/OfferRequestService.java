@@ -70,4 +70,8 @@ public class OfferRequestService {
     public int deleteRequestById(int id) {
         return repository.deleteOfferRequest(id);
     }
+
+    public List<OfferRequest> selectRequestByPhone(String phone) {
+        return repository.findOfferRequestByPhone(phone);
+    }
 }

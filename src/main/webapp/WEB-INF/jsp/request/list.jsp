@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title>의뢰목록</title>
+        <title>찾아주세요 목록</title>
         <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/scss/post.css">
@@ -16,7 +16,12 @@
             <div class="post-header">
                 <div class="title">
                     <div class="line"></div>
-                    <h2>의뢰목록</h2>
+                    <h2>
+                    <c:choose>
+                        <c:when test="${isMy}">나의 요청 매물</c:when>
+                        <c:otherwise>의뢰목록</c:otherwise>
+                    </c:choose>
+                    </h2>
                 </div>
             </div>
 

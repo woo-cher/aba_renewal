@@ -69,7 +69,7 @@
                             <p>${request.phone}</p>
                         </article>
                         <article class="back-btn">
-                            <a href="/requests/all">
+                            <a href="javascript:window.history.back();">
                                 <img src="/img/notice_back_btn.png" alt="">
                             </a>
                         </article>

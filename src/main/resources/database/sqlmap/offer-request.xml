@@ -41,6 +41,11 @@
         SELECT * FROM requests WHERE id = #{id}
     </select>
 
+    <select id="selectOfferRequestByPhone" resultMap="offerRequest" parameterType="java.lang.String">
+        SELECT * FROM requests WHERE phone = #{phone}
+    </select>
+
+
     <delete id="deleteOfferRequestById" parameterType="int">
         DELETE FROM requests WHERE id = #{id}
     </delete>

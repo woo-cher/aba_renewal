@@ -34,4 +34,8 @@ public class OfferRequestRepository {
     public int updateOfferRequestHit(int id) {
         return sqlSession.update("updateOfferRequestHit", id);
     }
+
+    public List<OfferRequest> findOfferRequestByPhone(String phone) {
+        return sqlSession.selectList("selectOfferRequestByPhone", phone);
+    }
 }

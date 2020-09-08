@@ -43,6 +43,10 @@ function activateWithUrl(regex, callback = null) {
             $('#usersmemyaba').addClass('active');
         }
 
+        if (el.includes("requestsmy")) {
+            $("#requestsmycertified").addClass('active');
+        }
+
         $('#' + el).addClass('active');
     })
 }

@@ -68,6 +68,7 @@ public class OfferRequestController {
         List<OfferRequest> offerRequests = service.selectRequests();
 
         mv.addObject("requests", offerRequests);
+        mv.addObject("isMy", false);
         mv.setViewName("request/list");
 
         return mv;
@@ -78,5 +79,23 @@ public class OfferRequestController {
         service.deleteRequestById(requestId);
 
         // Do something about ModelAndView
+    }
+
+    @RequestMapping("/my/certified")
+    public String meCertified() {
+        return "request/my_certified";
+    }
+
+    @RequestMapping(value = "/my", method = RequestMethod.POST)
+    public ModelAndView myOfferRequests(String phone) {
+        String phoneWithDash = phone.replaceAll(",", "-");
+
+        List<OfferRequest> myOfferRequests = service.selectRequestByPhone(phoneWithDash);
+
+        mv.addObject("requests", myOfferRequests);
+        mv.addObject("isMy", true);
+        mv.setViewName("request/list");
+
+        return mv;
     }
 }
