@@ -7,6 +7,7 @@ import com.abacorp.aba.model.type.RequiredConditionType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class OfferRequestService {
 
     @Autowired
-    OfferRequestRepository repository;
+    private OfferRequestRepository repository;
 
     public int createRequest(OfferRequest offerRequest) {
         String phone = offerRequest.getPhone().replaceAll(",", "-");
@@ -32,7 +33,10 @@ public class OfferRequestService {
      * TODO) Custom 타입에 해당하는 List 추출 로직에 중복을 처리할 필요가 있다.
      * @see MapService line 57 ~
      */
+    @Transactional
     public OfferRequest selectRequestById(int id) {
+        repository.updateOfferRequestHit(id);
+
         OfferRequest offerRequest = repository.findOfferRequestById(id);
 
         RequiredConditionType[] types = RequiredConditionType.values();
@@ -41,7 +45,7 @@ public class OfferRequestService {
         List<RequiredConditionType> typeList = new ArrayList<>();
         List<OfferType> offerTypeList = new ArrayList<>();
 
-        int i = 0;
+        int i;
 
         for(String indexStr : offerRequest.getRequiredConditions().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);

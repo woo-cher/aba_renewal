@@ -38,14 +38,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="notice">[공지]</td>
-                            <td>
-                                <a href="/posts/1" class="td02">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>
-                            </td>
-                            <td>2018.03.27</td>
-                            <td>1314</td>
-                        </tr>
                         <c:choose>
                             <c:when test="${not empty requests}">
                                 <c:forEach var="req" items="${requests}" varStatus="vs">

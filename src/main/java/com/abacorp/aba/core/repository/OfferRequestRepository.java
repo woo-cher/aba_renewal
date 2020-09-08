@@ -30,4 +30,8 @@ public class OfferRequestRepository {
     public int deleteOfferRequest(int id) {
         return sqlSession.delete("deleteOfferRequestById", id);
     }
+
+    public int updateOfferRequestHit(int id) {
+        return sqlSession.update("updateOfferRequestHit", id);
+    }
 }

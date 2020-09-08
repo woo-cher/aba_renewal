@@ -44,4 +44,8 @@
     <delete id="deleteOfferRequestById" parameterType="int">
         DELETE FROM requests WHERE id = #{id}
     </delete>
+
+    <update id="updateOfferRequestHit" parameterType="int">
+        UPDATE requests SET hits = hits + 1 WHERE id = #{id}
+    </update>
 </mapper>
