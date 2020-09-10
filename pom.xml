@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.abacorp</groupId>
     <artifactId>aba</artifactId>
-    <version>0.0.1-BETA</version>
+    <version>0.0.1</version>
     <packaging>war</packaging>
     <name>aba</name>
     <description>aba nenewal</description>
