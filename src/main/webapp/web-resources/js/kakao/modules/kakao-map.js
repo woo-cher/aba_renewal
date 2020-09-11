@@ -1,4 +1,4 @@
-document.write("<script src='/js/kakao/modules/kakao.js'></script>");
+document.write("<script src='/web-resources/js/kakao/modules/kakao.js'></script>");
 
 const mapWeightType = { Si: 1, Gu: 2, Dong: 3, Spot: 4 };
 

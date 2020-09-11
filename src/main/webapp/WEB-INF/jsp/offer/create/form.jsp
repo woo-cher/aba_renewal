@@ -4,15 +4,15 @@
 <html>
 <head>
     <title>아바 관리자모드</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
-    <link rel="stylesheet" type="text/css" href="/scss/offer_create.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_create.css">
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
-    <script src="/js/kakao/ajax/ajax-repository.js"></script>
-    <script src="/js/kakao/kakao-address.js"></script>
-    <script src="/js/validator.js"></script>
+    <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="/web-resources/js/kakao/kakao-address.js"></script>
+    <script src="/web-resources/js/validator.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>

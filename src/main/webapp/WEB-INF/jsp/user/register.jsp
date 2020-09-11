@@ -4,14 +4,14 @@
 <html>
 <head>
     <title>회원가입</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
 
-    <script src="/js/jquery-utils.js"></script>
-    <script src="/js/kakao/kakao-address.js"></script>
-    <script src="/js/kakao/ajax/ajax-repository.js"></script>
-    <script src="/js/validator.js"></script>
+    <script src="/web-resources/js/jquery-utils.js"></script>
+    <script src="/web-resources/js/kakao/kakao-address.js"></script>
+    <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="/web-resources/js/validator.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>

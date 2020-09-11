@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>매물상세페이지 공인중개사</title>
 
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/css/albery.css">
-    <link rel="stylesheet" type="text/css" href="/scss/offer_detail.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/web-resources/css/albery.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_detail.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     <%@include file="../commons/map.jspf"%>
-    <script src="/js/albery.js"></script>
+    <script src="/web-resources/js/albery.js"></script>
 </head>
 
 <body>
@@ -54,15 +54,15 @@
                 <div class="icon-wrap">
                     <div class="icon-group">
                         <a href="#">
-                            <img src="/img/offer/detail_icon01.png" alt="정보변경신고">
+                            <img src="/web-resources/img/offer/detail_icon01.png" alt="정보변경신고">
                             <p>정보변경신고</p>
                         </a>
                         <a href="#">
-                            <img src="/img/offer/detail_icon02.png" alt="거래완료신고">
+                            <img src="/web-resources/img/offer/detail_icon02.png" alt="거래완료신고">
                             <p>거래완료신고</p>
                         </a>
                         <a href="#">
-                            <img src="/img/offer/detail_head_icon-01.png" alt="찜하기 아이콘">
+                            <img src="/web-resources/img/offer/detail_head_icon-01.png" alt="찜하기 아이콘">
                             <p>찜하기</p>
                         </a>
                     </div>
@@ -119,16 +119,16 @@
                 <div class="albery-wrapper">
                     <c:forEach begin="1"  end="10">
                     <div class="albery-item">
-                        <img src="/img/offer/detail_slide01.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide01.jpg" alt="">
                     </div>
                     </c:forEach>
                 </div>
 
                 <div class="move-right">
-                    <img src="/img/offer/detail_slide_next.png" alt="" id="rightArrow">
+                    <img src="/web-resources/img/offer/detail_slide_next.png" alt="" id="rightArrow">
                 </div>
                 <div class="move-left">
-                    <img src="/img/offer/detail_slide_prev.png" alt="" id="leftArrow">
+                    <img src="/web-resources/img/offer/detail_slide_prev.png" alt="" id="leftArrow">
                 </div>
 
             </div>
@@ -136,34 +136,34 @@
             <div class="pagination-container">
                 <div class="pagination-wrapper">
                     <div class="pagination-item" data-item="1">
-                        <img src="/img/offer/detail_slide01.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide01.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="2">
-                        <img src="/img/offer/detail_slide02.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide02.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="3">
-                        <img src="/img/offer/detail_slide03.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide03.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="4">
-                        <img src="/img/offer/detail_slide04.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide04.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="5">
-                        <img src="/img/offer/detail_slide05.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide05.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="6">
-                        <img src="/img/offer/detail_slide06.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide06.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="7">
-                        <img src="/img/offer/detail_slide07.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide07.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="8">
-                        <img src="/img/offer/detail_slide08.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide08.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="9">
-                        <img src="/img/offer/detail_slide09.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide09.jpg" alt="">
                     </div>
                     <div class="pagination-item" data-item="10">
-                        <img src="/img/offer/detail_slide10.jpg" alt="">
+                        <img src="/web-resources/img/offer/detail_slide10.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
             </div>
             <div class="download">
                 <a href="#" class="btn">
-                    <img src="/img/downicon-02.png" alt="">
+                    <img src="/web-resources/img/downicon-02.png" alt="">
                 </a>
             </div>
         </div>
@@ -195,7 +195,7 @@
             <ul class="list">
                 <c:forEach var="optionType" items="${offer.offerAddition.optionTypes}" varStatus="vs">
                     <li>
-                        <img src="/img/offer/option-${vs.index + 1}.png">
+                        <img src="/web-resources/img/offer/option-${vs.index + 1}.png">
                         <h2>${optionType.value}</h2>
                     </li>
                 </c:forEach>
@@ -207,7 +207,7 @@
             <ul class="list">
                 <c:forEach var="manageType" items="${offer.offerAddition.managementTypes}" varStatus="vs">
                     <li>
-                        <img src="/img/offer/manage-${vs.index + 1}.png">
+                        <img src="/web-resources/img/offer/manage-${vs.index + 1}.png">
                         <h2>${manageType.value}</h2>
                     </li>
                 </c:forEach>
@@ -237,7 +237,7 @@
                 <p>본 매물의 위치는 반경 가로 100m x 세로 100m 의 임의 설정 값으로 정확한 위치가 아닙니다.</p>
             </div>
 <%--            <div class="road-map">--%>
-<%--                <img src="/img/offer/roadview.jpg" alt="">--%>
+<%--                <img src="/web-resources/img/offer/roadview.jpg" alt="">--%>
 <%--            </div>--%>
         </div>
     </div>
@@ -257,7 +257,7 @@
             maxLevel: 3
         });
 
-        let imageSrc = '/img/offer/detail_map_icon.png',
+        let imageSrc = '/web-resources/img/offer/detail_map_icon.png',
             imageSize = new kakao.maps.Size(25, 35),
             imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
 

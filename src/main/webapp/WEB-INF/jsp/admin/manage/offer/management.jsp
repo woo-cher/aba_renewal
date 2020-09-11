@@ -4,10 +4,10 @@
 <html>
 <head>
     <title>관리자 매물관리</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/navibar.css">
-    <link rel="stylesheet" type="text/css" href="/scss/me/me.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/me/me.css">
 
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
 </head>

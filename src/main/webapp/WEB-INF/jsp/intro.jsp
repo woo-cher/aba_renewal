@@ -3,11 +3,11 @@
 <html>
 <head>
 	<title>아바소개</title>
-	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-	<link rel="stylesheet" type="text/css" href="/css/index.css">
-	<link rel="stylesheet" type="text/css" href="/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/css/index_%20responsive.css">
+	<link rel="stylesheet" type="text/css" href="/web-resources/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/web-resources/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/web-resources/css/index_%20responsive.css">
 </head>
 
 <body>
@@ -32,14 +32,14 @@
 		<article class="txt_box">
 			<h3>WHO WE ARE</h3>
 			<div class="box_in">
-				<img src="/img/aboutus_con1_img.png" alt="">
+				<img src="/web-resources/img/aboutus_con1_img.png" alt="">
 				<p>온라인 부동산시장에서 임대인의 부동산 매물정보를 정확하고 신속하게<br>
 	파악하여 중개인분들에게 전달하며 부동산 계약성사률을 높여드리겠습니다
 				</p>
 			</div>
 		</article>
 		<article class="bg-img">
-			<img src="/img/aboutus_con1.png" alt="bg">
+			<img src="/web-resources/img/aboutus_con1.png" alt="bg">
 		</article>
 	</section>
 
@@ -47,7 +47,7 @@
 	<section id="history">
 		<article class="in">
 			<h3>OUR HISTORY</h3>
-			<img src="/img/company_history.png" alt="" class="graph">
+			<img src="/web-resources/img/company_history.png" alt="" class="graph">
 		</article>
 		<article class="txt">
 			<div class="txt01">
@@ -69,7 +69,7 @@
 	<section id="service">
 		<article class="service_in">
 			<h3>OUR SERVICE</h3>
-			<img src="/img/ourservice.png" alt="">
+			<img src="/web-resources/img/ourservice.png" alt="">
 		</article>
 		<article class="in_txt">
 			<div class="txt01">
@@ -100,7 +100,7 @@
 			<section class="info-box">
 				<article class="text-box">
 					<div class="box01">
-						<img src="/img/contact_line.jpg" alt="">
+						<img src="/web-resources/img/contact_line.jpg" alt="">
 						<h5>주소</h5>
 						<p>경상남도 진주시 충무공동 87-23 드림it밸리 B동 807호</p>
 					</div>
@@ -126,7 +126,7 @@
 				</article>
 				<!-- 아바 회사 지도 이미지 -->
 				<article class="map">
-					<img src="/img/contact_map.png" alt="">
+					<img src="/web-resources/img/contact_map.png" alt="">
 				</article>
 			</section>
 		</article>

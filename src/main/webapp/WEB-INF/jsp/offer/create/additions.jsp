@@ -108,7 +108,7 @@
     </div>
     <div id="dropzone" class="dropzone align-center  pt-3">
         <div class="dz-default dz-message">
-            <img src="/img/offer/add_image.png">
+            <img src="/web-resources/img/offer/add_image.png">
             <p class="aba pt-3">사진을 끌어다 놓거나 눌러서 업로드 해주세요 :)</p>
         </div>
         <input hidden type="file" id="files" name="files" multiple />

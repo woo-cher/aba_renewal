@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>공지사항</title>
 
-        <link rel="stylesheet" type="text/css" href="/css/post_detail.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/css/post_detail.css">
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -37,7 +37,7 @@
                         </article>
                         <article class="back-btn">
                             <a href="/posts">
-                                <img src="/img/notice_back_btn.png" alt="">
+                                <img src="/web-resources/img/notice_back_btn.png" alt="">
                             </a>
                         </article>
                     </section>

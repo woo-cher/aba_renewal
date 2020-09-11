@@ -3,9 +3,9 @@
 <html>
     <head>
         <title>매물찾기</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-        <link rel="stylesheet" type="text/css" href="/scss/map/map.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/map/map.css">
 
         <%@include file="../commons/map.jspf"%>
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
@@ -32,7 +32,7 @@
                                onkeyup="searchResults($(this).val())"
                         >
                         <button type="button" class="search-btn">
-                            <img src="/img/svg/search-24px.svg" class="search-icon">
+                            <img src="/web-resources/img/svg/search-24px.svg" class="search-icon">
                         </button>
                         <div class="search-result" hidden>
                             <header class="result-header">

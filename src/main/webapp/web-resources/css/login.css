@@ -1,6 +1,5 @@
 @font-face {
     font-family: s-core-dream-regular;
-    src: url("/css/s-Core-Dream-light");
 }
 
 #wrap {
@@ -25,7 +24,6 @@
 
 .content-name h3 {
     font-size: 27px;
-    font-family: s-core-dream-regular;
     padding-left: 2%;
 }
 

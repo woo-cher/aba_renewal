@@ -1,5 +1,5 @@
-document.write("<script src='/js/kakao/factory/dom-creator.js'></script>");
-document.write("<script src='/js/kakao/ajax/ajax-repository.js'></script>");
+document.write("<script src='/web-resources/js/kakao/factory/dom-creator.js'></script>");
+document.write("<script src='/web-resources/js/kakao/ajax/ajax-repository.js'></script>");
 
 class Overlay extends KakaoMap {
     polygons = [];

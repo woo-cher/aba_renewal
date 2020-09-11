@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" crossorigin="anonymous">
 
     <%--`jquery` resrouce --%>
-    <script src="/js/jquery-1.7.2.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/web-resources/js/jquery-1.7.2.min.js"></script>
+    <script src="/web-resources/js/jquery-ui.min.js"></script>
 
     <%-- 'css' --%>
-    <link rel="stylesheet" type="text/css" href="/css/commons/header.css">
-    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/css/commons/header.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/css/reset.css">
 </head>
 
 <header id="header">
     <a href="/" class="logo">
-        <img src="/img/logo.png" alt="로고">
+        <img src="/web-resources/img/logo.png" alt="로고">
     </a>
 
     <ul class="menu">
@@ -66,7 +66,7 @@
     </ul>
 </header>
 
-<script src="/js/utils.js"></script>
+<script src="/web-resources/js/utils.js"></script>
 <script>
     function navigateMap(offerTypeIndex = 0) {
         location.href = '/maps?type=' + offerTypeIndex;

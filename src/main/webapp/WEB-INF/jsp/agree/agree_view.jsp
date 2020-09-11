@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <title>아바</title>
 
-        <link rel="stylesheet" type="text/css" href="/scss/agree_view.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/agree_view.css">
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -16,10 +16,10 @@
             <!-- 공지사항 이름 & 전체보기 상자 -->
             <div class="main-header">
                 <a class="prev" onclick="navigator(this, ${viewIndex})">
-                    <img src="/img/basic/keyboard_arrow_left-24px.svg">
+                    <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                 </a>
                 <a class="next" onclick="navigator(this, ${viewIndex})">
-                    <img src="/img/basic/keyboard_arrow_right-24px.svg">
+                    <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                 </a>
                 <div class="title">
                     <div class="line"></div>

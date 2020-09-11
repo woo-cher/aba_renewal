@@ -22,7 +22,7 @@
                     <span class="d-label">Diamond</span>
                     입니다.
                 </p>
-                <img class="w-65" src="/img/guide.jpg">
+                <img class="w-65" src="/web-resources/img/guide.jpg">
             </div>
             <div class="frame form-control p-0">
                 <div class="input-group w-full f-c">

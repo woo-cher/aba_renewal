@@ -1,4 +1,4 @@
-document.write("<script src='/js/kakao/factory/dom-factory.js'></script>");
+document.write("<script src='/web-resources/js/kakao/factory/dom-factory.js'></script>");
 
 class CustomDomCreator {
     constructor(overlayId) {

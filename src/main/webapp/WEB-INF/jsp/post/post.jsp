@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>공지사항</title>
 
-        <link rel="stylesheet" type="text/css" href="/scss/post.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/post.css">
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -38,7 +38,7 @@
                     </select>
                     <input type="text" placeholder="검색어를 입력하세요" class="search-box">
                     <button class="button">
-                        <img src="/img/notice_search-01.png" alt="">
+                        <img src="/web-resources/img/notice_search-01.png" alt="">
                     </button>
                 </div>
             </div>
@@ -115,7 +115,7 @@
         <section id="mobile-header">
             <article class="header-in">
                 <a href="#" class="back-btn">
-                    <img src="/img/notice_mobile_btn.png" alt="뒤로가기 버튼">
+                    <img src="/web-resources/img/notice_mobile_btn.png" alt="뒤로가기 버튼">
                 </a>
                 <h3>공지사항</h3>
             </article>
@@ -141,7 +141,7 @@
                     <div class="search">
                         <input type="text" placeholder="검색어를 입력하세요" class="search-box">
                         <button class="button">
-                            <img src="/img/notice_search-01.png" alt="">
+                            <img src="/web-resources/img/notice_search-01.png" alt="">
                         </button>
                     </div>
                 </div>

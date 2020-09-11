@@ -30,13 +30,46 @@
   border-radius: 3px;
 }
 
+/* Input invalid */
+.invalid {
+  color: red !important;
+}
+.invalid.b-1r {
+  border: 1px solid red !important;
+}
+.invalid .aba {
+  color: red;
+}
+
+.error-box {
+  position: fixed;
+  right: 18%;
+}
+
 /* Checkbox */
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   -webkit-box-align: center;
   align-items: center;
+  padding: 4% 0;
+}
+.checkbox-container li.absolute {
+  position: absolute;
+  top: 1%;
+  right: 5%;
+}
+.checkbox-container.agree {
+  padding: 6% 0;
+}
+.checkbox-container.form {
+  padding-left: 5%;
+}
+.checkbox-container.form li {
+  width: 30%;
+}
+.checkbox-container.form li.half {
+  width: 17%;
 }
 .checkbox-container .checkbox-list {
   width: 22%;
@@ -58,6 +91,66 @@
   height: 100%;
   width: 100%;
   text-align: center;
+  cursor: pointer;
+}
+
+/* Scroll Bar */
+/* Tier */
+/* Slider */
+.custom-slider {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #00adef;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #00adef;
+  cursor: pointer;
+}
+
+datalist {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+datalist option {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 0;
+  background: #D3D3D3;
 }
 
 /**
@@ -71,12 +164,24 @@
   width: 200px;
   height: 150px;
 }
+.detail-container.all {
+  width: 990px;
+  height: auto;
+  display: inline-block;
+  position: relative;
+}
+.detail-container .detail-wrap {
+  padding: 1%;
+  width: 31%;
+  display: inline-block;
+}
+
 /**
     Filter-bar area
  */
 .filter-bar {
   height: 60px;
-  border: 1px solid lightblue;
+  border-bottom: 1px solid lightblue;
 }
 .filter-bar .filter-group {
   display: flex;
@@ -126,7 +231,9 @@
   width: 100%;
   height: 70px;
   line-height: 30px;
-  margin-bottom: 15px;
+}
+.filter-detail .detail-header.h-half {
+  height: 30px !important;
 }
 .filter-detail .detail-header .title {
   color: #00adef;
@@ -135,6 +242,11 @@
 .filter-detail .detail-header .caption {
   color: darkgray;
   font-size: 14px;
+  text-indent: 5px;
+}
+.filter-detail .detail-header .caption.slide {
+  color: black;
+  float: right;
 }
 
 /*# sourceMappingURL=filter-bar.css.map */

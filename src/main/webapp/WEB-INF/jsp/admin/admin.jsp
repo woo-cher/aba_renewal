@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>아바 관리자모드</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
 </head>
 <body>
 <div class="main-container">

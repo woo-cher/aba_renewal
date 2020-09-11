@@ -4,9 +4,9 @@
 <html>
     <head>
         <title>의뢰매물</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-        <link rel="stylesheet" type="text/css" href="/css/post_detail.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/css/post_detail.css">
 
         <%@include file="/WEB-INF/jsp/commons/tempory_header.jspf"%>
     </head>
@@ -70,7 +70,7 @@
                         </article>
                         <article class="back-btn">
                             <a href="javascript:window.history.back();">
-                                <img src="/img/notice_back_btn.png" alt="">
+                                <img src="/web-resources/img/notice_back_btn.png" alt="">
                             </a>
                         </article>
                     </section>

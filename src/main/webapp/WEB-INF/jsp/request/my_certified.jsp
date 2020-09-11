@@ -4,11 +4,11 @@
 <html>
 <head>
     <title>매물 찾아주세요!</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
 
-    <script src="/js/validator.js"></script>
+    <script src="/web-resources/js/validator.js"></script>
 
     <%@include file="/WEB-INF/jsp/commons/tempory_header.jspf"%>
 </head>

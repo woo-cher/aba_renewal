@@ -1,5 +1,5 @@
-<script type="text/javascript" src="/js/kakao/modules/map-module.js"></script>
-<script type="text/javascript" src="/js/kakao/modules/kakao-map.js"></script>
-<script type="text/javascript" src="/js/kakao/modules/overlay.js"></script>
-<script type="text/javascript" src="/js/kakao/modules/spot.js"></script>
-<script type="text/javascript" src="/js/kakao/map-manager.js"></script>
+<script type="text/javascript" src="/web-resources/js/kakao/modules/map-module.js"></script>
+<script type="text/javascript" src="/web-resources/js/kakao/modules/kakao-map.js"></script>
+<script type="text/javascript" src="/web-resources/js/kakao/modules/overlay.js"></script>
+<script type="text/javascript" src="/web-resources/js/kakao/modules/spot.js"></script>
+<script type="text/javascript" src="/web-resources/js/kakao/map-manager.js"></script>

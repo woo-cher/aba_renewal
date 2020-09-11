@@ -134,11 +134,11 @@ class MapModule {
                 <div class="paginator">
                     <div class="page-wrap">
                         <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
-                            <img src="/img/basic/keyboard_arrow_left-24px.svg">
+                            <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
                         <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
-                            <img src="/img/basic/keyboard_arrow_right-24px.svg">
+                            <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
                 </div>
@@ -191,7 +191,7 @@ class MapModule {
                 offersArea.append(`
                     <li class="list-item">
                         <div class="offer-like">
-                            <img src="/img/offer/detail_head_icon-01.png" onclick="alert('준비중이예요 :)')">
+                            <img src="/web-resources/img/offer/detail_head_icon-01.png" onclick="alert('준비중이예요 :)')">
                         </div>
                         <div class="offer" onclick="window.open('/offers/${offer.id}')">
                             <div class="offer-thumbs">

@@ -4,11 +4,11 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>아바</title>
-	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<link rel="stylesheet" type="text/css" href="/css/main1492px.css">
-	<link rel="stylesheet" type="text/css" href="/css/main_mobile.css">
+	<link rel="stylesheet" type="text/css" href="/web-resources/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/web-resources/css/main1492px.css">
+	<link rel="stylesheet" type="text/css" href="/web-resources/css/main_mobile.css">
 
 	<%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
@@ -18,7 +18,7 @@
 		<!-- 메인이미지 -->
 		<section id="main_img">
 			<div class="mobile-txt">
-				<img src="/img/mobile_bg_txt.png" alt="">
+				<img src="/web-resources/img/mobile_bg_txt.png" alt="">
 			</div>
 			<form id="search" onsubmit="return false">
 					<div class="form-control">
@@ -29,7 +29,7 @@
 							>
 						</label>
 						<button type="button" class="button" onclick="navigateMapWithKeyword(keyword.value)">
-							<img src="/img/notice_search-01.png">
+							<img src="/web-resources/img/notice_search-01.png">
 						</button>
 					</div>
 			</form>
@@ -97,35 +97,35 @@
 			<article class="img">
 				<div class="img01">
 					<a href="#">
-					   <img src="/img/contents1_img01.jpg" alt="진행중매물" class="in01">
+					   <img src="/web-resources/img/contents1_img01.jpg" alt="진행중매물" class="in01">
 
 					</a>
 					<a href="#">
-						<img src="/img/contents1_hover.png" alt="" class="in02">
+						<img src="/web-resources/img/contents1_hover.png" alt="" class="in02">
 					</a>
 				</div>
 				<div class="img02">
 					<a href="#">
-						<img src="/img/contents1_img02.jpg" alt="급매물" class="in01">
+						<img src="/web-resources/img/contents1_img02.jpg" alt="급매물" class="in01">
 					</a>
 					<a href="#">
-						<img src="/img/contents1_hover.png" alt="" class="in02">
+						<img src="/web-resources/img/contents1_hover.png" alt="" class="in02">
 					</a>
 				</div>
 				<div class="img03">
 					<a href="#">
-						<img src="/img/contents1_img03.jpg" alt="모든 매물" class="in01">
+						<img src="/web-resources/img/contents1_img03.jpg" alt="모든 매물" class="in01">
 					</a>
 					<a href="#">
-						<img src="/img/contents1_hover.png" alt="" class="in02">
+						<img src="/web-resources/img/contents1_hover.png" alt="" class="in02">
 					</a>
 				</div>
 				<div class="img04">
 					<a href="#">
-						<img src="/img/contents1_img04.jpg" alt="집주인 매물등록" class="in01">
+						<img src="/web-resources/img/contents1_img04.jpg" alt="집주인 매물등록" class="in01">
 					</a>
 					<a href="#">
-						<img src="/img/contents1_hover.png" alt="" class="in02">
+						<img src="/web-resources/img/contents1_hover.png" alt="" class="in02">
 					</a>
 				</div>
 			 </article>
@@ -152,10 +152,10 @@
 				<!-- 이미지 -->
 				<article class="mobile-img">
 					<div class="img-box">
-						<a href="#"><img src="/img/contents1_img01.jpg" alt="진행중매물"></a>
-						<a href="#"><img src="/img/contents1_img02.jpg" alt="급매물"></a>
-						<a href="#"><img src="/img/contents1_img03.jpg" alt="모든 매물"></a>
-						<a href="#"><img src="/img/contents1_img04.jpg" alt="집주인 매물등록"></a>
+						<a href="#"><img src="/web-resources/img/contents1_img01.jpg" alt="진행중매물"></a>
+						<a href="#"><img src="/web-resources/img/contents1_img02.jpg" alt="급매물"></a>
+						<a href="#"><img src="/web-resources/img/contents1_img03.jpg" alt="모든 매물"></a>
+						<a href="#"><img src="/web-resources/img/contents1_img04.jpg" alt="집주인 매물등록"></a>
 					</div>
 				</article>
 			</article>
@@ -167,7 +167,7 @@
 			<!-- 공지사항 -->
 			<article class="notice">
 				<h3>
-					<img src="/img/notice.png" alt="공지사항">
+					<img src="/web-resources/img/notice.png" alt="공지사항">
 				</h3>
 				<div class="btn">
 					<a href="/posts">더보기 +</a>
@@ -191,10 +191,10 @@
 			<!-- 고객센터 -->
 			<article class="cs">
 				<div class="title">
-					<img src="/img/cs.png" alt="고객센터">
+					<img src="/web-resources/img/cs.png" alt="고객센터">
 				</div>
 				<div class="info">
-					<img src="/img/contents2_cs.png" alt="고객센터 정보">
+					<img src="/web-resources/img/contents2_cs.png" alt="고객센터 정보">
 				</div>
 
 			</article>
@@ -232,7 +232,7 @@
 					<h2>고객센터</h2>
 				</div>
 				<div class="call">
-					<img src="/img/contents2_cs.png" alt="고객센터 정보">
+					<img src="/web-resources/img/contents2_cs.png" alt="고객센터 정보">
 				</div>
 
 			</article>
@@ -244,7 +244,7 @@
 </body>
 </html>
 
-<script src="/js/main.js"></script>
+<script src="/web-resources/js/main.js"></script>
 <script>
 	function navigateMapWithKeyword(keyword) {
 		if(keyword === '' || keyword === ' ') {

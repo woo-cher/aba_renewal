@@ -4,9 +4,9 @@
 <html>
     <head>
         <title>찾아주세요 목록</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-        <link rel="stylesheet" type="text/css" href="/scss/post.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/post.css">
 
         <%@include file="/WEB-INF/jsp/commons/tempory_header.jspf"%>
     </head>

@@ -4,9 +4,9 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/css/login.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>

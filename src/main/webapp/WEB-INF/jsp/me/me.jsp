@@ -5,11 +5,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/navibar.css">
-    <link rel="stylesheet" type="text/css" href="/scss/me/me.css">
-    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/me/me.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>

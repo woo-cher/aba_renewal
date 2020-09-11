@@ -100,7 +100,7 @@ function getElement() {
                 <div class="label-wrap">비밀번호 변경</div>
             </div>
             <div class="content avatar p-0">
-                <img class="w-25" src="/img/guide.jpg">
+                <img class="w-25" src="/web-resources/img/guide.jpg">
                 <div class="content p-0">
                     <div class="w-full">
                         <span class="rank d-mark">D</span>

@@ -4,16 +4,16 @@
 <html>
 <head>
     <title>매물 찾아주세요!</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/scss/component/form.css">
-    <link rel="stylesheet" type="text/css" href="/scss/offer_request_create.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_create.css">
 
-    <script src="/js/kakao/ajax/ajax-repository.js"></script>
-    <script src="/js/kakao/kakao-address.js"></script>
-    <script src="/js/validator.js"></script>
-    <script src="/js/offer-request/offer-request.js"></script>
-    <script src="/js/offer-request/request-validator.js"></script>
+    <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="/web-resources/js/kakao/kakao-address.js"></script>
+    <script src="/web-resources/js/validator.js"></script>
+    <script src="/web-resources/js/offer-request/offer-request.js"></script>
+    <script src="/web-resources/js/offer-request/request-validator.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
@@ -116,7 +116,7 @@
                                 <a class="select-box" id="select-moveIn">
                                     <span class="txt" id="moveIn-txt">11월중</span>
                                     <span class="icon">
-                                    <img src="/img/basic/keyboard_arrow_down-24px.svg">
+                                    <img src="/web-resources/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>
                                     <input type="hidden" id="moveIn" name="moveIn">
                                 </a>
@@ -151,7 +151,7 @@
                             <a class="select-box" id="select-pyeong">
                                 <span class="txt" id="pyeong-txt">평수 선택</span>
                                 <span class="icon">
-                                    <img src="/img/basic/keyboard_arrow_down-24px.svg">
+                                    <img src="/web-resources/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>
                                 <input type="hidden" id="pyeong" name="pyeong">
                             </a>
@@ -172,7 +172,7 @@
                             <a class="select-box" id="select-room">
                                 <span class="txt" id="room-txt">방 갯수</span>
                                 <span class="icon">
-                                    <img src="/img/basic/keyboard_arrow_down-24px.svg">
+                                    <img src="/web-resources/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>
                                 <input type="hidden" id="room" name="room">
                             </a>
@@ -197,7 +197,7 @@
                             <a class="select-box" onclick="getAddress()">
                                 <input readonly type="text" class="txt p-0" id="jibun" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
-                                        <img src="/img/svg/search-24px.svg">
+                                        <img src="/web-resources/img/svg/search-24px.svg">
                                 </span>
                                 <input type="hidden" id="road">
                             </a>
@@ -211,7 +211,7 @@
                             <a class="select-box" onclick="getAddress('jibun2')">
                                 <input readonly type="text" class="txt p-0" id="jibun2" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
-                                        <img src="/img/svg/search-24px.svg">
+                                        <img src="/web-resources/img/svg/search-24px.svg">
                                 </span>
                             </a>
                         </div>

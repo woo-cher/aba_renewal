@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
-    <link rel="stylesheet" type="text/css" href="/scss/me/my_aba.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/me/my_aba.css">
 </head>
 
 <div class="content-left">
     <div class="panel left-wrap">
         <div class="content user-box">
             <div class="frame avatar">
-                <img class="" src="/img/guide.jpg">
+                <img class="" src="/web-resources/img/guide.jpg">
                 <p class="content">
                     <span class="txt-lg">아바</span> 님
                 </p>
