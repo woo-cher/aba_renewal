@@ -3,7 +3,7 @@ package com.abacorp.aba.core.controller;
 import com.abacorp.aba.core.service.OfferRequestService;
 import com.abacorp.aba.model.OfferRequest;
 import com.abacorp.aba.model.type.DealType;
-import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.OfferRequestType;
 import com.abacorp.aba.model.type.RequiredConditionType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class OfferRequestController {
     @RequestMapping(value = "/create/form")
     public ModelAndView createForm() {
         mv.addObject("conditions", RequiredConditionType.values());
-        mv.addObject("offerTypes", OfferType.values());
+        mv.addObject("offerRequestTypes", OfferRequestType.values());
         mv.addObject("dealTypes", DealType.values());
 
         mv.setViewName("request/create_form");
@@ -68,7 +68,6 @@ public class OfferRequestController {
         List<OfferRequest> offerRequests = service.selectRequests();
 
         mv.addObject("requests", offerRequests);
-        mv.addObject("isMy", false);
         mv.setViewName("request/list");
 
         return mv;
@@ -93,8 +92,7 @@ public class OfferRequestController {
         List<OfferRequest> myOfferRequests = service.selectRequestByPhone(phoneWithDash);
 
         mv.addObject("requests", myOfferRequests);
-        mv.addObject("isMy", true);
-        mv.setViewName("request/list");
+        mv.setViewName("request/my_request");
 
         return mv;
     }

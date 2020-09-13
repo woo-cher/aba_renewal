@@ -6,7 +6,7 @@
     <resultMap id="offerRequest" type="OfferRequest">
         <id property="id" column="id" />
         <result property="dealType" column="deal_type" />
-        <result property="offerTypes" column="offer_types" />
+        <result property="offerRequestTypes" column="offer_request_types" />
         <result property="deposit" column="deposit" />
         <result property="salePrice" column="sale_price" />
         <result property="monthlyDeposit" column="monthly_deposit" />
@@ -28,7 +28,7 @@
     <insert id="insertOfferRequest" parameterType="offerRequest">
         INSERT INTO requests
         VALUES (
-                NULL, #{dealType}, #{offerTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location},
+                NULL, #{dealType}, #{offerRequestTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location},
                 #{requiredConditions}, #{request}, #{phone}, #{title}, ${hits}, #{isAgree}, current_timestamp
         )
     </insert>

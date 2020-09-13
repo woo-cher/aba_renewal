@@ -52,7 +52,7 @@ public class OfferRequestService {
             typeList.add(types[i]);
         }
 
-        for(String indexStr : offerRequest.getOfferTypes().split(",")) { // 1, 2, 3
+        for(String indexStr : offerRequest.getOfferRequestTypes().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             offerTypeList.add(offerTypes[i]);
         }

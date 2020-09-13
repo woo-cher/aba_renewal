@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -130,11 +131,14 @@
                             <div class="form-label align-center">
                                 <span>희망유형을 선택해주세요 (복수가능)</span>
                             </div>
-                            <ul class="checkbox-container form type pt-1 check-area">
-                                <c:forEach begin="1" var="type" items="${offerTypes}" varStatus="vs">
+                            <ul class="checkbox-container form type p-0 pt-1 flex-center check-area">
+                                <c:forEach begin="1" var="type" items="${offerRequestTypes}" varStatus="vs">
                                     <li class="checkbox-list half">
-                                        <input id="offerType${vs.index}" type="checkbox" name="offerTypes" value="${vs.index}" class="check">
-                                        <label for="offerType${vs.index}">${type.value}</label>
+                                        <input id="offerRequestTypes${vs.index}" type="checkbox" name="offerRequestTypes" value="${vs.index}" class="check">
+                                        <label for="offerRequestTypes${vs.index}">
+                                            <img src="/web-resources/img/offer/type/${fn:toLowerCase(type.code)}.png" width="40" height="auto">
+                                            <p>${type.value}</p>
+                                        </label>
                                     </li>
                                 </c:forEach>
                                 <div class="error-box"></div>

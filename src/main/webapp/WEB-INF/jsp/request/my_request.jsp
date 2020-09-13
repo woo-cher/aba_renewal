@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title>요청 매물 목록</title>
+        <title>나의 요청 매물</title>
         <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/post.css">
@@ -16,7 +16,7 @@
             <div class="post-header">
                 <div class="title">
                     <div class="line"></div>
-                    <h2>요청 매물목록</h2>
+                    <h2>나의 요청 매물</h2>
                 </div>
             </div>
 

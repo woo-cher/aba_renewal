@@ -17,7 +17,7 @@ import java.util.List;
 @ToString
 public class OfferRequest extends ModelMapper {
     private DealType dealType;
-    private String offerTypes;
+    private String offerRequestTypes;
     private String deposit;
     private String monthlyDeposit;
     private String monthlyPrice;
