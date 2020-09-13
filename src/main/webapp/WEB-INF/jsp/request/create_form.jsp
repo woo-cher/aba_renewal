@@ -240,11 +240,6 @@
                     </section>
 
                     <section class="form-control mt-0" hidden>
-                        <div class="form-label">
-                            <i class="fas fa-circle"></i>
-                            <span>게시글 제목</span>
-                        </div>
-                        <input required type="text" placeholder="제목" name="title">
                         <div class="form-label pt-3">
                             <i class="fas fa-circle"></i>
                             <span>연락 받으실 전화번호</span>

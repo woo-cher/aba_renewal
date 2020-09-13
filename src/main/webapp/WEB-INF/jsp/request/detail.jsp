@@ -27,7 +27,7 @@
                                     ${request.hits}
                                 </span>
                             </h4>
-                            <h3>${request.title}</h3>
+                            <h3>${request.request}</h3>
                             <p>${fn:substring(request.createdAt, 0, 16)}</p>
                         </article>
                         <article class="in02">

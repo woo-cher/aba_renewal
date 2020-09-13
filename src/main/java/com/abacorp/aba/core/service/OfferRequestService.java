@@ -20,6 +20,12 @@ public class OfferRequestService {
     private OfferRequestRepository repository;
 
     public int createRequest(OfferRequest offerRequest) {
+        String clientWanted = offerRequest.getRequest();
+
+        if (clientWanted.isEmpty()) {
+            offerRequest.setRequest("좋은 집 추천해주세요!");
+        }
+
         String phone = offerRequest.getPhone().replaceAll(",", "-");
         offerRequest.setPhone(phone);
 
@@ -31,6 +37,7 @@ public class OfferRequestService {
 
     /**
      * TODO) Custom 타입에 해당하는 List 추출 로직에 중복을 처리할 필요가 있다.
+     *
      * @see MapService line 57 ~
      */
     @Transactional
@@ -47,12 +54,12 @@ public class OfferRequestService {
 
         int i;
 
-        for(String indexStr : offerRequest.getRequiredConditions().split(",")) { // 1, 2, 3
+        for (String indexStr : offerRequest.getRequiredConditions().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             typeList.add(types[i]);
         }
 
-        for(String indexStr : offerRequest.getOfferRequestTypes().split(",")) { // 1, 2, 3
+        for (String indexStr : offerRequest.getOfferRequestTypes().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             offerTypeList.add(offerTypes[i]);
         }
