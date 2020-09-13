@@ -16,7 +16,7 @@
         <result property="pyeong" column="pyeong" />
         <result property="location" column="location" />
         <result property="phone" column="phone" />
-        <result property="request" column="request" />
+        <result property="demand" column="demand" />
         <result property="hits" column="hits" />
         <result property="isAgree" column="is_agree" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
@@ -28,7 +28,7 @@
         INSERT INTO requests
         VALUES (
                 NULL, #{dealType}, #{offerRequestTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location},
-                #{requiredConditions}, #{request}, #{phone}, ${hits}, #{isAgree}, current_timestamp
+                #{requiredConditions}, #{demand}, #{phone}, ${hits}, #{isAgree}, current_timestamp
         )
     </insert>
 

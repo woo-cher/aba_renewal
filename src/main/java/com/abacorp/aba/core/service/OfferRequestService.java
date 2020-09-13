@@ -20,10 +20,10 @@ public class OfferRequestService {
     private OfferRequestRepository repository;
 
     public int createRequest(OfferRequest offerRequest) {
-        String clientWanted = offerRequest.getRequest();
+        String clientWanted = offerRequest.getDemand();
 
         if (clientWanted.isEmpty()) {
-            offerRequest.setRequest("좋은 집 추천해주세요!");
+            offerRequest.setDemand("좋은 집 추천해주세요!");
         }
 
         String phone = offerRequest.getPhone().replaceAll(",", "-");

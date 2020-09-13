@@ -271,7 +271,7 @@
                                 <span>필요한 요구사항을 간단히 적어주세요!</span>
                             </div>
                             <div class="form-control">
-                                <textarea class="w-full" name="request" style="resize: none; height: 200px; padding: 2%;"></textarea>
+                                <textarea class="w-full" name="demand" style="resize: none; height: 200px; padding: 2%;"></textarea>
                             </div>
                         </div>
                     </section>

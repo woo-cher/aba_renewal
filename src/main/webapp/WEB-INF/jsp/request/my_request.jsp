@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>${req.id}</td>
                                     <td>
-                                        <a href="/requests/${req.id}" class="td02">${req.request}</a>
+                                        <a href="/requests/${req.id}" class="td02">${req.demand}</a>
                                     </td>
                                     <td>${fn:substring(req.createdAt, 0, 10)}</td>
                                     <td>${req.hits}</td>

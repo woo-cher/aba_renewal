@@ -27,7 +27,7 @@ public class OfferRequest extends ModelMapper {
     private String pyeong;
     private String location;
     private String requiredConditions;
-    private String request;
+    private String demand;
     private String phone;
     @Builder.Default
     private int hits = 0;
