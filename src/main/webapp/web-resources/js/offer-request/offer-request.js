@@ -214,6 +214,17 @@ function dialogInitialize() {
         dialogEventListener('room-dialog', 'select-room');
     });
 
+    $('#select-floor').on('click', function () {
+        $('.overlay').show();
+        $('#floor-dialog').dialog({
+            close: function (event, ui) {
+                $('.overlay').hide();
+            }
+        });
+
+        dialogEventListener('floor-dialog', 'select-floor');
+    });
+
     $('#select-moveIn').on('click', function () {
         $('.overlay').show();
 

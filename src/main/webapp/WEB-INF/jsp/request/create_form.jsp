@@ -149,6 +149,28 @@
                     <section class="form-control mt-0" hidden>
                         <div class="form-label">
                             <i class="fas fa-circle"></i>
+                            <span>층</span>
+                        </div>
+                        <div class="form-control align-center">
+                            <a class="select-box" id="select-floor">
+                                <span class="txt" id="floor-txt">희망 층</span>
+                                <span class="icon">
+                                    <img src="/web-resources/img/basic/keyboard_arrow_down-24px.svg">
+                                </span>
+                                <input type="hidden" id="floor" name="floor">
+                            </a>
+                            <div id="floor-dialog" title="" hidden>
+                                <li>상관없음</li>
+                                <li>1층</li>
+                                <li>2 ~ 4층</li>
+                                <li>5층 이상</li>
+                                <li>옥탑</li>
+                                <li>반지하</li>
+                            </div>
+                        </div>
+
+                        <div class="form-label">
+                            <i class="fas fa-circle"></i>
                             <span>평수 선택</span>
                         </div>
                         <div class="form-control align-center">
@@ -277,7 +299,7 @@
                     </section>
 
                     <div class="form-control mt-0">
-                        <p class="error w-half" style="margin: 0 auto !important;" hidden>
+                        <p class="error w-half align-center" style="margin: 0 auto !important;" hidden>
                             <i class="fas fa-exclamation-circle" id="error"></i>
                         </p>
                         <div class="align-center my-1">

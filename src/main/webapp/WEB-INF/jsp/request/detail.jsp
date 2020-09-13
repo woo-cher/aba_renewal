@@ -55,10 +55,12 @@
                             </c:forEach>
                             <p class="title-desc">희망 이사날짜</p>
                             <p>${request.moveIn}</p>
-                            <p class="title-desc">필요한 방 갯수</p>
-                            <p>방 ${request.room}</p>
+                            <p class="title-desc">희망 층</p>
+                            <p>${request.floor}</p>
                             <p class="title-desc">원하는 평형</p>
                             <p>${request.pyeong}</p>
+                            <p class="title-desc">필요한 방 갯수</p>
+                            <p>방 ${request.room}</p>
                             <p class="title-desc">선호하는 지역</p>
                             <p>${request.location}</p>
                             <p class="title-desc">필수 고려조건</p>

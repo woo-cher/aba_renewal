@@ -13,6 +13,7 @@
         <result property="monthlyPrice" column="monthly_price" />
         <result property="moveIn" column="move_in" />
         <result property="room" column="room" />
+        <result property="floor" column="floor" />
         <result property="pyeong" column="pyeong" />
         <result property="location" column="location" />
         <result property="phone" column="phone" />
@@ -27,8 +28,9 @@
     <insert id="insertOfferRequest" parameterType="offerRequest">
         INSERT INTO requests
         VALUES (
-                NULL, #{dealType}, #{offerRequestTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice}, #{moveIn}, #{room}, #{pyeong}, #{location},
-                #{requiredConditions}, #{demand}, #{phone}, ${hits}, #{isAgree}, current_timestamp
+                NULL, #{dealType}, #{offerRequestTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice},
+                #{moveIn}, #{room}, ${floor}, #{pyeong}, #{location}, #{requiredConditions}, #{demand}, #{phone},
+                ${hits}, #{isAgree}, current_timestamp
         )
     </insert>
 

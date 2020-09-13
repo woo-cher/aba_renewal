@@ -24,6 +24,7 @@ public class OfferRequest extends ModelMapper {
     private String salePrice;
     private String moveIn;
     private String room;
+    private String floor;
     private String pyeong;
     private String location;
     private String requiredConditions;

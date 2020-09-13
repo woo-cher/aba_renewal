@@ -26,7 +26,7 @@ function dealTypeValidator() {
         }
     }
 
-    return errorHandle(isPassed, "계약조건을 선택하세요!");
+    return errorHandle(isPassed, "계약조건을 선택해주세요 :)");
 }
 
 function moveInValidator() {
@@ -40,7 +40,7 @@ function moveInValidator() {
     }
 
     if(!isPassed) {
-        return errorHandle(isPassed, "입주날짜를 선택하세요!");
+        return errorHandle(isPassed, "입주날짜를 선택해주세요 :)");
     }
 
     return isPassed;
@@ -56,19 +56,24 @@ function offerTypeValidator() {
         }
     }
 
-    return errorHandle(isPassed, "희망유형을 선택하세요!");
+    return errorHandle(isPassed, "희망유형을 선택해주세요 :)");
 }
 
 function pyeongAndRoomValidator() {
     let pyeongValue = $('#pyeong').val();
     let roomValue = $('#room').val();
+    let floorValue = $('#floor').val();
+
+    if(floorValue === "") {
+        return errorHandle(false, "희망 층을 선택해주세요 :)")
+    }
 
     if(pyeongValue === "") {
-        return errorHandle(false, "평수를 선택하세요!");
+        return errorHandle(false, "평수를 선택해주세요 :)");
     }
 
     if(roomValue === "") {
-        return errorHandle(false, "방 갯수를 선택하세요!");
+        return errorHandle(false, "방 갯수를 선택해주세요 :)");
     }
 
     return true;
@@ -79,7 +84,7 @@ function locationValidator() {
     let jibun2 = $('#jibun2').val();
 
     if(jibun === "") {
-        return errorHandle(false, "선호 지역을 최소 1곳 선택해주세요!");
+        return errorHandle(false, "선호 지역을 최소 1곳 선택해주세요 :)");
     }
 
     return true;
@@ -96,7 +101,7 @@ function requiredConditionValidator() {
     }
 
     if(!isPassed) {
-        return errorHandle(isPassed, "고려조건을 최소 1개 선택해주세요!")
+        return errorHandle(isPassed, "고려조건을 최소 1개 선택해주세요 :)")
     }
 
     return true;
