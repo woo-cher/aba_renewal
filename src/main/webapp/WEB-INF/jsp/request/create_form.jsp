@@ -224,12 +224,13 @@
                     <section class="form-control mt-0" hidden>
                         <div class="form-warp">
                             <div class="form-label">
-                                <span>반드시 고려해야 할 조건이 있으신가요?</span>
+                                <span>반드시 고려해야 할 조건이 있으신가요? (최대 3개 선택 가능)</span>
                             </div>
                             <ul class="checkbox-container form type pt-1 check-area">
                                 <c:forEach begin="1" var="type" items="${conditions}" varStatus="vs">
                                     <li class="checkbox-list">
-                                        <input id="required${vs.index}" type="checkbox" name="requiredConditions" value="${vs.index}" class="check">
+                                        <input id="required${vs.index}" type="checkbox" name="requiredConditions" value="${vs.index}"
+                                               class="check" onclick="checkboxLimitOn($(this), 3)">
                                         <label for="required${vs.index}">${type.value}</label>
                                     </li>
                                 </c:forEach>
@@ -374,6 +375,15 @@
 
         if(formIndex === 0) {
             $("#prev").hide();
+        }
+    }
+
+    function checkboxLimitOn(el, limit) {
+        let cnt = $("input:checked[name='requiredConditions']").length;
+
+        if(cnt > limit) {
+            el.attr("checked", false);
+            errorHandle(false, "최대 " + limit + "개까지 선택가능해요 :)");
         }
     }
 

@@ -47,7 +47,7 @@ function moveInValidator() {
 }
 
 function offerTypeValidator() {
-    let offerTypes = $('input[name="offerTypes"]');
+    let offerTypes = $('input[name="offerRequestTypes"]');
     let isPassed = false;
 
     for(let i = 0; i < offerTypes.length; i++) {
