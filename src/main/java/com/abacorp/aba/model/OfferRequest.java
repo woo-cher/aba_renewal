@@ -2,7 +2,7 @@ package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.DealType;
-import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.OfferRequestType;
 import com.abacorp.aba.model.type.RequiredConditionType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -36,5 +36,5 @@ public class OfferRequest extends ModelMapper {
     private boolean isAgree;
 
     private List<RequiredConditionType> conditionTypeList;
-    private List<OfferType> offerTypeList;
+    private List<OfferRequestType> offerTypeList;
 }

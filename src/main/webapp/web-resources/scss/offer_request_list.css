@@ -1,0 +1,108 @@
+/* Tier */
+.list-wrap {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+.list-wrap .list-header {
+  position: relative;
+  padding-bottom: 5%;
+}
+.list-wrap .list-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.request-fixed {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.request-fixed .request-label {
+  font-size: 0.8rem;
+  padding: 3% 5%;
+  margin-right: 5%;
+  border: 1px solid #dce6ee;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px lightgrey;
+}
+.request-fixed .request-btn {
+  cursor: pointer;
+  border: 1px solid #00adef;
+  border-radius: 50%;
+  padding: 0.2rem 0.75rem;
+  font-size: 1.5rem;
+  box-shadow: 1px 1px 2px lightgrey;
+}
+.request-fixed .request-btn:after {
+  content: "+";
+}
+.request-fixed .request-btn:hover {
+  color: #fff;
+  background: #00adef;
+}
+
+.list-table {
+  display: inline-block;
+  width: 100%;
+}
+.list-table .list-row {
+  width: 47.5%;
+  min-height: 210px;
+  display: list-item;
+  position: relative;
+  float: left;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.list-table .list-row:hover {
+  opacity: 0.5;
+  box-shadow: 1px 1px 2px lightgrey;
+}
+
+.request {
+  margin: 10px 0;
+}
+.request.header {
+  position: relative;
+  padding-bottom: 2%;
+}
+.request.types {
+  text-indent: 5px;
+}
+.request.required {
+  font-size: 0.85rem;
+}
+.request .demand {
+  text-indent: 10px;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.request .moveIn {
+  position: absolute;
+  top: 10;
+  right: 35;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: lightgrey;
+}
+.request .info {
+  font-size: 1.15rem;
+  margin-right: 5px;
+}
+.request .info i {
+  margin-right: 3px;
+}
+
+.request.price p {
+  margin: 3px 0;
+}
+
+/*# sourceMappingURL=offer_request_list.css.map */

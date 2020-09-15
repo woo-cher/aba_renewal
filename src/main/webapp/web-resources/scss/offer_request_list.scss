@@ -1,0 +1,127 @@
+@import "mixin/mixin";
+
+$shadowBasic: 1px 1px 2px lightgrey;
+
+@mixin right-label($top: 0, $right: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+.list-wrap {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1rem;
+
+  .list-header {
+    position: relative;
+    padding-bottom: 5%;
+  }
+
+  .list-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+}
+
+.request-fixed {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @include right-label();
+
+  .request-label {
+    font-size: .8rem;
+    padding: 3% 5%;
+    margin-right: 5%;
+    border: 1px solid #dce6ee;
+    border-radius: 10px;
+    box-shadow: $shadowBasic;
+  }
+
+  .request-btn {
+    cursor: pointer;
+    border: 1px solid $abaColor;
+    border-radius: 50%;
+    padding: 0.2rem 0.75rem;
+    font-size: 1.5rem;
+    box-shadow: $shadowBasic;
+
+    &:after {
+      content: "+";
+    }
+
+    &:hover {
+      color: #fff;
+      background: $abaColor;
+    }
+  }
+}
+
+.list-table {
+  display: inline-block;
+  width: 100%;
+
+  .list-row {
+    width: 47.5%;
+    min-height: 210px;
+    display: list-item;
+    position: relative;
+    float: left;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    z-index: 1;
+
+    &:hover {
+      opacity: .5;
+      box-shadow: $shadowBasic;
+    }
+  }
+}
+
+.request {
+  margin: 10px 0;
+
+  &.header {
+    position: relative;
+    padding-bottom: 2%;
+  }
+
+  &.types {
+    text-indent: 5px;
+  }
+
+  &.required {
+    font-size: .85rem;
+  }
+
+  .demand {
+    text-indent: 10px;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+  .moveIn {
+    @include right-label(10, 35);
+    font-size: .75rem;
+    font-weight: 800;
+    color: lightgrey;
+  }
+
+  .info {
+    font-size: 1.15rem;
+    margin-right: 5px;
+
+    i {
+      margin-right: 3px;
+    }
+  }
+}
+
+.request.price p {
+  margin: 3px 0;
+}

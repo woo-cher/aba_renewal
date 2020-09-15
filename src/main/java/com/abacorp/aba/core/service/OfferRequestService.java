@@ -2,7 +2,7 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OfferRequestRepository;
 import com.abacorp.aba.model.OfferRequest;
-import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.OfferRequestType;
 import com.abacorp.aba.model.type.RequiredConditionType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +46,35 @@ public class OfferRequestService {
 
         OfferRequest offerRequest = repository.findOfferRequestById(id);
 
+        convertIndexToCustomType(offerRequest);
+
+        return offerRequest;
+    }
+
+    public List<OfferRequest> selectRequests() {
+        List<OfferRequest> offerRequests = repository.findOfferRequests();
+
+        for(OfferRequest request : offerRequests) {
+            convertIndexToCustomType(request);
+        }
+
+        return offerRequests;
+    }
+
+    public int deleteRequestById(int id) {
+        return repository.deleteOfferRequest(id);
+    }
+
+    public List<OfferRequest> selectRequestByPhone(String phone) {
+        return repository.findOfferRequestByPhone(phone);
+    }
+
+    private void convertIndexToCustomType(OfferRequest offerRequest) {
         RequiredConditionType[] types = RequiredConditionType.values();
-        OfferType[] offerTypes = OfferType.values();
+        OfferRequestType[] offerTypes = OfferRequestType.values();
 
         List<RequiredConditionType> typeList = new ArrayList<>();
-        List<OfferType> offerTypeList = new ArrayList<>();
+        List<OfferRequestType> offerTypeList = new ArrayList<>();
 
         int i;
 
@@ -66,19 +90,5 @@ public class OfferRequestService {
 
         offerRequest.setConditionTypeList(typeList);
         offerRequest.setOfferTypeList(offerTypeList);
-
-        return offerRequest;
-    }
-
-    public List<OfferRequest> selectRequests() {
-        return repository.findOfferRequests();
-    }
-
-    public int deleteRequestById(int id) {
-        return repository.deleteOfferRequest(id);
-    }
-
-    public List<OfferRequest> selectRequestByPhone(String phone) {
-        return repository.findOfferRequestByPhone(phone);
     }
 }
