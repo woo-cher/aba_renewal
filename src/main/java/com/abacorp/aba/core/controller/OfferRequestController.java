@@ -49,7 +49,7 @@ public class OfferRequestController {
             throw new SQLException("OfferRequest insert error.. row : 0");
         }
 
-        return createForm();
+        return readAll();
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.GET)
