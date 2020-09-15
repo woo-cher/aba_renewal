@@ -220,7 +220,7 @@
                                 <i class="fas fa-circle"></i>
                                 <span>장소1</span>
                             </div>
-                            <a class="select-box" onclick="getAddress()">
+                            <a class="select-box" onclick="getAddress('jibun')">
                                 <input readonly type="text" class="txt p-0" id="jibun" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/web-resources/img/svg/search-24px.svg">

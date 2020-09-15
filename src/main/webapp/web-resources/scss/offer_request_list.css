@@ -88,10 +88,10 @@
 .request .moveIn {
   position: absolute;
   top: 10;
-  right: 35;
+  right: 25;
   font-size: 0.75rem;
   font-weight: 800;
-  color: lightgrey;
+  color: gray;
 }
 .request .info {
   font-size: 1.15rem;
