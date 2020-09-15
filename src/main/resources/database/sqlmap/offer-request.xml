@@ -29,7 +29,7 @@
         INSERT INTO requests
         VALUES (
                 NULL, #{dealType}, #{offerRequestTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice},
-                #{moveIn}, #{room}, ${floor}, #{pyeong}, #{location}, #{requiredConditions}, #{demand}, #{phone},
+                #{moveIn}, #{room}, #{floor}, #{pyeong}, #{location}, #{requiredConditions}, #{demand}, #{phone},
                 ${hits}, #{isAgree}, current_timestamp
         )
     </insert>
