@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="/web-resources/css/post_detail.css">
 
         <%@include file="/WEB-INF/jsp/commons/tempory_header.jspf"%>
+        <%@include file="../commons/map.jspf"%>
     </head>
 
     <body>
@@ -62,7 +63,22 @@
                             <p class="title-desc">필요한 방 갯수</p>
                             <p>방 ${request.room}</p>
                             <p class="title-desc">선호하는 지역</p>
-                            <p>${request.location}</p>
+                            <p>
+                                <c:choose>
+                                    <c:when test="${empty request.latitude2}">
+                                        ${fn:replace(request.location, ",", "")}
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${request.location}
+                                    </c:otherwise>
+                                </c:choose>
+                            </p>
+                            <div class="map w-full pt-1" style="display: flex;">
+                                <div id="wantedLocation" style="width: 70%; height: 400px; margin: 0 5px;"></div>
+                                <c:if test="${not empty request.latitude2}">
+                                <div id="wantedLocation2" style="width: 70%; height: 400px; margin: 0 5px"></div>
+                                </c:if>
+                            </div>
                             <p class="title-desc">필수 고려조건</p>
                             <c:forEach var="condition" items="${request.conditionTypeList}" varStatus="vs">
                                 <span class="condition">${condition.value}</span>
@@ -81,3 +97,13 @@
         </div>
     </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        loadMapMaker("wantedLocation", ${request.latitude}, ${request.longitude});
+
+        <c:if test="${not empty request.latitude2}">
+            loadMapMaker("wantedLocation2", ${request.latitude2}, ${request.longitude2});
+        </c:if>
+    });
+</script>

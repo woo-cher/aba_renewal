@@ -35,6 +35,11 @@ public class OfferRequest extends ModelMapper {
     @JsonProperty("isAgree")
     private boolean isAgree;
 
+    private String latitude;
+    private String longitude;
+    private String latitude2;
+    private String longitude2;
+
     private List<RequiredConditionType> conditionTypeList;
     private List<OfferRequestType> offerTypeList;
 }

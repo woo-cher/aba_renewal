@@ -266,3 +266,25 @@ class MapModule {
         return target.classList.contains(clazz)
     }
 }
+
+function loadMapMaker(mapElementId, latitude, longitude) {
+    $('#' + mapElementId).show();
+
+    let map = new kakao.maps.Map(document.getElementById(mapElementId), {
+        center: new kakao.maps.LatLng(latitude, longitude),
+        level: 3,
+        minLevel: 2,
+        maxLevel: 2
+    });
+
+    let imageSrc = '/web-resources/img/offer/detail_map_icon.png',
+        imageSize = new kakao.maps.Size(25, 35),
+        imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
+
+    let marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(latitude, longitude),
+        image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+    });
+
+    marker.setMap(map);
+}

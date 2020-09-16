@@ -20,6 +20,10 @@
         <result property="demand" column="demand" />
         <result property="hits" column="hits" />
         <result property="isAgree" column="is_agree" />
+        <result property="latitude" column="latitude" />
+        <result property="longitude" column="longitude" />
+        <result property="latitude2" column="latitude2" />
+        <result property="longitude2" column="longitude2" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="requiredConditions" column="required_conditions" />
 
@@ -30,7 +34,7 @@
         VALUES (
                 NULL, #{dealType}, #{offerRequestTypes}, #{deposit}, #{monthlyDeposit}, #{monthlyPrice}, #{salePrice},
                 #{moveIn}, #{room}, #{floor}, #{pyeong}, #{location}, #{requiredConditions}, #{demand}, #{phone},
-                ${hits}, #{isAgree}, current_timestamp
+                ${hits}, #{isAgree}, #{latitude}, #{longitude}, #{latitude2}, #{longitude2}, current_timestamp
         )
     </insert>
 

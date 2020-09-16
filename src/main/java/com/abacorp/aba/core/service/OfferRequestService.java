@@ -29,7 +29,7 @@ public class OfferRequestService {
         String phone = offerRequest.getPhone().replaceAll(",", "-");
         offerRequest.setPhone(phone);
 
-        String addr = offerRequest.getLocation().replaceAll(",", "");
+        String addr = offerRequest.getLocation().replaceAll(",", ", ");
         offerRequest.setLocation(addr);
 
         return repository.createOfferRequest(offerRequest);

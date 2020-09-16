@@ -23,14 +23,22 @@ function getAddress(target) {
                 document.getElementById('jibun').value = data.jibunAddress;
             }
 
-
             $('#jibun').removeClass('invalid b-1r');
             $('#road').removeClass('invalid b-1r');
 
             let result = searchKakaoAddress(data.jibunAddress)['documents'][0];
 
-            $('#latitude').val(result['y']);
-            $('#longitude').val(result['x']);
+            if(target === "jibun2") {
+                $('#latitude2').val(result['y']);
+                $('#longitude2').val(result['x']);
+
+                loadMapMaker("locationMap2", result['y'], result['x'])
+            } else {
+                $('#latitude').val(result['y']);
+                $('#longitude').val(result['x']);
+
+                loadMapMaker("locationMap", result['y'], result['x'])
+            }
 
             isFindAddress = true;
         }
