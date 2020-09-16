@@ -171,11 +171,11 @@
 
                         <div class="form-label">
                             <i class="fas fa-circle"></i>
-                            <span>평수 선택</span>
+                            <span>평수</span>
                         </div>
                         <div class="form-control align-center">
                             <a class="select-box" id="select-pyeong">
-                                <span class="txt" id="pyeong-txt">평수 선택</span>
+                                <span class="txt" id="pyeong-txt">평수</span>
                                 <span class="icon">
                                     <img src="/web-resources/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>
@@ -248,7 +248,7 @@
                             <div class="form-label">
                                 <span>반드시 고려해야 할 조건이 있으신가요? (최대 3개 선택 가능)</span>
                             </div>
-                            <ul class="checkbox-container form type pt-1 check-area">
+                            <ul class="checkbox-container form type pt-3 check-area">
                                 <c:forEach begin="1" var="type" items="${conditions}" varStatus="vs">
                                     <li class="checkbox-list">
                                         <input id="required${vs.index}" type="checkbox" name="requiredConditions" value="${vs.index}"

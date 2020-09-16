@@ -35,7 +35,7 @@
     </insert>
 
     <select id="selectOfferRequests" resultMap="offerRequest">
-        SELECT * FROM requests
+        SELECT * FROM requests ORDER BY created_at DESC
     </select>
 
     <select id="selectOfferRequestById" resultMap="offerRequest" parameterType="int">
@@ -43,7 +43,7 @@
     </select>
 
     <select id="selectOfferRequestByPhone" resultMap="offerRequest" parameterType="java.lang.String">
-        SELECT * FROM requests WHERE phone = #{phone}
+        SELECT * FROM requests WHERE phone = #{phone} ORDER BY created_at DESC
     </select>
 
 

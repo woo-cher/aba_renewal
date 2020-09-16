@@ -53,12 +53,12 @@
                                     <div class="request price">
                                         <p>
                                             <c:if test="${not empty request.deposit}">
-                                                전세보증금 ${request.deposit}
+                                                보증금 ${request.deposit}
                                             </c:if>
                                         </p>
                                         <p>
                                             <c:if test="${not empty request.monthlyDeposit}">
-                                                월세보증금 ${request.monthlyDeposit}
+                                                보증금 ${request.monthlyDeposit}
                                             </c:if>
                                         </p>
                                         <p>

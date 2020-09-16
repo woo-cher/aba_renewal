@@ -66,8 +66,5 @@
 
             </section>
         </div>
-
-    <!-- footer -->
-    <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
     </body>
 </html>

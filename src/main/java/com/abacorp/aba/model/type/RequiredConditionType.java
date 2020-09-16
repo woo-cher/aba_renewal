@@ -11,19 +11,20 @@ public enum RequiredConditionType implements TypeMapper {
     /**
      * 거래 유형
      */
+    LOAN("전세자금대출"),
     TRANSPORT("대중교통"),
-    PARKING("주차장"),
     ELEVATOR("엘리베이터"),
-    DAYLIGHT("채광"),
-    PET("반려동물"),
+    PARKING("주차장"),
     FULL_OPTION("풀옵션"),
-    CONVENIENCE_STORE("편의점"),
     NEW("신축"),
-    STORAGE("수납"),
-    TERRACE("테라스"),
+    PET("반려동물"),
+    SUNLIGHT("일조량"),
     QUITE("조용한"),
-    MIDDLE_HIGH_SCHOOL("중고등학교"),
-    MANLESS_DELIVERY("무인택배함");
+    CONVENIENCE_STORE("편의점"),
+    STORAGE("수납공간"),
+    VERANDA("베란다/발코니"),
+    SCHOOL("학군"),
+    MANLESS_DELIVERY("개별난방");
 
     private String value;
 
