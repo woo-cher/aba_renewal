@@ -184,7 +184,6 @@ function dialogEventListener(dialogId, selectBoxId) {
         let val = e.currentTarget.innerHTML;
 
         $('#' + selectBoxId).find('input').val(val);
-        console.log("val : ", val);
         $('#' + selectBoxId).find('.txt').text(val);
 
         $('#' + dialogId).dialog('close');

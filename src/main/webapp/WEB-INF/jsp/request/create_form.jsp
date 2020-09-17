@@ -221,7 +221,7 @@
                                 <i class="fas fa-circle"></i>
                                 <span>장소1</span>
                             </div>
-                            <a class="select-box" onclick="addressInitializer('jibun')">
+                            <a class="select-box" onclick="getAddress('jibun')">
                                 <input readonly type="text" class="txt p-0" id="jibun" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/web-resources/img/svg/search-24px.svg">
@@ -237,7 +237,7 @@
                                 <i class="fas fa-circle"></i>
                                 <span>장소2</span>
                             </div>
-                            <a class="select-box" onclick="addressInitializer('jibun2')">
+                            <a class="select-box" onclick="getAddress('jibun2')">
                                 <input readonly type="text" class="txt p-0" id="jibun2" name="location" style="border: 0; margin: 0;" placeholder="장소,주소,지역"></input>
                                 <span class="icon">
                                         <img src="/web-resources/img/svg/search-24px.svg">
@@ -407,21 +407,6 @@
         if(cnt > limit) {
             el.attr("checked", false);
             errorHandle(false, "최대 " + limit + "개까지 선택가능해요 :)");
-        }
-    }
-
-    function addressInitializer(inputId) {
-        getAddress(inputId);
-
-        let geoLocationElement = inputId === "jibun2" ? "latitude2" : "latitude";
-        let geolocationValue = $(geoLocationElement).val();
-
-        console.log(inputId, geoLocationElement, geolocationValue);
-
-        if(inputId === "jibun2") {
-
-        } else {
-
         }
     }
 

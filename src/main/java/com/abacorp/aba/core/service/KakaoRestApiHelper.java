@@ -19,6 +19,7 @@ public class KakaoRestApiHelper {
     private static final String SEARCH_PLACE_KEYWORD_PATH = "/v2/local/search/address.json";
 
     public ResponseEntity<String> getPlaceGeoByKeyword(String areaKeyword) throws Exception {
+        log.info("keyword : {}", areaKeyword);
         String queryString = "?query=" + URLEncoder.encode(areaKeyword, "UTF-8");
 
         RestTemplate restTemplate = new RestTemplate();
