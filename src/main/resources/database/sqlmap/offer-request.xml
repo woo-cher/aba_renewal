@@ -26,8 +26,37 @@
         <result property="longitude2" column="longitude2" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="requiredConditions" column="required_conditions" />
-
     </resultMap>
+
+    <sql id="filtersQuery">
+        <if test="requestTypes.length != 0">
+            <foreach collection="requestTypes" item="type">
+                AND (offer_request_types LIKE CONCAT('%',#{type},'%'))
+            </foreach>
+        </if>
+        <if test="dealTypes.length != 0">
+            AND (
+            <foreach collection="dealTypes" item="type" index="i">
+                deal_type = #{type} <if test="i != dealTypes.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
+        <if test="room.length != 0">
+            AND (
+            <foreach collection="room" item="value" index="i">
+                room LIKE CONCAT('%', #{value}, '%') <if test="i != room.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
+        <if test="moveIn.length != 0">
+            AND (
+            <foreach collection="moveIn" item="value" index="i">
+                IF(CHAR_LENGTH(move_in) = 4, move_in, subString(move_in, 6, 7)) LIKE CONCAT('%', #{value}, '%')
+                <if test="i != moveIn.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
+    </sql>
 
     <insert id="insertOfferRequest" parameterType="offerRequest">
         INSERT INTO requests
@@ -40,6 +69,12 @@
 
     <select id="selectOfferRequests" resultMap="offerRequest">
         SELECT * FROM requests ORDER BY created_at DESC
+    </select>
+
+    <select id="selectOfferRequestsByFilter" resultMap="offerRequest" parameterType="RequestFilterDto">
+        SELECT * FROM requests WHERE id != 0
+        <include refid="filtersQuery" />
+        ORDER BY created_at DESC
     </select>
 
     <select id="selectOfferRequestById" resultMap="offerRequest" parameterType="int">

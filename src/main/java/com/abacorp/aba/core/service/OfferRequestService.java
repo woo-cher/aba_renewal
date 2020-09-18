@@ -2,9 +2,11 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OfferRequestRepository;
 import com.abacorp.aba.model.OfferRequest;
+import com.abacorp.aba.model.dto.RequestFilterDto;
 import com.abacorp.aba.model.type.OfferRequestType;
 import com.abacorp.aba.model.type.RequiredConditionType;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.filters.RequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,8 +53,8 @@ public class OfferRequestService {
         return offerRequest;
     }
 
-    public List<OfferRequest> selectRequests() {
-        List<OfferRequest> offerRequests = repository.findOfferRequests();
+    public List<OfferRequest> selectRequests(RequestFilterDto filterDto) {
+        List<OfferRequest> offerRequests = repository.findOfferRequests(filterDto);
 
         for(OfferRequest request : offerRequests) {
             convertIndexToCustomType(request);

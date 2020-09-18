@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.repository;
 
 import com.abacorp.aba.model.OfferRequest;
+import com.abacorp.aba.model.dto.RequestFilterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,10 @@ public class OfferRequestRepository {
         return sqlSession.selectOne("selectOfferRequestById", id);
     }
 
-    public List<OfferRequest> findOfferRequests() {
-        return sqlSession.selectList("selectOfferRequests");
+    public List<OfferRequest> findOfferRequests(RequestFilterDto filterDto) {
+        return filterDto == null ?
+                sqlSession.selectList("selectOfferRequests") :
+                sqlSession.selectList("selectOfferRequestsByFilter", filterDto);
     }
 
     public int deleteOfferRequest(int id) {

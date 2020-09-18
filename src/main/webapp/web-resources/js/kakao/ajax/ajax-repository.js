@@ -163,3 +163,22 @@ function addFiltersOfReqBody(reqBody) {
 
     return JSON.stringify(reqBody);
 }
+
+function getRequests(requestFilterDto) {
+    console.log(requestFilterDto);
+    let result;
+
+    $.ajax({
+        url: '/requests/filters',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(requestFilterDto),
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}

@@ -313,10 +313,6 @@
         mapManager.eventTrigger();
     }
 
-    function removeSpecifiedElement(array, indexOf) {
-        array.splice(indexOf, 1);
-    }
-
     $(document).ready(function () {
         let coll = document.getElementsByClassName("collapsible");
         let last;

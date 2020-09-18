@@ -94,6 +94,11 @@ function getUrlParameter(reqParam) {
     }
 }
 
+// For array swap
+function removeSpecifiedElement(array, indexOf) {
+    array.splice(indexOf, 1);
+}
+
 function getElement() {
     return `<div class="box">
             <div class="content label">

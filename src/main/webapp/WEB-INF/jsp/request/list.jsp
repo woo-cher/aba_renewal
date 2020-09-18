@@ -9,6 +9,8 @@
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_list.css">
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/map/filter-bar.css">
 
+        <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
+
         <%@include file="/WEB-INF/jsp/commons/tempory_header.jspf"%>
     </head>
 

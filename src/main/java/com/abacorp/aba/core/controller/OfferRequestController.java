@@ -41,7 +41,7 @@ public class OfferRequestController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@ModelAttribute OfferRequest offerRequest) throws SQLException {
+    public String create(@ModelAttribute OfferRequest offerRequest) throws SQLException {
         log.info("offerRequest : {}", offerRequest);
 
         int row = service.createRequest(offerRequest);
@@ -50,7 +50,7 @@ public class OfferRequestController {
             throw new SQLException("OfferRequest insert error.. row : 0");
         }
 
-        return readAll();
+        return "redirect:/requests/all";
     }
 
     @RequestMapping(value = "/{request}", method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class OfferRequestController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView readAll() {
-        List<OfferRequest> offerRequests = service.selectRequests();
+        List<OfferRequest> offerRequests = service.selectRequests(null);
 
         mv.addObject("requests", offerRequests);
         mv.addObject("requestTypes", OfferRequestType.values());
