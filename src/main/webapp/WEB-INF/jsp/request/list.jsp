@@ -128,4 +128,70 @@
             });
         }
     });
+
+    /**
+     * jstl 의 ${var} 태그와, ES6 템플릿 리터럴 `${var}` 이 충돌나기 때문에,
+     * ES6 템플릿 리터럴이 적용되지 않는다.
+     *
+     * 따라서, 이를 위해 `${ '${var}' }` 이렇게 사용함
+     */
+    function updateOfferRequests(requests) {
+        let requestsArea = $('.list-table');
+
+        requestsArea.empty();
+        $('span[class="aba"]').empty();
+        $('div[class="request types"]').empty();
+
+        for(let i = 0; i < requests.length; i++) {
+            let req = requests[i];
+            requestsArea.append(`
+           <li class="list-row" onclick="location.href='/requests/${ '${req.id}' }'">
+                <div class="request header">
+                    <span class="demand list-title">${ '${req.demand}' }</span>
+                    <p class="moveIn">
+                        ${ '${req.moveIn.includes(".") ? req.moveIn.substring(5, 10) : req.moveIn}' } 입주
+                    </p>
+                </div>
+
+                <div class="request types" id="types${'${req.id}'}"></div>
+                <div class="request price">
+                    <p>
+                        ${ '${req.deposit !== null ? "보증금 " + req.deposit : ""}' }
+                    </p>
+                    <p>
+                        ${ '${req.monthlyDeposit !== null ? "보증금 " + req.monthlyDeposit : ""}' }
+                    </p>
+                    <p>
+                        ${ '${req.monthlyPrice !== null ? "월세 " + req.monthlyPrice : ""}' }
+                    </p>
+                </div>
+                <div class="request required">
+                    <span class="aba" id="condition${'${req.id}'}"></span>
+                </div>
+                <div class="request info pt-3">
+                    <span class="info"><i class="aba txt-lg fas fa-arrows-alt"></i>${'${req.pyeong}'}</span>
+                    <span class="info"><i class="aba txt-lg fas fa-sort-numeric-up-alt"></i>${'${req.floor}'}</span>
+                    <span class="info"><i class="aba txt-lg fas fa-door-open"></i>${'${req.room}'}</span>
+                </div>
+            </li>
+            `);
+
+            for(let i = 0; i < req.conditionTypeList.length; i++) {
+                let type = req.conditionTypeList[i];
+
+                $('#condition' + req.id).append(`
+                   <span class="condition"># ${ '${type.value}' }</span>
+                `)
+            }
+
+            for(let i = 0; i < req.offerTypeList.length; i++) {
+                let type = req.offerTypeList[i];
+                let size = req.offerTypeList.length;
+
+                $('#types' + req.id).append(`
+                    <span>${ '${type.value}' }${'${i !== size - 1 ? "," : ""}'}</span>
+                `)
+            }
+        }
+    }
 </script>

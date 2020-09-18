@@ -165,7 +165,6 @@ function addFiltersOfReqBody(reqBody) {
 }
 
 function getRequests(requestFilterDto) {
-    console.log(requestFilterDto);
     let result;
 
     $.ajax({

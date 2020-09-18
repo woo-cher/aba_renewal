@@ -157,6 +157,10 @@
         focus.parents('form').each(function () {
             this.reset();
         });
+
+        let requests = getRequests(requestFilterDto);
+
+        updateOfferRequests(requests);
     }
 
     function updateDtoModel(focus) {
@@ -171,6 +175,8 @@
             requestFilterDto[key] = focus.val();
         }
 
-        getRequests(requestFilterDto);
+        let requests = getRequests(requestFilterDto);
+
+        updateOfferRequests(requests);
     }
 </script>

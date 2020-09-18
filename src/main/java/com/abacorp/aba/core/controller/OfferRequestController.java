@@ -60,7 +60,6 @@ public class OfferRequestController {
         mv.addObject("request", offerRequest);
         mv.setViewName("request/detail");
 
-
         return mv;
     }
 
