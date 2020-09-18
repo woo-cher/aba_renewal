@@ -164,6 +164,10 @@ datalist option {
   width: 200px;
   height: 150px;
 }
+.detail-container.request {
+  width: 300px;
+  height: auto;
+}
 .detail-container.all {
   width: 990px;
   height: auto;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -68,6 +69,10 @@ public class OfferRequestController {
         List<OfferRequest> offerRequests = service.selectRequests();
 
         mv.addObject("requests", offerRequests);
+        mv.addObject("requestTypes", OfferRequestType.values());
+        mv.addObject("dealTypes", DealType.values());
+        mv.addObject("month", new Date().getMonth() + 1);
+
         mv.setViewName("request/list");
 
         return mv;

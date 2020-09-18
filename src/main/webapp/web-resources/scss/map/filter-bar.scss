@@ -8,9 +8,7 @@ $abaColor: #00adef;
 .detail-container {
   &.offer-type { width: 300px; height: 250px; }
   &.deal { width: 200px; height: 150px; }
-  &.deposit {}
-  &.manage {}
-  &.completion {}
+  &.request { width: 300px; height: auto; }
   &.all { width: 990px; height: auto; display: inline-block; position: relative; }
 
   .detail-wrap { padding: 1%; width: 31%; display: inline-block; }

@@ -7,6 +7,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_list.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/map/filter-bar.css">
 
         <%@include file="/WEB-INF/jsp/commons/tempory_header.jspf"%>
     </head>
@@ -20,6 +21,10 @@
                         명이 집을 찾고 있어요
                         <label class="aba">:)</label>
                     </span>
+
+                    <%-- Filter area --%>
+                    <%@include file="/WEB-INF/jsp/request/filter.jsp"%>
+
                     <p class="request-fixed">
                         <span class="aba request-label">우리집 추천해줘! :D</span>
                         <a href="/requests/create/form" class="request-btn"></a>
@@ -91,3 +96,34 @@
         </div>
     </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        let coll = document.getElementsByClassName("collapsible");
+        let last;
+
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                if(last !== undefined && last !== this) {
+                    last.classList.toggle("active");
+                    last.nextElementSibling.style.maxHeight = null;
+                    last.nextElementSibling.style.border = null;
+                }
+
+                this.classList.toggle("active");
+
+                const content = this.nextElementSibling;
+
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.style.border = null;
+                    last = undefined
+                } else {
+                    content.style.maxHeight = "230";
+                    content.style.border = "1px solid rgb(187, 187, 187)";
+                    last = this;
+                }
+            });
+        }
+    });
+</script>
