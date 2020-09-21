@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="filter-bar pt-3">
+<div class="filter-bar">
     <ul class="filter-group">
         <li class="filter-el">
-            <form>
+            <form class="filter-form">
                 <a class="collapsible" href="#">
                     <i class="fas fa-home fa-sm"></i>
                     주거
@@ -20,7 +20,7 @@
                             <p class="caption">중복선택이 가능해요 ;)</p>
                         </header>
 
-                        <ul class="checkbox-container" id="requestType" style="font-size: 0.9rem;">
+                        <ul class="checkbox-container flex-center" id="requestType" style="font-size: 0.9rem;">
                             <c:if test="${not empty requestTypes}">
                                 <c:forEach var="requestType" items="${requestTypes}" begin="1" varStatus="vs">
                                     <li class="checkbox-list">
@@ -38,7 +38,7 @@
         </li>
 
         <li class="filter-el">
-            <form>
+            <form class="filter-form">
                 <a class="collapsible" href="#">
                     <i class="fas fa-handshake fa-sm"></i>
                     거래
@@ -72,10 +72,10 @@
         </li>
 
         <li class="filter-el">
-            <form>
+            <form class="filter-form">
                 <a class="collapsible" href="#">
                     <i class="fas fa-door-open"></i>
-                    방갯수
+                    방개수
                 </a>
                 <div class="filter-detail">
                     <div class="f-c" style="position: absolute; right: 25px; top: 20px;">
@@ -104,7 +104,7 @@
         </li>
 
         <li class="filter-el">
-            <form>
+            <form class="filter-form">
                 <a class="collapsible" href="#">
                     <i class="fas fa-people-carry"></i>
                     입주일

@@ -253,4 +253,42 @@ datalist option {
   float: right;
 }
 
+@media screen and (max-width: 768px) {
+  .filter-bar,
+.list-header,
+.request.info {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .filter-group {
+    padding: 0 !important;
+    justify-content: center;
+  }
+
+  .filter-detail {
+    left: 7.5%;
+    width: 85%;
+    box-sizing: border-box;
+  }
+  .filter-detail .detail-container {
+    box-sizing: border-box;
+    padding: 25px 15px 0;
+    margin: 0;
+  }
+  .filter-detail .detail-container .request {
+    width: unset;
+  }
+
+  .filter-el {
+    text-align: center;
+    padding: 0 5px;
+  }
+  .filter-el a {
+    font-size: 3.4vw !important;
+    padding: 10px 12.5px !important;
+    margin-right: 0 !important;
+  }
+}
+
 /*# sourceMappingURL=filter-bar.css.map */

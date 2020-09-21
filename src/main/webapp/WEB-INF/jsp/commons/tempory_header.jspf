@@ -23,9 +23,9 @@
     </a>
 
     <ul class="menu">
-        <li id="requestscreateform"><a href="/requests/create/form">내집찾기</a></li>
-        <li id="requestsall"><a href="/requests/all">요청매물 목록</a></li>
-        <li id="requestsmycertified"><a href="/requests/my/certified">내 요청서</a></li>
+        <li class="requestscreateform"><a href="/requests/create/form">내집찾기</a></li>
+        <li class="requestsall"><a href="/requests/all">요청매물 목록</a></li>
+        <li class="requestsmycertified"><a href="/requests/my/certified">내 요청서</a></li>
     </ul>
 </header>
 

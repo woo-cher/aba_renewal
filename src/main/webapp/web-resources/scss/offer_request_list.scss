@@ -16,6 +16,10 @@ $shadowBasic: 1px 1px 2px lightgrey;
   .list-header {
     position: relative;
     padding-bottom: 5%;
+
+    h5 {
+      display: inherit;
+    }
   }
 
   .list-title {
@@ -124,4 +128,53 @@ $shadowBasic: 1px 1px 2px lightgrey;
 
 .request.price p {
   margin: 3px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .list-wrap {
+    width: unset;
+    margin: unset;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .collapsible:after,
+  .request-label {
+    display: none !important;
+  }
+
+  .request {
+    width: auto !important;
+  }
+
+  .list-title {
+    font-size: 1.2rem !important;
+
+    &.all {
+      padding-left: 15px;
+    }
+  }
+
+  .list-table {
+    padding: 15px 0 63px;
+
+    .list-row {
+      width: 100% !important;
+      min-height: auto;
+      padding: 0;
+
+      .demand {
+        text-indent: 0 !important;
+      }
+
+      .moveIn {
+        right: 0;
+      }
+
+      .info {
+        font-size: 3.6vw;
+        text-align: center;
+      }
+    }
+  }
 }

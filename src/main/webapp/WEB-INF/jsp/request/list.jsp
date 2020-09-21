@@ -4,6 +4,8 @@
 <html>
     <head>
         <title>요청 매물 목록</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_list.css">
@@ -18,20 +20,19 @@
         <div class="main-container">
             <div class="list-wrap">
                 <div class="list-header">
-                    <span class="list-title">총
-                        <label class="aba">${fn:length(requests)}</label>
+                    <span class="list-title all">총
+                        <label class="aba" id="how">${fn:length(requests)}</label>
                         명이 집을 찾고 있어요
                         <label class="aba">:)</label>
                     </span>
-
-                    <%-- Filter area --%>
-                    <%@include file="/WEB-INF/jsp/request/filter.jsp"%>
 
                     <p class="request-fixed">
                         <span class="aba request-label">우리집 추천해줘! :D</span>
                         <a href="/requests/create/form" class="request-btn"></a>
                     </p>
                 </div>
+                <%-- Filter area --%>
+                <%@include file="/WEB-INF/jsp/request/filter.jsp"%>
 
                 <ul class="list-table">
                     <c:choose>
@@ -96,6 +97,20 @@
                 </ul>
             </div>
         </div>
+        <div class="nav-m-b" id="listNavMobile"hidden>
+            <a href="#" class="requestscreateform" class="active">
+                <i class="fas fa-laptop-house"></i>
+                <p>내집찾기</p>
+            </a>
+            <a href="#" class="requestsall">
+                <i class="fas fa-laptop-house"></i>
+                <p>요청매물목록</p>
+            </a>
+            <a href="#" class="requestsmycertified">
+                <i class="fas fa-laptop-house"></i>
+                <p>내요청서</p>
+            </a>
+        </div>
     </body>
 </html>
 
@@ -137,17 +152,26 @@
      */
     function updateOfferRequests(requests) {
         let requestsArea = $('.list-table');
+        let size = requests.length;
 
         requestsArea.empty();
-        $('span[class="aba"]').empty();
-        $('div[class="request types"]').empty();
+        $('#how').text(size);
 
-        for(let i = 0; i < requests.length; i++) {
+        if(size === 0) {
+            requestsArea.append(`
+                <li class="w-full txt-lg aba pt-3 align-center">의뢰 목록이 없어요 :(</li>
+            `);
+
+            return;
+        }
+
+        for(let i = 0; i < size; i++) {
             let req = requests[i];
+
             requestsArea.append(`
            <li class="list-row" onclick="location.href='/requests/${ '${req.id}' }'">
                 <div class="request header">
-                    <span class="demand list-title">${ '${req.demand}' }</span>
+                    <span class="demand list-title all">${ '${req.demand}' }</span>
                     <p class="moveIn">
                         ${ '${req.moveIn.includes(".") ? req.moveIn.substring(5, 10) : req.moveIn}' } 입주
                     </p>

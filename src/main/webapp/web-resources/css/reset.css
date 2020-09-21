@@ -150,3 +150,43 @@ input { font-weight: 800; font-size: 15px;}
     font-size: 3rem;
 }
 
+@media screen and (max-width: 768px) {
+    body { min-width: 320px }
+
+    header {
+        max-width: unset !important;
+        margin: unset !important;
+    }
+
+    header .menu {
+        display: none;
+    }
+
+    .nav-m-b {
+        display: flex;
+        z-index: 50;
+        background-color: #fff;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .nav-m-b a {
+        border-top: 1.2px solid #ddd;
+        background-size: 20px!important;
+        width: 30%;
+        float: left;
+        display: block;
+        color: #222;
+        text-align: center;
+        padding: 14px 15px;
+        text-decoration: none;
+        font-size: .8rem;
+    }
+
+    .nav-m-b a.active {
+        background: #00b3ff;
+        color: #fff;
+    }
+}

@@ -8,6 +8,9 @@
   position: relative;
   padding-bottom: 5%;
 }
+.list-wrap .list-header h5 {
+  display: inherit;
+}
 .list-wrap .list-title {
   font-size: 1.3rem;
   font-weight: bold;
@@ -103,6 +106,50 @@
 
 .request.price p {
   margin: 3px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .list-wrap {
+    width: unset;
+    margin: unset;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .collapsible:after,
+.request-label {
+    display: none !important;
+  }
+
+  .request {
+    width: auto !important;
+  }
+
+  .list-title {
+    font-size: 1.2rem !important;
+  }
+  .list-title.all {
+    padding-left: 15px;
+  }
+
+  .list-table {
+    padding: 15px 0 63px;
+  }
+  .list-table .list-row {
+    width: 100% !important;
+    min-height: auto;
+    padding: 0;
+  }
+  .list-table .list-row .demand {
+    text-indent: 0 !important;
+  }
+  .list-table .list-row .moveIn {
+    right: 0;
+  }
+  .list-table .list-row .info {
+    font-size: 3.6vw;
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=offer_request_list.css.map */
