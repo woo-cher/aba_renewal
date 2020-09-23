@@ -5,6 +5,7 @@
 <head>
     <title>매물 찾아주세요!</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
 

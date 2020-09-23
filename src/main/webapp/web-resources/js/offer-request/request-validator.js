@@ -113,7 +113,7 @@ function errorHandle(isPassed, message) {
     }
 
     $('#error').text(" " + message);
-    $('.error').show();
+    $('.error').css('display', 'inline-block');
 
     return false;
 }

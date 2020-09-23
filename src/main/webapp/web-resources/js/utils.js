@@ -44,7 +44,7 @@ function activateWithUrl(regex, callback = null) {
         }
 
         if (el.includes("requestsmy")) {
-            $("#requestsmycertified").addClass('active');
+            $(".requestsmycertified").addClass('active');
         }
 
         $('.' + el).addClass('active');

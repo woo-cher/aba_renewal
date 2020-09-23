@@ -265,6 +265,9 @@ datalist option {
     padding: 0 !important;
     justify-content: center;
   }
+  .filter-group li {
+    font-size: 4vw;
+  }
 
   .filter-detail {
     left: 7.5%;
@@ -275,6 +278,11 @@ datalist option {
     box-sizing: border-box;
     padding: 25px 15px 0;
     margin: 0;
+  }
+  .filter-detail .detail-container .checkbox-container {
+    width: 85vw;
+    box-sizing: border-box;
+    margin-left: calc(-42.5vw + 50%);
   }
   .filter-detail .detail-container .request {
     width: unset;

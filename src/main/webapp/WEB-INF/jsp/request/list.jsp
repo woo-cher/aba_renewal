@@ -97,20 +97,6 @@
                 </ul>
             </div>
         </div>
-        <div class="nav-m-b" id="listNavMobile"hidden>
-            <a href="#" class="requestscreateform" class="active">
-                <i class="fas fa-laptop-house"></i>
-                <p>내집찾기</p>
-            </a>
-            <a href="#" class="requestsall">
-                <i class="fas fa-laptop-house"></i>
-                <p>요청매물목록</p>
-            </a>
-            <a href="#" class="requestsmycertified">
-                <i class="fas fa-laptop-house"></i>
-                <p>내요청서</p>
-            </a>
-        </div>
     </body>
 </html>
 

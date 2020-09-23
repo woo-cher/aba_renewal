@@ -121,6 +121,11 @@
     display: none !important;
   }
 
+  .request-btn {
+    padding: 1px 10px !important;
+    margin-right: 5px;
+  }
+
   .request {
     width: auto !important;
   }

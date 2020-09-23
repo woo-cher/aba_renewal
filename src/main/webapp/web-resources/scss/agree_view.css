@@ -134,6 +134,11 @@ table .notice {
   display: none;
 }
 
+@media screen and (max-width: 768px) {
+  .post-header, .main-header {
+    display: none;
+  }
+}
 #wrap {
   width: 100%;
   height: 100%;

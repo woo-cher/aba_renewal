@@ -111,6 +111,10 @@ $abaColor: #00adef;
   .filter-group {
     padding: 0 !important;
     justify-content: center;
+
+    li {
+      font-size: 4vw;
+    }
   }
 
   .filter-detail {
@@ -122,6 +126,12 @@ $abaColor: #00adef;
       box-sizing: border-box;
       padding: 25px 15px 0;
       margin: 0;
+
+      .checkbox-container {
+        width: 85vw;
+        box-sizing: border-box;
+        margin-left: calc(-42.5vw + 50%);
+      }
 
       .request {
         width: unset;

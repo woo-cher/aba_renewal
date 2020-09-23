@@ -6,6 +6,7 @@
 <head>
     <title>매물 찾아주세요!</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_create.css">
@@ -51,7 +52,7 @@
                                 </c:forEach>
                                 <div class="error-box"></div>
                             </ul>
-                            <div id="salePriceBox" class="" hidden><br>
+                            <div id="salePriceBox" class="slider-box" hidden><br>
                                 <div class="form-label align-center">
                                     <span class="px-3">매매가</span>
                                     <input type="text" class="aba middle txt-md" id="sale-amount" name="salePrice"
@@ -61,7 +62,7 @@
                                     <div id="sale-slider-range" class="slider"></div>
                                 </div>
                             </div>
-                            <div id="depositBox" class="" hidden>
+                            <div id="depositBox" class="slider-box" hidden>
                                 <div class="form-label align-center my-3">
                                     <span class="px-3">전세보증금</span>
                                     <input type="text" class="aba middle txt-md" id="deposit-amount" name="deposit"
@@ -70,8 +71,8 @@
                                 <div class="form-control">
                                     <div id="deposit-slider-range" class="slider"></div>
                                 </div>
-                            </div><br>
-                            <div id="monthlyDepositBox" class="" hidden>
+                            </div>
+                            <div id="monthlyDepositBox" class="slider-box" hidden>
                                 <div class="form-label align-center my-3">
                                     <span class="px-3">월세보증금</span>
                                     <input type="text" class="aba middle txt-md" id="monthly-deposit-amount" name="monthlyDeposit"
@@ -82,7 +83,7 @@
                                     <div id="monthly-deposit-slider-range" class="slider"></div>
                                 </div>
                             </div><br>
-                            <div id="monthlyPriceBox" class="pt-3" hidden>
+                            <div id="monthlyPriceBox" class="slider-box pt-3" hidden>
                                 <div class="form-label align-center">
                                     <span class="px-3">월세</span>
                                     <input type="text" class="aba middle txt-md" id="monthly-amount" name="monthlyPrice"
@@ -304,8 +305,8 @@
                         </div>
                     </section>
 
-                    <div class="form-control mt-0">
-                        <p class="error w-half align-center" style="margin: 0 auto !important;" hidden>
+                    <div class="form-control mt-0 align-center" id="mainError">
+                        <p class="error w-half align-center" hidden>
                             <i class="fas fa-exclamation-circle" id="error"></i>
                         </p>
                         <div class="align-center my-1">

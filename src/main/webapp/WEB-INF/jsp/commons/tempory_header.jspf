@@ -27,6 +27,21 @@
         <li class="requestsall"><a href="/requests/all">요청매물 목록</a></li>
         <li class="requestsmycertified"><a href="/requests/my/certified">내 요청서</a></li>
     </ul>
+
+    <div class="nav-m-b" id="listNavMobile" hidden>
+        <a href="/requests/create/form" class="requestscreateform" class="active">
+            <i class="fas fa-laptop-house"></i>
+            <p>내집찾기</p>
+        </a>
+        <a href="/requests/all" class="requestsall">
+            <i class="fas fa-laptop-house"></i>
+            <p>요청매물목록</p>
+        </a>
+        <a href="/requests/my/certified" class="requestsmycertified">
+            <i class="fas fa-laptop-house"></i>
+            <p>내요청서</p>
+        </a>
+    </div>
 </header>
 
 <script src="/web-resources/js/utils.js"></script>

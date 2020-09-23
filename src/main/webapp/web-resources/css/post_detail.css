@@ -91,3 +91,28 @@
     border-radius: 13px;
     margin: 1% 0;
 }
+
+@media screen and (max-width: 768px){
+    .contents {
+        width: 95% !important;
+    }
+
+    .head {
+        display: none;
+    }
+
+    .in01 h4 {
+        font-size: 1rem;
+    }
+
+    .map {
+        display: block !important;
+    }
+
+    #wantedLocation,
+    #wantedLocation2 {
+        margin-bottom: 15px !important;
+        width: 100% !important;
+        height: 200px !important;
+    }
+}
