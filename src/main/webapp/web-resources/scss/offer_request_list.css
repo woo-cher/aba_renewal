@@ -51,6 +51,7 @@
 
 .list-table {
   display: inline-block;
+  padding-top: 10px;
   width: 100%;
 }
 .list-table .list-row {

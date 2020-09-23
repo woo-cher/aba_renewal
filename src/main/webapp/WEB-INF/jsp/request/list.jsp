@@ -125,6 +125,7 @@
                     content.style.maxHeight = "230";
                     content.style.border = "1px solid rgb(187, 187, 187)";
                     last = this;
+                    collapsible = this.nextElementSibling;
                 }
             });
         }

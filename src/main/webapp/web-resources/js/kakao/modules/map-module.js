@@ -274,7 +274,7 @@ function loadMapMaker(mapElementId, latitude, longitude) {
         center: new kakao.maps.LatLng(latitude, longitude),
         level: 3,
         minLevel: 2,
-        maxLevel: 2
+        maxLevel: 10
     });
 
     let imageSrc = '/web-resources/img/offer/detail_map_icon.png',

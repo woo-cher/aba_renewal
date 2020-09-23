@@ -146,6 +146,7 @@ table .notice {
 
   #table table {
     width: 100%;
+    margin-top: 5%;
   }
   #table table tbody td {
     font-size: 4vw;
