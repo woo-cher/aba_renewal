@@ -32,10 +32,10 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">등록일</th>
-                            <th scope="col">조회</th>
+                            <th id="num" scope="col">번호</th>
+                            <th id="title" scope="col">제목</th>
+                            <th id="date" scope="col">등록일</th>
+                            <th id="hit" scope="col">조회</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +47,7 @@
                                     <td>
                                         <a href="#" onclick="window.open('/requests/${req.id}')" class="td02">${req.demand}</a>
                                     </td>
-                                    <td>${fn:substring(req.createdAt, 0, 10)}</td>
+                                    <td>${fn:substring(req.createdAt, 5, 10).replace("-", ".")}</td>
                                     <td>${req.hits}</td>
                                 </tr>
                                 </c:forEach>

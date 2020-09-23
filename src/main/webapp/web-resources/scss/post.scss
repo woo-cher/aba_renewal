@@ -3,7 +3,8 @@ input, select { padding: 1% 0 1% 1%; height: 45px; }
 
 $abaColor: #00adef;
 
-.post-header {
+.post-header,
+.main-header {
   width: 100%;
 
   & .title {
@@ -118,13 +119,7 @@ table .notice {
 }
 
 #table table tbody td .td02 {
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 250px;
-  display: inline-block;
-  text-align: center;
+  font-size: 1.25rem;
 }
 
 #table table tbody td .td02:hover {
@@ -146,7 +141,37 @@ table .notice {
 }
 
 @media screen and (max-width: 768px) {
-  .post-header {
-    display: none;
+  //.post-header { display: none; }
+  .title {
+    width: 50% !important;
+
+    .line {
+      border: 2px solid $abaColor !important;
+    }
+
+    h2 {
+      font-size: 7vw !important;
+      padding-top: 5% !important;
+    }
   }
+
+  #table table {
+    width: 100%;
+
+    tbody td {
+      font-size: 4vw;
+
+      & .td02 {
+        font-size: 4vw;
+        width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+      }
+    }
+  }
+
+  #num { width: 15%; }
+  #title { width: 45%; }
 }

@@ -147,6 +147,7 @@
   }
   .list-table .list-row .demand {
     text-indent: 0 !important;
+    width: 200px !important;
   }
   .list-table .list-row .moveIn {
     right: 0;

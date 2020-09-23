@@ -5,19 +5,23 @@ input, select {
   height: 45px;
 }
 
-.post-header, .main-header {
+.post-header,
+.main-header {
   width: 100%;
 }
-.post-header .title, .main-header .title {
+.post-header .title,
+.main-header .title {
   width: 15%;
   margin: 0 auto;
 }
-.post-header .title .line, .main-header .title .line {
+.post-header .title .line,
+.main-header .title .line {
   width: 35.6%;
   border: 5px solid #00adef;
   margin: 0 auto;
 }
-.post-header .title h2, .main-header .title h2 {
+.post-header .title h2,
+.main-header .title h2 {
   font-size: 2.8rem;
   text-align: center;
   padding-top: 10%;
@@ -107,7 +111,7 @@ table .notice {
 }
 
 #table table tbody td .td02 {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 #table table tbody td .td02:hover {
@@ -128,42 +132,40 @@ table .notice {
   display: none;
 }
 
-#wrap {
-  width: 100%;
-  height: 100%;
-}
+@media screen and (max-width: 768px) {
+  .title {
+    width: 50% !important;
+  }
+  .title .line {
+    border: 2px solid #00adef !important;
+  }
+  .title h2 {
+    font-size: 7vw !important;
+    padding-top: 5% !important;
+  }
 
-.main-header {
-  position: relative;
-}
-.main-header .title {
-  width: max-content !important;
-}
-.main-header .title h2 {
-  padding-top: 2vh;
-}
-.main-header a {
-  position: fixed;
-  top: 22vh;
-  cursor: pointer;
-}
-.main-header a img {
-  width: 50px;
-}
-.main-header a:hover {
-  zoom: 1.05;
-}
-.main-header a.prev {
-  left: 15%;
-}
-.main-header a.next {
-  right: 15%;
-}
+  #table table {
+    width: 100%;
+  }
+  #table table tbody td {
+    font-size: 4vw;
+  }
+  #table table tbody td .td02 {
+    font-size: 4vw;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
 
-.main-content {
-  padding: 5% 20%;
-  font-size: 1.25rem;
-  line-height: 2rem;
+  #num {
+    width: 15%;
+  }
+
+  #title {
+    width: 45%;
+  }
 }
 
 /*# sourceMappingURL=post.css.map */
