@@ -50,7 +50,6 @@
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
-  -webkit-box-align: center;
   align-items: center;
   padding: 4% 0;
 }
@@ -88,13 +87,17 @@
   padding: 0.5rem 0.25rem;
   border: 1px solid #cbd5e0;
   border-radius: 0.5rem;
-  height: 100%;
   width: 100%;
   text-align: center;
   cursor: pointer;
 }
 
 /* Scroll Bar */
+@media screen and (max-width: 768px) {
+  .checkbox-container.form {
+    padding-left: 0 !important;
+  }
+}
 /* Tier */
 /* Slider */
 .custom-slider {
@@ -293,7 +296,7 @@ datalist option {
     padding: 0 5px;
   }
   .filter-el a {
-    font-size: 3.4vw !important;
+    font-size: 3vw !important;
     padding: 10px 12.5px !important;
     margin-right: 0 !important;
   }

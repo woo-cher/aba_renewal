@@ -6,7 +6,7 @@
 <head>
     <title>매물 찾아주세요!</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_create.css">
@@ -310,8 +310,8 @@
                             <i class="fas fa-exclamation-circle" id="error"></i>
                         </p>
                         <div class="align-center my-1">
-                            <button type="button" id="prev" class="login-button w-35 fl" onclick="processNavigator(false)" hidden>이전</button>
-                            <button type="button" id="next" class="login-button w-35 fr" onclick="processNavigator(true)">다음</button>
+                            <button type="button" id="prev" class="login-button w-35 fl" onclick="processNavigator(false)" onfocus="processNavigator(false)" hidden>이전</button>
+                            <button type="button" id="next" class="login-button w-35 fr" onclick="processNavigator(true)" onfocus="processNavigator(true)">다음</button>
                             <button type="button" id="request-submit" class="login-button w-35 fr" style="display: none !important;"
                                     onclick="$('#submit-trigger').click()">의뢰하기
                             </button>

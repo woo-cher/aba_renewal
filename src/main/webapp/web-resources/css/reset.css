@@ -152,7 +152,6 @@ input { font-weight: 800; font-size: 15px;}
 
 @media screen and (max-width: 768px) {
     body { min-width: 320px }
-
     .main-container { overflow: hidden; }
 
     header {
@@ -184,7 +183,7 @@ input { font-weight: 800; font-size: 15px;}
         text-align: center;
         padding: 14px 15px;
         text-decoration: none;
-        font-size: .8rem;
+        font-size: 3.3vw;
     }
 
     .nav-m-b a.active {

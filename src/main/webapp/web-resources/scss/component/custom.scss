@@ -22,9 +22,12 @@ $abaColor: #00adef;
 .checkbox-container {
   display: flex;
   flex-wrap: wrap;
-  -webkit-box-align: center;
   align-items: center;
   padding: 4% 0;
+
+  //display: -webkit-box;
+  //-webkit-box-pack: center;
+  //-webkit-box-align: center;
 
   & li.absolute {
     position: absolute;
@@ -68,7 +71,6 @@ $abaColor: #00adef;
     padding: .5rem .25rem;
     border: 1px solid #cbd5e0;
     border-radius: .5rem;
-    height: 100%;
     width: 100%;
     text-align: center;
     cursor: pointer;
@@ -96,6 +98,14 @@ $abaColor: #00adef;
     &::-webkit-scrollbar-track {
       @include bg-radius(#f3f3f3, 12.5px);
       box-shadow: inset 0 0 5px white;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .checkbox-container {
+    &.form {
+      padding-left: 0 !important;
     }
   }
 }
