@@ -35,6 +35,10 @@ function activateWithUrl(regex, callback = null) {
     $(document).ready(() => {
         let el = window.location.pathname.replace(regex, "");
 
+        if(el === '') {
+            return;
+        }
+
         if (callback != null) {
             el = callback(el);
         }

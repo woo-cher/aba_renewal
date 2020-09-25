@@ -26,7 +26,7 @@
   right: 0;
 }
 .request-fixed .request-label {
-  font-size: 0.8rem;
+  font-size: 0.8vw;
   padding: 3% 5%;
   margin-right: 5%;
   border: 1px solid #dce6ee;
@@ -55,7 +55,7 @@
   width: 100%;
 }
 .list-table .list-row {
-  width: 47.5%;
+  width: 47%;
   min-height: 225px;
   display: list-item;
   position: relative;
@@ -84,7 +84,7 @@
 }
 .request .demand {
   text-indent: 10px;
-  width: 300px;
+  width: 70%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -93,12 +93,12 @@
   position: absolute;
   top: 10;
   right: 25;
-  font-size: 0.75rem;
+  font-size: 0.8vw;
   font-weight: 800;
   color: gray;
 }
 .request .info {
-  font-size: 1.15rem;
+  font-size: 1vw;
   margin-right: 5px;
 }
 .request .info i {
