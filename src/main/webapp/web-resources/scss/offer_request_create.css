@@ -77,17 +77,21 @@
   right: 15px;
 }
 
-.ui-dialog-content {
+#pyeong-dialog,
+#room-dialog,
+#moveIn-dialog {
   text-align: center;
   font-size: 1.1rem;
 }
-
-.ui-dialog-content > li {
+#pyeong-dialog li,
+#room-dialog li,
+#moveIn-dialog li {
   padding: 15px 5px;
   border-bottom: 1px solid gainsboro;
 }
-
-.ui-dialog-content > li:hover {
+#pyeong-dialog li:hover,
+#room-dialog li:hover,
+#moveIn-dialog li:hover {
   background: lightgrey;
   opacity: 0.5;
 }

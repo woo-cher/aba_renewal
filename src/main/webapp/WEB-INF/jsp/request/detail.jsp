@@ -101,10 +101,10 @@
 
 <script>
     $(document).ready(function () {
-        loadMapMaker("wantedLocation", ${request.latitude}, ${request.longitude});
+        loadMapWithMarker("wantedLocation", ${request.latitude}, ${request.longitude});
 
         <c:if test="${not empty request.latitude2}">
-            loadMapMaker("wantedLocation2", ${request.latitude2}, ${request.longitude2});
+            loadMapWithMarker("wantedLocation2", ${request.latitude2}, ${request.longitude2});
         </c:if>
     });
 </script>

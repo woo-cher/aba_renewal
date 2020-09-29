@@ -16,8 +16,8 @@
         <div class="container-wrap">
             <header class="content-header">
                 <ul id="navigator">
-                    <li id="pays" onclick="nav('')"><a>결제 통합관리</a></li>
-                    <li id="" onclick="nav('')"><a>SUB 2</a></li>
+                    <li class="pays" onclick="nav('')"><a>결제 통합관리</a></li>
+                    <li class="" onclick="nav('')"><a>SUB 2</a></li>
                 </ul>
             </header>
             <div class="content-wrap">

@@ -267,7 +267,7 @@ class MapModule {
     }
 }
 
-function loadMapMaker(mapElementId, latitude, longitude) {
+function loadMapWithMarker(mapElementId, latitude, longitude) {
     $('#' + mapElementId).show();
 
     var map = new kakao.maps.Map(document.getElementById(mapElementId), {

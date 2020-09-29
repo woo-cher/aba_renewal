@@ -77,5 +77,5 @@ function setLatLngByRegion(target, latitude, longitude) {
         return
     }
 
-    loadMapMaker(mapIdForMarker, latitude, longitude);
+    loadMapWithMarker(mapIdForMarker, latitude, longitude);
 }

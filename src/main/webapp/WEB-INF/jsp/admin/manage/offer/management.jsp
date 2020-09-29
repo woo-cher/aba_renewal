@@ -17,8 +17,8 @@
         <div class="container-wrap">
             <header class="content-header">
                 <ul id="navigator">
-                    <li id="offers" onclick="nav('')"><a>매물 통합관리</a></li>
-                    <li id="reports" onclick="nav('/reports')"><a>매물신고 내역</a></li>
+                    <li class="offers" onclick="nav('')"><a>매물 통합관리</a></li>
+                    <li class="reports" onclick="nav('/reports')"><a>매물신고 내역</a></li>
                 </ul>
             </header>
             <div class="content-wrap">
