@@ -20,4 +20,12 @@
   font-size: 20px;
 }
 
+.nav-bar-col li {
+  padding: 4%;
+}
+.nav-bar-col li.active a, .nav-bar-col li:hover a {
+  color: #00adef;
+  font-weight: 600;
+}
+
 /*# sourceMappingURL=navibar.css.map */

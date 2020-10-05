@@ -1,0 +1,14 @@
+.main-container {
+  height: calc(100% - 71px);
+}
+
+.full-left-box {
+  width: 10%;
+  border-right: 3px solid #f0f0f0;
+}
+
+.full-right-box {
+  padding: 1%;
+  box-sizing: border-box;
+  width: calc(90% - 3px);
+}

@@ -7,25 +7,26 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
-    <link rel="stylesheet" type="text/css" href="/web-resources/scss/me/me.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
 
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
 </head>
 
 <body>
-    <div class="main-container pt-3">
-        <div class="container-wrap">
-            <header class="content-header">
-                <ul id="navigator">
-                    <li class="offers" onclick="nav('')"><a>매물 통합관리</a></li>
-                    <li class="reports" onclick="nav('/reports')"><a>매물신고 내역</a></li>
-                </ul>
-            </header>
-            <div class="content-wrap">
-                <c:if test="${not empty view}">
-                    <c:import url="${view}.jsp" />
-                </c:if>
-            </div>
+    <div class="main-container p-0 w-full in-flex">
+        <div class="full-left-box">
+            <ul id="navigator" class="nav-bar-col">
+                <li class="offers" onclick="nav('')"><a>매물 통합관리</a></li>
+                <li class="" onclick="nav('')"><a>SUB 2</a></li>
+                <li class="" onclick="nav('')"><a>SUB 3</a></li>
+                <li class="" onclick="nav('')"><a>SUB 4</a></li>
+                <li class="" onclick="nav('')"><a>SUB 5</a></li>
+            </ul>
+        </div>
+        <div class="full-right-box">
+            <c:if test="${not empty view}">
+                ${view}
+            </c:if>
         </div>
     </div>
 </body>

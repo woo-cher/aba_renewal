@@ -46,6 +46,7 @@
 .w-25 { width: 25% !important; }
 .w-10 { width: 10% !important;}
 .inline { display: inline-block !important; }
+.in-flex { display: inline-flex !important; }
 .flex { display: flex !important; }
 .fl { float: left !important;}
 .fr { float: right !important;}

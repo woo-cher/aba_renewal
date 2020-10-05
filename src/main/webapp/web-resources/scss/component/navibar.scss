@@ -33,8 +33,11 @@
 
     &.active,
     &:hover {
-      color: $abaColor;
-      font-weight: 600;
+
+      a {
+        color: $abaColor;
+        font-weight: 600;
+      }
     }
   }
 }
