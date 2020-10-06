@@ -1,0 +1,36 @@
+$borderColor: rgba(25, 110, 168, 0.15);
+
+.admin-list-table {
+  width: 100%;
+  border-spacing: 0;
+  border-radius: 1em;
+  border: 2px solid gainsboro;
+  overflow: hidden;
+
+  input[type="checkbox"] {
+    zoom: 1.5;
+  }
+
+  th {
+    font-family: s-core-dream-bold, serif !important;
+    font-size: 1.15rem;
+  }
+
+  td {
+    font-size: 1rem;
+  }
+
+  th, td { padding: 20px 15px; }
+
+  .table-top {
+    background: $borderColor;
+  }
+
+  .row > td {
+    border-bottom: 1px solid gainsboro;
+  }
+
+  td {
+    text-align: center;
+  }
+}

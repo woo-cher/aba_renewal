@@ -29,15 +29,12 @@
 
 .nav-bar-col {
   li {
-    padding: 4%;
+    padding: 5%;
 
     &.active,
     &:hover {
-
-      a {
-        color: $abaColor;
-        font-weight: 600;
-      }
+      color: $abaColor;
+      font-weight: 600;
     }
   }
 }

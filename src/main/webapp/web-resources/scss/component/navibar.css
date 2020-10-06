@@ -21,9 +21,9 @@
 }
 
 .nav-bar-col li {
-  padding: 4%;
+  padding: 5%;
 }
-.nav-bar-col li.active a, .nav-bar-col li:hover a {
+.nav-bar-col li.active, .nav-bar-col li:hover {
   color: #00adef;
   font-weight: 600;
 }

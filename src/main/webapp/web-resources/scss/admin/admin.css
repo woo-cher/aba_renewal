@@ -1,3 +1,31 @@
+button {
+  padding: 10px 15px;
+  border: 3px solid #00adef !important;
+  border-radius: 1em;
+  font-size: 1rem;
+  position: relative;
+}
+button.reverse {
+  color: #fff;
+  background: #00adef;
+}
+button.reverse:hover {
+  color: #00adef;
+  background: #fff;
+}
+button:hover {
+  color: #ffffff;
+  background: #00adef;
+}
+
+input[type=text] {
+  padding: 10px 15px;
+  border: 3px solid #00adef !important;
+  border-radius: 1em;
+  font-size: 1rem;
+  position: relative;
+}
+
 .main-container {
   height: calc(100% - 71px);
 }
@@ -6,11 +34,37 @@
   width: 10%;
   border-right: 3px solid #f0f0f0;
 }
+.full-left-box .left-header {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 25px 0;
+  border-bottom: 3px solid #f0f0f0;
+}
+.full-left-box .left-nav li {
+  padding: 12.5px 20px;
+}
 
 .full-right-box {
   padding: 1%;
   box-sizing: border-box;
   width: calc(90% - 3px);
+}
+.full-right-box .right-header {
+  padding: 10px 0;
+  font-size: 1.5rem;
+  height: 12.5%;
+}
+.full-right-box .right-header .btn-group {
+  padding: 20px 0;
+}
+.full-right-box .right-header .mini-header {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding-left: 5px;
+  color: gray;
+}
+.full-right-box .right-content {
+  height: calc(92.5% - 71px);
 }
 
 /*# sourceMappingURL=admin.css.map */

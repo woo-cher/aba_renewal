@@ -1,0 +1,31 @@
+.admin-list-table {
+  width: 100%;
+  border-spacing: 0;
+  border-radius: 1em;
+  border: 2px solid gainsboro;
+  overflow: hidden;
+}
+.admin-list-table input[type=checkbox] {
+  zoom: 1.5;
+}
+.admin-list-table th {
+  font-family: s-core-dream-bold, serif !important;
+  font-size: 1.15rem;
+}
+.admin-list-table td {
+  font-size: 1rem;
+}
+.admin-list-table th, .admin-list-table td {
+  padding: 20px 15px;
+}
+.admin-list-table .table-top {
+  background: rgba(25, 110, 168, 0.15);
+}
+.admin-list-table .row > td {
+  border-bottom: 1px solid gainsboro;
+}
+.admin-list-table td {
+  text-align: center;
+}
+
+/*# sourceMappingURL=table.css.map */
