@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
 
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
@@ -15,17 +16,18 @@
 <body>
     <div class="main-container p-0 w-full in-flex">
         <div class="full-left-box">
+            <header class="left-header aba">매물관리</header>
             <ul id="navigator" class="nav-bar-col">
-                <li class="offers" onclick="nav('')"><a>매물 통합관리</a></li>
-                <li class="" onclick="nav('')"><a>SUB 2</a></li>
-                <li class="" onclick="nav('')"><a>SUB 3</a></li>
-                <li class="" onclick="nav('')"><a>SUB 4</a></li>
-                <li class="" onclick="nav('')"><a>SUB 5</a></li>
+                <li class="offers" onclick="nav()">매물 통합관리</li>
+                <li class="offers_by_owner" onclick="nav('/offers_by_owner')">주인기준 통합관리</li>
+                <li class="" onclick="nav('')">SUB 3</li>
+                <li class="" onclick="nav('')">SUB 4</li>
+                <li class="" onclick="nav('')">SUB 5</li>
             </ul>
         </div>
         <div class="full-right-box">
             <c:if test="${not empty view}">
-                ${view}
+                <c:import url="${view}.jsp" />
             </c:if>
         </div>
     </div>
@@ -34,6 +36,8 @@
 
 <script>
     function nav(url) {
+        url = url === undefined ? '' : url;
+
         location.href = "/admin/manage/offers" + url;
     }
 

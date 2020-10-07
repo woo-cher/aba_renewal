@@ -51,6 +51,10 @@ function activateWithUrl(regex, callback = null) {
             $(".requestsmycertified").addClass('active');
         }
 
+        if (el.includes("offers")) {
+            $(".adminmanageoffers").addClass('active');
+        }
+
         $('.' + el).addClass('active');
     })
 }

@@ -2,9 +2,9 @@
 
 <div class="right-header">
     <header>
-        매물통합관리
-        <i class="fas fa-tasks"></i>
-        <span class="mini-header">모든 매물들을 통합으로 관리합니다.</span>
+        주인기준 통합관리
+        <i class="fas fa-house-user"></i>
+        <span class="mini-header">집주인의 연락처를 기준으로 한 매물들을 통합으로 관리합니다.</span>
     </header>
     <div class="btn-group">
         <button class="aba reverse" type="button" onclick="window.open('/offers/create/form')">
