@@ -106,32 +106,3 @@ function getUrlParameter(reqParam) {
 function removeSpecifiedElement(array, indexOf) {
     array.splice(indexOf, 1);
 }
-
-function getElement() {
-    return `<div class="box">
-            <div class="content label">
-                <div class="label-wrap">비밀번호 변경</div>
-            </div>
-            <div class="content avatar p-0">
-                <img class="w-25" src="/web-resources/img/guide.jpg">
-                <div class="content p-0">
-                    <div class="w-full">
-                        <span class="rank d-mark">D</span>
-                        <span class="txt-lg">아바</span>&nbsp;님
-                    </div>
-                </div>
-            </div>
-            <div class="box f-c w-half">
-                <form class="form-control p-0">
-                    <input required autofocus type="password" class="pw" placeholder="기존 비밀번호를 입력해주세요 :)" name="password"
-                           oninvalid="this.setCustomValidity(\`비밀번호를 입력해주세요 :)\`)"
-                           oninput="this.setCustomValidity(''); this.checkValidity()"
-                    >
-                    <div class="content align-center">
-                        <button class="btn inline" type="submit">확인</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-   `
-}

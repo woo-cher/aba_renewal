@@ -5,6 +5,8 @@ import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.type.UserType;
 import com.abacorp.aba.security.CustomUserDetails;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class UserService implements UserDetailsService {
+    private final int USERS_PER_PAGE = 1;
 
     @Autowired
     private UserRepository repository;
@@ -52,6 +55,12 @@ public class UserService implements UserDetailsService {
         }
 
         return this.repository.create(user);
+    }
+
+    public PageInfo<User> findAll(int page) {
+        return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
+                () -> repository.findAll()
+        );
     }
 
     public boolean isExistUser(String userId) {

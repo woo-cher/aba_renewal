@@ -15,7 +15,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class User extends ModelMapper {
+public class User {
     private String userId;
     private String password;
     private UserType type;

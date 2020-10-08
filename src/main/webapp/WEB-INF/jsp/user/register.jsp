@@ -373,7 +373,7 @@
         }
 
         $.ajax({
-            url: '/users/' + userId,
+            url: '/apis/users/' + userId,
             type: 'GET',
             async: false,
             success: function (isExist) {

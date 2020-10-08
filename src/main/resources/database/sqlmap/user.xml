@@ -3,9 +3,28 @@
 <mapper namespace="com.abacorp.aba.model.User">
 
     <!-- Mapper -->
-    <resultMap id="User" type="User" />
+    <resultMap id="user" type="user">
+<!--        <result property="userId" column="user_id" />-->
+<!--        <result property="password" column="password" />-->
+<!--        <result property="type" column="type" />-->
+<!--        <result property="name" column="name" />-->
+<!--        <result property="nickName" column="nick_name" />-->
+<!--        <result property="email" column="email" />-->
+<!--        <result property="phone" column="phone" />-->
+<!--        <result property="role" column="role" />-->
+<!--        <result property="avatarUrl" column="avatar_url" />-->
+<!--        <result property="jibunAddr" column="jibun_addr" />-->
+<!--        <result property="roadAddr" column="road_addr" />-->
+<!--        <result property="extraAddr" column="extra_addr" />-->
+<!--        <result property="locationX" column="location_x" />-->
+<!--        <result property="locationY" column="location_y" />-->
+<!--        <result property="lastIp" column="last_ip" />-->
+<!--        <result property="agentName" column="agent_name" />-->
+<!--        <result property="agentLeader" column="agent_leader" />-->
+<!--        <result property="agentNumber" column="agent_number" />-->
+    </resultMap>
 
-    <select id="createUser" parameterType="User">
+    <select id="createUser" parameterType="user">
         INSERT INTO users
         (
              user_id, password, type, name, nick_name, email, phone, role, created_at, jibun_addr, road_addr,
@@ -13,16 +32,16 @@
         )
         VALUES
         (
-                #{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role.name}, current_timestamp, #{jibunAddr}, #{roadAddr},
-                #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader}, #{locationX}, #{locationY}
+            #{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role.name}, current_timestamp, #{jibunAddr}, #{roadAddr},
+            #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader}, #{locationX}, #{locationY}
         )
     </select>
 
-    <select id="findAllUser" resultMap="User">
-        SELECT user_id, password, name, nick_name, role FROM users;
+    <select id="findAllUser" resultMap="user">
+        SELECT * FROM users
     </select>
 
-    <select id="findUserById" resultMap="User" parameterType="String">
+    <select id="findUserById" resultMap="user" parameterType="String">
         SELECT user_id, password, name, nick_name, role FROM users WHERE user_id = #{id};
     </select>
 </mapper>

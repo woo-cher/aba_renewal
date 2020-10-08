@@ -133,11 +133,11 @@ class MapModule {
             offerArea.append(`
                 <div class="paginator">
                     <div class="page-wrap">
-                        <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
+                        <button class="page prev" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
+                        <button class="page prev" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>

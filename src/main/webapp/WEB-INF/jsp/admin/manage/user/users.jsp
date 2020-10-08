@@ -27,12 +27,13 @@
             <th width="2.5%">
                 <input type="checkbox">
             </th>
-            <th width="15%">2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
+            <th>프로필</th>
+            <th width="15%">아이디</th>
+            <th>회원유형</th>
+            <th>이름</th>
+            <th>연락처</th>
+            <th>이메일</th>
+            <th>권한</th>
         </tr>
         <tr class="row">
             <td>
@@ -46,7 +47,25 @@
             <td>a</td>
         </tr>
         <tr>
-            <td colspan="7">paging</td>
+            <td colspan="7">
+                <div class="paginator">
+                    <div class="page-wrap">
+                        <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
+                            <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
+                        </button>
+                        <ul class="pages" style="display: contents;"></ul>
+                        <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
+                            <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
+                        </button>
+                    </div>
+                </div>
+            </td>
         </tr>
     </table>
 </div>
+
+<script>
+    $(document).ready(function () {
+        // Do something about `page bind`
+    })
+</script>

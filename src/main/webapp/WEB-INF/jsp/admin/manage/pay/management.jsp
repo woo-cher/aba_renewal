@@ -15,6 +15,7 @@
 <body>
     <div class="main-container p-0 w-full in-flex">
         <div class="full-left-box">
+            <header class="left-header aba">결제관리</header>
             <ul id="navigator" class="nav-bar-col">
                 <li class="pays" onclick="nav('')"><a>결제관리</a></li>
                 <li class="" onclick="nav('')"><a>SUB 2</a></li>
@@ -25,7 +26,7 @@
         </div>
         <div class="full-right-box">
             <c:if test="${not empty view}">
-                ${view}
+                <c:import url="${view}.jsp" />
             </c:if>
         </div>
     </div>
