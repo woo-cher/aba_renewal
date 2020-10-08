@@ -7,7 +7,7 @@
   overflow-y: auto;
 }
 
-.list-header, .paginator {
+.list-header {
   height: 49px;
   font-size: 19px;
   margin: 0px 30px;
@@ -16,7 +16,7 @@
   align-items: center;
   border-bottom: 1px solid #eeeeee;
 }
-.list-header strong, .paginator strong {
+.list-header strong {
   font-size: 22px;
   margin-left: 1%;
 }
@@ -78,55 +78,6 @@
 .offer .offer-summary,
 .offer .offer-building .label-info {
   margin: 5px 0;
-}
-
-/* Paginator */
-.paginator {
-  text-align: center;
-  display: block !important;
-}
-.paginator .page-wrap {
-  display: inline-flex;
-}
-.paginator button {
-  cursor: pointer;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #aaaaaa;
-  border-image: initial;
-  border-radius: 50%;
-}
-.paginator button.disabled {
-  cursor: not-allowed;
-  opacity: 0.25;
-}
-.paginator button.disabled img {
-  pointer-events: none;
-}
-.paginator button:hover {
-  zoom: 1.05;
-}
-.paginator ul {
-  display: contents;
-}
-.paginator ul > li {
-  font-size: 1.05rem;
-  width: 1.5rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-  text-align: center;
-  color: #00adef;
-}
-.paginator ul > li:hover, .paginator ul > li.active {
-  color: white;
-  border-radius: 50%;
-  zoom: 1.1;
-}
-.paginator ul > li:hover {
-  background: #cccccc;
-}
-.paginator ul > li.active {
-  background: #00adef;
 }
 
 #title,

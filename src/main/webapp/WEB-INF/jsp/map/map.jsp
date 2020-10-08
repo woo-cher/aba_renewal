@@ -6,6 +6,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/map/map.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
 
         <%@include file="../commons/map.jspf"%>
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
