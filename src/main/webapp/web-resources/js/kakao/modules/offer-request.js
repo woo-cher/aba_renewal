@@ -1,7 +1,0 @@
-class OfferRequestModule {
-    constructor() {
-        //
-    }
-
-
-}

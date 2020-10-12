@@ -27,15 +27,16 @@
             <th width="2.5%">
                 <input type="checkbox">
             </th>
-            <th>프로필</th>
             <th width="15%">아이디</th>
-            <th>회원유형</th>
-            <th>이름</th>
+            <th width="10%">이름</th>
+            <th width="10%">회원유형</th>
+            <th width="10%">닉네임</th>
             <th>연락처</th>
             <th>이메일</th>
-            <th>권한</th>
+            <th width="10%">권한</th>
+            <th>&nbsp;</th>
         </tr>
-        <tr class="row">
+        <tr class="row" id="users">
             <td>
                 <input type="checkbox">
             </td>
@@ -45,16 +46,23 @@
             <td>a</td>
             <td>a</td>
             <td>a</td>
+            <td>a</td>
+            <td width="10%">
+                <span class="border-side">
+                    <i class="fas fa-pen"></i>
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+            </td>
         </tr>
         <tr>
-            <td colspan="7">
+            <td colspan="8">
                 <div class="paginator">
                     <div class="page-wrap">
-                        <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
+                        <button class="page prev" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
+                        <button class="page prev" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>

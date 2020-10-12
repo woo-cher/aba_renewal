@@ -1,11 +1,16 @@
 package com.abacorp.aba.model;
 
-import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.UserRoleType;
 import com.abacorp.aba.model.type.UserType;
 import lombok.*;
 
 /**
+ * @see com.abacorp.aba.model.mapper.ModelMapper
+ *
+ * NOTE>
+ *  User 클래스의 경우 Primary key 가 `userId` 이므로, 상속하지 않음
+ *  상속을 하게 되면, mybatis argument mismatch 에러 발생 이슈
+ *
  * @see UserRoleType
  * @see UserType
  */

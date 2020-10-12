@@ -117,15 +117,15 @@ class MapModule {
         this.endPage = pageInfo['pages'];
         this.updateOffers(offers, pageInfo['total']);
 
-        if(pageInfo['size'] !== 0) {
+        if (pageInfo['size'] !== 0) {
             this.bindPagination(pageInfo, $('.offer-list'), region);
         }
     }
 
-    bindPagination (pageInfo, offerArea, region = "") {
+    bindPagination(pageInfo, offerArea, region = "") {
         const pageNum = pageInfo['pageNum'];
 
-        if(this.startPage + 5 === pageNum) {
+        if (this.startPage + 5 === pageNum) {
             this.startPage = pageNum;
         }
 
@@ -133,11 +133,11 @@ class MapModule {
             offerArea.append(`
                 <div class="paginator">
                     <div class="page-wrap">
-                        <button class="page prev" onclick="">
+                        <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev" onclick="">
+                        <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
@@ -145,19 +145,7 @@ class MapModule {
             `)
         }
 
-        let count = 0;
-        const pageArea = $('.pages');
-
-        for(let num = this.startPage; num <= pageInfo['pages']; num++) {
-            if(count !== this.pageLength) {
-                pageArea.append(num === pageNum ?
-                    `<li class="active">${num}</li>` :
-                    `<li onclick="pagingCaller(${num}, null, '${region}')">${num}</li>`
-                );
-
-                count++;
-            }
-        }
+        pageCalculation($('.pages'), this.startPage, pageInfo, this.pageLength, region);
     }
 
     /**
@@ -212,8 +200,8 @@ class MapModule {
                             <div class="offer-summary">
                                 <strong>
                                     ${offer.type.value} |
-                                    ${offer.offerAddress.floor === '-1' ? offer.offerAddress.ho : 
-                                        offer.offerAddress.floor === '100' ? offer.offerAddress.ho : offer.offerAddress.ho + '호'} |
+                                    ${offer.offerAddress.floor === '-1' ? offer.offerAddress.ho :
+                    offer.offerAddress.floor === '100' ? offer.offerAddress.ho : offer.offerAddress.ho + '호'} |
                                     ${offer.heatingType.value}
                                 </strong>
                             </div>
@@ -279,7 +267,7 @@ function loadMapWithMarker(mapElementId, latitude, longitude) {
 
     var imageSrc = '/web-resources/img/offer/detail_map_icon.png',
         imageSize = new kakao.maps.Size(25, 35),
-        imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
+        imageOption = {offset: new kakao.maps.Point(20, 35)}; // ??
 
     var marker = new kakao.maps.Marker({
         position: new kakao.maps.LatLng(latitude, longitude),

@@ -35,7 +35,7 @@ function activateWithUrl(regex, callback = null) {
     $(document).ready(() => {
         let el = window.location.pathname.replace(regex, "");
 
-        if(el === '') {
+        if (el === '') {
             return;
         }
 
@@ -105,4 +105,21 @@ function getUrlParameter(reqParam) {
 // For array swap
 function removeSpecifiedElement(array, indexOf) {
     array.splice(indexOf, 1);
+}
+
+// Page Calculate
+function pageCalculation(where, startPage, pageInfo, pageLength, region = null) {
+    let count = 0;
+
+    for (let num = startPage; num <= pageInfo['pages']; num++) {
+        if (count !== pageLength) {
+            let element =
+                num === pageInfo['pageNum'] ? `<li class="active">${num}</li>`
+                    : region === null ? `<li onclick="">${num}</li>`
+                    : `<li onclick="pagingCaller(${num}, null, '${region}')">${num}</li>`;
+
+            where.append(element);
+            count++;
+        }
+    }
 }
