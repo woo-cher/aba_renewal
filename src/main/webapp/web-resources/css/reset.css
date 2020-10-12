@@ -34,28 +34,37 @@
 .pl-0 { padding-left: 0 !important;}
 .pl-3 { padding-left: 3% !important;}
 .px-3 { padding: 0 3% !important;}
+
 .mt-0 { margin-top: 0 !important; }
 .mb-0 { margin-bottom: 0 !important; }
 .my-1 { margin: 1% 0 !important; }
 .my-3 { margin: 3% 0 !important; }
 .m-auto { margin: 0 auto; !important; }
+
 .w-full { width: 100% !important; }
 .w-65 { width: 65% !important; }
 .w-half { width: 50% !important; }
 .w-35 { width: 35% !important; }
 .w-25 { width: 25% !important; }
 .w-10 { width: 10% !important;}
+
+.b-0 { border: 0 !important; }
+
 .inline { display: inline-block !important; }
 .in-flex { display: inline-flex !important; }
 .flex { display: flex !important; }
+
 .fl { float: left !important;}
 .fr { float: right !important;}
+
 .f-c { display: inline-flex !important; justify-content: center; align-items: center; }
 .f-l { display: inline-flex !important; justify-content: start; align-items: center; }
+
 .align-right { text-align: right !important; }
 .align-center { text-align: center !important; }
 .align-left { text-align: left !important; }
 .flex-center { justify-content: center !important; }
+
 .relative { position: relative !important; }
 
 /* font */

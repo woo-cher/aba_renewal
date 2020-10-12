@@ -12,6 +12,9 @@
   font-family: s-core-dream-bold, serif !important;
   font-size: 1.15rem;
 }
+.admin-list-table tr.checked {
+  background: aliceblue;
+}
 .admin-list-table td {
   font-size: 1rem;
 }

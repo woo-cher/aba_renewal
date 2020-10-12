@@ -7,10 +7,10 @@
   align-items: center;
   border-bottom: 1px solid #eeeeee;
   text-align: center;
-  display: block !important;
 }
 .paginator .page-wrap {
   display: inline-flex;
+  align-items: center;
 }
 .paginator button {
   cursor: pointer;

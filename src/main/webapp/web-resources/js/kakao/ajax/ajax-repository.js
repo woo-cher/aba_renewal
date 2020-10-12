@@ -181,3 +181,20 @@ function getRequests(requestFilterDto) {
 
     return result;
 }
+
+function getAllUsers(page) {
+    let result;
+
+    $.ajax({
+        url: '/apis/users/all/' + page,
+        type: 'GET',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}

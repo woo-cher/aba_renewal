@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
 
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
@@ -37,6 +38,10 @@
 <script>
     function nav(url) {
         location.href = "/admin/manage/users" + url;
+    }
+
+    function pageNavigator() {
+
     }
 
     activateWithSelector('#navigator > li');

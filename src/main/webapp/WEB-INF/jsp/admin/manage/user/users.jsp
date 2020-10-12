@@ -36,33 +36,16 @@
             <th width="10%">권한</th>
             <th>&nbsp;</th>
         </tr>
-        <tr class="row" id="users">
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td width="10%">
-                <span class="border-side">
-                    <i class="fas fa-pen"></i>
-                    <i class="fas fa-trash-alt"></i>
-                </span>
-            </td>
-        </tr>
+        <tbody class="row" id="users"></tbody>
         <tr>
-            <td colspan="8">
-                <div class="paginator">
+            <td colspan="9">
+                <div class="paginator f-c b-0 p-0">
                     <div class="page-wrap">
-                        <button class="page prev" onclick="">
+                        <button class="page prev p-0" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev" onclick="">
+                        <button class="page prev p-0" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
@@ -75,5 +58,43 @@
 <script>
     $(document).ready(function () {
         // Do something about `page bind`
-    })
+        const pageInfo = getAllUsers(1);
+        pageCalculation($('.pages'), 1, pageInfo, 5, null);
+        bindUsers($('#users'), 1, pageInfo);
+    });
+
+    function bindUsers(where, page, pageInfo) {
+        let users = pageInfo['list'];
+        let count = 0;
+
+        for(let i = 0; i < users.length; i++) {
+            let user = users[i];
+
+            where.append(`
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkbox" id="${'${user.userId}'}" onclick="onChecked($(this))">
+                </td>
+                <td>${'${user.userId}'}</td>
+                <td>${'${user.name}'}</td>
+                <td class="aba">${'${user.type.value}'}</td>
+                <td>${'${user.nickName == null ? "미설정" : user.nickName}'}</td>
+                <td>${'${user.phone}'}</td>
+                <td>${'${user.email}'}</td>
+                <td class="aba">${'${user.role.value}'}</td>
+                <td width="10%">
+                    <span class="border-side">
+                        <i class="fas fa-pen"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </span>
+                </td>
+            </tr>
+            `)
+        }
+    }
+
+    function onChecked(focus) {
+        let target = focus.parents('tr');
+        target.hasClass('checked') ? target.removeClass('checked') : target.addClass('checked')
+    }
 </script>
