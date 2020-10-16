@@ -41,11 +41,11 @@
             <td colspan="9">
                 <div class="paginator f-c b-0 p-0">
                     <div class="page-wrap">
-                        <button class="page prev p-0" onclick="">
+                        <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev p-0" onclick="">
+                        <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
@@ -56,17 +56,29 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        const pageInfo = getAllUsers(1);
+    let pageHelper = new PageHelper(5);
 
-        pageCalculation($('.pages'), 1, pageInfo, 5, null, (page) => {
-            <%--return `<li onclick="bindUsers($('#users'), ${'${page}'}, getAllUsers(${'${page}'}))">${'${page}'}</li>`--%>
+    $(document).ready(function () {
+        let pageInfo = getAllUsers(pageHelper.startPage);
+        bindUsers($('#users'), 1, pageInfo);
+
+        pageHelper.setEndPage(pageInfo['pages']);
+        pageHelper.pageCalculation(1, pageInfo, (page) => {
             bindUsers($('#users'), page, getAllUsers(page))
         });
-
-        activateWithSelector($('.pages > li'));
-        bindUsers($('#users'), 1, pageInfo);
     });
+
+    function onPrevOrNext(pageParam) {
+        pageHelper.prevOrNext(pageParam, () => {
+            let pageInfo = getAllUsers(pageParam);
+
+            bindUsers($('#users'), pageParam, pageInfo);
+
+            pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
+                bindUsers($('#users'), page, getAllUsers(page))
+            });
+        })
+    }
 
     function bindUsers(where, page, pageInfo) {
         let users = pageInfo['list'];

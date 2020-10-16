@@ -1,8 +1,8 @@
+document.write("<script src='/web-resources/js/page-helper.js'></script>");
+
 class MapModule {
     constructor() {
-        this.startPage = 1;
-        this.endPage = 0;
-        this.pageLength = 5;
+        this.pageHelper = new PageHelper(5)
     }
 
     getPolygons(coordinates) {
@@ -114,7 +114,7 @@ class MapModule {
 
     updateOffersAndPages(page, pageInfo = [], region) {
         const offers = pageInfo['size'] !== 0 ? pageInfo['list'] : [];
-        this.endPage = pageInfo['pages'];
+        this.pageHelper.endPage = pageInfo['pages'];
         this.updateOffers(offers, pageInfo['total']);
 
         if (pageInfo['size'] !== 0) {
@@ -125,19 +125,19 @@ class MapModule {
     bindPagination(pageInfo, offerArea, region = "") {
         const pageNum = pageInfo['pageNum'];
 
-        if (this.startPage + 5 === pageNum) {
-            this.startPage = pageNum;
+        if (this.pageHelper.startPage + 5 === pageNum) {
+            this.pageHelper.startPage = pageNum;
         }
 
         if (!offerArea.hasClass("paginator")) {
             offerArea.append(`
                 <div class="paginator">
                     <div class="page-wrap">
-                        <button class="page prev" onclick="pagingCaller(${this.startPage - 5}, true, '${region}')">
+                        <button class="page prev" onclick="pagingCaller(${this.pageHelper.startPage - 5}, true, '${region}')">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev" onclick="pagingCaller(${this.startPage + 5}, false, '${region}')">
+                        <button class="page prev" onclick="pagingCaller(${this.pageHelper.startPage + 5}, false, '${region}')">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
@@ -145,8 +145,8 @@ class MapModule {
             `)
         }
 
-        pageCalculation($('.pages'), this.startPage, pageInfo, this.pageLength, region, (page) => {
-            pagingCaller(page, null, region);
+        this.pageHelper.pageCalculation(this.pageHelper.startPage, pageInfo, (pageNum) => {
+            pagingCaller(pageNum, null, region);
         });
     }
 

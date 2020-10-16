@@ -108,14 +108,13 @@ function removeSpecifiedElement(array, indexOf) {
 }
 
 // Page Calculate
-function pageCalculation(where, startPage, pageInfo, pageLength, region = null, caller) {
+function pageCalculation(where, startPage, pageInfo, pageLength, caller) {
     let count = 0;
 
     for (let num = startPage; num <= pageInfo['pages']; num++) {
         if (count !== pageLength) {
             let test = document.createElement('li');
 
-            console.log(num, pageInfo['pageNum'])
             if (num === pageInfo['pageNum']) {
                 test.classList.add("active");
             }

@@ -87,17 +87,10 @@
         }
     });
 
+    // TODO) pagingCaller()의 역할이 모호함
     function pagingCaller(page, isPrev = null, region = "") {
         if(isPrev !== null) {
-            if(page < 0 || page > mapManager.endPage) {
-                return
-            }
-
-            if(isPrev) {
-                mapManager.startPage -= 5;
-            } else {
-                mapManager.startPage += 5;
-            }
+            mapManager.pageHelper.prevOrNext(page, () => {})
         }
 
         let pageInfo = region !== "" ?

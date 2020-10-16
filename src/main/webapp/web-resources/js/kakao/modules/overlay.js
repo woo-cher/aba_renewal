@@ -137,6 +137,6 @@ class Overlay extends KakaoMap {
     fieldClear() {
         this.target = undefined;
         this.targetId = NaN;
-        this.startPage = 1;
+        this.pageHelper.startPage = 1;
     }
 }

@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
 
+    <script src="/web-resources/js/page-helper.js"></script>
+
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
 </head>
 
