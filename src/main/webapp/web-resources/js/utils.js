@@ -108,17 +108,23 @@ function removeSpecifiedElement(array, indexOf) {
 }
 
 // Page Calculate
-function pageCalculation(where, startPage, pageInfo, pageLength, region = null) {
+function pageCalculation(where, startPage, pageInfo, pageLength, region = null, caller) {
     let count = 0;
 
     for (let num = startPage; num <= pageInfo['pages']; num++) {
         if (count !== pageLength) {
-            let element =
-                num === pageInfo['pageNum'] ? `<li class="active">${num}</li>`
-                    : region === null ? `<li onclick="">${num}</li>`
-                    : `<li onclick="pagingCaller(${num}, null, '${region}')">${num}</li>`;
+            let test = document.createElement('li');
 
-            where.append(element);
+            console.log(num, pageInfo['pageNum'])
+            if (num === pageInfo['pageNum']) {
+                test.classList.add("active");
+            }
+
+            test.innerText = num;
+            test.onclick = () => caller(num);
+
+            where.append(test);
+
             count++;
         }
     }

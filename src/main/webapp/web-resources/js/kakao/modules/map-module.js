@@ -145,7 +145,9 @@ class MapModule {
             `)
         }
 
-        pageCalculation($('.pages'), this.startPage, pageInfo, this.pageLength, region);
+        pageCalculation($('.pages'), this.startPage, pageInfo, this.pageLength, region, (page) => {
+            pagingCaller(page, null, region);
+        });
     }
 
     /**

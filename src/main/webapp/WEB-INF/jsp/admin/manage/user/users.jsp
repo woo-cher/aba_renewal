@@ -57,15 +57,22 @@
 
 <script>
     $(document).ready(function () {
-        // Do something about `page bind`
         const pageInfo = getAllUsers(1);
-        pageCalculation($('.pages'), 1, pageInfo, 5, null);
+
+        pageCalculation($('.pages'), 1, pageInfo, 5, null, (page) => {
+            <%--return `<li onclick="bindUsers($('#users'), ${'${page}'}, getAllUsers(${'${page}'}))">${'${page}'}</li>`--%>
+            bindUsers($('#users'), page, getAllUsers(page))
+        });
+
+        activateWithSelector($('.pages > li'));
         bindUsers($('#users'), 1, pageInfo);
     });
 
     function bindUsers(where, page, pageInfo) {
         let users = pageInfo['list'];
         let count = 0;
+
+        where.empty();
 
         for(let i = 0; i < users.length; i++) {
             let user = users[i];
