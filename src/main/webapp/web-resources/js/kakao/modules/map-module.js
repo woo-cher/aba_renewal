@@ -214,7 +214,7 @@ class MapModule {
                             </div>
                             <p class="offer-tel">
                                 <i class="fas fa-phone-square-alt"></i>
-                                &nbsp;${offer.dealer.agentPhone}
+                                &nbsp;${offer.user.agentPhone}
                             </p>
                         </div>
                     </li>

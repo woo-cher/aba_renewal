@@ -74,7 +74,7 @@ public class OfferTest {
         assertThat(service.createOffer(testOffer), is(1));
 
         Offer dbOffer = repository.selectOfferById(testOffer.getId());
-        dbOffer.setDealer(null);
+        dbOffer.setUser(null);
 
         assertThat(dbOffer, is(testOffer));
 

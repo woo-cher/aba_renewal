@@ -17,7 +17,7 @@
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="description" column="description" />
         <result property="thumbnail" column="thumbnail" />
-        <association property="dealer" resultMap="dealer" />
+        <association property="user" resultMap="user" />
         <association property="offerAddress" resultMap="offerAddress" />
         <association property="offerAddition" resultMap="offerAddition" />
     </resultMap>
@@ -49,7 +49,7 @@
         <result property="canPet" column="can_pet" />
     </resultMap>
 
-    <resultMap id="dealer" type="User">
+    <resultMap id="user" type="user">
         <id property="userId" column="user_id" />
         <result property="phone" column="phone" />
         <result property="agentPhone" column="agent_phone" />
@@ -57,7 +57,7 @@
 
     <!-- Commons `sql` -->
     <sql id="offerJoin">
-        LEFT JOIN users ON ofs.dealer = users.user_id
+        LEFT JOIN users ON ofs.user = users.user_id
         LEFT JOIN offer_addresses AS addrs ON ofs.id = addrs.offer_id
         LEFT JOIN offer_additions AS adds ON ofs.id = adds.offer_id
     </sql>
@@ -136,10 +136,10 @@
 
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
-            deposit, monthly_price, management_price, type, deal_type, heating_type, status, dealer,
+            deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
             completion_year, description, created_at, updated_at
         ) VALUES (
-            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, 'ON', 'test',
+            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, 'ON', #{user.userId},
             #{completionYear}, #{description}, current_timestamp, current_timestamp
         )
     </insert>

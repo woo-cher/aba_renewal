@@ -18,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 public class Offer extends ModelMapper {
-    private User dealer;
+    private User user;
     @NotBlank(message = "보증금을 알려주세요")
     private String deposit;
     @NotBlank(message = "월세를 알려주세요")

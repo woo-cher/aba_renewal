@@ -56,6 +56,7 @@
 
             <form action="/offers/create" id="offerForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
+                <input type="hidden" name="user.userId" value="${sessionUser.userId}">
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>
                     <%@include file="/WEB-INF/jsp/offer/create/addresses.jsp"%>
