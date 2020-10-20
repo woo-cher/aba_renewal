@@ -16,7 +16,7 @@
 </div>
 <div class="content-right">
     <div class="panel pt-1 right-wrap">
-        <div class="box">
+        <div>
             <div class="content label">
                 <div class="label-wrap">내 포인트</div>
             </div>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="panel pt-1 right-wrap" hidden>
-        <div class="box">
+        <div>
             <div class="content label">
                 <div class="label-wrap">
                     포인트 사용 내역
@@ -103,7 +103,7 @@
     </div>
 
     <div class="panel pt-1 right-wrap" hidden>
-        <div class="box">
+        <div>
             <div class="content label">
                 <div class="label-wrap">
                     결제 내역

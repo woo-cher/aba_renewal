@@ -15,7 +15,7 @@
         <div class="content label">
             <div class="label-wrap">회원정보</div>
         </div>
-        <div class="panel box f-c w-full pt-3 pb-1">
+        <div class="panel f-c w-full pt-3 pb-1">
             <div class="frame avatar user-box">
                 <p class="content">
                     <span class="txt-lg">아바</span> 님의 등급은
@@ -66,7 +66,7 @@
         <div class="content label pt-1">
             <div class="label-wrap">소개</div>
         </div>
-        <div class="panel box pt-1 pb-1">
+        <div class="panel pt-1 pb-1">
             <div class="panel content box border-box">
                 <div class="frame">
                     안녕하세요.홍길동입니다. 저 다이아 등급입니다.
@@ -106,8 +106,8 @@
             <div class="label-wrap">회원탈퇴</div>
         </div>
         <div class="input-group w-full p-0">
-            <div class="panel box pt-1 pb-1">
-                <div class="panel content box border-box">
+            <div class="panel pt-1 pb-1">
+                <div class="panel content border-box">
                     <div class="frame" style="line-height: 1.75rem;">
                         <p>회원 탈퇴 시, <span class="aba">아바</span>에서 보관중인 모든 개인정보 및 활동내역이 삭제됩니다.</p>
                         <p>탈퇴에 동의하시게 되면, 계정을 되돌릴 수 없어요!</p>

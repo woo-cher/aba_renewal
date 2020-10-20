@@ -22,7 +22,7 @@
                 </ul>
             </div>
         </div>
-        <div class="content box point-box">
+        <div class="content point-box">
             <div class="box-left">
                 <span class="aba label">아바 포인트</span></div>
             <div class="box-right">
@@ -30,7 +30,7 @@
                 <i class="aba fas fa-ruble-sign"></i>
             </div>
         </div>
-        <div class="box">
+        <div>
             <button class="w-full" type="submit">유료회원 전환</button>
         </div>
     </div>
