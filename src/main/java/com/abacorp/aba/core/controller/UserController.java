@@ -3,6 +3,7 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.UserService;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.type.UserType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,20 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping("/form")
+    public ModelAndView form() {
+        String[] keys = {"이용약관", "개인정보취급 방침", "위치기반서비스 이용약관", "책임한계 및 법적고지"};
+        String[] values = {"provision", "personal_info", "location_based", "responsibility"};
+
+        mv.addObject("keys", keys);
+        mv.addObject("values", values);
+        mv.addObject("userTypes", UserType.values());
+
+        mv.setViewName("user/form");
+
+        return mv;
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String save(User user, Model model) {

@@ -50,7 +50,7 @@
                     <div class="nav-box">
                         <div class="join">
                             <h3>아직도 회원이 아니신가요?</h3>
-                            <button onclick="location.href='/auth/register'">회원가입</button>
+                            <button onclick="location.href='/users/form'">회원가입</button>
                         </div>
                         <div class="find">
                             <h3>아이디/비밀번호를 잊으셨나요?</h3>
