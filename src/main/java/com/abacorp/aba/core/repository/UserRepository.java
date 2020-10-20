@@ -21,15 +21,15 @@ public class UserRepository {
         return sqlSession.selectOne("findUserById", (String)id);
     }
 
-    public int create(User model) {
-        return sqlSession.insert("createUser", model);
+    public int create(User user) {
+        return sqlSession.insert("createUser", user);
     }
 
-    public int update(User model) {
-        return 0;
+    public int update(User user) {
+        return sqlSession.update("updateUser", user);
     }
 
-    public int delete(User model) {
-        return 0;
+    public int delete(String userId) {
+        return sqlSession.delete("deleteUser", userId);
     }
 }

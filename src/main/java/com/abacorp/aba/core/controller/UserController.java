@@ -39,11 +39,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String save(User user, Model model) {
+    public String save(User user) {
         log.info("USER : {}", user);
         userService.createUser(user);
 
         return "/user/login";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(User user) {
+        log.warn("UPDATE USER : {}", user);
+        userService.updateUser(user);
+
+        return "redirect:/users/me/my_aba";
     }
 
     @RequestMapping({"/me", "/me/{view}"})

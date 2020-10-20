@@ -37,24 +37,7 @@ public class UserService implements UserDetailsService {
     }
 
     public int createUser(User user) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-        String natural = user.getPassword();
-        user.setPassword(encoder.encode(natural));
-
-        user.setPhone(user.getPhone().replaceAll(",", ""));
-        user.setAgentPhone(user.getAgentPhone().replaceAll(",", ""));
-        user.setEmail(user.getEmail().replaceAll(",", "@"));
-        user.setExtraAddr(user.getExtraAddr().replaceAll(",", " "));
-
-        if(user.getType().equals(UserType.OWNER)) {
-            user.setAgentPhone(null);
-            user.setAgentNumber(null);
-            user.setAgentName(null);
-            user.setAgentLeader(null);
-        }
-
-        return this.repository.create(user);
+        return this.repository.create(getConvertedUser(user));
     }
 
     public PageInfo<User> findAll(int page) {
@@ -76,5 +59,30 @@ public class UserService implements UserDetailsService {
 
     public User findByUserId(String userId) {
         return repository.selectById(userId);
+    }
+
+    public int updateUser(User user) {
+        return repository.update(getConvertedUser(user));
+    }
+
+    private User getConvertedUser(User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        String natural = user.getPassword();
+        user.setPassword(encoder.encode(natural));
+
+        user.setPhone(user.getPhone().replaceAll(",", ""));
+        user.setAgentPhone(user.getAgentPhone().replaceAll(",", ""));
+        user.setEmail(user.getEmail().replaceAll(",", "@"));
+        user.setExtraAddr(user.getExtraAddr().replaceAll(",", " "));
+
+        if(user.getType().equals(UserType.OWNER)) {
+            user.setAgentPhone(null);
+            user.setAgentNumber(null);
+            user.setAgentName(null);
+            user.setAgentLeader(null);
+        }
+
+        return user;
     }
 }

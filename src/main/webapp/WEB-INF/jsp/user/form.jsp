@@ -22,7 +22,7 @@
 
 <c:choose>
     <c:when test="${not empty sessionUser.userId}">
-        <c:set var="actionUrl" value="#" />
+        <c:set var="actionUrl" value="/users/update" />
         <c:set var="submitMessage" value="정보수정" />
     </c:when>
     <c:otherwise>
@@ -119,7 +119,7 @@
                                 >
                             </c:if>
                             <c:if test="${not empty sessionUser.userId}">
-                                <input disabled autofocus type="text" id="userId" class="middle" name="userId" value="${sessionUser.userId}">
+                                <input readonly autofocus type="text" id="userId" class="middle" name="userId" value="${sessionUser.userId}">
                             </c:if>
                             <c:if test="${empty sessionUser.userId}">
                             <p class="icon" onclick="checkUserExist($(this).prev())"><i class="fas fa-user-check"></i></p>
@@ -304,6 +304,8 @@
     $(document).ready(() => {
         <c:if test="${not empty sessionUser.userId}">
             agreeAll();
+            isCanUsingId = true;
+            isFindAddress = true;
             $('#join').click();
             $('#self').prop('selected', true);
             watchSelect($('#select-domain'));

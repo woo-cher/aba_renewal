@@ -25,4 +25,16 @@
     <select id="findUserById" resultMap="user" parameterType="String">
         SELECT * FROM users WHERE user_id = #{id};
     </select>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE users
+        SET password = #{password}, type = #{type}, name = #{name}, nick_name = #{nickName}, email = #{email}, phone = #{phone},
+            jibun_addr = #{jibunAddr}, road_addr = #{roadAddr}, extra_addr = #{extraAddr}, agent_name = #{agentName}, agent_number = #{agentNumber},
+            agent_phone = #{agentPhone}, agent_leader = #{agentLeader}, location_x = #{locationX}, location_y = #{locationY}
+        WHERE user_id = #{userId}
+    </update>
+
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM users WHERE user_id = #{userId}
+    </delete>
 </mapper>
