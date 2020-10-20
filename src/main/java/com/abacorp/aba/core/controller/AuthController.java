@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.controller;
 
 
+import com.abacorp.aba.model.type.UserType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ public class AuthController {
 
         mv.addObject("keys", keys);
         mv.addObject("values", values);
+        mv.addObject("userTypes", UserType.values());
 
         mv.setViewName("user/register");
 

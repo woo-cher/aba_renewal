@@ -26,15 +26,22 @@
 
     <ul class="menu">
         <li class="admin"><a href="/admin">HOME</a></li>
-        <li class="offerscreateform"><a href="/offers/create/form">매물등록</a></li>
         <li class="adminusers"><a href="/admin/users">회원관리</a></li>
         <li class="adminoffers"><a href="/admin/offers">매물관리</a></li>
         <li class="adminpays"><a href="/admin/pays">결제관리</a></li>
         <sec:authorize access="isAuthenticated()">
-            <li id="user">
-                <a href="#">${principal.user.name} 님</a>
+            <li class="user">
+                <a href="#">${principal.user.name} 님
+                    <h5 style="display: inline">▼</h5>
+                </a>
             </li>
         </sec:authorize>
+    </ul>
+
+    <ul class="sub user" hidden>
+        <li onclick="location.href='/users/me/my_aba'">마이페이지</li>
+        <li onclick="location.href='#'">계약신고</li>
+        <li onclick="location.href='/auth/logout'">로그아웃</li>
     </ul>
 </header>
 
@@ -42,5 +49,15 @@
 <script>
     activateWithUrl(/[\/_]/g, (el) => {
         return el;
+    });
+
+    $(document).ready(function(){
+        $(".user > a").mouseenter(function(){
+            $(".sub.user").slideDown(500);
+        });
+
+        $('.main-container').mouseenter(function () {
+            $('.sub').slideUp()
+        })
     });
 </script>

@@ -9,10 +9,10 @@ public enum UserType implements TypeMapper {
 
     UNKNOWN("UNKNOWN"),
 
+    MASTER("관리자"),
     OWNER("집주인"),
     ASSISTANT("중개보조원"),
-    BROKER("공인중개사"),
-    MASTER("관리자");
+    BROKER("공인중개사");
 
     private String value;
 

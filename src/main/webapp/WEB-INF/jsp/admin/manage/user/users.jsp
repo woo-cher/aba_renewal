@@ -29,10 +29,10 @@
             </th>
             <th width="15%">아이디</th>
             <th width="10%">이름</th>
-            <th width="10%">회원유형</th>
             <th width="10%">닉네임</th>
             <th>연락처</th>
             <th>이메일</th>
+            <th width="10%">회원유형</th>
             <th width="10%">권한</th>
             <th width="15%">&nbsp;</th>
         </tr>
@@ -96,14 +96,14 @@
                 </td>
                 <td>${'${user.userId}'}</td>
                 <td>${'${user.name}'}</td>
-                <td class="aba">${'${user.type.value}'}</td>
                 <td>${'${user.nickName == null ? "미설정" : user.nickName}'}</td>
                 <td>${'${user.phone}'}</td>
                 <td>${'${user.email}'}</td>
+                <td class="aba">${'${user.type.value}'}</td>
                 <td class="aba">${'${user.role.value}'}</td>
                 <td width="10%">
                     <span class="border-side">
-                        <i class="fas fa-eye" onclick="location.href='/admin/users/user_detail?id=${'${user.userId}'}'"></i>
+                        <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id=${'${user.userId}'}')"></i>
                         <i class="fas fa-pen"></i>
                         <i class="fas fa-trash-alt"></i>
                     </span>

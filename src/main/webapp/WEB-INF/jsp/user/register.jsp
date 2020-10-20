@@ -17,7 +17,7 @@
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 <body>
-<div class="main-container">
+<div class="main-container pt-1">
     <article class="content-wrap">
         <div class="content-name" id="top">
             <h3>
@@ -72,18 +72,19 @@
                             </span>
                         </div>
                         <ul class="checkbox-container form type">
-                            <li class="checkbox-list">
-                                <input id="qq" type="radio" name="type" value="OWNER" class="check">
-                                <label for="qq">집주인</label>
-                            </li>
-                            <li class="checkbox-list">
-                                <input id="ww" type="radio" name="type" value="BROKER" class="check">
-                                <label for="ww">공인중개사</label>
-                            </li>
-                            <li class="checkbox-list">
-                                <input id="ee" type="radio" name="type" value="ASSISTANT" class="check">
-                                <label for="ee">중개보조원</label>
-                            </li>
+                            <c:forEach begin="2" var="type" items="${userTypes}" varStatus="vs">
+                                <li class="checkbox-list">
+                                    <c:choose>
+                                        <c:when test="${type.value eq user.type.value}">
+                                            <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check" checked>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check">
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <label for="type${vs.index}">${type.value}</label>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -94,12 +95,17 @@
                     </div>
                     <div class="form-category">
                         <div class="input-group">
-                            <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
-                                   pattern="^[A-Za-z][A-Za-z0-9]{1,12}"
-                                   oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
-                                   oninput="this.setCustomValidity(''); this.checkValidity()"
-                                   onkeyup="userIdValidator($(this))"
-                            >
+                            <c:if test="${not empty user.userId}">
+                                <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
+                                       pattern="^[A-Za-z][A-Za-z0-9]{1,12}"
+                                       oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
+                                       oninput="this.setCustomValidity(''); this.checkValidity()"
+                                       onkeyup="userIdValidator($(this))"
+                                >
+                            </c:if>
+                            <c:if test="${not empty user.userId}">
+                                <input disabled autofocus type="text" id="userId" class="middle" name="userId" value="${user.userId}">
+                            </c:if>
                             <p class="icon" onclick="checkUserExist($(this).prev())"><i class="fas fa-user-check"></i></p>
                             <p class="aba m-auto check-user"></p>
                         </div>
@@ -114,7 +120,7 @@
                                onkeyup="passwordValidator()"
                         >
                         <p class="aba m-auto check-password" hidden></p>
-                        <input required autofocus type="text" placeholder="닉네임" name="nickName">
+                        <input required autofocus type="text" placeholder="닉네임" name="nickName" value="${user.nickName}">
                     </div>
                 </div>
                 <div class="form-warp">
@@ -123,7 +129,7 @@
                         <span>개인정보</span>
                     </div>
                     <div class="form-category">
-                        <input required autofocus type="text" placeholder="이름" name="name">
+                        <input required autofocus type="text" placeholder="이름" name="name" value="${user.name}">
                         <div class="input-group">
                             <input required autofocus type="text" class="middle" placeholder="이메일" name="email">
                             <p class="mail"><i class="fas fa-at"></i></p>
@@ -168,14 +174,14 @@
                             >
                         </div>
                         <div class="input-group">
-                            <input autofocus readonly type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr">
-                            <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명" name="roadAddr">
+                            <input autofocus readonly type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr" value="${user.jibunAddr}">
+                            <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명" name="roadAddr" value="${user.roadAddr}">
                             <p class="icon addr" onclick="getAddress()"><i class="fas fa-search"></i></p>
                         </div>
                         <div class="input-group">
-                            <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr">
-                            <input type="hidden" id="latitude" name="locationX">
-                            <input type="hidden" id="longitude" name="locationY">
+                            <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr" value="${user.extraAddr}">
+                            <input type="hidden" id="latitude" name="locationX" value="${user.locationX}">
+                            <input type="hidden" id="longitude" name="locationY" value="${user.locationY}">
                         </div>
 
                         <p class="error" id="privateInfoError" hidden>
