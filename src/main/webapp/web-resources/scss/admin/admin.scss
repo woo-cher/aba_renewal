@@ -79,3 +79,30 @@ input[type="text"] {
     height: calc(92.5% - 71px);
   }
 }
+
+.box {
+  padding: 3%;
+
+  header {
+    font-size: 1vw;
+  }
+
+  .box-content {
+    padding: 30px 20px 0 20px;
+
+    label {
+      font-size: .8vw;
+      display: inline-block;
+      min-width: 100px;
+      padding-right: 20px;
+    }
+
+    .row {
+      padding-bottom: 20px;
+
+      span {
+        text-align: center;
+      }
+    }
+  }
+}

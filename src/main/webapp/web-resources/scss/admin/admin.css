@@ -66,4 +66,26 @@ input[type=text] {
   height: calc(92.5% - 71px);
 }
 
+.box {
+  padding: 3%;
+}
+.box header {
+  font-size: 1vw;
+}
+.box .box-content {
+  padding: 30px 20px 0 20px;
+}
+.box .box-content label {
+  font-size: 0.8vw;
+  display: inline-block;
+  min-width: 100px;
+  padding-right: 20px;
+}
+.box .box-content .row {
+  padding-bottom: 20px;
+}
+.box .box-content .row span {
+  text-align: center;
+}
+
 /*# sourceMappingURL=admin.css.map */

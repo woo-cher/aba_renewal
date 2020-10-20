@@ -23,9 +23,15 @@
 /* signature */
 .aba { color: #00adef; font-weight: bold; }
 
+.box {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+}
+
 /* padding, width, height .. */
 .p-0 { padding: 0 !important; }
 .p-1 { padding: 1% !important; }
+.p-3 { padding: 3% !important; }
 .pt-1 { padding-top: 1% !important; }
 .pt-3 { padding-top: 3% !important; }
 .pb-0 { padding-bottom: 0 !important; }
@@ -37,6 +43,8 @@
 
 .mt-0 { margin-top: 0 !important; }
 .mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: 1% !important; }
+.mr-1 { margin-right: 1% !important; }
 .my-1 { margin: 1% 0 !important; }
 .my-3 { margin: 3% 0 !important; }
 .m-auto { margin: 0 auto; !important; }
@@ -44,12 +52,18 @@
 .w-full { width: 100% !important; }
 .w-65 { width: 65% !important; }
 .w-half { width: 50% !important; }
+.w-45 { width: 45% !important; }
 .w-35 { width: 35% !important; }
 .w-25 { width: 25% !important; }
 .w-10 { width: 10% !important;}
 
+.h-auto { height: auto !important; }
+.h-full { height: 100% !important; }
+.h-half { height: 50% !important; }
+
 .b-0 { border: 0 !important; }
 
+.block { display: block !important; }
 .inline { display: inline-block !important; }
 .in-flex { display: inline-flex !important; }
 .flex { display: flex !important; }
@@ -63,6 +77,7 @@
 .align-right { text-align: right !important; }
 .align-center { text-align: center !important; }
 .align-left { text-align: left !important; }
+.item-center { align-items: center !important; }
 .flex-center { justify-content: center !important; }
 
 .relative { position: relative !important; }

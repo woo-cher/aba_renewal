@@ -17,8 +17,8 @@ $abaColor: #00adef;
     font-size: 1.15rem;
   }
 
-  tr.checked {
-    background: aliceblue;
+  tr {
+    cursor: pointer;
   }
 
   td {
@@ -45,6 +45,13 @@ $abaColor: #00adef;
 
   .table-top {
     background: $borderColor;
+  }
+
+  .row {
+    tr.checked,
+    tr:hover {
+      background: aliceblue;
+    }
   }
 
   .row > td {

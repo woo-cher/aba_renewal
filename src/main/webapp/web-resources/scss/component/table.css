@@ -12,8 +12,8 @@
   font-family: s-core-dream-bold, serif !important;
   font-size: 1.15rem;
 }
-.admin-list-table tr.checked {
-  background: aliceblue;
+.admin-list-table tr {
+  cursor: pointer;
 }
 .admin-list-table td {
   font-size: 1rem;
@@ -36,6 +36,10 @@
 }
 .admin-list-table .table-top {
   background: rgba(25, 110, 168, 0.15);
+}
+.admin-list-table .row tr.checked,
+.admin-list-table .row tr:hover {
+  background: aliceblue;
 }
 .admin-list-table .row > td {
   border-bottom: 1px solid gainsboro;
