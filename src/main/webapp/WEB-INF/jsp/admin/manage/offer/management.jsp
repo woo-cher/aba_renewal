@@ -38,7 +38,7 @@
     function nav(url) {
         url = url === undefined ? '' : url;
 
-        location.href = "/admin/manage/offers" + url;
+        location.href = "/admin/offers" + url;
     }
 
     activateWithSelector('#navigator > li');

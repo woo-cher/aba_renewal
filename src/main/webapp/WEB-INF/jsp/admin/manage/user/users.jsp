@@ -34,7 +34,7 @@
             <th>연락처</th>
             <th>이메일</th>
             <th width="10%">권한</th>
-            <th>&nbsp;</th>
+            <th width="15%">&nbsp;</th>
         </tr>
         <tbody class="row" id="users"></tbody>
         <tr>

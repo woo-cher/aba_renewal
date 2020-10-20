@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -39,7 +40,7 @@
 
 <script>
     function nav(url) {
-        location.href = "/admin/manage/users" + url;
+        location.href = "/admin/users" + url;
     }
 
     function pageNavigator() {

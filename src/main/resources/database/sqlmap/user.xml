@@ -23,6 +23,6 @@
     </select>
 
     <select id="findUserById" resultMap="user" parameterType="String">
-        SELECT user_id, password, name, nick_name, role FROM users WHERE user_id = #{id};
+        SELECT * FROM users WHERE user_id = #{id};
     </select>
 </mapper>

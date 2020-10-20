@@ -27,9 +27,9 @@
     <ul class="menu">
         <li class="admin"><a href="/admin">HOME</a></li>
         <li class="offerscreateform"><a href="/offers/create/form">매물등록</a></li>
-        <li class="adminmanageusers"><a href="/admin/manage/users">회원관리</a></li>
-        <li class="adminmanageoffers"><a href="/admin/manage/offers">매물관리</a></li>
-        <li class="adminmanagepays"><a href="/admin/manage/pays">결제관리</a></li>
+        <li class="adminusers"><a href="/admin/users">회원관리</a></li>
+        <li class="adminoffers"><a href="/admin/offers">매물관리</a></li>
+        <li class="adminpays"><a href="/admin/pays">결제관리</a></li>
         <sec:authorize access="isAuthenticated()">
             <li id="user">
                 <a href="#">${principal.user.name} 님</a>

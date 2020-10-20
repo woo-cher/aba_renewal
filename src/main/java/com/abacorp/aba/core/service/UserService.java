@@ -73,4 +73,8 @@ public class UserService implements UserDetailsService {
 
         return true;
     }
+
+    public User findByUserId(String userId) {
+        return repository.selectById(userId);
+    }
 }

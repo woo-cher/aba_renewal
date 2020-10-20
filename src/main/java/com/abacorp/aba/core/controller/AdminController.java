@@ -1,11 +1,13 @@
 package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.UserService;
+import com.abacorp.aba.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,7 +26,7 @@ public class AdminController {
         return "admin/admin";
     }
 
-    @RequestMapping({"/manage/offers", "/manage/offers/{view}"})
+    @RequestMapping({"/offers", "/offers/{view}"})
     public ModelAndView manageOffer(@PathVariable(required = false) String view) {
         view = view == null ? "offers" : view;
 
@@ -34,7 +36,7 @@ public class AdminController {
         return mv;
     }
 
-    @RequestMapping({"/manage/pays", "/manage/pays/{view}"})
+    @RequestMapping({"/pays", "/pays/{view}"})
     public ModelAndView managePay(@PathVariable(required = false) String view) {
         view = view == null ? "pays" : view;
 
@@ -44,8 +46,14 @@ public class AdminController {
         return mv;
     }
 
-    @RequestMapping({"/manage/users", "/manage/users/{view}"})
-    public ModelAndView manageUser(@PathVariable(required = false) String view) {
+    @RequestMapping({"/users", "/users/{view}"})
+    public ModelAndView manageUser(@PathVariable(required = false) String view,
+                                   @RequestParam(required = false) String id) {
+        if(id != null) {
+            log.info("RequestParam userId exist : {}", id);
+            mv.addObject("user", userService.findByUserId(id));
+        }
+
         view = view == null ? "users" : view;
 
         mv.setViewName("admin/manage/user/management");

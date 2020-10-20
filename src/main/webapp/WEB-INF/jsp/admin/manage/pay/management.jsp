@@ -35,7 +35,7 @@
 
 <script>
     function nav(url) {
-        location.href = "/admin/manage/pays" + url;
+        location.href = "/admin/pays" + url;
     }
 
     activateWithSelector('#navigator > li');
