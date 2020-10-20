@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -16,13 +17,27 @@
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
+
+<c:set var="commercialAt" value="${fn:indexOf(sessionUser.email, '@')}" />
+
+<c:choose>
+    <c:when test="${not empty sessionUser.userId}">
+        <c:set var="actionUrl" value="#" />
+        <c:set var="submitMessage" value="정보수정" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="actionUrl" value="/users/create" />
+        <c:set var="submitMessage" value="회원가입" />
+    </c:otherwise>
+</c:choose>
+
 <body>
 <div class="main-container pt-1">
     <article class="content-wrap">
         <div class="content-name" id="top">
             <h3>
                 <span class="aba">아바</span>
-                <span class="header mini">회원가입</span>
+                <span class="header mini">${submitMessage}</span>
             </h3>
         </div>
 
@@ -62,7 +77,7 @@
 
         <section class="form-control" id="register-area" hidden>
             <%-- Form --%>
-            <form id="registerForm" action="/users/create" method="post" onsubmit="return submitValidator()">
+            <form id="registerForm" action="${actionUrl}" method="post" onsubmit="return submitValidator()">
                 <div class="form-warp">
                     <div class="form-category">
                         <div class="form-label">
@@ -75,7 +90,7 @@
                             <c:forEach begin="2" var="type" items="${userTypes}" varStatus="vs">
                                 <li class="checkbox-list">
                                     <c:choose>
-                                        <c:when test="${type.value eq user.type.value}">
+                                        <c:when test="${type.value eq sessionUser.type.value}">
                                             <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check" checked>
                                         </c:when>
                                         <c:otherwise>
@@ -95,7 +110,7 @@
                     </div>
                     <div class="form-category">
                         <div class="input-group">
-                            <c:if test="${not empty user.userId}">
+                            <c:if test="${empty sessionUser.userId}">
                                 <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
                                        pattern="^[A-Za-z][A-Za-z0-9]{1,12}"
                                        oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
@@ -103,10 +118,12 @@
                                        onkeyup="userIdValidator($(this))"
                                 >
                             </c:if>
-                            <c:if test="${not empty user.userId}">
-                                <input disabled autofocus type="text" id="userId" class="middle" name="userId" value="${user.userId}">
+                            <c:if test="${not empty sessionUser.userId}">
+                                <input disabled autofocus type="text" id="userId" class="middle" name="userId" value="${sessionUser.userId}">
                             </c:if>
+                            <c:if test="${empty sessionUser.userId}">
                             <p class="icon" onclick="checkUserExist($(this).prev())"><i class="fas fa-user-check"></i></p>
+                            </c:if>
                             <p class="aba m-auto check-user"></p>
                         </div>
                         <input required autofocus type="password" placeholder="비밀번호" id="password" name="password"
@@ -120,7 +137,7 @@
                                onkeyup="passwordValidator()"
                         >
                         <p class="aba m-auto check-password" hidden></p>
-                        <input required autofocus type="text" placeholder="닉네임" name="nickName" value="${user.nickName}">
+                        <input required autofocus type="text" placeholder="닉네임" name="nickName" value="${sessionUser.nickName}">
                     </div>
                 </div>
                 <div class="form-warp">
@@ -129,11 +146,15 @@
                         <span>개인정보</span>
                     </div>
                     <div class="form-category">
-                        <input required autofocus type="text" placeholder="이름" name="name" value="${user.name}">
+                        <input required autofocus type="text" placeholder="이름" name="name" value="${sessionUser.name}">
                         <div class="input-group">
-                            <input required autofocus type="text" class="middle" placeholder="이메일" name="email">
+                            <input required autofocus type="text" class="middle" placeholder="이메일"
+                                   name="email"
+                                   value="${fn:substring(sessionUser.email, 0, commercialAt)}"
+                            >
                             <p class="mail"><i class="fas fa-at"></i></p>
-                            <select class="w-half" required name="email" onchange="watchSelect($(this))"
+
+                            <select class="w-half" required id="select-domain" name="email" onchange="watchSelect($(this))"
                                     oninvalid="this.setCustomValidity(`도메인을 선택해주세요 :)`)"
                                     oninput="this.setCustomValidity(''); this.checkValidity()"
                             >
@@ -144,8 +165,11 @@
                                 <option value="nate.com">nate.com</option>
                                 <option id="self" value="">직접입력</option>
                             </select>
+
                         </div>
-                        <input hidden disabled autofocus type="text" placeholder="도메인을 입력해주세요 :)" name="email"
+                        <input hidden disabled autofocus type="text" placeholder="도메인을 입력해주세요 :)"
+                               name="email"
+                               value="${fn:substring(sessionUser.email, commercialAt + 1, -1)}"
                                pattern="^[a-z.]*"
                                oninvalid="this.setCustomValidity(`도메인을 입력해주세요 :)`)"
                                oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -160,6 +184,7 @@
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
+                                   value="${fn:substring(sessionUser.phone, 4, 8)}"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -167,6 +192,7 @@
                             >
                             <p class="short">-</p>
                             <input required autofocus type="text" class="short" placeholder="####" name="phone"
+                                   value="${fn:substring(sessionUser.phone, 7, -1)}"
                                    pattern="^[0-9]{4}"
                                    oninvalid="this.setCustomValidity(`4자리 숫자 입력해주세요 :)`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
@@ -174,14 +200,14 @@
                             >
                         </div>
                         <div class="input-group">
-                            <input autofocus readonly type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr" value="${user.jibunAddr}">
-                            <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명" name="roadAddr" value="${user.roadAddr}">
+                            <input autofocus readonly type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr" value="${sessionUser.jibunAddr}">
+                            <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명" name="roadAddr" value="${sessionUser.roadAddr}">
                             <p class="icon addr" onclick="getAddress()"><i class="fas fa-search"></i></p>
                         </div>
                         <div class="input-group">
-                            <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr" value="${user.extraAddr}">
-                            <input type="hidden" id="latitude" name="locationX" value="${user.locationX}">
-                            <input type="hidden" id="longitude" name="locationY" value="${user.locationY}">
+                            <input autofocus type="text" class="large" id="extra" placeholder="아바아파트 3동 101호 or 아바빌 401호" name="extraAddr" value="${sessionUser.extraAddr}">
+                            <input type="hidden" id="latitude" name="locationX" value="${sessionUser.locationX}">
+                            <input type="hidden" id="longitude" name="locationY" value="${sessionUser.locationY}">
                         </div>
 
                         <p class="error" id="privateInfoError" hidden>
@@ -259,7 +285,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="login-button" type="submit">회원가입</button>
+                <button class="login-button" type="submit">${submitMessage}</button>
             </form>
         </section>
     </article>
@@ -276,6 +302,13 @@
     let isFindAddress = false;
 
     $(document).ready(() => {
+        <c:if test="${not empty sessionUser.userId}">
+            agreeAll();
+            $('#join').click();
+            $('#self').prop('selected', true);
+            watchSelect($('#select-domain'));
+        </c:if>
+
         $('input[type="radio"]').click(function (e) {
             $('#userTypeError').remove();
             $('.agent').hide();

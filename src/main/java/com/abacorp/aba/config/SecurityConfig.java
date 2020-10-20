@@ -1,5 +1,6 @@
 package com.abacorp.aba.config;
 
+import com.abacorp.aba.security.CustomLoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,7 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.ForwardAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -26,9 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/auth/login")
+                .successHandler(successHandler())
                 .failureHandler(new ForwardAuthenticationFailureHandler("/auth/login"))
                 .loginProcessingUrl("/auth/doLogin")
-                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
             .logout()
@@ -46,5 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new CustomLoginSuccessHandler();
     }
 }
