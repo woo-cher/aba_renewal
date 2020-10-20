@@ -33,6 +33,7 @@
             <li class="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
+            <li class="offerscreateform"><a href="/offers/create/form">매물등록</a></li>
             <li class="user">
                 <a href="#">${principal.user.name} 님
                     <h5 style="display: inline">▼</h5>
@@ -74,11 +75,11 @@
 
     /* 매물 서브메뉴 */
     $(document).ready(function(){
-        $("#maps > a").mouseenter(function(){
+        $(".maps > a").mouseenter(function(){
             $(".sub.offer-category").slideDown(500);
         });
 
-        $("#user > a").mouseenter(function(){
+        $(".user > a").mouseenter(function(){
             $(".sub.user").slideDown(500);
         });
 

@@ -103,6 +103,7 @@
                 <td class="aba">${'${user.role.value}'}</td>
                 <td width="10%">
                     <span class="border-side">
+                        <i class="fas fa-eye" onclick="location.href='/admin/users/user_detail?id=${'${user.userId}'}'"></i>
                         <i class="fas fa-pen"></i>
                         <i class="fas fa-trash-alt"></i>
                     </span>
