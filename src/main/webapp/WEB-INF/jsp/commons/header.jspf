@@ -44,6 +44,7 @@
 
     <ul class="sub user" hidden>
         <li onclick="location.href='/users/me/my_aba'">마이페이지</li>
+        <li onclick="location.href='/users/form'">내정보수정</li>
         <li onclick="location.href='#'">계약신고</li>
         <li onclick="location.href='/auth/logout'">로그아웃</li>
     </ul>

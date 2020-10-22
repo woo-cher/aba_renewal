@@ -87,19 +87,26 @@
                             </span>
                         </div>
                         <ul class="checkbox-container form type">
-                            <c:forEach begin="2" var="type" items="${userTypes}" varStatus="vs">
-                                <li class="checkbox-list">
-                                    <c:choose>
-                                        <c:when test="${type.value eq sessionUser.type.value}">
-                                            <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check" checked>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check">
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <label for="type${vs.index}">${type.value}</label>
-                                </li>
-                            </c:forEach>
+                        <c:choose>
+                            <c:when test="${not empty sessionUser.userId}">
+                                <h1 class="aba align-center">관리자입니다 :)</h1>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach begin="2" var="type" items="${userTypes}" varStatus="vs">
+                                    <li class="checkbox-list">
+                                        <c:choose>
+                                            <c:when test="${type.value eq sessionUser.type.value}">
+                                                <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check" checked>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <input id="type${vs.index}" type="radio" name="type" value="${type.code}" class="check">
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <label for="type${vs.index}">${type.value}</label>
+                                    </li>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                         </ul>
                     </div>
                 </div>
