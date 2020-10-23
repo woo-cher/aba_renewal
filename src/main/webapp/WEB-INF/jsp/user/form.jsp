@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authentication var="principal" property="principal" />
 
 <html>
 <head>
@@ -88,7 +91,7 @@
                         </div>
                         <ul class="checkbox-container form type">
                         <c:choose>
-                            <c:when test="${not empty sessionUser.userId}">
+                            <c:when test="${principal.user.type.code eq 'MASTER'}">
                                 <h1 class="aba align-center">관리자입니다 :)</h1>
                             </c:when>
                             <c:otherwise>
