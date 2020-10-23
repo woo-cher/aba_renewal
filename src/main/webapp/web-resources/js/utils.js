@@ -43,8 +43,8 @@ function activateWithUrl(regex, callback = null) {
             el = callback(el);
         }
 
-        if (el.includes("payment") || el.includes("account")) {
-            $('#usersmemyaba').addClass('active');
+        if (el.includes("usersme")) {
+            $('.usersmemyaba').addClass('active');
         }
 
         if (el.includes("requestsmy")) {
@@ -87,6 +87,15 @@ function switchContentViewWithIndex(eventTarget, hideWhat, showWhat) {
     })
 }
 
+/**
+ * Get parameter from url.
+ * 
+ * Url has QueryString parameters like '/users?userId=test'
+ * => If want get `userId` parameter, can use getUrlParameter("userId").
+ * 
+ * As a result, {"userId": "test"}
+ * 
+ */
 function getUrlParameter(reqParam) {
     let pageUrl = window.location.search.substring(1),
         value = pageUrl.split('&'),
@@ -101,6 +110,30 @@ function getUrlParameter(reqParam) {
         }
     }
 }
+
+<!-- Dialog -->
+function dialogInitializer(element, showWhat) {
+    element.on('click', function () {
+        $('.overlay').show();
+        showWhat.dialog({
+            resizable: false,
+            draggable: false,
+            position: {
+                my: "center",
+                at: "center",
+                of: ".content-wrap"
+            },
+            close: function (event, ui) {
+                $('.overlay').hide();
+            }
+        });
+    });
+}
+
+function dialogCloseTrigger(dialogElement) {
+    dialogElement.dialog('close');
+}
+<!-- /Dialog -->
 
 // For array swap
 function removeSpecifiedElement(array, indexOf) {

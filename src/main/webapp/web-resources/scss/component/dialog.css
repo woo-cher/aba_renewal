@@ -1,0 +1,131 @@
+button {
+  padding: 10px 15px;
+  border: 3px solid #00adef !important;
+  border-radius: 1em;
+  font-size: 1rem;
+  position: relative;
+}
+button.reverse {
+  color: #fff;
+  background: #00adef;
+}
+button.reverse:hover {
+  color: #00adef;
+  background: #fff;
+}
+button:hover {
+  color: #ffffff;
+  background: #00adef;
+}
+
+input[type=text] {
+  padding: 10px 15px;
+  border: 3px solid #00adef !important;
+  border-radius: 1em;
+  font-size: 1rem;
+  position: relative;
+}
+
+.main-container {
+  height: calc(100% - 71px);
+}
+
+.full-left-box {
+  width: 10%;
+  border-right: 3px solid #f0f0f0;
+}
+.full-left-box .left-header {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 25px 0;
+  border-bottom: 3px solid #f0f0f0;
+}
+.full-left-box .left-nav li {
+  padding: 12.5px 20px;
+}
+
+.full-right-box {
+  padding: 1%;
+  box-sizing: border-box;
+  width: calc(90% - 3px);
+}
+.full-right-box .right-header {
+  padding: 10px 0;
+  font-size: 1.5rem;
+}
+.full-right-box .right-header .btn-group {
+  padding: 20px 0;
+}
+.full-right-box .right-header .mini-header {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding-left: 5px;
+  color: gray;
+}
+.full-right-box .right-content {
+  height: calc(92.5% - 71px);
+}
+
+.box {
+  padding: 3%;
+}
+.box header {
+  font-size: 1vw;
+}
+.box .box-content {
+  padding: 30px 20px 0 20px;
+}
+.box .box-content label {
+  font-size: 0.8vw;
+  display: inline-block;
+  min-width: 100px;
+  padding-right: 20px;
+}
+.box .box-content .row {
+  padding-bottom: 20px;
+}
+.box .box-content .row span {
+  text-align: center;
+}
+
+.ui-dialog-titlebar {
+  background: #00adef !important;
+  color: #fff !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  border: 1px solid #d3d3d3;
+  font-weight: normal;
+  color: #555555;
+  border-radius: 25px;
+}
+
+.ui-widget-header {
+  border: 1px solid #aaaaaa;
+  background: #00adef !important;
+  opacity: 0.5;
+  color: #222222;
+  font-weight: bold;
+}
+
+.aba-dialog {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.aba-dialog li, .aba-dialog .dialog-ask {
+  padding: 15px 5px;
+  border-bottom: 1px solid gainsboro;
+}
+.aba-dialog .dialog-ask p {
+  padding: 5px 0;
+}
+.aba-dialog .dialog-btn-group {
+  width: 60%;
+  margin: 0 auto;
+}
+.aba-dialog li:hover {
+  background: lightgrey;
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=dialog.css.map */

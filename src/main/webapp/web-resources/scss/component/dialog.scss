@@ -1,0 +1,45 @@
+@import "../admin/admin";
+
+.ui-dialog-titlebar {
+  background: $abaColor !important;
+  color: #fff !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  border: 1px solid #d3d3d3;
+  font-weight: normal;
+  color: #555555;
+  border-radius: 25px;
+}
+
+.ui-widget-header {
+  border: 1px solid #aaaaaa;
+  background: $abaColor !important;
+  opacity: .5;
+  color: #222222;
+  font-weight: bold;
+}
+
+.aba-dialog {
+  text-align: center;
+  font-size: 1.1rem;
+
+  li, .dialog-ask {
+    padding: 15px 5px;
+    border-bottom: 1px solid gainsboro;
+  }
+
+  .dialog-ask p {
+    padding: 5px 0;
+  }
+
+  .dialog-btn-group {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  li:hover {
+    background: lightgrey;
+    opacity: .5;
+  }
+}

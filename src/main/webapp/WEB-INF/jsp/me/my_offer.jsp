@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
+<link rel="stylesheet" type="text/css" href="/web-resources/scss/component/dialog.css">
 
 <div class="content-right p-3 w-full">
+    <div class="overlay" style="background: black;" hidden></div>
     <div class="content label pt-0 mt-0 b-0">
         <div class="label-wrap">[USER] 님이 등록한 매물</div>
     </div>
@@ -29,11 +31,21 @@
             <td class="aba">진행중</td>
             <td>20.10.23</td>
             <td width="20%">
-                        <span class="border-side">
-                            <i class="fas fa-eye" onclick="" title="매물 상세보기"></i>
-                            <i class="fas fa-pen" title="매물 수정하기"></i>
-                            <i class="fas fa-trash-alt" title="매물 삭제하기"></i>
-                        </span>
+                <span class="border-side">
+                    <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/1')" ></i>
+                    <i class="fas fa-pen" title="매물 수정하기" onclick="alert('준비중입니다 :(')"></i>
+                    <i class="fas fa-trash-alt" title="매물 삭제하기" onclick="dialogInitializer($(this), $('#ddd'))"></i>
+                </span>
+                <div class="aba-dialog" id="ddd" title="아바" hidden>
+                    <div class="dialog-ask">
+                        <p class="aba">경남 진주시 아바빌 123-1</p>
+                        <p>을 삭제할까요?</p>
+                    </div>
+                    <div class="dialog-btn-group pt-3">
+                        <button class="fl" type="button" onclick="">YES</button>
+                        <button class="fr" type="button" onclick="dialogCloseTrigger($('#ddd'))">NO</button>
+                    </div>
+                </div>
             </td>
         </tr>
     </tbody>
@@ -41,13 +53,13 @@
         <td colspan="9">
             <div class="paginator b-0 p-0">
                 <div class="page-wrap f-c">
-                    <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
+                    <button class="page prev p-0" onclick="">
                         <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                     </button>
                     <ul class="pages" style="display: contents;">
-                        <li class="p-3">1</li>
+                        <li class="active">1</li>
                     </ul>
-                    <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
+                    <button class="page prev p-0" onclick="">
                         <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                     </button>
                 </div>

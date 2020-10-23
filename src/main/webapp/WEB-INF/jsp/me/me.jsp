@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/me/me.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
