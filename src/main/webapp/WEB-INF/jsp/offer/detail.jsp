@@ -26,10 +26,10 @@
     <div class="offer-header">
         <div class="header-warp">
             <ul>
-                <li><a href="#offer-info">매물 정보</a></li>
-                <li><a href="#offer-option">옵션</a></li>
-                <li><a href="#offer-desc">상세 설명</a></li>
-                <li><a href="#offer-location">매물 위치</a></li>
+                <li onclick="location.href='#offer-info'"><a>매물 정보</a></li>
+                <li onclick="location.href='#offer-option'"><a>옵션</a></li>
+                <li onclick="location.href='#offer-desc'"><a>상세 설명</a></li>
+                <li onclick="location.href='#offer-location'"><a>매물 위치</a></li>
             </ul>
         </div>
     </div>
