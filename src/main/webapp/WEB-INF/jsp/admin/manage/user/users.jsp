@@ -41,11 +41,11 @@
             <td colspan="9">
                 <div class="paginator f-c b-0 p-0">
                     <div class="page-wrap">
-                        <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
+                        <button class="page prev p-0" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;"></ul>
-                        <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
+                        <button class="page prev p-0" onclick="">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
