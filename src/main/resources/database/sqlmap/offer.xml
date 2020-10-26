@@ -14,6 +14,7 @@
         <result property="heatingType" column="heating_type" />
         <result property="heatingMethodType" column="heating_method_type" />
         <result property="status" column="status" />
+        <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="description" column="description" />
         <result property="thumbnail" column="thumbnail" />

@@ -143,6 +143,22 @@ function getOffersByIdKeyword(idKey) {
     return result;
 }
 
+function getOffersByUserId(page, userId) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers/my?userId=' + userId + '&page=' + page,
+        type: 'GET',
+        async: false,
+        success: function (offers) {
+            result = offers;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 function ajaxError() {
     alert("Error !");
 }

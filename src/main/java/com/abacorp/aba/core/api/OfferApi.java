@@ -59,7 +59,7 @@ public class OfferApi {
                                           @RequestParam(value = "page") int page) {
         log.info("userId : {}", userId);
         log.info("page : {}", page);
-        return PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
+        return PageHelper.startPage(page, 3).doSelectPageInfo(
                 () -> service.getOffersByUserId(userId)
         );
     }
