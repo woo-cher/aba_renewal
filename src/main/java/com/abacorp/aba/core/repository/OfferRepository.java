@@ -4,6 +4,7 @@ import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.OfferAddition;
 import com.abacorp.aba.model.OfferAddress;
 import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -68,5 +69,9 @@ public class OfferRepository {
 
     public int updateOfferThumbnailById(Offer offer) {
         return sqlSession.update("updateThumbnailById", offer);
+    }
+
+    public List<Offer> selectOffersByUserId(String userId) {
+        return sqlSession.selectList("selectOffersByUserId", userId);
     }
 }

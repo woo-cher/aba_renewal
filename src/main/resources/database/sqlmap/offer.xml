@@ -134,6 +134,11 @@
         WHERE offer_id LIKE CONCAT('%', #{idKey}, '%');
     </select>
 
+    <select id="selectOffersByUserId" resultMap="offer" parameterType="String">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE ofs.user = #{userId}
+    </select>
+
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,

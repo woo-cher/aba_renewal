@@ -49,8 +49,18 @@ public class OfferApi {
         return service.getOffersByLatLng(dto);
     }
 
-    @RequestMapping(value = "/offers")
+    @RequestMapping(value = "/offers", method = RequestMethod.GET)
     public List<Offer> offersByIdKeyword(@RequestParam(value = "idKey") String idKey) {
         return service.getOffersByIdKeyword(idKey);
+    }
+
+    @RequestMapping(value = "/offers/my", method = RequestMethod.GET)
+    public PageInfo<Offer> offersByUserId(@RequestParam(value = "userId") String userId,
+                                          @RequestParam(value = "page") int page) {
+        log.info("userId : {}", userId);
+        log.info("page : {}", page);
+        return PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
+                () -> service.getOffersByUserId(userId)
+        );
     }
 }

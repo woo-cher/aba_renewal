@@ -8,6 +8,7 @@ import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,5 +93,9 @@ public class MapService {
 
     public List<Offer> getOffersByIdKeyword(String idKey) {
         return offerRepository.selectOffersByIdKeyword(idKey);
+    }
+
+    public List<Offer> getOffersByUserId(String userId) {
+        return offerRepository.selectOffersByUserId(userId);
     }
 }

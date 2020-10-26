@@ -2,11 +2,8 @@ package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.KakaoRestApiHelper;
 import com.abacorp.aba.core.service.MapService;
-import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
