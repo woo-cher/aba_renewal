@@ -1,5 +1,4 @@
 function getAddress(target) {
-    console.log("target : ", target);
     new daum.Postcode({
         oncomplete: function(data) {
             let roadAddr = data.roadAddress; // 도로명 주소 변수

@@ -43,6 +43,9 @@ function activateWithUrl(regex, callback = null) {
             el = callback(el);
         }
 
+        /**
+         * Specified
+         */
         if (el.includes("usersme")) {
             $('.usersmemyaba').addClass('active');
         }
@@ -52,7 +55,7 @@ function activateWithUrl(regex, callback = null) {
         }
 
         if (el.includes("offers")) {
-            $(".adminmanageoffers").addClass('active');
+            $(".adminoffers").addClass('active');
         }
 
         $('.' + el).addClass('active');
