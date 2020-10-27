@@ -63,4 +63,9 @@ public class OfferApi {
                 () -> service.getOffersByUserId(userId)
         );
     }
+
+    @RequestMapping(value = "/offers/{offer}", method = RequestMethod.DELETE)
+    public int delete(@PathVariable(value = "offer") int id) {
+        return service.deleteOfferById(id);
+    }
 }

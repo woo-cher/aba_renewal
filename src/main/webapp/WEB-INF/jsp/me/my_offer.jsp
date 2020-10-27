@@ -67,6 +67,7 @@
         bindOffers($('#my-offers'), 1, pageInfo);
 
         $("#offer-count").text(pageInfo['total']);
+
         pageHelper.setEndPage(pageInfo['pages']);
         pageHelper.pageCalculation(1, pageInfo, (page) => {
             bindOffers($('#my-offers'), page, getOffersByUserId(page, sessionUserId));
