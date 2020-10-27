@@ -98,8 +98,4 @@ public class MapService {
     public List<Offer> getOffersByUserId(String userId) {
         return offerRepository.selectOffersByUserId(userId);
     }
-
-    public int deleteOfferById(int id) {
-        return offerRepository.deleteOfferById(id);
-    }
 }

@@ -10,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
@@ -46,7 +44,7 @@ public class OfferController {
     }
 
     @RequestMapping("/create/form")
-    public ModelAndView createView() {
+    public ModelAndView form(@RequestParam(required = false, value = "offerId") Integer offerId) {
         mv.clear();
         mv.setViewName("/offer/create/form");
 
@@ -56,11 +54,21 @@ public class OfferController {
         mv.addObject("heatingTypes", HeatingType.values());
         mv.addObject("manages", ManagementCategoryType.values());
 
+        if(offerId != null) {
+            log.info("Offer update form initialize ID : {}", offerId);
+            mv.addObject("isUpdate", true);
+
+            Offer offer = service.getOfferById(offerId);
+            log.info("Db offer : {}", offer);
+            mv.addObject("offer", offer);
+        }
+
         return mv;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@ModelAttribute @Valid Offer offer, BindingResult bindingResult) throws IOException {
+    @RequestMapping(value = {"/create", "/update"}, method = RequestMethod.POST)
+    public ModelAndView createAndUpdate(@ModelAttribute @Valid Offer offer,
+                                        BindingResult bindingResult, HttpServletRequest request) throws IOException {
         if(!offer.getFiles().get(0).getOriginalFilename().isEmpty()) {
             log.info("size : {}", offer.getFiles().size());
             for(MultipartFile file : offer.getFiles()) {
@@ -72,27 +80,22 @@ public class OfferController {
 
         if(bindingResult.hasErrors()) {
             List<FieldError> errors = bindingResult.getFieldErrors();
-            offerService.getCreateProcessIndex(errors);
+            offerService.getFormProcessIndex(errors);
 
-            mv = createView();
+            mv = form(null);
 
-            mv.addObject("processIndex", offerService.getCreateProcessIndex(errors));
+            mv.addObject("processIndex", offerService.getFormProcessIndex(errors));
             mv.addObject("errors", errors);
             mv.addObject("offer", offer);
 
             return mv;
         }
 
-        int row = offerService.createOffer(offer);
+        StringBuffer requestUrl = request.getRequestURL();
+        log.info("URL : {}", requestUrl); // http://localhost:8080/offers/update
 
-        mv.setViewName("admin/admin");
-
-        return mv;
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ModelAndView delete(@PathVariable int id) {
-        offerService.deleteOffer(id);
+        int row = requestUrl.toString().contains("create") ?
+                offerService.createOffer(offer) : offerService.updateOffer(offer);
 
         mv.setViewName("admin/admin");
 

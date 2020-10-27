@@ -70,7 +70,18 @@ public class OfferService {
         return 1;
     }
 
-    public int deleteOffer(int offerId) {
+    /** TODO)
+     *   1. createOffer() 의 특정 데이터 변환 부 통합 해야 한다
+     *   2. Image 처리는 어떻게 할 것인가?
+     *    > errors.hasError() == false 이면, 기존 Offer 가 가진 s3 이미지를 모두 삭제 처리
+     *    > 그런 후에, 업로드 위한 이미지를 재업로드 한다.
+     */
+    @Transactional
+    public int updateOffer(Offer offer) {
+        return 0;
+    }
+
+    public int deleteOfferById(int offerId) {
         if(offerRepository.deleteOfferById(offerId) == 0) {
             return 0;
         }
@@ -111,7 +122,7 @@ public class OfferService {
         return floor;
     }
 
-    public int getCreateProcessIndex(List<FieldError> errors) {
+    public int getFormProcessIndex(List<FieldError> errors) {
         Map<String, Boolean> clazzMap = new HashMap<>();
 
         clazzMap.put("offer", false);

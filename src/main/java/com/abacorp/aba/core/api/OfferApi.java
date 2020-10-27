@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.MapService;
+import com.abacorp.aba.core.service.OfferService;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.github.pagehelper.PageHelper;
@@ -20,6 +21,9 @@ public class OfferApi {
 
     @Autowired
     private MapService service;
+
+    @Autowired
+    private OfferService offerService;
 
     @RequestMapping(value = "/offers", method = RequestMethod.POST)
     public PageInfo<Offer> offers(@RequestBody MapFiltersDto dto) {
@@ -66,6 +70,6 @@ public class OfferApi {
 
     @RequestMapping(value = "/offers/{offer}", method = RequestMethod.DELETE)
     public int delete(@PathVariable(value = "offer") int id) {
-        return service.deleteOfferById(id);
+        return offerService.deleteOfferById(id);
     }
 }
