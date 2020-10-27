@@ -159,6 +159,22 @@ function getOffersByUserId(page, userId) {
     return result;
 }
 
+function deleteOfferById(offerId) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers/' + offerId,
+        type: 'DELETE',
+        async: false,
+        success: function (deleteRow) {
+            result = deleteRow;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 function ajaxError() {
     alert("Error !");
 }

@@ -32,8 +32,9 @@
                 <p>을 삭제할까요?</p>
             </div>
             <div class="dialog-btn-group pt-3">
-                <button class="fl" type="button" onclick="">YES</button>
-                <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">NO</button>
+                <button class="fl" type="button" onclick="deleteOffer()">삭제</button>
+                <input type="hidden" id="target-id">
+                <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
             </div>
         </div>
     </tbody>
@@ -86,6 +87,15 @@
         })
     }
 
+    function deleteOffer() {
+        let offerId = $('#target-id').val();
+
+        if(deleteOfferById(offerId) === 1) {
+            $('.offer' + offerId).parent('tr').remove();
+            dialogCloseTrigger($('#offer-dialog'));
+        }
+    }
+
     function bindOffers(where, page, pageInfo) {
         let offers = pageInfo['list'];
         let count = 0;
@@ -115,7 +125,7 @@
                             <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/${'${offerId}'}')" ></i>
                             <i class="fas fa-pen" title="매물 수정하기" onclick="alert('준비중입니다 :(')"></i>
                             <i class="fas fa-trash-alt" title="매물 삭제하기"
-                               onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offerId}'}').text())"
+                               onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offerId}'}', ).text(), ${'${offerId}'})"
                             >
                             </i>
                         </span>
