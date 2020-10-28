@@ -43,7 +43,7 @@ public class OfferController {
         return mv;
     }
 
-    @RequestMapping("/create/form")
+    @RequestMapping("/form")
     public ModelAndView form(@RequestParam(required = false, value = "offerId") Integer offerId) {
         mv.clear();
         mv.setViewName("/offer/create/form");

@@ -38,7 +38,7 @@
             <li class="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-            <li class="offerscreateform"><a href="/offers/create/form">매물등록</a></li>
+            <li class="offerscreateform"><a href="/offers/form">매물등록</a></li>
             <li class="user">
                 <a href="#">${principal.user.name} 님
                     <h5 style="display: inline">▼</h5>

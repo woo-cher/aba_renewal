@@ -80,7 +80,7 @@ public class AwsS3Service {
     public void deleteAll(String offerId) {
         ListObjectsRequest req = new ListObjectsRequest()
                 .withBucketName(bucketName)
-                .withPrefix(pathEndPoint + offerId);
+                .withPrefix(pathEndPoint + getMd5Hash(offerId));
 
         ObjectListing objectListing = amazonS3.listObjects(req);
 

@@ -123,7 +123,7 @@
                     <td width="20%">
                         <span class="border-side">
                             <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/${'${offerId}'}')" ></i>
-                            <i class="fas fa-pen" title="매물 수정하기" onclick="alert('준비중입니다 :(')"></i>
+                            <i class="fas fa-pen" title="매물 수정하기" onclick="window.open('/offers/form?offerId=${'${offerId}'}')"></i>
                             <i class="fas fa-trash-alt" title="매물 삭제하기"
                                onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offerId}'}', ).text(), ${'${offerId}'})"
                             >

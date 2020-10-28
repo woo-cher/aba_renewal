@@ -20,6 +20,15 @@
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 
+<c:choose>
+    <c:when test="${isUpdate}">
+        <c:set var="actionUrl" value="/offers/update" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="actionUrl" value="/offers/create" />
+    </c:otherwise>
+</c:choose>
+
 <body>
     <div class="main-container p-1">
         <ul class="left-navbar" id="leftNav">
@@ -41,7 +50,10 @@
         </div>
         <div class="bottom-navbar submit" onclick="$('#submit').click()" hidden>
             <p class="nav-bottom aba txt-lg">
-                등록하기
+            <c:choose>
+                <c:when test="${isUpdate}">매물수정</c:when>
+                <c:otherwise>등록하기</c:otherwise>
+            </c:choose>
                 <i class="fas fa-check-circle"></i>
             </p>
         </div>
@@ -54,7 +66,7 @@
                 </h3>
             </div>
 
-            <form action="/offers/create" id="offerForm" method="post" enctype="multipart/form-data">
+            <form action="${actionUrl}" id="offerForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <input type="hidden" name="user.userId" value="${sessionUser.userId}">
                 <div id="formWrap">
@@ -88,6 +100,34 @@
                     '</i>' + errorMessage + '</p>'
                 );
             </c:forEach>
+        </c:if>
+
+        <c:if test="${isUpdate}">
+            <c:if test="${offer.offerAddress.dong eq null}">
+                $('#isExistDong').prop('checked', true);
+                dongTrigger($('#dong'));
+            </c:if>
+            <c:if test="${offer.offerAddition.tenant ne '무'}">
+                $("#tenant").prop('checked', true);
+                dynamicFormTrigger($('#tenant'));
+                $('#tenantDesc').find('input').val("${offer.offerAddition.tenant}")
+            </c:if>
+            <c:if test="${offer.offerAddition.term ne 0}">
+                $('#term').prop('checked', true);
+                dynamicFormTrigger($('#term'));
+                $('#howTerm').find('input').val("${offer.offerAddition.term}")
+            </c:if>
+            <c:if test="${offer.offerAddition.hasElevator}">
+                $('#elevator').prop('checked', true);
+                elevatorTrigger($('#elevator'))
+                $('#manage5').prop('checked', true);
+            </c:if>
+            <c:if test="${offer.offerAddition.canParking}">
+                $('#parking').prop('checked', true);
+            </c:if>
+            <c:if test="${offer.offerAddition.canPet}">
+                $('#pet').prop('checked', true);
+            </c:if>
         </c:if>
     });
 

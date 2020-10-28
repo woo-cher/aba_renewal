@@ -32,13 +32,9 @@ public class OfferService {
         OfferAddress offerAddress = offer.getOfferAddress();
         OfferAddition offerAddition = offer.getOfferAddition();
 
-        String belongsTo = convertJibunToBelongsTo(offerAddress.getJibun());
-        offerAddress.setBelongsTo(belongsTo);
+        convertOfferAddressData(offerAddress);
 
-        String floorType = offerAddress.getFloor();
-        offerAddress.setFloor(convertFloor(floorType));
-
-        if(offerRepository.insertOffer(offer) == 0) {
+        if (offerRepository.insertOffer(offer) == 0) {
             return 0;
         }
 
@@ -47,46 +43,68 @@ public class OfferService {
         offerAddress.setOfferId(offer.getId());
         offerAddition.setOfferId(offer.getId());
 
-        if(offerRepository.insertOfferAddress(offerAddress) == 0) {
+        if (offerRepository.insertOfferAddress(offerAddress) == 0) {
             return 0;
         }
 
-        if(offerRepository.insertOfferAddition(offerAddition) == 0) {
+        if (offerRepository.insertOfferAddition(offerAddition) == 0) {
             return 0;
         }
 
-        /**
-         * TODO) images path 필드 추가 / 업로드 처리 로직
-         */
+        uploadImages(offer);
+
+        return 1;
+    }
+
+    /**
+     * TODO)
+     * 1. createOffer() 의 특정 데이터 변환 부 통합 해야 한다
+     * 2. Image 처리는 어떻게 할 것인가?
+     * > errors.hasError() == false 이면, 기존 Offer 가 가진 s3 이미지를 모두 삭제 처리
+     * > 그런 후에, 업로드 위한 이미지를 재업로드 한다.
+     */
+    @Transactional
+    public int updateOffer(Offer offer) throws IOException {
+        OfferAddress offerAddress = offer.getOfferAddress();
+        OfferAddition offerAddition = offer.getOfferAddition();
+
+        convertOfferAddressData(offerAddress);
+
+        offerRepository.updateOffer(offer);
+        offerRepository.updateOfferAddress(offerAddress);
+        offerRepository.updateOfferAddition(offerAddition);
+
+        awsS3Service.deleteAll(String.valueOf(offer.getId()));
+        uploadImages(offer);
+
+        return 1;
+    }
+
+    public int deleteOfferById(int offerId) {
+        if (offerRepository.deleteOfferById(offerId) == 0) {
+            return 0;
+        }
+
+        return 1;
+    }
+
+    private void uploadImages(Offer offer) throws IOException {
         List<MultipartFile> offerImages = offer.getFiles();
 
-        if(!offerImages.get(0).getOriginalFilename().isEmpty()) {
+        if (!offerImages.get(0).getOriginalFilename().isEmpty()) {
             String thumbnail = awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
             offer.setThumbnail(thumbnail);
 
             offerRepository.updateOfferThumbnailById(offer);
         }
-
-        return 1;
     }
 
-    /** TODO)
-     *   1. createOffer() 의 특정 데이터 변환 부 통합 해야 한다
-     *   2. Image 처리는 어떻게 할 것인가?
-     *    > errors.hasError() == false 이면, 기존 Offer 가 가진 s3 이미지를 모두 삭제 처리
-     *    > 그런 후에, 업로드 위한 이미지를 재업로드 한다.
-     */
-    @Transactional
-    public int updateOffer(Offer offer) {
-        return 0;
-    }
+    private void convertOfferAddressData(OfferAddress offerAddress) {
+        String belongsTo = convertJibunToBelongsTo(offerAddress.getJibun());
+        offerAddress.setBelongsTo(belongsTo);
 
-    public int deleteOfferById(int offerId) {
-        if(offerRepository.deleteOfferById(offerId) == 0) {
-            return 0;
-        }
-
-        return 1;
+        String floorType = offerAddress.getFloor();
+        offerAddress.setFloor(convertFloor(floorType));
     }
 
     /**
@@ -129,19 +147,19 @@ public class OfferService {
         clazzMap.put("offerAddress", false);
         clazzMap.put("offerAddition", false);
 
-        for(FieldError error : errors) {
-            if(error.getField().contains("offerAddress")) {
+        for (FieldError error : errors) {
+            if (error.getField().contains("offerAddress")) {
                 clazzMap.put("offerAddress", true);
-            } else if(error.getField().contains("offerAddition")) {
+            } else if (error.getField().contains("offerAddition")) {
                 clazzMap.put("offerAddition", true);
             } else {
                 clazzMap.put("offer", true);
             }
         }
 
-        if(clazzMap.get("offer")) {
+        if (clazzMap.get("offer")) {
             return 0;
-        } else if(clazzMap.get("offerAddress")) {
+        } else if (clazzMap.get("offerAddress")) {
             return 1;
         } else {
             return 2;

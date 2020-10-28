@@ -74,4 +74,16 @@ public class OfferRepository {
     public List<Offer> selectOffersByUserId(String userId) {
         return sqlSession.selectList("selectOffersByUserId", userId);
     }
+
+    public int updateOffer(Offer offer) {
+        return sqlSession.update("updateOffer", offer);
+    }
+
+    public int updateOfferAddress(OfferAddress offerAddress) {
+        return sqlSession.update("updateOfferAddress", offerAddress);
+    }
+
+    public int updateOfferAddition(OfferAddition offerAddition) {
+        return sqlSession.update("updateOfferAddition", offerAddition);
+    }
 }

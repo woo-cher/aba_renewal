@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <section class="form-control mt-0" hidden>
     <div class="form-label">
@@ -38,10 +39,10 @@
             <label for="term">단기 가능</label>
         </li>
         <li class="checkbox-list" style="width: 15%;">
-            <input id="elvator" type="checkbox" name="offerAddition.hasElevator" value=true class="check"
+            <input id="elevator" type="checkbox" name="offerAddition.hasElevator" value=true class="check"
                    onchange="elevatorTrigger($(this))"
             >
-            <label for="elvator">승강기 있음</label>
+            <label for="elevator">승강기 있음</label>
         </li>
         <li class="checkbox-list" style="width: 15%;">
             <input id="parking" type="checkbox" name="offerAddition.canParking" class="check">
@@ -56,7 +57,7 @@
     <div id="tenantDesc" hidden>
         <div class="input-group">
             <label class="form-label">* 세입자 : </label>
-            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)" value="무">
+            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)" value="${offer.offerAddition.tenant}">
         </div>
     </div>
 

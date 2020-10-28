@@ -7,7 +7,7 @@
         <span class="mini-header">집주인의 연락처를 기준으로 한 매물들을 통합으로 관리합니다.</span>
     </header>
     <div class="btn-group">
-        <button class="aba reverse" type="button" onclick="window.open('/offers/create/form')">
+        <button class="aba reverse" type="button" onclick="window.open('/offers/form')">
             <i class="fas fa-user-plus"></i>
             매물 추가
         </button>
