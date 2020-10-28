@@ -170,14 +170,14 @@
         SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice}, type = #{type},
             deal_type = #{dealType}, heating_type = #{heatingType}, completion_year = #{completionYear}, description = #{description},
             updated_at = current_timestamp
-        WHERE id = #{offerId}
+        WHERE id = #{id}
     </update>
 
     <update id="updateOfferAddress" parameterType="offerAddress">
         UPDATE offer_addresses
         SET latitude = #{latitude}, longitude = #{longitude}, building_name = #{buildingName},
             jibun = #{jibun}, road = #{road}, dong = #{dong}, ho = #{ho}, entrance = #{entrance},
-            door = #{door}, floor = #{floor}, near_location = #{nearLocation}, belongsTo = #{belongsTo}
+            door = #{door}, floor = #{floor}, near_location = #{nearLocation}, belongs_to = #{belongsTo}
         WHERE offer_id = #{offerId}
     </update>
 

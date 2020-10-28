@@ -68,6 +68,11 @@
 
             <form action="${actionUrl}" id="offerForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
+                <c:if test="${isUpdate}">
+                    <input type="hidden" name="id" value="${offer.id}">
+                    <input type="hidden" name="offerAddress.offerId" value="${offer.id}">
+                    <input type="hidden" name="offerAddition.offerId" value="${offer.id}">
+                </c:if>
                 <input type="hidden" name="user.userId" value="${sessionUser.userId}">
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>

@@ -57,7 +57,7 @@
     <div id="tenantDesc" hidden>
         <div class="input-group">
             <label class="form-label">* 세입자 : </label>
-            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)" value="${offer.offerAddition.tenant}">
+            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유(3월말)" value="무">
         </div>
     </div>
 
