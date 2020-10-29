@@ -1,10 +1,9 @@
 package com.abacorp.aba.api;
 
 import com.abacorp.aba.core.service.AwsS3Service;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.ListObjectsRequest;
-import com.amazonaws.services.s3.model.ObjectListing;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -90,7 +89,6 @@ public class AwsS3Test {
             for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
                 log.info("key : {}", objectSummary.getKey());
                 String fileKey = objectSummary.getKey();
-
                 String fileName = fileKey.replace("offer-images/", "")
                         .replace(offerIdAsMd5 + "/", "");
 
@@ -104,6 +102,19 @@ public class AwsS3Test {
         }
 
         log.info("Result : {}", fileList);
+    }
+
+    @Test
+    public void isExistFile() {
+        String key = "offer-images/70efdf2ec9b086079795c442636b55fb/error.PNG";
+        boolean isExist = false;
+
+        try {
+            amazonS3.getObject(bucket, key);
+        } catch (AmazonServiceException e) {
+            System.out.println("false");
+        }
+        System.out.println("true");
     }
 
     @Test

@@ -166,7 +166,7 @@
                     url = '${keyValueDto.url}';
 
                     console.log(fileName, url);
-                    mockFile = { name: fileName, size: 12345, type: 'image/png', accepted: true };
+                    mockFile = { name: fileName, size: 1000, type: 'image/png', accepted: true };
 
                     this.files.push(mockFile);
 

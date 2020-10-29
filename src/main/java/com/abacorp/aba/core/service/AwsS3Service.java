@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.model.dto.KeyValueDto;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
@@ -52,7 +53,9 @@ public class AwsS3Service {
 
         int index = 0;
         for(MultipartFile file : multipartFiles) {
-            hashFileName = getMd5Hash(file.getOriginalFilename());
+            String fileName = file.getOriginalFilename();
+
+            hashFileName = isExistFile(hashIdValue, fileName) ? fileName : getMd5Hash(fileName);
 
             if(index == 0) {
                 thumbnail = hashFileName;
@@ -70,10 +73,6 @@ public class AwsS3Service {
         }
 
         return (hashIdValue + "/" + thumbnail);
-    }
-
-    public List<MultipartFile> getAllImageKeys(String offerId) {
-        return null;
     }
 
 //    public void deleteOne(String offerId, String fileName) {
@@ -131,5 +130,16 @@ public class AwsS3Service {
                 .withPrefix(pathEndPoint + getMd5Hash(offerId));
 
         return amazonS3.listObjects(req);
+    }
+
+    public boolean isExistFile(String hashedOfferId, String fileName) {
+        String key = "offer-images/" + hashedOfferId + "/" + fileName;
+
+        try {
+            amazonS3.getObject(bucketName, key);
+        } catch (AmazonServiceException e) {
+            return false;
+        }
+        return true;
     }
 }
