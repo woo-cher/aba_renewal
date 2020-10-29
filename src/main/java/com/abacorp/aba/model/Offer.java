@@ -1,5 +1,6 @@
 package com.abacorp.aba.model;
 
+import com.abacorp.aba.model.dto.KeyValueDto;
 import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +39,8 @@ public class Offer extends ModelMapper {
     private String thumbnail;
     @Builder.Default
     private List<MultipartFile> files = null;
+    @Builder.Default
+    private List<KeyValueDto> imageUrls = null;
     @Valid
     @JsonProperty("offerAddition")
     private OfferAddition offerAddition;

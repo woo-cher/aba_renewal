@@ -1,16 +1,17 @@
 package com.abacorp.aba.core.service;
 
+import com.abacorp.aba.model.dto.KeyValueDto;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class AwsS3Service {
-    private final String S3_END_POINT = "https://abasystem.s3.ap-northeast-2.amazonaws.com/";
+    public final String S3_END_POINT = "https://abasystem.s3.ap-northeast-2.amazonaws.com/";
 
     @Autowired
     private AmazonS3 amazonS3;
@@ -71,22 +72,21 @@ public class AwsS3Service {
         return (hashIdValue + "/" + thumbnail);
     }
 
-    public void deleteOne(String offerId, String fileName) {
-        String key = pathEndPoint + offerId + "/" + fileName;
-
-        amazonS3.deleteObject(bucketName, key);
+    public List<MultipartFile> getAllImageKeys(String offerId) {
+        return null;
     }
 
-    public void deleteAll(String offerId) {
-        ListObjectsRequest req = new ListObjectsRequest()
-                .withBucketName(bucketName)
-                .withPrefix(pathEndPoint + getMd5Hash(offerId));
+//    public void deleteOne(String offerId, String fileName) {
+//        String key = pathEndPoint + offerId + "/" + fileName;
+//
+//        amazonS3.deleteObject(bucketName, key);
+//    }
 
-        ObjectListing objectListing = amazonS3.listObjects(req);
+    public void deleteAll(String offerId) {
+        ObjectListing objectListing = getAwsObjectList(offerId);
 
         while (true) {
             for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
-                log.info("key : {}", objectSummary.getKey());
                 amazonS3.deleteObject(bucketName, objectSummary.getKey());
             }
             if (objectListing.isTruncated()) {
@@ -97,7 +97,39 @@ public class AwsS3Service {
         }
     }
 
+    public List<KeyValueDto> getAllFileUrls(String offerId) {
+        ObjectListing objectListing = getAwsObjectList(offerId);
+
+        List<KeyValueDto> fileUrls = new ArrayList<>();
+        String offerIdAsMd5 = getMd5Hash(offerId);
+
+        while (true) {
+            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+                String fileKey = objectSummary.getKey();
+                String fileName = fileKey.replace("offer-images/", "")
+                        .replace(offerIdAsMd5 + "/", "");
+
+                fileUrls.add(new KeyValueDto(fileName, S3_END_POINT + fileKey));
+            }
+            if (objectListing.isTruncated()) {
+                objectListing = amazonS3.listNextBatchOfObjects(objectListing);
+            } else {
+                break;
+            }
+        }
+
+        return fileUrls;
+    }
+
     public String getMd5Hash(String value) {
         return DigestUtils.md5DigestAsHex(value.getBytes());
+    }
+
+    public ObjectListing getAwsObjectList(String offerId) {
+        ListObjectsRequest req = new ListObjectsRequest()
+                .withBucketName(bucketName)
+                .withPrefix(pathEndPoint + getMd5Hash(offerId));
+
+        return amazonS3.listObjects(req);
     }
 }

@@ -27,14 +27,17 @@ public class MapService {
     @Autowired
     private OfferRepository offerRepository;
 
+    @Autowired
+    private AwsS3Service s3Service;
+
     @Transactional
     public List<Overlay> getOverlays(MapFiltersDto dto) {
         List<Overlay> overlays = overlayRepository.selectOverlaysByFilters(dto);
 
-        for(Overlay overlay : overlays) {
+        for (Overlay overlay : overlays) {
             dto.setBelongsTo(overlay.getName());
 
-            if(overlay.getCount() != 0) {
+            if (overlay.getCount() != 0) {
                 overlay.setCount(offerRepository.selectCountByFilters(dto));
             }
         }
@@ -63,18 +66,20 @@ public class MapService {
 
         int i = 0;
 
-        for(String indexStr :  addition.getOptionCategory().split(",")) { // 1, 2, 3
+        for (String indexStr : addition.getOptionCategory().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             optionTypeList.add(optionTypes[i]);
         }
 
-        for(String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
+        for (String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
             i = Integer.parseInt(indexStr);
             managementTypeList.add(managementTypes[i]);
         }
 
         addition.setOptionTypes(optionTypeList);
         addition.setManagementTypes(managementTypeList);
+
+        offer.setImageUrls(s3Service.getAllFileUrls(String.valueOf(id)));
 
         return offer;
     }

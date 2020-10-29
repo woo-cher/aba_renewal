@@ -153,6 +153,36 @@
             $('.dz-remove').css('margin-top', 10);
 
             $("#files")[0].files = file;
+            console.log("file : ", $("#files")[0].files);
+        },
+        init: function () {
+            let fileName;
+            let url;
+            let mockFile;
+
+            <c:if test="${isUpdate}">
+                <c:forEach var="keyValueDto" items="${offer.imageUrls}">
+                    fileName = '${keyValueDto.key}';
+                    url = '${keyValueDto.url}';
+
+                    console.log(fileName, url);
+                    mockFile = { name: fileName, size: 12345, type: 'image/png', accepted: true };
+
+                    this.files.push(mockFile);
+
+                    this.emit("addedfile", mockFile);
+                    this.emit("thumbnail", mockFile, url);
+                    this.emit("complete", mockFile);
+                </c:forEach>
+            </c:if>
+
+            let fileCountOnServer = ${fn:length(offer.imageUrls)}; // 이미 업로드한 파일 개수
+            this.options.maxFiles = this.options.maxFiles - fileCountOnServer;
+
+            $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
+            $('.dz-remove').css('margin-top', 10);
+
+            console.log("file : ", this.files);
         }
     };
 
@@ -252,8 +282,6 @@
 
     function elevatorTrigger(focus) {
         let isChecked = focus.prop('checked');
-
-        console.log(isChecked);
 
         isChecked ? $('#manage5').parent().show() : $('#manage5').parent().hide();
         $('#manage5').prop('checked', false);
