@@ -140,6 +140,10 @@
         WHERE ofs.user = #{userId}
     </select>
 
+    <select id="selectOfferThumbnail" parameterType="int">
+        SELECT thumbnail FROM offers WHERE id = #{offerId}
+    </select>
+
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,

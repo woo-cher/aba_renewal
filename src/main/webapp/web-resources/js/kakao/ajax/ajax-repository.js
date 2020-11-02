@@ -230,3 +230,16 @@ function getAllUsers(page) {
 
     return result;
 }
+
+function deleteImage(offerId, target) {
+    $.ajax({
+        url: '/apis/s3/delete?offerId=' + offerId + '&fileName=' + target,
+        type: 'DELETE',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            console.log("Deleted : ", target);
+        },
+        error: ajaxError
+    });
+}

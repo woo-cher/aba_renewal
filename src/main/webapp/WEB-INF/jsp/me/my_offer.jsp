@@ -28,7 +28,7 @@
     <tbody class="row" id="my-offers">
         <div class="aba-dialog" id="offer-dialog" title="아바" hidden>
             <div class="dialog-ask">
-                <p class="aba" id="target"></p>
+                <p class="aba target"></p>
                 <p>을 삭제할까요?</p>
             </div>
             <div class="dialog-btn-group pt-3">

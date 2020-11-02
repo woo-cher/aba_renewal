@@ -79,6 +79,7 @@
                     <%@include file="/WEB-INF/jsp/offer/create/addresses.jsp"%>
                     <%@include file="/WEB-INF/jsp/offer/create/additions.jsp"%>
                 </div>
+                <img hidden id="blah" src="#">
             </form>
         </article>
     </div>
@@ -137,53 +138,79 @@
     });
 
     Dropzone.options.dropzone = {
-        url: '/aws/s3/upload',
+        url: '${actionUrl}',
+        paramName: 'files',
         autoProcessQueue: false,
-        uploadMultiple: true,
+        uploadMuzltiple: true,
         addRemoveLinks: true,
         maxFiles: 8,
         thumbnailWidth: 100,
         thumbnailHeight: 100,
         acceptedFiles: 'image/*',
-        addedfiles: function (file) {
-            $('.dz-progress').remove();
-            $('.dz-image').css('width', 100);
-            $('.dz-image').css('height', 100);
-            $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`)
-            $('.dz-remove').css('margin-top', 10);
-
-            $("#files")[0].files = file;
-            console.log("file : ", $("#files")[0].files);
-        },
         init: function () {
+            let dropZone = this;
             let fileName;
             let url;
-            let mockFile;
+            let blob;
+            let file;
 
             <c:if test="${isUpdate}">
                 <c:forEach var="keyValueDto" items="${offer.imageUrls}">
                     fileName = '${keyValueDto.key}';
                     url = '${keyValueDto.url}';
 
-                    console.log(fileName, url);
-                    mockFile = { name: fileName, size: 1000, type: 'image/png', accepted: true };
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        async: false,
+                        responseType: 'blob',
+                        success: function (response) {
+                            blob = response;
+                            blob.name = fileName;
+                            blob.lastModifiedDate = new Date().getTime();
 
-                    this.files.push(mockFile);
+                            file = new File([blob], fileName, { type: 'image/png' });
+                        },
+                        error: () => { alert('error') }
+                    });
 
-                    this.emit("addedfile", mockFile);
-                    this.emit("thumbnail", mockFile, url);
-                    this.emit("complete", mockFile);
+                    this.emit("addedfile", file);
+                    this.emit("thumbnail", file, url);
+                    this.emit("complete", file);
+
+                    $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
+                    $('.dz-remove').css('margin-top', 10);
                 </c:forEach>
             </c:if>
 
             let fileCountOnServer = ${fn:length(offer.imageUrls)}; // 이미 업로드한 파일 개수
             this.options.maxFiles = this.options.maxFiles - fileCountOnServer;
-
-            $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
+        },
+        addedfiles: function (file) {
+            $('.dz-progress').remove();
+            $('.dz-image').css('width', 100);
+            $('.dz-image').css('height', 100);
             $('.dz-remove').css('margin-top', 10);
+            $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
 
-            console.log("file : ", this.files);
+            $("#files")[0].files = file;
+
+            console.log("file.. : ", this.files);
+        },
+        <c:if test="${isUpdate}">
+        removedfile: function (file) {
+            if(file.accepted === undefined) { // isMockFile
+                if(confirm("이미지를 삭제할까요?")) {
+                    deleteImage('${offer.id}', file.name);
+                } else {
+                    return;
+                }
+            }
+
+            console.log('file : ', file);
+            file.previewElement.remove();
         }
+        </c:if>
     };
 
     $('#leftNav > li').click(function(e) {

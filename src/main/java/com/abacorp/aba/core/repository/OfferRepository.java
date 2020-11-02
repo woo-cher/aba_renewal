@@ -86,4 +86,8 @@ public class OfferRepository {
     public int updateOfferAddition(OfferAddition offerAddition) {
         return sqlSession.update("updateOfferAddition", offerAddition);
     }
+
+    public String selectOfferThumbnail(int offerId) {
+        return sqlSession.selectOne("selectOfferThumbnail", offerId);
+    }
 }

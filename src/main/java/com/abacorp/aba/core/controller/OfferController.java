@@ -67,13 +67,12 @@ public class OfferController {
     }
 
     @RequestMapping(value = {"/create", "/update"}, method = RequestMethod.POST)
-    public ModelAndView createAndUpdate(@ModelAttribute @Valid Offer offer,
-                                        BindingResult bindingResult, HttpServletRequest request) throws IOException {
-        if(!offer.getFiles().get(0).getOriginalFilename().isEmpty()) {
-            log.info("size : {}", offer.getFiles().size());
-            for(MultipartFile file : offer.getFiles()) {
-                log.info("\tname : {}", file.getOriginalFilename());
-            }
+    public ModelAndView createAndUpdate(@ModelAttribute @Valid Offer offer, BindingResult bindingResult,
+                                        HttpServletRequest request) throws IOException {
+
+        log.info("size : {}", offer.getFiles().size());
+        for(MultipartFile file : offer.getFiles()) {
+            log.info("\tname : {}", file.getOriginalFilename());
         }
 
         log.info("offer : {}", offer);

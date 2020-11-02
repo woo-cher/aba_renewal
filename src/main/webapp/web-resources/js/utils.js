@@ -115,7 +115,7 @@ function getUrlParameter(reqParam) {
 }
 
 <!-- Dialog -->
-function dialogInitializer(element, showWhat, targetName, targetId) {
+function dialogInitializer(element, showWhat, targetName = null, targetId = null) {
     element.on('click', function () {
         $('.overlay').show();
         showWhat.dialog({
@@ -127,8 +127,8 @@ function dialogInitializer(element, showWhat, targetName, targetId) {
                 of: ".content-wrap"
             },
             open: function () {
-                $('#target').text(targetName)
-                $('#target-id').val(targetId);
+                targetName !== null ? $('.target').text(targetName) : '';
+                targetId !== null ? $('.target-id').val(targetId) : '';
             },
             close: function (event, ui) {
                 $('.overlay').hide();

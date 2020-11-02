@@ -2,6 +2,8 @@ package com.abacorp.aba.model.dto;
 
 import lombok.*;
 
+import java.io.File;
+
 
 @Data
 @Builder

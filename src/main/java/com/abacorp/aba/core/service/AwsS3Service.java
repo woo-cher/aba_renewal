@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,8 +55,16 @@ public class AwsS3Service {
         int index = 0;
         for(MultipartFile file : multipartFiles) {
             String fileName = file.getOriginalFilename();
+            log.error("파일명 : {}", fileName);
 
-            hashFileName = isExistFile(hashIdValue, fileName) ? fileName : getMd5Hash(fileName);
+//            hashFileName = isExistFile(hashIdValue, fileName) ? fileName : getMd5Hash(fileName);
+            if (isExistFile(hashIdValue, fileName)) {
+                hashFileName = fileName;
+                log.error("이미 존재하는 파일 ! : {}", hashFileName);
+            } else {
+                hashFileName = getMd5Hash(fileName);
+                log.error("해싱 처리 했음 ! : {}", hashFileName);
+            }
 
             if(index == 0) {
                 thumbnail = hashFileName;
@@ -75,11 +84,12 @@ public class AwsS3Service {
         return (hashIdValue + "/" + thumbnail);
     }
 
-//    public void deleteOne(String offerId, String fileName) {
-//        String key = pathEndPoint + offerId + "/" + fileName;
-//
-//        amazonS3.deleteObject(bucketName, key);
-//    }
+    // TODO) 삭제 요청한 사진이 썸네일로 지정되어 있으면, 해당 썸네일 컬럼을 비워야 한다.
+    public void deleteOne(String hashedOfferId, String fileName) {
+        String key = pathEndPoint + hashedOfferId + "/" + fileName;
+
+        amazonS3.deleteObject(bucketName, key);
+    }
 
     public void deleteAll(String offerId) {
         ObjectListing objectListing = getAwsObjectList(offerId);
@@ -135,11 +145,13 @@ public class AwsS3Service {
     public boolean isExistFile(String hashedOfferId, String fileName) {
         String key = "offer-images/" + hashedOfferId + "/" + fileName;
 
+        log.warn("key : {}", key);
         try {
             amazonS3.getObject(bucketName, key);
         } catch (AmazonServiceException e) {
             return false;
         }
+        log.info("통과!!!!!!!!!!!!!!!");
         return true;
     }
 }
