@@ -213,7 +213,7 @@
 
     $('#leftNav > li').click(function(e) {
         let navIndex = $(e.currentTarget).index();
-        console.log(navIndex);
+        // console.log(navIndex);
 
         if(navIndex === 0) {
             $('.prev').hide();

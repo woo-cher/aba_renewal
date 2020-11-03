@@ -237,8 +237,8 @@ function deleteImage(offerId, target) {
         type: 'DELETE',
         async: false,
         contentType: 'application/json',
-        success: function (requests) {
-            console.log("Deleted : ", target);
+        success: function () {
+            console.log("delete : ", target);
         },
         error: ajaxError
     });
