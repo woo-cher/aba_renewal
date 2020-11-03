@@ -37,10 +37,8 @@ public class Offer extends ModelMapper {
     private OfferStatusType status;
     private String description;
     private String thumbnail;
-    @Builder.Default
-    private List<MultipartFile> files = null;
-    @Builder.Default
-    private List<KeyValueDto> imageUrls = null;
+    private List<MultipartFile> files;
+    private List<KeyValueDto> imageUrls;
     @Valid
     @JsonProperty("offerAddition")
     private OfferAddition offerAddition;

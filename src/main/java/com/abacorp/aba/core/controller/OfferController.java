@@ -54,7 +54,7 @@ public class OfferController {
         mv.addObject("heatingTypes", HeatingType.values());
         mv.addObject("manages", ManagementCategoryType.values());
 
-        if(offerId != null) {
+        if (offerId != null) {
             log.info("Offer update form initialize ID : {}", offerId);
             mv.addObject("isUpdate", true);
 
@@ -71,13 +71,13 @@ public class OfferController {
                                         HttpServletRequest request) throws IOException {
 
         log.info("size : {}", offer.getFiles().size());
-        for(MultipartFile file : offer.getFiles()) {
-            log.info("\tname : {}", file.getOriginalFilename());
+        for (MultipartFile f : offer.getFiles()) {
+            log.info("\tname : {}", f.getOriginalFilename());
         }
 
         log.info("offer : {}", offer);
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             List<FieldError> errors = bindingResult.getFieldErrors();
             offerService.getFormProcessIndex(errors);
 

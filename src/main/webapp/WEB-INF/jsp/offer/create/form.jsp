@@ -66,12 +66,13 @@
                 </h3>
             </div>
 
-            <form action="${actionUrl}" id="offerForm" method="post" enctype="multipart/form-data">
+            <form id="offerForm" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <c:if test="${isUpdate}">
                     <input type="hidden" name="id" value="${offer.id}">
                     <input type="hidden" name="offerAddress.offerId" value="${offer.id}">
                     <input type="hidden" name="offerAddition.offerId" value="${offer.id}">
+                    <input type="hidden" name="file[]">
                 </c:if>
                 <input type="hidden" name="user.userId" value="${sessionUser.userId}">
                 <div id="formWrap">
@@ -137,77 +138,74 @@
         </c:if>
     });
 
-    Dropzone.options.dropzone = {
+    Dropzone.options.abaDropzone = {
         url: '${actionUrl}',
         paramName: 'files',
         autoProcessQueue: false,
-        uploadMuzltiple: true,
+        uploadMultiple: true,
         addRemoveLinks: true,
+        parallelUploads: 8,
         maxFiles: 8,
         thumbnailWidth: 100,
         thumbnailHeight: 100,
         acceptedFiles: 'image/*',
         init: function () {
+            let fileCountOnServer = ${fn:length(offer.imageUrls)};
             let dropZone = this;
-            let fileName;
-            let url;
-            let blob;
-            let file;
+
+            this.on('complete', function (file) {
+                $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
+                $('.dz-remove').css('margin-top', 10);
+                $('.dz-image').css('width', 100);
+                $('.dz-image').css('height', 100);
+            });
+
+            this.on("sendingmultiple", function(file, xhr, formData) {
+                $('form').serializeArray().map(function (entry) {
+                    formData.append(entry.name, entry.value);
+                });
+
+                dropZone.emit('complete', file);
+            });
+
+            this.on("successmultiple", function (file, responseText) {
+                location.href = "/";
+            });
+
+            $('#submit').click(function (e) {
+                e.preventDefault();
+                dropZone.files.length === 0 ? dropZone.emit("sendingmultiple", dropZone.files) : dropZone.processQueue();
+            });
+
+            dropZone.options.maxFiles = this.options.maxFiles - fileCountOnServer;
 
             <c:if test="${isUpdate}">
                 <c:forEach var="keyValueDto" items="${offer.imageUrls}">
-                    fileName = '${keyValueDto.key}';
-                    url = '${keyValueDto.url}';
+                    var fileName = '${keyValueDto.key}';
+                    var url = '${keyValueDto.url}';
 
-                    $.ajax({
-                        url: url,
-                        type: 'GET',
-                        async: false,
-                        responseType: 'blob',
-                        success: function (response) {
-                            blob = response;
-                            blob.name = fileName;
-                            blob.lastModifiedDate = new Date().getTime();
+                    var mockFile = { name: fileName, size: 1000, type: 'image/png' };
 
-                            file = new File([blob], fileName, { type: 'image/png' });
-                        },
-                        error: () => { alert('error') }
-                    });
-
-                    this.emit("addedfile", file);
-                    this.emit("thumbnail", file, url);
-                    this.emit("complete", file);
-
-                    $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
-                    $('.dz-remove').css('margin-top', 10);
+                    this.emit("addedfile", mockFile);
+                    this.emit("thumbnail", mockFile, url);
+                    this.emit("complete", mockFile);
                 </c:forEach>
             </c:if>
-
-            let fileCountOnServer = ${fn:length(offer.imageUrls)}; // 이미 업로드한 파일 개수
-            this.options.maxFiles = this.options.maxFiles - fileCountOnServer;
         },
         addedfiles: function (file) {
-            $('.dz-progress').remove();
-            $('.dz-image').css('width', 100);
-            $('.dz-image').css('height', 100);
-            $('.dz-remove').css('margin-top', 10);
-            $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
-
-            $("#files")[0].files = file;
-
-            console.log("file.. : ", this.files);
+            this.emit('complete', file);
         },
         <c:if test="${isUpdate}">
         removedfile: function (file) {
             if(file.accepted === undefined) { // isMockFile
                 if(confirm("이미지를 삭제할까요?")) {
                     deleteImage('${offer.id}', file.name);
+                    this.options.maxFiles++;
                 } else {
                     return;
                 }
             }
 
-            console.log('file : ', file);
             file.previewElement.remove();
         }
         </c:if>

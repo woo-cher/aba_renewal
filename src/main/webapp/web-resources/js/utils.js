@@ -147,6 +147,11 @@ function removeSpecifiedElement(array, indexOf) {
     array.splice(indexOf, 1);
 }
 
+// For `FileList` merge
+function toArray(fileList) {
+    return Array.prototype.slice.call(fileList);
+}
+
 // Page Calculate
 function pageCalculation(where, startPage, pageInfo, pageLength, caller) {
     let count = 0;
