@@ -11,8 +11,6 @@ public class BeanConfig {
 
     @Bean
     public ModelAndView getModelAndView() {
-        ModelAndView mv = new ModelAndView();
-
-        return mv;
+        return new ModelAndView();
     }
 }

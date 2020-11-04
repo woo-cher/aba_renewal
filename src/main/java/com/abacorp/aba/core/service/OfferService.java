@@ -90,6 +90,10 @@ public class OfferService {
     private void uploadImages(Offer offer, boolean isUpdate) throws IOException {
         List<MultipartFile> offerImages = offer.getFiles();
 
+        if (offerImages == null) {
+            return;
+        }
+
         if (!offerImages.get(0).getOriginalFilename().isEmpty()) {
             String thumbnail = awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
 

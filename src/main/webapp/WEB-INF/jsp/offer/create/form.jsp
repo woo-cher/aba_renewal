@@ -66,7 +66,7 @@
                 </h3>
             </div>
 
-            <form id="offerForm" method="post" enctype="multipart/form-data">
+            <form id="offerForm" action="${actionUrl}" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <c:if test="${isUpdate}">
                     <input type="hidden" name="id" value="${offer.id}">
@@ -173,8 +173,10 @@
             });
 
             $('#submit').click(function (e) {
-                e.preventDefault();
-                dropZone.files.length === 0 ? dropZone.emit("sendingmultiple", dropZone.files) : dropZone.processQueue();
+                dropZone.files.length === 0 ? null : () => {
+                    e.preventDefault();
+                    dropZone.processQueue();
+                }
             });
 
             dropZone.options.maxFiles = this.options.maxFiles - fileCountOnServer;
