@@ -50,7 +50,7 @@
         <result property="canPet" column="can_pet" />
     </resultMap>
 
-    <resultMap id="user" type="user">
+    <resultMap id="user" type="user" >
         <id property="userId" column="user_id" />
         <result property="phone" column="phone" />
         <result property="agentPhone" column="agent_phone" />

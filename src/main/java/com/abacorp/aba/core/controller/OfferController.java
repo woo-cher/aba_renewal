@@ -55,16 +55,23 @@ public class OfferController {
         setFormViewAndObject(mv);
 
         if (offerId != null) {
+            log.info("offer(={}) update form initialize", offerId);
+
+            Offer dbOffer = service.getOfferById(offerId);
+            log.info("Db offer : {}", dbOffer);
+
             HttpSession session = request.getSession();
             User sessionUser = (User) session.getAttribute("sessionUser");
-            log.info("Session User : {}", sessionUser);
 
-            log.info("Offer update form initialize ID : {}", offerId);
+            if (!offerService.isOwner(dbOffer.getUser().getUserId(), sessionUser)) {
+                mv.clear();
+                mv.setViewName("redirect:/auth/denied");
+
+                return mv;
+            }
+
             mv.addObject("isUpdate", true);
-
-            Offer offer = service.getOfferById(offerId);
-            log.info("Db offer : {}", offer);
-            mv.addObject("offer", offer);
+            mv.addObject("offer", dbOffer);
         }
 
         return mv;

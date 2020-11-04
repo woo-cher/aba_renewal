@@ -4,8 +4,10 @@ import com.abacorp.aba.core.repository.OfferRepository;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.OfferAddition;
 import com.abacorp.aba.model.OfferAddress;
+import com.abacorp.aba.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.FieldError;
@@ -26,6 +28,9 @@ public class OfferService {
 
     @Autowired
     private AwsS3Service awsS3Service;
+
+    @Autowired
+    private UserService userService;
 
     @Transactional
     public int createOffer(Offer offer) throws IOException {
@@ -177,5 +182,11 @@ public class OfferService {
         } else {
             return 2;
         }
+    }
+
+    public boolean isOwner(String registerId, User sessionUser) {
+        User register = userService.findByUserId(registerId);
+
+        return register.equals(sessionUser);
     }
 }

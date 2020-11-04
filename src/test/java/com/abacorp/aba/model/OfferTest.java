@@ -34,21 +34,21 @@ public class OfferTest {
             .build();
 
     private final Offer testOffer = Offer.builder()
-                                        .deposit("100").monthlyPrice("33").managementPrice("3")
-                                        .type(OfferType.ONE_ROOM).heatingType(HeatingType.ELECT).dealType(DealType.MONTHLY)
-                                        .completionYear("2000").status(OfferStatusType.ON)
-                                        .offerAddition(
-                                                OfferAddition.builder()
-                                                        .managementCategory("1,2").optionCategory("1,2")
-                                                        .term("0").tenant("무").build()
-                                        )
-                                        .offerAddress(
-                                                OfferAddress.builder()
-                                                        .floor("1").jibun("jibun").road("road")
-                                                        .belongsTo("belongsTo").ho("ho").nearLocation("near")
-                                                        .latitude("0.0").longitude("0.0").door("전화").build()
-                                        )
-                                        .build();
+            .deposit("100").monthlyPrice("33").managementPrice("3")
+            .type(OfferType.ONE_ROOM).heatingType(HeatingType.ELECT).dealType(DealType.MONTHLY)
+            .completionYear("2000").status(OfferStatusType.ON)
+            .offerAddition(
+                    OfferAddition.builder()
+                            .managementCategory("1,2").optionCategory("1,2")
+                            .term("0").tenant("무").build()
+            )
+            .offerAddress(
+                    OfferAddress.builder()
+                            .floor("1").jibun("jibun").road("road")
+                            .belongsTo("belongsTo").ho("ho").nearLocation("near")
+                            .latitude("0.0").longitude("0.0").door("전화").build()
+            )
+            .build();
 
     @Autowired
     private OfferRepository repository;
@@ -66,11 +66,11 @@ public class OfferTest {
     public void getOffersByRegion() {
         List<Offer> offers = repository.selectOffersByBelongsTo(testDto);
         log.info("\noffers.. : {}", offers);
-   }
+    }
 
-   @Test
-   @Transactional
-   public void curd() throws IOException {
+    @Test
+    @Transactional
+    public void curd() throws IOException {
         assertThat(service.createOffer(testOffer), is(1));
 
         Offer dbOffer = repository.selectOfferById(testOffer.getId());
@@ -80,5 +80,5 @@ public class OfferTest {
 
         int generatedId = testOffer.getId();
         assertThat(repository.deleteOfferById(generatedId), is(1));
-   }
+    }
 }
