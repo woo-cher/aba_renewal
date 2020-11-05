@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/web-resources/css/commons/header.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/css/reset.css">
 
-    <script type="module" src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
+    <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
 </head>
 
 <header id="header">

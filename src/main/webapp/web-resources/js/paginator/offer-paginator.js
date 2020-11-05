@@ -35,6 +35,7 @@ class OfferPaginator extends PageHelper {
                     <td>
                         <input type="checkbox" class="checkbox" id="${offerId}" onclick="onChecked($(this))">
                     </td>
+                    <td class="aba">${offerId}</td>
                     <td class="offer${offer.id}">${offer.offerAddress.jibun} ${offer.offerAddress.buildingName} </td>
                     <td>${offer.offerAddress.ho}</td>
                     <td>${offer.type.value} / ${offer.dealType.value}</td>

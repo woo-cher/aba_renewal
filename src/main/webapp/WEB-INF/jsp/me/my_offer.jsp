@@ -14,9 +14,10 @@
             <th width="2.5%">
                 <input type="checkbox">
             </th>
+            <th width="5%">매물번호</th>
             <th width="25%">매물명</th>
-            <th width="10%">호실</th>
-            <th width="15%">매물유형/거래유형</th>
+            <th width="7.5%">호실</th>
+            <th width="10%">타입</th>
             <th width="10%">거래가</th>
             <th width="10%">매물상태</th>
             <th width="10%">등록일자</th>
@@ -36,7 +37,7 @@
             </div>
         </tbody>
         <tr>
-            <td colspan="9">
+            <td colspan="10">
                 <div class="paginator b-0 p-0">
                     <div class="page-wrap f-c">
                         <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
