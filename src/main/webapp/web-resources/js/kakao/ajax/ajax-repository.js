@@ -75,7 +75,7 @@ function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
     }
 
     $.ajax({
-        url: '/apis/offers',
+        url: '/apis/maps/offers',
         type: 'POST',
         async: false,
         contentType: 'application/json',
@@ -97,7 +97,7 @@ function getOffersByLatLng(latitude, longitude) {
     };
 
     $.ajax({
-        url: '/apis/offers/spot',
+        url: '/apis/maps/offers/spot',
         type: 'POST',
         async: false,
         contentType: 'application/json',
@@ -131,7 +131,7 @@ function getOffersByIdKeyword(idKey) {
     let result;
 
     $.ajax({
-        url: '/apis/offers?idKey=' + idKey,
+        url: '/apis/maps/offers?idKey=' + idKey,
         type: 'GET',
         async: false,
         success: function (offers) {

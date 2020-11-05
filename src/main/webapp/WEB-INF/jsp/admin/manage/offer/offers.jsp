@@ -70,7 +70,7 @@
 
 <script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
-    let pageHelper = new PageHelper(5);
+    let pageHelper = new OfferPaginator(5);
 
     $(document).ready(function () {
 

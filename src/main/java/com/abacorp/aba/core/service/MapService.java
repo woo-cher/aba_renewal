@@ -84,7 +84,7 @@ public class MapService {
         return offer;
     }
 
-    public List<Offer> getOffers(MapFiltersDto dto) {
+    public List<Offer> getOffersInCoordinate(MapFiltersDto dto) {
         return offerRepository.selectOffersUsingFilter(dto);
     }
 

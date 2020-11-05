@@ -25,8 +25,8 @@ public class OfferApi {
     @Autowired
     private OfferService offerService;
 
-    @RequestMapping(value = "/offers", method = RequestMethod.POST)
-    public PageInfo<Offer> offers(@RequestBody MapFiltersDto dto) {
+    @RequestMapping(value = "/maps/offers", method = RequestMethod.POST)
+    public PageInfo<Offer> offersOfMap(@RequestBody MapFiltersDto dto) {
         log.info("Dto : {}", dto);
 
         if (dto.getBelongsTo() != null) {
@@ -37,23 +37,18 @@ public class OfferApi {
             int limit = dto.getPage() == 0 ? MAXIMUM_PAGE : OFFERS_PER_PAGE;
 
             return PageHelper.startPage(dto.getPage(), limit).doSelectPageInfo(
-                    () -> service.getOffers(dto)
+                    () -> service.getOffersInCoordinate(dto)
             );
         }
     }
 
-    @RequestMapping(value = "/offers/{offer}", method = RequestMethod.GET)
-    public Offer show(@PathVariable(value = "offer") int id) {
-        return service.getOfferById(id);
-    }
-
-    @RequestMapping(value = "/offers/spot", method = RequestMethod.POST)
+    @RequestMapping(value = "/maps/offers/spot", method = RequestMethod.POST)
     public List<Offer> offersOfLatLng(@RequestBody MapFiltersDto dto) {
         log.info("dto : {}", dto);
         return service.getOffersByLatLng(dto);
     }
 
-    @RequestMapping(value = "/offers", method = RequestMethod.GET)
+    @RequestMapping(value = "/maps/offers", method = RequestMethod.GET)
     public List<Offer> offersByIdKeyword(@RequestParam(value = "idKey") String idKey) {
         return service.getOffersByIdKeyword(idKey);
     }
