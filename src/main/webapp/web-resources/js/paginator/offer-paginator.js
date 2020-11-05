@@ -3,11 +3,9 @@
  *
  * Need a conditions below)
  *
- * 1. `sessionUserId`
+ * @see PageHelper
+ * 1) `sessionUserId`
  *  > Because `offer` model has `register` column
- *
- * 2. must import <script src='.../paginator.js'> in view file
- *  > can using `Document.write()`, but if there is a network delay issue, it is not a good method
  */
 class OfferPaginator extends PageHelper {
     constructor(pageLength, bindingArea) {

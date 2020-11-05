@@ -42,10 +42,6 @@
         location.href = "/admin/users" + url;
     }
 
-    function pageNavigator() {
-
-    }
-
     activateWithSelector('#navigator > li');
     activateWithUrl(/.+\//g);
 </script>

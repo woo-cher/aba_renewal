@@ -1,3 +1,7 @@
+/**
+ * Must import <script src='.../paginator.js'> in view file
+ * can using `Document.write()`, but if there is a network delay issue, it is not a good method
+ */
 class PageHelper {
     constructor(pageLength = 5) {
         this.startPage = 1;
@@ -44,9 +48,9 @@ class PageHelper {
 
         caller();
     }
+}
 
-    onChecked(focus) {
-        let target = focus.parents('tr');
-        target.hasClass('checked') ? target.removeClass('checked') : target.addClass('checked')
-    }
+function onChecked(focus) {
+    let target = focus.parents('tr');
+    target.hasClass('checked') ? target.removeClass('checked') : target.addClass('checked')
 }

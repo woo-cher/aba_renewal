@@ -68,6 +68,7 @@
     </table>
 </div>
 
+<script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
     let pageHelper = new PageHelper(5);
 

@@ -55,16 +55,17 @@
     </table>
 </div>
 
+<script src="/web-resources/js/paginator/user-paginator.js"></script>
 <script>
-    let pageHelper = new PageHelper(5);
+    let pageHelper = new UserPaginator(5, $('#users'));
 
     $(document).ready(function () {
         let pageInfo = getAllUsers(pageHelper.startPage);
-        bindUsers($('#users'), 1, pageInfo);
+        pageHelper.bindUsers(1, pageInfo);
 
         pageHelper.setEndPage(pageInfo['pages']);
         pageHelper.pageCalculation(1, pageInfo, (page) => {
-            bindUsers($('#users'), page, getAllUsers(page))
+            pageHelper.bindUsers(page, getAllUsers(page))
         });
     });
 
@@ -72,49 +73,10 @@
         pageHelper.prevOrNext(pageParam, () => {
             let pageInfo = getAllUsers(pageParam);
 
-            bindUsers($('#users'), pageParam, pageInfo);
-
+            pageHelper.bindUsers(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-                bindUsers($('#users'), page, getAllUsers(page))
+                pageHelper.bindUsers(page, getAllUsers(page))
             });
         })
-    }
-
-    function bindUsers(where, page, pageInfo) {
-        let users = pageInfo['list'];
-        let count = 0;
-
-        where.empty();
-
-        for(let i = 0; i < users.length; i++) {
-            let user = users[i];
-
-            where.append(`
-            <tr>
-                <td>
-                    <input type="checkbox" class="checkbox" id="${'${user.userId}'}" onclick="onChecked($(this))">
-                </td>
-                <td>${'${user.userId}'}</td>
-                <td>${'${user.name}'}</td>
-                <td>${'${user.nickName == null ? "미설정" : user.nickName}'}</td>
-                <td>${'${user.phone}'}</td>
-                <td>${'${user.email}'}</td>
-                <td class="aba">${'${user.type.value}'}</td>
-                <td class="aba">${'${user.role.value}'}</td>
-                <td width="10%">
-                    <span class="border-side">
-                        <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id=${'${user.userId}'}')"></i>
-                        <i class="fas fa-pen"></i>
-                        <i class="fas fa-trash-alt"></i>
-                    </span>
-                </td>
-            </tr>
-            `)
-        }
-    }
-
-    function onChecked(focus) {
-        let target = focus.parents('tr');
-        target.hasClass('checked') ? target.removeClass('checked') : target.addClass('checked')
     }
 </script>
