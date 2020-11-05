@@ -27,26 +27,55 @@
             <th width="2.5%">
                 <input type="checkbox">
             </th>
-            <th width="15%">2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
+            <th width="20%">매물명</th>
+            <th width="5%">호실</th>
+            <th width="15%">매물유형/거래유형</th>
+            <th width="10%">거래가</th>
+            <th width="10%">매물상태</th>
+            <th width="10%">등록일자</th>
+            <th>&nbsp;</th>
         </tr>
-        <tr class="row">
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-        </tr>
+        <tbody class="row" id="my-offers">
+        <div class="aba-dialog" id="offer-dialog" title="아바" hidden>
+            <div class="dialog-ask">
+                <p class="aba target"></p>
+                <p>을 삭제할까요?</p>
+            </div>
+            <div class="dialog-btn-group pt-3">
+                <button class="fl" type="button" onclick="deleteOffer()">삭제</button>
+                <input type="hidden" id="target-id">
+                <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
+            </div>
+        </div>
+        </tbody>
         <tr>
-            <td colspan="7">paging</td>
+            <td colspan="9">
+                <div class="paginator b-0 p-0">
+                    <div class="page-wrap f-c">
+                        <button class="page prev p-0" onclick="onPrevOrNext(this.pageHelper.startPage - 5)">
+                            <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
+                        </button>
+                        <ul class="pages" style="display: contents;">
+                            <li class="active">1</li>
+                        </ul>
+                        <button class="page prev p-0" onclick="onPrevOrNext(this.pageHelper.startPage + 5)">
+                            <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
+                        </button>
+                    </div>
+                </div>
+            </td>
         </tr>
     </table>
 </div>
+
+<script>
+    let pageHelper = new PageHelper(5);
+
+    $(document).ready(function () {
+
+    })
+
+    function onPrevOrNext(pageParam) {
+
+    }
+</script>

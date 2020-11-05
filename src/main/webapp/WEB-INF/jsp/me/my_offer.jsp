@@ -1,8 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
-<link rel="stylesheet" type="text/css" href="/web-resources/scss/component/dialog.css">
-
 <div class="content-right p-3 w-full">
     <div class="overlay" style="background: black;" hidden></div>
     <div class="content label pt-0 mt-0 b-0">
@@ -17,8 +14,8 @@
         <th width="2.5%">
             <input type="checkbox">
         </th>
-        <th width="20%">매물명</th>
-        <th width="5%">호실</th>
+        <th width="25%">매물명</th>
+        <th width="10%">호실</th>
         <th width="15%">매물유형/거래유형</th>
         <th width="10%">거래가</th>
         <th width="10%">매물상태</th>
@@ -32,8 +29,8 @@
                 <p>을 삭제할까요?</p>
             </div>
             <div class="dialog-btn-group pt-3">
-                <button class="fl" type="button" onclick="deleteOffer()">삭제</button>
-                <input type="hidden" id="target-id">
+                <button class="fl" type="button" onclick="deleteCaller()">삭제</button>
+                <input type="hidden" class="target-id">
                 <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
             </div>
         </div>
@@ -58,85 +55,38 @@
 </table>
 </div>
 
+<script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
-    let pageHelper = new PageHelper(5);
+    let pageHelper = new OfferPaginator(5, $('#my-offers'));
     let sessionUserId = '${sessionUser.userId}';
 
     $(document).ready(function () {
         let pageInfo = getOffersByUserId(pageHelper.startPage, sessionUserId);
 
-        bindOffers($('#my-offers'), 1, pageInfo);
+        pageHelper.setEndPage(pageInfo['pages']);
+        pageHelper.bindOffers(1, pageInfo);
+        pageHelper.pageCalculation(1, pageInfo, (page) => {
+            pageHelper.bindOffers(page, getOffersByUserId(page, sessionUserId));
+        });
 
         $("#offer-count").text(pageInfo['total']);
-
-        pageHelper.setEndPage(pageInfo['pages']);
-        pageHelper.pageCalculation(1, pageInfo, (page) => {
-            bindOffers($('#my-offers'), page, getOffersByUserId(page, sessionUserId));
-        });
     });
 
     function onPrevOrNext(pageParam) {
         pageHelper.prevOrNext(pageParam, () => {
             let pageInfo = getOffersByUserId(pageParam, sessionUserId);
 
-            bindOffers($('#users'), pageParam, pageInfo);
-
+            pageHelper.bindOffers(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-                bindOffers($('#users'), page, getOffersByUserId(page, sessionUserId))
+                pageHelper.bindOffers(page, getOffersByUserId(page, sessionUserId))
             });
         })
     }
 
-    function deleteOffer() {
-        let offerId = $('#target-id').val();
+    function deleteCaller() {
+        let offerId = $('.target-id').val();
+        let removedTarget = $('.offer' + offerId).parent('tr');
 
-        if(deleteOfferById(offerId) === 1) {
-            $('.offer' + offerId).parent('tr').remove();
-            dialogCloseTrigger($('#offer-dialog'));
-        }
-    }
-
-    function bindOffers(where, page, pageInfo) {
-        let offers = pageInfo['list'];
-        let count = 0;
-
-        where.empty();
-
-        for(let i = 0; i < offers.length; i++) {
-            let offer = offers[i];
-            let offerId = offer.id;
-
-            where.append(`
-                <tr>
-                    <td>
-                        <input type="checkbox" class="checkbox" id="${'${offerId}'}" onclick="onChecked($(this))">
-                    </td>
-                    <td class="offer${'${offer.id}'}">${'${offer.offerAddress.jibun}'} ${'${offer.offerAddress.buildingName}'} </td>
-                    <td>${'${offer.offerAddress.ho}'}</td>
-                    <td>${'${offer.type.value}'} / ${'${offer.dealType.value}'}</td>
-                    <td>
-                        <span>${'${offer.deposit}'}/${'${offer.monthlyPrice}'} +</span>
-                        <span class="aba"> ${'${offer.managementPrice}'}</span>
-                    </td>
-                    <td class="aba">${'${offer.status.value}'}</td>
-                    <td>${'${offer.createdAt.slice(2, 10).replaceAll("-", ".")}'}</td>
-                    <td width="20%">
-                        <span class="border-side">
-                            <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/${'${offerId}'}')" ></i>
-                            <i class="fas fa-pen" title="매물 수정하기" onclick="window.open('/offers/form?offerId=${'${offerId}'}')"></i>
-                            <i class="fas fa-trash-alt" title="매물 삭제하기"
-                               onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offerId}'}', ).text(), ${'${offerId}'})"
-                            >
-                            </i>
-                        </span>
-                    </td>
-                </tr>
-            `)
-        }
-    }
-
-    function onChecked(focus) {
-        let target = focus.parents('tr');
-        target.hasClass('checked') ? target.removeClass('checked') : target.addClass('checked')
+        pageHelper.deleteOffer(offerId, removedTarget);
     }
 </script>

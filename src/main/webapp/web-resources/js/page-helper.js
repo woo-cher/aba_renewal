@@ -44,4 +44,9 @@ class PageHelper {
 
         caller();
     }
+
+    onChecked(focus) {
+        let target = focus.parents('tr');
+        target.hasClass('checked') ? target.removeClass('checked') : target.addClass('checked')
+    }
 }

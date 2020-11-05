@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
 
     <%@include file="/WEB-INF/jsp/commons/admin_header.jspf"%>
 </head>
@@ -34,6 +35,8 @@
 </body>
 </html>
 
+<script src="/web-resources/js/page-helper.js"></script>
+<script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
     function nav(url) {
         url = url === undefined ? '' : url;

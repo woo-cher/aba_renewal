@@ -147,24 +147,13 @@ function removeSpecifiedElement(array, indexOf) {
     array.splice(indexOf, 1);
 }
 
-// Page Calculate
-function pageCalculation(where, startPage, pageInfo, pageLength, caller) {
-    let count = 0;
+function loadScript(url) {
+    let script = document.createElement('script');
 
-    for (let num = startPage; num <= pageInfo['pages']; num++) {
-        if (count !== pageLength) {
-            let test = document.createElement('li');
+    script.src = url;
+    script.onload = () => {
+        console.log("Import script : ", url);
+    };
 
-            if (num === pageInfo['pageNum']) {
-                test.classList.add("active");
-            }
-
-            test.innerText = num;
-            test.onclick = () => caller(num);
-
-            where.append(test);
-
-            count++;
-        }
-    }
+    document.getElementsByTagName('head')[0].appendChild(script);
 }
