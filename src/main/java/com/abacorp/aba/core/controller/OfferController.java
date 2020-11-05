@@ -63,7 +63,11 @@ public class OfferController {
             HttpSession session = request.getSession();
             User sessionUser = (User) session.getAttribute("sessionUser");
 
-            if (!offerService.isOwner(dbOffer.getUser().getUserId(), sessionUser)) {
+            UserRoleType sessionUserRole = sessionUser.getRole();
+
+            if (sessionUserRole.equals(UserRoleType.MASTER) || sessionUserRole.equals(UserRoleType.ADMIN)) {
+                // If login user has role 'MASTER' OR 'ADMIN' Nothing to do.
+            } else if (!offerService.isOwner(dbOffer.getUser().getUserId(), sessionUser)) {
                 mv.clear();
                 mv.setViewName("redirect:/auth/denied");
 
