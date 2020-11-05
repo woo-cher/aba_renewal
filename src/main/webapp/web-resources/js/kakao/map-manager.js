@@ -31,11 +31,11 @@ class MapManager extends Spot {
 
             /* If `spot` level */
             if(this.level < 4) {
-                pageInfo = getOffersPageInfo(this.southWest, this.northEast, null, 0);
+                pageInfo = getOffersOfMap(this.southWest, this.northEast, null, 0);
                 this.drawSpots(pageInfo['list']);
             }
 
-            pageInfo = getOffersPageInfo(this.southWest, this.northEast, null, 1);
+            pageInfo = getOffersOfMap(this.southWest, this.northEast, null, 1);
             this.updateOffersAndPages(1, pageInfo);
         })
     }

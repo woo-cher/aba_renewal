@@ -67,4 +67,11 @@ public class OfferApi {
     public int delete(@PathVariable(value = "offer") int id) {
         return offerService.deleteOfferById(id);
     }
+
+    @RequestMapping(value = "/offers", method = RequestMethod.GET)
+    public PageInfo<Offer> offers(@RequestParam(value = "page") int page) {
+        return PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
+                () -> service.getOffers()
+        );
+    }
 }

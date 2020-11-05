@@ -55,7 +55,7 @@ function searchKakaoAddress(keyword) {
     return result;
 }
 
-function getOffersPageInfo(southWest, northEast, region = null, page = 1) {
+function getOffersOfMap(southWest, northEast, region = null, page = 1) {
     let requestBody;
     let result;
 
@@ -170,6 +170,21 @@ function deleteOfferById(offerId) {
             result = deleteRow;
         },
         error: ajaxError
+    });
+
+    return result;
+}
+
+function getOffers(page) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers?page=' + page,
+        type: 'GET',
+        async: false,
+        success: function (offers) {
+            result = offers;
+        },
     });
 
     return result;

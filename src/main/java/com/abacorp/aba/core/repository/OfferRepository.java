@@ -90,4 +90,8 @@ public class OfferRepository {
     public String selectOfferThumbnail(int offerId) {
         return sqlSession.selectOne("selectOfferThumbnail", offerId);
     }
+
+    public List<Offer> selectOffers() {
+        return sqlSession.selectList("selectOffers");
+    }
 }

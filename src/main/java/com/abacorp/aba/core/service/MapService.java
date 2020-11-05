@@ -103,4 +103,8 @@ public class MapService {
     public List<Offer> getOffersByUserId(String userId) {
         return offerRepository.selectOffersByUserId(userId);
     }
+
+    public List<Offer> getOffers() {
+        return offerRepository.selectOffers();
+    }
 }

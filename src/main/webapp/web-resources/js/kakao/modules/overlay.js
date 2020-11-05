@@ -113,7 +113,7 @@ class Overlay extends KakaoMap {
             this.addClassElement(this.target, 'clickable');
 
             let region = weight === 1 ? overlay.belongsTo : overlay.belongsTo.concat(' ', overlay.name);
-            let pageInfo = getOffersPageInfo(null, null, region);
+            let pageInfo = getOffersOfMap(null, null, region);
 
             this.updateOffersAndPages(1, pageInfo, region);
 

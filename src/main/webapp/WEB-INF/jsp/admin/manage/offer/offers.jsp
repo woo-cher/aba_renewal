@@ -52,13 +52,13 @@
             <td colspan="9">
                 <div class="paginator b-0 p-0">
                     <div class="page-wrap f-c">
-                        <button class="page prev p-0" onclick="onPrevOrNext(this.pageHelper.startPage - 5)">
+                        <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
                             <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
                         </button>
                         <ul class="pages" style="display: contents;">
                             <li class="active">1</li>
                         </ul>
-                        <button class="page prev p-0" onclick="onPrevOrNext(this.pageHelper.startPage + 5)">
+                        <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
                             <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                         </button>
                     </div>
@@ -67,16 +67,28 @@
         </tr>
     </table>
 </div>
-
 <script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
-    let pageHelper = new OfferPaginator(5);
+    let pageHelper = new OfferPaginator(5, $('#my-offers'));
 
     $(document).ready(function () {
+        let pageInfo = getOffers(pageHelper.startPage);
 
-    })
+        pageHelper.setEndPage(pageInfo['pages']);
+        pageHelper.bindOffers(1, pageInfo);
+        pageHelper.pageCalculation(1, pageInfo, (page) => {
+            pageHelper.bindOffers(page, getOffers(page));
+        });
+    });
 
     function onPrevOrNext(pageParam) {
+        pageHelper.prevOrNext(pageParam, () => {
+            let pageInfo = getOffers(pageParam);
 
+            pageHelper.bindOffers(pageParam, pageInfo);
+            pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
+                pageHelper.bindOffers(page, getOffers(page))
+            });
+        })
     }
 </script>

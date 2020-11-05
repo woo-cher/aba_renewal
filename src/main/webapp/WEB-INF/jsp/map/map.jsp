@@ -70,7 +70,7 @@
     $(document).ready(() => {
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
 
-        const pageInfo = getOffersPageInfo(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);
+        const pageInfo = getOffersOfMap(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);
         mapManager.updateOffersAndPages(1, pageInfo);
 
         $(".overlay").click(function () { searchToggle('hide'); });
@@ -94,8 +94,8 @@
         }
 
         let pageInfo = region !== "" ?
-            getOffersPageInfo(null, null, region, page) :
-            getOffersPageInfo(mapManager.southWest, mapManager.northEast, null, page);
+            getOffersOfMap(null, null, region, page) :
+            getOffersOfMap(mapManager.southWest, mapManager.northEast, null, page);
 
         mapManager.updateOffersAndPages(page, pageInfo, region);
     }
