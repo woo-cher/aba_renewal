@@ -5,8 +5,8 @@
     <div class="content label pt-0 mt-0 b-0">
         <div class="label-wrap">
             [<span class="aba p-1">${sessionUser.name}</span>]
-            &nbsp;님이 등록한 매물은 총&nbsp;
-            <span class="aba p-1" id="offer-count">?</span> 건 입니다.
+            님! 매물을 총
+            <span class="aba p-1" id="offer-count">?</span>건 등록하셨어요 :)
         </div>
     </div>
     <table class="admin-list-table">

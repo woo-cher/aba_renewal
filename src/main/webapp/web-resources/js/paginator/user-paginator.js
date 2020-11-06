@@ -45,4 +45,34 @@ class UserPaginator extends PageHelper {
             `)
         }
     }
+
+    bindOffersByOwner(page, pageInfo) {
+        let users = pageInfo['list'];
+        let count = 0;
+
+        this.bindingArea.empty();
+
+        for(let i = 0; i < users.length; i++) {
+            let user = users[i];
+
+            this.bindingArea.append(`
+                <tr>
+                    <td onclick="foldTrigger($(this))">
+                        <img src="/web-resources/img/basic/keyboard_arrow_up-24px.svg" style="border: 1px solid black; border-radius: 45px;">
+                    </td>
+                    <td>${user.userId}</td>
+                    <td>${user.name}</td>
+                    <td>${user.phone}</td>
+                    <td class="aba">${user.type.value}</td>
+                    <td width="10%">
+                        <span class="border-side">
+                            <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id='.concat('${user.userId}'))"></i>
+                            <i class="fas fa-pen"></i>
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                    </td>
+                </tr>
+            `)
+        }
+    }
 }
