@@ -64,6 +64,17 @@
                 <th>&nbsp;</th>
             </tr>
             <tbody class="row" id="offers">
+                <div class="aba-dialog" id="offer-dialog" title="아바" hidden>
+                    <div class="dialog-ask">
+                        <p class="aba target"></p>
+                        <p>을 삭제할까요?</p>
+                    </div>
+                    <div class="dialog-btn-group pt-3">
+                        <button class="fl" type="button" onclick="deleteCaller()">삭제</button>
+                        <input type="hidden" class="target-id">
+                        <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
+                    </div>
+                </div>
             </tbody>
             <tr id="message">
                 <th colspan="9" class="aba">주인 데이터를 선택하세요 :)</th>

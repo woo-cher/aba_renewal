@@ -124,7 +124,7 @@ function dialogInitializer(element, showWhat, targetName = null, targetId = null
             position: {
                 my: "center",
                 at: "center",
-                of: ".admin-list-table"
+                of: ".dialog-yardstick"
             },
             open: function () {
                 targetName !== null ? $('.target').text(targetName) : '';

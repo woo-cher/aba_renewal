@@ -9,7 +9,7 @@
             <span class="aba p-1" id="offer-count">?</span>건 등록하셨어요 :)
         </div>
     </div>
-    <table class="admin-list-table">
+    <table class="admin-list-table dialog-yardstick">
         <tr class="table-top">
             <th width="2.5%">
                 <input type="checkbox">

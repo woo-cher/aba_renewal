@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="main-container p-0 w-full in-flex">
+    <div class="main-container p-0 w-full in-flex dialog-yardstick">
         <div class="full-left-box">
             <header class="left-header aba">매물관리</header>
             <ul id="navigator" class="nav-bar-col">
