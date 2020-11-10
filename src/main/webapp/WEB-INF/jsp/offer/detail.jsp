@@ -115,61 +115,34 @@
     <section id="jquery-script-menu">
         <div class="container">
             <div class="albery-container">
-
                 <div class="albery-wrapper">
-                    <c:forEach begin="1"  end="10">
-                    <div class="albery-item">
-                        <img src="/web-resources/img/offer/detail_slide01.jpg" alt="">
-                    </div>
+                    <c:forEach var="image" begin="1" items="${offer.imageUrls}" varStatus="vs">
+                        <div class="albery-item">
+                            <img src="${image.url}">
+                        </div>
                     </c:forEach>
                 </div>
 
                 <div class="move-right">
-                    <img src="/web-resources/img/offer/detail_slide_next.png" alt="" id="rightArrow">
+                    <img src="/web-resources/img/offer/detail_slide_next.png" class="c-pointer" id="rightArrow">
                 </div>
                 <div class="move-left">
-                    <img src="/web-resources/img/offer/detail_slide_prev.png" alt="" id="leftArrow">
+                    <img src="/web-resources/img/offer/detail_slide_prev.png" class="c-pointer" id="leftArrow">
                 </div>
 
             </div>
 
             <div class="pagination-container">
                 <div class="pagination-wrapper">
-                    <div class="pagination-item" data-item="1">
-                        <img src="/web-resources/img/offer/detail_slide01.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="2">
-                        <img src="/web-resources/img/offer/detail_slide02.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="3">
-                        <img src="/web-resources/img/offer/detail_slide03.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="4">
-                        <img src="/web-resources/img/offer/detail_slide04.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="5">
-                        <img src="/web-resources/img/offer/detail_slide05.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="6">
-                        <img src="/web-resources/img/offer/detail_slide06.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="7">
-                        <img src="/web-resources/img/offer/detail_slide07.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="8">
-                        <img src="/web-resources/img/offer/detail_slide08.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="9">
-                        <img src="/web-resources/img/offer/detail_slide09.jpg" alt="">
-                    </div>
-                    <div class="pagination-item" data-item="10">
-                        <img src="/web-resources/img/offer/detail_slide10.jpg" alt="">
-                    </div>
+                    <c:forEach var="image" begin="1" items="${offer.imageUrls}" varStatus="vs">
+                        <div class="pagination-item" data-item="${vs.index}">
+                            <img src="${image.url}">
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
     </section>
 
-    <!-- 이미지 슬라이드 밑 텍스트 상자 -->
     <div class="img-caption">
         <div class="caption-group">
             <div class="caption">
