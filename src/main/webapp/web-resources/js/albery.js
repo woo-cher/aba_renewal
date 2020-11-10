@@ -61,7 +61,6 @@
       else {
         $(".albery-wrapper").animate({left: myleft}, settings.speed);
         $(".pagination-wrapper").animate({left: myleftPagination}, settings.speed);
-        console.log(myleft);
       }
     }
 
@@ -72,7 +71,6 @@
         // Reset
         myleft = -maxLength + settings.imgWidth;
         myleftPagination = -allPagination + onePagination;
-        console.log(myleft);
       }
       else {
         // Move right
@@ -80,7 +78,6 @@
         myleftPagination += onePagination;
         $(".albery-wrapper").animate({left: myleft}, settings.speed);
         $(".pagination-wrapper").animate({left: myleftPagination}, settings.speed);
-        console.log(myleft);
       }
     }
 

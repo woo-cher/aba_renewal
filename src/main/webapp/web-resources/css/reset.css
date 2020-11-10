@@ -28,6 +28,8 @@
     border-radius: 15px;
 }
 
+.c-pointer { cursor: pointer; }
+
 /* padding, width, height .. */
 .p-0 { padding: 0 !important; }
 .p-1 { padding: 1% !important; }
