@@ -84,10 +84,13 @@ public class OfferService {
         return 1;
     }
 
+    @Transactional
     public int deleteOfferById(int offerId) {
         if (offerRepository.deleteOfferById(offerId) == 0) {
             return 0;
         }
+
+        awsS3Service.deleteAll(String.valueOf(offerId));
 
         return 1;
     }
