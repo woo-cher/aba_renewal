@@ -113,7 +113,7 @@ input[type=text] {
   font-size: 1.1rem;
 }
 .aba-dialog li, .aba-dialog .dialog-ask {
-  padding: 15px 5px;
+  padding: 15px 0;
   border-bottom: 1px solid gainsboro;
 }
 .aba-dialog .dialog-ask p {

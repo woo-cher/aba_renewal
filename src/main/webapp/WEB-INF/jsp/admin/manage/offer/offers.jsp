@@ -36,18 +36,18 @@
             <th width="10%">등록일자</th>
             <th>&nbsp;</th>
         </tr>
-        <tbody class="row" id="my-offers">
-        <div class="aba-dialog" id="offer-dialog" title="아바" hidden>
-            <div class="dialog-ask">
-                <p class="aba target"></p>
-                <p>을 삭제할까요?</p>
+        <tbody class="row" id="offers">
+            <div class="aba-dialog" id="offer-dialog" title="아바" hidden>
+                <div class="dialog-ask">
+                    <p class="aba target"></p>
+                    <p>을 삭제할까요?</p>
+                </div>
+                <div class="dialog-btn-group pt-3">
+                    <button class="fl" type="button" onclick="deleteCaller()">삭제</button>
+                    <input type="hidden" class="target-id">
+                    <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
+                </div>
             </div>
-            <div class="dialog-btn-group pt-3">
-                <button class="fl" type="button" onclick="deleteOffer()">삭제</button>
-                <input type="hidden" id="target-id">
-                <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
-            </div>
-        </div>
         </tbody>
         <tr>
             <td colspan="10">
@@ -70,7 +70,7 @@
 </div>
 <script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
-    let pageHelper = new OfferPaginator(5, $('#my-offers'));
+    let pageHelper = new OfferPaginator(5, $('#offers'));
 
     $(document).ready(function () {
         let pageInfo = getOffers(pageHelper.startPage);
@@ -91,5 +91,12 @@
                 pageHelper.bindOffers(page, getOffers(page))
             });
         })
+    }
+
+    function deleteCaller() {
+        let offerId = $('.target-id').val();
+        let removedTarget = $('.offer' + offerId).parent('tr');
+
+        pageHelper.deleteOffer(offerId, removedTarget);
     }
 </script>
