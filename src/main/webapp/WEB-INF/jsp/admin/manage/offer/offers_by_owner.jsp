@@ -98,15 +98,15 @@
         });
     });
 
-    function onPrevOrNext() {
-        // pageHelper.prevOrNext(pageParam, () => {
-        //     let pageInfo = getOffers(pageParam);
-        //
-        //     pageHelper.bindOffers(pageParam, pageInfo);
-        //     pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-        //         pageHelper.bindOffers(page, getOffers(page))
-        //     });
-        // })
+    function onPrevOrNext(pageParam) {
+        pageHelper.prevOrNext(pageParam, () => {
+            let pageInfo = getAllUsers(pageParam);
+
+            pageHelper.bindOffersByOwner(pageParam, pageInfo);
+            pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
+                pageHelper.bindOffersByOwner(page, getAllUsers(page))
+            });
+        })
     }
 
     function foldTrigger(focus) {
