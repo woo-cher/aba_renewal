@@ -62,12 +62,12 @@
     let sessionUserId = '${sessionUser.userId}';
 
     $(document).ready(function () {
-        let pageInfo = getOffersByPage(pageHelper.startPage, sessionUserId);
+        let pageInfo = getOffers(pageHelper.startPage, sessionUserId);
 
         pageHelper.setEndPage(pageInfo['pages']);
         pageHelper.bindOffers(1, pageInfo);
         pageHelper.pageCalculation(1, pageInfo, (page) => {
-            pageHelper.bindOffers(page, getOffersByPage(page, sessionUserId));
+            pageHelper.bindOffers(page, getOffers(page, sessionUserId));
         });
 
         $("#offer-count").text(pageInfo['total']);
@@ -75,11 +75,11 @@
 
     function onPrevOrNext(pageParam) {
         pageHelper.prevOrNext(pageParam, () => {
-            let pageInfo = getOffersByPage(pageParam, sessionUserId);
+            let pageInfo = getOffers(pageParam, sessionUserId);
 
             pageHelper.bindOffers(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-                pageHelper.bindOffers(page, getOffersByPage(page, sessionUserId))
+                pageHelper.bindOffers(page, getOffers(page, sessionUserId))
             });
         })
     }

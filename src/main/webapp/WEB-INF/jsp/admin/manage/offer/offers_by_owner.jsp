@@ -52,25 +52,22 @@
         </table>
     </div>
     <div class="w-65 p-1">
-        <table class="admin-list-table">
+            <table class="admin-list-table">
             <tr class="table-top">
-                <th width="2.5%">
-                    <input type="checkbox">
-                </th>
                 <th width="7.5%">번호</th>
                 <th width="20%">매물명</th>
                 <th width="7.5%">호실</th>
-                <th width="20%">매물유형/거래유형</th>
-                <th width="10%">거래가</th>
-                <th width="10%">매물상태</th>
-                <th width="10%">등록일자</th>
+                <th width="">유형</th>
+                <th width="12.5%">거래가</th>
+                <th width="7.5%">상태</th>
+                <th width="10%">등록일</th>
                 <th>&nbsp;</th>
             </tr>
             <tbody class="row" id="offers">
-            <tr>
+            </tbody>
+            <tr id="message">
                 <th colspan="9" class="aba">주인 데이터를 선택하세요 :)</th>
             </tr>
-            </tbody>
         </table>
     </div>
 
@@ -79,7 +76,6 @@
 <script src="/web-resources/js/paginator/user-paginator.js"></script>
 <script>
     let pageHelper = new UserPaginator(5, $('#owners'));
-    let offerHelper = new OfferPaginator(5, $('#offers'));
 
     $(document).ready(function () {
         let pageInfo = getAllUsers(1);
@@ -93,11 +89,11 @@
 
     function onPrevOrNext() {
         // pageHelper.prevOrNext(pageParam, () => {
-        //     let pageInfo = getOffersByPage(pageParam);
+        //     let pageInfo = getOffers(pageParam);
         //
         //     pageHelper.bindOffers(pageParam, pageInfo);
         //     pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-        //         pageHelper.bindOffers(page, getOffersByPage(page))
+        //         pageHelper.bindOffers(page, getOffers(page))
         //     });
         // })
     }
@@ -110,15 +106,55 @@
 
         if (focus.parents('tr').hasClass('checked')) {
             focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_down-24px.svg');
-
-            offers = getOffers(targetId);
-            offerHelper.bindOffers()
+            offers = getOffers(null, targetId);
+            bindOffersOfOwner(targetId, offers);
         } else {
             focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_up-24px.svg');
+            $('#offers').empty();
+            $('#message').show();
         }
     }
 
-    function bindOffersOfOwner() {
+    function bindOffersOfOwner(user, offers) {
+        let bindingArea = $('#offers');
 
+        bindingArea.empty();
+        $('#message').hide();
+
+        if(offers.length === 0) {
+            bindingArea.append(`<tr><th colspan="9"><span class="aba">${'${user}'}</span> 님이 가진 매물이 없네요 :(</th></tr>`);
+            $('#message').hide();
+            return
+        }
+
+        for(let i = 0; i < offers.length; i++) {
+            let offer = offers[i];
+            let offerId = offer.id;
+
+            bindingArea.append(`
+                <tr>
+                    <td class="aba">${'${offer.id}'}</td>
+                    <td class="offer${'${offer.id}'}">${'${offer.offerAddress.jibun}'} ${'${offer.offerAddress.buildingName}'} </td>
+                    <td>${'${offer.offerAddress.ho}'}</td>
+                    <td>${'${offer.type.value}'} / ${'${offer.dealType.value}'}</td>
+                    <td>
+                        <span>${'${offer.deposit}'}/${'${offer.monthlyPrice}'} +</span>
+                        <span class="aba"> ${'${offer.managementPrice}'}</span>
+                    </td>
+                    <td class="aba">${'${offer.status.value}'}</td>
+                    <td>${'${offer.createdAt.slice(2, 10).replaceAll("-", ".")}'}</td>
+                    <td width="">
+                        <span class="border-side">
+                            <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/${'${offer.id}'}')" ></i>
+                            <i class="fas fa-pen" title="매물 수정하기" onclick="window.open('/offers/form?offerId=${'${offer.id}'}')"></i>
+                            <i class="fas fa-trash-alt" title="매물 삭제하기"
+                               onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offer.id}'}').text(), ${'${offer.id}'})"
+                            >
+                            </i>
+                        </span>
+                    </td>
+                </tr>
+            `)
+        }
     }
 </script>

@@ -143,13 +143,20 @@ function getOffersByIdKeyword(idKey) {
     return result;
 }
 
-function getOffersByPage(page, userId = null) {
+function getOffers(page = null, userId = null) {
     let result;
     let url;
 
-    url = userId === null ?
-        '/apis/offers?page=' + page :
-        '/apis/offers?user=' + userId + '&page=' + page;
+    if (userId !== null && page === null) {
+        url = '/apis/offers?user=' + userId;
+        console.log('1 : 유저가 가진 논페이징 매물들')
+    } else if (userId === null) {
+        url = '/apis/offers?page=' + page;
+        console.log('2 : 모든 매물 페이징')
+    } else {
+        url = '/apis/offers?user=' + userId + '&page=' + page;
+        console.log('3 : 유저가 가진 페이징 매물')
+    }
 
     $.ajax({
         url: url,
