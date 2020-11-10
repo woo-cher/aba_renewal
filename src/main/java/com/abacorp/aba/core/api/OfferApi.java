@@ -53,25 +53,24 @@ public class OfferApi {
         return service.getOffersByIdKeyword(idKey);
     }
 
-    @RequestMapping(value = "/offers/my", method = RequestMethod.GET)
-    public PageInfo<Offer> offersByUserId(@RequestParam(value = "userId") String userId,
+    @RequestMapping(value = "/offers", method = RequestMethod.GET)
+    public PageInfo<Offer> offersByUserId(@RequestParam(required = false, value = "userId") String userId,
                                           @RequestParam(value = "page") int page) {
         log.info("userId : {}", userId);
         log.info("page : {}", page);
-        return PageHelper.startPage(page, 3).doSelectPageInfo(
-                () -> service.getOffersByUserId(userId)
-        );
+
+        PageInfo<Offer> offers = userId == null ?
+
+            PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
+                    () -> service.getOffers()) :
+            PageHelper.startPage(page, 3).doSelectPageInfo(
+                    () -> service.getOffersByUserId(userId));
+
+        return offers;
     }
 
     @RequestMapping(value = "/offers/{offer}", method = RequestMethod.DELETE)
     public int delete(@PathVariable(value = "offer") int id) {
         return offerService.deleteOfferById(id);
-    }
-
-    @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    public PageInfo<Offer> offers(@RequestParam(value = "page") int page) {
-        return PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
-                () -> service.getOffers()
-        );
     }
 }

@@ -143,11 +143,16 @@ function getOffersByIdKeyword(idKey) {
     return result;
 }
 
-function getOffersByUserId(page, userId) {
+function getOffers(page, userId = null) {
     let result;
+    let url;
+
+    url = userId === null ?
+        '/apis/offers?page=' + page :
+        '/apis/offers?userId=' + userId + '&page=' + page;
 
     $.ajax({
-        url: '/apis/offers/my?userId=' + userId + '&page=' + page,
+        url: url,
         type: 'GET',
         async: false,
         success: function (offers) {
@@ -170,21 +175,6 @@ function deleteOfferById(offerId) {
             result = deleteRow;
         },
         error: ajaxError
-    });
-
-    return result;
-}
-
-function getOffers(page) {
-    let result;
-
-    $.ajax({
-        url: '/apis/offers?page=' + page,
-        type: 'GET',
-        async: false,
-        success: function (offers) {
-            result = offers;
-        },
     });
 
     return result;

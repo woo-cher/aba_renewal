@@ -60,7 +60,7 @@ class UserPaginator extends PageHelper {
                     <td onclick="foldTrigger($(this))">
                         <img src="/web-resources/img/basic/keyboard_arrow_up-24px.svg" style="border: 1px solid black; border-radius: 45px;">
                     </td>
-                    <td>${user.userId}</td>
+                    <td class="userId">${user.userId}</td>
                     <td>${user.name}</td>
                     <td>${user.phone}</td>
                     <td class="aba">${user.type.value}</td>
@@ -71,6 +71,9 @@ class UserPaginator extends PageHelper {
                             <i class="fas fa-trash-alt"></i>
                         </span>
                     </td>
+                </tr>
+                <tr id="${user.userId}" hidden>
+                    <td colspan="7">${user.userId} 가 가진 목록</td>
                 </tr>
             `)
         }

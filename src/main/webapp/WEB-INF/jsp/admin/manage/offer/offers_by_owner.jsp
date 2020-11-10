@@ -27,8 +27,8 @@
             <th width="3%"></th>
             <th width="7.5%">아이디</th>
             <th width="10%">이름</th>
-            <th width="10%">대표연락처</th>
-            <th width="10%">회원유형</th>
+            <th width="7.5%">대표연락처</th>
+            <th width="5%">회원유형</th>
             <th>&nbsp;</th>
         </tr>
         <tbody class="row" id="offersByOwner"></tbody>
@@ -79,10 +79,15 @@
 
     function foldTrigger(focus) {
         onChecked(focus);
+
+        let targetId = focus.siblings('.userId').text();
+
         if (focus.parents('tr').hasClass('checked')) {
             focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_down-24px.svg')
+            $('#' + targetId).toggle();
         } else {
             focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_up-24px.svg')
+            $('#' + targetId).toggle();
         }
     }
 </script>
