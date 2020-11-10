@@ -143,13 +143,13 @@ function getOffersByIdKeyword(idKey) {
     return result;
 }
 
-function getOffers(page, userId = null) {
+function getOffersByPage(page, userId = null) {
     let result;
     let url;
 
     url = userId === null ?
         '/apis/offers?page=' + page :
-        '/apis/offers?userId=' + userId + '&page=' + page;
+        '/apis/offers?user=' + userId + '&page=' + page;
 
     $.ajax({
         url: url,

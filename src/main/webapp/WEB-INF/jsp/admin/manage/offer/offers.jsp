@@ -73,22 +73,22 @@
     let pageHelper = new OfferPaginator(5, $('#my-offers'));
 
     $(document).ready(function () {
-        let pageInfo = getOffers(pageHelper.startPage);
+        let pageInfo = getOffersByPage(pageHelper.startPage);
 
         pageHelper.setEndPage(pageInfo['pages']);
         pageHelper.bindOffers(1, pageInfo);
         pageHelper.pageCalculation(1, pageInfo, (page) => {
-            pageHelper.bindOffers(page, getOffers(page));
+            pageHelper.bindOffers(page, getOffersByPage(page));
         });
     });
 
     function onPrevOrNext(pageParam) {
         pageHelper.prevOrNext(pageParam, () => {
-            let pageInfo = getOffers(pageParam);
+            let pageInfo = getOffersByPage(pageParam);
 
             pageHelper.bindOffers(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-                pageHelper.bindOffers(page, getOffers(page))
+                pageHelper.bindOffers(page, getOffersByPage(page))
             });
         })
     }

@@ -54,20 +54,27 @@ public class OfferApi {
     }
 
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    public PageInfo<Offer> offersByUserId(@RequestParam(required = false, value = "userId") String userId,
-                                          @RequestParam(value = "page") int page) {
+    public <O extends Offer, P extends PageInfo<Offer>> Object offers(@RequestParam(required = false, value = "user") String userId,
+                                                                      @RequestParam(required = false, value = "page") Integer page) {
         log.info("userId : {}", userId);
         log.info("page : {}", page);
 
+        if (userId != null && page == null) {
+            return (List<O>) service.getOffersByUserId(userId);
+        }
+
         PageInfo<Offer> offers = userId == null ?
 
-            PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
-                    () -> service.getOffers()) :
-            PageHelper.startPage(page, 3).doSelectPageInfo(
-                    () -> service.getOffersByUserId(userId));
+                PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
+                        () -> service.getOffers()) :
+                PageHelper.startPage(page, 3).doSelectPageInfo(
+                        () -> service.getOffersByUserId(userId));
 
-        return offers;
+        return (P) offers;
     }
+
+    /*    @Reques*//*tMapping(value = "/offers/{user}")
+    public */
 
     @RequestMapping(value = "/offers/{offer}", method = RequestMethod.DELETE)
     public int delete(@PathVariable(value = "offer") int id) {

@@ -64,16 +64,6 @@ class UserPaginator extends PageHelper {
                     <td>${user.name}</td>
                     <td>${user.phone}</td>
                     <td class="aba">${user.type.value}</td>
-                    <td width="10%">
-                        <span class="border-side">
-                            <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id='.concat('${user.userId}'))"></i>
-                            <i class="fas fa-pen"></i>
-                            <i class="fas fa-trash-alt"></i>
-                        </span>
-                    </td>
-                </tr>
-                <tr id="${user.userId}" hidden>
-                    <td colspan="7">${user.userId} 가 가진 목록</td>
                 </tr>
             `)
         }
