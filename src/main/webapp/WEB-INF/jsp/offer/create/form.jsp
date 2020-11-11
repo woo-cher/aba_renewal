@@ -80,7 +80,6 @@
                     <%@include file="/WEB-INF/jsp/offer/create/addresses.jsp"%>
                     <%@include file="/WEB-INF/jsp/offer/create/additions.jsp"%>
                 </div>
-                <img hidden id="blah" src="#">
             </form>
         </article>
     </div>
@@ -169,11 +168,13 @@
             });
 
             this.on("successmultiple", function (file, responseText) {
-                location.href = "/";
+                location.href = "/users/me/my_offer";
             });
 
             $('#submit').click(function (e) {
-                dropZone.files.length === 0 ? null : () => {
+                if(dropZone.files.length === 0) {
+                    // nothing
+                }  else {
                     e.preventDefault();
                     dropZone.processQueue();
                 }

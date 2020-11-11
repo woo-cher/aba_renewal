@@ -25,8 +25,8 @@
         <span>호실 정보</span>
     </div>
     <div class="input-group p-1 check-area">
-        <input type="hidden" id="latitude" name="offerAddress.latitude">
-        <input type="hidden" id="longitude" name="offerAddress.longitude">
+        <input type="hidden" id="latitude" name="offerAddress.latitude" value="${offer.offerAddress.latitude}">
+        <input type="hidden" id="longitude" name="offerAddress.longitude" value="${offer.offerAddress.longitude}">
         <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong" value="${offer.offerAddress.dong}"
                pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
         <p class="icon"><i class="fas">동</i></p>
