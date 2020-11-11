@@ -109,6 +109,18 @@
         </c:if>
 
         <c:if test="${isUpdate}">
+            <c:if test="${offer.offerAddress.floor eq -1}">
+                $('#floor').val('반지하');
+            </c:if>
+            <c:if test="${offer.offerAddress.floor eq 100}">
+                $('#floor').val('옥탑');
+            </c:if>
+            <c:if test="${offer.offerAddress.entrance eq '없음'}">
+                $('#entrance').next('.icon-with-check').click();
+            </c:if>
+            <c:if test="${offer.offerAddress.door eq '없음'}">
+                $('#door').next('.icon-with-check').click();
+            </c:if>
             <c:if test="${offer.offerAddress.dong eq null}">
                 $('#isExistDong').prop('checked', true);
                 dongTrigger($('#dong'));
@@ -283,18 +295,15 @@
 
         if($('#floorUnder').prop('checked')) {
             hoInput.val('반지하');
-            hoInput.hide();
-            hoInput.next().hide();
+            hoInput.prop('readonly', true);
             selector.val('반지하');
         } else if($('#floorTop').prop('checked')) {
             hoInput.val('옥탑');
-            hoInput.hide();
-            hoInput.next().hide();
+            hoInput.prop('readonly', true);
             selector.val('옥탑');
         } else {
             hoInput.val('');
-            hoInput.show();
-            hoInput.next().show();
+            hoInput.prop('readonly', false);
 
             selector.val('');
             selector.prop('placeholder', '예) 3층')
