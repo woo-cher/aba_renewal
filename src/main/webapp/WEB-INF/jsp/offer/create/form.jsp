@@ -110,9 +110,11 @@
 
         <c:if test="${isUpdate}">
             <c:if test="${offer.offerAddress.floor eq -1}">
+                $('#floorUnder').click();
                 $('#floor').val('반지하');
             </c:if>
             <c:if test="${offer.offerAddress.floor eq 100}">
+                $('#floorTop').click();
                 $('#floor').val('옥탑');
             </c:if>
             <c:if test="${offer.offerAddress.entrance eq '없음'}">
@@ -205,6 +207,12 @@
                     this.emit("thumbnail", mockFile, url);
                     this.emit("complete", mockFile);
                 </c:forEach>
+
+                var thumbUrl = '${offer.thumbnail}';
+                var thumbnail = thumbUrl.split('/')[1];
+
+                $('img[alt="' + thumbnail + '"]').parent().parent().addClass('offer-thumbnail');
+                $('img[alt="' + thumbnail + '"]').parent().parent().append(`<div class="thumb-label">대표</div>`)
             </c:if>
         },
         addedfiles: function (file) {
@@ -342,6 +350,13 @@
     function booleanHelper(focus) {
         let isChecked = focus.prop('checked');
         focus.val(isChecked);
+    }
+
+    function setThumbnail() {
+        let thumbUrl = '${offer.thumbnail}';
+        let thumbnail = thumbUrl.split('/')[1];
+
+        console.log(thumbnail)
     }
 
     activateWithSelector('#leftNav > li');

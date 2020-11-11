@@ -54,4 +54,20 @@
   color: #00adef;
 }
 
+.offer-thumbnail {
+  padding: 1.5%;
+  border: 3px solid #00adef;
+  border-radius: 15px;
+}
+
+.thumb-label {
+  padding: 5%;
+  border-radius: 30px;
+  background: #00adef;
+  color: #fff;
+  position: absolute;
+  left: -10px;
+  top: -20px;
+}
+
 /*# sourceMappingURL=offer_create.css.map */
