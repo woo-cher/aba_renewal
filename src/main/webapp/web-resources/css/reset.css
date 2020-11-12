@@ -83,6 +83,7 @@
 .align-left { text-align: left !important; }
 .item-center { align-items: center !important; }
 .flex-center { justify-content: center !important; }
+.flex-end { justify-content: flex-end !important; }
 
 .relative { position: relative !important; }
 

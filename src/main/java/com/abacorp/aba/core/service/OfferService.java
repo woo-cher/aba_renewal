@@ -43,6 +43,10 @@ public class OfferService {
             return 0;
         }
 
+        offer.setThumbnail(getThumbnailPath(offer));
+
+        offerRepository.updateOfferThumbnailById(offer);
+
         log.info("generatedKey : {}", offer.getId());
 
         offerAddress.setOfferId(offer.getId());
@@ -56,18 +60,11 @@ public class OfferService {
             return 0;
         }
 
-        uploadImages(offer, false);
+        uploadImages(offer);
 
         return 1;
     }
 
-    /**
-     * TODO)
-     *  1. createOffer() 의 특정 데이터 변환 부 통합 해야 한다
-     *  2. Image 처리는 어떻게 할 것인가?
-     *  errors.hasError() == false 이면, 기존 Offer 가 가진 s3 이미지를 모두 삭제 처리
-     *  그런 후에, 업로드 위한 이미지를 재업로드 한다.
-     */
     @Transactional
     public int updateOffer(Offer offer) throws IOException {
         OfferAddress offerAddress = offer.getOfferAddress();
@@ -75,11 +72,13 @@ public class OfferService {
 
         convertOfferAddressData(offerAddress);
 
+        offer.setThumbnail(getThumbnailPath(offer));
+
         offerRepository.updateOffer(offer);
         offerRepository.updateOfferAddress(offerAddress);
         offerRepository.updateOfferAddition(offerAddition);
 
-        uploadImages(offer, true);
+        uploadImages(offer);
 
         return 1;
     }
@@ -95,7 +94,7 @@ public class OfferService {
         return 1;
     }
 
-    private void uploadImages(Offer offer, boolean isUpdate) throws IOException {
+    private void uploadImages(Offer offer) throws IOException {
         List<MultipartFile> offerImages = offer.getFiles();
 
         if (offerImages == null) {
@@ -103,17 +102,20 @@ public class OfferService {
         }
 
         if (!offerImages.get(0).getOriginalFilename().isEmpty()) {
-            String thumbnail = awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
-
-            /**
-             * TODO) 썸네일 로직
-             *  매물 수정 모드일 때, 기존 썸네일이 바뀐다.
-             */
-            if(!isUpdate) {
-                offer.setThumbnail(thumbnail);
-                offerRepository.updateOfferThumbnailById(offer);
-            }
+            awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
         }
+    }
+
+    private String getThumbnailPath(Offer offer) {
+        String sId = String.valueOf(offer.getId());
+        String thumbPrefix = awsS3Service.getMd5Hash(sId);
+        String thumbnail = offer.getThumbnail();
+
+        if (thumbnail.contains("png") || thumbnail.contains("jpeg") || thumbnail.contains("jpg")) {
+            thumbnail = awsS3Service.getMd5Hash(offer.getThumbnail());
+        }
+
+        return thumbPrefix + "/" + thumbnail;
     }
 
     private String getThumbnailById(int offerId) {

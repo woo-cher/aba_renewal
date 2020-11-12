@@ -74,7 +74,7 @@
                     <input type="hidden" name="offerAddition.offerId" value="${offer.id}">
                     <input type="hidden" name="file[]">
                 </c:if>
-                <input type="hidden" id="thumbnail" name="thumbnail" value="${offer.thumbnail}">
+                <input type="hidden" id="thumbnail" name="thumbnail" value="${fn:split(offer.thumbnail, "/")[1]}">
                 <input type="hidden" name="user.userId" value="${sessionUser.userId}">
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>
@@ -88,6 +88,8 @@
 </html>
 
 <script>
+    let uploadCount = 0;
+
     $(document).ready(function () {
         <c:if test="${not empty processIndex}">
             $('#leftNav').children().eq(${processIndex}).click();
@@ -107,6 +109,10 @@
                     '</i>' + errorMessage + '</p>'
                 );
             </c:forEach>
+        </c:if>
+
+        <c:if test="${!isUpdate}">
+            $('#thumbTrigger').attr('style', 'display:none !important');
         </c:if>
 
         <c:if test="${isUpdate}">
@@ -167,12 +173,34 @@
             let fileCountOnServer = ${fn:length(offer.imageUrls)};
             let dropZone = this;
 
+            function thumbDesignationTrigger() {
+                if(dropZone.files.length > 1) {
+                    $('#thumbTrigger').show();
+                } else {
+                    $('#thumbTrigger').hide();
+                }
+            }
+
             this.on('complete', function (file) {
                 $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
                 $('.dz-remove').css('margin-top', 10);
                 $('.dz-image').css('width', 100);
                 $('.dz-image').css('height', 100);
+
+                <c:if test="${!isUpdate}">
+                    thumbDesignationTrigger();
+                </c:if>
             });
+
+            <c:if test="${!isUpdate}">
+                this.on('thumbnail', function (file, dataUrl) {
+                    $('#thumbnail').val(dropZone.files[0].name);
+
+                    let thumbElement = getThumbnailElement();
+                    thumbElement.addClass('offer-thumbnail');
+                    thumbElement.append(getDelegateMarkElement());
+                });
+            </c:if>
 
             this.on("sendingmultiple", function(file, xhr, formData) {
                 $('form').serializeArray().map(function (entry) {
@@ -186,10 +214,13 @@
                 location.href = "/users/me/my_offer";
             });
 
+            this.on("removedfile", function (file) {
+                thumbDesignationTrigger();
+            });
+
             $('#submit').click(function (e) {
                 if(dropZone.files.length === 0) {
                     // nothing
-                    e.preventDefault();
                 }  else {
                     e.preventDefault();
                     dropZone.processQueue();
@@ -202,27 +233,25 @@
                 <c:forEach var="keyValueDto" items="${offer.imageUrls}" varStatus="vs">
                     var fileName = '${keyValueDto.key}';
                     var url = '${keyValueDto.url}';
-
                     var mockFile = { name: fileName, size: 1000, type: 'image/png' };
-
-                    <c:if test="${vs.index eq 0}">
-                        $('#thumbnail').val(fileName);
-                    </c:if>
 
                     this.emit("addedfile", mockFile);
                     this.emit("thumbnail", mockFile, url);
                     this.emit("complete", mockFile);
 
-                    $(mockFile.previewElement).append(getThumbSelectBtnElement(fileName, false));
+                    $(mockFile.previewElement).append(getThumbSelectBtnElement(fileName));
                 </c:forEach>
 
                 var thumbElement = getThumbnailElement();
 
                 thumbElement.addClass('offer-thumbnail');
-                thumbElement.append(`<div class="thumb-label thumbnail" style="z-index: 10;">대표</div>`);
+                thumbElement.append(getDelegateMarkElement());
             </c:if>
         },
         addedfiles: function (file) {
+            for(let i = 0; i < file.length; i++) {
+                $(file[i].previewElement).append(getThumbSelectBtnElement(file[i].name));
+            }
             this.emit('complete', file);
         },
         <c:if test="${isUpdate}">
@@ -231,8 +260,6 @@
                 if(confirm("이미지를 삭제할까요?")) {
                     deleteImage('${offer.id}', file.name);
                     this.options.maxFiles++;
-                } else {
-                    return;
                 }
             }
 
@@ -367,15 +394,19 @@
             </div>
         `;
     }
+    
+    function getDelegateMarkElement() {
+        return `<div class="thumb-label thumbnail" style="z-index: 10;">대표</div>`;
+    }
 
     function getThumbnailElement() {
         var thumbFileName = $('#thumbnail').val();
-
         return $('img[alt="' + thumbFileName + '"]').parent().parent();
     }
 
     function setThumbnailTrigger() {
         $('.select').toggle();
+        $('.thumb-message').toggle();
     }
 
     function setThumbnail(focus, thumbNailElement) {
@@ -386,9 +417,9 @@
         thumbNailElement.find('.thumbnail').remove();
 
         newThumbnailElement.addClass('offer-thumbnail');
+        newThumbnailElement.append(getDelegateMarkElement());
 
         $('#thumbnail').val(thumbnail);
-        console.log($('#thumbnail').val())
     }
 
     activateWithSelector('#leftNav > li');

@@ -177,7 +177,7 @@
         UPDATE offers
         SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice}, type = #{type},
             deal_type = #{dealType}, heating_type = #{heatingType}, completion_year = #{completionYear}, description = #{description},
-            updated_at = current_timestamp
+            thumbnail = #{thumbnail}, updated_at = current_timestamp
         WHERE id = #{id}
     </update>
 

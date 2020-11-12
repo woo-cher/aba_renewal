@@ -7,10 +7,13 @@ import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.MimeType;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,38 +40,18 @@ public class AwsS3Service {
     @Value("${aws.bucket}")
     private String bucketName;
 
-    /**
-     * `Thumbnail` is the First uploaded image.
-     *
-     * @param multipartFiles
-     * @param offerId
-     * @return path: "offerId/thumbnail" (md5)
-     * @throws IOException
-     */
-    public String upload(List<MultipartFile> multipartFiles, String offerId) throws IOException {
+    public void upload(List<MultipartFile> multipartFiles, String offerId) throws IOException {
         log.info("directory [offerIdHash] : {}", offerId);
         String hashIdValue = getMd5Hash(offerId);
         String hashFileName = "";
-        String thumbnail = "";
         ObjectMetadata metadata = new ObjectMetadata();
 
-        int index = 0;
         for(MultipartFile file : multipartFiles) {
             String fileName = file.getOriginalFilename();
-            log.error("파일명 : {}", fileName);
+            log.info("파일명 : {}", fileName);
 
-//            hashFileName = isExistFile(hashIdValue, fileName) ? fileName : getMd5Hash(fileName);
-            if (isExistFile(hashIdValue, fileName)) {
-                hashFileName = fileName;
-                log.error("이미 존재하는 파일 ! : {}", hashFileName);
-            } else {
-                hashFileName = getMd5Hash(fileName);
-                log.error("해싱 처리 했음 ! : {}", hashFileName);
-            }
-
-            if(index == 0) {
-                thumbnail = hashFileName;
-            }
+            hashFileName = getMd5Hash(fileName);
+            log.info("File is hashed (md5) : {}", hashFileName);
 
             metadata.setContentType(file.getContentType());
             metadata.setContentLength(file.getSize());
@@ -77,11 +60,7 @@ public class AwsS3Service {
 
             PutObjectRequest req = new PutObjectRequest(bucketName, key, file.getInputStream(), metadata);
             amazonS3.putObject(req.withCannedAcl(CannedAccessControlList.PublicRead));
-
-            index++;
         }
-
-        return (hashIdValue + "/" + thumbnail);
     }
 
     // TODO) 삭제 요청한 사진이 썸네일로 지정되어 있으면, 해당 썸네일 컬럼을 비워야 한다.
@@ -145,13 +124,12 @@ public class AwsS3Service {
     public boolean isExistFile(String hashedOfferId, String fileName) {
         String key = "offer-images/" + hashedOfferId + "/" + fileName;
 
-        log.warn("key : {}", key);
         try {
             amazonS3.getObject(bucketName, key);
         } catch (AmazonServiceException e) {
             return false;
         }
-        log.info("통과!!!!!!!!!!!!!!!");
+
         return true;
     }
 }
