@@ -74,6 +74,7 @@
                     <input type="hidden" name="offerAddition.offerId" value="${offer.id}">
                     <input type="hidden" name="file[]">
                 </c:if>
+                <input type="hidden" id="thumbnail" name="thumbnail" value="${offer.thumbnail}">
                 <input type="hidden" name="user.userId" value="${sessionUser.userId}">
                 <div id="formWrap">
                     <%@include file="/WEB-INF/jsp/offer/create/basics.jsp"%>
@@ -188,6 +189,7 @@
             $('#submit').click(function (e) {
                 if(dropZone.files.length === 0) {
                     // nothing
+                    e.preventDefault();
                 }  else {
                     e.preventDefault();
                     dropZone.processQueue();
@@ -197,22 +199,27 @@
             dropZone.options.maxFiles = this.options.maxFiles - fileCountOnServer;
 
             <c:if test="${isUpdate}">
-                <c:forEach var="keyValueDto" items="${offer.imageUrls}">
+                <c:forEach var="keyValueDto" items="${offer.imageUrls}" varStatus="vs">
                     var fileName = '${keyValueDto.key}';
                     var url = '${keyValueDto.url}';
 
                     var mockFile = { name: fileName, size: 1000, type: 'image/png' };
 
+                    <c:if test="${vs.index eq 0}">
+                        $('#thumbnail').val(fileName);
+                    </c:if>
+
                     this.emit("addedfile", mockFile);
                     this.emit("thumbnail", mockFile, url);
                     this.emit("complete", mockFile);
+
+                    $(mockFile.previewElement).append(getThumbSelectBtnElement(fileName, false));
                 </c:forEach>
 
-                var thumbUrl = '${offer.thumbnail}';
-                var thumbnail = thumbUrl.split('/')[1];
+                var thumbElement = getThumbnailElement();
 
-                $('img[alt="' + thumbnail + '"]').parent().parent().addClass('offer-thumbnail');
-                $('img[alt="' + thumbnail + '"]').parent().parent().append(`<div class="thumb-label">대표</div>`)
+                thumbElement.addClass('offer-thumbnail');
+                thumbElement.append(`<div class="thumb-label thumbnail" style="z-index: 10;">대표</div>`);
             </c:if>
         },
         addedfiles: function (file) {
@@ -352,11 +359,36 @@
         focus.val(isChecked);
     }
 
-    function setThumbnail() {
-        let thumbUrl = '${offer.thumbnail}';
-        let thumbnail = thumbUrl.split('/')[1];
+    function getThumbSelectBtnElement(fileName) {
+        return `
+            <div class="thumb-label select c-pointer" style="z-index: 10;" onclick="setThumbnail($(this), getThumbnailElement())" hidden>
+                선택
+                <input type="hidden" value="${'${fileName}'}">
+            </div>
+        `;
+    }
 
-        console.log(thumbnail)
+    function getThumbnailElement() {
+        var thumbFileName = $('#thumbnail').val();
+
+        return $('img[alt="' + thumbFileName + '"]').parent().parent();
+    }
+
+    function setThumbnailTrigger() {
+        $('.select').toggle();
+    }
+
+    function setThumbnail(focus, thumbNailElement) {
+        let thumbnail = focus.find('input').val();
+        let newThumbnailElement = focus.parent('.dz-preview');
+
+        thumbNailElement.removeClass('offer-thumbnail');
+        thumbNailElement.find('.thumbnail').remove();
+
+        newThumbnailElement.addClass('offer-thumbnail');
+
+        $('#thumbnail').val(thumbnail);
+        console.log($('#thumbnail').val())
     }
 
     activateWithSelector('#leftNav > li');

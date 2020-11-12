@@ -105,11 +105,11 @@
     <div class="form-label">
         <i class="fas fa-circle"></i>
         <span class="w-25">사진 등록</span>
-<%--        <c:if test="${isUpdate}">--%>
-<%--            <span type="button" class="txt-sm fr aba align-right c-pointer" onclick="setThumbnail()">--%>
-<%--                대표사진 지정--%>
-<%--            </span>--%>
-<%--        </c:if>--%>
+        <c:if test="${isUpdate}">
+            <span type="button" class="txt-sm fr aba align-right c-pointer" onclick="setThumbnailTrigger()">
+                대표사진 지정
+            </span>
+        </c:if>
     </div>
     <div id="abaDropzone" class="dropzone align-center pt-3">
         <div class="dz-default dz-message">
