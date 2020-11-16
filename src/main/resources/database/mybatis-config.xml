@@ -16,6 +16,8 @@
 		<typeAlias alias="MapFiltersDto" type="com.abacorp.aba.model.dto.MapFiltersDto" />
 		<typeAlias alias="OfferRequest" type="com.abacorp.aba.model.OfferRequest" />
 		<typeAlias alias="RequestFilterDto" type="com.abacorp.aba.model.dto.RequestFilterDto" />
+
+		<typeAlias alias="Post" type="com.abacorp.aba.model.Post"/>
 	</typeAliases>
 
 	<typeHandlers>

@@ -29,13 +29,13 @@ public enum PostType implements TypeMapper {
 
     @Override
     public String getCode() {
-        return CustomUserDetails.ROLE_PREFIX + name();
+        return name();
     }
 
     @JsonCreator
     public static PostType create(String code) {
         for (PostType postType : values()) {
-            if (postType.equals(UserRoleType.valueOf(code))) {
+            if (postType.equals(postType.valueOf(code))) {
                 return postType;
             }
         }
