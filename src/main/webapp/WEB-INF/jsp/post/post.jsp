@@ -6,6 +6,7 @@
         <title>공지사항</title>
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/post.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -21,7 +22,13 @@
             </div>
 
             <div class="post-filter">
-                <div class="filter-wrap">
+                <div class="relative w-65 m-auto pt-3">
+                    <div class="absolute w-full align-right" style="right: 5%;">
+                        <span class="aba txt-sm mr-1">게시글 등록하기 :)</span>
+                        <a href="#" class="add-btn"></a>
+                    </div>
+                </div>
+                <div class="filter-wrap pt-3">
                     <select>
                         <option>전체</option>
                         <option>인사말</option>

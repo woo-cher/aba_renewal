@@ -84,6 +84,22 @@ select {
   width: 15%;
 }
 
+.add-btn {
+  cursor: pointer;
+  border: 1px solid #00adef;
+  border-radius: 50%;
+  padding: 0.2rem 0.75rem;
+  font-size: 1.5rem;
+  box-shadow: 1px 1px 2px lightgrey;
+}
+.add-btn:after {
+  content: "+";
+}
+.add-btn:hover {
+  color: #fff;
+  background: #00adef;
+}
+
 .form-warp {
   margin-bottom: 3%;
 }

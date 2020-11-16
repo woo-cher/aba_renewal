@@ -36,6 +36,24 @@ select {
   border-radius: 8px;
 }
 
+.add-btn {
+  cursor: pointer;
+  border: 1px solid $abaColor;
+  border-radius: 50%;
+  padding: 0.2rem 0.75rem;
+  font-size: 1.5rem;
+  box-shadow: $shadowBasic;
+
+  &:after {
+    content: "+";
+  }
+
+  &:hover {
+    color: #fff;
+    background: $abaColor;
+  }
+}
+
 .form-warp {
   margin-bottom: 3%;
 }

@@ -21,8 +21,20 @@ public class PostController {
         return "post/post";
     }
 
+    @RequestMapping(value = "/posts/form", method = RequestMethod.GET)
+    private ModelAndView form() {
+        return mv;
+    }
+
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     private ModelAndView show(@PathVariable int id) {
+        mv.setViewName("post/post_detail");
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/posts/create", method = RequestMethod.GET)
+    private ModelAndView create(@PathVariable int id) {
         mv.setViewName("post/post_detail");
 
         return mv;

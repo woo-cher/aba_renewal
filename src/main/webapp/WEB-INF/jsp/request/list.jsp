@@ -8,6 +8,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/offer_request_list.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/map/filter-bar.css">
 
         <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
@@ -27,7 +28,7 @@
 
                     <p class="request-fixed">
                         <span class="aba request-label">우리집 추천해줘! :D</span>
-                        <a href="/requests/create/form" class="request-btn"></a>
+                        <a href="/requests/create/form" class="add-btn"></a>
                     </p>
                 </div>
                 <%-- Filter area --%>
