@@ -22,10 +22,10 @@
             <header class="left-header aba">회원관리</header>
             <ul id="navigator" class="left-nav nav-bar-col">
                 <li class="users" onclick="nav('')">회원 통합 관리</li>
-                <li class="" onclick="nav('')">SUB 2</li>
-                <li class="" onclick="nav('')">SUB 3</li>
-                <li class="" onclick="nav('')">SUB 4</li>
-                <li class="" onclick="nav('')">SUB 5</li>
+<%--                <li class="" onclick="nav('')">SUB 2</li>--%>
+<%--                <li class="" onclick="nav('')">SUB 3</li>--%>
+<%--                <li class="" onclick="nav('')">SUB 4</li>--%>
+<%--                <li class="" onclick="nav('')">SUB 5</li>--%>
             </ul>
         </div>
         <div class="full-right-box">

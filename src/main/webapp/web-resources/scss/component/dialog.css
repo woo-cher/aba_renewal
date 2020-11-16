@@ -41,7 +41,7 @@ input[type=text] {
   border-bottom: 3px solid #f0f0f0;
 }
 .full-left-box .left-nav li {
-  padding: 12.5px 20px;
+  padding: 12.5px 20px !important;
 }
 
 .full-right-box {

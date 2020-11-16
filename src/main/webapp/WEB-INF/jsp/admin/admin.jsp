@@ -10,9 +10,9 @@
 </head>
 <body>
 <div class="main-container">
-    <div class="align-center txt-lg">
+    <div class="align-center txt-lg pt-3">
         <h1 class="aba">아바 시스템</h1>
-        <h1 class="pt-3">ADMIN PAGE</h1>
+        <h1 class="pt-3">관리자 프로그램</h1>
     </div>
 </div>
 </body>

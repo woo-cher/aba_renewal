@@ -20,6 +20,12 @@
 			<div class="mobile-txt">
 				<img src="/web-resources/img/mobile_bg_txt.png" alt="">
 			</div>
+			<div class="find-home-box">
+				<a href="/requests/create/form" class="find-home c-pointer">
+					우리집 찾아주세요!
+					<img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
+				</a>
+			</div>
 			<form id="search" onsubmit="return false">
 					<div class="form-control">
 						<label>

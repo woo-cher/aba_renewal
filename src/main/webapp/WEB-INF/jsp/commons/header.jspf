@@ -28,12 +28,11 @@
     </a>
 
     <ul class="menu">
-        <li class="usersmemyaba"><a href="/users/me/my_aba">마이페이지</a></li>
-        <li class="requestscreateform"><a href="/requests/create/form">내집찾기</a></li>
-        <li class="admin"><a href="/admin">관리자 테스트</a></li>
-        <li class="maps"><a href="/maps">매물찾기</a></li>
+<%--        <li class="usersmemyaba"><a href="/users/me/my_offer">마이페이지</a></li>--%>
         <li class="intro"><a href="/intro">회사소개</a></li>
         <li class="posts"><a href="/posts">공지사항</a></li>
+        <li class="admin"><a href="/admin">관리자모드</a></li>
+        <li class="maps"><a href="/maps">매물찾기</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li class="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
@@ -48,7 +47,7 @@
     </ul>
 
     <ul class="sub user" hidden>
-        <li onclick="location.href='/users/me/my_aba'">마이페이지</li>
+        <li onclick="location.href='/users/me/my_offer'">마이페이지</li>
         <li onclick="location.href='/users/form'">내정보수정</li>
         <li onclick="location.href='#'">계약신고</li>
         <li onclick="location.href='/auth/logout'">로그아웃</li>
