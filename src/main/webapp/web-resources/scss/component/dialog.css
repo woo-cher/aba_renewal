@@ -26,10 +26,6 @@ input[type=text] {
   position: relative;
 }
 
-.main-container {
-  height: calc(100% - 71px);
-}
-
 .full-left-box {
   width: 10%;
   border-right: 3px solid #f0f0f0;

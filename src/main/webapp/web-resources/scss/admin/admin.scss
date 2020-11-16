@@ -32,10 +32,6 @@ input[type="text"] {
   @include input-group
 }
 
-.main-container {
-  height: calc(100% - 71px);
-}
-
 .full-left-box {
   width: 10%;
   border-right: 3px solid $borderColor;

@@ -23,6 +23,8 @@ public class PostController {
 
     @RequestMapping(value = "/posts/form", method = RequestMethod.GET)
     private ModelAndView form() {
+        mv.setViewName("post/form");
+
         return mv;
     }
 
