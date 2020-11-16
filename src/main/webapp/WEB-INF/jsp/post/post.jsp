@@ -24,8 +24,10 @@
             <div class="post-filter">
                 <div class="relative w-65 m-auto pt-3">
                     <div class="absolute w-full align-right" style="right: 5%;">
+                    <c:if test="${sessionUser.role eq 'MASTER'}">
                         <span class="aba txt-sm mr-1">게시글 등록하기 :)</span>
                         <a href="/posts/form" class="add-btn"></a>
+                    </c:if>
                     </div>
                 </div>
                 <div class="filter-wrap pt-3">

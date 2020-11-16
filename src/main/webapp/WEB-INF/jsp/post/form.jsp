@@ -69,6 +69,7 @@
         <c:forEach var="error" items="${errors}">
         fieldName = `${error.getField()}`;
         errorMessage = `${error.getDefaultMessage()}`;
+
         selector = $('[name="' + fieldName + '"]').parents('.check-area');
         selector.addClass('invalid b-1r');
         selector.find('.error-box').append(
