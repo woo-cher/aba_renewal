@@ -31,12 +31,14 @@
 <%--        <li class="usersmemyaba"><a href="/users/me/my_offer">마이페이지</a></li>--%>
         <li class="intro"><a href="/intro">회사소개</a></li>
         <li class="posts"><a href="/posts">공지사항</a></li>
-        <li class="admin"><a href="/admin">관리자모드</a></li>
         <li class="maps"><a href="/maps">매물찾기</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li class="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
+            <c:if test="${sessionUser.role eq 'MASTER' || sessionUser.role eq 'ADMIN'}">
+                <li class="admin"><a href="/admin">관리자모드</a></li>
+            </c:if>
             <li class="offerscreateform"><a href="/offers/form">매물등록</a></li>
             <li class="user">
                 <a href="#">${principal.user.name} 님
