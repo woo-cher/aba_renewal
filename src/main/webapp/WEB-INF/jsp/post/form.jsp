@@ -43,7 +43,7 @@
                             <textarea class="w-full" name="contents" style="resize: none; height: 250px; padding: 2%; border-radius: 10px;" placeholder="게시글 내용"></textarea>
                         </article>
                         <div class="form-control">
-                            <button type="submit" onclick="return false" class="w-25 fl">이전</button>
+                            <button type="button" onclick="location.href = '/posts'" class="w-25 fl">이전</button>
                             <button type="submit" class="w-25 fr">등록하기</button>
                         </div>
                     </form>
