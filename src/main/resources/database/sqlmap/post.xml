@@ -12,6 +12,8 @@
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <association property="register" javaType="User">
             <id property="userId" column="user_id" />
+            <result property="name" column="name" />
+            <result property="nickName" column="nick_name" />
             <result property="phone" column="phone" />
             <result property="agentPhone" column="agent_phone" />
         </association>
@@ -22,8 +24,18 @@
         INNER JOIN users ON posts.register = users.user_id
     </select>
 
+    <select id="selectPostById" resultMap="post">
+        SELECT * FROM posts
+        INNER JOIN users ON posts.register = users.user_id
+        WHERE id = #{id}
+    </select>
+
     <insert id="createPost" parameterType="post">
-        INSERT INTO posts (register, title, contents, created_at, updated_at, type)
-        VALUES (#{register.userId}, #{title}, #{contents}, current_timestamp, current_timestamp, #{postType})
+        INSERT INTO posts (register, title, contents, type, hits, created_at, updated_at)
+        VALUES (#{register.userId}, #{title}, #{contents}, #{postType}, #{hits}, current_timestamp, current_timestamp)
     </insert>
+
+    <update id="updatePostHits" parameterType="int">
+        UPDATE posts SET hits = hits + 1 WHERE id = #{id}
+    </update>
 </mapper>

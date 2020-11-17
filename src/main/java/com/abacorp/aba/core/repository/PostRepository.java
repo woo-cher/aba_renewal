@@ -20,4 +20,12 @@ public class PostRepository {
     public List<Post> selectPosts() {
         return sqlSession.selectList("selectPosts");
     }
+
+    public Post selectPostById(int id) {
+        return sqlSession.selectOne("selectPostById", id);
+    }
+
+    public int updatePostHits(int id) {
+        return sqlSession.update("updatePostHits", id);
+    }
 }

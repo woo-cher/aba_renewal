@@ -7,6 +7,9 @@
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/post.css">
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
+        <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
+
+        <script src="/web-resources/js/page-helper.js"></script>
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
     </head>
@@ -55,159 +58,79 @@
             <!-- 표 -->
             <section id="table">
                 <table>
-                    <colgroup>
-                        <col style="width:100px">
-                        <col>
-                        <col style="width:140px">
-                        <col style="width:110px">
-                    </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">작성자</th>
-                            <th scope="col">등록일</th>
-                            <th scope="col">조회</th>
+                            <th width="10%" scope="col">번호</th>
+                            <th width="50%" scope="col">제목</th>
+                            <th width="10%" scope="col">작성자</th>
+                            <th width="10%" scope="col">등록일</th>
+                            <th width="7.5%" scope="col">조회</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="notice">[공지]</td>
-                            <td>
-                                <a href="/posts/1" class="td02">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>
-                            </td>
-                            <td>아바</td>
-                            <td>2018.03.27</td>
-                            <td>1314</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>
-                                <a href="/posts/1" class="td02">아바가 경남도민일보에 기사가 나왔습니다. 감사합니다..</a>
-                            </td>
-                            <td>아바</td>
-                            <td>2018.09.11</td>
-                            <td>710</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <a href="/posts/1" class="td02">공인중개사를 위한 최고의 솔루션 “부동산 매물 정..</a>
-                            </td>
-                            <td>아바</td>
-                            <td>2017.09.08</td>
-                            <td>2663</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <a href="/posts/1" class="td02">아바 베타서비스 오픈기념 뮤료 사용기간 2017년 9..</a>
-                            </td>
-                            <td>아바</td>
-                            <td>2017.08.21</td>
-                            <td>1997</td>
-                        </tr>
+                    <tbody id="posts">
+<%--                        <tr>--%>
+<%--                            <td class="notice">[공지]</td>--%>
+<%--                            <td>--%>
+<%--                                <a href="/posts/1" class="td02">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>--%>
+<%--                            </td>--%>
+<%--                            <td>아바</td>--%>
+<%--                            <td>2018.03.27</td>--%>
+<%--                            <td>1314</td>--%>
+<%--                        </tr>--%>
                     </tbody>
                 </table>
 
                 <div class="page-num">
-                    <a href="#" class="num" style="font-size:1.75rem; font-weight: 700;">
-                        1
-                    </a>
-                </div>
-
-            </section>
-        </div>
-
-    <!--모바일-->
-    <div id="mobile">
-        <section id="mobile-header">
-            <article class="header-in">
-                <a href="#" class="back-btn">
-                    <img src="/web-resources/img/notice_mobile_btn.png" alt="뒤로가기 버튼">
-                </a>
-                <h3>공지사항</h3>
-            </article>
-
-        </section>
-        <section id="mobile-nav">
-            <article class="filter">
-                <div class="box01">
-                    <select>
-                        <option>전체</option>
-                        <option>인사말</option>
-                        <option>업데이트</option>
-                        <option>정기점검</option>
-                    </select>
-                </div>
-                <div class="box02">
-                    <p>검색 구분</p>
-                    <select>
-                        <option>전체</option>
-                        <option>제목</option>
-                        <option>내용</option>
-                    </select>
-                    <div class="search">
-                        <input type="text" placeholder="검색어를 입력하세요" class="search-box">
-                        <button class="button">
-                            <img src="/web-resources/img/notice_search-01.png" alt="">
-                        </button>
+                    <div class="paginator b-0 p-0">
+                        <div class="page-wrap f-c">
+                            <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
+                                <img src="/web-resources/img/basic/keyboard_arrow_left-24px.svg">
+                            </button>
+                            <ul class="pages" style="display: contents;">
+                                <li class="active">1</li>
+                            </ul>
+                            <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
+                                <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </article>
-        </section>
-
-        <!-- 표 -->
-        <section id="mobile-table">
-            <table>
-                <colgroup>
-                    <col style="width:15%">
-                    <col style="width:50%">
-                    <col style="width:15%">
-                </colgroup>
-                <!-- 첫번째줄 -->
-                <tr>
-                    <td scope="col">[공지]</td>
-                    <td scope="col>
-                        <a href="/posts/1" class="td02">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>
-                    </td>
-                    <td scope="col">2018.03.27</td>
-                </tr>
-                <!-- 두번째줄 -->
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <a href="/posts/1" class="td02">아바가 경남도민일보에 기사가 나왔습니다. 감사합니다..</a>
-                    </td>
-                    <td>2018.09.11</td>
-                </tr>
-                <!-- 세번째줄 -->
-                <tr>
-                    <td>2</td>
-                    <td>
-                        <a href="/posts/1" class="td02">공인중개사를 위한 최고의 솔루션 “부동산 매물 정..</a>
-                    </td>
-                    <td>2017.09.08</td>
-                </tr>
-                <!-- 네번째줄 -->
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <a href="/posts/1" class="td02">아바 베타서비스 오픈기념 뮤료 사용기간 2017년 9..</a>
-                    </td>
-                    <td>2017.08.21</td>
-                </tr>
-            </table>
-
-            <div class="page-num">
-                <a href="#" class="num" style="font-size:1.75rem; font-weight: 700;">
-                    1
-                </a>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
 
     <!-- footer -->
     <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
     </body>
 </html>
+
+<style>
+    table { border-spacing: 0; }
+
+    tr:hover { background: aliceblue; }
+
+    p.td02 {
+        width: 80%;
+        margin: 0 auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<script src="/web-resources/js/paginator/post-paginator.js"></script>
+<script>
+    let pageHelper = new PostPaginator(5, $('#posts'));
+    $(document).ready(function () {
+        let pageInfo = getPosts(pageHelper.startPage);
+
+        pageHelper.setEndPage(pageInfo['pages']);
+        pageHelper.bindPosts(1, pageInfo);
+        pageHelper.pageCalculation(1, pageInfo, (page) => {
+            pageHelper.bindPosts(page, getPosts(page));
+        });
+    });
+
+    function onPrevOrNext(pageParam) {
+
+    }
+</script>

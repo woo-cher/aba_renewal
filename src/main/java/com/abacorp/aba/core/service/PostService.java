@@ -5,6 +5,7 @@ import com.abacorp.aba.model.Post;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,5 +22,11 @@ public class PostService {
 
     public List<Post> getPosts() {
         return postRepository.selectPosts();
+    }
+
+    @Transactional
+    public Post getPostById(int id) {
+        postRepository.updatePostHits(id);
+        return postRepository.selectPostById(id);
     }
 }

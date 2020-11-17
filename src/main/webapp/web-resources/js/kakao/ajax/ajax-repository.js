@@ -255,3 +255,20 @@ function deleteImage(offerId, target) {
         error: ajaxError
     });
 }
+
+function getPosts(page) {
+    let result;
+
+    $.ajax({
+        url: '/apis/posts/all?page=' + page,
+        type: 'GET',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/apis")
+@RequestMapping("/apis/posts")
 @Slf4j
 public class PostApi {
     private final int POSTS_PER_PAGE = 2;
@@ -20,7 +20,7 @@ public class PostApi {
     @Autowired
     private PostService postService;
 
-    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public PageInfo<Post> posts(@RequestParam(value = "page") int page) {
         return PageHelper.startPage(page, POSTS_PER_PAGE).doSelectPageInfo(
                 () -> postService.getPosts()
