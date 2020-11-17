@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class PostService {
@@ -15,5 +17,9 @@ public class PostService {
 
     public int createPost(Post post) {
         return postRepository.insertPost(post);
+    }
+
+    public List<Post> getPosts() {
+        return postRepository.selectPosts();
     }
 }

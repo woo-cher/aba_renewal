@@ -3,10 +3,27 @@
 <mapper namespace="com.abacorp.aba.model.Post">
 
     <!-- Mapper -->
-    <resultMap id="post" type="post" />
+    <resultMap id="post" type="Post">
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="contents" column="contents" />
+        <result property="postType" column="type" />
+        <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+        <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+        <association property="register" javaType="User">
+            <id property="userId" column="user_id" />
+            <result property="phone" column="phone" />
+            <result property="agentPhone" column="agent_phone" />
+        </association>
+    </resultMap>
 
-    <select id="createPost" parameterType="post">
+    <select id="selectPosts" resultMap="post">
+        SELECT * FROM posts
+        INNER JOIN users ON posts.register = users.user_id
+    </select>
+
+    <insert id="createPost" parameterType="post">
         INSERT INTO posts (register, title, contents, created_at, updated_at, type)
         VALUES (#{register.userId}, #{title}, #{contents}, current_timestamp, current_timestamp, #{postType})
-    </select>
+    </insert>
 </mapper>
