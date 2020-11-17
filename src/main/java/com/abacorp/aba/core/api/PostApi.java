@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/apis/posts")
 @Slf4j
 public class PostApi {
-    private final int POSTS_PER_PAGE = 2;
+    private final int POSTS_PER_PAGE = 4;
 
     @Autowired
     private PostService postService;

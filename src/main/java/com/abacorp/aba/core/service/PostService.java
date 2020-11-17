@@ -26,7 +26,8 @@ public class PostService {
 
     @Transactional
     public Post getPostById(int id) {
-        postRepository.updatePostHits(id);
+        log.info("update hit row : {}", postRepository.updatePostHits(id));
+
         return postRepository.selectPostById(id);
     }
 }

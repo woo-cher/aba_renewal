@@ -21,7 +21,7 @@
 }
 
 /* signature */
-.aba { color: #00adef; font-weight: bold; }
+.aba { color: #00adef !important; font-weight: bold; }
 
 .box {
     border: 1px solid lightgrey;

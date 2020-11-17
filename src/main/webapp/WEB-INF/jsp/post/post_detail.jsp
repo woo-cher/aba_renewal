@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>공지사항</title>
+        <title>공지사항 - 상세게시글</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/css/post_detail.css">
 
@@ -23,21 +26,27 @@
                     <!-- 공지사항 게시판 내용 -->
                     <section class="con-in">
                         <article class="in01">
-                            <h4>[인사말]</h4>
+                            <c:choose>
+                                <c:when test="${post.postType.code eq 'NOTICE'}"><h4 class="aba"></c:when>
+                                <c:otherwise><h4></c:otherwise>
+                            </c:choose>
+                                [${post.postType.value}]
+                                <span style="float: right; padding-right: 3.5%; font-size: 1rem; color: #666 !important;">
+                                    <i class="fas fa-eye"></i>
+                                    ${post.hits}
+                                </span>
+                            </h4>
                             <h3>공인중개사를 위한 최고의 솔루션 "부동산매물 정보제공 업체"</h3>
-                            <p>작성일 19-08-17</p>
+                            <p class="align-right">
+                                ${fn:substring(post.createdAt, 2, 16)} 작성
+                            </p>
                         </article>
-                        <article class="in02">
-                            <p>기존 : 2017년 9월 10일 24:00시<br>
-                                변경 : 2017년 9월 20일 24:00시<br>
-                                안녕하십니까. 아바 대표 입니다. 기존에 무료기간을 10일 제공해드렸지만,<br>
-                                많은 공인중개사분들이 회원가입 해주셔서 감사 이벤트로 기간을 10일 연장합니다<br>
-                                참고 부탁드리겠습니다.<br>
-                                -매매물건은 유료기간인 21일부터 매물 등록됩니다-</p>
+                        <article class="in02 txt-md">
+                            <pre>${post.contents}</pre>
                         </article>
                         <article class="back-btn">
                             <a href="/posts">
-                                <img src="/web-resources/img/notice_back_btn.png" alt="">
+                                <img src="/web-resources/img/notice_back_btn.png">
                             </a>
                         </article>
                     </section>

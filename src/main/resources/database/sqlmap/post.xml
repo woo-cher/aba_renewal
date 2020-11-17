@@ -8,6 +8,7 @@
         <result property="title" column="title" />
         <result property="contents" column="contents" />
         <result property="postType" column="type" />
+        <result property="hits" column="hits" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <association property="register" javaType="User">
@@ -22,6 +23,7 @@
     <select id="selectPosts" resultMap="post">
         SELECT * FROM posts
         INNER JOIN users ON posts.register = users.user_id
+        ORDER BY posts.type, posts.created_at desc
     </select>
 
     <select id="selectPostById" resultMap="post">

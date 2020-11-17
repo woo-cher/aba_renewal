@@ -47,6 +47,7 @@ public class PostController {
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     private ModelAndView show(@PathVariable int id) {
         Post post = postService.getPostById(id);
+        log.info("dbPost: {}", post);
 
         mv.setViewName("post/post_detail");
         mv.addObject("post", post);

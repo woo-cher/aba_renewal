@@ -2,8 +2,8 @@
 
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>공지사항</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/post.css">
         <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
@@ -25,35 +25,35 @@
             </div>
 
             <div class="post-filter">
-                <div class="relative w-65 m-auto pt-3">
-                    <div class="absolute w-full align-right" style="right: 5%;">
+                <div class="relative w-65 m-auto pt-3 pb-3">
+                    <div class="w-full align-right" style="right: 5%;">
                     <c:if test="${sessionUser.role eq 'MASTER'}">
                         <span class="aba txt-sm mr-1">게시글 등록하기 :)</span>
                         <a href="/posts/form" class="add-btn"></a>
                     </c:if>
                     </div>
                 </div>
-                <div class="filter-wrap pt-3">
-                    <select>
-                        <option>전체</option>
-                        <option>인사말</option>
-                        <option>업데이트</option>
-                        <option>정기점검</option>
-                    </select>
-                    <p>
-                        <span>검색 구분</span>
-                    </p>
-                    <select>
-                        <option>전체</option>
-                        <option>제목</option>
-                        <option>내용</option>
-                    </select>
-                    <input type="text" placeholder="검색어를 입력하세요" class="search-box">
-                    <button class="button">
-                        <img src="/web-resources/img/notice_search-01.png" alt="">
-                    </button>
-                </div>
-            </div>
+<%--                <div class="filter-wrap pt-3">--%>
+<%--                    <select>--%>
+<%--                        <option>전체</option>--%>
+<%--                        <option>인사말</option>--%>
+<%--                        <option>업데이트</option>--%>
+<%--                        <option>정기점검</option>--%>
+<%--                    </select>--%>
+<%--                    <p>--%>
+<%--                        <span>검색 구분</span>--%>
+<%--                    </p>--%>
+<%--                    <select>--%>
+<%--                        <option>전체</option>--%>
+<%--                        <option>제목</option>--%>
+<%--                        <option>내용</option>--%>
+<%--                    </select>--%>
+<%--                    <input type="text" placeholder="검색어를 입력하세요" class="search-box">--%>
+<%--                    <button class="button">--%>
+<%--                        <img src="/web-resources/img/notice_search-01.png" alt="">--%>
+<%--                    </button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <!-- 표 -->
             <section id="table">
@@ -67,20 +67,10 @@
                             <th width="7.5%" scope="col">조회</th>
                         </tr>
                     </thead>
-                    <tbody id="posts">
-<%--                        <tr>--%>
-<%--                            <td class="notice">[공지]</td>--%>
-<%--                            <td>--%>
-<%--                                <a href="/posts/1" class="td02">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>--%>
-<%--                            </td>--%>
-<%--                            <td>아바</td>--%>
-<%--                            <td>2018.03.27</td>--%>
-<%--                            <td>1314</td>--%>
-<%--                        </tr>--%>
-                    </tbody>
+                    <tbody id="posts"></tbody>
                 </table>
 
-                <div class="page-num">
+                <div class="page-num p-1">
                     <div class="paginator b-0 p-0">
                         <div class="page-wrap f-c">
                             <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage - 5)">
@@ -109,6 +99,7 @@
     tr:hover { background: aliceblue; }
 
     p.td02 {
+        display: block;
         width: 80%;
         margin: 0 auto;
         white-space: nowrap;
@@ -131,6 +122,13 @@
     });
 
     function onPrevOrNext(pageParam) {
+        pageHelper.prevOrNext(pageParam, () => {
+            let pageInfo = getPosts(pageParam);
 
+            pageHelper.bindPosts(pageParam, pageInfo);
+            pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
+                pageHelper.bindPosts(page, getPosts(page))
+            });
+        })
     }
 </script>
