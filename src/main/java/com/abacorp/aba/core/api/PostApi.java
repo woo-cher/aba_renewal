@@ -6,10 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/apis/posts")
@@ -25,5 +22,10 @@ public class PostApi {
         return PageHelper.startPage(page, POSTS_PER_PAGE).doSelectPageInfo(
                 () -> postService.getPosts()
         );
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public int delete(@PathVariable int id) {
+        return postService.deletePost(id);
     }
 }

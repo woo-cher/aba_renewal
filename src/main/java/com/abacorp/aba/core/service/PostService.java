@@ -30,4 +30,12 @@ public class PostService {
 
         return postRepository.selectPostById(id);
     }
+
+    public int updatePost(Post post) {
+        return postRepository.updatePost(post);
+    }
+
+    public int deletePost(int id) {
+        return postRepository.deletePost(id);
+    }
 }

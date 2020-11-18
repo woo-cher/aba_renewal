@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/posts")
 @Slf4j
 public class PostController {
 
@@ -31,12 +31,12 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @RequestMapping("/posts")
+    @RequestMapping("")
     private String index() {
         return "post/post";
     }
 
-    @RequestMapping(value = "/posts/form", method = RequestMethod.GET)
+    @RequestMapping(value = "/form", method = RequestMethod.GET)
     private ModelAndView form() {
         mv.clear();
         mv.setViewName("post/form");
@@ -44,7 +44,7 @@ public class PostController {
         return mv;
     }
 
-    @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     private ModelAndView show(@PathVariable int id) {
         Post post = postService.getPostById(id);
         log.info("dbPost: {}", post);
@@ -55,15 +55,19 @@ public class PostController {
         return mv;
     }
 
-    @RequestMapping(value = "/posts/create", method = RequestMethod.POST)
+    @RequestMapping(value = {"/create", "/update"}, method = RequestMethod.POST)
     private ModelAndView create(@ModelAttribute @Valid Post post, BindingResult bindingResult, HttpServletRequest request) {
         log.info("post : {}", post);
+
+        StringBuffer requestUrl = request.getRequestURL();
+        boolean isUpdate = requestUrl.toString().contains("update");
 
         if (bindingResult.hasErrors()) {
             List<FieldError> errors = bindingResult.getFieldErrors();
 
             mv.addObject("errors", errors);
             mv.addObject("post", post);
+            mv.addObject("isUpdate", isUpdate);
 
             return mv;
         }
@@ -73,8 +77,9 @@ public class PostController {
 
         post.setRegister(register);
 
-        postService.createPost(post);
+        int row = isUpdate ? postService.updatePost(post) : postService.createPost(post);
 
+        mv.clear();
         mv.setViewName("redirect:/posts");
 
         return mv;

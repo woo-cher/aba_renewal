@@ -15,6 +15,7 @@
             <id property="userId" column="user_id" />
             <result property="name" column="name" />
             <result property="nickName" column="nick_name" />
+            <result property="role" column="role" />
             <result property="phone" column="phone" />
             <result property="agentPhone" column="agent_phone" />
         </association>
@@ -40,4 +41,14 @@
     <update id="updatePostHits" parameterType="int">
         UPDATE posts SET hits = hits + 1 WHERE id = #{id}
     </update>
+
+    <update id="updatePost" parameterType="post">
+        UPDATE posts
+        SET title = #{title}, contents = #{contents}, type = #{type}, updated_at = current_timestamp
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deletePost" parameterType="int">
+        DELETE FROM posts WHERE id = #{id}
+    </delete>
 </mapper>

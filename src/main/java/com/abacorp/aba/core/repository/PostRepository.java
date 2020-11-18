@@ -28,4 +28,12 @@ public class PostRepository {
     public int updatePostHits(int id) {
         return sqlSession.update("updatePostHits", id);
     }
+
+    public int updatePost(Post post) {
+        return sqlSession.update("updatePost", post);
+    }
+
+    public int deletePost(int id) {
+        return sqlSession.delete("deletePost", id);
+    }
 }

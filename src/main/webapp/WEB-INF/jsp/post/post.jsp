@@ -60,11 +60,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="10%" scope="col">번호</th>
+                            <th width="7.5%" scope="col">번호</th>
                             <th width="50%" scope="col">제목</th>
                             <th width="10%" scope="col">작성자</th>
                             <th width="10%" scope="col">등록일</th>
                             <th width="7.5%" scope="col">조회</th>
+                            <c:if test="${sessionUser.role eq 'MASTER'}">
+                            <th width="20%" scope="col"></th>
+                            </c:if>
                         </tr>
                     </thead>
                     <tbody id="posts"></tbody>
@@ -106,6 +109,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    i:hover { color: #00adef; }
 </style>
 
 <script src="/web-resources/js/paginator/post-paginator.js"></script>
@@ -119,6 +124,16 @@
         pageHelper.pageCalculation(1, pageInfo, (page) => {
             pageHelper.bindPosts(page, getPosts(page));
         });
+
+        <c:if test="${sessionUser.role eq 'MASTER'}">
+            let trTags = $("#posts").find('tr');
+            trTags.append(`
+                <td>
+                    <i class="fas fa-pen" style="margin-right: 10px;"></i>
+                    <i class="fas fa-trash-alt" style="margin-right: 10px;"></i>
+                </td>
+            `)
+        </c:if>
     });
 
     function onPrevOrNext(pageParam) {
