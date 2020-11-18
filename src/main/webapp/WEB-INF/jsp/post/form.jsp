@@ -31,7 +31,7 @@
             <!-- 공지사항 타이틀 -->
             <header class="head">
                 <div class="line mb-1"></div>
-                <h2 class="p-3">게시글 ${message}</h2>
+                <h2 class="p-3">게시글 ${action}</h2>
             </header>
 
             <div class="form-warp con-in p-0">
@@ -58,7 +58,7 @@
                     </article>
                     <div class="form-control">
                         <button type="button" onclick="location.href = '/posts'" class="w-25 fl">이전</button>
-                        <button type="submit" class="w-25 fr">${message}하기</button>
+                        <button type="submit" class="w-25 fr">${action}하기</button>
                     </div>
                 </form>
             </div>
@@ -87,6 +87,11 @@
 
 <script>
     $(document).ready(function () {
+        <c:if test="${isUpdate}">
+            let typeCode = '${post.postType.code}';
+            $('option[value="' + typeCode + '"]').prop('selected', true);
+        </c:if>
+
         <c:if test="${not empty errors}">
         $('.error').remove();
         let fieldName, errorMessage, selector;

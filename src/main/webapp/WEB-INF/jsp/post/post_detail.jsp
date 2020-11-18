@@ -36,7 +36,7 @@
                                     ${post.hits}
                                 </span>
                             </h4>
-                            <h3>공인중개사를 위한 최고의 솔루션 "부동산매물 정보제공 업체"</h3>
+                            <h3>${post.title}</h3>
                             <p class="align-right">
                                 ${fn:substring(post.createdAt, 2, 16)} 작성
                             </p>

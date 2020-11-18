@@ -60,11 +60,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="7.5%" scope="col">번호</th>
-                            <th width="50%" scope="col">제목</th>
+                            <th width="10%" scope="col">번호</th>
+                            <th width="40%" scope="col">제목</th>
                             <th width="10%" scope="col">작성자</th>
                             <th width="10%" scope="col">등록일</th>
-                            <th width="7.5%" scope="col">조회</th>
+                            <th width="10%" scope="col">조회</th>
                             <c:if test="${sessionUser.role eq 'MASTER'}">
                             <th width="20%" scope="col"></th>
                             </c:if>
@@ -102,9 +102,10 @@
     tr:hover { background: aliceblue; }
 
     p.td02 {
-        display: block;
+        display: inline-block;
+        border: 0;
+        padding: 0;
         width: 80%;
-        margin: 0 auto;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -125,14 +126,8 @@
             pageHelper.bindPosts(page, getPosts(page));
         });
 
-        <c:if test="${sessionUser.role eq 'MASTER'}">
-            let trTags = $("#posts").find('tr');
-            trTags.append(`
-                <td>
-                    <i class="fas fa-pen" style="margin-right: 10px;"></i>
-                    <i class="fas fa-trash-alt" style="margin-right: 10px;"></i>
-                </td>
-            `)
+        <c:if test="${sessionUser.role ne 'MASTER'}">
+            $(".management").remove();
         </c:if>
     });
 

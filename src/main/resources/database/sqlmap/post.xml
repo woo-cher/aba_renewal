@@ -7,7 +7,7 @@
         <id property="id" column="id" />
         <result property="title" column="title" />
         <result property="contents" column="contents" />
-        <result property="postType" column="type" />
+        <result property="postType" column="post_type" />
         <result property="hits" column="hits" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
@@ -24,7 +24,7 @@
     <select id="selectPosts" resultMap="post">
         SELECT * FROM posts
         INNER JOIN users ON posts.register = users.user_id
-        ORDER BY posts.type, posts.created_at desc
+        ORDER BY posts.post_type, posts.created_at desc
     </select>
 
     <select id="selectPostById" resultMap="post">
@@ -34,7 +34,7 @@
     </select>
 
     <insert id="createPost" parameterType="post">
-        INSERT INTO posts (register, title, contents, type, hits, created_at, updated_at)
+        INSERT INTO posts (register, title, contents, post_type, hits, created_at, updated_at)
         VALUES (#{register.userId}, #{title}, #{contents}, #{postType}, #{hits}, current_timestamp, current_timestamp)
     </insert>
 
@@ -44,7 +44,7 @@
 
     <update id="updatePost" parameterType="post">
         UPDATE posts
-        SET title = #{title}, contents = #{contents}, type = #{type}, updated_at = current_timestamp
+        SET title = #{title}, contents = #{contents}, post_type = #{postType}, updated_at = current_timestamp
         WHERE id = #{id}
     </update>
 

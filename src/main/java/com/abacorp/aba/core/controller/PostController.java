@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +34,16 @@ public class PostController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
-    private ModelAndView form() {
+    private ModelAndView form(@RequestParam(required = false, value = "postId") Integer postId) {
         mv.clear();
         mv.setViewName("post/form");
+
+        if (postId != null) {
+            Post dbPost = postService.getPostById(postId);
+
+            mv.addObject("post", dbPost);
+            mv.addObject("isUpdate", true);
+        }
 
         return mv;
     }
