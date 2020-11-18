@@ -41,7 +41,7 @@
                     </c:if>
                     <div class="w-full form-control p-1 check-area">
                         <div class="form-label pl-0">* 유형</div>
-                        <select class="p-1" name="postType" onchange="test($(this))">
+                        <select class="p-1" name="postType">
                             <option value="NOTICE">공지사항</option>
                             <option value="NORMAL">일반게시물</option>
                         </select>

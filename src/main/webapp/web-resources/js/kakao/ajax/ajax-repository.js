@@ -188,7 +188,7 @@ function deleteOfferById(offerId) {
 }
 
 function ajaxError() {
-    alert("Error !");
+    alert("서버와의 데이터 수신에 실패했습니다 :(");
 }
 
 function addFiltersOfReqBody(reqBody) {
@@ -266,6 +266,23 @@ function getPosts(page) {
         contentType: 'application/json',
         success: function (requests) {
             result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
+function deletePost(id) {
+    let result;
+
+    $.ajax({
+        url: '/apis/posts/' + id,
+        type: 'DELETE',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            console.log("post deleted")
         },
         error: ajaxError
     });

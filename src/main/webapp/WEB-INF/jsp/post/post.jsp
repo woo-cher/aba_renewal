@@ -141,4 +141,13 @@
             });
         })
     }
+
+    function deleteCaller(id) {
+        if(confirm("게시글을 삭제할까요?")) {
+            $('#post' + id).remove();
+            deletePost(id);
+        } else {
+            return;
+        }
+    }
 </script>

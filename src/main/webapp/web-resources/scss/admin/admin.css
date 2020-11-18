@@ -6,15 +6,15 @@ button {
   position: relative;
 }
 button.reverse {
-  color: #fff;
+  color: #fff !important;
   background: #00adef;
 }
 button.reverse:hover {
-  color: #00adef;
+  color: #00adef !important;
   background: #fff;
 }
 button:hover {
-  color: #ffffff;
+  color: #fff !important;
   background: #00adef;
 }
 
@@ -24,10 +24,6 @@ input[type=text] {
   border-radius: 1em;
   font-size: 1rem;
   position: relative;
-}
-
-.main-container {
-  height: calc(100% - 71px);
 }
 
 .full-left-box {
@@ -41,7 +37,7 @@ input[type=text] {
   border-bottom: 3px solid #f0f0f0;
 }
 .full-left-box .left-nav li {
-  padding: 12.5px 20px;
+  padding: 12.5px 20px !important;
 }
 
 .full-right-box {

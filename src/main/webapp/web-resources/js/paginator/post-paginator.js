@@ -22,7 +22,7 @@ class PostPaginator extends PageHelper {
             let postId = post.id;
 
             this.bindingArea.append(`
-                <tr class="c-pointer relative" onclick="location.href='/posts/${postId}'">
+                <tr class="c-pointer relative" id="post${postId}" onclick="location.href='/posts/${postId}'">
                     ${post.postType.code === 'NOTICE' ? '<td class="notice aba">[공지]</td>' : '<td>' + postId + '</td>'}
                     <td>
                         <p class="td02">${post.title}</p>
@@ -32,7 +32,7 @@ class PostPaginator extends PageHelper {
                     <td>${post.hits}</td>
                     <td class="management" onclick="event.cancelBubble=true">
                         <i class="fas fa-pen" style="margin-right: 10px;" onclick="location.href='/posts/form?postId=${postId}'"></i>
-                        <i class="fas fa-trash-alt" style="margin-right: 10px;"></i>
+                        <i class="fas fa-trash-alt" style="margin-right: 10px;" onclick="deleteCaller(${postId})"></i>
                     </td>
                 </tr>
             `)

@@ -13,17 +13,17 @@ button {
   @include input-group;
 
   &.reverse {
-    color: #fff;
+    color: #fff !important;
     background: $abaColor;
 
     &:hover {
-      color: $abaColor;
+      color: $abaColor !important;
       background: #fff;
     }
   }
 
   &:hover {
-    color: #ffffff;
+    color: #fff !important;
     background: $abaColor;
   }
 }

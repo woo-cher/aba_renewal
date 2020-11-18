@@ -6,15 +6,15 @@ button {
   position: relative;
 }
 button.reverse {
-  color: #fff;
+  color: #fff !important;
   background: #00adef;
 }
 button.reverse:hover {
-  color: #00adef;
+  color: #00adef !important;
   background: #fff;
 }
 button:hover {
-  color: #ffffff;
+  color: #fff !important;
   background: #00adef;
 }
 
