@@ -128,7 +128,7 @@ $abaColor: #00adef;
       margin: 0;
 
       .checkbox-container {
-        width: 85vw;
+        width: 85vw !important;
         box-sizing: border-box;
         margin-left: calc(-42.5vw + 50%);
       }
