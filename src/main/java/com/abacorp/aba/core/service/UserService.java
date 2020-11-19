@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class UserService implements UserDetailsService {
-    private final int USERS_PER_PAGE = 1;
+    private final int USERS_PER_PAGE = 3;
 
     @Autowired
     private UserRepository repository;

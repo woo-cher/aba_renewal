@@ -28,9 +28,9 @@
     </a>
 
     <ul class="menu">
-        <li class="admin"><a href="/admin">HOME</a></li>
-        <li class="adminusers"><a href="/admin/users">회원관리</a></li>
-        <li class="adminoffers"><a href="/admin/offers">매물관리</a></li>
+        <li class="admin none"><a href="/admin">HOME</a></li>
+        <li class="adminusers none"><a href="/admin/users">회원관리</a></li>
+        <li class="adminoffers none"><a href="/admin/offers">매물관리</a></li>
 <%--        <li class="adminpays"><a href="/admin/pays">결제관리</a></li>--%>
         <sec:authorize access="isAuthenticated()">
             <li class="user">
@@ -57,7 +57,7 @@
             $(".sub.user").slideDown(500);
         });
 
-        $('.main-container').mouseenter(function () {
+        $('.none, .main-container').mouseenter(function () {
             $('.sub').slideUp()
         })
     });

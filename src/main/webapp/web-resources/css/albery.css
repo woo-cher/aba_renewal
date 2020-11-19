@@ -18,11 +18,13 @@
 .albery-item {
 	position: relative;
 	float: left;
-	width:50%;
+	width: 780px;
+	height: 460px;
+	text-align: center;
 	/*cursor: zoom-in;*/
 }
 .albery-item img {
-	width: 100%;
+	width: 70%;
 }
 
 .move-left, .move-right {

@@ -116,7 +116,7 @@
         <div class="container">
             <div class="albery-container">
                 <div class="albery-wrapper">
-                    <c:forEach var="image" begin="1" items="${offer.imageUrls}" varStatus="vs">
+                    <c:forEach var="image" begin="0" items="${offer.imageUrls}" varStatus="vs">
                         <div class="albery-item">
                             <img src="${image.url}">
                         </div>

@@ -184,7 +184,7 @@ class MapModule {
                             <img src="/web-resources/img/offer/detail_head_icon-01.png" onclick="alert('준비중이예요 :)')">
                         </div>
                         <div class="offer" onclick="window.open('/offers/${offer.id}')">
-                            <div class="offer-thumbs">
+                            <div class="offer-thumbs"">
                                 <img src="${endpoint + offer.thumbnail}">
                             </div>
                             <p class="offer-summary">

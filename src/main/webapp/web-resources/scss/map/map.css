@@ -67,9 +67,13 @@
   font-size: 16px;
   font-weight: normal;
 }
+.offer .offer-thumbs {
+  text-align: center;
+  height: 270px;
+  overflow: hidden;
+}
 .offer .offer-thumbs > img {
   width: 100%;
-  height: auto;
 }
 .offer .offer-deal {
   font-size: 18px;
