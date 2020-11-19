@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <div id="depositBox" class="slider-box" hidden>
-                                <div class="form-label align-center my-3">
+                                <div class="form-label align-center">
                                     <span class="px-3">전세보증금</span>
                                     <input type="text" class="aba middle txt-md" id="deposit-amount" name="deposit"
                                            readonly style="border:0; font-weight:bold;">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div id="monthlyDepositBox" class="slider-box" hidden>
-                                <div class="form-label align-center my-3">
+                                <div class="form-label align-center">
                                     <span class="px-3">월세보증금</span>
                                     <input type="text" class="aba middle txt-md" id="monthly-deposit-amount" name="monthlyDeposit"
                                            readonly style="border:0; font-weight:bold;"
@@ -308,14 +308,15 @@
                         <p class="error w-half align-center" hidden>
                             <i class="fas fa-exclamation-circle" id="error"></i>
                         </p>
-                        <div class="align-center my-1">
-                            <button type="button" id="prev" class="login-button w-35 fl" onclick="processNavigator(false)" onfocus="processNavigator(false)" hidden>이전</button>
-                            <button type="button" id="next" class="login-button w-35 fr" onclick="processNavigator(true)" onfocus="processNavigator(true)">다음</button>
-                            <button type="button" id="request-submit" class="login-button w-35 fr" style="display: none !important;"
-                                    onclick="$('#submit-trigger').click()">의뢰하기
-                            </button>
-                            <input hidden type="submit" id="submit-trigger">
-                        </div>
+                    </div>
+
+                    <div class="align-center my-1">
+                        <button type="button" id="prev" class="login-button w-35 fl" onclick="processNavigator(false)" onfocus="processNavigator(false)" hidden>이전</button>
+                        <button type="button" id="next" class="login-button w-35 fr" onclick="processNavigator(true)" onfocus="processNavigator(true)">다음</button>
+                        <button type="button" id="request-submit" class="login-button w-35 fr" style="display: none !important;"
+                                onclick="$('#submit-trigger').click()">의뢰하기
+                        </button>
+                        <input hidden type="submit" id="submit-trigger">
                     </div>
                 </div>
             </form>
