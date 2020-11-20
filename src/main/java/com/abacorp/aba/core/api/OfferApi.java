@@ -49,7 +49,7 @@ public class OfferApi {
     }
 
     @RequestMapping(value = "/maps/offers", method = RequestMethod.GET)
-    public List<Offer> offersByIdKeyword(@RequestParam(value = "idKey") String idKey) {
+    public List<Offer> offersById(@RequestParam(value = "idKey") String idKey) {
         return service.getOffersByIdKeyword(idKey);
     }
 
@@ -76,5 +76,12 @@ public class OfferApi {
     @RequestMapping(value = "/offers/{offer}", method = RequestMethod.DELETE)
     public int delete(@PathVariable(value = "offer") int id) {
         return offerService.deleteOfferById(id);
+    }
+
+    @RequestMapping(value = "/offers/search", method = RequestMethod.GET)
+    public PageInfo<Offer> search(@RequestParam String keyword, @RequestParam int page) {
+        return PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
+                () -> offerService.searchOffers(keyword)
+        );
     }
 }

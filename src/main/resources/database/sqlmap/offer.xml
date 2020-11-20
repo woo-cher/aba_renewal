@@ -95,10 +95,25 @@
         <if test="completionYear != 0">AND (ofs.completion_year = #{completionYear})</if>
         <if test="options.length != 0">
             <foreach collection="options" item="option">
-            AND (adds.option_category LIKE CONCAT('%',#{option},'%'))
+            AND (adds.option_category LIKE CONCAT('%', #{option}, '%'))
             </foreach>
        </if>
     </sql>
+
+    <select id="selectOffers" resultMap="offer">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+    </select>
+
+    <select id="selectOffersByKeyword" resultMap="offer" parameterType="String">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE id LIKE CONCAT('%', #{keyword}, '%') OR
+              user LIKE CONCAT('%', #{keyword}, '%') OR
+              addrs.building_name LIKE CONCAT('%', #{keyword}, '%') OR
+              addrs.jibun LIKE CONCAT('%', #{keyword}, '%') OR
+              addrs.road LIKE CONCAT('%', #{keyword}, '%') OR
+              addrs.near_location LIKE CONCAT('%', #{keyword}, '%') OR
+              addrs.belongs_to LIKE CONCAT('%', #{keyword}, '%')
+    </select>
 
     <select id="selectOfferById" resultMap="offer" parameterType="int">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
@@ -142,10 +157,6 @@
 
     <select id="selectOfferThumbnail" parameterType="int">
         SELECT thumbnail FROM offers WHERE id = #{offerId}
-    </select>
-
-    <select id="selectOffers" resultMap="offer">
-        SELECT * FROM offers As ofs <include refid="offerJoin" />
     </select>
 
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">

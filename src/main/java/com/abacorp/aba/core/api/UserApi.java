@@ -34,7 +34,7 @@ public class UserApi {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public PageInfo<User> search(@RequestParam String keyword, @RequestParam int page) {
-        return service.searchUser(keyword, page);
+        return service.searchUsers(keyword, page);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)

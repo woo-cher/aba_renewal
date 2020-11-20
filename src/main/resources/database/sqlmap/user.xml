@@ -30,7 +30,7 @@
         SELECT * FROM users WHERE user_id = #{id};
     </select>
 
-    <select id="searchUserByKeyword" parameterType="String" resultMap="user">
+    <select id="searchUsersByKeyword" parameterType="String" resultMap="user">
         SELECT * FROM users
         WHERE user_id LIKE CONCAT('%',#{keyword},'%') OR
               email LIKE CONCAT('%',#{keyword},'%') OR

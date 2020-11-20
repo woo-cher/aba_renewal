@@ -94,4 +94,8 @@ public class OfferRepository {
     public List<Offer> selectOffers() {
         return sqlSession.selectList("selectOffers");
     }
+
+    public List<Offer> selectOffersByKeyword(String keyword) {
+        return sqlSession.selectList("selectOffersByKeyword", keyword);
+    }
 }

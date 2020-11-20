@@ -194,4 +194,8 @@ public class OfferService {
 
         return register.equals(sessionUser);
     }
+
+    public List<Offer> searchOffers(String keyword) {
+        return offerRepository.selectOffersByKeyword(keyword);
+    }
 }
