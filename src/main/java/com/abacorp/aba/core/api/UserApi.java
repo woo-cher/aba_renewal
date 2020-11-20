@@ -28,4 +28,10 @@ public class UserApi {
         log.info("page param : {}", page);
         return service.findAll(page);
     }
+
+    @RequestMapping(value = "/general/{page}", method = RequestMethod.GET)
+    public PageInfo<User> find(@PathVariable int page) {
+        log.info("page param : {}", page);
+        return service.findUserExceptAdmin(page);
+    }
 }

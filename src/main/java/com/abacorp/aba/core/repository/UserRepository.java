@@ -32,4 +32,8 @@ public class UserRepository {
     public int delete(String userId) {
         return sqlSession.delete("deleteUser", userId);
     }
+
+    public List<User> findUsersExceptAdmin() {
+        return sqlSession.selectList("findUserExceptAdmin");
+    }
 }

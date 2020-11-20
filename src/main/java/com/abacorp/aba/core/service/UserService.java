@@ -46,6 +46,12 @@ public class UserService implements UserDetailsService {
         );
     }
 
+    public PageInfo<User> findUserExceptAdmin(int page) {
+        return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
+                () -> repository.findUsersExceptAdmin()
+        );
+    }
+
     public boolean isExistUser(String userId) {
         User user = repository.selectById(userId);
 
@@ -71,8 +77,8 @@ public class UserService implements UserDetailsService {
         String natural = user.getPassword();
         user.setPassword(encoder.encode(natural));
 
-        user.setPhone(user.getPhone().replaceAll(",", ""));
-        user.setAgentPhone(user.getAgentPhone().replaceAll(",", ""));
+        user.setPhone(user.getPhone().replaceAll(",", "-"));
+        user.setAgentPhone(user.getAgentPhone().replaceAll(",", "-"));
         user.setEmail(user.getEmail().replaceAll(",", "@"));
         user.setExtraAddr(user.getExtraAddr().replaceAll(",", " "));
 

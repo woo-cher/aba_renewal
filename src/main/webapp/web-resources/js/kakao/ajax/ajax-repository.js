@@ -243,6 +243,23 @@ function getAllUsers(page) {
     return result;
 }
 
+function getUsersExceptAdmin(page) {
+    let result;
+
+    $.ajax({
+        url: '/apis/users/general/' + page,
+        type: 'GET',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 function deleteImage(offerId, target) {
     $.ajax({
         url: '/apis/s3/delete?offerId=' + offerId + '&fileName=' + target,

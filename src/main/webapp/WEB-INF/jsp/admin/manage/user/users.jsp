@@ -60,22 +60,22 @@
     let pageHelper = new UserPaginator(5, $('#users'));
 
     $(document).ready(function () {
-        let pageInfo = getAllUsers(pageHelper.startPage);
+        let pageInfo = getUsersExceptAdmin(pageHelper.startPage);
         pageHelper.bindUsers(1, pageInfo);
 
         pageHelper.setEndPage(pageInfo['pages']);
         pageHelper.pageCalculation(1, pageInfo, (page) => {
-            pageHelper.bindUsers(page, getAllUsers(page))
+            pageHelper.bindUsers(page, getUsersExceptAdmin(page))
         });
     });
 
     function onPrevOrNext(pageParam) {
         pageHelper.prevOrNext(pageParam, () => {
-            let pageInfo = getAllUsers(pageParam);
+            let pageInfo = getUsersExceptAdmin(pageParam);
 
             pageHelper.bindUsers(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-                pageHelper.bindUsers(page, getAllUsers(page))
+                pageHelper.bindUsers(page, getUsersExceptAdmin(page))
             });
         })
     }
