@@ -87,6 +87,7 @@
 <script src="/web-resources/js/paginator/user-paginator.js"></script>
 <script>
     let pageHelper = new UserPaginator(5, $('#owners'));
+    let checkedEl;
 
     $(document).ready(function () {
         let pageInfo = getAllUsers(1);
@@ -110,20 +111,36 @@
     }
 
     function foldTrigger(focus) {
+        if (checkedEl) {
+            if (!$(checkedEl).is(focus)) {
+                $(checkedEl).parents('tr').removeClass('checked');
+                addUnCheckedAttr($(checkedEl));
+            }
+        }
+
         onChecked(focus);
+        checkedEl = focus;
 
         let targetId = focus.siblings('.userId').text();
         let offers;
 
         if (focus.parents('tr').hasClass('checked')) {
-            focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_down-24px.svg');
+            addCheckedAttr(focus);
             offers = getOffers(null, targetId);
             bindOffersOfOwner(targetId, offers);
         } else {
-            focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_up-24px.svg');
+            addUnCheckedAttr(focus);
             $('#offers').empty();
             $('#message').show();
         }
+    }
+
+    function addCheckedAttr(focus) {
+        focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_down-24px.svg');
+    }
+
+    function addUnCheckedAttr(focus) {
+        focus.find('img').attr('src', '/web-resources/img/basic/keyboard_arrow_up-24px.svg');
     }
 
     function bindOffersOfOwner(user, offers) {
