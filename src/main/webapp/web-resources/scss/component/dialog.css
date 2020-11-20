@@ -52,6 +52,12 @@ input[type=text] {
 .full-right-box .right-header .btn-group {
   padding: 20px 0;
 }
+.full-right-box .right-header .btn-group .search {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 25%;
+}
 .full-right-box .right-header .mini-header {
   font-size: 0.8rem;
   font-weight: 800;

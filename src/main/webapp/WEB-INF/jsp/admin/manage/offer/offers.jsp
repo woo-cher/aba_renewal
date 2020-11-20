@@ -17,7 +17,7 @@
         </button>
         <span class="relative">
             <input type="text" placeholder="검색">
-            <i class="fas fa-search" style="position: absolute; right: 15px; top: 25%"></i>
+            <i class="fas fa-search"></i>
         </span>
     </div>
 </div>
@@ -43,7 +43,7 @@
                     <p>을 삭제할까요?</p>
                 </div>
                 <div class="dialog-btn-group pt-3">
-                    <button class="fl" type="button" onclick="deleteCaller()">삭제</button>
+                    <button class="fl" type="button" onclick="doDelete()">삭제</button>
                     <input type="hidden" class="target-id">
                     <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
                 </div>
@@ -93,7 +93,7 @@
         })
     }
 
-    function deleteCaller() {
+    function doDelete() {
         let offerId = $('.target-id').val();
         let removedTarget = $('.offer' + offerId).parent('tr');
 

@@ -61,6 +61,13 @@ input[type="text"] {
 
     .btn-group {
       padding: 20px 0;
+
+      .search {
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 25%
+      }
     }
 
     .mini-header {

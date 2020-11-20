@@ -5,10 +5,7 @@ import com.abacorp.aba.model.User;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/apis/users")
@@ -33,6 +30,11 @@ public class UserApi {
     public PageInfo<User> find(@PathVariable int page) {
         log.info("page param : {}", page);
         return service.findUserExceptAdmin(page);
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public PageInfo<User> search(@RequestParam String keyword, @RequestParam int page) {
+        return service.searchUser(keyword, page);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)

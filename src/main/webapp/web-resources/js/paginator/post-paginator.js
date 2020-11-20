@@ -32,7 +32,7 @@ class PostPaginator extends PageHelper {
                     <td>${post.hits}</td>
                     <td class="management" onclick="event.cancelBubble=true">
                         <i class="fas fa-pen" style="margin-right: 10px;" onclick="location.href='/posts/form?postId=${postId}'"></i>
-                        <i class="fas fa-trash-alt" style="margin-right: 10px;" onclick="deleteCaller(${postId})"></i>
+                        <i class="fas fa-trash-alt" style="margin-right: 10px;" onclick="doDelete(${postId})"></i>
                     </td>
                 </tr>
             `)

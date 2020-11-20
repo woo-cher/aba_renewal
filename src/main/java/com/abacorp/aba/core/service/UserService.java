@@ -52,6 +52,12 @@ public class UserService implements UserDetailsService {
         );
     }
 
+    public PageInfo<User> searchUser(String keyword, int page) {
+        return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
+                () -> repository.findUserWithKeyword(keyword)
+        );
+    }
+
     public boolean isExistUser(String userId) {
         User user = repository.selectById(userId);
 

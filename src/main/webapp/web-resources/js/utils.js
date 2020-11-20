@@ -145,13 +145,6 @@ function removeSpecifiedElement(array, indexOf) {
     array.splice(indexOf, 1);
 }
 
-function loadScript(url) {
-    let script = document.createElement('script');
-
-    script.src = url;
-    script.onload = () => {
-        console.log("Import script : ", url);
-    };
-
-    document.getElementsByTagName('head')[0].appendChild(script);
+function isEnterKey(e) {
+    return e.which === 13;
 }

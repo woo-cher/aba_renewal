@@ -16,8 +16,8 @@
             사용자 필터
         </button>
         <span class="relative">
-            <input type="text" placeholder="검색">
-            <i class="fas fa-search" style="position: absolute; right: 15px; top: 25%"></i>
+            <input type="text" id="keyword" placeholder="검색" onkeypress="checkPressedKey(event)">
+            <i class="fas fa-search search" onclick="doSearch()"></i>
         </span>
     </div>
 </div>
@@ -43,7 +43,7 @@
                     <p>을 삭제할까요?</p>
                 </div>
                 <div class="dialog-btn-group pt-3">
-                    <button class="fl w-45" type="button" onclick="deleteCaller()">삭제</button>
+                    <button class="fl w-45" type="button" onclick="doDelete()">삭제</button>
                     <input type="hidden" class="target-id">
                     <button class="fr w-45" type="button" onclick="dialogCloseTrigger($('#user-dialog'))">취소</button>
                 </div>
@@ -74,8 +74,8 @@
     $(document).ready(function () {
         let pageInfo = getUsersExceptAdmin(pageHelper.startPage);
         pageHelper.bindUsers(1, pageInfo);
-
         pageHelper.setEndPage(pageInfo['pages']);
+
         pageHelper.pageCalculation(1, pageInfo, (page) => {
             pageHelper.bindUsers(page, getUsersExceptAdmin(page))
         });
@@ -92,7 +92,23 @@
         })
     }
 
-    function deleteCaller() {
+    function doSearch() {
+        let keyword = $('#keyword').val();
+        let pageInfo = searchUser(keyword, 1);
+
+        pageHelper.bindUsers(1, pageInfo);
+        pageHelper.pageCalculation(1, pageInfo, (page) => {
+            pageHelper.bindUsers(page, searchUser(keyword, page))
+        })
+    }
+
+    function checkPressedKey(e) {
+        if (isEnterKey(e)) {
+            doSearch();
+        }
+    }
+
+    function doDelete() {
         let userId = $('.target-id').val();
         let removedTarget = $('#' + userId);
 

@@ -36,4 +36,8 @@ public class UserRepository {
     public List<User> findUsersExceptAdmin() {
         return sqlSession.selectList("findUserExceptAdmin");
     }
+
+    public List<User> findUserWithKeyword(String keyword) {
+        return sqlSession.selectList("searchUserByKeyword", keyword);
+    }
 }

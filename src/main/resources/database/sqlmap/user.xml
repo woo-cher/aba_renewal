@@ -30,6 +30,15 @@
         SELECT * FROM users WHERE user_id = #{id};
     </select>
 
+    <select id="searchUserByKeyword" parameterType="String" resultMap="user">
+        SELECT * FROM users
+        WHERE user_id LIKE CONCAT('%',#{keyword},'%') OR
+              email LIKE CONCAT('%',#{keyword},'%') OR
+              phone LIKE CONCAT('%',#{keyword},'%') OR
+              name LIKE CONCAT('%',#{keyword},'%') OR
+              agent_phone LIKE CONCAT('%',#{keyword},'%')
+    </select>
+
     <update id="updateUser" parameterType="user">
         UPDATE users
         SET password = #{password}, type = #{type}, name = #{name}, nick_name = #{nickName}, email = #{email}, phone = #{phone},
