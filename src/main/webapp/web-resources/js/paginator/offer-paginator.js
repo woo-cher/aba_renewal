@@ -13,7 +13,7 @@ class OfferPaginator extends PageHelper {
         this.bindingArea = bindingArea;
     }
 
-    deleteOffer(offerId, removeElementTarget) {
+    static deleteOffer(offerId, removeElementTarget) {
         if(deleteOfferById(offerId) === 1) {
             removeElementTarget.remove();
             dialogCloseTrigger($('#offer-dialog'));

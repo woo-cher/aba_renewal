@@ -85,6 +85,7 @@
 </div>
 
 <script src="/web-resources/js/paginator/user-paginator.js"></script>
+<script src="/web-resources/js/paginator/offer-paginator.js"></script>
 <script>
     let pageHelper = new UserPaginator(5, $('#owners'));
     let checkedEl;
@@ -171,7 +172,7 @@
                     </td>
                     <td class="aba">${'${offer.status.value}'}</td>
                     <td>${'${offer.createdAt.slice(2, 10).replaceAll("-", ".")}'}</td>
-                    <td width="">
+                    <td onclick="event.cancelBubble=true">
                         <span class="border-side">
                             <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/${'${offer.id}'}')" ></i>
                             <i class="fas fa-pen" title="매물 수정하기" onclick="window.open('/offers/form?offerId=${'${offer.id}'}')"></i>
@@ -184,5 +185,12 @@
                 </tr>
             `)
         }
+    }
+
+    function deleteCaller() {
+        let offerId = $('.target-id').val();
+        let removedTarget = $('.offer' + offerId).parent('tr');
+
+        OfferPaginator.deleteOffer(offerId, removedTarget);
     }
 </script>

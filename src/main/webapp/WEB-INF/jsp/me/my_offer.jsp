@@ -30,9 +30,9 @@
                     <p>을 삭제할까요?</p>
                 </div>
                 <div class="dialog-btn-group pt-3">
-                    <button class="fl" type="button" onclick="deleteCaller()">삭제</button>
+                    <button class="fl w-45" type="button" onclick="deleteCaller()">삭제</button>
                     <input type="hidden" class="target-id">
-                    <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
+                    <button class="fr w-45" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
                 </div>
             </div>
         </tbody>
@@ -88,6 +88,6 @@
         let offerId = $('.target-id').val();
         let removedTarget = $('.offer' + offerId).parent('tr');
 
-        pageHelper.deleteOffer(offerId, removedTarget);
+        OfferPaginator.deleteOffer(offerId, removedTarget);
     }
 </script>

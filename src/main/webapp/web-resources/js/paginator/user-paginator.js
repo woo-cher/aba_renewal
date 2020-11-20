@@ -34,7 +34,7 @@ class UserPaginator extends PageHelper {
                     <td>${user.email}</td>
                     <td class="aba">${user.type.value}</td>
                     <td class="aba">${user.role.value}</td>
-                    <td width="10%">
+                    <td width="10%" onclick="event.cancelBubble=true">
                         <span class="border-side">
                             <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id='.concat('${user.userId}'))"></i>
                             <i class="fas fa-pen"></i>

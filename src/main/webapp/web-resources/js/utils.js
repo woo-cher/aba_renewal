@@ -116,24 +116,22 @@ function getUrlParameter(reqParam) {
 
 <!-- Dialog -->
 function dialogInitializer(element, showWhat, targetName = null, targetId = null) {
-    element.on('click', function () {
-        $('.overlay').show();
-        showWhat.dialog({
-            resizable: false,
-            draggable: false,
-            position: {
-                my: "center",
-                at: "center",
-                of: ".dialog-yardstick"
-            },
-            open: function () {
-                targetName !== null ? $('.target').text(targetName) : '';
-                targetId !== null ? $('.target-id').val(targetId) : '';
-            },
-            close: function (event, ui) {
-                $('.overlay').hide();
-            }
-        });
+    $('.overlay').show();
+    showWhat.dialog({
+        resizable: false,
+        draggable: false,
+        position: {
+            my: "center",
+            at: "center",
+            of: ".dialog-yardstick"
+        },
+        open: function () {
+            targetName !== null ? $('.target').text(targetName) : '';
+            targetId !== null ? $('.target-id').val(targetId) : '';
+        },
+        close: function (event, ui) {
+            $('.overlay').hide();
+        }
     });
 }
 
