@@ -34,4 +34,10 @@ public class UserApi {
         log.info("page param : {}", page);
         return service.findUserExceptAdmin(page);
     }
+
+    @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
+    public int delete(@PathVariable String userId) {
+        log.info("delete target userId : {}", userId);
+        return service.deleteUser(userId);
+    }
 }

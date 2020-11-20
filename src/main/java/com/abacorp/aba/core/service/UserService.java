@@ -91,4 +91,8 @@ public class UserService implements UserDetailsService {
 
         return user;
     }
+
+    public int deleteUser(String userId) {
+        return repository.delete(userId);
+    }
 }

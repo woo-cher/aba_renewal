@@ -9,8 +9,11 @@ class UserPaginator extends PageHelper {
         this.bindingArea = bindingArea;
     }
 
-    deleteUser(userId, removeElementTarget) {
-        //
+    static deleteUser(userId, removeElementTarget) {
+        if(deleteUserById(userId) === 1) {
+            removeElementTarget.remove();
+            dialogCloseTrigger($('#user-dialog'));
+        }
     }
 
     bindUsers(page, pageInfo) {
@@ -23,7 +26,7 @@ class UserPaginator extends PageHelper {
             let user = users[i];
 
             this.bindingArea.append(`
-                <tr>
+                <tr id="${user.userId}">
                     <td>
                         <input type="checkbox" class="checkbox" id="'${user.userId}'" onclick="onChecked($(this))">
                     </td>
@@ -38,7 +41,9 @@ class UserPaginator extends PageHelper {
                         <span class="border-side">
                             <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id='.concat('${user.userId}'))"></i>
                             <i class="fas fa-pen"></i>
-                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-trash-alt"
+                                onclick="dialogInitializer($(this), $('#user-dialog'), '${user.userId}', '${user.userId}')">
+                            </i>
                         </span>
                     </td>
                 </tr>

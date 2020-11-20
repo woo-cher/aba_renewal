@@ -36,7 +36,19 @@
             <th width="10%">권한</th>
             <th width="15%">&nbsp;</th>
         </tr>
-        <tbody class="row" id="users"></tbody>
+        <tbody class="row" id="users">
+            <div class="aba-dialog" id="user-dialog" title="아바" hidden>
+                <div class="dialog-ask">
+                    <p class="aba target"></p>
+                    <p>을 삭제할까요?</p>
+                </div>
+                <div class="dialog-btn-group pt-3">
+                    <button class="fl w-45" type="button" onclick="deleteCaller()">삭제</button>
+                    <input type="hidden" class="target-id">
+                    <button class="fr w-45" type="button" onclick="dialogCloseTrigger($('#user-dialog'))">취소</button>
+                </div>
+            </div>
+        </tbody>
         <tr>
             <td colspan="9">
                 <div class="paginator f-c b-0 p-0">
@@ -78,5 +90,12 @@
                 pageHelper.bindUsers(page, getUsersExceptAdmin(page))
             });
         })
+    }
+
+    function deleteCaller() {
+        let userId = $('.target-id').val();
+        let removedTarget = $('#' + userId);
+
+        UserPaginator.deleteUser(userId, removedTarget);
     }
 </script>

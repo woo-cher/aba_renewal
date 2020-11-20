@@ -187,6 +187,22 @@ function deleteOfferById(offerId) {
     return result;
 }
 
+function deleteUserById(userId) {
+    let result;
+
+    $.ajax({
+        url: '/apis/users/' + userId,
+        type: 'DELETE',
+        async: false,
+        success: function (deleteRow) {
+            result = deleteRow;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 function ajaxError() {
     alert("서버와의 데이터 수신에 실패했습니다 :(");
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/dialog.css">
 
     <script src="/web-resources/js/page-helper.js"></script>
 
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-    <div class="main-container p-0 w-full in-flex">
+    <div class="main-container p-0 w-full in-flex dialog-yardstick">
         <div class="full-left-box">
             <header class="left-header aba">회원관리</header>
             <ul id="navigator" class="left-nav nav-bar-col">
