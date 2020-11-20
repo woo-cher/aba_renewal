@@ -1,11 +1,4 @@
-$(document).ready(function () {
-    var scriptTag = document.createElement('script');
-    scriptTag.async = true;
-    scriptTag.src = '/web-resources/js/kakao/ajax/user-repo.js';
-
-    var s0 = document.getElementsByTagName('script')[0];
-    s0.parentNode.insertBefore(scriptTag, s0);
-});
+/* ─────────────────────────── MAP ────────────────────────────── */
 
 function getAllOverlays(weight, southWest, northEast) {
     let result;
@@ -47,21 +40,6 @@ function getCoordinates(id) {
     });
 
     return JSON.parse(result.coordinates);
-}
-
-function searchKakaoAddress(keyword) {
-    let result;
-
-    $.ajax({
-        url: '/apis/kakao/address?keyword=' + keyword,
-        type: 'GET',
-        async: false,
-        success: function (resultEntity) {
-            result = JSON.parse(resultEntity)
-        }
-    });
-
-    return result;
 }
 
 function getOffersOfMap(southWest, northEast, region = null, page = 1) {
@@ -152,6 +130,27 @@ function getOffersByIdKeyword(idKey) {
     return result;
 }
 
+function addFiltersOfReqBody(reqBody) {
+    reqBody['offerTypes'] = filtersDto.offerType;
+    reqBody['dealTypes'] = filtersDto.dealType;
+    reqBody['maxDeposit'] = filtersDto.deposit;
+    reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
+    reqBody['isParking'] = filtersDto.isParking;
+    reqBody['isNotTenant'] = filtersDto.isNotTenant;
+    reqBody['isPet'] = filtersDto.isPet;
+    reqBody['hasElevator'] = filtersDto.hasElevator;
+    reqBody['isCanTerm'] = filtersDto.isCanTerm;
+    reqBody['floor'] = filtersDto.floor;
+    reqBody['completionYear'] = filtersDto.year;
+    reqBody['options'] = filtersDto.option;
+
+    return JSON.stringify(reqBody);
+}
+
+/* ─────────────────────────── /MAP ────────────────────────────── */
+
+/* ─────────────────────────── OFFER ───────────────────────────── */
+
 function getOffers(page = null, userId = null) {
     let result;
     let url;
@@ -196,60 +195,22 @@ function deleteOfferById(offerId) {
     return result;
 }
 
-function deleteUserById(userId) {
-    let result;
-
+function deleteImage(offerId, target) {
     $.ajax({
-        url: '/apis/users/' + userId,
+        url: '/apis/s3/delete?offerId=' + offerId + '&fileName=' + target,
         type: 'DELETE',
         async: false,
-        success: function (deleteRow) {
-            result = deleteRow;
-        },
-        error: ajaxError
-    });
-
-    return result;
-}
-
-function ajaxError() {
-    alert("서버와의 데이터 수신에 실패했습니다 :(");
-}
-
-function addFiltersOfReqBody(reqBody) {
-    reqBody['offerTypes'] = filtersDto.offerType;
-    reqBody['dealTypes'] = filtersDto.dealType;
-    reqBody['maxDeposit'] = filtersDto.deposit;
-    reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
-    reqBody['isParking'] = filtersDto.isParking;
-    reqBody['isNotTenant'] = filtersDto.isNotTenant;
-    reqBody['isPet'] = filtersDto.isPet;
-    reqBody['hasElevator'] = filtersDto.hasElevator;
-    reqBody['isCanTerm'] = filtersDto.isCanTerm;
-    reqBody['floor'] = filtersDto.floor;
-    reqBody['completionYear'] = filtersDto.year;
-    reqBody['options'] = filtersDto.option;
-
-    return JSON.stringify(reqBody);
-}
-
-function getRequests(requestFilterDto) {
-    let result;
-
-    $.ajax({
-        url: '/requests/filters',
-        type: 'POST',
-        async: false,
         contentType: 'application/json',
-        data: JSON.stringify(requestFilterDto),
-        success: function (requests) {
-            result = requests;
+        success: function () {
+            console.log("delete : ", target);
         },
         error: ajaxError
     });
-
-    return result;
 }
+
+/* ────────────────────────── /OFFER ───────────────────────────── */
+
+/* ──────────────────────────── USER ───────────────────────────── */
 
 function getAllUsers(page) {
     let result;
@@ -285,19 +246,83 @@ function getUsersExceptAdmin(page) {
     return result;
 }
 
-function deleteImage(offerId, target) {
+function deleteUserById(userId) {
+    let result;
+
     $.ajax({
-        url: '/apis/s3/delete?offerId=' + offerId + '&fileName=' + target,
+        url: '/apis/users/' + userId,
         type: 'DELETE',
         async: false,
-        contentType: 'application/json',
-        success: function () {
-            console.log("delete : ", target);
+        success: function (deleteRow) {
+            result = deleteRow;
         },
         error: ajaxError
     });
+
+    return result;
 }
 
+function searchUser(keyword, page) {
+    let result;
+
+    $.ajax({
+        url: '/apis/users/search?keyword=' + keyword + '&page=' + page,
+        type: 'GET',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
+/* ─────────────────────────── /USER ───────────────────────────── */
+
+/* ─────────────────────────── COMMON ──────────────────────────── */
+function searchKakaoAddress(keyword) {
+    let result;
+
+    $.ajax({
+        url: '/apis/kakao/address?keyword=' + keyword,
+        type: 'GET',
+        async: false,
+        success: function (resultEntity) {
+            result = JSON.parse(resultEntity)
+        }
+    });
+
+    return result;
+}
+
+function ajaxError() {
+    alert("서버와의 데이터 수신에 실패했습니다 :(");
+}
+/* ─────────────────────────── /COMMON ──────────────────────────── */
+
+/* ─────────────────────────── REQUEST ──────────────────────────── */
+function getRequests(requestFilterDto) {
+    let result;
+
+    $.ajax({
+        url: '/requests/filters',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(requestFilterDto),
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+/* ────────────────────────── /REQUEST ──────────────────────────── */
+
+/* ──────────────────────────── POST ────────────────────────────── */
 function getPosts(page) {
     let result;
 
@@ -331,3 +356,4 @@ function deletePost(id) {
 
     return result;
 }
+/* ──────────────────────────── /POST ───────────────────────────── */
