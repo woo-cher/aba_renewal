@@ -92,6 +92,13 @@
         })
     }
 
+    function doDelete() {
+        let userId = $('.target-id').val();
+        let removedTarget = $('#' + userId);
+
+        UserPaginator.deleteUser(userId, removedTarget);
+    }
+
     function doSearch() {
         let keyword = $('#keyword').val();
         let pageInfo = searchUser(keyword, 1);
@@ -106,12 +113,5 @@
         if (isEnterKey(e)) {
             doSearch();
         }
-    }
-
-    function doDelete() {
-        let userId = $('.target-id').val();
-        let removedTarget = $('#' + userId);
-
-        UserPaginator.deleteUser(userId, removedTarget);
     }
 </script>

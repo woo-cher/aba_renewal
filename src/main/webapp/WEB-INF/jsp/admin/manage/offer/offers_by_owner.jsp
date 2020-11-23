@@ -16,8 +16,8 @@
             매물 필터
         </button>
         <span class="relative">
-            <input type="text" placeholder="검색">
-            <i class="fas fa-search"></i>
+            <input type="text" id="keyword" placeholder="검색" onkeypress="checkPressedKey(event)">
+            <i class="fas fa-search search" onclick="doSearch()"></i>
         </span>
     </div>
 </div>
@@ -192,5 +192,23 @@
         let removedTarget = $('.offer' + offerId).parent('tr');
 
         OfferPaginator.deleteOffer(offerId, removedTarget);
+    }
+
+    function doSearch() {
+        let keyword = $('#keyword').val();
+        let pageInfo = searchUser(keyword, 1);
+
+        console.log(pageInfo);
+
+        pageHelper.bindOffersByOwner(1, pageInfo);
+        pageHelper.pageCalculation(1, pageInfo, (page) => {
+            pageHelper.bindOffersByOwner(page, searchUser(keyword, page))
+        })
+    }
+
+    function checkPressedKey(e) {
+        if (isEnterKey(e)) {
+            doSearch();
+        }
     }
 </script>

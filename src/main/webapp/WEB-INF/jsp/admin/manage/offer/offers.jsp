@@ -16,8 +16,8 @@
             매물 필터
         </button>
         <span class="relative">
-            <input type="text" placeholder="검색">
-            <i class="fas fa-search"></i>
+            <input type="text" id="keyword" placeholder="검색" onkeypress="">
+            <i class="fas fa-search search" onclick=""></i>
         </span>
     </div>
 </div>
