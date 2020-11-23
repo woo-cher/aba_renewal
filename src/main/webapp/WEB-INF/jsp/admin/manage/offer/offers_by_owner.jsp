@@ -198,8 +198,6 @@
         let keyword = $('#keyword').val();
         let pageInfo = searchUser(keyword, 1);
 
-        console.log(pageInfo);
-
         pageHelper.bindOffersByOwner(1, pageInfo);
         pageHelper.pageCalculation(1, pageInfo, (page) => {
             pageHelper.bindOffersByOwner(page, searchUser(keyword, page))

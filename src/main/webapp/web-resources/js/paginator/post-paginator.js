@@ -17,11 +17,14 @@ class PostPaginator extends PageHelper {
 
         this.bindingArea.empty();
 
-        for(let i = 0; i < posts.length; i++) {
-            let post = posts[i];
-            let postId = post.id;
+        if (posts.length === 0) {
+            this.bindingArea.append(this.getEmptyRowElement(10));
+        } else {
+            for(let i = 0; i < posts.length; i++) {
+                let post = posts[i];
+                let postId = post.id;
 
-            this.bindingArea.append(`
+                this.bindingArea.append(`
                 <tr class="c-pointer relative" id="post${postId}" onclick="location.href='/posts/${postId}'">
                     ${post.postType.code === 'NOTICE' ? '<td class="notice aba">[공지]</td>' : '<td>' + postId + '</td>'}
                     <td>
@@ -35,7 +38,8 @@ class PostPaginator extends PageHelper {
                         <i class="fas fa-trash-alt" style="margin-right: 10px;" onclick="doDelete(${postId})"></i>
                     </td>
                 </tr>
-            `)
+                `)
+            }
         }
     }
 }

@@ -208,6 +208,23 @@ function deleteImage(offerId, target) {
     });
 }
 
+function searchOffer(keyword, page) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers/search?keyword=' + keyword + '&page=' + page,
+        type: 'GET',
+        async: false,
+        contentType: 'application/json',
+        success: function (requests) {
+            result = requests;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 /* ────────────────────────── /OFFER ───────────────────────────── */
 
 /* ──────────────────────────── USER ───────────────────────────── */

@@ -19,20 +19,24 @@ class PageHelper {
 
         $('.pages').empty();
 
-        for (let num = startPage; num <= pageInfo['pages']; num++) {
-            if (count !== this.pageLength) {
-                let pageElement = document.createElement('li');
+        if (pageInfo['list'].length === 0) {
+            $('.pages').append(`<li class="active">1</li>`);
+        } else {
+            for (let num = startPage; num <= pageInfo['pages']; num++) {
+                if (count !== this.pageLength) {
+                    let pageElement = document.createElement('li');
 
-                if (num === pageInfo['pageNum']) {
-                    pageElement.classList.add("active");
+                    if (num === pageInfo['pageNum']) {
+                        pageElement.classList.add("active");
+                    }
+
+                    pageElement.innerText = num;
+                    pageElement.onclick = () => callback(num);
+
+                    $('.pages').append(pageElement);
+
+                    count++;
                 }
-
-                pageElement.innerText = num;
-                pageElement.onclick = () => callback(num);
-
-                $('.pages').append(pageElement);
-
-                count++;
             }
         }
 
@@ -47,6 +51,10 @@ class PageHelper {
         this.startPage = pageParam;
 
         caller();
+    }
+
+    getEmptyRowElement(colspan) {
+        return `<tr><td colspan="${colspan}" class="aba txt-lg p-3">결과가 존재하지 않아요 :(</td></tr>`;
     }
 }
 

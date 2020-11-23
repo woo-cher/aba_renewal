@@ -26,11 +26,14 @@ class OfferPaginator extends PageHelper {
 
         this.bindingArea.empty();
 
-        for(let i = 0; i < offers.length; i++) {
-            let offer = offers[i];
-            let offerId = offer.id;
+        if (offers.length === 0) {
+            this.bindingArea.append(this.getEmptyRowElement(10));
+        } else {
+            for(let i = 0; i < offers.length; i++) {
+                let offer = offers[i];
+                let offerId = offer.id;
 
-            this.bindingArea.append(`
+                this.bindingArea.append(`
                 <tr>
                     <td>
                         <input type="checkbox" class="checkbox" id="${offerId}" onclick="onChecked($(this))">
@@ -56,7 +59,8 @@ class OfferPaginator extends PageHelper {
                         </span>
                     </td>
                 </tr>
-            `)
+                `)
+            }
         }
     }
 }
