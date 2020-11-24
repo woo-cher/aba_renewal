@@ -133,6 +133,7 @@
         </div>
         <div class="dialog-ask">
             <input type="password" class="w-75" id="password">
+            <div class="error pt-3" hidden></div>
         </div>
         <div class="dialog-btn-group pt-3">
             <button class="fl w-45" type="button" onclick="withdrawal($('#password').val())">제출</button>
@@ -142,14 +143,35 @@
     </div>
 </div>
 
+<style>
+    .ui-dialog {
+        z-index: 3 !important;
+    }
+</style>
+
 <script>
     function withdrawal(inputPassword) {
         // Do certified input password with sessionUser's password
 
-        let bool = isValidPassword(inputPassword);
-        console.log(bool);
+        let isValid = isValidPassword(inputPassword);
+        let errorBox = $('.error');
 
-        // deleteUserById($('.target-id').val());
-        // location.href = "/auth/logout";
+        if(!isValid) {
+            errorBox.empty();
+            errorBox.show();
+
+            $('#password').addClass('invalid b-1r');
+            errorBox.addClass('invalid');
+
+            errorBox.append(`
+               <i class="fas fa-exclamation-circle"></i>
+               <span>비밀번호가 일치하지 않네요 :(</span>
+            `);
+
+            errorBox.effect('shake', { distance : 3, time: 1 }, 100);
+        } else {
+            location.href = "/auth/logout";
+            deleteUserById($('.target-id').val());
+        }
     }
 </script>
