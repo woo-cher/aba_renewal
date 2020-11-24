@@ -8,11 +8,13 @@ import com.abacorp.aba.security.CustomUserDetails;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +24,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
@@ -69,6 +74,11 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
+    public boolean isPasswordMatch(String actualPassword, String sessionUserId) {
+        String dbUserPassword = repository.selectById(sessionUserId).getPassword();
+        return passwordEncoder.matches(actualPassword, dbUserPassword);
+    }
+
     public User findByUserId(String userId) {
         return repository.selectById(userId);
     }
@@ -78,10 +88,8 @@ public class UserService implements UserDetailsService {
     }
 
     private User getConvertedUser(User user) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
         String natural = user.getPassword();
-        user.setPassword(encoder.encode(natural));
+        user.setPassword(passwordEncoder.encode(natural));
 
         user.setPhone(user.getPhone().replaceAll(",", "-"));
         user.setAgentPhone(user.getAgentPhone().replaceAll(",", "-"));

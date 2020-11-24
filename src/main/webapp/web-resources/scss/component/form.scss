@@ -20,8 +20,8 @@ select {
 
 @mixin hover_action() {
   background: #f3f3f3 !important;
-  border: .1px solid $abaColor;
-  color: $abaColor;
+  border: .1px solid $abaColor !important;
+  color: $abaColor !important;
 }
 
 @mixin form_button() {

@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/apis/users")
 @Slf4j
@@ -18,6 +21,15 @@ public class UserApi {
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public boolean checkUserExist(@PathVariable String userId) {
         return service.isExistUser(userId);
+    }
+
+    @RequestMapping(value = "/password/certify", method = RequestMethod.POST)
+    public boolean isPasswordMatchWithUser(@RequestBody String password, HttpServletRequest request) {
+        log.info("param : {}", password);
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        return service.isPasswordMatch(password, sessionUser.getUserId());
     }
 
     @RequestMapping(value = "/all/{page}", method = RequestMethod.GET)

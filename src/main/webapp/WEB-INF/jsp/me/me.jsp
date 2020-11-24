@@ -30,7 +30,7 @@
                     <li class="account" onclick="nav('account')"><a>계정관리</a></li>
                 </ul>
             </header>
-            <div class="content-wrap">
+            <div class="content-wrap dialog-yardstick">
                 <c:import url="${view}.jsp" />
             </div>
         </div>

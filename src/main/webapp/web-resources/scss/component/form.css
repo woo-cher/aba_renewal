@@ -248,8 +248,8 @@ article[class=content-wrap] h3 {
 }
 .form-control .input-group p.icon:hover {
   background: #f3f3f3 !important;
-  border: 0.1px solid #00adef;
-  color: #00adef;
+  border: 0.1px solid #00adef !important;
+  color: #00adef !important;
 }
 .form-control .input-group p.icon:hover i {
   zoom: 1.25;
@@ -281,8 +281,8 @@ button[type=submit]:hover,
 button[type=button]:hover,
 label.button:hover {
   background: #f3f3f3 !important;
-  border: 0.1px solid #00adef;
-  color: #00adef;
+  border: 0.1px solid #00adef !important;
+  color: #00adef !important;
 }
 
 @media screen and (max-width: 768px) {

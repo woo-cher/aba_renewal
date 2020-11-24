@@ -1,25 +1,27 @@
 $(window).load(function () {
-    $('.overlay').fadeOut();
-    $('.loader').fadeOut();
+    fadeOutLoader();
 });
 
 $(document).ajaxStart(function(e) {
     if(!e.currentTarget.URL.includes('maps')) {
-        $('.loader').show();
-        $('.overlay').show();
+        showLoader();
     }
 });
 
 $(document).ajaxStop(function(e) {
     if(!e.currentTarget.URL.includes('maps')) {
-        $('.loader').fadeOut();
-        $('.overlay').fadeOut();
+        fadeOutLoader();
     }
 });
 
 function showLoader() {
     $('.overlay').show();
     $('.loader').show();
+}
+
+function fadeOutLoader() {
+    $('.loader').fadeOut();
+    $('.overlay').fadeOut();
 }
 
 /**

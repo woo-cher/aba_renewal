@@ -29,31 +29,31 @@
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">아이디</span>
                     </div>
-                    <input class="w-half" type="text" disabled value="abasystem">
+                    <input class="w-half" type="text" disabled value="${sessionUser.userId}">
                 </div>
                 <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">이름</span>
                     </div>
-                    <input class="w-half" type="text" disabled value="아바시스템">
+                    <input class="w-half" type="text" disabled value="${sessionUser.name}">
                 </div>
                 <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">연락처</span>
                     </div>
-                    <input class="w-half" type="text" disabled value="010-1234-1234">
+                    <input class="w-half" type="text" disabled value="${sessionUser.phone}">
                 </div>
                 <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">이메일</span>
                     </div>
-                    <input class="w-half" type="text" disabled value="cs@abasystem.com">
+                    <input class="w-half" type="text" disabled value="${sessionUser.email}">
                 </div>
                 <div class="input-group w-full f-c">
                     <div class="form-label w-25 align-left">
                         <span class="form-label before w-full">인증서류</span>
                     </div>
-                    <input class="w-half" type="text" disabled value="중개.pdf">
+                    <input class="w-half" type="text" disabled value="준비중입니다 :)">
                 </div>
                 <div class="input-group w-full p-0">
                     <div class="box-left"></div>
@@ -80,6 +80,12 @@
             <div class="label-wrap">비밀번호 변경</div>
         </div>
         <form class="frame form-control p-0">
+            <div class="input-group w-full f-c">
+                <div class="form-label w-25">
+                    <span class="form-label before w-full">현재 비밀번호</span>
+                </div>
+                <input class="w-half" type="text">
+            </div>
             <div class="input-group w-full f-c">
                 <div class="form-label w-25">
                     <span class="form-label before w-full">새 비밀번호</span>
@@ -115,21 +121,35 @@
                     </div>
                 </div>
             </div>
-            <button class="btn inline txt-sm w-25" type="submit" onclick="isAgree()">탈퇴하기 :(</button>
+            <button class="btn inline txt-sm w-25" type="submit"
+                    onclick="dialogInitializer($(this), $('#password-dialog'), null, '${sessionUser.userId}')">탈퇴하기 :(</button>
+        </div>
+    </div>
+
+    <div class="aba-dialog" id="password-dialog" title="아바" hidden>
+        <div class="dialog-ask">
+            <p class="aba target"></p>
+            <p>비밀번호 인증이 필요합니다 :)</p>
+        </div>
+        <div class="dialog-ask">
+            <input type="password" class="w-75" id="password">
+        </div>
+        <div class="dialog-btn-group pt-3">
+            <button class="fl w-45" type="button" onclick="withdrawal($('#password').val())">제출</button>
+            <input type="hidden" class="target-id">
+            <button class="fr w-45" type="button" onclick="dialogCloseTrigger($('#password-dialog'))">취소</button>
         </div>
     </div>
 </div>
 
 <script>
-    function isAgree() {
-        if(confirm("회원탈퇴를 진행할까요?")) {
-            return;
-        } else {
-            return;
-        }
+    function withdrawal(inputPassword) {
+        // Do certified input password with sessionUser's password
+
+        let bool = isValidPassword(inputPassword);
+        console.log(bool);
+
+        // deleteUserById($('.target-id').val());
+        // location.href = "/auth/logout";
     }
-    // $(document).ready(function () {
-    //     $('#content-2th').html(getElement());
-    //     $('#content-3th').html(getElement());
-    // })
 </script>

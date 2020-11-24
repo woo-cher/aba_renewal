@@ -296,6 +296,25 @@ function searchUser(keyword, page) {
     return result;
 }
 
+function isValidPassword(inputPassword) {
+    let result;
+
+    $.ajax({
+        url: '/apis/users/password/certify',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        datatype: 'text',
+        data: inputPassword,
+        success: function (certifiedResult) {
+            result = certifiedResult;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 /* ─────────────────────────── /USER ───────────────────────────── */
 
 /* ─────────────────────────── COMMON ──────────────────────────── */

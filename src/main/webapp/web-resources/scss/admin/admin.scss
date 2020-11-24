@@ -28,7 +28,8 @@ button {
   }
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   @include input-group
 }
 
