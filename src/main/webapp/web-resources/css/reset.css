@@ -1,6 +1,11 @@
 @charset "utf-8";
 @import url("/web-resources/font/S-Core-Dream-light/s-core-dream.css");
 
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 @keyframes go {
     0% {
         transform: translate(0px, 15px);
@@ -135,13 +140,27 @@ input::placeholder { color: #00adef; font-weight: 500; font-size: 15px; }
 input:read-only { background: #fafafa; cursor: auto; }
 input { font-weight: 800; font-size: 15px;}
 
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    z-index: 10;
+    border-top: 16px solid #00adef; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .overlay {
     z-index: 3;
     position: fixed;
     width: 100%; height: 100%;
     left: 0; top: 0;
     background-color: white;
-    opacity: .2;
+    opacity: .45;
 }
 
 .main-container {

@@ -22,6 +22,8 @@
     <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
 </head>
 
+<div class="overlay" hidden></div>
+<div class="loader" hidden></div>
 <header id="header">
     <a href="/" class="logo">
         <img src="/web-resources/img/logo.png" alt="로고">

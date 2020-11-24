@@ -68,6 +68,7 @@
     let timeOut;
 
     $(document).ready(() => {
+        showLoader();
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
 
         const pageInfo = getOffersOfMap(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);

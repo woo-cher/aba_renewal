@@ -28,6 +28,8 @@
     <link rel="stylesheet" type="text/css" href="/web-resources/css/reset.css">
 </head>
 
+<div class="overlay" hidden></div>
+<div class="loader" hidden></div>
 <header id="header" class="w-half">
     <a href="/" class="logo">
         <img src="/web-resources/img/logo.png" alt="로고">

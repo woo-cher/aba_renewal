@@ -1,3 +1,27 @@
+$(window).load(function () {
+    $('.overlay').fadeOut();
+    $('.loader').fadeOut();
+});
+
+$(document).ajaxStart(function(e) {
+    if(!e.currentTarget.URL.includes('maps')) {
+        $('.loader').show();
+        $('.overlay').show();
+    }
+});
+
+$(document).ajaxStop(function(e) {
+    if(!e.currentTarget.URL.includes('maps')) {
+        $('.loader').fadeOut();
+        $('.overlay').fadeOut();
+    }
+});
+
+function showLoader() {
+    $('.overlay').show();
+    $('.loader').show();
+}
+
 /**
  * For example,
  *

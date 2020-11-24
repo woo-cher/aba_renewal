@@ -91,6 +91,8 @@
     let uploadCount = 0;
 
     $(document).ready(function () {
+        showLoader();
+
         <c:if test="${not empty processIndex}">
             $('#leftNav').children().eq(${processIndex}).click();
         </c:if>
