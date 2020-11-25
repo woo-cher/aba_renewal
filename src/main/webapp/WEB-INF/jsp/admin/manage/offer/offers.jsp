@@ -1,5 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<style>
+    .filter-group {
+        font-size: .8rem !important; padding: 0 !important;
+    }
+
+    .detail-container { padding: 25px 15px 0 !important; }
+</style>
+
 <div class="right-header">
     <header>
         매물통합관리
@@ -11,7 +19,7 @@
             <i class="fas fa-user-plus"></i>
             매물 추가
         </button>
-        <button class="aba" type="button">
+        <button class="aba" type="button" onclick="$('.admin-filter').slideToggle()">
             <i class="fas fa-align-justify"></i>
             매물 필터
         </button>
@@ -20,6 +28,9 @@
             <i class="fas fa-search search" onclick="doSearch()"></i>
         </span>
     </div>
+
+    <%-- filter --%>
+    <%@include file="/WEB-INF/jsp/map/filter_bar.jsp"%>
 </div>
 <div class="right-content">
     <table class="admin-list-table">

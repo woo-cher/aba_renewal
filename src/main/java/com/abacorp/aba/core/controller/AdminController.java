@@ -2,6 +2,9 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.UserService;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.type.DealType;
+import com.abacorp.aba.model.type.OfferType;
+import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.model.type.UserType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,9 @@ public class AdminController {
 
         mv.setViewName("admin/manage/offer/management");
         mv.addObject("view", view);
+        mv.addObject("offerTypes", OfferType.values());
+        mv.addObject("dealTypes", DealType.values());
+        mv.addObject("options", OptionType.values());
 
         return mv;
     }

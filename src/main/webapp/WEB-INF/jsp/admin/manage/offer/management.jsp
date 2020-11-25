@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/navibar.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/table.css">
-    <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/paginator.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/dialog.css">
+
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/admin/admin.css">
+    <link rel="stylesheet" type="text/css" href="/web-resources/scss/map/filter-bar.css">
 
     <script src="/web-resources/js/page-helper.js"></script>
 
