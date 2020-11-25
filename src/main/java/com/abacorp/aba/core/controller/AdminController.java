@@ -2,6 +2,7 @@ package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.UserService;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.type.UserType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,6 +59,7 @@ public class AdminController {
 
         mv.setViewName("admin/manage/user/management");
         mv.addObject("view", view);
+        mv.addObject("userTypes", UserType.values());
 
         return mv;
     }

@@ -59,6 +59,7 @@
 .my-3 { margin: 3% 0 !important; }
 .m-auto { margin: 0 auto !important; }
 
+.w-max { width:  max-content !important; }
 .w-full { width: 100% !important; }
 .w-half { width: 50% !important; }
 .w-75 { width: 75% !important; }
@@ -94,6 +95,7 @@
 .absolute { position: absolute !important; }
 
 .over-hide { overflow: hidden !important; }
+.box-border { box-sizing: border-box !important; }
 
 /* font */
 .txt-xl { font-size: 2.5rem !important; }

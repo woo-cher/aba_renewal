@@ -1,0 +1,22 @@
+@import "../mixin/mixin";
+
+@include ulLiCheckbox;
+
+.filter-wrap {
+  padding: 0 1%;
+  border-top: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+}
+
+.f-row {
+  font-size: 1rem;
+  padding-bottom: 10px;
+
+  &:before {
+    content: "● ";
+  }
+}
+
+.checkbox-list {
+  width: 6.5vw !important;
+}

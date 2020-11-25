@@ -41,10 +41,10 @@
                             아이디 또는 비밀번호가 일치하지 않아요 :(
                         </p>
                         </c:if>
-                        <div class="check-box">
-                            <input type="checkbox" class="login-save" name="" value="save">&nbsp; 아이디 저장
-                            <input type="checkbox" class="auto-login" name="" value="auto">&nbsp; 자동로그인
-                        </div>
+<%--                        <div class="check-box">--%>
+<%--                            <input type="checkbox" class="login-save" name="" value="save">&nbsp; 아이디 저장--%>
+<%--                            <input type="checkbox" class="auto-login" name="" value="auto">&nbsp; 자동로그인--%>
+<%--                        </div>--%>
                         <button class="login-button" type="submit">로그인</button>
                     </form>
                     <div class="nav-box">

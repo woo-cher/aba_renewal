@@ -71,3 +71,59 @@ $shadowBasic: 1px 1px 2px lightgrey;
   text-align: $textAlign;
   width: $width;
 }
+
+@mixin ulLiCheckbox() {
+  .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 4% 0;
+
+    & li.absolute {
+      position: absolute;
+      top: 1%;
+      right: 5%;
+    }
+
+    &.agree {
+      padding: 6% 0;
+    }
+
+    &.form {
+      padding-left: 5%;
+
+      li {
+        width: 30%;
+
+        &.half {
+          width: 17%;
+        }
+      }
+    }
+
+    .checkbox-list {
+      width: 22%;
+      display: flex;
+      margin: .25rem;
+      letter-spacing: -.05em;
+    }
+
+    & .check {
+      display: none;
+    }
+
+    & .check:checked + label {
+      color: $abaColor;
+      border: 1px solid $abaColor;
+    }
+
+    & .check + label {
+      padding: .5rem .25rem;
+      border: 1px solid #cbd5e0;
+      border-radius: .5rem;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

@@ -11,7 +11,7 @@
             <i class="fas fa-user-plus"></i>
             계정 생성
         </button>
-        <button class="aba" type="button">
+        <button class="aba" type="button" onclick="$('.admin-filter').slideToggle()">
             <i class="fas fa-align-justify"></i>
             사용자 필터
         </button>
@@ -20,6 +20,9 @@
             <i class="fas fa-search search" onclick="doSearch()"></i>
         </span>
     </div>
+
+    <%-- filter --%>
+    <%@include file="/WEB-INF/jsp/admin/manage/user/filter.jsp"%>
 </div>
 <div class="right-content">
     <table class="admin-list-table">
