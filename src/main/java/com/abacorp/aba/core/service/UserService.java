@@ -3,17 +3,16 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.dto.UserFilterDto;
 import com.abacorp.aba.model.type.UserType;
 import com.abacorp.aba.security.CustomUserDetails;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -53,13 +52,13 @@ public class UserService implements UserDetailsService {
 
     public PageInfo<User> findUserExceptAdmin(int page) {
         return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
-                () -> repository.findUsersExceptAdmin()
+                () -> repository.selectUsersExceptAdmin()
         );
     }
 
     public PageInfo<User> searchUsers(String keyword, int page) {
         return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
-                () -> repository.findUsersWithKeyword(keyword)
+                () -> repository.selectUsersWithKeyword(keyword)
         );
     }
 
@@ -108,5 +107,11 @@ public class UserService implements UserDetailsService {
 
     public int deleteUser(String userId) {
         return repository.delete(userId);
+    }
+
+    public PageInfo<User> getUsersByFilter(UserFilterDto dto) {
+        return PageHelper.startPage(dto.getPage(), USERS_PER_PAGE).doSelectPageInfo(
+                () -> repository.selectUsersByFilter(dto)
+        );
     }
 }

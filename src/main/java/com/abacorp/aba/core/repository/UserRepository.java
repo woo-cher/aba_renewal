@@ -1,6 +1,8 @@
 package com.abacorp.aba.core.repository;
 
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.dto.UserFilterDto;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,11 +35,15 @@ public class UserRepository {
         return sqlSession.delete("deleteUser", userId);
     }
 
-    public List<User> findUsersExceptAdmin() {
-        return sqlSession.selectList("findUserExceptAdmin");
+    public List<User> selectUsersExceptAdmin() {
+        return sqlSession.selectList("selectUserExceptAdmin");
     }
 
-    public List<User> findUsersWithKeyword(String keyword) {
+    public List<User> selectUsersWithKeyword(String keyword) {
         return sqlSession.selectList("searchUsersByKeyword", keyword);
+    }
+
+    public List<User> selectUsersByFilter(UserFilterDto dto) {
+        return sqlSession.selectList("selectUsersByFilter", dto);
     }
 }

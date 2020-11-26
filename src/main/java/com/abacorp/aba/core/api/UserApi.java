@@ -2,6 +2,7 @@ package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.UserService;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.dto.UserFilterDto;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,10 @@ public class UserApi {
     public int delete(@PathVariable String userId) {
         log.info("delete target userId : {}", userId);
         return service.deleteUser(userId);
+    }
+
+    @RequestMapping(value = "/filter", method = RequestMethod.POST)
+    public PageInfo<User> usersByFilter(@RequestBody UserFilterDto dto) {
+        return service.getUsersByFilter(dto);
     }
 }

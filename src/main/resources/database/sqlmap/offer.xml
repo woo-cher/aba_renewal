@@ -104,7 +104,7 @@
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
     </select>
 
-    <select id="selectOffersByKeyword" resultMap="offer" parameterType="String">
+    <select id="selectOffersByKeyword" parameterType="String" resultMap="offer" >
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE id LIKE CONCAT('%', #{keyword}, '%') OR
               user LIKE CONCAT('%', #{keyword}, '%') OR
@@ -115,42 +115,42 @@
               addrs.belongs_to LIKE CONCAT('%', #{keyword}, '%')
     </select>
 
-    <select id="selectOfferById" resultMap="offer" parameterType="int">
+    <select id="selectOfferById"  parameterType="int" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE ofs.id = #{id}
     </select>
 
-    <select id="selectOffersByFilters" resultMap="offer" parameterType="MapFiltersDto">
+    <select id="selectOffersByFilters" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE <include refid="latitudeQualify" />
         AND   <include refid="longitudeQualify" />
         <include refid="filtersQuery" />
     </select>
 
-    <select id="selectOffersByRegion" resultMap="offer" parameterType="MapFiltersDto">
+    <select id="selectOffersByRegion" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
         <include refid="filtersQuery" />
     </select>
 
-    <select id="selectOffersByLatLng" resultMap="offer" parameterType="MapFiltersDto">
+    <select id="selectOffersByLatLng" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.latitude = #{latitude} AND addrs.longitude = #{longitude}
         <include refid="filtersQuery" />
     </select>
 
-    <select id="selectCountByBelongsAndFilters" resultType="int" parameterType="MapFiltersDto">
+    <select id="selectCountByBelongsAndFilters" parameterType="MapFiltersDto" resultType="int">
         SELECT count(*) FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
         <include refid="filtersQuery" />
     </select>
 
-    <select id="selectOffersByIdKey" resultMap="offerAddress" parameterType="string">
+    <select id="selectOffersByIdKey" parameterType="string" resultMap="offerAddress">
         SELECT * FROM offer_addresses AS addrs
         WHERE offer_id LIKE CONCAT('%', #{idKey}, '%');
     </select>
 
-    <select id="selectOffersByUserId" resultMap="offer" parameterType="String">
+    <select id="selectOffersByUserId" parameterType="String" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE ofs.user = #{userId}
     </select>
@@ -159,7 +159,7 @@
         SELECT thumbnail FROM offers WHERE id = #{offerId}
     </select>
 
-    <select id="selectOffersByFilter" resultMap="offer" parameterType="MapFiltersDto">
+    <select id="selectOffersByFilter" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE ofs.id != 0
         <include refid="filtersQuery" />
