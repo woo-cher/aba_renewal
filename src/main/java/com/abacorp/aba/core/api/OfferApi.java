@@ -84,4 +84,11 @@ public class OfferApi {
                 () -> offerService.searchOffers(keyword)
         );
     }
+
+    @RequestMapping(value = "/offers/filter", method = RequestMethod.POST)
+    public PageInfo<Offer> offersByFilter(@RequestBody MapFiltersDto dto) {
+        return PageHelper.startPage(dto.getPage(), OFFERS_PER_PAGE).doSelectPageInfo(
+                () -> offerService.getOffersByFilter(dto)
+        );
+    }
 }

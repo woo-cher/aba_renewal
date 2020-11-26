@@ -5,6 +5,7 @@ import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.OfferAddition;
 import com.abacorp.aba.model.OfferAddress;
 import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -197,5 +198,9 @@ public class OfferService {
 
     public List<Offer> searchOffers(String keyword) {
         return offerRepository.selectOffersByKeyword(keyword);
+    }
+
+    public List<Offer> getOffersByFilter(MapFiltersDto dto) {
+        return offerRepository.selectOffersByFilter(dto);
     }
 }

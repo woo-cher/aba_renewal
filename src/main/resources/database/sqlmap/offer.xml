@@ -159,6 +159,12 @@
         SELECT thumbnail FROM offers WHERE id = #{offerId}
     </select>
 
+    <select id="selectOffersByFilter" resultMap="offer" parameterType="MapFiltersDto">
+        SELECT * FROM offers AS ofs <include refid="offerJoin" />
+        WHERE ofs.id != 0
+        <include refid="filtersQuery" />
+    </select>
+
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,

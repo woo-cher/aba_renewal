@@ -98,4 +98,8 @@ public class OfferRepository {
     public List<Offer> selectOffersByKeyword(String keyword) {
         return sqlSession.selectList("selectOffersByKeyword", keyword);
     }
+
+    public List<Offer> selectOffersByFilter(MapFiltersDto dto) {
+        return sqlSession.selectList("selectOffersByFilter", dto);
+    }
 }

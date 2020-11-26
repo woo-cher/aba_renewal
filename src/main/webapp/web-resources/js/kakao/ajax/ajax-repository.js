@@ -225,6 +225,29 @@ function searchOffer(keyword, page) {
     return result;
 }
 
+function getOffersByFilter(page = null) {
+    let result;
+    let requestBody = {};
+
+    if (page !== null) {
+        requestBody['page'] = Number(page);
+    }
+
+    $.ajax({
+        url: '/apis/offers/filter',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: addFiltersOfReqBody(requestBody),
+        success: function (offers) {
+            result = offers;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 /* ────────────────────────── /OFFER ───────────────────────────── */
 
 /* ──────────────────────────── USER ───────────────────────────── */

@@ -4,7 +4,7 @@
 <div class="filter-bar admin-filter">
     <ul class="filter-group">
         <li class="filter-el">
-            <form>
+            <form id="offer-type">
                 <a class="collapsible" href="#">
                     <i class="fas fa-home fa-sm"></i>
                     매물분류
@@ -37,7 +37,7 @@
             </form>
         </li>
         <li class="filter-el">
-            <form>
+            <form id="deal-type">
                 <a class="collapsible" href="#">
                     <i class="fas fa-handshake fa-sm"></i>
                     거래유형
@@ -127,7 +127,7 @@
             </div>
         </li>
         <li class="filter-el">
-            <form>
+            <form  id="offer-detail">
                 <a class="collapsible" href="#">
                     <i class="fas fa-sort-amount-down-alt fa-sm"></i>
                     상세필터
@@ -200,53 +200,53 @@
                             </ul>
                         </div>
                         <div class="detail-wrap">
-                        <header class="detail-header">
-                            <p class="title">준공년도</p>
-                            <p class="caption">단일 선택</p>
-                        </header>
+                            <header class="detail-header">
+                                <p class="title">준공년도</p>
+                                <p class="caption">단일 선택</p>
+                            </header>
 
-                        <ul class="checkbox-container">
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="year0" type="radio" name="year" value="0" class="check" checked>
-                                <label for="year0" onclick="updateDtoModel($(this).prev())">전체</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="year1" type="radio" name="year" value="1" class="check">
-                                <label for="year1" onclick="updateDtoModel($(this).prev())">1년 이내</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="year2" type="radio" name="year" value="5" class="check">
-                                <label for="year2" onclick="updateDtoModel($(this).prev())">5년 이내</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="year3" type="radio" name="year" value="10" class="check">
-                                <label for="year3" onclick="updateDtoModel($(this).prev())">10년 이내</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="year4" type="radio" name="year" value="15" class="check">
-                                <label for="year4" onclick="updateDtoModel($(this).prev())">15년 이내</label>
-                            </li>
-                            <li class="checkbox-list" style="width: 28%;">
-                                <input id="year5" type="radio" name="year" value="100" class="check">
-                                <label for="year5" onclick="updateDtoModel($(this).prev())">15년 이상</label>
-                            </li>
-                        </ul>
-                    </div>
+                            <ul class="checkbox-container">
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="year0" type="radio" name="year" value="0" class="check" checked>
+                                    <label for="year0" onclick="updateDtoModel($(this).prev())">전체</label>
+                                </li>
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="year1" type="radio" name="year" value="1" class="check">
+                                    <label for="year1" onclick="updateDtoModel($(this).prev())">1년 이내</label>
+                                </li>
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="year2" type="radio" name="year" value="5" class="check">
+                                    <label for="year2" onclick="updateDtoModel($(this).prev())">5년 이내</label>
+                                </li>
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="year3" type="radio" name="year" value="10" class="check">
+                                    <label for="year3" onclick="updateDtoModel($(this).prev())">10년 이내</label>
+                                </li>
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="year4" type="radio" name="year" value="15" class="check">
+                                    <label for="year4" onclick="updateDtoModel($(this).prev())">15년 이내</label>
+                                </li>
+                                <li class="checkbox-list" style="width: 28%;">
+                                    <input id="year5" type="radio" name="year" value="100" class="check">
+                                    <label for="year5" onclick="updateDtoModel($(this).prev())">15년 이상</label>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="detail-wrap w-full">
                             <header class="detail-header h-half">
                                 <p class="title inline">옵션<span class="caption">복수 선택</span></p>
                             </header>
                             <ul class="checkbox-container p-1">
-                                <c:if test="${not empty options}">
-                                    <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
-                                        <li class="checkbox-list" style="width: 15%;">
-                                            <input id="option${vs.index}" type="checkbox" name="option" value="${vs.index}" class="check">
-                                            <label for="option${vs.index}" onclick="updateDtoModel($(this).prev())">
-                                                    ${option.value}
-                                            </label>
-                                        </li>
-                                    </c:forEach>
-                                </c:if>
+                            <c:if test="${not empty options}">
+                            <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
+                                <li class="checkbox-list" style="width: 15%;">
+                                    <input id="option${vs.index}" type="checkbox" name="option" value="${vs.index}" class="check">
+                                    <label for="option${vs.index}" onclick="updateDtoModel($(this).prev())">
+                                            ${option.value}
+                                    </label>
+                                </li>
+                            </c:forEach>
+                            </c:if>
                             </ul>
                         </div>
                     </div>
@@ -254,7 +254,6 @@
             </form>
         </li>
     </ul>
-
 </div>
 
 <script>
@@ -274,26 +273,34 @@
     };
 
     function resetDtoValues(focus) {
-        filtersDto = {
-            offerType: [],
-            dealType: [],
-            deposit: '0',
-            monthlyPrice: '0',
-            isParking: false,
-            isNotTenant: false,
-            hasElevator: false,
-            isCanTerm: false,
-            isPet: false,
-            floor: '0',
-            year: '0',
-            option: []
-        };
+        $(focus).parents('form').map(function () {
+            let id = this.id;
 
-        focus.parents('form').each(function () {
+            switch (id) {
+                case 'offer-type':
+                    filtersDto['offerType'] = [];
+                    break;
+                case 'deal-type':
+                    filtersDto['dealType'] = [];
+                    break;
+                case 'offer-detail':
+                    filtersDto['deposit'] = '0';
+                    filtersDto['monthlyPrice'] = '0';
+                    filtersDto['isParking'] = false;
+                    filtersDto['isNotTenant'] = false;
+                    filtersDto['hasElevator'] = false;
+                    filtersDto['isCanTerm'] = false;
+                    filtersDto['isPet'] = false;
+                    filtersDto['floor'] = '0';
+                    filtersDto['year'] = '0';
+                    filtersDto['option'] = [];
+                    break;
+            }
+
             this.reset();
         });
 
-        mapManager.eventTrigger();
+        doFilters();
     }
 
     function updateDtoModel(focus) {
@@ -310,7 +317,23 @@
             filtersDto[key] = focus.val();
         }
 
-        mapManager.eventTrigger();
+        doFilters();
+    }
+
+    function doFilters() {
+        let url = window.location.pathname;
+
+        if (url.includes('maps')) {
+            mapManager.eventTrigger();
+        } else {
+            // Do return filters offer;
+            let offerPageInfo = getOffersByFilter();
+
+            pageHelper.bindOffers(1, offerPageInfo);
+            pageHelper.pageCalculation(1, offerPageInfo, (page) => {
+                pageHelper.bindOffers(page, getOffersByFilter(page))
+            });
+        }
     }
 
     $(document).ready(function () {
