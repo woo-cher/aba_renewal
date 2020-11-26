@@ -338,6 +338,24 @@ function isValidPassword(inputPassword) {
     return result;
 }
 
+function getUsersByFilter(userFilterDto) {
+    let result;
+
+    $.ajax({
+        url: '/apis/users/filter',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(userFilterDto),
+        success: function (filteredUsers) {
+            result = filteredUsers;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 /* ─────────────────────────── /USER ───────────────────────────── */
 
 /* ─────────────────────────── COMMON ──────────────────────────── */

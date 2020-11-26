@@ -58,6 +58,7 @@ public class UserApi {
 
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public PageInfo<User> usersByFilter(@RequestBody UserFilterDto dto) {
+        log.info("userDto : {}", dto);
         return service.getUsersByFilter(dto);
     }
 }

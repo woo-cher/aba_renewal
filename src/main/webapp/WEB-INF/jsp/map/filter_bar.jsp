@@ -300,7 +300,7 @@
             this.reset();
         });
 
-        doFilters();
+        doFiltering();
     }
 
     function updateDtoModel(focus) {
@@ -309,18 +309,18 @@
 
         if(typeof element === 'object') {
             focus.is(":checked") ? // 이게 이상하게 반대로 작동함
-            removeSpecifiedElement(filtersDto[key], filtersDto[key].indexOf(focus.val())) :
-            filtersDto[key].push(focus.val())
+                removeSpecifiedElement(filtersDto[key], filtersDto[key].indexOf(focus.val())) :
+                filtersDto[key].push(focus.val())
         } else if(typeof element === 'boolean') {
             filtersDto[key] = !focus.is(":checked");
         } else {
             filtersDto[key] = focus.val();
         }
 
-        doFilters();
+        doFiltering();
     }
 
-    function doFilters() {
+    function doFiltering() {
         let url = window.location.pathname;
 
         if (url.includes('maps')) {
