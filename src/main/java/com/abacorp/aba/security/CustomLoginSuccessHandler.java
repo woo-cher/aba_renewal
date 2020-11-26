@@ -20,9 +20,14 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
         HttpSession session = request.getSession();
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
+        session.setAttribute("sessionUser", userDetails.getUser());
+
         log.info("User log in : {}", userDetails.getUser());
 
-        session.setAttribute("sessionUser", userDetails.getUser());
-        response.sendRedirect("/");
+        String redirectUrl = (String) session.getAttribute("prevPage");
+        if (redirectUrl != null) {
+            session.removeAttribute("prevPage");
+            response.sendRedirect(redirectUrl);
+        }
     }
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/auth")
 @Slf4j
@@ -17,7 +19,12 @@ public class AuthController {
     private ModelAndView mv;
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
+        request.getSession().setAttribute("prevPage", referrer);
+
+        log.info("prevPage : {}", referrer);
+
         return "user/login";
     }
 
