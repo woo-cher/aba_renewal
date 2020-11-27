@@ -10,7 +10,7 @@
 
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
-<body>
+<body class="over-hide">
 <div class="main-container">
         <section id="contents">
             <article id="form-box">

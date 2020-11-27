@@ -167,6 +167,7 @@ input { font-weight: 800; font-size: 15px;}
 }
 
 .main-container {
+    min-height: 560px;
     border-top: 1px solid #777;
     padding: 5% 0;
     box-sizing: border-box;

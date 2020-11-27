@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <div class="main-container">
+        <div class="main-container pt-3">
             <!-- 공지사항이름 & 전체보기 상자 -->
             <div class="post-header">
                 <div class="title">
@@ -90,7 +90,7 @@
                 </div>
             </section>
         </div>
-
+    </div>
     <!-- footer -->
     <%@include file="/WEB-INF/jsp/commons/footer.jspf"%>
     </body>
