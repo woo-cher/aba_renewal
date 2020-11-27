@@ -154,6 +154,8 @@ function dialogInitializer(element, showWhat, targetName = null, targetId = null
         open: function () {
             targetName !== null ? $('.target').text(targetName) : '';
             targetId !== null ? $('.target-id').val(targetId) : '';
+
+            $('.error').empty();
         },
         close: function (event, ui) {
             $('.overlay').hide();
@@ -173,4 +175,9 @@ function removeSpecifiedElement(array, indexOf) {
 
 function isEnterKey(e) {
     return e.which === 13;
+}
+
+function serviceNotYet(e) {
+    e.preventDefault();
+    alert("서비스 준비중입니다 :(")
 }

@@ -33,13 +33,13 @@
             <ul class="checkbox-container txt-sm p-1 w-max">
                 <li class="checkbox-list">
                     <input id="none-payment" type="checkbox" name="" value="" class="check">
-                    <label for="none-payment" onclick="">
+                    <label for="none-payment" onclick="serviceNotYet(event)">
                         비결제회원
                     </label>
                 </li>
                 <li class="checkbox-list">
                     <input id="payment" type="checkbox" name="" value="" class="check">
-                    <label for="payment" onclick="">
+                    <label for="payment" onclick="serviceNotYet(event)">
                         결제회원
                     </label>
                 </li>

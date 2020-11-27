@@ -1,10 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<style>
+    .ui-dialog { z-index: 3 !important; }
+</style>
+
 <div class="content-left">
     <div class="panel left-wrap">
         <ul id="nav" class="nav-bar-col">
             <li class="txt-md active">회원정보</li>
-            <li class="txt-md">비밀번호 변경</li>
             <li class="txt-md">회원탈퇴</li>
         </ul>
     </div>
@@ -18,7 +21,7 @@
         <div class="panel f-c w-full pt-3 pb-1">
             <div class="frame avatar user-box">
                 <p class="content">
-                    <span class="txt-lg">아바</span> 님의 등급은
+                    <span class="txt-lg">${sessionUser.nickName}</span> 님의 등급은
                     <span class="d-label">Diamond</span>
                     입니다.
                 </p>
@@ -56,9 +59,11 @@
                     <input class="w-half" type="text" disabled value="준비중입니다 :)">
                 </div>
                 <div class="input-group w-full p-0">
-                    <div class="box-left"></div>
+                    <div class="box-left">
+                        <button class="btn inline txt-sm" type="submit" onclick="serviceNotYet(event)">서류보기</button>
+                    </div>
                     <div class="box-right">
-                        <button class="btn inline txt-sm" type="submit">서류보기</button>
+                        <button class="btn inline txt-sm" type="button" onclick="location.href='/users/form'">내 정보수정</button>
                     </div>
                 </div>
             </div>
@@ -68,46 +73,12 @@
         </div>
         <div class="panel pt-1 pb-1">
             <div class="panel content box border-box">
-                <div class="frame">
-                    안녕하세요.홍길동입니다. 저 다이아 등급입니다.
-                </div>
+                <div class="frame">준비중입니다 :)</div>
             </div>
         </div>
     </div>
 
     <div class="panel pt-1 right-wrap" id="content-2th" hidden>
-        <div class="content label">
-            <div class="label-wrap">비밀번호 변경</div>
-        </div>
-        <form class="frame form-control p-0">
-            <div class="input-group w-full f-c">
-                <div class="form-label w-25">
-                    <span class="form-label before w-full">현재 비밀번호</span>
-                </div>
-                <input class="w-half" type="text">
-            </div>
-            <div class="input-group w-full f-c">
-                <div class="form-label w-25">
-                    <span class="form-label before w-full">새 비밀번호</span>
-                </div>
-                <input class="w-half" type="text">
-            </div>
-            <div class="input-group w-full f-c">
-                <div class="form-label w-25">
-                    <span class="form-label before w-full">새 비밀번호 확인</span>
-                </div>
-                <input class="w-half" type="text">
-            </div>
-            <div class="input-group w-full p-0">
-                <div class="box-left"></div>
-                <div class="box-right">
-                    <button class="btn inline txt-sm" type="submit">변경하기</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="panel pt-1 right-wrap" id="content-3th" hidden>
         <div class="content label">
             <div class="label-wrap">회원탈퇴</div>
         </div>
@@ -122,7 +93,8 @@
                 </div>
             </div>
             <button class="btn inline txt-sm w-25" type="submit"
-                    onclick="dialogInitializer($(this), $('#password-dialog'), null, '${sessionUser.userId}')">탈퇴하기 :(</button>
+                    onclick="dialogInitializer($(this), $('#password-dialog'), null, '${sessionUser.userId}')">탈퇴하기 :(
+            </button>
         </div>
     </div>
 
@@ -142,12 +114,6 @@
         </div>
     </div>
 </div>
-
-<style>
-    .ui-dialog {
-        z-index: 3 !important;
-    }
-</style>
 
 <script>
     function withdrawal(inputPassword) {
