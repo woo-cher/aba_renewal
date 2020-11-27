@@ -11,10 +11,7 @@
     </div>
     <table class="admin-list-table dialog-yardstick">
         <tr class="table-top">
-            <th width="2.5%">
-                <input type="checkbox">
-            </th>
-            <th width="5%">매물번호</th>
+            <th width="7.5%">매물번호</th>
             <th width="25%">매물명</th>
             <th width="7.5%">호실</th>
             <th width="10%">타입</th>

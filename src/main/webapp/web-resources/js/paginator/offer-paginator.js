@@ -35,9 +35,6 @@ class OfferPaginator extends PageHelper {
 
                 this.bindingArea.append(`
                 <tr>
-                    <td>
-                        <input type="checkbox" class="checkbox" id="${offerId}" onclick="onChecked($(this))">
-                    </td>
                     <td class="aba">${offerId}</td>
                     <td class="offer${offer.id}">${offer.offerAddress.jibun} ${offer.offerAddress.buildingName} </td>
                     <td>${offer.offerAddress.ho}</td>

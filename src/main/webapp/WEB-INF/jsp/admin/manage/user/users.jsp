@@ -27,10 +27,7 @@
 <div class="right-content">
     <table class="admin-list-table">
         <tr class="table-top">
-            <th width="2.5%">
-                <input type="checkbox">
-            </th>
-            <th width="15%">아이디</th>
+            <th width="10%">아이디</th>
             <th width="10%">이름</th>
             <th width="10%">닉네임</th>
             <th>연락처</th>

@@ -30,9 +30,6 @@ class UserPaginator extends PageHelper {
 
                 this.bindingArea.append(`
                     <tr id="${user.userId}">
-                        <td>
-                            <input type="checkbox" class="checkbox" id="'${user.userId}'" onclick="onChecked($(this))">
-                        </td>
                         <td>${user.userId}</td>
                         <td>${user.name}</td>
                         <td>${user.nickName == null ? "미설정" : user.nickName}</td>

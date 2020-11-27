@@ -35,16 +35,13 @@
 <div class="right-content">
     <table class="admin-list-table">
         <tr class="table-top">
-            <th width="2.5%">
-                <input type="checkbox">
-            </th>
             <th width="10%">매물번호</th>
             <th width="20%">매물명</th>
             <th width="5%">호실</th>
             <th width="15%">매물유형/거래유형</th>
             <th width="10%">거래가</th>
             <th width="10%">매물상태</th>
-            <th width="10%">등록일자</th>
+            <th width="10%">등록일</th>
             <th>&nbsp;</th>
         </tr>
         <tbody class="row" id="offers">
