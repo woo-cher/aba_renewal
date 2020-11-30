@@ -56,6 +56,11 @@
                     <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
                 </div>
             </div>
+            <div class="aba-dialog" id="status-dialog" title="매물 상태 변경" hidden>
+                <li>진행중</li>
+                <li>내리기</li>
+                <li>숨김</li>
+            </div>
         </tbody>
         <tr>
             <td colspan="10">

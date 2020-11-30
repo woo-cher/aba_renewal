@@ -43,7 +43,7 @@ class OfferPaginator extends PageHelper {
                         <span>${offer.deposit}/${offer.monthlyPrice} +</span>
                         <span class="aba"> ${offer.managementPrice}</span>
                     </td>
-                    <td class="aba">${offer.status.value}</td>
+                    <td class="aba status" onclick="dialogInitializer($(this), $('#status-dialog'))">${offer.status.value}</td>
                     <td>${offer.createdAt.slice(2, 10).replaceAll("-", ".")}</td>
                     <td width="20%">
                         <span class="border-side">

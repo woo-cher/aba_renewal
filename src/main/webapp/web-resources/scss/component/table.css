@@ -8,6 +8,10 @@
 .admin-list-table input[type=checkbox] {
   zoom: 2;
 }
+.admin-list-table .status:hover {
+  color: rebeccapurple !important;
+  font-weight: 800;
+}
 .admin-list-table th {
   font-family: s-core-dream-bold, serif !important;
   font-size: 1.15rem;

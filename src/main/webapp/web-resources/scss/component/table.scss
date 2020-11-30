@@ -12,6 +12,11 @@ $abaColor: #00adef;
     zoom: 2;
   }
 
+  .status:hover {
+    color: rebeccapurple !important;
+    font-weight: 800;
+  }
+
   th {
     font-family: s-core-dream-bold, serif !important;
     font-size: 1.15rem;

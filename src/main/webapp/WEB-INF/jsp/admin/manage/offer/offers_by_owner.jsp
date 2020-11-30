@@ -75,13 +75,17 @@
                         <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
                     </div>
                 </div>
+                <div class="aba-dialog" id="status-dialog" title="매물 상태 변경" hidden>
+                    <li>진행중</li>
+                    <li>내리기</li>
+                    <li>숨김</li>
+                </div>
             </tbody>
             <tr id="message">
                 <th colspan="9" class="aba">주인 데이터를 선택하세요 :)</th>
             </tr>
         </table>
     </div>
-
 </div>
 
 <script src="/web-resources/js/paginator/user-paginator.js"></script>
@@ -162,7 +166,7 @@
 
             bindingArea.append(`
                 <tr>
-                    <td class="aba">${'${offer.id}'}</td>
+                    <td class="aba offer-id">${'${offer.id}'}</td>
                     <td class="offer${'${offer.id}'}">${'${offer.offerAddress.jibun}'} ${'${offer.offerAddress.buildingName}'} </td>
                     <td>${'${offer.offerAddress.ho}'}</td>
                     <td>${'${offer.type.value}'} / ${'${offer.dealType.value}'}</td>
@@ -170,7 +174,7 @@
                         <span>${'${offer.deposit}'}/${'${offer.monthlyPrice}'} +</span>
                         <span class="aba"> ${'${offer.managementPrice}'}</span>
                     </td>
-                    <td class="aba">${'${offer.status.value}'}</td>
+                    <td class="aba status" onclick="dialogInitializer($(this), $('#status-dialog'))">${'${offer.status.value}'}</td>
                     <td>${'${offer.createdAt.slice(2, 10).replaceAll("-", ".")}'}</td>
                     <td onclick="event.cancelBubble=true">
                         <span class="border-side">
