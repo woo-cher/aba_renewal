@@ -32,11 +32,7 @@
                     <button class="fr w-45" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
                 </div>
             </div>
-            <div class="aba-dialog" id="status-dialog" title="매물 상태 변경" hidden>
-                <li>진행중</li>
-                <li>내리기</li>
-                <li>숨김</li>
-            </div>
+            <%@include file="/WEB-INF/jsp/commons/dialog/offer-status.jsp"%>
         </tbody>
         <tr>
             <td colspan="10">

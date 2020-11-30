@@ -75,11 +75,7 @@
                         <button class="fr" type="button" onclick="dialogCloseTrigger($('#offer-dialog'))">취소</button>
                     </div>
                 </div>
-                <div class="aba-dialog" id="status-dialog" title="매물 상태 변경" hidden>
-                    <li>진행중</li>
-                    <li>내리기</li>
-                    <li>숨김</li>
-                </div>
+                <%@include file="/WEB-INF/jsp/commons/dialog/offer-status.jsp"%>
             </tbody>
             <tr id="message">
                 <th colspan="9" class="aba">주인 데이터를 선택하세요 :)</th>
@@ -174,7 +170,7 @@
                         <span>${'${offer.deposit}'}/${'${offer.monthlyPrice}'} +</span>
                         <span class="aba"> ${'${offer.managementPrice}'}</span>
                     </td>
-                    <td class="aba status" onclick="dialogInitializer($(this), $('#status-dialog'))">${'${offer.status.value}'}</td>
+                    <td class="aba status" onclick="dialogInitializer($(this), $('#status-dialog'), null, ${'${offer.id}'})">${'${offer.status.value}'}</td>
                     <td>${'${offer.createdAt.slice(2, 10).replaceAll("-", ".")}'}</td>
                     <td onclick="event.cancelBubble=true">
                         <span class="border-side">
