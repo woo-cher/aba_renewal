@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class OfferRepository {
@@ -101,5 +102,9 @@ public class OfferRepository {
 
     public List<Offer> selectOffersByFilter(MapFiltersDto dto) {
         return sqlSession.selectList("selectOffersByFilter", dto);
+    }
+
+    public int updateOfferStatusById(Map<String, Object> id) {
+        return sqlSession.update("updateOfferStatusById", id);
     }
 }

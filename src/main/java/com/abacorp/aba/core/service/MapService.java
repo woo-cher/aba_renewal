@@ -7,6 +7,7 @@ import com.abacorp.aba.model.OfferAddition;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.type.ManagementCategoryType;
+import com.abacorp.aba.model.type.OfferStatusType;
 import com.abacorp.aba.model.type.OptionType;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -106,5 +109,16 @@ public class MapService {
 
     public List<Offer> getOffers() {
         return offerRepository.selectOffers();
+    }
+
+    public int updateOfferStatus(int id, String status) {
+        OfferStatusType statusType = OfferStatusType.create(status);
+
+        Map<String, Object> kv = new HashMap<>();
+
+        kv.put("id", id);
+        kv.put("status", statusType);
+
+        return offerRepository.updateOfferStatusById(kv);
     }
 }

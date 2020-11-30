@@ -91,4 +91,10 @@ public class OfferApi {
                 () -> offerService.getOffersByFilter(dto)
         );
     }
+
+    @RequestMapping(value = "/offers/status/{offer}", method = RequestMethod.PUT)
+    public int updateStatus(@PathVariable(value = "offer") int id,
+                            @RequestParam(value = "status") String status) {
+        return service.updateOfferStatus(id, status);
+    }
 }

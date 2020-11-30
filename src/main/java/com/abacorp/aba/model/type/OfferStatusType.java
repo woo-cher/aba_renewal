@@ -1,6 +1,7 @@
 package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -29,6 +30,17 @@ public enum OfferStatusType implements TypeMapper {
     @Override
     public String getCode() {
         return name();
+    }
+
+    @JsonCreator
+    public static OfferStatusType create(String code) {
+        for (OfferStatusType statusType : values()) {
+            if (statusType.getCode().equals(code)) {
+                return statusType;
+            }
+        }
+
+        return UNKNOWN;
     }
 
     @Override

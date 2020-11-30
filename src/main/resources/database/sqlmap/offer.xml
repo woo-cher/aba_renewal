@@ -221,4 +221,8 @@
     <update id="updateThumbnailById" parameterType="offer">
         UPDATE offers SET thumbnail = #{thumbnail} WHERE id = #{id}
     </update>
+
+    <update id="updateOfferStatusById" parameterType="hashMap">
+        UPDATE offers SET status = #{status.code} WHERE id = #{id}
+    </update>
 </mapper>
