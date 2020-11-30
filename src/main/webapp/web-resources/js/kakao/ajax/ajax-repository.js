@@ -248,6 +248,23 @@ function getOffersByFilter(page = null) {
     return result;
 }
 
+function updateOfferStatus(offerId, statusCode) {
+    let result;
+
+    $.ajax({
+        url: '/apis/offers/status/' + offerId + '?status=' + statusCode,
+        type: 'PUT',
+        async: false,
+        contentType: 'application/json',
+        success: function (updateRow) {
+            result = updateRow;
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+
 /* ────────────────────────── /OFFER ───────────────────────────── */
 
 /* ──────────────────────────── USER ───────────────────────────── */

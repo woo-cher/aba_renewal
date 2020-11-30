@@ -9,6 +9,16 @@ class PageHelper {
         this.pageLength = pageLength;
     }
 
+    static getActivePageElement() {
+        let page = $('.pages > li');
+
+        for(let i = 0; i < page.length; i++) {
+            if($(page[i]).hasClass('active')) {
+                return $(page[i]);
+            }
+        }
+    }
+
     setEndPage(endPage) {
         this.endPage = endPage;
     }

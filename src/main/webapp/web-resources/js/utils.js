@@ -181,3 +181,8 @@ function serviceNotYet(e) {
     e.preventDefault();
     alert("서비스 준비중입니다 :(")
 }
+
+function apiFailureAlert(e) {
+    e.preventDefault();
+    alert("데이터 수신 중 문제가 발생했습니다. 관리자에게 문의하세요 :(")
+}
