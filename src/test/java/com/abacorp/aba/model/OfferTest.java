@@ -58,7 +58,7 @@ public class OfferTest {
 
     @Test
     public void getOffersUsingFilters() {
-        List<Offer> offers = repository.selectOffersUsingFilter(testDto);
+        List<Offer> offers = repository.selectOffersInRectUsingFilter(testDto);
         log.info("offers.. : {}", offers);
     }
 

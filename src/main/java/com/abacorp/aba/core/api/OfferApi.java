@@ -54,8 +54,8 @@ public class OfferApi {
     }
 
     @RequestMapping(value = "/offers", method = RequestMethod.GET)
-    public <O extends Offer, P extends PageInfo<Offer>> Object offers(@RequestParam(required = false, value = "user") String userId,
-                                                                      @RequestParam(required = false, value = "page") Integer page) {
+    public <O extends Offer, P extends PageInfo<Offer>> Object offers(
+            @RequestParam(required = false, value = "user") String userId, @RequestParam(required = false, value = "page") Integer page) {
         log.info("userId : {}", userId);
         log.info("page : {}", page);
 

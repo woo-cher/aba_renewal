@@ -9,7 +9,6 @@ import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OfferStatusType;
 import com.abacorp.aba.model.type.OptionType;
-import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,7 +87,7 @@ public class MapService {
     }
 
     public List<Offer> getOffersInCoordinate(MapFiltersDto dto) {
-        return offerRepository.selectOffersUsingFilter(dto);
+        return offerRepository.selectOffersInRectUsingFilter(dto);
     }
 
     public List<Offer> getOffersInRegion(MapFiltersDto dto) {

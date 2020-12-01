@@ -23,8 +23,8 @@ public class OfferRepository {
     }
 
     // ───────────────────────── For `map.jsp` ───────────────────────── //
-    public List<Offer> selectOffersUsingFilter(MapFiltersDto dto) {
-        return sqlSession.selectList("selectOffersByFilters", dto);
+    public List<Offer> selectOffersInRectUsingFilter(MapFiltersDto dto) {
+        return sqlSession.selectList("selectOffersInRectByFilters", dto);
     }
 
     public List<Offer> selectOffersByBelongsTo(MapFiltersDto dto) {

@@ -133,6 +133,7 @@ function getOffersByIdKeyword(idKey) {
 function addFiltersOfReqBody(reqBody) {
     reqBody['offerTypes'] = filtersDto.offerTypes;
     reqBody['dealTypes'] = filtersDto.dealTypes;
+    reqBody['offerStatus'] = filtersDto.offerStatus;
     reqBody['maxDeposit'] = filtersDto.deposit;
     reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
     reqBody['isParking'] = filtersDto.isParking;

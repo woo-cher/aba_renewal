@@ -84,6 +84,13 @@
             </foreach>
             )
         </if>
+        <if test="offerStatus.length != 0">
+            AND (
+            <foreach collection="offerStatus" item="status" index="i">
+                ofs.status = #{status} <if test="i != offerStatus.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
         <if test="maxDeposit != 0">AND (ofs.deposit BETWEEN 0 AND #{maxDeposit})</if>
         <if test="maxMonthlyPrice != 0">AND (ofs.monthly_price BETWEEN 0 AND #{maxMonthlyPrice})</if>
         <if test="isParking">AND (adds.can_parking = TRUE)</if>
@@ -120,7 +127,7 @@
         WHERE ofs.id = #{id}
     </select>
 
-    <select id="selectOffersByFilters" parameterType="MapFiltersDto" resultMap="offer">
+    <select id="selectOffersInRectByFilters" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE <include refid="latitudeQualify" />
         AND   <include refid="longitudeQualify" />
