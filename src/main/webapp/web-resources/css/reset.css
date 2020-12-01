@@ -98,6 +98,8 @@
 .over-hide { overflow: hidden !important; }
 .box-border { box-sizing: border-box !important; }
 
+.leading-2d5 { line-height: 2.5rem !important; }
+
 /* font */
 .txt-xl { font-size: 2.5rem !important; }
 .txt-lg { font-size: 1.35rem !important; }

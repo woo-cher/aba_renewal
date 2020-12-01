@@ -92,10 +92,9 @@
 			<article class="txt">
 				<div class="line"></div>
 				<h3>ABA SEARCH</h3>
-				<p>각 테마별로 원하시는<br>
-				   매물을 검색해보세요!</p>
-				 <div class="btn">
-					<a href="/guide">이용가이드</a>
+				<p class="leading-2d5">각 테마별로 원하시는<br>매물을 검색해보세요!</p>
+				 <div class="btn" onclick="location.href='/guide'">
+					<a>이용가이드</a>
 				 </div>
 			</article>
 
@@ -169,7 +168,6 @@
 
 		<!-- 공지사항&고객센터 -->
 		<section id="contents2">
-
 			<!-- 공지사항 -->
 			<article class="notice">
 				<h3>
@@ -179,19 +177,13 @@
 					<a href="/posts">더보기 +</a>
 				</div>
 
-
 				<ul class="txt">
-					<li class="txt01">
-						<a href="/posts/1">아바에서 일반인도 볼 수 있는 페이지가 베타 오픈했습니다..</a>
+					<c:forEach var="post" items="${posts}" end="3">
+					<li class="txt01" onclick="location.href='/posts/${post.id}'">
+						<a>${post.title}</a>
 					</li>
-					<li class="txt01">
-						<a href="/posts/1">아바가 경남도민일보에 기사가 나왔습니다. 감사합니다..</a>
-					</li>
-					<li class="txt01">
-						<a href="/posts/1">공인중개사를 위한 최고의 솔루션 "부동산매물 정보제공 업체"..</a>
-					</li>
+					</c:forEach>
 				</ul>
-
 			</article>
 
 			<!-- 고객센터 -->
@@ -202,7 +194,6 @@
 				<div class="info">
 					<img src="/web-resources/img/contents2_cs.png" alt="고객센터 정보">
 				</div>
-
 			</article>
 		</section>
 
