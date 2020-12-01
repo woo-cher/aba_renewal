@@ -25,6 +25,7 @@ public class MapFiltersDto {
     private String longitude;
     private String[] offerTypes;
     private String[] dealTypes;
+    private String[] offerStatus;
     private String maxDeposit;
     private String maxMonthlyPrice;
 

@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="url" value="${pageContext.request.requestURL}" />
 
 <div class="filter-bar admin-filter">
     <ul class="filter-group">
@@ -24,7 +28,7 @@
                             <c:if test="${not empty offerTypes}">
                                 <c:forEach var="offerType" items="${offerTypes}" begin="1" varStatus="vs">
                                 <li class="checkbox-list">
-                                    <input id="offerType${vs.index}" type="checkbox" name="offerType" value="${offerType}" class="check">
+                                    <input id="offerType${vs.index}" type="checkbox" name="offerTypes" value="${offerType}" class="check">
                                     <label for="offerType${vs.index}" onclick="updateDtoModel($(this).prev())">
                                         ${offerType.value}
                                     </label>
@@ -57,7 +61,7 @@
                             <c:if test="${not empty dealTypes}">
                                 <c:forEach var="dealType" items="${dealTypes}" begin="1" varStatus="vs">
                                     <li class="checkbox-list" style="width: 28%;">
-                                        <input id="dealType${vs.index}" type="checkbox" name="dealType" value="${dealType}" class="check">
+                                        <input id="dealType${vs.index}" type="checkbox" name="dealTypes" value="${dealType}" class="check">
                                         <label for="dealType${vs.index}" onclick="updateDtoModel($(this).prev())">
                                                 ${dealType.value}
                                         </label>
@@ -253,13 +257,51 @@
                 </div>
             </form>
         </li>
+        <c:if test="${fn:contains(url, 'admin')}">
+        <li class="filter-el">
+            <form id="offer-status">
+                <a class="collapsible" href="#">
+                    <i class="fas fa-eye fa-sm"></i>
+                    매물상태
+                </a>
+                <div class="filter-detail">
+                    <div class="f-c" style="position: absolute; right: 25px; top: 20px;">
+                        <i class="fas fa-undo-alt aba" onclick="resetDtoValues($(this))"></i>
+                    </div>
+
+                    <div class="detail-container deal">
+                        <header class="detail-header">
+                            <p class="title">매물상태</p>
+                            <p class="caption">중복선택이 가능해요 ;)</p>
+                        </header>
+
+                        <ul class="checkbox-container flex-center" id="status">
+                            <li class="checkbox-list" style="width: 28%">
+                                <input id="status1" type="checkbox" name="offerStatus" value="ON" class="check">
+                                <label for="status1" onclick="updateDtoModel($(this).prev())">진행중</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%">
+                                <input id="status2" type="checkbox" name="offerStatus" value="OFF" class="check">
+                                <label for="status2" onclick="updateDtoModel($(this).prev())">미진행</label>
+                            </li>
+                            <li class="checkbox-list" style="width: 28%">
+                                <input id="status3" type="checkbox" name="offerStatus" value="HIDE" class="check">
+                                <label for="status3" onclick="updateDtoModel($(this).prev())">숨김</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </li>
+        </c:if>
     </ul>
 </div>
 
 <script>
     let filtersDto = {
-        offerType: [],
-        dealType: [],
+        offerTypes: [],
+        dealTypes: [],
+        offerStatus: [],
         deposit: '0',
         monthlyPrice: '0',
         isParking: false,
@@ -278,10 +320,13 @@
 
             switch (id) {
                 case 'offer-type':
-                    filtersDto['offerType'] = [];
+                    filtersDto['offerTypes'] = [];
                     break;
                 case 'deal-type':
-                    filtersDto['dealType'] = [];
+                    filtersDto['dealTypes'] = [];
+                    break;
+                case 'offer-status':
+                    filtersDto['offerStatus'] = [];
                     break;
                 case 'offer-detail':
                     filtersDto['deposit'] = '0';

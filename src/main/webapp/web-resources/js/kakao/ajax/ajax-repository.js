@@ -131,8 +131,8 @@ function getOffersByIdKeyword(idKey) {
 }
 
 function addFiltersOfReqBody(reqBody) {
-    reqBody['offerTypes'] = filtersDto.offerType;
-    reqBody['dealTypes'] = filtersDto.dealType;
+    reqBody['offerTypes'] = filtersDto.offerTypes;
+    reqBody['dealTypes'] = filtersDto.dealTypes;
     reqBody['maxDeposit'] = filtersDto.deposit;
     reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
     reqBody['isParking'] = filtersDto.isParking;
