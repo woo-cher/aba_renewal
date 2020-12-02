@@ -46,8 +46,14 @@
                 </h4>
             </div>
             <div class="top02">
-                <h3>매물번호 ${offer.id}</h3>
-                <h2>매물상태 : ${offer.status.value}</h2>
+                <h3>매물번호
+                <c:choose>
+                    <c:when test="${isPremium}">${offer.id}</c:when>
+                    <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+                </c:choose></h3>
+                <h2>
+                    매물상태 : ${offer.status.value}
+                </h2>
             </div>
             <div class="top03">
                 <!-- 공인중개사 페이지 신고아이콘 부분 -->
@@ -75,9 +81,19 @@
             <div class="table-wrap">
                 <div class="row bb">
                     <p class="key">소재지</p>
-                    <p class="value">${offer.offerAddress.jibun}</p>
+                    <p class="value">
+                        <c:choose>
+                            <c:when test="${isPremium}">${offer.offerAddress.jibun}</c:when>
+                            <c:otherwise>${offer.offerAddress.belongsTo} ***-**</c:otherwise>
+                        </c:choose>
+                    </p>
                     <p class="key">도로명</p>
-                    <p class="value">${offer.offerAddress.road}</p>
+                    <p class="value">
+                        <c:choose>
+                            <c:when test="${isPremium}">${offer.offerAddress.road}</c:when>
+                            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+                        </c:choose>
+                    </p>
                 </div>
                 <div class="row bb">
                     <p class="key">관리비</p>
@@ -93,7 +109,12 @@
                 </div>
                 <div class="row bb">
                     <p class="key">룸호실</p>
-                    <p class="value">${offer.offerAddress.ho}</p>
+                    <p class="value">
+                        <c:choose>
+                            <c:when test="${isPremium}">${offer.offerAddress.ho}</c:when>
+                            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+                        </c:choose>
+                    </p>
                     <p class="key">세입자</p>
                     <p class="value">${offer.offerAddition.tenant}</p>
                 </div>
@@ -109,7 +130,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- 슬라이드 배너 -->
     <section id="jquery-script-menu">
@@ -205,7 +225,8 @@
             <div class="line"></div>
             <h3>매물 위치</h3>
             <div class="map">
-                <h2>${offer.offerAddress.jibun}</h2>
+                <h2>
+                    <c:if test="${isPremium}">${offer.offerAddress.jibun}</c:if>
                 <div id="map-location" style="width: 75%; height: 400px; margin: 0 auto"></div>
                 <p>본 매물의 위치는 반경 가로 100m x 세로 100m 의 임의 설정 값으로 정확한 위치가 아닙니다.</p>
             </div>
@@ -223,6 +244,12 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        console.log('${isPremium}')
+    <c:choose>
+        <c:when test="${isPremium}">
+        let lat = ${offer.offerAddress.latitude};
+        let lng = ${offer.offerAddress.longitude};
+
         let map = new kakao.maps.Map(document.getElementById("map-location"), {
             center: new kakao.maps.LatLng(${offer.offerAddress.latitude}, ${offer.offerAddress.longitude}),
             level: 3,
@@ -233,13 +260,20 @@
         let imageSrc = '/web-resources/img/offer/detail_map_icon.png',
             imageSize = new kakao.maps.Size(25, 35),
             imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
+            let marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(lat, lng),
+                image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+            });
 
-        let marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(${offer.offerAddress.latitude}, ${offer.offerAddress.longitude}),
-            image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
-        });
-
-        marker.setMap(map);
+            marker.setMap(map);
+        </c:when>
+        <c:otherwise>
+            let selector = $('#map-location');
+            selector.addClass('f-c');
+            selector.css('border', '1px solid gray');
+            selector.append(`<i class="fas fa-lock" style="font-size: 5rem;"></i>`)
+        </c:otherwise>
+    </c:choose>
     });
 
     $(".albery-container").albery({

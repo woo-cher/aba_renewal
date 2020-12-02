@@ -4,6 +4,7 @@ package com.abacorp.aba.core.controller;
 import com.abacorp.aba.core.service.AwsS3Service;
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.core.service.OfferService;
+import com.abacorp.aba.core.utils.SessionUtils;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.type.*;
@@ -38,12 +39,22 @@ public class OfferController {
     @Autowired
     private AwsS3Service s3Service;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView show(@PathVariable int id) {
-        Offer offer = service.getOfferById(id);
+    @RequestMapping(value = "/{offer}", method = RequestMethod.GET)
+    public ModelAndView show(@PathVariable int offer, HttpServletRequest request) {
+        Offer dbOffer = service.getOfferById(offer);
+        HttpSession session = request.getSession();
+        boolean isPremium = true;
+
+        User sessionUser = (User) SessionUtils.getObjectValue(session, "sessionUser");
+
+        if (sessionUser == null || sessionUser.getRole().getCode().equals("ROLE_USER")) {
+            isPremium = false;
+        }
 
         mv.setViewName("/offer/detail");
-        mv.addObject("offer", offer);
+
+        mv.addObject("offer", dbOffer);
+        mv.addObject("isPremium", isPremium);
 
         return mv;
     }
