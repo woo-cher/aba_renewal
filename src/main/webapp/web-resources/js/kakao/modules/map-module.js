@@ -188,7 +188,7 @@ class MapModule {
                                 <img src="${endpoint + offer.thumbnail}">
                             </div>
                             <p class="offer-summary">
-                                매물번호 : ${offer.id}
+                                매물번호 : ${isPremium ? offer.id : '**'}
                                 <label class="r-float">확인일자 ${offer.updatedAt.slice(2, 10)}</label>
                             </p>
                             <p class="offer-deal">
@@ -198,7 +198,7 @@ class MapModule {
                                 </strong>
                             </p>
                             <p class="offer-addr">
-                                ${isPremium ? offer.offerAddress.jibun : offer.offerAddress.belongsTo}
+                                ${isPremium ? offer.offerAddress.jibun : offer.offerAddress.belongsTo + ' ***-**'}
                             </p>
                             <p class="offer-building">
                                 ${isPremium ? offer.offerAddress.buildingName : ''}
