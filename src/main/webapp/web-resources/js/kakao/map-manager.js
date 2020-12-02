@@ -36,7 +36,7 @@ class MapManager extends Spot {
             }
 
             pageInfo = getOffersOfMap(this.southWest, this.northEast, null, 1);
-            this.updateOffersAndPages(1, pageInfo);
+            this.updateOffersAndPages(1, pageInfo, '',this.getIsPremium());
         })
     }
 

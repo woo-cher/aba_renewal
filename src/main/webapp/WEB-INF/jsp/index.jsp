@@ -16,11 +16,11 @@
 <body>
 	<div class="main-container p-0">
 		<!-- 메인이미지 -->
-		<section id="main_img">
+		<section id="main_img" class="over-hide">
 			<div class="mobile-txt">
 				<img src="/web-resources/img/mobile_bg_txt.png" alt="">
 			</div>
-			<div class="find-home-box">
+			<div class="find-home-box" onmouseenter="$(this).effect('shake', { distance : 2, time: 1 }, 100);">
 				<a href="/requests/create/form" class="find-home c-pointer">
 					우리집 찾아주세요!
 					<img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
@@ -93,7 +93,7 @@
 				<div class="line"></div>
 				<h3>ABA SEARCH</h3>
 				<p class="leading-2d5">각 테마별로 원하시는<br>매물을 검색해보세요!</p>
-				 <div class="btn" onclick="location.href='/guide'">
+				 <div class="btn c-pointer" onclick="location.href='/guide'">
 					<a>이용가이드</a>
 				 </div>
 			</article>

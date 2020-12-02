@@ -22,6 +22,7 @@ class KakaoMap extends MapModule {
         this.setZoomControl(this.getZoomControl());
 
         this.bounds = this.getBoundElement();
+        this.isPremium = true;
     }
 
     getKakaoMap() {
@@ -44,7 +45,7 @@ class KakaoMap extends MapModule {
         return new kakao.maps.MarkerClusterer(clustererOptions)
     }
 
-     getBoundElement() {
+    getBoundElement() {
         this.undefinedChecker();
         this.bounds = this.map.getBounds();
         return this.bounds
@@ -63,6 +64,14 @@ class KakaoMap extends MapModule {
     getSouthWest() {
         this.undefinedChecker();
         return this.bounds.getSouthWest()
+    }
+
+    getIsPremium() {
+        return this.isPremium;
+    }
+
+    setIsPremium(isPremium) {
+        this.isPremium = isPremium;
     }
 
     setCenter(latitude, longitude) {

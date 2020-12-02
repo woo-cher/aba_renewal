@@ -68,11 +68,17 @@
     let timeOut;
 
     $(document).ready(() => {
+        <c:if test="${empty sessionUser || sessionUser.role eq 'USER'}">
+            <%--userRole = '${sessionUser.role}';--%>
+            mapManager.setIsPremium(false);
+            mapManager.setMinLevel(4);
+        </c:if>
+
         showLoader();
         mapManager.drawOverlays(1, mapManager.getSouthWest(), mapManager.getNorthEast());
 
         const pageInfo = getOffersOfMap(mapManager.getSouthWest(), mapManager.getNorthEast(), null, 1);
-        mapManager.updateOffersAndPages(1, pageInfo);
+        mapManager.updateOffersAndPages(1, pageInfo, '', mapManager.getIsPremium());
 
         $(".overlay").click(function () { searchToggle('hide'); });
 
@@ -98,7 +104,7 @@
             getOffersOfMap(null, null, region, page) :
             getOffersOfMap(mapManager.southWest, mapManager.northEast, null, page);
 
-        mapManager.updateOffersAndPages(page, pageInfo, region);
+        mapManager.updateOffersAndPages(page, pageInfo, region, mapManager.getIsPremium());
     }
 
     function searchToggle(action) {

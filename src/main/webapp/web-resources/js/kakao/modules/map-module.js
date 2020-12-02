@@ -112,10 +112,10 @@ class MapModule {
         return level
     }
 
-    updateOffersAndPages(page, pageInfo = [], region) {
+    updateOffersAndPages(page, pageInfo = [], region, isPremium) {
         const offers = pageInfo['size'] !== 0 ? pageInfo['list'] : [];
         this.pageHelper.endPage = pageInfo['pages'];
-        this.updateOffers(offers, pageInfo['total']);
+        this.updateOffers(offers, pageInfo['total'], isPremium);
 
         if (pageInfo['size'] !== 0) {
             this.bindPagination(pageInfo, $('.offer-list'), region);
@@ -157,7 +157,7 @@ class MapModule {
      * @param offers
      * @param total
      */
-    updateOffers(offers, total) {
+    updateOffers(offers, total, isPremium) {
         const offersArea = $('.list-container');
         // console.log(offers);
 
@@ -197,8 +197,12 @@ class MapModule {
                                     <span class="aba"> +${offer.managementPrice}</span>
                                 </strong>
                             </p>
-                            <p class="offer-addr">${offer.offerAddress.jibun}</p>
-                            <p class="offer-building">${offer.offerAddress.buildingName}</p>
+                            <p class="offer-addr">
+                                ${isPremium ? offer.offerAddress.jibun : offer.offerAddress.belongsTo}
+                            </p>
+                            <p class="offer-building">
+                                ${isPremium ? offer.offerAddress.buildingName : ''}
+                            </p>
                             <div class="offer-summary">
                                 <strong>
                                     ${offer.type.value} |
@@ -214,7 +218,7 @@ class MapModule {
                             </div>
                             <p class="offer-tel">
                                 <i class="fas fa-phone-square-alt"></i>
-                                &nbsp;${offer.user.phone}
+                                &nbsp;${isPremium ? offer.user.phone : '***-****-****'}
                             </p>
                         </div>
                     </li>

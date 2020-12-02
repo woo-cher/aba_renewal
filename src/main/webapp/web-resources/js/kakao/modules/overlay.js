@@ -115,7 +115,7 @@ class Overlay extends KakaoMap {
             let region = weight === 1 ? overlay.belongsTo : overlay.belongsTo.concat(' ', overlay.name);
             let pageInfo = getOffersOfMap(null, null, region);
 
-            this.updateOffersAndPages(1, pageInfo, region);
+            this.updateOffersAndPages(1, pageInfo, region, this.getIsPremium());
 
             // 로딩바 숨김
             // await setTimeout(this.saleList.hideLoading(), 1000)
