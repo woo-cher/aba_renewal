@@ -137,6 +137,9 @@
             selector.removeClass('f-c aba');
 
             if(matcher[0].length !== 0) {
+                <c:if test="${empty sessionUser || sessionUser.role eq 'USER'}">
+                    return;
+                </c:if>
                 results = getOffersByIdKeyword(matcher[0]);
 
                 $('#result-type').text('매물번호');
@@ -146,7 +149,9 @@
                     result = offer.offerId + '번 매물 => ' + offer.jibun;
 
                     const element = $(`<li>` + result + `</li>`);
-                    element.on('click', () => { clickOfSearchResult(4, offer)});
+                    element.on('click', () => {
+                        clickOfSearchResult(4, offer)
+                    });
 
                     selector.append(element);
                 })
