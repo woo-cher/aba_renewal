@@ -31,6 +31,8 @@ public class User {
     @Builder.Default
     private UserRoleType role = UserRoleType.USER;
     private String avatarUrl;
+    private int point;
+    private String postCode;
     private String jibunAddr;
     private String roadAddr;
     private String extraAddr;

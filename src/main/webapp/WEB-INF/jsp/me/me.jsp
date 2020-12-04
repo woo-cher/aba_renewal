@@ -24,7 +24,7 @@
         <div class="container-wrap">
             <header class="content-header">
                 <ul id="navigator">
-<%--                    <li class="my_aba" onclick="nav('my_aba')"><a>마이아바</a></li>--%>
+                    <li class="my_aba" onclick="nav('my_aba')"><a>마이아바</a></li>
 <%--                    <li class="payment" onclick="nav('payment')"><a>결제관리</a></li>--%>
                     <li class="my_offer" onclick="nav('my_offer')"><a>내가 등록한 매물</a></li>
                     <li class="account" onclick="nav('account')"><a>계정관리</a></li>

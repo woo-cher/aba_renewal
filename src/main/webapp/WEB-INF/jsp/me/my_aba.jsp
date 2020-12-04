@@ -9,7 +9,7 @@
             <div class="frame avatar">
                 <img class="" src="/web-resources/img/guide.jpg">
                 <p class="content">
-                    <span class="txt-lg">아바</span> 님
+                    <span class="txt-lg">${sessionUser.nickName}</span> 님
                 </p>
                 <p class="d-label">Diamond</p>
             </div>
@@ -27,11 +27,11 @@
                 <span class="aba label">아바 포인트</span></div>
             <div class="box-right">
                 <span class="point">1,000</span>
-                <i class="aba fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
             </div>
         </div>
         <div>
-            <button class="w-full" type="submit">유료회원 전환</button>
+            <button class="w-full" type="submit">포인트 충전</button>
         </div>
     </div>
 </div>
@@ -41,19 +41,19 @@
         <ul class="content dashboard-box">
            <li class="b-r">
                <p class="content category">찜한 매물</p>
-               <span class="aba content txt-lg">5개</span>
+               <span class="aba content txt-lg">준비중</span>
            </li>
            <li class="b-r">
                <p class="content category">오늘 본 매물</p>
-               <span class="aba content txt-lg">5개</span>
+               <span class="aba content txt-lg">준비중</span>
            </li>
            <li class="b-r">
                <p class="content category">최근 본 매물</p>
-               <span class="aba content txt-lg">5개</span>
+               <span class="aba content txt-lg">준비중</span>
            </li>
            <li>
                <p class="content category">매물 신고</p>
-               <span class="aba content txt-lg">5개</span>
+               <span class="aba content txt-lg">준비중</span>
            </li>
         </ul>
 

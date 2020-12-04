@@ -36,6 +36,9 @@ function getAddress(target) {
                 document.getElementById('jibun').value = jibunAddr;
             }
 
+            // 우편번호
+            document.getElementById('post').value = data.zonecode;
+
             // 지번 주소를 선택 해야하는 유형인 경우, (예상 주소) 값을 지번으로 사용
             if(target === undefined) {
                 if(data.autoRoadAddress) {

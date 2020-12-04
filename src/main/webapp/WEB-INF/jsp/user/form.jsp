@@ -209,6 +209,7 @@
                             >
                         </div>
                         <div class="input-group">
+                            <input type="hidden" id="post" name="postCode" value="${sessionUser.postCode}">
                             <input autofocus readonly type="text" class="middle" id="jibun" placeholder="자택 주소" name="jibunAddr" value="${sessionUser.jibunAddr}">
                             <input autofocus readonly type="text" class="middle" id="road" placeholder="도로명" name="roadAddr" value="${sessionUser.roadAddr}">
                             <p class="icon addr" onclick="getAddress()"><i class="fas fa-search"></i></p>
