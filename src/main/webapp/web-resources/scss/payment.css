@@ -1,0 +1,109 @@
+html {
+  overflow-x: hidden;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #e3e6ee;
+  min-width: unset;
+}
+
+input {
+  padding: 3%;
+}
+
+.header {
+  display: inline-block;
+}
+
+.caption {
+  font-size: 0.8rem;
+  position: absolute;
+  right: 0;
+  color: darkgray;
+}
+
+.wrapper {
+  display: inline-flex;
+  width: 800px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  height: 100%;
+}
+.wrapper .price,
+.wrapper .payment {
+  padding: 3%;
+}
+.wrapper .price-header,
+.wrapper .payment-header,
+.wrapper .payment-wrapper,
+.wrapper .cash {
+  position: relative;
+  font-weight: 800;
+  padding: 2vh 0;
+  font-size: 1rem;
+}
+.wrapper .price {
+  background: aliceblue;
+  width: 25%;
+}
+.wrapper .price .price-header {
+  display: flex;
+  align-items: center;
+}
+.wrapper .price .cash-status {
+  padding: 10% 3%;
+}
+.wrapper .price .cash-status .before,
+.wrapper .price .cash-status .after {
+  width: 100%;
+  display: inline-flex;
+  position: relative;
+}
+.wrapper .price .cash-status .amount {
+  position: absolute;
+  right: 0;
+}
+.wrapper .payment {
+  width: 75%;
+}
+.wrapper .payment .payment-ways {
+  padding: 3%;
+  background: aliceblue;
+}
+.wrapper .payment .pay-method {
+  font-weight: 800;
+  width: 100%;
+}
+.wrapper .payment .ways {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 5%;
+}
+.wrapper .payment .ways td {
+  border-radius: 1em;
+  cursor: pointer;
+  background: #e3e6ee;
+  padding: 1vw;
+  width: 25%;
+}
+.wrapper .payment .ways td:hover {
+  opacity: 0.5;
+}
+.wrapper .payment button {
+  float: right;
+  padding: 10px 15px;
+  border: 1px solid #00adef !important;
+  background: #00adef;
+  color: white;
+  border-radius: 1em;
+  font-size: 1rem;
+}
+.wrapper .payment button:hover {
+  color: #00adef;
+  background: #fff;
+}
+
+/*# sourceMappingURL=payment.css.map */

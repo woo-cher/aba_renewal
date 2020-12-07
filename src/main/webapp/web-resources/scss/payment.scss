@@ -1,0 +1,125 @@
+$abaColor: #00adef;
+
+html {
+  overflow-x: hidden;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #e3e6ee;
+  min-width: unset;
+}
+
+input {
+  padding: 3%;
+}
+
+.header {
+  display: inline-block;
+}
+
+.caption {
+  font-size: 0.8rem;
+  position: absolute;
+  right: 0;
+  color: darkgray;
+}
+
+.wrapper {
+  display: inline-flex;
+  width: 800px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  height: 100%;
+
+  .price,
+  .payment {
+    padding: 3%;
+  }
+
+  .price-header,
+  .payment-header,
+  .payment-wrapper,
+  .cash {
+    position: relative;
+    font-weight: 800;
+    padding: 2vh 0;
+    font-size: 1rem;
+  }
+
+  .price {
+    background: aliceblue;
+    width: 25%;
+
+    .price-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .cash-status {
+      padding: 10% 3%;
+
+      .before,
+      .after {
+        width: 100%;
+        display: inline-flex;
+        position: relative;
+      }
+
+      .amount {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+
+  .payment {
+    width: 75%;
+
+    .payment-ways {
+      padding: 3%;
+      background: aliceblue;
+    }
+
+    .pay-method {
+      font-weight: 800;
+      width: 100%;
+    }
+
+    .ways {
+      display: inline-flex;
+      justify-content: center;
+
+      width: 100%;
+      padding-top: 5%;
+
+      td {
+        border-radius: 1em;
+        cursor: pointer;
+        background: #e3e6ee;
+        padding: 1vw;
+        width: 25%;
+
+        &:hover {
+          opacity: .5;
+        }
+      }
+    }
+
+    button {
+      float: right;
+      padding: 10px 15px;
+      border: 1px solid $abaColor !important;
+      background: $abaColor;
+      color: white;
+      border-radius: 1em;
+      font-size: 1rem;
+
+      &:hover {
+        color: $abaColor;
+        background: #fff;
+      }
+    }
+  }
+}

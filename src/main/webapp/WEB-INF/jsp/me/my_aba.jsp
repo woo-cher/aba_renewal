@@ -31,7 +31,11 @@
             </div>
         </div>
         <div>
-            <button class="w-full" type="submit">포인트 충전</button>
+            <button class="w-full" type="button"
+                    onclick="window.open('/payment', 'gi', 'width=800, height=700, top=200, left=600, status=no, scrollbars=no')"
+            >
+                포인트 충전
+            </button>
         </div>
     </div>
 </div>
