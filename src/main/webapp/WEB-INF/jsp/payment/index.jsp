@@ -5,6 +5,10 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" crossorigin="anonymous">
 
+    <%--`jquery` resrouce --%>
+    <script src="/web-resources/js/jquery-1.7.2.min.js"></script>
+    <script src="/web-resources/js/jquery-ui.min.js"></script>
+
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/web-resources/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/payment.css">
@@ -18,7 +22,7 @@
                 <span class="caption">직접입력</span>
             </div>
             <div class="cash">
-                <input type="text" name="price" placeholder="희망 금액을 입력하세요">
+                <input type="text" name="price" placeholder="희망 금액을 입력하세요" onkeyup="convertWithCommas($(this))">
             </div>
             <div class="cash-status">
                 <div class="before">
@@ -62,3 +66,14 @@
         </div>
     </div>
 </body>
+
+<script>
+    function convertWithCommas(focus) {
+        let value = focus.val();
+
+        value = value.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+        value = value.replace(/,/g,'');          // ,값 공백처리
+
+        focus.val(value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // 정규식을 이용해서 3자리 마다 , 추가
+    }
+</script>
