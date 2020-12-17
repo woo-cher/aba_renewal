@@ -3,8 +3,8 @@
 .left-navbar {
   position: fixed;
   text-align: center;
-  left: 12.5%;
-  top: 10%;
+  left: 12vw;
+  top: 10vh;
 
   & .active {
     background: $abaColor;
@@ -44,12 +44,12 @@
   cursor: pointer;
 
   &.prev {
-    left: 20vw;
+    left: 17.5vw;
   }
 
   &.next,
   &.submit {
-    right: 20vw;
+    right: 17.5vw;
   }
 }
 

@@ -58,7 +58,7 @@
             </p>
         </div>
 
-        <article class="content-wrap">
+        <article class="content-wrap" style="width: 750px;">
             <div class="content-name" id="top">
                 <h3>
                     <span class="aba">아바</span>
@@ -68,6 +68,7 @@
 
             <form id="offerForm" action="${actionUrl}" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
+                <input type="hidden" id="post">
                 <c:if test="${isUpdate}">
                     <input type="hidden" name="id" value="${offer.id}">
                     <input type="hidden" name="offerAddress.offerId" value="${offer.id}">
@@ -91,6 +92,10 @@
     let uploadCount = 0;
 
     $(document).ready(function () {
+        if (window.opener !== window) {
+            $('header').remove();
+        }
+
         showLoader();
 
         <c:if test="${not empty processIndex}">
@@ -171,6 +176,8 @@
         thumbnailWidth: 100,
         thumbnailHeight: 100,
         acceptedFiles: 'image/*',
+        resizeWidth: 780,
+        resizeHeight: 520,
         init: function () {
             let fileCountOnServer = ${fn:length(offer.imageUrls)};
             let dropZone = this;

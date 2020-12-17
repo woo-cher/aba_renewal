@@ -132,6 +132,8 @@ class KakaoMap extends MapModule {
                 mapManager.setCenter(pos.coords.latitude, pos.coords.longitude);
                 this.eventTrigger();
             });
+        } else {
+            console.log('navigator initialize error :(');
         }
     }
 }
