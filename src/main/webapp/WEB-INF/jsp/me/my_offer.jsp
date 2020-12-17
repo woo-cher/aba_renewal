@@ -60,6 +60,13 @@
     let sessionUserId = '${sessionUser.userId}';
 
     $(document).ready(function () {
+        if (window.opener !== null) {
+            alert("매물 수정 완료 :)");
+            window.close();
+
+            return;
+        }
+
         let pageInfo = getOffers(pageHelper.startPage, sessionUserId);
 
         pageHelper.setEndPage(pageInfo['pages']);

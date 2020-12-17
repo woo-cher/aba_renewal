@@ -2,8 +2,8 @@
 .left-navbar {
   position: fixed;
   text-align: center;
-  left: 12.5%;
-  top: 10%;
+  left: 12vw;
+  top: 10vh;
 }
 .left-navbar .active {
   background: #00adef;
@@ -41,10 +41,10 @@
   cursor: pointer;
 }
 .bottom-navbar.prev {
-  left: 20vw;
+  left: 17.5vw;
 }
 .bottom-navbar.next, .bottom-navbar.submit {
-  right: 20vw;
+  right: 17.5vw;
 }
 
 .nav-bottom {

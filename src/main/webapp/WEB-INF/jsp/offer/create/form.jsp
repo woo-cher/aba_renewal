@@ -48,7 +48,7 @@
                 <i class="fas fa-arrow-alt-circle-right"></i>
             </p>
         </div>
-        <div class="bottom-navbar submit" onclick="$('#submit').click()" hidden>
+        <div class="bottom-navbar submit" onclick="doSubmit()" hidden>
             <p class="nav-bottom aba txt-lg">
             <c:choose>
                 <c:when test="${isUpdate}">매물수정</c:when>
@@ -92,7 +92,7 @@
     let uploadCount = 0;
 
     $(document).ready(function () {
-        if (window.opener !== window) {
+        if (window.opener !== null) {
             $('header').remove();
         }
 
@@ -429,6 +429,11 @@
         newThumbnailElement.append(getDelegateMarkElement());
 
         $('#thumbnail').val(thumbnail);
+    }
+
+    function doSubmit() {
+        $('#submit').click()
+        window.opener.close();
     }
 
     activateWithSelector('#leftNav > li');

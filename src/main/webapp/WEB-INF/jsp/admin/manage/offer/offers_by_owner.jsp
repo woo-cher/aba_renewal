@@ -175,7 +175,9 @@
                     <td onclick="event.cancelBubble=true">
                         <span class="border-side">
                             <i class="fas fa-eye" title="매물 상세보기" onclick="window.open('/offers/${'${offer.id}'}')" ></i>
-                            <i class="fas fa-pen" title="매물 수정하기" onclick="window.open('/offers/form?offerId=${'${offer.id}'}')"></i>
+                            <i class="fas fa-pen" title="매물 수정하기"
+                                onclick="window.open('/offers/form?offerId=${'${offer.id}'}', '', 'width=1400, height=950, top=30, left=250')">
+                            </i>
                             <i class="fas fa-trash-alt" title="매물 삭제하기"
                                onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offer.id}'}').text(), ${'${offer.id}'})"
                             >
