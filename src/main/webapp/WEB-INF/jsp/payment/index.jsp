@@ -71,9 +71,9 @@
     function convertWithCommas(focus) {
         let value = focus.val();
 
-        value = value.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
-        value = value.replace(/,/g,'');          // ,값 공백처리
+        value = value.replace(/[^0-9]/g,'');
+        value = value.replace(/,/g,'');
 
-        focus.val(value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // 정규식을 이용해서 3자리 마다 , 추가
+        focus.val(value.replace(/\B(?=(\d{3})+(?!\d))/g, ","))
     }
 </script>
