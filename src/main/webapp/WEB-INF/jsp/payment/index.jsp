@@ -9,6 +9,9 @@
     <script src="/web-resources/js/jquery-1.7.2.min.js"></script>
     <script src="/web-resources/js/jquery-ui.min.js"></script>
 
+    <script src="/web-resources/js/utils.js"></script>
+    <script src="/web-resources/js/kakao/ajax/ajax-repository.js"></script>
+
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -51,15 +54,11 @@
                             <p class="pg-name">카카오페이</p>
                             <img src="/web-resources/img/pg/img_kakaopay.png">
                         </td>
-                        <td>
+                        <td onclick="serviceNotYet(event)">
                             <p class="pg-name">페이코</p>
                             <img src="/web-resources/img/pg/img_payco.png">
                         </td>
-                        <td>
-                            <p class="pg-name">카카오페이</p>
-                            <img src="/web-resources/img/pg/img_kakaopay.png">
-                        </td>
-                        <td>
+                        <td onclick="serviceNotYet(event)">
                             <img src="/web-resources/img/pg/img_toss_main.png">
                         </td>
                     </table>
@@ -71,6 +70,14 @@
 </body>
 
 <script>
+    let payment = {
+        amount: $('#amount').val().replaceAll(',', ''),
+        pg: 'kakao',
+        method: 'kakaoPay',
+        impId: null,
+        merchantId: null
+    };
+
     function convertWithCommas(focus) {
         let value = focus.val();
 
@@ -81,8 +88,7 @@
     }
 
     function doPayment() {
-        var IMP = window.IMP;
-        console.log(IMP);
+        let IMP = window.IMP;
         IMP.init('imp36032255');
 
         IMP.request_pay({ // param
@@ -97,17 +103,17 @@
             buyer_postcode: '${sessionUser.postCode}'
         }, function (rsp) { // callback
             if (rsp.success) {
-                var msg = '결제가 완료되었습니다.';
-                msg += '고유ID : ' + rsp.imp_uid;
-                msg += '상점 거래ID : ' + rsp.merchant_uid;
-                msg += '결제 금액 : ' + rsp.paid_amount;
-                msg += '카드 승인번호 : ' + rsp.apply_num;
+                payment['amount'] = rsp.paid_amount;
+                payment['impId'] = rsp.imp_uid;
+                payment['merchantId'] = rsp.merchant_uid;
 
-                alert(msg);
+                onPaymentSuccess(payment);
             } else {
                 console.log(rsp);
                 alert(rsp.error_msg);
             }
+            window.close();
+            document.location.href = '/';
         });
     }
 </script>

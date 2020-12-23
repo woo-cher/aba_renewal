@@ -17,11 +17,11 @@ import javax.servlet.http.HttpSession;
 public class UserApi {
 
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public boolean checkUserExist(@PathVariable String userId) {
-        return service.isExistUser(userId);
+        return userService.isExistUser(userId);
     }
 
     @RequestMapping(value = "/password/certify", method = RequestMethod.POST)
@@ -30,41 +30,35 @@ public class UserApi {
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        return service.isPasswordMatch(password, sessionUser.getUserId());
+        return userService.isPasswordMatch(password, sessionUser.getUserId());
     }
 
     @RequestMapping(value = "/all/{page}", method = RequestMethod.GET)
     public PageInfo<User> findAll(@PathVariable int page) {
         log.info("page param : {}", page);
-        return service.findAll(page);
+        return userService.findAll(page);
     }
 
     @RequestMapping(value = "/general/{page}", method = RequestMethod.GET)
     public PageInfo<User> find(@PathVariable int page) {
         log.info("page param : {}", page);
-        return service.findUserExceptAdmin(page);
+        return userService.findUserExceptAdmin(page);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public PageInfo<User> search(@RequestParam String keyword, @RequestParam int page) {
-        return service.searchUsers(keyword, page);
+        return userService.searchUsers(keyword, page);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
     public int delete(@PathVariable String userId) {
         log.info("delete target userId : {}", userId);
-        return service.deleteUser(userId);
+        return userService.deleteUser(userId);
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public PageInfo<User> usersByFilter(@RequestBody UserFilterDto dto) {
         log.info("userDto : {}", dto);
-        return service.getUsersByFilter(dto);
-    }
-
-    @RequestMapping(value = "/point/{userId}", method = RequestMethod.PUT)
-    public int chargePoint(@PathVariable String userId, @RequestParam int point) {
-        log.info("userId : {}, point : {}", userId, point);
-        return service.updateUserPoint(userId, point);
+        return userService.getUsersByFilter(dto);
     }
 }

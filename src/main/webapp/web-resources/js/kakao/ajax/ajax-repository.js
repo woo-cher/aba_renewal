@@ -452,3 +452,23 @@ function deletePost(id) {
     return result;
 }
 /* ──────────────────────────── /POST ───────────────────────────── */
+
+/* ──────────────────────────── Pay ────────────────────────────── */
+function onPaymentSuccess(payment) {
+    let result;
+
+    $.ajax({
+        url: '/apis/payments/charge',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(payment),
+        success: function (resp) {
+            alert("success!")
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+/* ──────────────────────────── /Pay ───────────────────────────── */

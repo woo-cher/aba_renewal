@@ -5,7 +5,7 @@
     <!-- Mapper -->
     <resultMap id="payment" type="Payment">
         <id property="id" column="id" />
-        <result property="price" column="price" />
+        <result property="amount" column="amount" />
         <result property="pg" column="pg" />
         <result property="method" column="method" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
@@ -20,7 +20,7 @@
     </resultMap>
 
     <insert id="insertPayment" parameterType="payment">
-        INSERT INTO payments VALUES (#{user.userId}, #{price}, #{pg}, #{method}, current_timestamp)
+        INSERT INTO payments VALUES (null, #{impId}, #{merchantId}, #{user.userId}, #{amount}, #{pg}, #{method}, current_timestamp)
     </insert>
 
     <insert id="insertPaymentHistory" parameterType="payment">

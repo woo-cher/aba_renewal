@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.service;
 
 
+import com.abacorp.aba.core.repository.PaymentRepository;
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.UserFilterDto;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,14 +27,17 @@ public class UserService implements UserDetailsService {
     private final int USERS_PER_PAGE = 3;
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        User user = this.repository.selectById(userId);
+        User user = this.userRepository.selectById(userId);
 
         if(user == null) {
             throw new UsernameNotFoundException("Not Found User : " + userId);
@@ -44,29 +49,29 @@ public class UserService implements UserDetailsService {
     }
 
     public int createUser(User user) {
-        return this.repository.create(getConvertedUser(user));
+        return this.userRepository.create(getConvertedUser(user));
     }
 
     public PageInfo<User> findAll(int page) {
         return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
-                () -> repository.findAll()
+                () -> userRepository.findAll()
         );
     }
 
     public PageInfo<User> findUserExceptAdmin(int page) {
         return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
-                () -> repository.selectUsersExceptAdmin()
+                () -> userRepository.selectUsersExceptAdmin()
         );
     }
 
     public PageInfo<User> searchUsers(String keyword, int page) {
         return PageHelper.startPage(page, USERS_PER_PAGE).doSelectPageInfo(
-                () -> repository.selectUsersWithKeyword(keyword)
+                () -> userRepository.selectUsersWithKeyword(keyword)
         );
     }
 
     public boolean isExistUser(String userId) {
-        User user = repository.selectById(userId);
+        User user = userRepository.selectById(userId);
 
         if(user == null) {
             log.info("user not found at database");
@@ -77,16 +82,16 @@ public class UserService implements UserDetailsService {
     }
 
     public boolean isPasswordMatch(String actualPassword, String sessionUserId) {
-        String dbUserPassword = repository.selectById(sessionUserId).getPassword();
+        String dbUserPassword = userRepository.selectById(sessionUserId).getPassword();
         return passwordEncoder.matches(actualPassword, dbUserPassword);
     }
 
     public User findByUserId(String userId) {
-        return repository.selectById(userId);
+        return userRepository.selectById(userId);
     }
 
     public int updateUser(User user) {
-        return repository.update(getConvertedUser(user));
+        return userRepository.update(getConvertedUser(user));
     }
 
     private User getConvertedUser(User user) {
@@ -109,20 +114,21 @@ public class UserService implements UserDetailsService {
     }
 
     public int deleteUser(String userId) {
-        return repository.delete(userId);
+        return userRepository.delete(userId);
     }
 
     public PageInfo<User> getUsersByFilter(UserFilterDto dto) {
         return PageHelper.startPage(dto.getPage(), USERS_PER_PAGE).doSelectPageInfo(
-                () -> repository.selectUsersByFilter(dto)
+                () -> userRepository.selectUsersByFilter(dto)
         );
     }
 
+    @Transactional
     public int updateUserPoint(String userId, int point) {
         Map<String, Object> map = new HashMap<>();
         map.put("userId", userId);
         map.put("point", point);
 
-        return repository.updatePoint(map);
+        return userRepository.updatePoint(map);
     }
 }
