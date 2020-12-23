@@ -67,6 +67,10 @@
         WHERE user_id = #{userId}
     </update>
 
+    <update id="updateUserPoint" parameterType="hashMap">
+        UPDATE users SET point = #{point} WHERE user_id = #{userId}
+    </update>
+
     <delete id="deleteUser" parameterType="String">
         DELETE FROM users WHERE user_id = #{userId}
     </delete>

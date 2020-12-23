@@ -61,4 +61,10 @@ public class UserApi {
         log.info("userDto : {}", dto);
         return service.getUsersByFilter(dto);
     }
+
+    @RequestMapping(value = "/point/{userId}", method = RequestMethod.PUT)
+    public int chargePoint(@PathVariable String userId, @RequestParam int point) {
+        log.info("userId : {}, point : {}", userId, point);
+        return service.updateUserPoint(userId, point);
+    }
 }

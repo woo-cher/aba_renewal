@@ -16,6 +16,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @Slf4j
 public class UserService implements UserDetailsService {
@@ -113,5 +116,13 @@ public class UserService implements UserDetailsService {
         return PageHelper.startPage(dto.getPage(), USERS_PER_PAGE).doSelectPageInfo(
                 () -> repository.selectUsersByFilter(dto)
         );
+    }
+
+    public int updateUserPoint(String userId, int point) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("point", point);
+
+        return repository.updatePoint(map);
     }
 }
