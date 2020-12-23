@@ -21,6 +21,10 @@
 		<typeAlias alias="MapFiltersDto" type="com.abacorp.aba.model.dto.MapFiltersDto" />
 		<typeAlias alias="RequestFilterDto" type="com.abacorp.aba.model.dto.RequestFilterDto" />
 		<typeAlias alias="UserFilterDto" type="com.abacorp.aba.model.dto.UserFilterDto" />
+
+		<typeAlias alias="Package" type="com.abacorp.aba.model.Package" />
+		<typeAlias alias="Payment" type="com.abacorp.aba.model.Payment" />
+		<typeAlias alias="PaymentHistory" type="com.abacorp.aba.model.PaymentHistory" />
 	</typeAliases>
 
 	<typeHandlers>

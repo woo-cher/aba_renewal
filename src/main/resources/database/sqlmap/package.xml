@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MAPPER 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abacorp.aba.model.Package">
+
+    <!-- Mapper -->
+    <resultMap id="package" type="Package">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="price" column="price" />
+        <result property="period" column="period" />
+    </resultMap>
+
+    <insert id="insertPackage" parameterType="package">
+        INSERT INTO packages VALUES (#{name}, #{price}, #{period})
+    </insert>
+
+    <select id="selectPackage" parameterType="int">
+        SELECT * FROM packages WHERE id = #{package_id}
+    </select>
+</mapper>
