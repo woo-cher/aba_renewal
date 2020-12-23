@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/apis/payments")
@@ -20,11 +21,15 @@ public class PaymentApi {
 
     @RequestMapping(value = "/charge", method = RequestMethod.POST)
     public int chargePoint(@RequestBody Payment payment, HttpServletRequest request) {
-        User sessionUser = (User) SessionUtils.getObjectValue(request.getSession(), "sessionUser");
-        payment.setUser(sessionUser);
+        HttpSession session = request.getSession();
+        User sessionUser = (User) SessionUtils.getObjectValue(session, "sessionUser");
 
+        payment.setUser(sessionUser);
         log.info("Payment : {}", payment);
 
-        return paymentService.createPayment(payment);
+        int row = paymentService.createPayment(payment);
+        session.setAttribute("sessionUser", payment.getUser());
+
+        return row;
     }
 }

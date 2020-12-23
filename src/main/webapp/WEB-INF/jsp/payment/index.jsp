@@ -109,11 +109,10 @@
 
                 onPaymentSuccess(payment);
             } else {
-                console.log(rsp);
                 alert(rsp.error_msg);
             }
+            window.opener.location.reload();
             window.close();
-            document.location.href = '/';
         });
     }
 </script>

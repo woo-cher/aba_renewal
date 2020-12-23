@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <head>
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/me/my_aba.css">
 </head>
@@ -26,7 +28,9 @@
             <div class="box-left">
                 <span class="aba label">아바 포인트</span></div>
             <div class="box-right">
-                <span class="point">1,000</span>
+                <span class="point">
+                    <fmt:formatNumber value="${sessionUser.point}" pattern="#,###" />
+                </span>
                 <i class="fas fa-ruble-sign"></i>
             </div>
         </div>
