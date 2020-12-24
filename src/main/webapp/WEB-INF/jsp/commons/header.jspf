@@ -41,7 +41,8 @@
             <c:if test="${sessionUser.role eq 'MASTER' || sessionUser.role eq 'ADMIN'}">
                 <li class="admin none"><a href="/admin">관리자모드</a></li>
             </c:if>
-            <li class="offerscreateform none"><a href="/offers/form">매물등록</a></li>
+            <li class="offersform none"><a href="/offers/form">매물등록</a></li>
+            <li class="shop none"><a href="/shop">포인트샵</a></li>
             <li class="user">
                 <a href="#">${principal.user.name} 님
                     <h5 style="display: inline">▼</h5>

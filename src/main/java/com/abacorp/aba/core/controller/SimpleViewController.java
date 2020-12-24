@@ -56,4 +56,9 @@ public class SimpleViewController {
     private String pay() {
         return "payment/index";
     }
+
+    @RequestMapping("/shop")
+    private String shop() {
+        return "pointshop/index";
+    }
 }
