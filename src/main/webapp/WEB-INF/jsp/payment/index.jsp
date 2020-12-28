@@ -115,7 +115,7 @@
                 payment['impId'] = rsp.imp_uid;
                 payment['merchantId'] = rsp.merchant_uid;
 
-                onPaymentSuccess(payment);
+                createPayment(payment);
             } else {
                 alert(rsp.error_msg);
             }

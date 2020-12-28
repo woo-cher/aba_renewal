@@ -71,6 +71,10 @@
         UPDATE users SET point = #{point} WHERE user_id = #{userId}
     </update>
 
+    <update id="updateUserRole" parameterType="hashMap">
+        UPDATE users SET role = #{role} WHERE user_id = #{userId}
+    </update>
+
     <delete id="deleteUser" parameterType="String">
         DELETE FROM users WHERE user_id = #{userId}
     </delete>

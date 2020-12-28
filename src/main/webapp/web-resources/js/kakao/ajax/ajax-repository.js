@@ -453,8 +453,8 @@ function deletePost(id) {
 }
 /* ──────────────────────────── /POST ───────────────────────────── */
 
-/* ──────────────────────────── Pay ────────────────────────────── */
-function onPaymentSuccess(payment) {
+/* ────────────────────────── Pay & Point ───────────────────────── */
+function createPayment(payment) {
     let result;
 
     $.ajax({
@@ -471,4 +471,22 @@ function onPaymentSuccess(payment) {
 
     return result;
 }
-/* ──────────────────────────── /Pay ───────────────────────────── */
+
+function createMembership() {
+    let result;
+
+    $.ajax({
+        url: 'url',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json',
+        data: JSON.stringify(null),
+        success: function (resp) {
+            //
+        },
+        error: ajaxError
+    });
+
+    return result;
+}
+/* ────────────────────────── /Pay & Point ───────────────────────── */

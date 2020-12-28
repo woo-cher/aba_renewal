@@ -122,7 +122,7 @@ public class AwsS3Service {
     }
 
     public boolean isExistFile(String hashedOfferId, String fileName) {
-        String key = "offer-images/" + hashedOfferId + "/" + fileName;
+        String key = pathEndPoint + hashedOfferId + "/" + fileName;
 
         try {
             amazonS3.getObject(bucketName, key);
