@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>아바 포인트충전</title>
@@ -33,11 +35,13 @@
             <div class="cash-status">
                 <div class="before">
                     <p class="header">보유 포인트</p>
-                    <span class="amount">0</span>
+                    <span class="amount">
+                        <fmt:formatNumber value="${sessionUser.point}" pattern="#,###" />
+                    </span>
                 </div>
                 <div class="after">
                     <p class="header">충전 후 포인트</p>
-                    <span class="amount">50,000</span>
+                    <span class="after-point amount">-</span>
                 </div>
             </div>
         </div>
@@ -81,10 +85,14 @@
     function convertWithCommas(focus) {
         let value = focus.val();
 
-        value = value.replace(/[^0-9]/g,'');
-        value = value.replace(/,/g,'');
+        value = value.replace(/[^0-9]/g,'')
+            .replace(/,/g,'')
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        focus.val(value.replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        focus.val(value);
+
+        let sum = Number('${sessionUser.point}') + Number(value.replace(',', ''));
+        $('.after-point').text(sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
 
     function doPayment() {
