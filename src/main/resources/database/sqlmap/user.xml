@@ -68,7 +68,7 @@
     </update>
 
     <update id="updateUserPoint" parameterType="hashMap">
-        UPDATE users SET point = point + #{point} WHERE user_id = #{userId}
+        UPDATE users SET point = #{point} WHERE user_id = #{userId}
     </update>
 
     <delete id="deleteUser" parameterType="String">

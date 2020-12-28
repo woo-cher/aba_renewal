@@ -19,16 +19,13 @@ public class PaymentService {
 
     @Transactional
     public int createPayment(Payment payment) {
-        int row;
-
         repository.insertPayment(payment);
-        row = userService.updateUserPoint(payment.getUser().getUserId(), payment.getAmount());
 
-        int previousPoint = payment.getUser().getPoint();
-        int chargedPoint = payment.getAmount();
+        int totalPoint = payment.getUser().getPoint() + payment.getAmount(); // previous ($) + charged ($)
 
-        payment.getUser().setPoint(previousPoint + chargedPoint);
+        userService.updateUserPoint(payment.getUser().getUserId(), totalPoint);
+        payment.getUser().setPoint(totalPoint);
 
-        return row;
+        return 1;
     }
 }

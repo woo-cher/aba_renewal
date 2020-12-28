@@ -40,7 +40,7 @@
             <div class="aba left">
                 <span class="txt-md">보유 포인트</span>
                 <i class="plus-icon fas fa-plus"
-                   onclick="window.open('/payment', 'gi', 'width=900, height=700, top=200, left=500, status=no, scrollbars=no')"
+                   onclick="window.open('/payment', 'gi', 'width=800, height=700, top=200, left=550, status=no, scrollbars=no')"
                 >
                 </i>
             </div>
