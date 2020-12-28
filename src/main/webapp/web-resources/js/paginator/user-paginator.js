@@ -42,7 +42,7 @@ class UserPaginator extends PageHelper {
                                 <i class="fas fa-eye" onclick="window.open('/admin/users/user_detail?id='.concat('${user.userId}'))"></i>
                                 <i class="fas fa-pen"></i>
                                 <i class="fas fa-trash-alt"
-                                    onclick="dialogInitializer($(this), $('#user-dialog'), '${user.userId}', '${user.userId}')">
+                                    onclick="dialogInitializer($('#user-dialog'), '${user.userId}', '${user.userId}')">
                                 </i>
                             </span>
                         </td>

@@ -93,7 +93,7 @@
                 </div>
             </div>
             <button class="btn inline txt-sm w-25" type="submit"
-                    onclick="dialogInitializer($(this), $('#password-dialog'), null, '${sessionUser.userId}')">탈퇴하기 :(
+                    onclick="dialogInitializer($('#password-dialog'), null, '${sessionUser.userId}')">탈퇴하기 :(
             </button>
         </div>
     </div>

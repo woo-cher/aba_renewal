@@ -141,7 +141,7 @@ function getUrlParameter(reqParam) {
 }
 
 <!-- Dialog -->
-function dialogInitializer(element, showWhat, targetName = null, targetId = null) {
+function dialogInitializer(showWhat, targetName = null, targetId = null) {
     $('.overlay').show();
     showWhat.dialog({
         resizable: false,

@@ -43,7 +43,7 @@ class OfferPaginator extends PageHelper {
                         <span>${offer.deposit}/${offer.monthlyPrice} +</span>
                         <span class="aba"> ${offer.managementPrice}</span>
                     </td>
-                    <td class="aba status" onclick="dialogInitializer($(this), $('#status-dialog'), null, ${offerId})">${offer.status.value}</td>
+                    <td class="aba status" onclick="dialogInitializer($('#status-dialog'), null, ${offerId})">${offer.status.value}</td>
                     <td>${offer.createdAt.slice(2, 10).replaceAll("-", ".")}</td>
                     <td width="20%">
                         <span class="border-side">
@@ -52,7 +52,7 @@ class OfferPaginator extends PageHelper {
                                 onclick="window.open('/offers/form?offerId=${offerId}', '', 'width=1400, height=950, top=30, left=250')">
                             </i>
                             <i class="fas fa-trash-alt" title="매물 삭제하기"
-                               onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${offerId}').text(), ${offerId})"
+                               onclick="dialogInitializer($('#offer-dialog'), $('.offer${offerId}').text(), ${offerId})"
                             >
                             </i>
                         </span>
