@@ -12,7 +12,7 @@
         <association property="user" column="user_id" javaType="User" select="findUserById" />
     </resultMap>
 
-    <resultMap id="payment_history" type="PaymentHistory">
+    <resultMap id="point_history" type="PointHistory">
         <id property="id" column="id" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <association property="user" column="user_id" javaType="User" select="findUserById" />
@@ -23,7 +23,7 @@
         INSERT INTO payments VALUES (null, #{impId}, #{merchantId}, #{user.userId}, #{amount}, #{pg}, #{method}, current_timestamp)
     </insert>
 
-    <insert id="insertPaymentHistory" parameterType="payment">
-        INSERT INTO payment_histories VALUES (#{user.userId}, #{packageId}, #{pg}, #{method}, current_timestamp)
+    <insert id="insertPointHistory" parameterType="payment">
+        INSERT INTO payment_histories VALUES (#{user.userId}, #{packageId}, current_timestamp)
     </insert>
 </mapper>

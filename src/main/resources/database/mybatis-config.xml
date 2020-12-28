@@ -24,7 +24,7 @@
 
 		<typeAlias alias="Package" type="com.abacorp.aba.model.Package" />
 		<typeAlias alias="Payment" type="com.abacorp.aba.model.Payment" />
-		<typeAlias alias="PaymentHistory" type="com.abacorp.aba.model.PaymentHistory" />
+		<typeAlias alias="PointHistory" type="com.abacorp.aba.model.PointHistory" />
 	</typeAliases>
 
 	<typeHandlers>

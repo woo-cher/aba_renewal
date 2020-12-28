@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PaymentHistory extends ModelMapper {
+public class PointHistory extends ModelMapper {
     private User user;
     private Package abaPackage;
 }
