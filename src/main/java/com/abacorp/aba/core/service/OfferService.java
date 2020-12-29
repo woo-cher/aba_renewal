@@ -45,6 +45,7 @@ public class OfferService {
         }
 
         offer.setThumbnail(getThumbnailPath(offer));
+        log.info("Thumbnail : {}", offer.getThumbnail());
 
         offerRepository.updateOfferThumbnailById(offer);
 

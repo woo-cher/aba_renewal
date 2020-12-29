@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" name="a" value="2">
+                        <input type="radio" name="a" value="3">
                     </td>
                     <td class="name">유료보기 1일</td>
                     <td class="price">
