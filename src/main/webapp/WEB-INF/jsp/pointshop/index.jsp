@@ -25,9 +25,9 @@
     }
 </style>
 
-<div class="overlay" hidden></div>
-<div class="loader" hidden></div>
 <div class="main-container dialog-yardstick">
+    <div class="overlay" hidden></div>
+    <div class="loader" hidden></div>
     <div class="content-area">
         <div class="header">
             <div class="box_in">
@@ -168,6 +168,12 @@
         let packageId = $('.target-id').val();
         createMembership(packageId);
 
-        location.reload();
+        showLoader();
+        $('.ui-dialog').css('opacity', '.5');
+        setTimeout(() => {
+            if(!alert("패키지 구매를 완료했어요 :)")) {
+                location.reload();
+            }
+        }, 500)
     }
 </script>
