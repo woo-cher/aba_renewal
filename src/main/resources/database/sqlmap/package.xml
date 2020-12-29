@@ -11,10 +11,10 @@
     </resultMap>
 
     <insert id="insertPackage" parameterType="package">
-        INSERT INTO packages VALUES (#{name}, #{price}, #{period})
+        INSERT INTO packages VALUES (NULL, #{name}, #{price}, #{period})
     </insert>
 
-    <select id="selectPackage" parameterType="int">
-        SELECT * FROM packages WHERE id = #{package_id}
+    <select id="selectPackageById" parameterType="int" resultMap="package">
+        SELECT * FROM packages WHERE id = #{packageId}
     </select>
 </mapper>

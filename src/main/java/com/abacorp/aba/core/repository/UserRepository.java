@@ -51,4 +51,8 @@ public class UserRepository {
     public int updatePoint(Map<String, Object> map) {
         return sqlSession.update("updateUserPoint", map);
     }
+
+    public int updateUserRole(Map<String, Object> map) {
+        return sqlSession.update("updateUserRole", map);
+    }
 }

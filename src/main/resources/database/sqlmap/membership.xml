@@ -11,8 +11,14 @@
         <association property="package" column="package_id" javaType="Package" select="selectPackage" />
     </resultMap>
 
-    <insert id="insertMembership" parameterType="package">
+    <insert id="insertMembership" parameterType="membership">
         INSERT INTO memberships
-        VALUES (#{user.userId}, #{package.id}, current_timestamp, current_timestamp + INTERVAL #{period} DAY)
+        VALUES (NULL, #{user.userId}, #{abaPackage.id}, current_timestamp, current_timestamp + INTERVAL #{abaPackage.period} MINUTE)
     </insert>
+
+    <update id="createExpiredEventScheduler" parameterType="hashMap">
+        CREATE EVENT IF NOT EXISTS premium_${userId}
+            ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL #{period} MINUTE
+            DO UPDATE users SET role = 'USER' WHERE user_id = #{userId}
+    </update>
 </mapper>

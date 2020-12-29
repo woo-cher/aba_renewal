@@ -1,10 +1,16 @@
 package com.abacorp.aba.core.service;
 
 
-import com.abacorp.aba.core.repository.PaymentRepository;
+import com.abacorp.aba.core.repository.MembershipRepository;
+import com.abacorp.aba.core.repository.PackageRepository;
+import com.abacorp.aba.core.repository.PointHistoryRepository;
 import com.abacorp.aba.core.repository.UserRepository;
+import com.abacorp.aba.model.Membership;
+import com.abacorp.aba.model.Package;
+import com.abacorp.aba.model.PointHistory;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.UserFilterDto;
+import com.abacorp.aba.model.type.UserRoleType;
 import com.abacorp.aba.model.type.UserType;
 import com.abacorp.aba.security.CustomUserDetails;
 import com.github.pagehelper.PageHelper;
@@ -30,10 +36,16 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
-    private PaymentRepository paymentRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private PackageRepository packageRepository;
+
+    @Autowired
+    private MembershipRepository membershipRepository;
+
+    @Autowired
+    private PointHistoryRepository pointHistoryRepository;
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
@@ -130,5 +142,49 @@ public class UserService implements UserDetailsService {
         map.put("point", point);
 
         return userRepository.updatePoint(map);
+    }
+
+    /**
+     *  FLOW)
+     *   1. 맴버십 DB 데이터 추가
+     *   2. 사용자 DB 포인트 갱신, ROLE 컬럼 변경 처리
+     *   3. 포인트 사용 내역 히스토리 DB 데이터 추가
+     *   4. 만료기한에 대한 이벤트 스케줄러 추가 -> ROLE 컬럼 `PREMIUM -> USER` 로 변경 처리
+     */
+    @Transactional
+    public void purchasePackage(User sessionUser, int packageId) {
+        Package dbPackage = packageRepository.selectPackageById(packageId);
+        log.info("Selected Package object : {}", dbPackage);
+
+        // Insert membership
+        Membership membership = Membership.builder()
+                .abaPackage(dbPackage)
+                .user(sessionUser)
+                .build();
+        log.info("Membership object : {}", membership);
+        membershipRepository.insertMembership(membership);
+
+        // Update user role & point
+        updateUserPoint(sessionUser.getUserId(), sessionUser.getPoint() - dbPackage.getPrice());
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("userId", sessionUser.getUserId());
+        map.put("role", UserRoleType.PREMIUM);
+
+        userRepository.updateUserRole(map);
+
+        // Insert point history
+        PointHistory pointHistory = PointHistory.builder()
+                .user(sessionUser)
+                .abaPackage(dbPackage)
+                .build();
+
+        pointHistoryRepository.insertPointHistory(pointHistory);
+
+        // Insert event scheduler
+        map.put("period", dbPackage.getPeriod());
+
+        membershipRepository.createExpiredMembershipEvent(map);
     }
 }

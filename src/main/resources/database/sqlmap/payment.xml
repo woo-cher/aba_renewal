@@ -13,6 +13,6 @@
     </resultMap>
 
     <insert id="insertPayment" parameterType="payment">
-        INSERT INTO payments VALUES (null, #{impId}, #{merchantId}, #{user.userId}, #{amount}, #{pg}, #{method}, current_timestamp)
+        INSERT INTO payments VALUES (NULL, #{impId}, #{merchantId}, #{user.userId}, #{amount}, #{pg}, #{method}, current_timestamp)
     </insert>
 </mapper>

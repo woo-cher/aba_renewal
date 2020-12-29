@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.UserService;
+import com.abacorp.aba.core.utils.SessionUtils;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.UserFilterDto;
 import com.github.pagehelper.PageInfo;
@@ -60,5 +61,13 @@ public class UserApi {
     public PageInfo<User> usersByFilter(@RequestBody UserFilterDto dto) {
         log.info("userDto : {}", dto);
         return userService.getUsersByFilter(dto);
+    }
+
+    @RequestMapping(value = "/purchase", method = RequestMethod.GET)
+    public void purchase(@RequestParam int packageId, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User sessionUser = (User) SessionUtils.getObjectValue(session, "sessionUser");
+
+        userService.purchasePackage(sessionUser, packageId);
     }
 }

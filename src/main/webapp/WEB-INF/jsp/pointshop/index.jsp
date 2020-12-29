@@ -82,7 +82,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" name="a" value="3">
+                        <input type="radio" name="a" value="2">
                     </td>
                     <td class="name">유료보기 1일</td>
                     <td class="price">
@@ -101,6 +101,7 @@
         <div class="dialog-ask">
             <p class="aba target"></p>
             <p>위 상품을 포인트로 구매할까요? :)</p>
+            <input type="hidden" class="target_id">
         </div>
         <div class="dialog-ask">
             <p>
@@ -153,16 +154,13 @@
         }
 
         $('#need').text(price);
-        dialogInitializer($('#purchase-dialog'), name, null)
+        dialogInitializer($('#purchase-dialog'), name, selected.val())
     }
 
+
     function doPurchase() {
-        /**
-         *  FLOW)
-         *   1. 사용자 DB 포인트 갱신, ROLE 컬럼 변경 처리
-         *   2. 포인트 사용 내역 히스토리 DB 데이터 추가
-         *   3. 맴버십 DB 데이터 추가
-         *   4. 만료기한에 대한 이벤트 스케줄러 추가 -> ROLE 컬럼 `PREMIUM -> USER` 로 변경 처리
-         */
+        let packageId = $('.target-id').val();
+        createMembership(packageId);
+        location.reload();
     }
 </script>

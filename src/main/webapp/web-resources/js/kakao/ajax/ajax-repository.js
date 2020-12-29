@@ -472,21 +472,16 @@ function createPayment(payment) {
     return result;
 }
 
-function createMembership() {
-    let result;
-
+function createMembership(packageId) {
     $.ajax({
-        url: 'url',
-        type: 'POST',
+        url: '/apis/users/purchase?packageId=' + packageId,
+        type: 'GET',
         async: false,
         contentType: 'application/json',
-        data: JSON.stringify(null),
         success: function (resp) {
-            //
+            console.log(resp);
         },
         error: ajaxError
     });
-
-    return result;
 }
 /* ────────────────────────── /Pay & Point ───────────────────────── */
