@@ -13,12 +13,12 @@
 
     <insert id="insertMembership" parameterType="membership">
         INSERT INTO memberships
-        VALUES (NULL, #{user.userId}, #{abaPackage.id}, current_timestamp, current_timestamp + INTERVAL #{abaPackage.period} MINUTE)
+        VALUES (NULL, #{user.userId}, #{abaPackage.id}, current_timestamp, current_timestamp + INTERVAL #{abaPackage.period} DAY)
     </insert>
 
     <update id="createExpiredEventScheduler" parameterType="hashMap">
         CREATE EVENT IF NOT EXISTS premium_${userId}
-            ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL #{period} MINUTE
+            ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL #{period} DAY
             DO UPDATE users SET role = 'USER' WHERE user_id = #{userId}
     </update>
 </mapper>

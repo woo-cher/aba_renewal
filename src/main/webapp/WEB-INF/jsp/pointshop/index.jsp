@@ -25,6 +25,7 @@
     }
 </style>
 
+<div class="loader" hidden></div>
 <div class="main-container dialog-yardstick">
     <div class="content-area">
         <div class="header">
@@ -133,8 +134,12 @@
 </div>
 
 <script>
+    $(document).ready(function () {
+        showLoader();
+    });
+
     function beforePurchase() {
-        let havePoint = '${sessionUser.point}';
+        let havePoint = Number('${sessionUser.point}');
         let selected = $('input[name="a"]:checked');
 
         if (selected.length === 0) {
@@ -146,7 +151,7 @@
         let name = selected.parent().next('.name').text();
         let price = selected.parent().siblings('.price').children('span').text();
 
-        if (havePoint < price.replaceAll(',', '')) {
+        if (havePoint < Number(price.replaceAll(',', ''))) {
             let message = `보유 포인트가 부족해요 :(`;
             dialogInitializer($('#msg-dialog'), message, null);
 
@@ -161,6 +166,7 @@
     function doPurchase() {
         let packageId = $('.target-id').val();
         createMembership(packageId);
+
         location.reload();
     }
 </script>

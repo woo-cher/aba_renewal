@@ -69,5 +69,9 @@ public class UserApi {
         User sessionUser = (User) SessionUtils.getObjectValue(session, "sessionUser");
 
         userService.purchasePackage(sessionUser, packageId);
+
+        // Update SessionUser's point & role
+        sessionUser = userService.findByUserId(sessionUser.getUserId());
+        session.setAttribute("sessionUser", sessionUser);
     }
 }

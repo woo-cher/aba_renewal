@@ -182,7 +182,7 @@ public class UserService implements UserDetailsService {
 
         pointHistoryRepository.insertPointHistory(pointHistory);
 
-        // Insert event scheduler
+        // Create event scheduler
         map.put("period", dbPackage.getPeriod());
 
         membershipRepository.createExpiredMembershipEvent(map);
