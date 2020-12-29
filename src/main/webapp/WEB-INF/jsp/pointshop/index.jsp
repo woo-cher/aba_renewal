@@ -25,6 +25,7 @@
     }
 </style>
 
+<div class="overlay" hidden></div>
 <div class="loader" hidden></div>
 <div class="main-container dialog-yardstick">
     <div class="content-area">

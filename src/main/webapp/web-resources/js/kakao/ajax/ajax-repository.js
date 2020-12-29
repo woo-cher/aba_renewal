@@ -464,10 +464,17 @@ function createPayment(payment) {
         contentType: 'application/json',
         data: JSON.stringify(payment),
         success: function (resp) {
-            alert("success!")
+            showLoader();
+            setTimeout(() => { fadeOutLoader() }, 300);
+            setTimeout(() => {
+                if (!alert("결제가 완료되었습니다 :)")) {
+                    window.close();
+                }
+            }, 800);
         },
         error: ajaxError
     });
+
 
     return result;
 }

@@ -23,6 +23,8 @@
 </head>
 
 <body>
+    <div class="overlay" hidden></div>
+    <div class="loader" hidden></div>
     <div class="wrapper">
         <div class="price">
             <div class="price-header">
@@ -120,7 +122,6 @@
                 alert(rsp.error_msg);
             }
             window.opener.location.reload();
-            window.close();
         });
     }
 </script>
