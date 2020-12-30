@@ -163,7 +163,6 @@
         dialogInitializer($('#purchase-dialog'), name, selected.val())
     }
 
-
     function doPurchase() {
         let packageId = $('.target-id').val();
         createMembership(packageId);

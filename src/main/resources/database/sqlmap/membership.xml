@@ -10,15 +10,30 @@
         <association property="user" column="user_id" javaType="User" select="findUserById" />
         <association property="package" column="package_id" javaType="Package" select="selectPackage" />
     </resultMap>
+    
+    <select id="selectExistUsingMembership" parameterType="String" resultMap="membership">
+        SELECT * FROM memberships
+        WHERE expired_at > CURRENT_TIME AND user_id = #{userId}
+        ORDER BY expired_at DESC LIMIT 1
+    </select>
 
     <insert id="insertMembership" parameterType="membership">
         INSERT INTO memberships
         VALUES (NULL, #{user.userId}, #{abaPackage.id}, current_timestamp, current_timestamp + INTERVAL #{abaPackage.period} DAY)
     </insert>
 
+    <insert id="appendMembership" parameterType="membership">
+        INSERT INTO memberships
+        VALUES (NULL, #{user.userId}, #{abaPackage.id}, #{createdAt}, #{expiredAt} + INTERVAL #{abaPackage.period} DAY)
+    </insert>
+
     <update id="createExpiredEventScheduler" parameterType="hashMap">
         CREATE EVENT IF NOT EXISTS premium_${userId}
             ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL #{period} DAY
             DO UPDATE users SET role = 'USER' WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateExpiredEventScheduler" parameterType="hashMap">
+        ALTER EVENT premium_${userId} ON SCHEDULE AT #{expiredAt}
     </update>
 </mapper>

@@ -20,4 +20,9 @@ public class MembershipRepository {
     public int createExpiredMembershipEvent(Map<String, Object> map) {
         return sqlSession.update("createExpiredEventScheduler", map);
     }
+
+    // 가장 최근 것으로 갖고 옴
+    public Membership isExistUsingMembership(String userId) {
+        return sqlSession.selectOne("selectExistUsingMembership", userId);
+    }
 }
