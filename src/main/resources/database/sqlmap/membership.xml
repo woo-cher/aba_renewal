@@ -7,11 +7,20 @@
         <id property="id" column="id" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="expiredAt" column="expired_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
-        <association property="user" column="user_id" javaType="User" select="findUserById" />
-        <association property="package" column="package_id" javaType="Package" select="selectPackage" />
+        <association property="user" column="user_id">
+            <id property="userId" column="user_id" />
+        </association>
+        <association property="product" column="product_id" select="com.abacorp.aba.model.Product.selectProductById" />
     </resultMap>
-    
-    <select id="selectExistUsingMembership" parameterType="String" resultMap="membership">
+
+    <resultMap id="product" type="Product">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="price" column="price" />
+        <result property="period" column="period" />
+    </resultMap>
+
+    <select id="selectExistUsingMembership" parameterType="java.lang.String" resultMap="membership">
         SELECT * FROM memberships
         WHERE expired_at > CURRENT_TIME AND user_id = #{userId}
         ORDER BY expired_at DESC LIMIT 1
@@ -19,12 +28,12 @@
 
     <insert id="insertMembership" parameterType="membership">
         INSERT INTO memberships
-        VALUES (NULL, #{user.userId}, #{abaPackage.id}, current_timestamp, current_timestamp + INTERVAL #{abaPackage.period} DAY)
+        VALUES (NULL, #{user.userId}, #{product.id}, current_timestamp, current_timestamp + INTERVAL #{product.period} DAY)
     </insert>
 
     <insert id="appendMembership" parameterType="membership">
         INSERT INTO memberships
-        VALUES (NULL, #{user.userId}, #{abaPackage.id}, #{createdAt}, #{expiredAt} + INTERVAL #{abaPackage.period} DAY)
+        VALUES (NULL, #{user.userId}, #{product.id}, #{createdAt}, #{expiredAt} + INTERVAL #{product.period} DAY)
     </insert>
 
     <update id="createExpiredEventScheduler" parameterType="hashMap">
@@ -34,6 +43,6 @@
     </update>
 
     <update id="updateExpiredEventScheduler" parameterType="hashMap">
-        ALTER EVENT premium_${userId} ON SCHEDULE AT #{expiredAt}
+        ALTER EVENT premium_${userId} ON SCHEDULE AT #{expiredAt} + INTERVAL #{period} DAY
     </update>
 </mapper>

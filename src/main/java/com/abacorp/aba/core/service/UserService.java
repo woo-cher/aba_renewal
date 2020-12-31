@@ -2,11 +2,11 @@ package com.abacorp.aba.core.service;
 
 
 import com.abacorp.aba.core.repository.MembershipRepository;
-import com.abacorp.aba.core.repository.PackageRepository;
+import com.abacorp.aba.core.repository.ProductRepository;
 import com.abacorp.aba.core.repository.PointHistoryRepository;
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.Membership;
-import com.abacorp.aba.model.Package;
+import com.abacorp.aba.model.Product;
 import com.abacorp.aba.model.PointHistory;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.UserFilterDto;
@@ -24,6 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PackageRepository packageRepository;
+    private ProductRepository packageRepository;
 
     @Autowired
     private MembershipRepository membershipRepository;
@@ -152,20 +153,37 @@ public class UserService implements UserDetailsService {
      *   4. 만료기한에 대한 이벤트 스케줄러 추가 -> ROLE 컬럼 `PREMIUM -> USER` 로 변경 처리
      */
     @Transactional
-    public void purchasePackage(User sessionUser, int packageId) {
-        Package dbPackage = packageRepository.selectPackageById(packageId);
-        log.info("Selected Package object : {}", dbPackage);
+    public void purchaseProduct(User sessionUser, int productId) {
+        Product dbProduct = packageRepository.selectProductById(productId);
+        log.info("Selected Product object : {}", dbProduct);
+
+        Membership usingMembership = membershipRepository.isExistUsingMembership(sessionUser.getUserId());
+        boolean isExistUsingMembership = usingMembership != null;
+
+        log.info("Is membership user ? : {}", isExistUsingMembership);
+        log.info("Recently product : {}", usingMembership.getProduct());
 
         // Insert membership
         Membership membership = Membership.builder()
-                .abaPackage(dbPackage)
+                .product(dbProduct)
                 .user(sessionUser)
                 .build();
+
         log.info("Membership object : {}", membership);
-        membershipRepository.insertMembership(membership);
+
+        if (isExistUsingMembership) {
+            Timestamp startPoint = usingMembership.getExpiredAt();
+
+            membership.setCreatedAt(startPoint);
+            membership.setExpiredAt(startPoint);
+
+            membershipRepository.appendMembership(membership);
+        } else {
+            membershipRepository.insertMembership(membership);
+        }
 
         // Update user role & point
-        updateUserPoint(sessionUser.getUserId(), sessionUser.getPoint() - dbPackage.getPrice());
+        updateUserPoint(sessionUser.getUserId(), sessionUser.getPoint() - dbProduct.getPrice());
 
         Map<String, Object> map = new HashMap<>();
 
@@ -177,14 +195,19 @@ public class UserService implements UserDetailsService {
         // Insert point history
         PointHistory pointHistory = PointHistory.builder()
                 .user(sessionUser)
-                .abaPackage(dbPackage)
+                .product(dbProduct)
                 .build();
 
         pointHistoryRepository.insertPointHistory(pointHistory);
 
         // Create event scheduler
-        map.put("period", dbPackage.getPeriod());
+        map.put("period", dbProduct.getPeriod());
 
-        membershipRepository.createExpiredMembershipEvent(map);
+        if (isExistUsingMembership) {
+            map.put("expiredAt", usingMembership.getExpiredAt());
+            membershipRepository.updateExpiredMemebershipEvent(map);
+        } else {
+            membershipRepository.createExpiredMembershipEvent(map);
+        }
     }
 }

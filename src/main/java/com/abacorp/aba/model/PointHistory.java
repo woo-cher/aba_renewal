@@ -10,5 +10,5 @@ import lombok.*;
 @ToString
 public class PointHistory extends ModelMapper {
     private User user;
-    private Package abaPackage;
+    private Product product;
 }

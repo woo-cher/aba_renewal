@@ -164,8 +164,8 @@
     }
 
     function doPurchase() {
-        let packageId = $('.target-id').val();
-        createMembership(packageId);
+        let productId = $('.target-id').val();
+        createMembership(productId);
 
         showLoader();
         $('.ui-dialog').css('opacity', '.5');

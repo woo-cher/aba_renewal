@@ -22,7 +22,7 @@
 		<typeAlias alias="RequestFilterDto" type="com.abacorp.aba.model.dto.RequestFilterDto" />
 		<typeAlias alias="UserFilterDto" type="com.abacorp.aba.model.dto.UserFilterDto" />
 
-		<typeAlias alias="Package" type="com.abacorp.aba.model.Package" />
+		<typeAlias alias="Product" type="com.abacorp.aba.model.Product" />
 		<typeAlias alias="Payment" type="com.abacorp.aba.model.Payment" />
 		<typeAlias alias="PointHistory" type="com.abacorp.aba.model.PointHistory" />
 		<typeAlias alias="Membership" type="com.abacorp.aba.model.Membership" />

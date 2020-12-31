@@ -13,6 +13,6 @@ import java.sql.Timestamp;
 @ToString
 public class Membership extends ModelMapper {
     private User user;
-    private Package abaPackage;
+    private Product product;
     private Timestamp expiredAt;
 }

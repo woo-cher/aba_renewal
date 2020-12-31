@@ -17,12 +17,21 @@ public class MembershipRepository {
         return sqlSession.insert("insertMembership", membership);
     }
 
+    public int appendMembership(Membership membership) {
+        return sqlSession.insert("appendMembership", membership);
+    }
+
     public int createExpiredMembershipEvent(Map<String, Object> map) {
         return sqlSession.update("createExpiredEventScheduler", map);
+    }
+
+    public int updateExpiredMemebershipEvent(Map<String, Object> map) {
+        return sqlSession.update("updateExpiredEventScheduler", map);
     }
 
     // 가장 최근 것으로 갖고 옴
     public Membership isExistUsingMembership(String userId) {
         return sqlSession.selectOne("selectExistUsingMembership", userId);
     }
+
 }

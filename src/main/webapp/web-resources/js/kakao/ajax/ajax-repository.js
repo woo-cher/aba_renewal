@@ -479,9 +479,9 @@ function createPayment(payment) {
     return result;
 }
 
-function createMembership(packageId) {
+function createMembership(productId) {
     $.ajax({
-        url: '/apis/users/purchase?packageId=' + packageId,
+        url: '/apis/users/purchase?productId=' + productId,
         type: 'GET',
         async: false,
         contentType: 'application/json',

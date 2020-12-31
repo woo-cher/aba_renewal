@@ -64,11 +64,11 @@ public class UserApi {
     }
 
     @RequestMapping(value = "/purchase", method = RequestMethod.GET)
-    public void purchase(@RequestParam int packageId, HttpServletRequest request) {
+    public void purchase(@RequestParam int productId, HttpServletRequest request) {
         HttpSession session = request.getSession();
         User sessionUser = (User) SessionUtils.getObjectValue(session, "sessionUser");
 
-        userService.purchasePackage(sessionUser, packageId);
+        userService.purchaseProduct(sessionUser, productId);
 
         // Update SessionUser's point & role
         sessionUser = userService.findByUserId(sessionUser.getUserId());

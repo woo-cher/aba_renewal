@@ -5,11 +5,18 @@
     <resultMap id="pointHistory" type="PointHistory">
         <id property="id" column="id" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
-        <association property="user" column="user_id" javaType="User" select="findUserById" />
-        <association property="package" column="package_id" javaType="Package" select="selectPackage" />
+        <association property="user" column="user_id" javaType="User">
+            <id property="userId" column="user_id" />
+        </association>
+        <association property="product" column="product_id" javaType="Product">
+            <id property="id" column="id" />
+            <result property="name" column="name" />
+            <result property="price" column="price" />
+            <result property="period" column="period" />
+        </association>
     </resultMap>
 
     <insert id="insertPointHistory" parameterType="pointHistory">
-        INSERT INTO point_histories VALUES (NULL, #{user.userId}, #{abaPackage.id}, current_timestamp)
+        INSERT INTO point_histories VALUES (NULL, #{user.userId}, #{product.id}, current_timestamp)
     </insert>
 </mapper>
