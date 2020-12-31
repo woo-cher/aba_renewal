@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.junit.Assert.*;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
@@ -21,10 +23,10 @@ public class MembershipTest {
     private ProductRepository packageRepository;
 
     @Test
-    public void isExistUsingMembership() {
+    public void recentlyPurchase() {
         String userId = UserTest.TEST_USER.getUserId();
 
-        log.info("2 : {}", membershipRepository.isExistUsingMembership("test").getProduct());
+        assertNull(membershipRepository.selectRecentlyPurchase(userId).getProduct());
     }
 
     @Test

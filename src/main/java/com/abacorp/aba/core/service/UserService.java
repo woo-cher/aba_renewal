@@ -157,7 +157,7 @@ public class UserService implements UserDetailsService {
         Product dbProduct = packageRepository.selectProductById(productId);
         log.info("Selected Product object : {}", dbProduct);
 
-        Membership usingMembership = membershipRepository.isExistUsingMembership(sessionUser.getUserId());
+        Membership usingMembership = membershipRepository.selectRecentlyPurchase(sessionUser.getUserId());
         boolean isExistUsingMembership = usingMembership != null;
 
         log.info("Is membership user ? : {}", isExistUsingMembership);

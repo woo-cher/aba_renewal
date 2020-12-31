@@ -25,13 +25,15 @@ public class MembershipRepository {
         return sqlSession.update("createExpiredEventScheduler", map);
     }
 
+    public Membership selectRecentlyPurchase(String userId) {
+        return sqlSession.selectOne("selectRecentlyPurchaseMemberShip", userId);
+    }
+
+    public Membership selectUsingMembership(String userId) {
+        return sqlSession.selectOne("selectUsingMemberShip", userId);
+    }
+
     public int updateExpiredMemebershipEvent(Map<String, Object> map) {
         return sqlSession.update("updateExpiredEventScheduler", map);
     }
-
-    // 가장 최근 것으로 갖고 옴
-    public Membership isExistUsingMembership(String userId) {
-        return sqlSession.selectOne("selectExistUsingMembership", userId);
-    }
-
 }

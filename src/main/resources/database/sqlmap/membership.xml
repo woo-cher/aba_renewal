@@ -20,7 +20,12 @@
         <result property="period" column="period" />
     </resultMap>
 
-    <select id="selectExistUsingMembership" parameterType="java.lang.String" resultMap="membership">
+    <select id="selectUsingMemberShip" parameterType="java.lang.String" resultMap="membership">
+        SELECT * FROM memberships
+        WHERE expired_at > CURRENT_TIME AND user_id = #{userId} LIMIT 1
+    </select>
+
+    <select id="selectRecentlyPurchaseMemberShip" parameterType="java.lang.String" resultMap="membership">
         SELECT * FROM memberships
         WHERE expired_at > CURRENT_TIME AND user_id = #{userId}
         ORDER BY expired_at DESC LIMIT 1
