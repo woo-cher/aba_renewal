@@ -12,10 +12,8 @@ import lombok.*;
 @ToString
 public class UserFilterDto {
     private String[] userTypes;
+    private String[] roles;
 
     @Builder.Default
     private int page = 1;
-
-    @JsonProperty
-    private boolean isPay;
 }

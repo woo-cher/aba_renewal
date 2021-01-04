@@ -32,14 +32,14 @@
             <p class="f-row">결제여부</p>
             <ul class="checkbox-container txt-sm p-1 w-max">
                 <li class="checkbox-list">
-                    <input id="none-payment" type="checkbox" name="" value="" class="check">
-                    <label for="none-payment" onclick="serviceNotYet(event)">
+                    <input id="none-payment" type="checkbox" name="roles" value="USER" class="check">
+                    <label for="none-payment" onclick="updateDtoModel($(this).prev())">
                         비결제회원
                     </label>
                 </li>
                 <li class="checkbox-list">
-                    <input id="payment" type="checkbox" name="" value="" class="check">
-                    <label for="payment" onclick="serviceNotYet(event)">
+                    <input id="payment" type="checkbox" name="roles" value="PREMIUM" class="check">
+                    <label for="payment" onclick="updateDtoModel($(this).prev())">
                         결제회원
                     </label>
                 </li>
@@ -68,7 +68,7 @@
 <script>
     let userFilterDto = {
         userTypes: [],
-        isPay: false,
+        roles: [],
         page: Number(1)
     };
 
@@ -81,7 +81,7 @@
                     userFilterDto['userTypes'] = [];
                     break;
                 case 'user-pay':
-                    userFilterDto['isPay'] = false;
+                    userFilterDto['roles'] = [];
                     break;
             }
 
@@ -105,7 +105,7 @@
             userFilterDto[key] = focus.val();
         }
 
-        console.log(userFilterDto)
+        console.log(userFilterDto);
 
         doFiltering();
     }

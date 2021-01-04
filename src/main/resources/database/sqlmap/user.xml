@@ -17,6 +17,13 @@
             </foreach>
             )
         </if>
+        <if test="roles.length != 0">
+            AND (
+            <foreach collection="roles" item="role" index="i">
+                role = #{role} <if test="i != roles.length - 1">OR</if>
+            </foreach>
+            )
+        </if>
     </sql>
 
     <select id="createUser" parameterType="user">
