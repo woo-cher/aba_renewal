@@ -179,7 +179,7 @@
                                 onclick="window.open('/offers/form?offerId=${'${offer.id}'}', '', 'width=1400, height=950, top=30, left=250')">
                             </i>
                             <i class="fas fa-trash-alt" title="매물 삭제하기"
-                               onclick="dialogInitializer($(this), $('#offer-dialog'), $('.offer${'${offer.id}'}').text(), ${'${offer.id}'})"
+                               onclick="dialogInitializer($('#offer-dialog'), $('.offer${'${offer.id}'}').text(), ${'${offer.id}'})"
                             >
                             </i>
                         </span>
