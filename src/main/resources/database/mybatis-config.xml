@@ -26,6 +26,8 @@
 		<typeAlias alias="Payment" type="com.abacorp.aba.model.Payment" />
 		<typeAlias alias="PointHistory" type="com.abacorp.aba.model.PointHistory" />
 		<typeAlias alias="Membership" type="com.abacorp.aba.model.Membership" />
+
+		<typeAlias alias="Membership" type="com.abacorp.aba.model.TemporaryAbaOffer" />
 	</typeAliases>
 
 	<typeHandlers>

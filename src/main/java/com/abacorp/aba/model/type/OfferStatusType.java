@@ -13,7 +13,7 @@ public enum OfferStatusType implements TypeMapper {
      * 거래 유형
      */
     ON("진행중"),
-    OFF("미진행"),
+    OFF("판매/계약완료"),
     HIDE("숨김");
 
     private String value;

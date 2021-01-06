@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MAPPER 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="model.TemporaryAbaOffer">
+
+    <!-- Mapper -->
+    <resultMap id="abaOffer" type="TemporaryAbaOffer">
+        <id property="id" column="l_number" />
+        <result property="si" column="area2" />
+        <result property="dou" column="area1" />
+        <result property="dong" column="addr" />
+        <result property="jibunAddr" column="addr2" />
+        <result property="roadName" column="juso1" />
+        <result property="roadNum" column="juso2" />
+
+        <result property="tel" column="m_phone" /> <!-- 연락처 -->
+        <result property="memo" column="remark_memo" /> <!-- 관리자 메모 -->
+        <result property="building" column="jibun_addr_etc" /> <!-- 건물명 -->
+        <result property="pyeong" column="pyeong" /> <!-- 평수 -->
+
+        <result property="statusCode" column="etc2" /> <!-- ( 0: 진행 / 1: 계약완료 / 2: 숨김 ) -->
+
+        <result property="heatingType" column="hot" /> <!-- 난방유형 -->
+        <result property="hitMethod" column="input4" /> <!-- 난방방식 -->
+
+        <result property="checkDate" column="date" /> <!-- 확인일자 -->
+
+        <result property="near" column="input1" /> <!-- 부근위치 -->
+
+        <result property="enter" column="extra4" /> <!-- 입구번호 -->
+        <result property="addedInfo" column="extra6" /> <!-- 부가적인 정보... -->
+        <result property="completionYear" column="extra8" /> <!-- 준공년도 -->
+        <result property="tenant" column="extra11" /> <!-- 세입자 -->
+        <result property="room" column="extra13" /> <!-- 호실암호 -->
+        <result property="pet" column="extra14" />
+
+        <result property="offerTypeCode" column="gubun" />
+
+        <result property="latitude" column="x_point" />
+        <result property="longitude" column="y_point" />
+
+        <result property="options" column="bd_option1" />
+        <result property="managementCategories" column="bd_option2" />
+
+        <result property="salePrice" column="price1" /> <!-- 매매가 -->
+        <result property="deposit" column="price2" /> <!-- 보증금 -->
+        <result property="monthly" column="price3" /> <!-- 월세 또는 월 임대료 -->
+        <result property="manageOrProfit" column="price5" /> <!-- 관리비 또는 수익 -->
+
+        <result property="img1" column="img1" />
+        <result property="img2" column="img2" />
+        <result property="img3" column="img3" />
+        <result property="img4" column="img4" />
+        <result property="img5" column="img5" />
+        <result property="img6" column="img6" />
+        <result property="img7" column="img7" />
+        <result property="img8" column="img8" />
+        <result property="img9" column="img9" />
+        <result property="img10" column="img10" />
+        <result property="img11" column="img11" />
+        <result property="img12" column="img12" />
+        <result property="img13" column="img13" />
+        <result property="img14" column="img14" />
+        <result property="img15" column="img15" />
+        <result property="img16" column="img16" />
+        <result property="img17" column="img17" />
+        <result property="img18" column="img18" />
+        <result property="img19" column="img19" />
+        <result property="img20" column="img20" />
+    </resultMap>
+</mapper>
