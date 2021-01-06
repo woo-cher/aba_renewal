@@ -1,6 +1,7 @@
 package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -38,6 +39,16 @@ public enum OptionType implements TypeMapper {
     @Override
     public String getCode() {
         return name();
+    }
+
+    @JsonCreator
+    public static OptionType createWithValue(String value) {
+        for (OptionType optionType : values()) {
+            if (optionType.getValue().equals(value)) {
+                return optionType;
+            }
+        }
+        return UNKNOWN;
     }
 
     @Override

@@ -16,6 +16,7 @@
         <result property="status" column="status" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+        <result property="adminMemo" column="admin_memo" />
         <result property="description" column="description" />
         <result property="thumbnail" column="thumbnail" />
         <association property="user" resultMap="user" />
@@ -175,10 +176,10 @@
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
-            completion_year, description, created_at, updated_at
+            completion_year, admin_memo, description, created_at, updated_at
         ) VALUES (
             #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, 'ON', #{user.userId},
-            #{completionYear}, #{description}, current_timestamp, current_timestamp
+            #{completionYear}, null, #{description}, current_timestamp, current_timestamp
         )
     </insert>
 

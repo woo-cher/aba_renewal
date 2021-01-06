@@ -1,6 +1,7 @@
 package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -31,6 +32,16 @@ public enum ManagementCategoryType implements TypeMapper {
     @Override
     public String getCode() {
         return name();
+    }
+
+    @JsonCreator
+    public static ManagementCategoryType createWithValue(String value) {
+        for (ManagementCategoryType category : values()) {
+            if (category.getValue().equals(value)) {
+                return category;
+            }
+        }
+        return UNKNOWN;
     }
 
     @Override

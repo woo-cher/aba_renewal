@@ -35,6 +35,7 @@ public class Offer extends ModelMapper {
     private HeatingType heatingType;
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;
+    private String adminMemo;
     private String description;
     private String thumbnail;
     private List<MultipartFile> files;
@@ -45,4 +46,7 @@ public class Offer extends ModelMapper {
     @Valid
     @JsonProperty("offerAddress")
     private OfferAddress offerAddress;
+
+    // For Transfer `AbaOffer` to `renewal Offer`
+    private String temporaryImages;
 }

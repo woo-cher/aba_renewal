@@ -22,7 +22,7 @@
         <result property="heatingType" column="hot" /> <!-- 난방유형 -->
         <result property="hitMethod" column="input4" /> <!-- 난방방식 -->
 
-        <result property="checkDate" column="date" /> <!-- 확인일자 -->
+        <result property="checkDate" column="date" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler"/> <!-- 확인일자 -->
 
         <result property="near" column="input1" /> <!-- 부근위치 -->
 
@@ -46,25 +46,28 @@
         <result property="monthly" column="price3" /> <!-- 월세 또는 월 임대료 -->
         <result property="manageOrProfit" column="price5" /> <!-- 관리비 또는 수익 -->
 
-        <result property="img1" column="img1" />
-        <result property="img2" column="img2" />
-        <result property="img3" column="img3" />
-        <result property="img4" column="img4" />
-        <result property="img5" column="img5" />
-        <result property="img6" column="img6" />
-        <result property="img7" column="img7" />
-        <result property="img8" column="img8" />
-        <result property="img9" column="img9" />
-        <result property="img10" column="img10" />
-        <result property="img11" column="img11" />
-        <result property="img12" column="img12" />
-        <result property="img13" column="img13" />
-        <result property="img14" column="img14" />
-        <result property="img15" column="img15" />
-        <result property="img16" column="img16" />
-        <result property="img17" column="img17" />
-        <result property="img18" column="img18" />
-        <result property="img19" column="img19" />
-        <result property="img20" column="img20" />
+        <collection property="images" column="l_number" javaType="java.lang.String" select="selectImagesOffer" />
     </resultMap>
+
+    <select id="selectAbaOffers" resultMap="abaOffer">
+        SELECT * FROM t_boodong WHERE del_yn = 'N' AND gubun != (10 OR 11 OR 54 OR 55 OR 56 OR 59 OR 60) AND l_number = 1;
+    </select>
+
+    <select id="selectImagesOffer" resultType="java.lang.String">
+        SELECT CONCAT(
+                       img1,
+                       IF(img2 != '', CONCAT(",", img2), ''),
+                       IF(img3 != '', CONCAT(",", img3), ''),
+                       IF(img4 != '', CONCAT(",", img4), ''),
+                       IF(img5 != '', CONCAT(",", img5), ''),
+                       IF(img6 != '', CONCAT(",", img6), ''),
+                       IF(img7 != '', CONCAT(",", img7), ''),
+                       IF(img8 != '', CONCAT(",", img8), ''),
+                       IF(img9 != '', CONCAT(",", img9), ''),
+                       IF(img10 != '', CONCAT(",", img10), ''),
+                       IF(img11 != '', CONCAT(",", img11), ''),
+                       IF(img12 != '', CONCAT(",", img12), '')
+               ) AS "images"
+        FROM t_boodong WHERE l_number = #{id}
+    </select>
 </mapper>
