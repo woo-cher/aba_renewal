@@ -161,7 +161,10 @@ public class UserService implements UserDetailsService {
         boolean isExistUsingMembership = usingMembership != null;
 
         log.info("Is membership user ? : {}", isExistUsingMembership);
-        log.info("Recently product : {}", usingMembership.getProduct());
+
+        if(usingMembership != null) {
+            log.info("Recently product : {}", usingMembership.getProduct());
+        }
 
         // Insert membership
         Membership membership = Membership.builder()
