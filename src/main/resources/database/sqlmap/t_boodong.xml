@@ -5,9 +5,11 @@
     <!-- Mapper -->
     <resultMap id="abaOffer" type="TemporaryAbaOffer">
         <id property="id" column="l_number" />
+
+        <result property="title" column="title" />
         <result property="si" column="area2" />
         <result property="dou" column="area1" />
-        <result property="dong" column="addr" />
+        <result property="dongArea" column="addr" />
         <result property="jibunAddr" column="addr2" />
         <result property="roadName" column="juso1" />
         <result property="roadNum" column="juso2" />
@@ -28,10 +30,16 @@
 
         <result property="enter" column="extra4" /> <!-- 입구번호 -->
         <result property="addedInfo" column="extra6" /> <!-- 부가적인 정보... -->
+        <result property="aptTerm" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ) -->
         <result property="completionYear" column="extra8" /> <!-- 준공년도 -->
+        <result property="expand" column="extra9" /> <!-- 확장여부 : 원룸일때는 이필드가 비어있다 -->
+        <result property="term" column="extra10" /> <!-- 즉시입주일 또는 단기여부 -->
         <result property="tenant" column="extra11" /> <!-- 세입자 -->
+        <result property="dong" column="dong" /> <!-- 동 -->
+        <result property="ho" column="extra12" /> <!-- 호 -->
         <result property="room" column="extra13" /> <!-- 호실암호 -->
         <result property="pet" column="extra14" />
+        <result property="parking" column="extra15" />
 
         <result property="offerTypeCode" column="gubun" />
 

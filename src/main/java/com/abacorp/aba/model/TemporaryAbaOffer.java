@@ -14,9 +14,11 @@ import java.util.List;
 @ToString
 public class TemporaryAbaOffer {
     private int id;                 // 매물번호
+    private String title;           // 기존 제목
+
     private String si;
     private String dou;
-    private String dong;
+    private String dongArea;
     private String jibunAddr;
     private String roadName;
     private String roadNum;
@@ -33,11 +35,17 @@ public class TemporaryAbaOffer {
 
     private String near;
     private String enter;
+    private String aptTerm;
     private String addedInfo;
     private String completionYear;
+    private String expand;
+    private String term;
+    private String dong;
+    private String ho;
     private String tenant;
     private String room;
     private String pet;
+    private String parking;
 
     private String offerTypeCode;
     private String latitude;
