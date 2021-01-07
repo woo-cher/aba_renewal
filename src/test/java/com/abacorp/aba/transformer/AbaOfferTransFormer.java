@@ -1,9 +1,7 @@
 package com.abacorp.aba.transformer;
 
 import com.abacorp.aba.core.repository.TransformerRepository;
-import com.abacorp.aba.model.OfferAddition;
-import com.abacorp.aba.model.OfferAddress;
-import com.abacorp.aba.model.TemporaryAbaOffer;
+import com.abacorp.aba.model.*;
 import com.abacorp.aba.model.mapper.TypeMapper;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
@@ -31,6 +29,24 @@ public class AbaOfferTransFormer {
     public void finalTransformer() {
         TemporaryAbaOffer mock = repository.selectAbaOffers().get(0);
 
+        // null 로 처리 하는 부분 로직 짜야한다.
+        Offer offer = Offer.builder()
+                .user(User.builder().userId("test").build())
+                .deposit(mock.getDeposit())
+                .monthlyPrice(mock.getMonthly())
+                .managementPrice(mock.getManageOrProfit())
+                .completionYear(mock.getCompletionYear())
+                .type(null)
+                .dealType(null)
+                .heatingType(null)
+                .heatingMethodType(null)
+                .status(null)
+                .adminMemo(mock.getAdminMemo())
+                .description(null) // <p> ... desc ... </p>
+                .thumbnail(null)
+                .temporaryImages(mock.getImages())
+                .build();
+
         OfferAddress offerAddress = OfferAddress.builder()
                 .offerId(mock.getId())
                 .latitude(mock.getLatitude())
@@ -40,6 +56,11 @@ public class AbaOfferTransFormer {
                 .road(transferRoad(mock))
                 .dong(getDongIfExist(mock))
                 .ho(mock.getHo())
+                .entrance(mock.getEnter())
+                .door(mock.getRoom())
+                .floor(null)
+                .nearLocation(mock.getNear())
+                .belongsTo(transferBelongsTo(mock))
                 .build(); // plus
 
         OfferAddition offerAddition = OfferAddition.builder()
@@ -73,14 +94,29 @@ public class AbaOfferTransFormer {
         log.info("road : {}", transferRoad(mock));
     }
 
+    /**
+     * Utils
+     */
     private String transferJibun(TemporaryAbaOffer abaOffer) {
-        return Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDongArea(), abaOffer.getJibunAddr())
-                .map((str) -> str.replace("경상남도", "경남"))
-                .collect(Collectors.joining(" "));
+        return filteringAndJoining(
+                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDongArea(), abaOffer.getJibunAddr())
+        );
     }
 
     private String transferRoad(TemporaryAbaOffer abaOffer) {
-        return Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getRoadName(), abaOffer.getRoadNum())
+        return filteringAndJoining(
+                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getRoadName(), abaOffer.getRoadNum())
+        );
+    }
+
+    private String transferBelongsTo(TemporaryAbaOffer abaOffer) {
+        return filteringAndJoining(
+                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDong())
+        );
+    }
+
+    private String filteringAndJoining(Stream<String> stream) {
+        return stream
                 .map((str) -> str.replace("경상남도", "경남"))
                 .collect(Collectors.joining(" "));
     }
@@ -114,13 +150,11 @@ public class AbaOfferTransFormer {
     private String getBuildingNameAtTitle(TemporaryAbaOffer abaOffer) {
         String abaTitle = abaOffer.getTitle();
         String result = abaTitle.replaceAll("^.*\\w", "").trim();
-
         return result.length() == 0 ? null : result;
     }
 
     private String getDongIfExist(TemporaryAbaOffer abaOffer) {
         String dong = abaOffer.getDong();
-
         return dong.length() == 0 ? null : dong;
     }
 }

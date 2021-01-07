@@ -23,7 +23,8 @@ public class TemporaryAbaOffer {
     private String roadName;
     private String roadNum;
     private String tel;
-    private String memo;
+    private String description;
+    private String adminMemo;
     private String building;
     private String pyeong;
 

@@ -15,7 +15,8 @@
         <result property="roadNum" column="juso2" />
 
         <result property="tel" column="m_phone" /> <!-- 연락처 -->
-        <result property="memo" column="remark_memo" /> <!-- 관리자 메모 -->
+        <result property="description" column="remark" /> <!-- 사용자 메모 (절충가능 / 기타 추가설명) -->
+        <result property="adminMemo" column="remark_memo" /> <!-- 관리자 메모 -->
         <result property="building" column="jibun_addr_etc" /> <!-- 건물명 -->
         <result property="pyeong" column="pyeong" /> <!-- 평수 -->
 
