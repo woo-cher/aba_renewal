@@ -52,6 +52,8 @@ public enum OfferType implements TypeMapper {
     }
 
     public static OfferType createWhenContainsValue(String value) {
+        if (value.equals(""))
+            return null;
         for (OfferType offerType : values()) {
             if (value.contains(offerType.getValue())) {
                 return offerType;

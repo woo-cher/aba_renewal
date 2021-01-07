@@ -46,8 +46,9 @@ public enum OfferStatusType implements TypeMapper {
     }
 
     public static OfferStatusType createWhenContainsValue(String value) {
+        if (value.equals(""))
+            return null;
         for (OfferStatusType statusType : values()) {
-            log.info("{}, {}, {}", value, statusType.getValue(), value.contains(statusType.getValue()));
             if (value.contains(statusType.getValue())) {
                 return statusType;
             }

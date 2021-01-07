@@ -75,9 +75,10 @@ public class AbaOfferTransFormer {
 
     @Test
     public void transferType() throws IOException, ParseException {
-        log.info("OfferType : {}", OfferType.createWhenContainsValue(gubun.get("1").toString()));
+        log.info("OfferType : {}", OfferType.createWhenContainsValue(gubun.get("61").toString()));
         log.info("DealType : {}", DealType.createWhenContainsValue(etc1.get("1").toString()));
         log.info("StatusType : {}", OfferStatusType.createWhenContainsValue(etc2.get("1").toString()));
+        log.info("HeatingType : {}", HeatingType.createWhenContainsValue("LPG"));
     }
 
     @Test

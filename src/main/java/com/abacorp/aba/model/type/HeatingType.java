@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum HeatingType implements TypeMapper {
 
-    UNKOWN("UNKOWN"),
+    UNKNOWN("UNKNOWN"),
 
     /**
      * 난방유형
@@ -31,6 +31,17 @@ public enum HeatingType implements TypeMapper {
     @Override
     public String getCode() {
         return name();
+    }
+
+    public static HeatingType createWhenContainsValue(String value) {
+        if (value.equals("") || value.equals("기타"))
+            return null;
+        for (HeatingType heatingType : values()) {
+            if (value.contains(heatingType.getValue())) {
+                return heatingType;
+            }
+        }
+        return UNKNOWN;
     }
 
     @Override

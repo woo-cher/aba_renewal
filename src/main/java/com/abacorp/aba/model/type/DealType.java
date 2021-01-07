@@ -32,6 +32,8 @@ public enum DealType implements TypeMapper {
     }
 
     public static DealType createWhenContainsValue(String value) {
+        if (value.equals(""))
+            return null;
         for (DealType dealType : values()) {
             if (value.contains(dealType.getValue())) {
                 return dealType;
