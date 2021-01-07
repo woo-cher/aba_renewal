@@ -1,4 +1,4 @@
-package com.abacorp.aba;
+package com.abacorp.aba.transformer;
 
 import com.abacorp.aba.core.repository.TransformerRepository;
 import com.abacorp.aba.model.OfferAddition;
@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class TransferAbaOffers {
+public class AbaOfferTransFormer {
 
     @Autowired
     private TransformerRepository repository;
