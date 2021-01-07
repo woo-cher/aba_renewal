@@ -3,20 +3,54 @@ package com.abacorp.aba.transformer;
 import com.abacorp.aba.core.repository.TransformerRepository;
 import com.abacorp.aba.model.*;
 import com.abacorp.aba.model.mapper.TypeMapper;
-import com.abacorp.aba.model.type.ManagementCategoryType;
-import com.abacorp.aba.model.type.OptionType;
+import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ *  For transfer {@link TemporaryAbaOffer} to ${@link Offer} {@link OfferAddress} {@link OfferAddition}
+ *
+ *  NOTE) 아바 매물 유형
+ *      field: gubun {
+ *          "1": "아파트", "2": "주택", "3": "원룸", "4": "오피스텔", "5": "상가", "6": "건물", "7": "사무실",
+ *          "57": "주택/단독", "58": "주택/상가", "59": "주택/전원주택", "60": "주택/빌라|연립", "61": "원룸/방",
+ *          "65": "건물/원룸", "66": "건물/상가", "67": "건물/숙박|콘도", "75": "투.쓰리룸"
+ *      }
+ *
+ *   NOTE) 아바 거래 유형
+ *      field: etc1 {
+ *          "1": "매매", "2": "전세", "3": "월세", "4": "임대"
+ *      }
+ *      * 임대 데이터가 없긴 하다
+ *
+ *   NOTE) 아바 매물 상태
+ *      field: etc2 {
+ *          "0": "진행", "1": "계약완료", "2": "숨김"
+ *      }
+ *
+ * TODO) 위 3개 필드와 리뉴얼에서 제공하는 아래 3개 타입 형태와 일치시켜 값을 대입해야 함
+ *
+ * @see com.abacorp.aba.model.type.OfferType
+ * @see com.abacorp.aba.model.type.DealType
+ * @see com.abacorp.aba.model.type.OfferStatusType
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
@@ -24,6 +58,27 @@ public class AbaOfferTransFormer {
 
     @Autowired
     private TransformerRepository repository;
+
+    private JSONObject gubun;
+    private JSONObject etc1;
+    private JSONObject etc2;
+
+    @Before
+    public void setup() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        JSONObject abaType = (JSONObject) parser.parse(new FileReader("aba-type.json"));
+
+        this.gubun = (JSONObject) abaType.get("gubun");
+        this.etc1 = (JSONObject) abaType.get("etc1");
+        this.etc2 = (JSONObject) abaType.get("etc2");
+    }
+
+    @Test
+    public void transferType() throws IOException, ParseException {
+        log.info("OfferType : {}", OfferType.createWhenContainsValue(gubun.get("1").toString()));
+        log.info("DealType : {}", DealType.createWhenContainsValue(etc1.get("1").toString()));
+        log.info("StatusType : {}", OfferStatusType.createWhenContainsValue(etc2.get("1").toString()));
+    }
 
     @Test
     public void finalTransformer() {

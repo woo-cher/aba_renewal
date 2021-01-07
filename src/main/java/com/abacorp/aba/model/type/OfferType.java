@@ -4,8 +4,10 @@ import com.abacorp.aba.model.mapper.TypeMapper;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@Slf4j
 public enum OfferType implements TypeMapper {
 
     UNKNOWN("UNKNOWN"),
@@ -43,6 +45,15 @@ public enum OfferType implements TypeMapper {
     public static OfferType create(String code) {
         for (OfferType offerType : values()) {
             if (offerType.getCode().equals(code)) {
+                return offerType;
+            }
+        }
+        return UNKNOWN;
+    }
+
+    public static OfferType createWhenContainsValue(String value) {
+        for (OfferType offerType : values()) {
+            if (value.contains(offerType.getValue())) {
                 return offerType;
             }
         }

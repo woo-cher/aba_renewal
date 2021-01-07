@@ -21,6 +21,8 @@
         <result property="pyeong" column="pyeong" /> <!-- 평수 -->
 
         <result property="statusCode" column="etc2" /> <!-- ( 0: 진행 / 1: 계약완료 / 2: 숨김 ) -->
+        <result property="offerTypeCode" column="gubun" />
+        <result property="dealTypeCode" column="etc1" />
 
         <result property="heatingType" column="hot" /> <!-- 난방유형 -->
         <result property="hitMethod" column="input4" /> <!-- 난방방식 -->
@@ -41,8 +43,6 @@
         <result property="room" column="extra13" /> <!-- 호실암호 -->
         <result property="pet" column="extra14" />
         <result property="parking" column="extra15" />
-
-        <result property="offerTypeCode" column="gubun" />
 
         <result property="latitude" column="x_point" />
         <result property="longitude" column="y_point" />

@@ -5,11 +5,16 @@ import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.model.type.UserRoleType;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.springframework.util.DigestUtils;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -72,5 +77,14 @@ public class BasicTest {
         result = jibun2.replaceAll(regex, "");
         result = result.substring(0, result.length() - 1);
         log.info("result2 and size : {}, {}", result, result.length());
+    }
+
+    @Test
+    public void jsonRead() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        JSONObject abaType = (JSONObject) parser.parse(new FileReader("aba-type.json"));
+
+        JSONObject gubun = (JSONObject) abaType.get("gubun");
+        log.info("하위 : {}", gubun.get("61"));
     }
 }

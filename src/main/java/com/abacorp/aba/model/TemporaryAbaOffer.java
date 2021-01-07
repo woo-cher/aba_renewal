@@ -29,6 +29,9 @@ public class TemporaryAbaOffer {
     private String pyeong;
 
     private String statusCode;
+    private String offerTypeCode;
+    private String dealTypeCode;
+
     private String heatingType;
     private String hitMethod;
 
@@ -48,7 +51,6 @@ public class TemporaryAbaOffer {
     private String pet;
     private String parking;
 
-    private String offerTypeCode;
     private String latitude;
     private String longitude;
 

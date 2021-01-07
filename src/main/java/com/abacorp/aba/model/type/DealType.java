@@ -31,6 +31,15 @@ public enum DealType implements TypeMapper {
         return name();
     }
 
+    public static DealType createWhenContainsValue(String value) {
+        for (DealType dealType : values()) {
+            if (value.contains(dealType.getValue())) {
+                return dealType;
+            }
+        }
+        return UNKNOWN;
+    }
+
     @Override
     public String toString() {
         return "DealType {" +
