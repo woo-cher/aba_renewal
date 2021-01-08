@@ -218,7 +218,7 @@ class MapModule {
                             </div>
                             <p class="offer-tel">
                                 <i class="fas fa-phone-square-alt"></i>
-                                &nbsp;${isPremium ? offer.user.phone : '***-****-****'}
+                                &nbsp;${isPremium ? offer.inquiryTel : '***-****-****'}
                             </p>
                         </div>
                     </li>

@@ -8,6 +8,7 @@
         <result property="deposit" column="deposit" />
         <result property="monthlyPrice" column="monthly_price" />
         <result property="managementPrice" column="management_price" />
+        <result property="inquiryTel" column="inquiry_tel" />
         <result property="completionYear" column="completion_year" />
         <result property="type" column="type" />
         <result property="dealType" column="deal_type" />
@@ -176,10 +177,10 @@
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
-            completion_year, admin_memo, description, created_at, updated_at
+            inquiry_tel, completion_year, admin_memo, description, created_at, updated_at
         ) VALUES (
-            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, 'ON', #{user.userId},
-            #{completionYear}, null, #{description}, current_timestamp, current_timestamp
+            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, #{status}, #{user.userId},
+            #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, current_timestamp, current_timestamp
         )
     </insert>
 

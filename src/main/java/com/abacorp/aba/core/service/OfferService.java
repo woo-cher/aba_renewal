@@ -109,9 +109,13 @@ public class OfferService {
     }
 
     private String getThumbnailPath(Offer offer) {
+        String thumbnail = offer.getThumbnail();
+        if (thumbnail.isEmpty()) {
+            return "ABA_LOGO.png";
+        }
+
         String sId = String.valueOf(offer.getId());
         String thumbPrefix = awsS3Service.getMd5Hash(sId);
-        String thumbnail = offer.getThumbnail();
 
         if (thumbnail.contains("png") || thumbnail.contains("jpeg") || thumbnail.contains("jpg")) {
             thumbnail = awsS3Service.getMd5Hash(offer.getThumbnail());
