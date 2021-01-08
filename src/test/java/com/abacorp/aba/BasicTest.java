@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import javax.lang.model.element.Element;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -86,5 +87,16 @@ public class BasicTest {
 
         JSONObject gubun = (JSONObject) abaType.get("gubun");
         log.info("하위 : {}", gubun.get("61"));
+    }
+
+    @Test
+    public void extractTextAtHtmlStr() {
+        String regex = "(<p><span style=\"font-size:.?28px;\">|</span></p>)";
+
+        String str1 = "<p><span style=\"font-size: 28px;\">2년계약 조건입니다.</span></p>";
+        String str2 = "<p><span style=\"font-size:28px;\">외국인 안됩니다.</span></p>";
+
+        System.out.println(str1.replaceAll(regex, ""));
+        System.out.println(str2.replaceAll(regex, ""));
     }
 }

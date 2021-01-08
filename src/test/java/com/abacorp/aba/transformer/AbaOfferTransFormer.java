@@ -104,7 +104,7 @@ public class AbaOfferTransFormer {
                 .ho(mock.getHo())
                 .entrance(mock.getEnter())
                 .door(mock.getRoom())
-                .floor(null)
+                .floor(getFloorIfRooftopOrSemibasement(mock.getHo())) // 만약 ho 정보에 옥탑이나 반지하면?
                 .nearLocation(mock.getNear())
                 .belongsTo(transferBelongsTo(mock))
                 .build(); // plus
@@ -122,10 +122,11 @@ public class AbaOfferTransFormer {
 
         // null 로 처리 하는 부분 로직 짜야한다.
         Offer offer = Offer.builder()
-                .user(User.builder().userId("test").phone(mock.getTel()).build())
+                .user(User.builder().userId("test").build())
                 .deposit(mock.getDeposit())
                 .monthlyPrice(mock.getMonthly())
                 .managementPrice(mock.getManageOrProfit())
+                .inquiryTel(mock.getTel())
                 .completionYear(mock.getCompletionYear())
                 .type(OfferType.createWhenContainsValue(abaOfferType))
                 .dealType(DealType.createWhenContainsValue(abaDealType))
@@ -133,7 +134,7 @@ public class AbaOfferTransFormer {
                 .heatingMethodType(null)
                 .status(OfferStatusType.createWhenContainsValue(abaStatusType))
                 .adminMemo(mock.getAdminMemo())
-                .description(null) // <p> ... desc ... </p>
+                .description(mock.getDescription()) // <p> ... desc ... </p>
                 .thumbnail(null)
                 .temporaryImages(mock.getImages())
                 .build();
@@ -141,7 +142,6 @@ public class AbaOfferTransFormer {
         log.info("Offer: {}", offer);
         log.info("OfferAddress: {}", offerAddress);
         log.info("OfferAddition: {}", offerAddition);
-
     }
 
     @Test
@@ -226,5 +226,21 @@ public class AbaOfferTransFormer {
     private String getDongIfExist(TemporaryAbaOffer abaOffer) {
         String dong = abaOffer.getDong();
         return dong.length() == 0 ? null : dong;
+    }
+
+    private String getTextAtHtmlString(String htmlString) {
+        String regex = "(<p><span style=\"font-size:.?28px;\">|</span></p>)";
+
+        return htmlString.replaceAll(regex, "");
+    }
+
+    private String getFloorIfRooftopOrSemibasement(String ho) {
+        if (ho.contains("반지하")) {
+            return "-100";
+        } else if (ho.contains("옥탑")) {
+            return "100";
+        }
+
+        return null;
     }
 }
