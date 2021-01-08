@@ -1,5 +1,6 @@
 package com.abacorp.aba.transformer;
 
+import com.abacorp.aba.core.repository.OfferRepository;
 import com.abacorp.aba.core.repository.TransformerRepository;
 import com.abacorp.aba.model.*;
 import com.abacorp.aba.model.mapper.TypeMapper;
@@ -14,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -59,6 +61,9 @@ public class AbaOfferTransFormer {
     @Autowired
     private TransformerRepository repository;
 
+    @Autowired
+    private OfferRepository offerRepository;
+
     private JSONObject gubun;
     private JSONObject etc1;
     private JSONObject etc2;
@@ -82,26 +87,13 @@ public class AbaOfferTransFormer {
     }
 
     @Test
-    public void finalTransformer() {
+    @Transactional
+    public void oneRoomTransformer() {
         TemporaryAbaOffer mock = repository.selectAbaOffers().get(0);
 
-        // null 로 처리 하는 부분 로직 짜야한다.
-        Offer offer = Offer.builder()
-                .user(User.builder().userId("test").build())
-                .deposit(mock.getDeposit())
-                .monthlyPrice(mock.getMonthly())
-                .managementPrice(mock.getManageOrProfit())
-                .completionYear(mock.getCompletionYear())
-                .type(null)
-                .dealType(null)
-                .heatingType(null)
-                .heatingMethodType(null)
-                .status(null)
-                .adminMemo(mock.getAdminMemo())
-                .description(null) // <p> ... desc ... </p>
-                .thumbnail(null)
-                .temporaryImages(mock.getImages())
-                .build();
+        String abaOfferType = (String) gubun.get(mock.getOfferTypeCode());
+        String abaDealType = (String) etc1.get(mock.getDealTypeCode());
+        String abaStatusType = (String) etc2.get(mock.getStatusCode());
 
         OfferAddress offerAddress = OfferAddress.builder()
                 .offerId(mock.getId())
@@ -129,6 +121,29 @@ public class AbaOfferTransFormer {
                 .canParking(convertPossibleStatusToBool(mock.getPet()))
                 .canPet(convertPossibleStatusToBool(mock.getParking()))
                 .build();
+
+        // null 로 처리 하는 부분 로직 짜야한다.
+        Offer offer = Offer.builder()
+                .user(User.builder().userId("test").phone(mock.getTel()).build())
+                .deposit(mock.getDeposit())
+                .monthlyPrice(mock.getMonthly())
+                .managementPrice(mock.getManageOrProfit())
+                .completionYear(mock.getCompletionYear())
+                .type(OfferType.createWhenContainsValue(abaOfferType))
+                .dealType(DealType.createWhenContainsValue(abaDealType))
+                .heatingType(HeatingType.createWhenContainsValue(mock.getHeatingType()))
+                .heatingMethodType(null)
+                .status(OfferStatusType.createWhenContainsValue(abaStatusType))
+                .adminMemo(mock.getAdminMemo())
+                .description(null) // <p> ... desc ... </p>
+                .thumbnail(null)
+                .temporaryImages(mock.getImages())
+                .build();
+
+        log.info("Offer: {}", offer);
+        log.info("OfferAddress: {}", offerAddress);
+        log.info("OfferAddition: {}", offerAddition);
+
     }
 
     @Test
@@ -167,14 +182,15 @@ public class AbaOfferTransFormer {
 
     private String transferBelongsTo(TemporaryAbaOffer abaOffer) {
         return filteringAndJoining(
-                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDong())
+                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDongArea())
         );
     }
 
     private String filteringAndJoining(Stream<String> stream) {
         return stream
                 .map((str) -> str.replace("경상남도", "경남"))
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(" "))
+                .trim();
     }
 
     private <T extends TypeMapper> String transferOptionOrMcategory(TemporaryAbaOffer abaOffer, Class<T> clazz) {

@@ -12,7 +12,7 @@ public enum HeatingType implements TypeMapper {
      * 난방유형
      */
     GAS("도시가스"),
-    LPG("LPG"),
+    LPG("엘피지"),
     OIL("기름보일러"),
     ELECT("심야전기"),
     PANEL("판넬");
