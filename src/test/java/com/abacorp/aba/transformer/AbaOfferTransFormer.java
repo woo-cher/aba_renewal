@@ -17,12 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -79,7 +77,7 @@ public class AbaOfferTransFormer {
     }
 
     @Test
-    public void transferType() throws IOException, ParseException {
+    public void transferType() {
         log.info("OfferType : {}", OfferType.createWhenContainsValue(gubun.get("61").toString()));
         log.info("DealType : {}", DealType.createWhenContainsValue(etc1.get("1").toString()));
         log.info("StatusType : {}", OfferStatusType.createWhenContainsValue(etc2.get("1").toString()));

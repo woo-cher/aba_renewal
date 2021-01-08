@@ -177,10 +177,10 @@
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
-            inquiry_tel, completion_year, admin_memo, description, created_at, updated_at
+            inquiry_tel, completion_year, admin_memo, description, created_at, updated_at, aba_offer_id
         ) VALUES (
             #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, #{status}, #{user.userId},
-            #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, current_timestamp, current_timestamp
+            #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, current_timestamp, current_timestamp, #{abaOfferId}
         )
     </insert>
 

@@ -207,7 +207,7 @@ class MapModule {
                                 <strong>
                                     ${offer.type.value} |
                                     ${isPremium ? offer.offerAddress.floor === '-1' ? offer.offerAddress.ho :
-                                      offer.offerAddress.floor === '100' ? offer.offerAddress.ho : offer.offerAddress.ho + '호' : '*** 호'} |
+                                      offer.offerAddress.floor === '100' ? offer.offerAddress.ho : offer.offerAddress.ho : '*** 호'} |
                                     ${offer.heatingType.value}
                                 </strong>
                             </div>
