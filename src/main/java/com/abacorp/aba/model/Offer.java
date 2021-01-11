@@ -51,5 +51,5 @@ public class Offer extends ModelMapper {
 
     // For Transfer `AbaOffer` to `renewal Offer`
     private String temporaryImages;
-    private String abaOfferId;
+    private int abaOfferId;
 }

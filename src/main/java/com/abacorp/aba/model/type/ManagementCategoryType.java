@@ -16,7 +16,7 @@ public enum ManagementCategoryType implements TypeMapper {
     WASHING("인터넷"),
     REFRIGERATOR("유선방송"),
     GAS_STOVE("셋톱박스"),
-    INDUCTION("엘리베이터");
+    ELEVATOR("엘리베이터");
 
     private String value;
 

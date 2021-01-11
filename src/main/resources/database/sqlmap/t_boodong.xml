@@ -32,6 +32,7 @@
         <result property="near" column="input1" /> <!-- 부근위치 -->
 
         <result property="enter" column="extra4" /> <!-- 입구번호 -->
+        <result property="layer" column="extra5" /> <!-- 아파트 해당층 -->
         <result property="addedInfo" column="extra6" /> <!-- 부가적인 정보... -->
         <result property="aptTerm" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ) -->
         <result property="completionYear" column="extra8" /> <!-- 준공년도 -->

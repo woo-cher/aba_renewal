@@ -1,10 +1,8 @@
 package com.abacorp.aba.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.*;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 @Builder
@@ -39,6 +37,7 @@ public class TemporaryAbaOffer {
 
     private String near;
     private String enter;
+    private String layer;
     private String aptTerm;
     private String addedInfo;
     private String completionYear;
