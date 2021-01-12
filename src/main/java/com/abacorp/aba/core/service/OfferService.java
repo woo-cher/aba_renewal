@@ -1,14 +1,13 @@
 package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OfferRepository;
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
-import com.abacorp.aba.model.OfferAddress;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
+import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.FieldError;

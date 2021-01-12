@@ -1,6 +1,6 @@
 package com.abacorp.aba.core.repository;
 
-import com.abacorp.aba.model.OfferRequest;
+import com.abacorp.aba.model.offer.OfferRequest;
 import com.abacorp.aba.model.dto.RequestFilterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;

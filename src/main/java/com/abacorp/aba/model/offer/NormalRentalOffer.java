@@ -1,6 +1,8 @@
-package com.abacorp.aba.model;
+package com.abacorp.aba.model.offer;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotBlank;

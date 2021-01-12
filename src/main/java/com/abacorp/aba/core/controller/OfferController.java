@@ -5,7 +5,7 @@ import com.abacorp.aba.core.service.AwsS3Service;
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.core.service.OfferService;
 import com.abacorp.aba.core.utils.SessionUtils;
-import com.abacorp.aba.model.Offer;
+import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.type.*;
 import lombok.extern.slf4j.Slf4j;

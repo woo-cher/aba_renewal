@@ -1,4 +1,4 @@
-package com.abacorp.aba.model;
+package com.abacorp.aba.model.offer;
 
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
@@ -28,6 +28,7 @@ public class OfferAddition {
     private String term;
     @NotBlank(message = "세입자 정보를 알려주세요")
     private String tenant;
+    private String householdInfo; // 세대정보 (1층 세대/2층 세대 .../n층 세대)
     @NotNull(message = "옵션을 선택해주세요")
     private String optionCategory;
     @NotNull(message = "관리비 항목을 선택해주세요")
@@ -35,8 +36,6 @@ public class OfferAddition {
     private boolean hasElevator;
     private boolean canParking;
     private boolean canPet;
-
-    // 확장여부(아파트), n층 세대
 
     private List<OptionType> optionTypes;
     private List<ManagementCategoryType> managementTypes;

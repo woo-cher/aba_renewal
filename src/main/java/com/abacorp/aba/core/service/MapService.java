@@ -2,8 +2,8 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OverlayRepository;
 import com.abacorp.aba.core.repository.OfferRepository;
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.type.ManagementCategoryType;

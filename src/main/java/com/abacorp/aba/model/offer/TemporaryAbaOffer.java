@@ -1,4 +1,4 @@
-package com.abacorp.aba.model;
+package com.abacorp.aba.model.offer;
 
 import lombok.*;
 

@@ -1,9 +1,9 @@
 package com.abacorp.aba.validator;
 
-import com.abacorp.aba.model.NormalRentalOffer;
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
-import com.abacorp.aba.model.OfferAddress;
+import com.abacorp.aba.model.offer.NormalRentalOffer;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
+import com.abacorp.aba.model.offer.OfferAddress;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,7 +55,18 @@ public class BeanValidatorTest {
 
     @Test
     public void childOfferValidationWithParent() {
-        NormalRentalOffer child = NormalRentalOffer.builder().build();
+        OfferAddress address = OfferAddress.builder()
+                .floor("")
+                .build();
+
+        OfferAddition addition = OfferAddition.builder()
+                .optionTypes(null)
+                .build();
+
+        NormalRentalOffer child = NormalRentalOffer.builder()
+                .offerAddress(address)
+                .offerAddition(addition)
+                .build();
 
         this.constraintViolations = new ArrayList<>(validator.validate(child));
 

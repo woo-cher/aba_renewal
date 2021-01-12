@@ -1,13 +1,12 @@
 package com.abacorp.aba.transformer.support;
 
-import com.abacorp.aba.model.TemporaryAbaOffer;
+import com.abacorp.aba.model.offer.TemporaryAbaOffer;
 import com.abacorp.aba.model.mapper.TypeMapper;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

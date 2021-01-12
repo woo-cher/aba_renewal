@@ -1,7 +1,10 @@
 package com.abacorp.aba.transformer.support;
 
 import com.abacorp.aba.model.*;
-import com.abacorp.aba.model.mapper.ModelMapper;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
+import com.abacorp.aba.model.offer.OfferAddress;
+import com.abacorp.aba.model.offer.TemporaryAbaOffer;
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.HeatingType;
 import com.abacorp.aba.model.type.OfferStatusType;

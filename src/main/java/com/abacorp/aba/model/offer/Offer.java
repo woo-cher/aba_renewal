@@ -1,5 +1,6 @@
-package com.abacorp.aba.model;
+package com.abacorp.aba.model.offer;
 
+import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.KeyValueDto;
 import com.abacorp.aba.model.mapper.ModelMapper;
 import com.abacorp.aba.model.type.*;
@@ -23,6 +24,7 @@ public class Offer extends ModelMapper {
     private String deposit;
     @NotBlank(message = "집주인 혹은 본인 연락처를 알려주세요")
     private String inquiryTel;
+    private String area;
     private String completionYear;
     @NotNull(message = "매물분류를 선택하세요")
     private OfferType type;
@@ -37,8 +39,6 @@ public class Offer extends ModelMapper {
     private String thumbnail;
     private List<MultipartFile> files;
     private List<KeyValueDto> imageUrls;
-
-    // 융자금(right_money), 총보증금(deposit), 매매가, 투자금액, 이자, 순수입(monthly),
 
     @Valid
     @JsonProperty("offerAddition")

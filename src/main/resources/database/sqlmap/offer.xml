@@ -8,6 +8,13 @@
         <result property="deposit" column="deposit" />
         <result property="monthlyPrice" column="monthly_price" />
         <result property="managementPrice" column="management_price" />
+        <result property="salePrice" column="sale_price" />
+        <result property="investmentMonty" column="investment_money" />
+        <result property="loan" column="loan" />
+        <result property="interest" column="interest" />
+        <result property="monthly_profit" column="monthly_profit" />
+        <result property="supplies_price" column="supplies_price" />
+        <result property="area" column="area" />
         <result property="inquiryTel" column="inquiry_tel" />
         <result property="completionYear" column="completion_year" />
         <result property="type" column="type" />
@@ -174,6 +181,7 @@
         <include refid="filtersQuery" />
     </select>
 
+    <!-- TODO) 타입 5개별 쿼리를 어떻게 할 것인지? -->
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO offers (
             deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
