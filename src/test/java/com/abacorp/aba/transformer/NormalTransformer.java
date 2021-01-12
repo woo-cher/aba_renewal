@@ -17,8 +17,8 @@ public class NormalTransformer extends OfferTransformTemplate implements Transfo
     public Offer transform(TemporaryAbaOffer abaOffer) {
         initialize(abaOffer);
 
-        offer.setMonthlyPrice(abaOffer.getMonthly());
-        offer.setManagementPrice(abaOffer.getManageOrProfit());
+//        offer.setMonthlyPrice(abaOffer.getMonthly());
+//        offer.setManagementPrice(abaOffer.getManageOrProfit());
         offer.setCompletionYear(abaOffer.getCompletionYear());
         offer.setDeposit(abaOffer.getDeposit());
 

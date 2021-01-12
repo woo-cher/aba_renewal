@@ -1,10 +1,7 @@
 package com.abacorp.aba.transformer.support;
 
 import com.abacorp.aba.core.repository.TransformerRepository;
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
-import com.abacorp.aba.model.OfferAddress;
-import com.abacorp.aba.model.TemporaryAbaOffer;
+import com.abacorp.aba.model.*;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.transformer.NormalTransformer;

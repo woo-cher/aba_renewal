@@ -1,12 +1,12 @@
 package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.mapper.ModelMapper;
-import lombok.*;
+import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@SuperBuilder
 @ToString
 public class Payment extends ModelMapper {
     private String impId;

@@ -1,14 +1,15 @@
 package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.mapper.ModelMapper;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 import java.sql.Timestamp;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@SuperBuilder
 @EqualsAndHashCode
 @ToString
 public class Membership extends ModelMapper {

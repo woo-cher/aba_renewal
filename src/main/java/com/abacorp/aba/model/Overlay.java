@@ -2,11 +2,10 @@ package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@SuperBuilder
 @ToString
 public class Overlay extends ModelMapper {
     private int count;

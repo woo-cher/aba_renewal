@@ -34,7 +34,7 @@ public class OfferTest {
             .build();
 
     private final Offer testOffer = Offer.builder()
-            .deposit("100").monthlyPrice("33").managementPrice("3")
+            .deposit("100")
             .type(OfferType.ONE_ROOM).heatingType(HeatingType.ELECT).dealType(DealType.MONTHLY)
             .completionYear("2000").status(OfferStatusType.ON)
             .offerAddition(

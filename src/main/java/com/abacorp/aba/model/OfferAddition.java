@@ -36,6 +36,8 @@ public class OfferAddition {
     private boolean canParking;
     private boolean canPet;
 
+    // 확장여부(아파트), n층 세대
+
     private List<OptionType> optionTypes;
     private List<ManagementCategoryType> managementTypes;
 }

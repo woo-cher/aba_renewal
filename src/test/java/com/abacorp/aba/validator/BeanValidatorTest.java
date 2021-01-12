@@ -1,9 +1,11 @@
 package com.abacorp.aba.validator;
 
+import com.abacorp.aba.model.NormalRentalOffer;
 import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.OfferAddition;
 import com.abacorp.aba.model.OfferAddress;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -18,10 +20,16 @@ import java.util.List;
 @Slf4j
 public class BeanValidatorTest {
 
+    private Validator validator;
+    private List<ConstraintViolation<Offer>> constraintViolations;
+
+    @Before
+    public void setup() {
+         this.validator = Validation.buildDefaultValidatorFactory().getValidator();
+    }
+
     @Test
     public void offerValidation() {
-        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-
         OfferAddress address = OfferAddress.builder()
                 .floor("")
                 .build();
@@ -36,11 +44,22 @@ public class BeanValidatorTest {
                 .offerAddition(addition)
                 .build();
 
-        List<ConstraintViolation<Offer>> constraintViolations = new ArrayList<>(validator.validate(offer));
+        this.constraintViolations = new ArrayList<>(validator.validate(offer));
 
         log.info("offer : {}", offer);
 
-        for(ConstraintViolation cv : constraintViolations) {
+        for (ConstraintViolation cv : this.constraintViolations) {
+            log.info("cv : {}", cv);
+        }
+    }
+
+    @Test
+    public void childOfferValidationWithParent() {
+        NormalRentalOffer child = NormalRentalOffer.builder().build();
+
+        this.constraintViolations = new ArrayList<>(validator.validate(child));
+
+        for (ConstraintViolation cv : this.constraintViolations) {
             log.info("cv : {}", cv);
         }
     }
