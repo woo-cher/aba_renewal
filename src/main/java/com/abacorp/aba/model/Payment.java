@@ -3,10 +3,10 @@ package com.abacorp.aba.model;
 import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.Data;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
 @Data
-@SuperBuilder
+@Builder
 @ToString
 public class Payment extends ModelMapper {
     private String impId;

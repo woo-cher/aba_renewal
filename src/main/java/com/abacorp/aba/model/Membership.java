@@ -4,12 +4,12 @@ import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
 import java.sql.Timestamp;
 
 @Data
-@SuperBuilder
+@Builder
 @EqualsAndHashCode
 @ToString
 public class Membership extends ModelMapper {

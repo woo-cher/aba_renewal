@@ -1,7 +1,7 @@
 package com.abacorp.aba.model.dto;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
 @Data
 @Builder
