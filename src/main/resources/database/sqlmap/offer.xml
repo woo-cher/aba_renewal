@@ -183,13 +183,12 @@
     </select>
 
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO offers (
-            deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
-            inquiry_tel, completion_year, admin_memo, description, created_at, updated_at, aba_offer_id
-        ) VALUES (
-            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, #{status}, #{user.userId},
-            #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, current_timestamp, current_timestamp, #{abaOfferId}
-        )
+        INSERT INTO offers
+        VALUES (
+            null, #{deposit}, #{monthlyPrice}, #{managementPrice}, #{salePrice}, #{investmentMoney}, #{loan}, #{interest},
+            #{type}, #{dealType}, #{heatingType}, #{status}, #{user.userId}, #{inquiryTel}, #{completionYear}, #{adminMemo},
+            #{description}, #{thumbnail}, current_timestamp, current_timestamp, #{abaOfferId}
+         )
     </insert>
 
     <insert id="insertOfferAddress" parameterType="offerAddress">
@@ -210,9 +209,10 @@
 
     <update id="updateOffer" parameterType="offer">
         UPDATE offers
-        SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice}, type = #{type},
-            deal_type = #{dealType}, heating_type = #{heatingType}, completion_year = #{completionYear}, description = #{description},
-            thumbnail = #{thumbnail}, updated_at = current_timestamp
+        SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice},
+            sale_price = #{salePrice}, investmentMoney = #{investmentMoney}, loan = #{loan}, interest = #{interest},
+            type = #{type}, deal_type = #{dealType}, heating_type = #{heatingType}, completion_year = #{completionYear},
+            description = #{description}, thumbnail = #{thumbnail}, updated_at = current_timestamp
         WHERE id = #{id}
     </update>
 
