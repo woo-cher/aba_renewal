@@ -41,14 +41,9 @@ public class Offer extends ModelMapper {
 
     @NotBlank(message = "권시비를 알려주세요", groups = OfficeGroup.class)
     private String suppliesPrice;
-    @NotBlank(message = "현재업종을 알려주세요", groups = OfficeGroup.class)
-    private String industry;
-    @NotBlank(message = "제한업종을 알려주세요", groups = OfficeGroup.class)
-    private String restrictedIndustry;
 
     @NotBlank(message = "집주인 혹은 본인 연락처를 알려주세요", groups = BasicGroup.class)
     private String inquiryTel;
-    private String area;
     private String completionYear;
     @NotNull(message = "매물분류를 선택하세요", groups = BasicGroup.class)
     private OfferType type;

@@ -52,8 +52,11 @@ public enum OfferType implements TypeMapper {
     }
 
     public static OfferType createWhenContainsValue(String value) {
-        if (value.equals(""))
+        if (value.equals("")) {
             return null;
+        } else if (value.contains("건물/")) {
+            value = value.replace("건물/", "");
+        }
         for (OfferType offerType : values()) {
             if (value.contains(offerType.getValue())) {
                 return offerType;

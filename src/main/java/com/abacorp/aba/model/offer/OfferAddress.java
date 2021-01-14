@@ -32,4 +32,6 @@ public class OfferAddress {
     @NotBlank(message = "주요위치를 알려주세요", groups = BasicGroup.class)
     private String nearLocation;
     private String belongsTo;
+    private String buildingArea;
+    private String landArea;
 }

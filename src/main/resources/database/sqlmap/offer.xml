@@ -14,7 +14,6 @@
         <result property="interest" column="interest" />
         <result property="monthly_profit" column="monthly_profit" />
         <result property="supplies_price" column="supplies_price" />
-        <result property="area" column="area" />
         <result property="inquiryTel" column="inquiry_tel" />
         <result property="completionYear" column="completion_year" />
         <result property="type" column="type" />
@@ -46,6 +45,8 @@
         <result property="floor" column="floor" />
         <result property="nearLocation" column="near_location" />
         <result property="belongsTo" column="belongs_to" />
+        <result property="buildingArea" column="building_area" />
+        <result property="landArea" column="land_area" />
     </resultMap>
 
     <resultMap id="offerAddition" type="OfferAddition">
@@ -53,6 +54,8 @@
         <result property="term" column="term" />
         <result property="tenant" column="tenant" />
         <result property="houseHoldInfo" column="house_hold_info" />
+        <result property="industry" column="industry" />
+        <result property="restrictedIndustry" column="restricted_industry" />
         <result property="optionCategory" column="option_category" />
         <result property="managementCategory" column="management_category" />
         <result property="hasElevator" column="has_elevator" />
@@ -186,6 +189,7 @@
         INSERT INTO offers
         VALUES (
             null, #{deposit}, #{monthlyPrice}, #{managementPrice}, #{salePrice}, #{investmentMoney}, #{loan}, #{interest},
+            #{monthlyProfit}, #{suppliesPrice},
             #{type}, #{dealType}, #{heatingType}, #{status}, #{user.userId}, #{inquiryTel}, #{completionYear}, #{adminMemo},
             #{description}, #{thumbnail}, current_timestamp, current_timestamp, #{abaOfferId}
          )
@@ -195,15 +199,15 @@
         INSERT INTO offer_addresses
         VALUES (
             #{offerId}, #{latitude}, #{longitude}, #{buildingName}, #{jibun}, #{road}, #{dong}, #{ho}, #{entrance},
-            #{door}, #{floor}, #{nearLocation}, #{belongsTo}
+            #{door}, #{floor}, #{nearLocation}, #{belongsTo}, #{buildingArea}, #{landArea}
          )
     </insert>
 
     <insert id="insertOfferAddition" parameterType="offerAddition">
         INSERT INTO offer_additions
         VALUES (
-            #{offerId}, #{term}, #{tenant}, #{houseHoldInfo}, #{optionCategory}, #{managementCategory}, #{hasElevator},
-            #{canParking}, #{canPet}
+            #{offerId}, #{term}, #{tenant}, #{houseHoldInfo}, #{industry}, #{restrictedIndustry},
+            #{optionCategory}, #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet}
         )
     </insert>
 

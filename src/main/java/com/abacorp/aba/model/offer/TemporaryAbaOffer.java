@@ -26,6 +26,7 @@ public class TemporaryAbaOffer {
     private String remarkMemo;
     private String jibunAddrEtc; // 건물명
     private String pyeong;
+    private String make;
 
     private String etc2; // 매물상태
     private String gubun; // 오퍼타입
@@ -37,11 +38,14 @@ public class TemporaryAbaOffer {
     private Timestamp date; // 확인일
 
     private String input1; // 근방
+    private String mLicence; // 상가 호실
+
+    private String zone1; // 매매 일때 준공년도
 
     private String extra4; // 입구 / 엘베여부
-    private String extra5; // 전체층
+    private String extra5; // 전체층 / 아파트 해당층
     private String extra6; // 부가정보
-    private String extra7; // 세입자여부
+    private String extra7; // 아파트 세입자여부 / 상가 층정보
     private String extra8; // 준공년도 or
     private String extra9; // 확장여부
     private String extra10; // 즉시입주일 /

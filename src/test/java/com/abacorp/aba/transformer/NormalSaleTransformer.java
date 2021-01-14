@@ -18,9 +18,20 @@ public class NormalSaleTransformer extends OfferTransformTemplate implements Tra
         offer.setInterest(abaOffer.getExtra13());
         offer.setMonthlyProfit(abaOffer.getManageOrProfit());
 
+        offer.setCompletionYear(abaOffer.getZone1());
+
         offerAddress.setFloor(abaOffer.getExtra5());
+        offerAddress.setBuildingArea(abaOffer.getPyeong());
+        offerAddress.setLandArea(abaOffer.getMake());
 
         offerAddition.setHasElevator(utils.convertExistTextToBool(abaOffer.getExtra4()));
+        offerAddition.setHouseholdInfo(
+                // 지하/1층/.../6층 세대
+                utils.convertParamsChildhoodInfo(
+                        abaOffer.getExtra12(), abaOffer.getExtra6(), abaOffer.getExtra7(), abaOffer.getExtra8(),
+                        abaOffer.getExtra9(), abaOffer.getExtra10(), abaOffer.getExtra11()
+                )
+        );
 
         return packaging();
     }

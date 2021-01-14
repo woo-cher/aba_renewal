@@ -18,7 +18,8 @@
         <result property="remark" column="remark" /> <!-- 사용자 메모 (절충가능 / 기타 추가설명) -->
         <result property="remarkMemo" column="remark_memo" /> <!-- 관리자 메모 -->
         <result property="jibunAddrEtc" column="jibun_addr_etc" /> <!-- 건물명 -->
-        <result property="pyeong" column="pyeong" /> <!-- 평수 -->
+        <result property="pyeong" column="pyong" /> <!-- 평수, 건물연면적 -->
+        <result property="make" column="make" /> <!-- 대지면적 -->
 
         <result property="etc2" column="etc2" /> <!-- ( 0: 진행 / 1: 계약완료 / 2: 숨김 ) -->
         <result property="gubun" column="gubun" />
@@ -30,11 +31,14 @@
         <result property="date" column="date" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler"/> <!-- 확인일자 -->
 
         <result property="input1" column="input1" /> <!-- 부근위치 -->
+        <result property="mLicence" column="mLicence" /> <!-- 상가 호실정보 -->
+
+        <result property="zone1" column="zone1" /> <!-- 매매일때 준공년도 -->
 
         <result property="extra4" column="extra4" /> <!-- 입구번호 / 건물 매매 일때 엘베여부 -->
-        <result property="extra5" column="extra5" /> <!-- 건물,상가 전체층 / 아파트 해당층 -->
+        <result property="extra5" column="extra5" /> <!-- 원룸일때 empty / 건물,상가 전체층 / 아파트 해당층 -->
         <result property="extra6" column="extra6" /> <!-- 부가적인 정보... -->
-        <result property="extra7" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ) -->
+        <result property="extra7" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ), 상가일때 층정보 -->
         <result property="extra8" column="extra8" /> <!-- 준공년도 -->
         <result property="extra9" column="extra9" /> <!-- 확장여부 : 원룸일때는 이필드가 비어있다 -->
         <result property="extra10" column="extra10" /> <!-- 즉시입주일 또는 단기여부 -->

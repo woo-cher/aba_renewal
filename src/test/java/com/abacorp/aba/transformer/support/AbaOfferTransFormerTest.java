@@ -6,6 +6,7 @@ import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.offer.TemporaryAbaOffer;
 import com.abacorp.aba.model.type.ManagementCategoryType;
+import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.transformer.NormalRentalTransformer;
 import lombok.extern.slf4j.Slf4j;
@@ -84,6 +85,15 @@ public class AbaOfferTransFormerTest {
 
         log.info("jibun : {}", utils.transferJibun(mock));
         log.info("road : {}", utils.transferRoad(mock));
+    }
+
+    @Test
+    public void getType() {
+        String case1 = "건물/원룸";
+        String case2 = "주택/단독";
+
+        log.info("{}", OfferType.createWhenContainsValue(case1));
+        log.info("{}", OfferType.createWhenContainsValue(case2));
     }
 
     @Test

@@ -40,12 +40,13 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
 
         this.offerAddition = OfferAddition.builder()
                 .term(abaOffer.getExtra10())
-                .hasElevator(false)
                 .build();
 
         this.offer = Offer.builder()
                 .abaOfferId(abaOffer.getId())
                 .user(User.builder().userId("test").build())
+                .deposit(abaOffer.getDeposit())
+                .monthlyPrice(abaOffer.getMonthly())
                 .inquiryTel(abaOffer.getMPhone())
                 .type(OfferType.createWhenContainsValue(abaOfferType))
                 .dealType(DealType.createWhenContainsValue(abaDealType))
