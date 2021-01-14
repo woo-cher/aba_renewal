@@ -5,24 +5,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum ManagementCategoryType implements TypeMapper {
+public enum FacilityCostCategoryType implements TypeMapper {
 
     UNKNOWN("UNKNOWN"),
 
     /**
      * 거래 유형
      */
-    AIR_CONDITIONER("수도세"),
-    WASHING("인터넷"),
-    REFRIGERATOR("유선방송"),
-    GAS_STOVE("셋톱박스"),
-    ELEVATOR("엘리베이터"),
-    CLEANING("건물청소비"),
-    COMMON_POWER("공용전기");
+    INTERIOR("수도세"),
+    AIRCONDITIONER("인터넷"),
+    TABLEWARE("건물청소비"),
+    OTHERTEHN("기타");
 
     private String value;
 
-    ManagementCategoryType(String value) {
+    FacilityCostCategoryType(String value) {
         this.value = value;
     }
 
@@ -37,8 +34,8 @@ public enum ManagementCategoryType implements TypeMapper {
     }
 
     @JsonCreator
-    public static ManagementCategoryType createWithValue(String value) {
-        for (ManagementCategoryType category : values()) {
+    public static FacilityCostCategoryType createWithValue(String value) {
+        for (FacilityCostCategoryType category : values()) {
             if (category.getValue().equals(value)) {
                 return category;
             }
