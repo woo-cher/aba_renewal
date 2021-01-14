@@ -23,9 +23,9 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
     protected void initialize(TemporaryAbaOffer abaOffer) {
         clear();
 
-        String abaOfferType = (String) gubun.get(abaOffer.getOfferTypeCode());
-        String abaDealType = (String) etc1.get(abaOffer.getDealTypeCode());
-        String abaStatusType = (String) etc2.get(abaOffer.getStatusCode());
+        String abaOfferType = (String) gubun.get(abaOffer.getGubun());
+        String abaDealType = (String) etc1.get(abaOffer.getEtc1());
+        String abaStatusType = (String) etc2.get(abaOffer.getEtc2());
 
         this.offerAddress = OfferAddress.builder()
                 .latitude(abaOffer.getLatitude())
@@ -34,25 +34,25 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .jibun(utils.transferJibun(abaOffer))
                 .road(utils.transferRoad(abaOffer))
                 .dong(utils.getDongIfExist(abaOffer))
-                .nearLocation(abaOffer.getNear())
+                .nearLocation(abaOffer.getInput1())
                 .belongsTo(utils.transferBelongsTo(abaOffer))
                 .build(); // plus
 
         this.offerAddition = OfferAddition.builder()
-                .term(abaOffer.getTerm())
+                .term(abaOffer.getExtra10())
                 .hasElevator(false)
                 .build();
 
         this.offer = Offer.builder()
                 .abaOfferId(abaOffer.getId())
                 .user(User.builder().userId("test").build())
-                .inquiryTel(abaOffer.getTel())
+                .inquiryTel(abaOffer.getMPhone())
                 .type(OfferType.createWhenContainsValue(abaOfferType))
                 .dealType(DealType.createWhenContainsValue(abaDealType))
-                .heatingType(HeatingType.createWhenContainsValue(abaOffer.getHeatingType()))
+                .heatingType(HeatingType.createWhenContainsValue(abaOffer.getHot()))
                 .status(OfferStatusType.createWhenContainsValue(abaStatusType))
-                .adminMemo(abaOffer.getAdminMemo())
-                .description(utils.getTextAtHtmlString(abaOffer.getDescription())) // <p> ... desc ... </p>
+                .adminMemo(abaOffer.getRemarkMemo())
+                .description(utils.getTextAtHtmlString(abaOffer.getRemark())) // <p> ... desc ... </p>
                 .temporaryImages(abaOffer.getImages())
                 .build();
     }

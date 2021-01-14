@@ -10,6 +10,18 @@ import lombok.extern.slf4j.Slf4j;
 public class NormalSaleTransformer extends OfferTransformTemplate implements TransformStrategy {
     @Override
     public Offer transform(TemporaryAbaOffer abaOffer) {
-        return null;
+        initialize(abaOffer);
+
+        offer.setLoan(abaOffer.getLoan());
+        offer.setSalePrice(abaOffer.getSalePrice());
+        offer.setInvestmentMoney(abaOffer.getInvestmentPrice());
+        offer.setInterest(abaOffer.getExtra13());
+        offer.setMonthlyProfit(abaOffer.getManageOrProfit());
+
+        offerAddress.setFloor(abaOffer.getExtra5());
+
+        offerAddition.setHasElevator(utils.convertExistTextToBool(abaOffer.getExtra4()));
+
+        return packaging();
     }
 }

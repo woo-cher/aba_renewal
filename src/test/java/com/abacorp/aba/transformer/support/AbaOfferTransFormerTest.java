@@ -7,7 +7,7 @@ import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.offer.TemporaryAbaOffer;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
-import com.abacorp.aba.transformer.NormalTransformer;
+import com.abacorp.aba.transformer.NormalRentalTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,7 +52,7 @@ public class AbaOfferTransFormerTest {
     private TransformUtils utils;
 
     @Autowired
-    private NormalTransformer offerTransformer;
+    private NormalRentalTransformer offerTransformer;
 
     @Autowired
     private TransformerRepository repository;
@@ -61,7 +61,7 @@ public class AbaOfferTransFormerTest {
     @Transactional
     public void oneRoomTransformer() {
         TemporaryAbaOffer mock = repository.selectAbaOffers().get(0);
-        mock.setDescription("<p><span style=\"font-size: 28px;\">2년계약 조건입니다.</span></p>");
+        mock.setRemark("<p><span style=\"font-size: 28px;\">2년계약 조건입니다.</span></p>");
 
         Offer target = offerTransformer.transform(mock);
         log.info("target : {}", target);
@@ -84,5 +84,23 @@ public class AbaOfferTransFormerTest {
 
         log.info("jibun : {}", utils.transferJibun(mock));
         log.info("road : {}", utils.transferRoad(mock));
+    }
+
+    @Test
+    public void joiningChildhoodInfo() {
+        String str1 = "";
+        String str2 = "원룸";
+        String str3 = "쓰리룸";
+        String str4 = "";
+        String str5 = "주인세대";
+
+        String result = utils.convertParamsChildhoodInfo(str2, str1, str3, str4, str5);
+        String[] strs = result.split("/");
+
+        log.info("result {}", result);
+        log.info("size is {}", strs.length);
+        for (String s : strs) {
+            System.out.println(s);
+        }
     }
 }

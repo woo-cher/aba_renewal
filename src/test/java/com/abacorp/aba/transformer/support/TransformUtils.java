@@ -18,19 +18,19 @@ public class TransformUtils {
 
     public String transferJibun(TemporaryAbaOffer abaOffer) {
         return filteringAndJoining(
-                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDongArea(), abaOffer.getJibunAddr())
+                Stream.of(abaOffer.getArea1(), abaOffer.getArea2(), abaOffer.getAddr(), abaOffer.getAddr2())
         );
     }
 
     public String transferRoad(TemporaryAbaOffer abaOffer) {
         return filteringAndJoining(
-                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getRoadName(), abaOffer.getRoadNum())
+                Stream.of(abaOffer.getArea1(), abaOffer.getArea2(), abaOffer.getJuso1(), abaOffer.getJuso2())
         );
     }
 
     public String transferBelongsTo(TemporaryAbaOffer abaOffer) {
         return filteringAndJoining(
-                Stream.of(abaOffer.getDou(), abaOffer.getSi(), abaOffer.getDongArea())
+                Stream.of(abaOffer.getArea1(), abaOffer.getArea2(), abaOffer.getAddr())
         );
     }
 
@@ -67,6 +67,10 @@ public class TransformUtils {
         return possibleStatus.equals("가능");
     }
 
+    public boolean convertExistTextToBool(String isExistString) {
+        return isExistString.equals("있음");
+    }
+
     public String getBuildingNameAtTitle(TemporaryAbaOffer abaOffer) {
         String abaTitle = abaOffer.getTitle();
         String result = abaTitle.replaceAll("^.*\\w", "").trim();
@@ -95,6 +99,12 @@ public class TransformUtils {
         }
 
         return null;
+    }
+
+    public String convertParamsChildhoodInfo(String ... params) {
+        return Stream.of(params)
+                .map((str) -> str.isEmpty() ? "정보없음" : str)
+                .collect(Collectors.joining("/"));
     }
 
     public boolean isContainsElevatorInMCategories(TemporaryAbaOffer abaOffer) {

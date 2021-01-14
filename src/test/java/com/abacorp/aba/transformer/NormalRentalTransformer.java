@@ -11,28 +11,28 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class NormalTransformer extends OfferTransformTemplate implements TransformStrategy {
+public class NormalRentalTransformer extends OfferTransformTemplate implements TransformStrategy {
 
     @Override
     public Offer transform(TemporaryAbaOffer abaOffer) {
         initialize(abaOffer);
 
-//        offer.setMonthlyPrice(abaOffer.getMonthly());
-//        offer.setManagementPrice(abaOffer.getManageOrProfit());
-        offer.setCompletionYear(abaOffer.getCompletionYear());
+        offer.setMonthlyPrice(abaOffer.getMonthly());
+        offer.setManagementPrice(abaOffer.getManageOrProfit());
+        offer.setCompletionYear(abaOffer.getExtra8());
         offer.setDeposit(abaOffer.getDeposit());
 
-        offerAddress.setHo((abaOffer.getHo()));
-        offerAddress.setFloor(utils.getFloorIfRooftopOrSemibasement(abaOffer.getHo()));
-        offerAddress.setEntrance(abaOffer.getEnter());
-        offerAddress.setDoor(abaOffer.getRoom());
+        offerAddress.setHo((abaOffer.getExtra12()));
+        offerAddress.setFloor(utils.getFloorIfRooftopOrSemibasement(abaOffer.getExtra12()));
+        offerAddress.setEntrance(abaOffer.getExtra4());
+        offerAddress.setDoor(abaOffer.getExtra13());
 
         offerAddition.setOptionCategory(utils.transferOptionOrMcategory(abaOffer, OptionType.class));
         offerAddition.setManagementCategory(utils.transferOptionOrMcategory(abaOffer, ManagementCategoryType.class));
-        offerAddition.setTenant(abaOffer.getTenant());
+        offerAddition.setTenant(abaOffer.getExtra11());
 
-        offerAddition.setCanPet(utils.convertPossibleStatusToBool(abaOffer.getPet()));
-        offerAddition.setCanParking(utils.convertPossibleStatusToBool(abaOffer.getParking()));
+        offerAddition.setCanPet(utils.convertPossibleStatusToBool(abaOffer.getExtra14()));
+        offerAddition.setCanParking(utils.convertPossibleStatusToBool(abaOffer.getExtra15()));
         offerAddition.setHasElevator(utils.isContainsElevatorInMCategories(abaOffer));
 
         return packaging();

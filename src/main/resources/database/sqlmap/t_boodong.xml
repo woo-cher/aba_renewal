@@ -5,45 +5,45 @@
     <!-- Mapper -->
     <resultMap id="abaOffer" type="TemporaryAbaOffer">
         <id property="id" column="l_number" />
-
         <result property="title" column="title" />
-        <result property="si" column="area2" />
-        <result property="dou" column="area1" />
-        <result property="dongArea" column="addr" />
-        <result property="jibunAddr" column="addr2" />
-        <result property="roadName" column="juso1" />
-        <result property="roadNum" column="juso2" />
 
-        <result property="tel" column="m_phone" /> <!-- 연락처 -->
-        <result property="description" column="remark" /> <!-- 사용자 메모 (절충가능 / 기타 추가설명) -->
-        <result property="adminMemo" column="remark_memo" /> <!-- 관리자 메모 -->
-        <result property="building" column="jibun_addr_etc" /> <!-- 건물명 -->
+        <result property="area2" column="area2" />
+        <result property="area1" column="area1" />
+        <result property="addr" column="addr" />
+        <result property="addr2" column="addr2" />
+        <result property="juso1" column="juso1" />
+        <result property="juso2" column="juso2" />
+
+        <result property="mPhone" column="m_phone" /> <!-- 연락처 -->
+        <result property="remark" column="remark" /> <!-- 사용자 메모 (절충가능 / 기타 추가설명) -->
+        <result property="remarkMemo" column="remark_memo" /> <!-- 관리자 메모 -->
+        <result property="jibunAddrEtc" column="jibun_addr_etc" /> <!-- 건물명 -->
         <result property="pyeong" column="pyeong" /> <!-- 평수 -->
 
-        <result property="statusCode" column="etc2" /> <!-- ( 0: 진행 / 1: 계약완료 / 2: 숨김 ) -->
-        <result property="offerTypeCode" column="gubun" />
-        <result property="dealTypeCode" column="etc1" />
+        <result property="etc2" column="etc2" /> <!-- ( 0: 진행 / 1: 계약완료 / 2: 숨김 ) -->
+        <result property="gubun" column="gubun" />
+        <result property="etc1" column="etc1" />
 
-        <result property="heatingType" column="hot" /> <!-- 난방유형 -->
-        <result property="hitMethod" column="input4" /> <!-- 난방방식 -->
+        <result property="hot" column="hot" /> <!-- 난방유형 -->
+        <result property="input4" column="input4" /> <!-- 난방방식 -->
 
-        <result property="checkDate" column="date" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler"/> <!-- 확인일자 -->
+        <result property="date" column="date" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler"/> <!-- 확인일자 -->
 
-        <result property="near" column="input1" /> <!-- 부근위치 -->
+        <result property="input1" column="input1" /> <!-- 부근위치 -->
 
-        <result property="enter" column="extra4" /> <!-- 입구번호 -->
-        <result property="layer" column="extra5" /> <!-- 아파트 해당층 -->
-        <result property="addedInfo" column="extra6" /> <!-- 부가적인 정보... -->
-        <result property="aptTerm" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ) -->
-        <result property="completionYear" column="extra8" /> <!-- 준공년도 -->
-        <result property="expand" column="extra9" /> <!-- 확장여부 : 원룸일때는 이필드가 비어있다 -->
-        <result property="term" column="extra10" /> <!-- 즉시입주일 또는 단기여부 -->
-        <result property="tenant" column="extra11" /> <!-- 세입자 -->
+        <result property="extra4" column="extra4" /> <!-- 입구번호 / 건물 매매 일때 엘베여부 -->
+        <result property="extra5" column="extra5" /> <!-- 건물,상가 전체층 / 아파트 해당층 -->
+        <result property="extra6" column="extra6" /> <!-- 부가적인 정보... -->
+        <result property="extra7" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ) -->
+        <result property="extra8" column="extra8" /> <!-- 준공년도 -->
+        <result property="extra9" column="extra9" /> <!-- 확장여부 : 원룸일때는 이필드가 비어있다 -->
+        <result property="extra10" column="extra10" /> <!-- 즉시입주일 또는 단기여부 -->
+        <result property="extra11" column="extra11" /> <!-- 세입자 -->
         <result property="dong" column="dong" /> <!-- 동 -->
-        <result property="ho" column="extra12" /> <!-- 호 -->
-        <result property="room" column="extra13" /> <!-- 호실암호 -->
-        <result property="pet" column="extra14" />
-        <result property="parking" column="extra15" />
+        <result property="extra12" column="extra12" /> <!-- 호 -->
+        <result property="extra13" column="extra13" /> <!-- 호실암호 -->
+        <result property="extra14" column="extra14" />
+        <result property="extra15" column="extra15" />
 
         <result property="latitude" column="x_point" />
         <result property="longitude" column="y_point" />
@@ -54,7 +54,9 @@
         <result property="salePrice" column="price1" /> <!-- 매매가 -->
         <result property="deposit" column="price2" /> <!-- 보증금 -->
         <result property="monthly" column="price3" /> <!-- 월세 또는 월 임대료 -->
+        <result property="investmentPrice" column="price4" /> <!-- 투자금액 -->
         <result property="manageOrProfit" column="price5" /> <!-- 관리비 또는 수익 -->
+        <result property="loan" column="right_money" /> <!-- 융자금 -->
 
         <collection property="images" column="l_number" javaType="java.lang.String" select="selectImagesOffer" />
     </resultMap>
