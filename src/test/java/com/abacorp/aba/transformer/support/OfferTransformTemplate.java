@@ -1,6 +1,6 @@
 package com.abacorp.aba.transformer.support;
 
-import com.abacorp.aba.model.*;
+import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;

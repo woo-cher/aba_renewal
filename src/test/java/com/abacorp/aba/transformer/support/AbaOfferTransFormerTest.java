@@ -10,6 +10,7 @@ import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.transformer.NormalRentalTransformer;
+import com.abacorp.aba.transformer.NormalSaleTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,6 +59,9 @@ public class AbaOfferTransFormerTest {
 
     @Autowired
     private TransformerRepository repository;
+
+    @Autowired
+    private DataFactory factory;
 
     @Test
     @Transactional
@@ -149,5 +153,18 @@ public class AbaOfferTransFormerTest {
         }
 
         log.info("{}", abaOffer.getRemarkMemo());
+    }
+
+    @Test
+    public void transformerFactory() {
+        log.info("상가 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("5").build()));
+        log.info("사무실 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("7").build()));
+        log.info("원룸/방 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("61").build()));
+        log.info("투/쓰리룸 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("75").build()));
+        log.info("주택/단독, 매매 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("57").etc1("1").build()));
+        log.info("주택/단독, 월세 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("57").etc1("2").build()));
+        log.info("주택/단독, 전세 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("57").etc1("3").build()));
+        log.info("건물/원룸, 매매 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("65").build()));
+        log.info("건물/상가, 매매 {}", factory.getTransformer(TemporaryAbaOffer.builder().gubun("66").build()));
     }
 }
