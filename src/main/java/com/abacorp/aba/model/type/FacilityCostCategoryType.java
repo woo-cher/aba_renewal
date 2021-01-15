@@ -12,9 +12,9 @@ public enum FacilityCostCategoryType implements TypeMapper {
     /**
      * 거래 유형
      */
-    INTERIOR("수도세"),
-    AIRCONDITIONER("인터넷"),
-    TABLEWARE("건물청소비"),
+    INTERIOR("인테리어비용"),
+    AIRCONDITIONER("에어컨"),
+    TABLEWARE("식기구"),
     OTHERTEHN("기타");
 
     private String value;

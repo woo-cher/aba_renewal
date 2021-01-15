@@ -27,8 +27,8 @@ public class NormalRentalTransformer extends OfferTransformTemplate implements T
         offerAddress.setEntrance(abaOffer.getExtra4());
         offerAddress.setDoor(abaOffer.getExtra13());
 
-        offerAddition.setOptionCategory(utils.transferOptionOrMcategory(abaOffer, OptionType.class));
-        offerAddition.setManagementCategory(utils.transferOptionOrMcategory(abaOffer, ManagementCategoryType.class));
+        offerAddition.setOptionCategory(utils.transferCategories(abaOffer, OptionType.class));
+        offerAddition.setManagementCategory(utils.transferCategories(abaOffer, ManagementCategoryType.class));
         offerAddition.setTenant(abaOffer.getExtra11());
 
         offerAddition.setCanPet(utils.convertPossibleStatusToBool(abaOffer.getExtra14()));

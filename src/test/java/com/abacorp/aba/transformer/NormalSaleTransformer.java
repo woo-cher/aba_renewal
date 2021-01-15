@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class NormalSaleTransformer extends OfferTransformTemplate implements TransformStrategy {
+
     @Override
     public Offer transform(TemporaryAbaOffer abaOffer) {
         initialize(abaOffer);

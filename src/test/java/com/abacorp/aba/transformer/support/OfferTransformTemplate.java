@@ -56,6 +56,19 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .description(utils.getTextAtHtmlString(abaOffer.getRemark())) // <p> ... desc ... </p>
                 .temporaryImages(abaOffer.getImages())
                 .build();
+
+        String otherPhones = utils.joiningMultiTelNumber(abaOffer);
+
+        if (!otherPhones.isEmpty()) {
+            String adminMemo = abaOffer.getRemarkMemo() == null ?
+                    "" : abaOffer.getRemarkMemo();
+
+            adminMemo = adminMemo.isEmpty() ?
+                    adminMemo.concat("(추가연락처) -> " + otherPhones) :
+                    adminMemo.concat(", (추가연락처) -> " + otherPhones);
+
+            abaOffer.setRemarkMemo(adminMemo);
+        }
     }
 
     protected Offer packaging() {

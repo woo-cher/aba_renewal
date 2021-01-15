@@ -5,6 +5,7 @@ import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.offer.TemporaryAbaOffer;
+import com.abacorp.aba.model.type.FacilityCostCategoryType;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
@@ -71,12 +72,22 @@ public class AbaOfferTransFormerTest {
     @Test
     public void convertStrToOptionTypes() {
         TemporaryAbaOffer mock = TemporaryAbaOffer.builder()
+                .gubun("61")
                 .options("에어컨/세탁기/냉장고/가스렌지/침대/붙박이장")
                 .managementCategories("수도세/인터넷/유선방송")
                 .build();
 
-        log.info("options : {}", utils.transferOptionOrMcategory(mock, OptionType.class));
-        log.info("mCategories : {}", utils.transferOptionOrMcategory(mock, ManagementCategoryType.class));
+        TemporaryAbaOffer mock2 = TemporaryAbaOffer.builder()
+                .gubun("5")
+                .options("건물청소비/공용전기")
+                .managementCategories("인테리어비용/기타")
+                .build();
+
+        log.info("options : {}", utils.transferCategories(mock, OptionType.class));
+        log.info("mCategories : {}", utils.transferCategories(mock, ManagementCategoryType.class));
+
+        log.info("office management : {}", utils.transferCategories(mock2, ManagementCategoryType.class));
+        log.info("office facility : {}", utils.transferCategories(mock2, FacilityCostCategoryType.class));
     }
 
     @Test
@@ -112,5 +123,31 @@ public class AbaOfferTransFormerTest {
         for (String s : strs) {
             System.out.println(s);
         }
+    }
+
+    @Test
+    public void joiningTel() {
+        TemporaryAbaOffer abaOffer = TemporaryAbaOffer.builder()
+                .mPhone("010-1234-1234")
+                .remarkMemo(null)
+                .mPhone2("010-1234-1111")
+                .mPhone3(null)
+                .build();
+
+        String otherPhones = utils.joiningMultiTelNumber(abaOffer);
+        log.info("{}", otherPhones);
+
+        if (!otherPhones.isEmpty()) {
+           String adminMemo = abaOffer.getRemarkMemo() == null ?
+                   "" : abaOffer.getRemarkMemo();
+
+           adminMemo = adminMemo.isEmpty() ?
+                   adminMemo.concat("(추가연락처) -> " + otherPhones) :
+                   adminMemo.concat(", (추가연락처) -> " + otherPhones);
+
+           abaOffer.setRemarkMemo(adminMemo);
+        }
+
+        log.info("{}", abaOffer.getRemarkMemo());
     }
 }

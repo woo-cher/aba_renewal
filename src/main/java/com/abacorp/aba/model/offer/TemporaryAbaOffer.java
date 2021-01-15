@@ -22,6 +22,8 @@ public class TemporaryAbaOffer {
     private String juso2; // 도로번호
 
     private String mPhone; // 연락처
+    private String mPhone2; // 연락처2
+    private String mPhone3; // 연락처3
     private String remark;
     private String remarkMemo;
     private String jibunAddrEtc; // 건물명
@@ -39,6 +41,8 @@ public class TemporaryAbaOffer {
 
     private String input1; // 근방
     private String mLicence; // 상가 호실
+    private String useArea; // 현 업종
+    private String mArea; // 상가 비밀번호
 
     private String zone1; // 매매 일때 준공년도
 

@@ -15,6 +15,8 @@
         <result property="juso2" column="juso2" />
 
         <result property="mPhone" column="m_phone" /> <!-- 연락처 -->
+        <result property="mPhone2" column="owner_tel2" /> <!-- 연락처2 -->
+        <result property="mPhone3" column="owner_tel3" /> <!-- 연락처3 -->
         <result property="remark" column="remark" /> <!-- 사용자 메모 (절충가능 / 기타 추가설명) -->
         <result property="remarkMemo" column="remark_memo" /> <!-- 관리자 메모 -->
         <result property="jibunAddrEtc" column="jibun_addr_etc" /> <!-- 건물명 -->
@@ -31,7 +33,9 @@
         <result property="date" column="date" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler"/> <!-- 확인일자 -->
 
         <result property="input1" column="input1" /> <!-- 부근위치 -->
-        <result property="mLicence" column="mLicence" /> <!-- 상가 호실정보 -->
+        <result property="mLicence" column="m_licence" /> <!-- 상가 호실정보 -->
+        <result property="useArea" column="use_area" /> <!-- 현재업종 -->
+        <result property="mArea" column="m_area" /> <!-- 상가 비밀번호 -->
 
         <result property="zone1" column="zone1" /> <!-- 매매일때 준공년도 -->
 
@@ -52,8 +56,8 @@
         <result property="latitude" column="x_point" />
         <result property="longitude" column="y_point" />
 
-        <result property="options" column="bd_option1" />
-        <result property="managementCategories" column="bd_option2" />
+        <result property="options" column="bd_option1" /> <!-- 옵션정보 / 상가일땐 관리비 -->
+        <result property="managementCategories" column="bd_option2" /> <!-- 관리비항목 / 상가일땐 시설비 -->
 
         <result property="salePrice" column="price1" /> <!-- 매매가 -->
         <result property="deposit" column="price2" /> <!-- 보증금 -->
