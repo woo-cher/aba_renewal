@@ -88,6 +88,7 @@ public class TransformUtils {
     public String getBuildingNameAtTitle(TemporaryAbaOffer abaOffer) {
         String abaTitle = abaOffer.getTitle();
         String result = abaTitle.replaceAll("^.*\\w", "").trim();
+        result = result.replaceAll("(\\[.+])", "").trim();
         return result.length() == 0 ? null : result;
     }
 

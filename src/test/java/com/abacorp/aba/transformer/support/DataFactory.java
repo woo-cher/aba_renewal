@@ -5,6 +5,7 @@ import com.abacorp.aba.model.offer.TemporaryAbaOffer;
 import com.abacorp.aba.model.type.FacilityCostCategoryType;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
+import com.abacorp.aba.transformer.AptTransformer;
 import com.abacorp.aba.transformer.NormalRentalTransformer;
 import com.abacorp.aba.transformer.NormalSaleTransformer;
 import com.abacorp.aba.transformer.OfficeRentalTransformer;
@@ -18,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class DataFactory <T extends TypeMapper> {
+public class DataFactory {
 
     @Autowired
     @Qualifier("normalRental")
@@ -32,11 +33,17 @@ public class DataFactory <T extends TypeMapper> {
     @Qualifier("officeRental")
     private TransformStrategy<OfficeRentalTransformer> officeRentalStrategy;
 
+    @Autowired
+    @Qualifier("aptAll")
+    private TransformStrategy<AptTransformer> aptStrategy;
+
     public TransformStrategy<? extends OfferTransformTemplate> getTransformer(TemporaryAbaOffer abaOffer) {
         String gubunCode = abaOffer.getGubun();
         String etc1 = abaOffer.getEtc1();
 
         switch (gubunCode) {
+            case "1":
+                return aptStrategy;
             case "57":
                 if (etc1.equals("1")) {
                     return normalSaleStrategy; // 주택인데 매매면
@@ -56,7 +63,7 @@ public class DataFactory <T extends TypeMapper> {
         return null;
     }
 
-    public List<? extends TypeMapper> getTypeArray(Class<T> clazz) {
+    public <T extends TypeMapper> List<? extends TypeMapper> getTypeArray(Class<T> clazz) {
         if (clazz.equals(OptionType.class)) {
             return Arrays.asList(OptionType.values());
         } else if (clazz.equals(ManagementCategoryType.class)) {

@@ -12,7 +12,7 @@ public enum HeatingType implements TypeMapper {
      * 난방유형
      */
     GAS("도시가스"),
-    LPG("엘피지"),
+    LPG("엘피지(LPG)"),
     OIL("기름보일러"),
     ELECT("심야전기"),
     PANEL("판넬");
@@ -37,7 +37,7 @@ public enum HeatingType implements TypeMapper {
         if (value.equals("") || value.equals("기타"))
             return null;
         for (HeatingType heatingType : values()) {
-            if (value.contains(heatingType.getValue())) {
+            if (heatingType.getValue().contains(value)) {
                 return heatingType;
             }
         }

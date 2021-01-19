@@ -55,9 +55,6 @@ public class AbaOfferTransFormerTest {
     private TransformUtils utils;
 
     @Autowired
-    private NormalRentalTransformer offerTransformer;
-
-    @Autowired
     private TransformerRepository repository;
 
     @Autowired
@@ -65,11 +62,11 @@ public class AbaOfferTransFormerTest {
 
     @Test
     @Transactional
-    public void oneRoomTransformer() {
+    public void transformTest() {
         TemporaryAbaOffer mock = repository.selectAbaOffers().get(0);
-        mock.setRemark("<p><span style=\"font-size: 28px;\">2년계약 조건입니다.</span></p>");
+        TransformStrategy strategy = factory.getTransformer(mock);
 
-        Offer target = offerTransformer.transform(mock);
+        Offer target = strategy.transform(mock);
         log.info("target : {}", target);
     }
 

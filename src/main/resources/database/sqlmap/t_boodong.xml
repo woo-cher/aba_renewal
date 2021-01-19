@@ -81,7 +81,7 @@
     </resultMap>
 
     <select id="selectAbaOffers" resultMap="abaOffer">
-        SELECT * FROM t_boodong WHERE del_yn = 'N' AND gubun != (10 OR 11 OR 54 OR 55 OR 56 OR 59 OR 60) AND l_number = 1;
+        SELECT * FROM t_boodong WHERE del_yn = 'N' AND gubun != (10 OR 11 OR 54 OR 55 OR 56 OR 59 OR 60);
     </select>
 
     <select id="selectImagesOffer" resultType="java.lang.String">
