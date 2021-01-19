@@ -62,13 +62,18 @@
         <result property="canParking" column="can_parking" />
         <result property="canPet" column="can_pet" />
 
+        <result property="hasCool" column="has_cool" />
+        <result property="builtIn" column="built_in" />
+        <result property="remodeling" column="remodeling" />
+
+        <result property="moveIn" column="move_in" />
         <result property="households" column="households" />
+        <result property="totalDong" column="total_dong" />
         <result property="totalParking" column="total_parking" />
         <result property="direction" column="direction" />
         <result property="frontStructure" column="front_structure" />
         <result property="bathrooms" column="bathrooms" />
         <result property="rooms" column="rooms" />
-        <result property="hasCool" column="has_cool" />
     </resultMap>
 
     <resultMap id="user" type="user" >
@@ -214,9 +219,9 @@
     <insert id="insertOfferAddition" parameterType="offerAddition">
         INSERT INTO offer_additions
         VALUES (
-            #{offerId}, #{term}, #{tenant}, #{houseHoldInfo}, #{industry}, #{restrictedIndustry},
-            #{optionCategory}, #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet},
-            #{hasCool}, #{households}, #{totalParking}, #{direction}, #{frontStructure}, #{bathrooms}, #{rooms}
+            #{offerId}, #{term}, #{tenant}, #{houseHoldInfo}, #{industry}, #{restrictedIndustry}, #{optionCategory},
+            #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet}, #{hasCool}, #{builtIn}, #{remodeling},
+            #{moveIn}, #{households}, #{totalDong}, #{totalParking}, #{direction}, #{frontStructure}, #{bathrooms}, #{rooms}
         )
     </insert>
 

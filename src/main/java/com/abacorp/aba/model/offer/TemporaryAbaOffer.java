@@ -72,6 +72,7 @@ public class TemporaryAbaOffer {
     private String monthly;
     private String investmentPrice;
     private String manageOrProfit;
+    private String aptLoan;
     private String loan;
 
     /* APT */

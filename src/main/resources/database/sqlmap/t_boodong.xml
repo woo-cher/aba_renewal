@@ -64,6 +64,7 @@
         <result property="monthly" column="price3" /> <!-- 월세 또는 월 임대료 -->
         <result property="investmentPrice" column="price4" /> <!-- 투자금액 -->
         <result property="manageOrProfit" column="price5" /> <!-- 관리비 또는 수익 -->
+        <result property="aptLoan" column="price6" /> <!-- 아파트 융자 -->
         <result property="loan" column="right_money" /> <!-- 융자금 -->
 
         <!-- APT -->

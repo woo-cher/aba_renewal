@@ -40,10 +40,14 @@ public class OfferAddition {
     private boolean hasElevator;
     private boolean canParking;
     private boolean canPet;
-    private boolean hasCool;
 
     /* APT */
+    private boolean hasCool;
+    private boolean builtIn;
+    private boolean remodeling;
+    private String moveIn;
     private String households;
+    private String totalDong;
     private String totalParking;
     private String direction;
     private String frontStructure;

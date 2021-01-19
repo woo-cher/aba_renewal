@@ -31,6 +31,17 @@ public enum HeatingMethodType implements TypeMapper {
         return name();
     }
 
+    public static HeatingMethodType createWhenContainsValue(String value) {
+        if (value.equals("") || value.equals("기타"))
+            return null;
+        for (HeatingMethodType method : values()) {
+            if (value.contains(method.getValue())) {
+                return method;
+            }
+        }
+        return UNKNOWN;
+    }
+
     @Override
     public String toString() {
         return "HeatingMethodType {" +

@@ -33,8 +33,8 @@ public class NormalRentalTransformer extends OfferTransformTemplate implements T
         offerAddition.setManagementCategory(utils.transferCategories(abaOffer, ManagementCategoryType.class));
         offerAddition.setTenant(abaOffer.getExtra11());
 
-        offerAddition.setCanPet(utils.convertPossibleStatusToBool(abaOffer.getExtra14()));
-        offerAddition.setCanParking(utils.convertPossibleStatusToBool(abaOffer.getExtra15()));
+        offerAddition.setCanPet(utils.convertTextToBool(abaOffer.getExtra14(), "가능"));
+        offerAddition.setCanParking(utils.convertTextToBool(abaOffer.getExtra15(), "가능"));
         offerAddition.setHasElevator(utils.isContainsElevatorInMCategories(abaOffer));
 
         return packaging();

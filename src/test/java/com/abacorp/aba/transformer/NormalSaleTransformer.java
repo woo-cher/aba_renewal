@@ -29,7 +29,7 @@ public class NormalSaleTransformer extends OfferTransformTemplate implements Tra
         offerAddress.setBuildingArea(abaOffer.getPyeong());
         offerAddress.setLandArea(abaOffer.getMake());
 
-        offerAddition.setHasElevator(utils.convertExistTextToBool(abaOffer.getExtra4()));
+        offerAddition.setHasElevator(utils.convertTextToBool(abaOffer.getExtra4(), "있음"));
         offerAddition.setHouseholdInfo(
                 // 지하/1층/.../6층 세대
                 utils.convertParamsChildhoodInfo(

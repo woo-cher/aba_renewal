@@ -81,12 +81,8 @@ public class TransformUtils {
                 .collect(Collectors.joining(","));
     }
 
-    public boolean convertPossibleStatusToBool(String possibleStatus) {
-        return possibleStatus.equals("가능");
-    }
-
-    public boolean convertExistTextToBool(String isExistString) {
-        return isExistString.equals("있음");
+    public boolean convertTextToBool(String actual, String matcher) {
+        return actual.trim().equals(matcher);
     }
 
     public String getBuildingNameAtTitle(TemporaryAbaOffer abaOffer) {
