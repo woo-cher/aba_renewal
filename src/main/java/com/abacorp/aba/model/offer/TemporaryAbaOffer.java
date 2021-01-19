@@ -74,5 +74,15 @@ public class TemporaryAbaOffer {
     private String manageOrProfit;
     private String loan;
 
+    /* APT */
+    private String park;
+    private String totalNum;
+    private String floor1;
+    private String direction;
+    private String tongro;
+    private String price7;
+    private String room_num;
+    private String cool;
+
     private String images;
 }

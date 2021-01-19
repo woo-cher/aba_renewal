@@ -40,6 +40,15 @@ public class OfferAddition {
     private boolean hasElevator;
     private boolean canParking;
     private boolean canPet;
+    private boolean hasCool;
+
+    /* APT */
+    private String households;
+    private String totalParking;
+    private String direction;
+    private String frontStructure;
+    private String bathrooms;
+    private String rooms;
 
     private List<OptionType> optionTypes;
     private List<ManagementCategoryType> managementTypes;

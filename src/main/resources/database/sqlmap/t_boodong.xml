@@ -46,11 +46,11 @@
         <result property="extra8" column="extra8" /> <!-- 준공년도 -->
         <result property="extra9" column="extra9" /> <!-- 확장여부 : 원룸일때는 이필드가 비어있다 -->
         <result property="extra10" column="extra10" /> <!-- 즉시입주일 또는 단기여부 -->
-        <result property="extra11" column="extra11" /> <!-- 세입자 -->
+        <result property="extra11" column="extra11" /> <!-- 세입자 / 아파트 리모델링 -->
         <result property="dong" column="dong" /> <!-- 동 -->
         <result property="extra12" column="extra12" /> <!-- 호 -->
         <result property="extra13" column="extra13" /> <!-- 호실암호 -->
-        <result property="extra14" column="extra14" />
+        <result property="extra14" column="extra14" /> <!-- APT 총동수 / 반려 -->
         <result property="extra15" column="extra15" />
 
         <result property="latitude" column="x_point" />
@@ -65,6 +65,16 @@
         <result property="investmentPrice" column="price4" /> <!-- 투자금액 -->
         <result property="manageOrProfit" column="price5" /> <!-- 관리비 또는 수익 -->
         <result property="loan" column="right_money" /> <!-- 융자금 -->
+
+        <!-- APT -->
+        <result property="park" column="park" /> <!-- 총세대수 -->
+        <result property="totalNum" column="total_num" /> <!-- 총 주차 대수 -->
+        <result property="floor1" column="floor1" /> <!-- 전체 층 -->
+        <result property="direction" column="direction" /> <!-- 방향 -->
+        <result property="tongro" column="tongro" /> <!-- 현관구조 -->
+        <result property="price7" column="price7" /> <!-- 욕실개수 -->
+        <result property="room_num" column="room_num" /> <!-- 방 개수 -->
+        <result property="cool" column="cool" /> <!-- 냉방시설 -->
 
         <collection property="images" column="l_number" javaType="java.lang.String" select="selectImagesOffer" />
     </resultMap>

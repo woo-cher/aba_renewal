@@ -36,18 +36,21 @@ public class DataFactory <T extends TypeMapper> {
         String gubunCode = abaOffer.getGubun();
         String etc1 = abaOffer.getEtc1();
 
-        if (gubunCode.equals("57")) {
-            if (etc1.equals("1")) {
-                return normalSaleStrategy; // 주택인데 매매면
-            }
-
-            return normalRentalStrategy; // 주택인데 월,전세면
-        } else if (gubunCode.equals("61") || gubunCode.equals("75")) { // 원룸 또는 투. 쓰리룸 이면
-            return normalRentalStrategy;
-        } else if (gubunCode.equals("65") || gubunCode.equals("66")) { // 건물(원룸) 또는 건물(상가) 이면
-            return normalSaleStrategy;
-        } else if (gubunCode.equals("5") || gubunCode.equals("7")) { // 상가 또는 사무실이면
-            return officeRentalStrategy;
+        switch (gubunCode) {
+            case "57":
+                if (etc1.equals("1")) {
+                    return normalSaleStrategy; // 주택인데 매매면
+                }
+                return normalRentalStrategy; // 주택인데 월,전세면
+            case "61":
+            case "75":  // 원룸 또는 투. 쓰리룸 이면
+                return normalRentalStrategy;
+            case "65":
+            case "66":  // 건물(원룸) 또는 건물(상가) 이면
+                return normalSaleStrategy;
+            case "5":
+            case "7":  // 상가 또는 사무실이면
+                return officeRentalStrategy;
         }
 
         return null;
