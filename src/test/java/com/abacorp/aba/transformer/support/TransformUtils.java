@@ -49,6 +49,16 @@ public class TransformUtils {
 
     public <T extends TypeMapper> String transferCategories(TemporaryAbaOffer abaOffer, Class<T> clazz) {
         boolean isOfficeType = abaOffer.getGubun().equals("5") || abaOffer.getGubun().equals("7");
+        String options = abaOffer.getOptions();
+        String manages = abaOffer.getManagementCategories();
+
+        if (options.isEmpty()) {
+            return null;
+        }
+
+        if (manages.isEmpty()) {
+            return null;
+        }
 
         List<? extends TypeMapper> TypeLists = factory.getTypeArray(clazz);
 

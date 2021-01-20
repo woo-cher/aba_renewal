@@ -10,8 +10,6 @@ import com.abacorp.aba.model.type.FacilityCostCategoryType;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
-import com.abacorp.aba.transformer.NormalRentalTransformer;
-import com.abacorp.aba.transformer.NormalSaleTransformer;
 import com.abacorp.aba.transformer.support.DataFactory;
 import com.abacorp.aba.transformer.support.TransformStrategy;
 import com.abacorp.aba.transformer.support.TransformUtils;
@@ -21,14 +19,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  *  For transfer {@link TemporaryAbaOffer} to ${@link Offer} {@link OfferAddress} {@link OfferAddition}
@@ -77,11 +73,12 @@ public class AbaOfferTransFormerTest {
     @Test
     public void transformTest() throws IOException {
         List<TemporaryAbaOffer> mocks = repository.selectAbaOffers();
+
         int row = 0;
         for (TemporaryAbaOffer abaOffer : mocks) {
             TransformStrategy strategy = factory.getTransformer(abaOffer);
             Offer target = strategy.transform(abaOffer);
-
+            log.error("target : {}", abaOffer);
             log.info("target : {}", target);
             row += offerService.createOffer(target);
         }

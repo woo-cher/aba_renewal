@@ -39,7 +39,7 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .build(); // plus
 
         this.offerAddition = OfferAddition.builder()
-                .term(abaOffer.getExtra10())
+                .term(abaOffer.getExtra10().isEmpty() ? null : abaOffer.getExtra10())
                 .build();
 
         this.offer = Offer.builder()
@@ -67,7 +67,7 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                     adminMemo.concat("(추가연락처) -> " + otherPhones) :
                     adminMemo.concat(", (추가연락처) -> " + otherPhones);
 
-            abaOffer.setRemarkMemo(adminMemo);
+            offer.setAdminMemo(adminMemo);
         }
     }
 

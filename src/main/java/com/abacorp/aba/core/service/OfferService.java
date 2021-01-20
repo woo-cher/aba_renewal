@@ -108,7 +108,7 @@ public class OfferService {
 
     private String getThumbnailPath(Offer offer) {
         String thumbnail = offer.getThumbnail();
-        if (thumbnail.isEmpty()) {
+        if (thumbnail == null || thumbnail.isEmpty()) {
             return "ABA_LOGO.png";
         }
 

@@ -3,7 +3,6 @@ package com.abacorp.aba.model.type;
 import com.abacorp.aba.model.mapper.TypeMapper;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -16,7 +15,7 @@ public enum OfferType implements TypeMapper {
      * 유저 권한
      */
     ONE_ROOM("원룸"),
-    TWO_THREE_ROOM("투룸"),
+    TWO_THREE_ROOM("투∙쓰리룸"),
     EFFICIENCY_APT("오피스텔"),
     APT("아파트"),
     SHOP("상가"),
@@ -56,6 +55,8 @@ public enum OfferType implements TypeMapper {
             return null;
         } else if (value.contains("건물/")) {
             value = value.replace("건물/", "");
+        } else if (value.equals("투∙쓰리룸")) {
+            return TWO_THREE_ROOM;
         }
         for (OfferType offerType : values()) {
             if (value.contains(offerType.getValue())) {

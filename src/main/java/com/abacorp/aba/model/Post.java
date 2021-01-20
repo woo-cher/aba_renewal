@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.Builder;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,7 +21,7 @@ public class Post extends ModelMapper {
     @NotBlank(message = "내용을 입력하세요")
     private String contents;
     @NotNull(message = "게시글 유형을 선택하세요")
-    private PostType postType = PostType.NORMAL;
+    private PostType postType;
     @Builder.Default
     private int hits = 0;
 }

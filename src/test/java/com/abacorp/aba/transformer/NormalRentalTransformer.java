@@ -3,7 +3,6 @@ package com.abacorp.aba.transformer;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.TemporaryAbaOffer;
 import com.abacorp.aba.model.type.ManagementCategoryType;
-import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.transformer.support.OfferTransformTemplate;
 import com.abacorp.aba.transformer.support.TransformStrategy;

@@ -99,4 +99,10 @@ public class BasicTest {
         System.out.println(str1.replaceAll(regex, ""));
         System.out.println(str2.replaceAll(regex, ""));
     }
+
+    @Test
+    public void sub() {
+        String type = "투∙쓰리룸";
+        log.info("{}", OfferType.createWhenContainsValue(type));
+    }
 }
