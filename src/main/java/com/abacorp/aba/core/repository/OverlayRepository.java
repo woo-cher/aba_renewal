@@ -4,7 +4,9 @@ import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +16,8 @@ import java.util.List;
 public class OverlayRepository {
 
     @Autowired
-    private SqlSession sqlSession;
+    @Qualifier("sqlSessionTemplate")
+    private SqlSessionTemplate sqlSession;
 
     public List<Overlay> selectOverlaysByFilters(MapFiltersDto dto) {
         return sqlSession.selectList("selectOverlays", dto);

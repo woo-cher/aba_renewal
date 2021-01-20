@@ -1,5 +1,6 @@
 package com.abacorp.aba;
 
+import com.abacorp.aba.core.repository.TransformerRepository;
 import com.abacorp.aba.core.repository.UserRepository;
 import com.abacorp.aba.model.User;
 import lombok.extern.slf4j.Slf4j;
@@ -22,15 +23,31 @@ import static junit.framework.TestCase.assertNotNull;
 public class DbTest {
 
     @Autowired
+    @Qualifier("dataSource")
     private DataSource dataSource;
 
     @Autowired
+    @Qualifier("manageDataSource")
+    private DataSource manageDataSource;
+
+    @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private TransformerRepository repository2;
 
     @Test
     public void dataSource() throws SQLException {
         log.warn("Datasource : {}", dataSource.getConnection());
         assertNotNull(dataSource.getConnection());
+        log.warn("Datasource2 : {}", manageDataSource.getConnection());
+        assertNotNull(manageDataSource.getConnection());
+    }
+
+    @Test
+    public void getByDb() {
+        log.info("user using basic dataSource : {}", repository.selectById("test"));
+        log.info("abaOffer using 2nd dataSource : {}", repository2.selectAbaOffers());
     }
 
     @Test

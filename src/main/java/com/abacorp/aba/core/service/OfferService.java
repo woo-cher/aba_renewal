@@ -45,7 +45,6 @@ public class OfferService {
 
         offer.setThumbnail(getThumbnailPath(offer));
         log.info("Thumbnail : {}", offer.getThumbnail());
-
         offerRepository.updateOfferThumbnailById(offer);
 
         log.info("generatedKey : {}", offer.getId());
@@ -132,7 +131,10 @@ public class OfferService {
         offerAddress.setBelongsTo(belongsTo);
 
         String floorType = offerAddress.getFloor();
-        offerAddress.setFloor(convertFloor(floorType));
+
+        if (floorType != null) {
+            offerAddress.setFloor(convertFloor(floorType));
+        }
     }
 
     /**

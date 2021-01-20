@@ -5,7 +5,9 @@ import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +17,8 @@ import java.util.Map;
 public class OfferRepository {
 
     @Autowired
-    private SqlSession sqlSession;
+    @Qualifier("sqlSessionTemplate")
+    private SqlSessionTemplate sqlSession;
 
     public Offer selectOfferById(int id) {
         return sqlSession.selectOne("selectOfferById", id);

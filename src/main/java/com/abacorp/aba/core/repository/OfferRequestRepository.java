@@ -4,7 +4,9 @@ import com.abacorp.aba.model.offer.OfferRequest;
 import com.abacorp.aba.model.dto.RequestFilterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +16,8 @@ import java.util.List;
 public class OfferRequestRepository {
 
     @Autowired
-    private SqlSession sqlSession;
+    @Qualifier("sqlSessionTemplate")
+    private SqlSessionTemplate sqlSession;
 
     public int createOfferRequest(OfferRequest offerRequest) {
         return sqlSession.insert("insertOfferRequest", offerRequest);

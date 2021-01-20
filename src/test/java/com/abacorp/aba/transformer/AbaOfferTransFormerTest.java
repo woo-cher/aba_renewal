@@ -1,6 +1,7 @@
-package com.abacorp.aba.transformer.support;
+package com.abacorp.aba.transformer;
 
 import com.abacorp.aba.core.repository.TransformerRepository;
+import com.abacorp.aba.core.service.OfferService;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
@@ -11,6 +12,9 @@ import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.transformer.NormalRentalTransformer;
 import com.abacorp.aba.transformer.NormalSaleTransformer;
+import com.abacorp.aba.transformer.support.DataFactory;
+import com.abacorp.aba.transformer.support.TransformStrategy;
+import com.abacorp.aba.transformer.support.TransformUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +22,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.IOException;
+import java.util.List;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  *  For transfer {@link TemporaryAbaOffer} to ${@link Offer} {@link OfferAddress} {@link OfferAddition}
@@ -60,14 +71,21 @@ public class AbaOfferTransFormerTest {
     @Autowired
     private DataFactory factory;
 
-    @Test
-    @Transactional
-    public void transformTest() {
-        TemporaryAbaOffer mock = repository.selectAbaOffers().get(0);
-        TransformStrategy strategy = factory.getTransformer(mock);
+    @Autowired
+    private OfferService offerService;
 
-        Offer target = strategy.transform(mock);
-        log.info("target : {}", target);
+    @Test
+    public void transformTest() throws IOException {
+        List<TemporaryAbaOffer> mocks = repository.selectAbaOffers();
+        int row = 0;
+        for (TemporaryAbaOffer abaOffer : mocks) {
+            TransformStrategy strategy = factory.getTransformer(abaOffer);
+            Offer target = strategy.transform(abaOffer);
+
+            log.info("target : {}", target);
+            row += offerService.createOffer(target);
+        }
+        assertThat(row, is(20));
     }
 
     @Test
