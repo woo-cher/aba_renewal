@@ -26,6 +26,7 @@ public class OfficeRentalTransformer extends OfferTransformTemplate implements T
         offerAddress.setHo(abaOffer.getMLicence());
         offerAddress.setDoor(abaOffer.getMArea());
 
+        offerAddition.setRooms(abaOffer.getExtra6());
         offerAddition.setIndustry(abaOffer.getUseArea());
         offerAddition.setRestrictedIndustry(abaOffer.getExtra9());
         offerAddition.setOptionCategory(utils.transferCategories(abaOffer, FacilityCostCategoryType.class));

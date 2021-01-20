@@ -20,7 +20,7 @@ public class AptTransformer extends OfferTransformTemplate implements TransformS
 
         offer.setHeatingMethodType(HeatingMethodType.createWhenContainsValue(abaOffer.getInput4())); // 난방방식
         offer.setCompletionYear(abaOffer.getZone1()); // 준공년도
-        offer.setSalePrice(abaOffer.getSalePrice()); // 준공년도
+        offer.setSalePrice(abaOffer.getSalePrice()); // 매매가
         offer.setLoan(abaOffer.getAptLoan()); // 아파트 융자금
 
         offerAddress.setDong(abaOffer.getDong()); // 해당동
