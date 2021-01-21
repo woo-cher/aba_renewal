@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PointHistoryRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class PointHistoryRepository extends AbaRepository {
 
     public int insertPointHistory(PointHistory pointHistory) {
         return sqlSession.insert("insertPointHistory", pointHistory);

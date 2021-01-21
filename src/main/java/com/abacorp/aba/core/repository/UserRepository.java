@@ -13,11 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class UserRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class UserRepository extends AbaRepository {
 
     public List<User> findAll() {
         return sqlSession.selectList("findAllUser");

@@ -10,11 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Map;
 
 @Repository
-public class MembershipRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class MembershipRepository extends AbaRepository {
 
     public int insertMembership(Membership membership) {
         return sqlSession.insert("insertMembership", membership);

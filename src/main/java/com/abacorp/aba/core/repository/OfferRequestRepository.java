@@ -13,11 +13,7 @@ import java.util.List;
 
 @Repository
 @Slf4j
-public class OfferRequestRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class OfferRequestRepository extends AbaRepository {
 
     public int createOfferRequest(OfferRequest offerRequest) {
         return sqlSession.insert("insertOfferRequest", offerRequest);

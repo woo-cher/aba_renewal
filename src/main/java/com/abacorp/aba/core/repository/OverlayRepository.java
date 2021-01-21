@@ -13,11 +13,7 @@ import java.util.List;
 
 @Repository
 @Slf4j
-public class OverlayRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class OverlayRepository extends AbaRepository {
 
     public List<Overlay> selectOverlaysByFilters(MapFiltersDto dto) {
         return sqlSession.selectList("selectOverlays", dto);

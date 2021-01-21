@@ -14,11 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class OfferRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class OfferRepository extends AbaRepository {
 
     public Offer selectOfferById(int id) {
         return sqlSession.selectOne("selectOfferById", id);

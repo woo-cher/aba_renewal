@@ -12,13 +12,9 @@ import java.util.List;
 
 @Repository
 @Slf4j
-public class TransformerRepository {
-
-    @Autowired
-    @Qualifier("manageSqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class TransformerRepository extends AbaRepository {
 
     public List<TemporaryAbaOffer> selectAbaOffers() {
-        return sqlSession.selectList("selectAbaOffers");
+        return manageSqlSession.selectList("selectAbaOffers");
     }
 }

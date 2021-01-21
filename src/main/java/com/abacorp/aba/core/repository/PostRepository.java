@@ -1,6 +1,7 @@
 package com.abacorp.aba.core.repository;
 
 import com.abacorp.aba.model.Post;
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,11 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PostRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class PostRepository extends AbaRepository {
 
     public int insertPost(Post post) {
         return sqlSession.insert("createPost", post);

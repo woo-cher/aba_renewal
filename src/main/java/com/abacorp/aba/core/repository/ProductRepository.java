@@ -10,11 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Slf4j
-public class ProductRepository {
-
-    @Autowired
-    @Qualifier("sqlSessionTemplate")
-    private SqlSessionTemplate sqlSession;
+public class ProductRepository extends AbaRepository {
 
     public Product selectProductById(int id) {
         return sqlSession.selectOne("selectProductById", id);
