@@ -1,12 +1,12 @@
 package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.mapper.ModelMapper;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Builder;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
 public class Product extends ModelMapper {
     private String name;

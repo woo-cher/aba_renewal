@@ -6,6 +6,8 @@ import lombok.Builder;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Overlay extends ModelMapper {
     private int count;

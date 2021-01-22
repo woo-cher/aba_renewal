@@ -17,6 +17,8 @@ import java.util.List;
 @Data
 @Builder
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Offer extends ModelMapper {
     private User user;

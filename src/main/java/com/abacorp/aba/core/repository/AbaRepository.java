@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 public class AbaRepository {
 
     @Autowired
-    @Qualifier("basicSqlSession")
+    @Qualifier("sqlSessionTemplate")
     protected SqlSession sqlSession;
 
     @Autowired
-    @Qualifier("manageSqlSession")
+    @Qualifier("manageSqlSessionTemplate")
     protected SqlSession manageSqlSession;
 }
