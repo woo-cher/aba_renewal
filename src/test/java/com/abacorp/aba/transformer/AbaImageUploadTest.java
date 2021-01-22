@@ -32,10 +32,7 @@ public class AbaImageUploadTest {
     public void upload() {
         List<Offer> offers = offerRepository.selectStatusOnOffers();
 
-        int i = 0;
         for (Offer offer : offers) {
-            if (i == 1) return;
-
             String imageUrls = offer.getTemporaryImages();
             log.info("offer {} -> images : {}", offer.getId(), imageUrls);
             List<File> files = new ArrayList<>();
@@ -56,8 +53,6 @@ public class AbaImageUploadTest {
                 offer.setThumbnail(thumbnail);
                 offerRepository.updateOfferThumbnailById(offer);
             }
-
-            i++;
         }
     }
 }

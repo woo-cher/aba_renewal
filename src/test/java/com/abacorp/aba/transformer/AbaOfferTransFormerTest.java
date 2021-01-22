@@ -11,6 +11,7 @@ import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OfferType;
 import com.abacorp.aba.model.type.OptionType;
 import com.abacorp.aba.transformer.support.DataFactory;
+import com.abacorp.aba.transformer.support.OfferTransformTemplate;
 import com.abacorp.aba.transformer.support.TransformStrategy;
 import com.abacorp.aba.transformer.support.TransformUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -73,11 +74,11 @@ public class AbaOfferTransFormerTest {
 
         int row = 0;
         for (TemporaryAbaOffer abaOffer : mocks) {
-            TransformStrategy strategy = factory.getTransformer(abaOffer);
+            TransformStrategy<? extends OfferTransformTemplate> strategy = factory.getTransformer(abaOffer);
             log.error("of strategy : {}", strategy);
-            log.error("target : {}", abaOffer);
+            log.error("{}", abaOffer);
             Offer target = strategy.transform(abaOffer);
-            log.info("target : {}", target);
+            log.info("{}", target);
             row += offerService.createOffer(target);
         }
     }

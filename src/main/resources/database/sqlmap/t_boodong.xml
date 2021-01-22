@@ -97,7 +97,7 @@
             l_number, title, area1, area2, addr, addr2, juso1, juso2, m_phone, owner_tel2, owner_tel3, remark,
             pyong, make, etc2, etc1, gubun, hot, input4, date, m_licence, use_area, m_area, zone1,
             extra5, extra6, extra7, extra9, extra14, extra15,
-            x_point, y_point, bd_option1, bd_option2,
+            x_point, y_point, bd_option1, bd_option2, video_url,
             price1, price2, price3, price4, price5, price6, price7, right_money,
             park, total_num, floor1, direction, tongro, room_num, cool
         FROM t_boodong
