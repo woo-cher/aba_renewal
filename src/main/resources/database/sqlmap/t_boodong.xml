@@ -100,8 +100,8 @@
             price1, price2, price3, price4, price5, price6, price7, right_money,
             park, total_num, floor1, direction, tongro, room_num, cool
         FROM t_boodong
-        WHERE (del_yn = 'N' AND l_number AND gubun != ("10" OR "11" OR "54" OR "55" OR "56" OR "59" OR "60"))
-        LIMIT 50
+        WHERE del_yn = 'N'
+          AND gubun NOT IN (3, 8, 10, 11, 54, 55, 56, 58, 59, 60)
     </select>
 
     <select id="selectImagesOffer" resultType="java.lang.String">

@@ -23,9 +23,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 /**
  *  For transfer {@link TemporaryAbaOffer} to ${@link Offer} {@link OfferAddress} {@link OfferAddition}
  *
@@ -77,12 +74,12 @@ public class AbaOfferTransFormerTest {
         int row = 0;
         for (TemporaryAbaOffer abaOffer : mocks) {
             TransformStrategy strategy = factory.getTransformer(abaOffer);
-            Offer target = strategy.transform(abaOffer);
+            log.error("of strategy : {}", strategy);
             log.error("target : {}", abaOffer);
+            Offer target = strategy.transform(abaOffer);
             log.info("target : {}", target);
             row += offerService.createOffer(target);
         }
-        assertThat(row, is(50));
     }
 
     @Test

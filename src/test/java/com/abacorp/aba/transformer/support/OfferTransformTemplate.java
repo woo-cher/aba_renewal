@@ -38,15 +38,7 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .belongsTo(utils.transferBelongsTo(abaOffer))
                 .build(); // plus
 
-        this.offerAddition = OfferAddition.builder()
-                .term(abaOffer.getExtra10())
-                .build();
-
-        if (abaOffer.getExtra10() != null) {
-            if (abaOffer.getExtra10().equals("불가능")) {
-                offerAddition.setTerm(null);
-            }
-        }
+        this.offerAddition = OfferAddition.builder().build();
 
         this.offer = Offer.builder()
                 .abaOfferId(abaOffer.getId())

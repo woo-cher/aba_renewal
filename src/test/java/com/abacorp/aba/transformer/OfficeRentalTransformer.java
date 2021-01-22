@@ -17,7 +17,9 @@ public class OfficeRentalTransformer extends OfferTransformTemplate implements T
 
     @Override
     public Offer transform(TemporaryAbaOffer abaOffer) {
-        offer.setSuppliesPrice(abaOffer.getExtra4());
+        initialize(abaOffer);
+
+        offer.setSuppliesPrice(abaOffer.getExtra4() == null ? "0" : abaOffer.getExtra4());
         offer.setManagementPrice(abaOffer.getManageOrProfit());
 
         offerAddress.setBuildingArea(abaOffer.getPyeong());

@@ -92,6 +92,10 @@ public class TransformUtils {
     }
 
     public boolean convertTextToBool(String actual, String matcher) {
+        if (actual == null) {
+            return false;
+        }
+
         return actual.trim().equals(matcher);
     }
 
@@ -107,8 +111,8 @@ public class TransformUtils {
             return null;
         }
 
-        String regex = "(<p><span style=\"font-size:.?28px;\">|</span></p>)";
-        return htmlString.replaceAll(regex, "");
+        String regex = "(<p><span style=\"font-size:.?..px;\">|</span></p>|<p>|</p>)";
+        return htmlString.replaceAll(regex, "").trim();
     }
 
     public String getFloorIfRooftopOrSemibasement(String ho) {
@@ -127,7 +131,18 @@ public class TransformUtils {
 
     public String convertParamsChildhoodInfo(String ... params) {
         return Stream.of(params)
-                .map((str) -> str.isEmpty() ? "정보없음" : str)
+                .map((str) -> {
+                    String noneInfo = "정보없음";
+                    if (str == null) {
+                        return noneInfo;
+                    }
+
+                    if (str.isEmpty()) {
+                        return noneInfo;
+                    }
+
+                    return str;
+                })
                 .collect(Collectors.joining("/"));
     }
 

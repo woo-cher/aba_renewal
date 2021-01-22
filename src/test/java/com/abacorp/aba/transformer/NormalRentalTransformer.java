@@ -38,6 +38,13 @@ public class NormalRentalTransformer extends OfferTransformTemplate implements T
         offerAddition.setCanParking(utils.convertTextToBool(abaOffer.getExtra15(), "가능"));
         offerAddition.setHasElevator(utils.isContainsElevatorInMCategories(abaOffer));
 
+        offerAddition.setTerm(abaOffer.getExtra10()); // 단기
+        if (abaOffer.getExtra10() != null) {
+            if (abaOffer.getExtra10().equals("불가능")) {
+                offerAddition.setTerm(null);
+            }
+        }
+
         return packaging();
     }
 }

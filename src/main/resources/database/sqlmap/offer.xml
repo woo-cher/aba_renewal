@@ -9,11 +9,11 @@
         <result property="monthlyPrice" column="monthly_price" />
         <result property="managementPrice" column="management_price" />
         <result property="salePrice" column="sale_price" />
-        <result property="investmentMonty" column="investment_money" />
+        <result property="investmentMoney" column="investment_money" />
         <result property="loan" column="loan" />
         <result property="interest" column="interest" />
-        <result property="monthly_profit" column="monthly_profit" />
-        <result property="supplies_price" column="supplies_price" />
+        <result property="monthlyProfit" column="monthly_profit" />
+        <result property="suppliesPrice" column="supplies_price" />
         <result property="inquiryTel" column="inquiry_tel" />
         <result property="completionYear" column="completion_year" />
         <result property="type" column="type" />

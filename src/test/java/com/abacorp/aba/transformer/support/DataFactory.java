@@ -43,6 +43,7 @@ public class DataFactory {
 
         switch (gubunCode) {
             case "1":
+            case "4":
                 return aptStrategy;
             case "57":
                 if (etc1.equals("1")) {
