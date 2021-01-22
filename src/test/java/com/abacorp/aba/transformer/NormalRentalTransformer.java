@@ -24,10 +24,10 @@ public class NormalRentalTransformer extends OfferTransformTemplate implements T
         offer.setCompletionYear(abaOffer.getExtra8());
         offer.setDeposit(abaOffer.getDeposit());
 
-        offerAddress.setHo((abaOffer.getExtra12()));
-        offerAddress.setFloor(utils.getFloorIfRooftopOrSemibasement(abaOffer.getExtra12()));
+        offerAddress.setHo(abaOffer.getExtra12());
         offerAddress.setEntrance(abaOffer.getExtra4());
         offerAddress.setDoor(abaOffer.getExtra13());
+        offerAddress.setFloor(utils.getFloorIfRooftopOrSemibasement(abaOffer.getExtra12()));
 
         offerAddition.setRooms(abaOffer.getExtra6()); // 주택 : 방개수, 그외 : 원룸, 투룸, 쓰리룸 ..
         offerAddition.setOptionCategory(utils.transferCategories(abaOffer, OptionType.class));

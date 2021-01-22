@@ -201,20 +201,24 @@ class MapModule {
                                 ${isPremium ? offer.offerAddress.jibun : offer.offerAddress.belongsTo + ' ***-**'}
                             </p>
                             <p class="offer-building">
-                                ${isPremium ? offer.offerAddress.buildingName : ''}
+                                ${isPremium ? offer.offerAddress.buildingName !== null ? offer.offerAddress.buildingName : '' : ''}
                             </p>
                             <div class="offer-summary">
                                 <strong>
                                     ${offer.type.value} |
-                                    ${isPremium ? offer.offerAddress.floor === '-1' ? offer.offerAddress.ho :
-                                      offer.offerAddress.floor === '100' ? offer.offerAddress.ho : offer.offerAddress.ho : '*** 호'} |
-                                    ${offer.heatingType.value}
+                                    ${isPremium ?
+                                      offer.offerAddress.floor === '-1' ? offer.offerAddress.ho :
+                                      offer.offerAddress.floor === '100' ? offer.offerAddress.ho : 
+                                      offer.offerAddress.ho === null ? '?호' :
+                                      offer.offerAddress.ho : '*** 호'
+                                    }
+                                     | ${offer.heatingType !== null ? offer.heatingType.value : ""}
                                 </strong>
                             </div>
                             <div class="label-info">
-                                <label>세입자: ${offer.offerAddition.tenant}</label>
+                                <label>세입자: ${offer.offerAddition.tenant == null ? "정보없음" : offer.offerAddition.tenant}</label>
                                 ${offer.offerAddition.parking ? '<label>주차가능</label>' : ''}
-                                <label>${offer.offerAddress.door}</label>
+                                <label>호실번호 : ${offer.offerAddress.door == null ? "정보없음" : offer.offerAddress.door}</label>
                             </div>
                             <p class="offer-tel">
                                 <i class="fas fa-phone-square-alt"></i>

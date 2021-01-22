@@ -68,14 +68,18 @@ public class MapService {
 
         int i = 0;
 
-        for (String indexStr : addition.getOptionCategory().split(",")) { // 1, 2, 3
-            i = Integer.parseInt(indexStr);
-            optionTypeList.add(optionTypes[i]);
+        if (addition.getOptionCategory() != null) {
+            for (String indexStr : addition.getOptionCategory().split(",")) { // 1, 2, 3
+                i = Integer.parseInt(indexStr);
+                optionTypeList.add(optionTypes[i]);
+            }
         }
 
-        for (String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
-            i = Integer.parseInt(indexStr);
-            managementTypeList.add(managementTypes[i]);
+        if (addition.getManagementCategory() != null) {
+            for (String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
+                i = Integer.parseInt(indexStr);
+                managementTypeList.add(managementTypes[i]);
+            }
         }
 
         addition.setOptionTypes(optionTypeList);

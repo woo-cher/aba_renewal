@@ -33,14 +33,20 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .buildingName(utils.getBuildingNameAtTitle(abaOffer))
                 .jibun(utils.transferJibun(abaOffer))
                 .road(utils.transferRoad(abaOffer))
-                .dong(utils.getDongIfExist(abaOffer))
+                .dong(abaOffer.getDong())
                 .nearLocation(abaOffer.getInput1())
                 .belongsTo(utils.transferBelongsTo(abaOffer))
                 .build(); // plus
 
         this.offerAddition = OfferAddition.builder()
-                .term(abaOffer.getExtra10().isEmpty() ? null : abaOffer.getExtra10())
+                .term(abaOffer.getExtra10())
                 .build();
+
+        if (abaOffer.getExtra10() != null) {
+            if (abaOffer.getExtra10().equals("불가능")) {
+                offerAddition.setTerm(null);
+            }
+        }
 
         this.offer = Offer.builder()
                 .abaOfferId(abaOffer.getId())
@@ -52,9 +58,9 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .dealType(DealType.createWhenContainsValue(abaDealType))
                 .heatingType(HeatingType.createWhenContainsValue(abaOffer.getHot()))
                 .status(OfferStatusType.createWhenContainsValue(abaStatusType))
-                .adminMemo(abaOffer.getRemarkMemo())
+                .adminMemo(utils.convertEmptyStringToNull(abaOffer.getRemarkMemo()))
                 .description(utils.getTextAtHtmlString(abaOffer.getRemark())) // <p> ... desc ... </p>
-                .temporaryImages(abaOffer.getImages())
+                .temporaryImages(utils.convertEmptyStringToNull(abaOffer.getImages()))
                 .build();
 
         String otherPhones = utils.joiningMultiTelNumber(abaOffer);

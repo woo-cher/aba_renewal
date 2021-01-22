@@ -81,7 +81,27 @@
     </resultMap>
 
     <select id="selectAbaOffers" resultMap="abaOffer">
-        SELECT * FROM t_boodong WHERE del_yn = 'N' AND gubun != (10 OR 11 OR 54 OR 55 OR 56 OR 59 OR 60) LIMIT 20;
+        SELECT
+            IF(extra10 = "", NULL, TRIM(extra10)) as extra10,
+            IF(extra4 = "", NULL, TRIM(extra4)) as extra4,
+            IF(extra8 = "", NULL, TRIM(extra8)) as extra8,
+            IF(extra11 = "", NULL, TRIM(extra11)) as extra11,
+            IF(extra12 = "", NULL, TRIM(extra12)) as extra12,
+            IF(extra13 = "", NULL, TRIM(extra13)) as extra13,
+            IF(remark_memo = "", NULL, TRIM(remark_memo)) as remark_memo,
+            IF(hot = "", "UNKNOWN", hot) as hot,
+            IF(jibun_addr_etc = "", NULL, jibun_addr_etc) as jibun_addr_etc,
+            IF(input1 = "", NULL, TRIM(input1)) as input1,
+            IF(dong = "", NULL, TRIM(dong)) as dong,
+            l_number, title, area1, area2, addr, addr2, juso1, juso2, m_phone, owner_tel2, owner_tel3, remark,
+            pyong, make, etc2, etc1, gubun, hot, input4, date, m_licence, use_area, m_area, zone1,
+            extra5, extra6, extra7, extra9, extra14, extra15,
+            x_point, y_point, bd_option1, bd_option2,
+            price1, price2, price3, price4, price5, price6, price7, right_money,
+            park, total_num, floor1, direction, tongro, room_num, cool
+        FROM t_boodong
+        WHERE (del_yn = 'N' AND l_number AND gubun != ("10" OR "11" OR "54" OR "55" OR "56" OR "59" OR "60"))
+        LIMIT 50
     </select>
 
     <select id="selectImagesOffer" resultType="java.lang.String">

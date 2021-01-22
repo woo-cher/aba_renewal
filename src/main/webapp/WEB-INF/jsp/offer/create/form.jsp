@@ -387,7 +387,7 @@
         } else {
             target = $('#howTerm');
             target.toggle();
-            target.css('display') === 'none' ? target.find('input').val('0') : target.find('input').val('');
+            target.css('display') === 'none' ? target.find('input').val(null) : target.find('input').val('');
         }
     }
 

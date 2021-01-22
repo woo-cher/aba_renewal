@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum HeatingType implements TypeMapper {
 
-    UNKNOWN("UNKNOWN"),
+    UNKNOWN("정보없음"),
 
     /**
      * 난방유형

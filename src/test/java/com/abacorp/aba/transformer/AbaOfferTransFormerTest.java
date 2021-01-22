@@ -82,7 +82,7 @@ public class AbaOfferTransFormerTest {
             log.info("target : {}", target);
             row += offerService.createOffer(target);
         }
-        assertThat(row, is(20));
+        assertThat(row, is(50));
     }
 
     @Test

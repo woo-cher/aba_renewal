@@ -102,11 +102,6 @@ public class TransformUtils {
         return result.length() == 0 ? null : result;
     }
 
-    public String getDongIfExist(TemporaryAbaOffer abaOffer) {
-        String dong = abaOffer.getDong();
-        return dong.length() == 0 ? null : dong;
-    }
-
     public String getTextAtHtmlString(String htmlString) {
         if (htmlString.isEmpty()) {
             return null;
@@ -117,6 +112,10 @@ public class TransformUtils {
     }
 
     public String getFloorIfRooftopOrSemibasement(String ho) {
+        if (ho == null) {
+            return null;
+        }
+
         if (ho.contains("반지하")) {
             return "-100";
         } else if (ho.contains("옥탑")) {
@@ -158,6 +157,20 @@ public class TransformUtils {
         }
 
         return tels;
+    }
+
+    public String convertEmptyStringToNull(String value) {
+        if (value == null) {
+            return null;
+        }
+
+        if (value.isEmpty()) {
+            return null;
+        }
+
+        else {
+            return value;
+        }
     }
 
     private boolean isStrEmptyOrNull(String matcher) {
