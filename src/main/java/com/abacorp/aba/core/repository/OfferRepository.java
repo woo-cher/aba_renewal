@@ -90,6 +90,10 @@ public class OfferRepository extends AbaRepository {
         return sqlSession.selectOne("selectOfferThumbnail", offerId);
     }
 
+    public List<Offer> selectStatusOnOffers() {
+        return sqlSession.selectList("selectStatusOnOffers");
+    }
+
     public List<Offer> selectOffers() {
         return sqlSession.selectList("selectOffers");
     }

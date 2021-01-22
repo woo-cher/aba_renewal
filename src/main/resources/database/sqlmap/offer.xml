@@ -26,6 +26,7 @@
         <result property="adminMemo" column="admin_memo" />
         <result property="description" column="description" />
         <result property="thumbnail" column="thumbnail" />
+        <result property="temporaryImages" column="images" />
         <association property="user" resultMap="user" />
         <association property="offerAddress" resultMap="offerAddress" />
         <association property="offerAddition" resultMap="offerAddition" />
@@ -132,6 +133,10 @@
             </foreach>
        </if>
     </sql>
+
+    <select id="selectStatusOnOffers" resultMap="offer">
+        SELECT id, images FROM offers WHERE status = "ON" AND images IS NOT NULL;
+    </select>
 
     <select id="selectOffers" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />

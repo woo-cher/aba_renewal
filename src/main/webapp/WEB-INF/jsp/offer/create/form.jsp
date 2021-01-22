@@ -173,7 +173,7 @@
         uploadMultiple: true,
         addRemoveLinks: true,
         parallelUploads: 8,
-        maxFiles: 8,
+        maxFiles: 20,
         thumbnailWidth: 100,
         thumbnailHeight: 100,
         acceptedFiles: 'image/*',
