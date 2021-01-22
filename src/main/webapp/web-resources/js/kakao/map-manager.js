@@ -29,6 +29,7 @@ class MapManager extends Spot {
 
             let pageInfo;
 
+            console.log(this.southWest, this.northEast)
             /* If `spot` level */
             if(this.level < 4) {
                 pageInfo = getOffersOfMap(this.southWest, this.northEast, null, 0);

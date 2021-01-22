@@ -90,7 +90,7 @@
     </sql>
 
     <sql id="latitudeQualify">(addrs.latitude BETWEEN #{west} AND #{east})</sql>
-    <sql id="longitudeQualify">(addrs.latitude BETWEEN #{west} AND #{east})</sql>
+    <sql id="longitudeQualify">(addrs.longitude BETWEEN #{south} AND #{north})</sql>
     <sql id="filtersQuery">
         /**
             If filters ...
@@ -157,12 +157,14 @@
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE <include refid="latitudeQualify" />
         AND   <include refid="longitudeQualify" />
+        AND   status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
     <select id="selectOffersByRegion" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+        AND   status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
@@ -170,11 +172,13 @@
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.latitude = #{latitude} AND addrs.longitude = #{longitude}
         <include refid="filtersQuery" />
+        AND   status = 'ON'
     </select>
 
     <select id="selectCountByBelongsAndFilters" parameterType="MapFiltersDto" resultType="int">
         SELECT count(*) FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+        AND   status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
