@@ -38,10 +38,7 @@ public class MapService {
 
         for (Overlay overlay : overlays) {
             dto.setBelongsTo(overlay.getName());
-
-            if (overlay.getCount() != 0) {
-                overlay.setCount(offerRepository.selectCountByFilters(dto));
-            }
+            overlay.setCount(offerRepository.selectCountByFilters(dto));
         }
 
         return overlays;
