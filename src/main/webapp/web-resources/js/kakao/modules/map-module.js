@@ -193,8 +193,13 @@ class MapModule {
                             </p>
                             <p class="offer-deal">
                                 <label>${offer.dealType.value}</label>
-                                <strong>${offer.deposit}/${offer.monthlyPrice}
-                                    <span class="aba"> +${offer.managementPrice}</span>
+                                <strong>
+                                    ${offer.dealType.code === "SALE" ? offer.salePrice/10000 + "억" : offer.deposit + "/" + offer.monthlyPrice}
+                                    <span class="aba">
+                                        ${offer.dealType.code === "SALE" ? "" :
+                                        offer.managementPrice !== null ? 
+                                        " + " + offer.managementPrice : ""}
+                                    </span>
                                 </strong>
                             </p>
                             <p class="offer-addr">
