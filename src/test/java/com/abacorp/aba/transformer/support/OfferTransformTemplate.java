@@ -53,6 +53,7 @@ public class OfferTransformTemplate extends AbaJsonDataInitializer {
                 .adminMemo(utils.convertEmptyStringToNull(abaOffer.getRemarkMemo()))
                 .description(utils.getTextAtHtmlString(abaOffer.getRemark())) // <p> ... desc ... </p>
                 .temporaryImages(utils.convertEmptyStringToNull(abaOffer.getImages()))
+                .videoUrl(utils.convertEmptyStringToNull(abaOffer.getVideoUrl())) // <iframe>...</iframe>
                 .build();
 
         String otherPhones = utils.joiningMultiTelNumber(abaOffer);

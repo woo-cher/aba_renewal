@@ -58,6 +58,7 @@ public class Offer extends ModelMapper {
     private String adminMemo;
     private String description;
     private String thumbnail;
+    private String videoUrl;
     private List<MultipartFile> files;
     private List<KeyValueDto> imageUrls;
 

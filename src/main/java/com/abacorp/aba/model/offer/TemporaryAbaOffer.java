@@ -85,5 +85,6 @@ public class TemporaryAbaOffer {
     private String room_num;
     private String cool;
 
+    private String videoUrl;
     private String images;
 }

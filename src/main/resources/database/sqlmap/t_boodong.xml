@@ -77,6 +77,7 @@
         <result property="room_num" column="room_num" /> <!-- 방 개수 -->
         <result property="cool" column="cool" /> <!-- 냉방시설 -->
 
+        <result property="videoUrl" column="video_url" />
         <collection property="images" column="l_number" javaType="java.lang.String" select="selectImagesOffer" />
     </resultMap>
 

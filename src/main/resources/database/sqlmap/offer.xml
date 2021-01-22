@@ -26,6 +26,7 @@
         <result property="adminMemo" column="admin_memo" />
         <result property="description" column="description" />
         <result property="thumbnail" column="thumbnail" />
+        <result property="videoUrl" column="video_url" />
         <result property="temporaryImages" column="images" />
         <association property="user" resultMap="user" />
         <association property="offerAddress" resultMap="offerAddress" />
@@ -212,7 +213,7 @@
         VALUES (
             null, #{deposit}, #{monthlyPrice}, #{managementPrice}, #{salePrice}, #{investmentMoney}, #{loan}, #{interest},
             #{monthlyProfit}, #{suppliesPrice}, #{type}, #{dealType}, #{heatingType}, #{heatingMethodType}, #{status},
-            #{user.userId}, #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, #{thumbnail},
+            #{user.userId}, #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, #{thumbnail}, #{videoUrl},
             current_timestamp, current_timestamp, #{temporaryImages}, #{abaOfferId}
          )
     </insert>
@@ -238,8 +239,10 @@
         UPDATE offers
         SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice},
             sale_price = #{salePrice}, investmentMoney = #{investmentMoney}, loan = #{loan}, interest = #{interest},
-            type = #{type}, deal_type = #{dealType}, heating_type = #{heatingType}, completion_year = #{completionYear},
-            description = #{description}, thumbnail = #{thumbnail}, updated_at = current_timestamp
+            monthly_profit = #{monthlyProfit}, supplies_price = #{suppliesPrice},
+            type = #{type}, deal_type = #{dealType}, heating_type = #{heatingType}, inquiry_tel = #{inquiryTel},
+            completion_year = #{completionYear}, description = #{description}, thumbnail = #{thumbnail}, video_url = #{videoUrl},
+            updated_at = current_timestamp
         WHERE id = #{id}
     </update>
 
