@@ -18,6 +18,7 @@ body {
     height: 10%;
     display: inline-flex;
     align-items: flex-end;
+    position: relative;
 
     & img {
       padding: 0 10%;
@@ -28,6 +29,13 @@ body {
       &:hover {
         zoom: 1.1;
       }
+    }
+
+    & i {
+      position: absolute;
+      top: 1.5vw;
+      right: 1.5vw;
+      cursor: pointer;
     }
   }
 

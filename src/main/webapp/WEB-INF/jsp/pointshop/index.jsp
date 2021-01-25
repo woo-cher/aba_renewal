@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" name="a" value="1">
+                        <input type="radio" name="a" value="1" checked>
                     </td>
                     <td class="name">유료보기 30일</td>
                     <td class="price">
@@ -129,7 +129,8 @@
             <p class="target"></p>
         </div>
         <div class="dialog-btn-group pt-3">
-            <button class="w-45" type="button" onclick="dialogCloseTrigger($('#msg-dialog'))">확인</button>
+            <button class="w-45" type="button" onclick="showPurchase()">충전하기</button>
+            <button class="w-45" type="button" onclick="dialogCloseTrigger($('#msg-dialog'))">닫기</button>
         </div>
     </div>
 </div>
@@ -137,6 +138,10 @@
 <script>
     $(document).ready(function () {
         showLoader();
+
+        $('tr').click(function (e) {
+            $(e.currentTarget).find('input').prop('checked', true);
+        })
     });
 
     function beforePurchase() {
@@ -153,7 +158,7 @@
         let price = selected.parent().siblings('.price').children('span').text();
 
         if (havePoint < Number(price.replaceAll(',', ''))) {
-            let message = `보유 포인트가 부족해요 :(`;
+            let message = "보유 포인트가 부족해요 :(";
             dialogInitializer($('#msg-dialog'), message, null);
 
             return;
@@ -174,5 +179,10 @@
                 location.reload();
             }
         }, 500)
+    }
+
+    function showPurchase() {
+        dialogCloseTrigger($('#msg-dialog'));
+        $('.plus-icon').click();
     }
 </script>

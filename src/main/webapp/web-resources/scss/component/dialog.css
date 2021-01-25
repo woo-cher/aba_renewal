@@ -123,7 +123,7 @@ input[type=password] {
   padding: 5px 0;
 }
 .aba-dialog .dialog-btn-group {
-  width: 60%;
+  width: auto;
   margin: 0 auto;
 }
 .aba-dialog li:hover {

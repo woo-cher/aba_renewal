@@ -31,9 +31,11 @@
 
     <ul class="menu">
 <%--        <li class="usersmemyaba"><a href="/users/me/my_offer">마이페이지</a></li>--%>
-        <li class="intro none"><a href="/intro">회사소개</a></li>
-        <li class="posts none"><a href="/posts">공지사항</a></li>
         <li class="maps"><a href="/maps">매물찾기</a></li>
+        <li class="offersform none"><a href="/offers/form">매물등록</a></li>
+        <li class="shop none"><a href="/shop">결제하기</a></li>
+        <li class="posts none"><a href="/posts">공지사항</a></li>
+        <li class="intro none"><a href="/intro">회사소개</a></li>
         <sec:authorize access="!isAuthenticated()">
             <li class="authlogin"><a href="/auth/login">로그인 &middot; 회원가입</a></li>
         </sec:authorize>
@@ -41,8 +43,6 @@
             <c:if test="${sessionUser.role eq 'MASTER' || sessionUser.role eq 'ADMIN'}">
                 <li class="admin none"><a href="/admin">관리자모드</a></li>
             </c:if>
-            <li class="offersform none"><a href="/offers/form">매물등록</a></li>
-            <li class="shop none"><a href="/shop">포인트샵</a></li>
             <li class="user">
                 <a href="#">${principal.user.name} 님
                     <h5 style="display: inline">▼</h5>

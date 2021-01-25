@@ -19,6 +19,7 @@ body {
   height: 10%;
   display: inline-flex;
   align-items: flex-end;
+  position: relative;
 }
 #guide .logo img {
   padding: 0 10%;
@@ -28,6 +29,12 @@ body {
 }
 #guide .logo img:hover {
   zoom: 1.1;
+}
+#guide .logo i {
+  position: absolute;
+  top: 1.5vw;
+  right: 1.5vw;
+  cursor: pointer;
 }
 #guide .title {
   width: 80%;

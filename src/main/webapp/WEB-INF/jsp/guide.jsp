@@ -5,14 +5,17 @@
     <title>아바 이용가이드</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/guide.css">
     <link rel="stylesheet" type="text/css" href="/web-resources/css/reset.css">
 </head>
 <body>
 <div class="main-container">
     <div id="guide">
-            <header class="logo">
+            <header class="logo relative">
                 <img src="/web-resources/img/logo.png" alt="아바로고" onclick="location.href='../..'">
+                <i class="closer fas fa-times-circle txt-lg" onclick="location.href='/'"></i>
             </header>
             <div class="title">
                 <div class="txt-box">
