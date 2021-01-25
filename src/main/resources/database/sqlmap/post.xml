@@ -24,7 +24,7 @@
     <select id="selectPosts" resultMap="post">
         SELECT * FROM posts
         INNER JOIN users ON posts.register = users.user_id
-        ORDER BY posts.post_type, posts.created_at desc
+        ORDER BY posts.post_type, posts.created_at DESC
     </select>
 
     <select id="selectPostById" resultMap="post">

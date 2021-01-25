@@ -1,7 +1,7 @@
 package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.OfferRequestService;
-import com.abacorp.aba.model.OfferRequest;
+import com.abacorp.aba.model.offer.OfferRequest;
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferRequestType;
 import com.abacorp.aba.model.type.RequiredConditionType;

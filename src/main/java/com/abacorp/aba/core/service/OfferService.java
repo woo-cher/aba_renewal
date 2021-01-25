@@ -1,14 +1,13 @@
 package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OfferRepository;
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
-import com.abacorp.aba.model.OfferAddress;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
+import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.FieldError;
@@ -46,7 +45,6 @@ public class OfferService {
 
         offer.setThumbnail(getThumbnailPath(offer));
         log.info("Thumbnail : {}", offer.getThumbnail());
-
         offerRepository.updateOfferThumbnailById(offer);
 
         log.info("generatedKey : {}", offer.getId());
@@ -109,9 +107,13 @@ public class OfferService {
     }
 
     private String getThumbnailPath(Offer offer) {
+        String thumbnail = offer.getThumbnail();
+        if (thumbnail == null || thumbnail.isEmpty()) {
+            return "ABA_LOGO.png";
+        }
+
         String sId = String.valueOf(offer.getId());
         String thumbPrefix = awsS3Service.getMd5Hash(sId);
-        String thumbnail = offer.getThumbnail();
 
         if (thumbnail.contains("png") || thumbnail.contains("jpeg") || thumbnail.contains("jpg")) {
             thumbnail = awsS3Service.getMd5Hash(offer.getThumbnail());
@@ -129,7 +131,10 @@ public class OfferService {
         offerAddress.setBelongsTo(belongsTo);
 
         String floorType = offerAddress.getFloor();
-        offerAddress.setFloor(convertFloor(floorType));
+
+        if (floorType != null) {
+            offerAddress.setFloor(convertFloor(floorType));
+        }
     }
 
     /**

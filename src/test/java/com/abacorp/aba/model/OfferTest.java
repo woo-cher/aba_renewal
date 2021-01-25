@@ -3,6 +3,9 @@ package com.abacorp.aba.model;
 import com.abacorp.aba.core.repository.OfferRepository;
 import com.abacorp.aba.core.service.OfferService;
 import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
+import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.HeatingType;
 import com.abacorp.aba.model.type.OfferStatusType;
@@ -34,7 +37,7 @@ public class OfferTest {
             .build();
 
     private final Offer testOffer = Offer.builder()
-            .deposit("100").monthlyPrice("33").managementPrice("3")
+            .deposit("100")
             .type(OfferType.ONE_ROOM).heatingType(HeatingType.ELECT).dealType(DealType.MONTHLY)
             .completionYear("2000").status(OfferStatusType.ON)
             .offerAddition(

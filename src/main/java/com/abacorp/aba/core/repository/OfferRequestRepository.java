@@ -1,20 +1,19 @@
 package com.abacorp.aba.core.repository;
 
-import com.abacorp.aba.model.OfferRequest;
+import com.abacorp.aba.model.offer.OfferRequest;
 import com.abacorp.aba.model.dto.RequestFilterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 @Slf4j
-public class OfferRequestRepository {
-
-    @Autowired
-    private SqlSession sqlSession;
+public class OfferRequestRepository extends AbaRepository {
 
     public int createOfferRequest(OfferRequest offerRequest) {
         return sqlSession.insert("insertOfferRequest", offerRequest);

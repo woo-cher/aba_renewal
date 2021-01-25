@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <html>
 <head>
@@ -121,11 +123,13 @@
                 <div class="row">
                     <p class="key">단기임대</p>
                     <p class="value">
-                        ${offer.offerAddition.term == 0 ? "불가능" : offer.offerAddition.term}
-                        ${offer.offerAddition.term == 0 ? "" : "개월"}
+                        ${offer.offerAddition.term == null ? "불가능" : offer.offerAddition.term}
+                        ${offer.offerAddition.term == null ? "" : "개월"}
                     </p>
                     <p class="key">중요위치</p>
-                    <p class="value">${offer.offerAddress.nearLocation} 부근</p>
+                    <p class="value">
+                        ${offer.offerAddress.nearLocation == null ? "정보없음" : offer.offerAddress.nearLocation}
+                    </p>
                 </div>
             </div>
         </div>

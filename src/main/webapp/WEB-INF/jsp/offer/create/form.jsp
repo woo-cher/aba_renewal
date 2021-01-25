@@ -69,6 +69,7 @@
             <form id="offerForm" action="${actionUrl}" method="post" enctype="multipart/form-data">
                 <input type="submit" id="submit" hidden>
                 <input type="hidden" id="post">
+                <input type="hidden" name="status" value="ON">
                 <c:if test="${isUpdate}">
                     <input type="hidden" name="id" value="${offer.id}">
                     <input type="hidden" name="offerAddress.offerId" value="${offer.id}">
@@ -172,7 +173,7 @@
         uploadMultiple: true,
         addRemoveLinks: true,
         parallelUploads: 8,
-        maxFiles: 8,
+        maxFiles: 20,
         thumbnailWidth: 100,
         thumbnailHeight: 100,
         acceptedFiles: 'image/*',
@@ -386,7 +387,7 @@
         } else {
             target = $('#howTerm');
             target.toggle();
-            target.css('display') === 'none' ? target.find('input').val('0') : target.find('input').val('');
+            target.css('display') === 'none' ? target.find('input').val(null) : target.find('input').val('');
         }
     }
 

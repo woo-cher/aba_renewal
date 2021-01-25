@@ -63,6 +63,33 @@ public class AwsS3Service {
         }
     }
 
+    /**
+     * @param files
+     * @param offerId
+     * @return Thumbnail File name (Just First index file)
+     */
+    public String uploadForAbaTransfer(List<File> files, String offerId) {
+        String hashIdValue = getMd5Hash(offerId);
+        String hashFileName = null;
+        String thumbnail = null;
+
+        int i = 0;
+        for (File file : files) {
+            hashFileName = getMd5Hash(file.getName());
+
+            if (i == 0) {
+                thumbnail = hashIdValue + "/" + hashFileName;
+            }
+
+            String key = pathEndPoint + hashIdValue + "/" + hashFileName;
+            PutObjectRequest req = new PutObjectRequest(bucketName, key, file);
+            amazonS3.putObject(req.withCannedAcl(CannedAccessControlList.PublicRead));
+            i++;
+        }
+
+        return thumbnail;
+    }
+
     // TODO) 삭제 요청한 사진이 썸네일로 지정되어 있으면, 해당 썸네일 컬럼을 비워야 한다.
     public void deleteOne(String hashedOfferId, String fileName) {
         String key = pathEndPoint + hashedOfferId + "/" + fileName;

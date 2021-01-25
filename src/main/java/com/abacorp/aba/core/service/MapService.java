@@ -2,8 +2,8 @@ package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OverlayRepository;
 import com.abacorp.aba.core.repository.OfferRepository;
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.Overlay;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.type.ManagementCategoryType;
@@ -38,10 +38,7 @@ public class MapService {
 
         for (Overlay overlay : overlays) {
             dto.setBelongsTo(overlay.getName());
-
-            if (overlay.getCount() != 0) {
-                overlay.setCount(offerRepository.selectCountByFilters(dto));
-            }
+            overlay.setCount(offerRepository.selectCountByFilters(dto));
         }
 
         return overlays;
@@ -68,14 +65,18 @@ public class MapService {
 
         int i = 0;
 
-        for (String indexStr : addition.getOptionCategory().split(",")) { // 1, 2, 3
-            i = Integer.parseInt(indexStr);
-            optionTypeList.add(optionTypes[i]);
+        if (addition.getOptionCategory() != null) {
+            for (String indexStr : addition.getOptionCategory().split(",")) { // 1, 2, 3
+                i = Integer.parseInt(indexStr);
+                optionTypeList.add(optionTypes[i]);
+            }
         }
 
-        for (String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
-            i = Integer.parseInt(indexStr);
-            managementTypeList.add(managementTypes[i]);
+        if (addition.getManagementCategory() != null) {
+            for (String indexStr : addition.getManagementCategory().split(",")) { // 1, 2, 3
+                i = Integer.parseInt(indexStr);
+                managementTypeList.add(managementTypes[i]);
+            }
         }
 
         addition.setOptionTypes(optionTypeList);

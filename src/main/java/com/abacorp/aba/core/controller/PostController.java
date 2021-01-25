@@ -1,7 +1,6 @@
 package com.abacorp.aba.core.controller;
 
 import com.abacorp.aba.core.service.PostService;
-import com.abacorp.aba.model.Offer;
 import com.abacorp.aba.model.Post;
 import com.abacorp.aba.model.User;
 import lombok.extern.slf4j.Slf4j;

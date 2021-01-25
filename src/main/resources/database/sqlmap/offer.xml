@@ -8,6 +8,13 @@
         <result property="deposit" column="deposit" />
         <result property="monthlyPrice" column="monthly_price" />
         <result property="managementPrice" column="management_price" />
+        <result property="salePrice" column="sale_price" />
+        <result property="investmentMoney" column="investment_money" />
+        <result property="loan" column="loan" />
+        <result property="interest" column="interest" />
+        <result property="monthlyProfit" column="monthly_profit" />
+        <result property="suppliesPrice" column="supplies_price" />
+        <result property="inquiryTel" column="inquiry_tel" />
         <result property="completionYear" column="completion_year" />
         <result property="type" column="type" />
         <result property="dealType" column="deal_type" />
@@ -16,8 +23,11 @@
         <result property="status" column="status" />
         <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
         <result property="updatedAt" column="updated_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+        <result property="adminMemo" column="admin_memo" />
         <result property="description" column="description" />
         <result property="thumbnail" column="thumbnail" />
+        <result property="videoUrl" column="video_url" />
+        <result property="temporaryImages" column="images" />
         <association property="user" resultMap="user" />
         <association property="offerAddress" resultMap="offerAddress" />
         <association property="offerAddition" resultMap="offerAddition" />
@@ -37,17 +47,35 @@
         <result property="floor" column="floor" />
         <result property="nearLocation" column="near_location" />
         <result property="belongsTo" column="belongs_to" />
+        <result property="buildingArea" column="building_area" />
+        <result property="landArea" column="land_area" />
     </resultMap>
 
     <resultMap id="offerAddition" type="OfferAddition">
         <id property="offerId" column="offer_id" />
         <result property="term" column="term" />
         <result property="tenant" column="tenant" />
+        <result property="householdInfo" column="house_hold_info" />
+        <result property="industry" column="industry" />
+        <result property="restrictedIndustry" column="restricted_industry" />
         <result property="optionCategory" column="option_category" />
         <result property="managementCategory" column="management_category" />
         <result property="hasElevator" column="has_elevator" />
         <result property="canParking" column="can_parking" />
         <result property="canPet" column="can_pet" />
+
+        <result property="hasCool" column="has_cool" />
+        <result property="builtIn" column="built_in" />
+        <result property="remodeling" column="remodeling" />
+
+        <result property="moveIn" column="move_in" />
+        <result property="households" column="households" />
+        <result property="totalDong" column="total_dong" />
+        <result property="totalParking" column="total_parking" />
+        <result property="direction" column="direction" />
+        <result property="frontStructure" column="front_structure" />
+        <result property="bathrooms" column="bathrooms" />
+        <result property="rooms" column="rooms" />
     </resultMap>
 
     <resultMap id="user" type="user" >
@@ -64,7 +92,7 @@
     </sql>
 
     <sql id="latitudeQualify">(addrs.latitude BETWEEN #{west} AND #{east})</sql>
-    <sql id="longitudeQualify">(addrs.latitude BETWEEN #{west} AND #{east})</sql>
+    <sql id="longitudeQualify">(addrs.longitude BETWEEN #{south} AND #{north})</sql>
     <sql id="filtersQuery">
         /**
             If filters ...
@@ -107,6 +135,10 @@
        </if>
     </sql>
 
+    <select id="selectStatusOnOffers" resultMap="offer">
+        SELECT id, images FROM offers WHERE status = "ON" AND images IS NOT NULL;
+    </select>
+
     <select id="selectOffers" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
     </select>
@@ -131,12 +163,14 @@
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE <include refid="latitudeQualify" />
         AND   <include refid="longitudeQualify" />
+        AND   status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
     <select id="selectOffersByRegion" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+        AND   status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
@@ -144,11 +178,13 @@
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.latitude = #{latitude} AND addrs.longitude = #{longitude}
         <include refid="filtersQuery" />
+        AND   status = 'ON'
     </select>
 
     <select id="selectCountByBelongsAndFilters" parameterType="MapFiltersDto" resultType="int">
         SELECT count(*) FROM offers AS ofs <include refid="offerJoin" />
         WHERE addrs.belongs_to LIKE CONCAT('%', #{belongsTo}, '%')
+        AND   status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
@@ -173,35 +209,40 @@
     </select>
 
     <insert id="insertOffer" parameterType="offer" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO offers (
-            deposit, monthly_price, management_price, type, deal_type, heating_type, status, user,
-            completion_year, description, created_at, updated_at
-        ) VALUES (
-            #{deposit}, #{monthlyPrice}, #{managementPrice}, #{type}, #{dealType}, #{heatingType}, 'ON', #{user.userId},
-            #{completionYear}, #{description}, current_timestamp, current_timestamp
-        )
+        INSERT INTO offers
+        VALUES (
+            null, #{deposit}, #{monthlyPrice}, #{managementPrice}, #{salePrice}, #{investmentMoney}, #{loan}, #{interest},
+            #{monthlyProfit}, #{suppliesPrice}, #{type}, #{dealType}, #{heatingType}, #{heatingMethodType}, #{status},
+            #{user.userId}, #{inquiryTel}, #{completionYear}, #{adminMemo}, #{description}, #{thumbnail}, #{videoUrl},
+            current_timestamp, current_timestamp, #{temporaryImages}, #{abaOfferId}
+         )
     </insert>
 
     <insert id="insertOfferAddress" parameterType="offerAddress">
         INSERT INTO offer_addresses
         VALUES (
-            #{offerId}, #{latitude}, #{longitude}, #{buildingName}, #{jibun}, #{road}, #{dong}, #{ho}, #{entrance}, #{door},
-            #{floor}, #{nearLocation}, #{belongsTo}
+            #{offerId}, #{latitude}, #{longitude}, #{buildingName}, #{jibun}, #{road}, #{dong}, #{ho}, #{entrance},
+            #{door}, #{floor}, #{nearLocation}, #{belongsTo}, #{buildingArea}, #{landArea}
          )
     </insert>
 
     <insert id="insertOfferAddition" parameterType="offerAddition">
         INSERT INTO offer_additions
         VALUES (
-            #{offerId}, #{term}, #{tenant}, #{optionCategory}, #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet}
+            #{offerId}, #{term}, #{tenant}, #{householdInfo}, #{industry}, #{restrictedIndustry}, #{optionCategory},
+            #{managementCategory}, #{hasElevator}, #{canParking}, #{canPet}, #{hasCool}, #{builtIn}, #{remodeling},
+            #{moveIn}, #{households}, #{totalDong}, #{totalParking}, #{direction}, #{frontStructure}, #{bathrooms}, #{rooms}
         )
     </insert>
 
     <update id="updateOffer" parameterType="offer">
         UPDATE offers
-        SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice}, type = #{type},
-            deal_type = #{dealType}, heating_type = #{heatingType}, completion_year = #{completionYear}, description = #{description},
-            thumbnail = #{thumbnail}, updated_at = current_timestamp
+        SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice},
+            sale_price = #{salePrice}, investmentMoney = #{investmentMoney}, loan = #{loan}, interest = #{interest},
+            monthly_profit = #{monthlyProfit}, supplies_price = #{suppliesPrice},
+            type = #{type}, deal_type = #{dealType}, heating_type = #{heatingType}, inquiry_tel = #{inquiryTel},
+            completion_year = #{completionYear}, description = #{description}, thumbnail = #{thumbnail}, video_url = #{videoUrl},
+            updated_at = current_timestamp
         WHERE id = #{id}
     </update>
 

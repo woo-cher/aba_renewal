@@ -2,7 +2,7 @@ package com.abacorp.aba.core.api;
 
 import com.abacorp.aba.core.service.MapService;
 import com.abacorp.aba.core.service.OfferService;
-import com.abacorp.aba.model.Offer;
+import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/apis")
 @Slf4j
 public class OfferApi {
-    private final int OFFERS_PER_PAGE = 2;
+    private final int OFFERS_PER_PAGE = 6;
     private final int MAXIMUM_PAGE = 999;
 
     @Autowired

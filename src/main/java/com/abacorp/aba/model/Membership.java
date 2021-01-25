@@ -7,9 +7,9 @@ import java.sql.Timestamp;
 
 @Data
 @Builder
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @ToString
 public class Membership extends ModelMapper {
     private User user;

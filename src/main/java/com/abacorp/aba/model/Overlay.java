@@ -2,6 +2,7 @@ package com.abacorp.aba.model;
 
 import com.abacorp.aba.model.mapper.ModelMapper;
 import lombok.*;
+import lombok.Builder;
 
 @Data
 @Builder

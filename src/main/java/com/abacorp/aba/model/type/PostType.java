@@ -1,7 +1,6 @@
 package com.abacorp.aba.model.type;
 
 import com.abacorp.aba.model.mapper.TypeMapper;
-import com.abacorp.aba.security.CustomUserDetails;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -35,7 +34,7 @@ public enum PostType implements TypeMapper {
     @JsonCreator
     public static PostType create(String code) {
         for (PostType postType : values()) {
-            if (postType.equals(postType.valueOf(code))) {
+            if (postType.equals(PostType.valueOf(code))) {
                 return postType;
             }
         }

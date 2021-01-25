@@ -12,11 +12,11 @@
 		<typeAlias alias="Post" type="com.abacorp.aba.model.Post"/>
 		<typeAlias alias="Overlay" type="com.abacorp.aba.model.Overlay"/>
 
-		<typeAlias alias="Offer" type="com.abacorp.aba.model.Offer"/>
-		<typeAlias alias="OfferAddress" type="com.abacorp.aba.model.OfferAddress"/>
-		<typeAlias alias="OfferAddition" type="com.abacorp.aba.model.OfferAddition"/>
+		<typeAlias alias="Offer" type="com.abacorp.aba.model.offer.Offer"/>
+		<typeAlias alias="OfferAddress" type="com.abacorp.aba.model.offer.OfferAddress"/>
+		<typeAlias alias="OfferAddition" type="com.abacorp.aba.model.offer.OfferAddition"/>
 
-		<typeAlias alias="OfferRequest" type="com.abacorp.aba.model.OfferRequest" />
+		<typeAlias alias="OfferRequest" type="com.abacorp.aba.model.offer.OfferRequest" />
 
 		<typeAlias alias="MapFiltersDto" type="com.abacorp.aba.model.dto.MapFiltersDto" />
 		<typeAlias alias="RequestFilterDto" type="com.abacorp.aba.model.dto.RequestFilterDto" />
@@ -26,6 +26,8 @@
 		<typeAlias alias="Payment" type="com.abacorp.aba.model.Payment" />
 		<typeAlias alias="PointHistory" type="com.abacorp.aba.model.PointHistory" />
 		<typeAlias alias="Membership" type="com.abacorp.aba.model.Membership" />
+
+		<typeAlias alias="TemporaryAbaOffer" type="com.abacorp.aba.model.offer.TemporaryAbaOffer" />
 	</typeAliases>
 
 	<typeHandlers>

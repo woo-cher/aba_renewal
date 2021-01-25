@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MAPPER 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="model.TemporaryAbaOffer">
+
+    <!-- Mapper -->
+    <resultMap id="abaOffer" type="TemporaryAbaOffer">
+        <id property="id" column="l_number" />
+        <result property="title" column="title" />
+
+        <result property="area2" column="area2" />
+        <result property="area1" column="area1" />
+        <result property="addr" column="addr" />
+        <result property="addr2" column="addr2" />
+        <result property="juso1" column="juso1" />
+        <result property="juso2" column="juso2" />
+
+        <result property="mPhone" column="m_phone" /> <!-- 연락처 -->
+        <result property="mPhone2" column="owner_tel2" /> <!-- 연락처2 -->
+        <result property="mPhone3" column="owner_tel3" /> <!-- 연락처3 -->
+        <result property="remark" column="remark" /> <!-- 사용자 메모 (절충가능 / 기타 추가설명) -->
+        <result property="remarkMemo" column="remark_memo" /> <!-- 관리자 메모 -->
+        <result property="jibunAddrEtc" column="jibun_addr_etc" /> <!-- 건물명 -->
+        <result property="pyeong" column="pyong" /> <!-- 평수, 건물연면적 -->
+        <result property="make" column="make" /> <!-- 대지면적 -->
+
+        <result property="etc2" column="etc2" /> <!-- ( 0: 진행 / 1: 계약완료 / 2: 숨김 ) -->
+        <result property="gubun" column="gubun" />
+        <result property="etc1" column="etc1" />
+
+        <result property="hot" column="hot" /> <!-- 난방유형 -->
+        <result property="input4" column="input4" /> <!-- 난방방식 -->
+
+        <result property="date" column="date" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler"/> <!-- 확인일자 -->
+
+        <result property="input1" column="input1" /> <!-- 부근위치 -->
+        <result property="mLicence" column="m_licence" /> <!-- 상가 호실정보 -->
+        <result property="useArea" column="use_area" /> <!-- 현재업종 -->
+        <result property="mArea" column="m_area" /> <!-- 상가 비밀번호 -->
+
+        <result property="zone1" column="zone1" /> <!-- 매매일때 준공년도 -->
+
+        <result property="extra4" column="extra4" /> <!-- 입구번호 / 건물 매매 일때 엘베여부 -->
+        <result property="extra5" column="extra5" /> <!-- 원룸일때 empty / 건물,상가 전체층 / 아파트 해당층 -->
+        <result property="extra6" column="extra6" /> <!-- 부가적인 정보... -->
+        <result property="extra7" column="extra7" /> <!-- 아파트일 때 세입자 여부 ㅡㅡ (비어있음 / 주인거주중 / 세입자있음 ), 상가일때 층정보 -->
+        <result property="extra8" column="extra8" /> <!-- 준공년도 -->
+        <result property="extra9" column="extra9" /> <!-- 확장여부 : 원룸일때는 이필드가 비어있다 -->
+        <result property="extra10" column="extra10" /> <!-- 즉시입주일 또는 단기여부 -->
+        <result property="extra11" column="extra11" /> <!-- 세입자 / 아파트 리모델링 -->
+        <result property="dong" column="dong" /> <!-- 동 -->
+        <result property="extra12" column="extra12" /> <!-- 호 -->
+        <result property="extra13" column="extra13" /> <!-- 호실암호 -->
+        <result property="extra14" column="extra14" /> <!-- APT 총동수 / 반려 -->
+        <result property="extra15" column="extra15" />
+
+        <result property="latitude" column="x_point" />
+        <result property="longitude" column="y_point" />
+
+        <result property="options" column="bd_option1" /> <!-- 옵션정보 / 상가일땐 관리비 -->
+        <result property="managementCategories" column="bd_option2" /> <!-- 관리비항목 / 상가일땐 시설비 -->
+
+        <result property="salePrice" column="price1" /> <!-- 매매가 -->
+        <result property="deposit" column="price2" /> <!-- 보증금 -->
+        <result property="monthly" column="price3" /> <!-- 월세 또는 월 임대료 -->
+        <result property="investmentPrice" column="price4" /> <!-- 투자금액 -->
+        <result property="manageOrProfit" column="price5" /> <!-- 관리비 또는 수익 -->
+        <result property="aptLoan" column="price6" /> <!-- 아파트 융자 -->
+        <result property="loan" column="right_money" /> <!-- 융자금 -->
+
+        <!-- APT -->
+        <result property="park" column="park" /> <!-- 총세대수 -->
+        <result property="totalNum" column="total_num" /> <!-- 총 주차 대수 -->
+        <result property="floor1" column="floor1" /> <!-- 전체 층 -->
+        <result property="direction" column="direction" /> <!-- 방향 -->
+        <result property="tongro" column="tongro" /> <!-- 현관구조 -->
+        <result property="price7" column="price7" /> <!-- 욕실개수 -->
+        <result property="room_num" column="room_num" /> <!-- 방 개수 -->
+        <result property="cool" column="cool" /> <!-- 냉방시설 -->
+
+        <result property="videoUrl" column="video_url" />
+        <collection property="images" column="l_number" javaType="java.lang.String" select="selectImagesOffer" />
+    </resultMap>
+
+    <select id="selectAbaOffers" resultMap="abaOffer">
+        SELECT
+            IF(extra10 = "", NULL, TRIM(extra10)) as extra10,
+            IF(extra4 = "", NULL, TRIM(extra4)) as extra4,
+            IF(extra8 = "", NULL, TRIM(extra8)) as extra8,
+            IF(extra11 = "", NULL, TRIM(extra11)) as extra11,
+            IF(extra12 = "", NULL, TRIM(extra12)) as extra12,
+            IF(extra13 = "", NULL, TRIM(extra13)) as extra13,
+            IF(remark_memo = "", NULL, TRIM(remark_memo)) as remark_memo,
+            IF(hot = "", "UNKNOWN", hot) as hot,
+            IF(jibun_addr_etc = "", NULL, jibun_addr_etc) as jibun_addr_etc,
+            IF(input1 = "", NULL, TRIM(input1)) as input1,
+            IF(dong = "", NULL, TRIM(dong)) as dong,
+            l_number, title, area1, area2, addr, addr2, juso1, juso2, m_phone, owner_tel2, owner_tel3, remark,
+            pyong, make, etc2, etc1, gubun, hot, input4, date, m_licence, use_area, m_area, zone1,
+            extra5, extra6, extra7, extra9, extra14, extra15,
+            x_point, y_point, bd_option1, bd_option2, video_url,
+            price1, price2, price3, price4, price5, price6, price7, right_money,
+            park, total_num, floor1, direction, tongro, room_num, cool
+        FROM t_boodong
+        WHERE del_yn = 'N'
+          AND gubun NOT IN (3, 8, 10, 11, 54, 55, 56, 58, 59, 60)
+    </select>
+
+    <select id="selectImagesOffer" resultType="java.lang.String">
+        SELECT CONCAT(
+                       img1,
+                       IF(img2 != '', CONCAT(",", img2), ''),
+                       IF(img3 != '', CONCAT(",", img3), ''),
+                       IF(img4 != '', CONCAT(",", img4), ''),
+                       IF(img5 != '', CONCAT(",", img5), ''),
+                       IF(img6 != '', CONCAT(",", img6), ''),
+                       IF(img7 != '', CONCAT(",", img7), ''),
+                       IF(img8 != '', CONCAT(",", img8), ''),
+                       IF(img9 != '', CONCAT(",", img9), ''),
+                       IF(img10 != '', CONCAT(",", img10), ''),
+                       IF(img11 != '', CONCAT(",", img11), ''),
+                       IF(img12 != '', CONCAT(",", img12), '')
+               ) AS "images"
+        FROM t_boodong WHERE l_number = #{id}
+    </select>
+</mapper>

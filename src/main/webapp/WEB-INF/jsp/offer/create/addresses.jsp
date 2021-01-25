@@ -27,13 +27,13 @@
     <div class="input-group p-1 check-area">
         <input type="hidden" id="latitude" name="offerAddress.latitude" value="${offer.offerAddress.latitude}">
         <input type="hidden" id="longitude" name="offerAddress.longitude" value="${offer.offerAddress.longitude}">
+        <p class="icon"><i class="fas">동</i></p>
         <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong" value="${offer.offerAddress.dong}"
                pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
-        <p class="icon"><i class="fas">동</i></p>
         <p class="short"></p>
-        <input type="text" class="short" id="ho" placeholder="예) 401호" name="offerAddress.ho" value="${offer.offerAddress.ho}"
-               pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
-        <p class="icon"><i class="fas">호</i></p>
+        <p class="icon"><i class="fas">호실</i></p>
+        <input type="text" class="middle" id="ho" placeholder="예) 102호, 103호" name="offerAddress.ho" value="${offer.offerAddress.ho}"
+               pattern="^[0-9, 호]{1,20}" onkeyup="formValidatorWithRegex($(this))">
         <div class="error-box"></div>
     </div>
     <ul class="checkbox-container p-0 w-half">

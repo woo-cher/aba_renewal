@@ -1,22 +1,20 @@
 package com.abacorp.aba.core.repository;
 
-import com.abacorp.aba.model.Offer;
-import com.abacorp.aba.model.OfferAddition;
-import com.abacorp.aba.model.OfferAddress;
+import com.abacorp.aba.model.offer.Offer;
+import com.abacorp.aba.model.offer.OfferAddition;
+import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.dto.MapFiltersDto;
-import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository
-public class OfferRepository {
-
-    @Autowired
-    private SqlSession sqlSession;
+public class OfferRepository extends AbaRepository {
 
     public Offer selectOfferById(int id) {
         return sqlSession.selectOne("selectOfferById", id);
@@ -90,6 +88,10 @@ public class OfferRepository {
 
     public String selectOfferThumbnail(int offerId) {
         return sqlSession.selectOne("selectOfferThumbnail", offerId);
+    }
+
+    public List<Offer> selectStatusOnOffers() {
+        return sqlSession.selectList("selectStatusOnOffers");
     }
 
     public List<Offer> selectOffers() {

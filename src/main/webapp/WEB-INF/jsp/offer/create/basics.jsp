@@ -97,14 +97,17 @@
         <div class="year pt-3">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>준공년도</span>
+                <span>준공년도 / 문의 연락처</span>
             </div>
             <div class="form-category p-1 check-area">
                 <div class="input-group">
                     <input type="text" class="short" id="completionYear" placeholder="1991" name="completionYear" value="${offer.completionYear}"
                            pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">년</i></p>
+                    <p class="short">/</p>
                     <div class="error-box"></div>
+                    <input type="text" class="middle" id="inquiryTel" placeholder="010-0000-0000" name="inquiryTel" value="${offer.inquiryTel}"
+                           pattern="^[0-9-]{1,13}" onkeyup="formValidatorWithRegex($(this))">
                 </div>
             </div>
         </div>

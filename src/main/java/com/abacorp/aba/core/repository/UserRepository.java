@@ -4,17 +4,16 @@ import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.UserFilterDto;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository
-public class UserRepository {
-
-    @Autowired
-    private SqlSession sqlSession;
+public class UserRepository extends AbaRepository {
 
     public List<User> findAll() {
         return sqlSession.selectList("findAllUser");
