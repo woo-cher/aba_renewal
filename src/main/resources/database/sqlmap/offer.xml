@@ -145,7 +145,8 @@
 
     <select id="selectOffersByKeyword" parameterType="String" resultMap="offer" >
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
-        WHERE id LIKE CONCAT('%', #{keyword}, '%') OR
+        WHERE status = 'ON' AND
+              id LIKE CONCAT('%', #{keyword}, '%') OR
               user LIKE CONCAT('%', #{keyword}, '%') OR
               addrs.building_name LIKE CONCAT('%', #{keyword}, '%') OR
               addrs.jibun LIKE CONCAT('%', #{keyword}, '%') OR
@@ -190,7 +191,7 @@
 
     <select id="selectOffersByIdKey" parameterType="string" resultMap="offerAddress">
         SELECT * FROM offer_addresses AS addrs
-        WHERE offer_id LIKE CONCAT('%', #{idKey}, '%');
+        WHERE status = 'ON' AND offer_id LIKE CONCAT('%', #{idKey}, '%');
     </select>
 
     <select id="selectOffersByUserId" parameterType="String" resultMap="offer">
@@ -204,7 +205,7 @@
 
     <select id="selectOffersByFilter" parameterType="MapFiltersDto" resultMap="offer">
         SELECT * FROM offers AS ofs <include refid="offerJoin" />
-        WHERE ofs.id != 0
+        WHERE ofs.id != 0 AND ofs.status = 'ON'
         <include refid="filtersQuery" />
     </select>
 
