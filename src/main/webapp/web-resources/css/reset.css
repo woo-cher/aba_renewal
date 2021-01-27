@@ -105,6 +105,7 @@
 .txt-lg { font-size: 1.35rem !important; }
 .txt-md { font-size: 1.225rem !important; }
 .txt-sm { font-size: 1rem !important; }
+.weight-bold { font-weight: bold !important; }
 
 .header.mini { color: gray; font-size: 22px; }
 

@@ -90,7 +90,7 @@
             <div class="table-wrap">
                 <div class="row bb">
                     <p class="key">소재지</p>
-                    <p class="value">
+                    <p class="value weight-bold">
                         <c:choose>
                             <c:when test="${isPremium}">${offer.offerAddress.jibun}</c:when>
                             <c:otherwise>${offer.offerAddress.belongsTo} ***-**</c:otherwise>
@@ -112,6 +112,18 @@
                     </p>
                     <p class="key">준공년도</p>
                     <p class="value">${empty offer.completionYear ? "정보없음" : offer.completionYear}</p>
+                </div>
+
+                <div class="row bb">
+                    <p class="key">전화번호</p>
+                    <p class="value">
+                        <c:choose>
+                            <c:when test="${isPremium}">${offer.inquiryTel}</c:when>
+                            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+                        </c:choose>
+                    </p>
+                    <p class="key">난방연료</p>
+                    <p class="value">${offer.heatingType.value}</p>
                 </div>
 
                 <c:choose>

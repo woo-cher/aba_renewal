@@ -2,10 +2,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="row bb">
-    <p class="key">반려동물</p>
-    <p class="value">${offer.offerAddition.canPet ? "가능" : "불가능"}</p>
-    <p class="key">주차</p>
-    <p class="value">${offer.offerAddition.canParking ? "가능" : "불가능"}</p>
+    <p class="key">매물구분</p>
+    <p class="value">${offer.offerAddition.rooms}</p>
+    <p class="key">입구</p>
+    <p class="value">${offer.offerAddress.entrance}</p>
+</div>
+
+<div class="row bb">
+    <p class="key">보증금</p>
+    <p class="value">${offer.deposit}</p>
+    <p class="key">월세</p>
+    <p class="value">${offer.monthlyPrice}</p>
+</div>
+
+<div class="row bb">
+    <p class="key">관리비</p>
+    <p class="value">${offer.managementPrice}</p>
+    <p class="key">세입자</p>
+    <p class="value">
+        ${empty offer.offerAddition.tenant ? "정보없음" : offer.offerAddition.tenant}
+    </p>
 </div>
 
 <div class="row bb">
@@ -20,20 +36,21 @@
             </c:otherwise>
         </c:choose>
     </p>
-    <p class="key">세입자</p>
-    <p class="value">
-        ${empty offer.offerAddition.tenant ? "정보없음" : offer.offerAddition.tenant}
-    </p>
+    <p class="key">룸비밀번호</p>
+    <p class="value">${offer.offerAddress.door}</p>
 </div>
 
-<div class="row">
+<div class="row bb">
+    <p class="key">반려동물</p>
+    <p class="value">${offer.offerAddition.canPet ? "가능" : "불가능"}</p>
+    <p class="key">주차</p>
+    <p class="value">${offer.offerAddition.canParking ? "가능" : "불가능"}</p>
+</div>
+
+<div class="row bb">
     <p class="key">단기임대</p>
     <p class="value">
         ${offer.offerAddition.term == null ? "불가능" : offer.offerAddition.term}
         ${offer.offerAddition.term == null ? "" : "개월"}
-    </p>
-    <p class="key">관리비</p>
-    <p class="value aba">
-        ${empty offer.managementPrice ? 0 : offer.managementPrice} 만원
     </p>
 </div>

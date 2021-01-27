@@ -11,8 +11,8 @@
 <div class="row bb">
     <p class="key">엘리베이터</p>
     <p class="value">${offer.offerAddition.hasElevator ? "있음" : "없음"}</p>
-    <p class="key">난방연료</p>
-    <p class="value">${offer.heatingType.value}</p>
+    <p class="key">전체층</p>
+    <p class="value">${offer.offerAddress.floor}</p>
 </div>
 
 <div class="row bb">
@@ -23,41 +23,36 @@
 </div>
 
 <div class="row bb">
-    <p class="key">전체층</p>
-    <p class="value">${offer.offerAddress.floor}</p>
     <p class="key">지하세대</p>
     <p class="value">${empty households[0] ? "정보없음" : households[0]}</p>
-</div>
-
-<div class="row bb">
     <p class="key">1층세대</p>
     <p class="value">${empty households[1] ? "정보없음" : households[1]}</p>
+</div>
+
+<div class="row bb">
     <p class="key">2층세대</p>
     <p class="value">${empty households[2] ? "정보없음" : households[2]}</p>
-</div>
-
-<div class="row bb">
     <p class="key">3층세대</p>
     <p class="value">${empty households[3] ? "정보없음" : households[3]}</p>
+</div>
+
+<div class="row bb">
     <p class="key">4층세대</p>
     <p class="value">${empty households[4] ? "정보없음" : households[4]}</p>
-</div>
-
-<div class="row bb">
     <p class="key">5층세대</p>
     <p class="value">${empty households[5] ? "정보없음" : households[5]}</p>
+</div>
+
+<div class="row bb">
     <p class="key">6층세대</p>
     <p class="value">${empty households[6] ? "정보없음" : households[6]}</p>
-</div>
-
-<div class="row bb">
     <p class="key">매매가</p>
     <p class="value">${fn:replace(salePrice, ".0", "")}${fn:length(offer.salePrice) > 4 ? "억" : "만"}</p>
-    <p class="key">총 보증금</p>
-    <p class="value">${totalDeposit}${fn:length(offer.deposit) > 4 ? "억" : "만"}</p>
 </div>
 
 <div class="row bb">
+    <p class="key">총 보증금</p>
+    <p class="value">${totalDeposit}${fn:length(offer.deposit) > 4 ? "억" : "만"}</p>
     <p class="key">융자금</p>
     <p class="value">
         <c:choose>
@@ -67,6 +62,9 @@
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>
+</div>
+
+<div class="row bb">
     <p class="key">은행이자</p>
     <p class="value">
         <c:choose>
@@ -74,9 +72,6 @@
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>
-</div>
-
-<div class="row bb">
     <p class="key">월 임대총액</p>
     <p class="value">
         <c:choose>
@@ -84,6 +79,9 @@
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>
+</div>
+
+<div class="row bb">
     <p class="key">투자금액</p>
     <p class="value">
         <c:choose>
@@ -93,20 +91,10 @@
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>
-</div>
-
-<div class="row bb">
     <p class="key">월 순수입</p>
     <p class="value">
         <c:choose>
             <c:when test="${isPremium}">${offer.monthlyProfit}</c:when>
-            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
-        </c:choose>
-    </p>
-    <p class="key">전화번호</p>
-    <p class="value">
-        <c:choose>
-            <c:when test="${isPremium}">${offer.inquiryTel}</c:when>
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>
