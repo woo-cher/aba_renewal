@@ -88,15 +88,13 @@
                     </header>
 
                     <div class="custom-slider">
-                        <input type="range" min="0" max="50000" value="50000" step="5000" list="deposit-vals" name="deposit"
-                               class="slider" id="deposit" onchange="set_slide_value($(this), $('#deposit-val'))"
+                        <input type="range" min="0" value="47" step="1" list="deposit-vals" name="deposit"
+                               class="slider" id="deposit" oninput="set_deposit_slide_value($(this), $('#deposit-val'))"
+                               onchange="updateDtoModel($(this))"
                         />
                         <datalist id="deposit-vals">
-                            <option value="0">(억)</option>
-                            <option value="10000">1</option>
-                            <option value="20000">2</option>
-                            <option value="30000">3</option>
-                            <option value="40000">4</option>
+                            <option value="0">0</option>
+                            <option value="15000">1억 3,000만</option>
                             <option value="-1">∞</option>
                         </datalist>
                     </div>
@@ -119,7 +117,8 @@
 
                     <div class="custom-slider">
                         <input type="range" min="0" max="105" value="105" step="5" list="monthly-vals" name="monthlyPrice"
-                               class="slider" id="monthly" onchange="set_slide_value($(this), $('#monthly-val'))"
+                               class="slider" id="monthly" oninput="set_slide_value($(this), $('#monthly-val'))"
+                               onchange="updateDtoModel($(this));"
                         />
                         <datalist id="monthly-vals">
                             <option value="0">0</option>
@@ -298,6 +297,42 @@
 </div>
 
 <script>
+    let depositValues = ['0', '100', '200', '300', '400', '500', '1000', '1500', '2000', '2500', '3000', '3500', '4000',
+        '4500', '5000', '5500', '6000', '6500', '7000', '8000', '9000', '10000', '11000', '12000', '13000', '14000', '15000',
+        '16000', '17000', '18000', '19000', '20000', '25000', '30000', '35000', '40000', '45000', '50000', '55000', '60000',
+        '65000', '70000', '75000', '80000', '85000', '90000', '95000', '0'];
+
+    $(document).ready(function () {
+        let coll = document.getElementsByClassName("collapsible");
+        let last;
+
+        $('#deposit').prop('max', depositValues.length - 1);
+
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                if(last !== undefined && last !== this) {
+                    last.classList.toggle("active");
+                    last.nextElementSibling.style.maxHeight = null;
+                    last.nextElementSibling.style.border = null;
+                }
+
+                this.classList.toggle("active");
+
+                const content = this.nextElementSibling;
+
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.style.border = null;
+                    last = undefined
+                } else {
+                    content.style.maxHeight = "100%";
+                    content.style.border = "1px solid rgb(187, 187, 187)";
+                    last = this;
+                }
+            });
+        }
+    });
+
     let filtersDto = {
         offerTypes: [],
         dealTypes: [],
@@ -352,16 +387,19 @@
         const key = focus.attr('name');
         let element = filtersDto[key];
 
-        if(typeof element === 'object') {
+        if (typeof element === 'object') {
             focus.is(":checked") ? // 이게 이상하게 반대로 작동함
                 removeSpecifiedElement(filtersDto[key], filtersDto[key].indexOf(focus.val())) :
                 filtersDto[key].push(focus.val())
-        } else if(typeof element === 'boolean') {
+        } else if (typeof element === 'boolean') {
             filtersDto[key] = !focus.is(":checked");
+        } else if (focus.attr('name') === "deposit") {
+            filtersDto[key] = depositValues[focus.val()];
         } else {
             filtersDto[key] = focus.val();
         }
 
+        console.log(filtersDto)
         doFiltering();
     }
 
@@ -381,40 +419,30 @@
         }
     }
 
-    $(document).ready(function () {
-        let coll = document.getElementsByClassName("collapsible");
-        let last;
+    function set_deposit_slide_value(focus, valueArea) {
+        let index = focus.val();
+        let value = depositValues[index];
 
-        for (let i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                if(last !== undefined && last !== this) {
-                    last.classList.toggle("active");
-                    last.nextElementSibling.style.maxHeight = null;
-                    last.nextElementSibling.style.border = null;
-                }
+        let size = depositValues.length;
+        let min = depositValues[0];
+        let max = depositValues[size];
 
-                this.classList.toggle("active");
-
-                const content = this.nextElementSibling;
-
-                if (content.style.maxHeight){
-                    content.style.maxHeight = null;
-                    content.style.border = null;
-                    last = undefined
-                } else {
-                    content.style.maxHeight = "100%";
-                    content.style.border = "1px solid rgb(187, 187, 187)";
-                    last = this;
-                }
-            });
+        if (value === min || value === max) {
+            value = "무제한";
+        } else if (value.length <= 4) {
+            value = "~" + value + "만원"
+        } else {
+            value = "~" + (value / 10000) + "억";
         }
-    });
+
+        valueArea.text(value);
+    }
 
     function set_slide_value(focus, valueArea) {
         let value = focus.val();
         console.log(value);
 
-        if (value === '0' || value === '50000' || value === '105') {
+        if (value === '0' || value === '105') {
             value = "무제한";
         } else if (value.toString().length <= 4) {
             value = "~" + value + "만원"
@@ -423,6 +451,5 @@
         }
 
         valueArea.text(value);
-        updateDtoModel(focus);
     }
 </script>
