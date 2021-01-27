@@ -99,7 +99,6 @@
     <p class="value">
         ${offer.offerAddition.remodeling ? "O" : "X"}
     </p>
-
 </div>
 
 <div class="row bb">

@@ -55,11 +55,7 @@
                 </h4>
             </div>
             <div class="top02">
-                <h3>매물번호 :
-                <c:choose>
-                    <c:when test="${isPremium}">${offer.id}</c:when>
-                    <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
-                </c:choose></h3>
+                <h3>매물번호 : ${offer.id}</h3>
                 <h2>
                     매물상태 : ${offer.status.value}
                 </h2>

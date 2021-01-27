@@ -5,10 +5,7 @@ import com.abacorp.aba.model.type.DealType;
 import com.abacorp.aba.model.type.OfferRequestType;
 import com.abacorp.aba.model.type.RequiredConditionType;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import lombok.Builder;
 
 import java.util.List;
@@ -16,6 +13,8 @@ import java.util.List;
 @Data
 @Builder
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class OfferRequest extends ModelMapper {
     private DealType dealType;
