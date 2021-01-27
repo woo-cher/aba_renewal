@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -43,12 +42,20 @@
             <div class="top01">
                 <h3>${offer.type.value}</h3>
                 <h4>
-                    ${offer.dealType.value} ${offer.deposit}/${offer.monthlyPrice} +
-                    <strong>${offer.managementPrice}</strong>
+                    <span class="aba">${offer.dealType.value}</span>
+                    <c:choose>
+                        <c:when test="${offer.dealType eq 'SALE'}">
+                            ${fn:replace(offer.salePrice / 10000, ".0", "")}억
+                        </c:when>
+                        <c:otherwise>
+                            ${offer.deposit}/${offer.monthlyPrice} +
+                            <strong>${offer.managementPrice}</strong>
+                        </c:otherwise>
+                    </c:choose>
                 </h4>
             </div>
             <div class="top02">
-                <h3>매물번호
+                <h3>매물번호 :
                 <c:choose>
                     <c:when test="${isPremium}">${offer.id}</c:when>
                     <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
@@ -97,40 +104,36 @@
                         </c:choose>
                     </p>
                 </div>
+
                 <div class="row bb">
-                    <p class="key">관리비</p>
-                    <p class="value aba">${offer.managementPrice} 만원</p>
-                    <p class="key">준공년도</p>
-                    <p class="value">${offer.completionYear} 년</p>
-                </div>
-                <div class="row bb">
-                    <p class="key">반려동물</p>
-                    <p class="value">${offer.offerAddition.canPet ? "가능" : "불가능"}</p>
-                    <p class="key">주차</p>
-                    <p class="value">${offer.offerAddition.canParking ? "가능" : "불가능"}</p>
-                </div>
-                <div class="row bb">
-                    <p class="key">룸호실</p>
-                    <p class="value">
-                        <c:choose>
-                            <c:when test="${isPremium}">${offer.offerAddress.ho}</c:when>
-                            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
-                        </c:choose>
-                    </p>
-                    <p class="key">세입자</p>
-                    <p class="value">${offer.offerAddition.tenant}</p>
-                </div>
-                <div class="row">
-                    <p class="key">단기임대</p>
-                    <p class="value">
-                        ${offer.offerAddition.term == null ? "불가능" : offer.offerAddition.term}
-                        ${offer.offerAddition.term == null ? "" : "개월"}
-                    </p>
                     <p class="key">중요위치</p>
                     <p class="value">
-                        ${offer.offerAddress.nearLocation == null ? "정보없음" : offer.offerAddress.nearLocation}
+                        ${offer.offerAddress.nearLocation == null ? "정보없음" : offer.offerAddress.nearLocation.concat(' 부근')}
                     </p>
+                    <p class="key">준공년도</p>
+                    <p class="value">${empty offer.completionYear ? "정보없음" : offer.completionYear}</p>
                 </div>
+
+                <c:choose>
+                    <c:when test="${offer.type eq 'APT' || offer.type eq 'EFFICIENCY_APT'}">
+                        <%-- apt type (4) --%>
+                        <c:import url="view-type/apt.jsp" />
+                    </c:when>
+                    <c:when test="${offer.dealType eq 'SALE'}">
+                        <%-- normal sale type (2) --%>
+                        <c:import url="view-type/normal_sale.jsp" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:if test="${offer.type eq 'SHOP' || offer.type eq 'OFFICE'}">
+                            <%-- office rental type (3) --%>
+                            <c:import url="view-type/office_rental.jsp" />
+                        </c:if>
+                        <c:if test="${offer.type eq 'ONE_ROOM' || offer.type eq 'TWO_THREE_ROOM' || offer.type eq 'HOUSING'}">
+                            <%-- normal type (1) --%>
+                            <c:import url="view-type/normal_rental.jsp" />
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
@@ -184,33 +187,35 @@
         </div>
     </div>
 
-    <!-- 옵션&관리비 항목 -->
-    <div class="offer-option" id="offer-option">
-        <div class="option">
-            <div class="line"></div>
-            <h3>옵션</h3>
-            <ul class="list">
-                <c:forEach var="optionType" items="${offer.offerAddition.optionTypes}" varStatus="vs">
-                    <li>
-                        <img src="/web-resources/img/offer/option-${vs.index + 1}.png">
-                        <h2>${optionType.value}</h2>
-                    </li>
-                </c:forEach>
-            </ul>
+    <c:if test="${offer.dealType ne 'SALE' && (offer.type ne 'OFFICE' || offer.type ne 'SHOP')}">
+        <!-- 옵션&관리비 항목 -->
+        <div class="offer-option" id="offer-option">
+            <div class="option">
+                <div class="line"></div>
+                <h3>옵션</h3>
+                <ul class="list">
+                    <c:forEach var="optionType" items="${offer.offerAddition.optionTypes}" varStatus="vs">
+                        <li>
+                            <img src="/web-resources/img/offer/option-${vs.index + 1}.png">
+                            <h2>${optionType.value}</h2>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+            <div class="management-category">
+                <div class="line"></div>
+                <h3>관리비 포함 항목</h3>
+                <ul class="list">
+                    <c:forEach var="manageType" items="${offer.offerAddition.managementTypes}" varStatus="vs">
+                        <li>
+                            <img src="/web-resources/img/offer/manage-${vs.index + 1}.png">
+                            <h2>${manageType.value}</h2>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
         </div>
-        <div class="management-category">
-            <div class="line"></div>
-            <h3>관리비 포함 항목</h3>
-            <ul class="list">
-                <c:forEach var="manageType" items="${offer.offerAddition.managementTypes}" varStatus="vs">
-                    <li>
-                        <img src="/web-resources/img/offer/manage-${vs.index + 1}.png">
-                        <h2>${manageType.value}</h2>
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
-    </div>
+    </c:if>
 
     <!-- 상세설명 -->
     <div class="offer-desc" id="offer-desc">
