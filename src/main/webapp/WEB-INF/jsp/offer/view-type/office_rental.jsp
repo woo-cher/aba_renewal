@@ -5,7 +5,12 @@
     <p class="key">매물구분</p>
     <p class="value">${offer.offerAddition.rooms}</p>
     <p class="key">층정보</p>
-    <p class="value">${offer.offerAddress.floor}</p>
+    <p class="value">
+        <c:choose>
+            <c:when test="${isPremium}">${offer.offerAddress.floor}</c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
+    </p>
 </div>
 
 <div class="row bb">
@@ -26,7 +31,12 @@
     <p class="key">제한업종</p>
     <p class="value">${empty offer.offerAddition.restrictedIndustry ? "정보없음" : offer.offerAddition.restrictedIndustry}</p>
     <p class="key">상가호실</p>
-    <p class="value">${offer.offerAddress.floor}</p>
+    <p class="value">
+        <c:choose>
+            <c:when test="${isPremium}">${offer.offerAddress.ho}</c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
+    </p>
 </div>
 
 <div class="row bb">
@@ -38,5 +48,10 @@
 
 <div class="row bb">
     <p class="key">비밀번호</p>
-    <p class="value">${offer.offerAddress.door}</p>
+    <p class="value">
+        <c:choose>
+            <c:when test="${isPremium}">${offer.offerAddress.door}</c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
+    </p>
 </div>

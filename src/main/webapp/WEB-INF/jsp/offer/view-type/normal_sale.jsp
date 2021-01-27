@@ -4,8 +4,8 @@
 
 <c:set var="households" value="${fn:split(offer.offerAddition.householdInfo, '/')}" />
 <c:set var="salePrice" value="${offer.salePrice / 10000}" />
-<c:set var="totalDeposit" value="${offer.deposit / 10000}" />
 <c:set var="loan" value="${offer.loan / 10000}" />
+<c:set var="totalDeposit" value="${offer.deposit / 10000}" />
 <c:set var="investment" value="${offer.investmentMoney / 10000}" />
 
 <div class="row bb">

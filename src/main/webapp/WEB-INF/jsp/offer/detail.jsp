@@ -92,7 +92,12 @@
                     <p class="key">소재지</p>
                     <p class="value weight-bold">
                         <c:choose>
-                            <c:when test="${isPremium}">${offer.offerAddress.jibun}</c:when>
+                            <c:when test="${isPremium}">
+                                <span class="leading-1d25">
+                                    ${offer.offerAddress.jibun}
+                                    <span class="aba">${offer.offerAddress.buildingName}</span>
+                                </span>
+                            </c:when>
                             <c:otherwise>${offer.offerAddress.belongsTo} ***-**</c:otherwise>
                         </c:choose>
                     </p>

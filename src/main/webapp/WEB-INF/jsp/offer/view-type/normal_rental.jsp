@@ -5,7 +5,14 @@
     <p class="key">매물구분</p>
     <p class="value">${offer.offerAddition.rooms}</p>
     <p class="key">입구</p>
-    <p class="value">${offer.offerAddress.entrance}</p>
+    <p class="value">
+        <c:choose>
+            <c:when test="${isPremium}">
+                ${offer.offerAddress.entrance}
+            </c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
+    </p>
 </div>
 
 <div class="row bb">
@@ -20,7 +27,12 @@
     <p class="value">${offer.managementPrice}</p>
     <p class="key">세입자</p>
     <p class="value">
-        ${empty offer.offerAddition.tenant ? "정보없음" : offer.offerAddition.tenant}
+        <c:choose>
+            <c:when test="${isPremium}">
+                ${empty offer.offerAddition.tenant ? "정보없음" : offer.offerAddition.tenant}
+            </c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
     </p>
 </div>
 
@@ -31,13 +43,18 @@
             <c:when test="${isPremium}">
                 ${empty offer.offerAddress.ho ? "정보없음" : offer.offerAddress.ho}
             </c:when>
-            <c:otherwise>
-                <i class="fas fa-lock"></i>
-            </c:otherwise>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>
     <p class="key">룸비밀번호</p>
-    <p class="value">${offer.offerAddress.door}</p>
+    <p class="value">
+        <c:choose>
+            <c:when test="${isPremium}">
+                ${offer.offerAddress.door}
+            </c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
+    </p>
 </div>
 
 <div class="row bb">
