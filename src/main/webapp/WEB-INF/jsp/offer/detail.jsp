@@ -200,31 +200,41 @@
         </div>
     </div>
 
-    <c:if test="${offer.dealType ne 'SALE' && (offer.type ne 'OFFICE' || offer.type ne 'SHOP')}">
+    <c:if test="${offer.dealType ne 'SALE' && (offer.type ne 'OFFICE' && offer.type ne 'SHOP')}">
         <!-- 옵션&관리비 항목 -->
         <div class="offer-option" id="offer-option">
             <div class="option">
                 <div class="line"></div>
                 <h3>옵션</h3>
                 <ul class="list">
-                    <c:forEach var="optionType" items="${offer.offerAddition.optionTypes}" varStatus="vs">
-                        <li>
-                            <img src="/web-resources/img/offer/option-${vs.index + 1}.png">
-                            <h2>${optionType.value}</h2>
-                        </li>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${not empty offer.offerAddition.optionTypes}">
+                            <c:forEach var="optionType" items="${offer.offerAddition.optionTypes}" varStatus="vs">
+                                <li>
+                                    <img src="/web-resources/img/offer/option-${vs.index + 1}.png">
+                                    <h2>${optionType.value}</h2>
+                                </li>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>정보없음</c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
             <div class="management-category">
                 <div class="line"></div>
                 <h3>관리비 포함 항목</h3>
                 <ul class="list">
-                    <c:forEach var="manageType" items="${offer.offerAddition.managementTypes}" varStatus="vs">
-                        <li>
-                            <img src="/web-resources/img/offer/manage-${vs.index + 1}.png">
-                            <h2>${manageType.value}</h2>
-                        </li>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${not empty offer.offerAddition.optionTypes}">
+                            <c:forEach var="manageType" items="${offer.offerAddition.managementTypes}" varStatus="vs">
+                                <li>
+                                    <img src="/web-resources/img/offer/manage-${vs.index + 1}.png">
+                                    <h2>${manageType.value}</h2>
+                                </li>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>정보없음</c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>
