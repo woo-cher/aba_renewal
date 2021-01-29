@@ -74,22 +74,47 @@
         <div class="offer-deal">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>매물가격 (보증금 / 달세 + 관리비)</span>
+                <span>매물가격 (보증금 / 월가격 + 관리비)</span>
             </div>
-            <div class="form-category flex p-1 full check-area">
+            <div class="form-category p-1 full check-area">
                 <div class="input-group">
-                    <input type="text" class="short" id="deposit" placeholder="보증금" name="deposit" value="${offer.deposit}"
+                    <input type="text" class="middle price-group" id="deposit" placeholder="보증금" name="deposit" value="${offer.deposit}"
                            pattern="^[0-9]{1,5}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
-                    <p class="short">/</p>
-                    <input type="text" class="short" id="monthlyPrice" placeholder="달세" name="monthlyPrice" value="${offer.monthlyPrice}"
+                    <p class="short"></p>
+                    <input type="text" class="middle price-group" id="monthlyPrice" placeholder="월 가격" name="monthlyPrice" value="${offer.monthlyPrice}"
                            pattern="^[0-9]{1,3}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
-                    <p class="short">+</p>
-                    <input type="text" class="short" id="managementPrice" placeholder="관리비" name="managementPrice" value="${offer.managementPrice}"
-                           pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
+
+                    <div class="flex w-75 normal-rental">
+                        &nbsp;<p class="short">+</p>&nbsp;
+                        <input type="text" id="managementPrice" placeholder="관리비" name="managementPrice" value="${offer.managementPrice}"
+                               pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
+                        <p class="icon"><i class="fas">만</i></p>
+                        <div class="error-box"></div>
+                    </div>
+                </div>
+
+                <div class="input-group normal-sale hidden">
+                    <input type="text" class="middle" id="salePrice" placeholder="매매가 -> 예) 3.5" name="salePrice" value="${offer.salePrice}"
+                           pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="icon"><i class="fas">억</i></p>
+
+                    <p class="short"></p>
+                    <input type="text" class="middle" id="investmentMoney" placeholder="투자금액" name="investmentMoney" value="${offer.investmentMoney}"
+                           pattern="^[0-9.]{1,3}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="icon"><i class="fas">억</i></p>
+                </div>
+
+                <div class="input-group normal-sale hidden">
+                    <input type="text" class="middle" id="loan" placeholder="융자금 -> 예) 5000" name="loan" value="${offer.loan}"
+                           pattern="^[0-9]{1,5}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">만</i></p>
-                    <div class="error-box"></div>
+
+                    <p class="short"></p>
+                    <input type="text" class="middle" id="interest" placeholder="은행이자 -> 예) 4.25" name="interest" value="${offer.interest}"
+                           pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="icon"><i class="fas">%</i></p>
                 </div>
             </div>
         </div>

@@ -90,22 +90,26 @@
 </html>
 
 <script>
-    let uploadCount = 0;
-
     $(document).ready(function () {
         if (window.opener !== null) {
             $('header').remove();
         }
 
+        activateWithSelector('#leftNav > li');
+        switchContentViewWithIndex('#leftNav > li', '.form-control', '#formWrap');
+
         showLoader();
+        leftNavEventListener();
+        dynamicFormEventListener();
 
         <c:if test="${not empty processIndex}">
             $('#leftNav').children().eq(${processIndex}).click();
         </c:if>
 
         <c:if test="${not empty errors}">
-        $('.error').remove();
-        let fieldName, errorMessage, selector;
+            $('.error').remove();
+            let fieldName, errorMessage, selector;
+
             <c:forEach var="error" items="${errors}">
                 fieldName = `${error.getField()}`;
                 errorMessage = `${error.getDefaultMessage()}`;
@@ -278,24 +282,6 @@
         </c:if>
     };
 
-    $('#leftNav > li').click(function(e) {
-        let navIndex = $(e.currentTarget).index();
-        // console.log(navIndex);
-
-        if(navIndex === 0) {
-            $('.prev').hide();
-            $('.submit').hide();
-            $('.next').show();
-        } else if(navIndex === 2) {
-            $('.next').hide();
-            $('.submit').show();
-        } else {
-            $('.prev').show();
-            $('.next').show();
-            $('.submit').hide();
-        }
-    });
-
     function findNavIndex() {
         let nav = $('#leftNav > li');
 
@@ -313,8 +299,8 @@
             return;
         }
 
-        let dom = $("#completionYear")[0]
-        console.log($("#completionYear")[0].checkValidity());
+        let dom = $("#completionYear")[0];
+        console.log(dom.checkValidity());
 
         if(!dom.checkValidity()) {
             dom.setCustomValidity("라뉘")
@@ -433,10 +419,45 @@
     }
 
     function doSubmit() {
-        $('#submit').click()
+        $('#submit').click();
         window.opener.close();
     }
 
-    activateWithSelector('#leftNav > li');
-    switchContentViewWithIndex('#leftNav > li', '.form-control', '#formWrap');
+    function leftNavEventListener() {
+        $('#leftNav > li').click(function(e) {
+            let navIndex = $(e.currentTarget).index();
+            // console.log(navIndex);
+
+            if(navIndex === 0) {
+                $('.prev').hide();
+                $('.submit').hide();
+                $('.next').show();
+            } else if(navIndex === 2) {
+                $('.next').hide();
+                $('.submit').show();
+            } else {
+                $('.prev').show();
+                $('.next').show();
+                $('.submit').hide();
+            }
+        });
+    }
+
+    function dynamicFormEventListener() {
+        $('input[name="dealType"]').on("change", function (e) {
+            if (e.currentTarget.value === 'SALE') {
+                $('.normal-rental').attr('style', 'display: none !important;');
+                $('.normal-sale').removeClass('hidden');
+
+                $('#deposit').prop('placeholder', '총 보증금');
+                $('#monthlyPrice').prop('placeholder', '월 임대총액');
+            } else {
+                $('.normal-rental').removeAttr('style');
+                $('.normal-sale').addClass('hidden');
+
+                $('#deposit').prop('placeholder', '보증금');
+                $('#monthlyPrice').prop('placeholder', '월 가격');
+            }
+        });
+    }
 </script>

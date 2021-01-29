@@ -34,6 +34,7 @@
 }
 
 .c-pointer { cursor: pointer !important; }
+.hidden { display: none !important; }
 
 /* padding, width, height .. */
 .p-0 { padding: 0 !important; }
