@@ -251,9 +251,6 @@ article[class=content-wrap] h3 {
   border: 0.1px solid #00adef !important;
   color: #00adef !important;
 }
-.form-control .input-group p.icon:hover i {
-  zoom: 1.25;
-}
 .form-control .input-group p.icon-with-check {
   width: 50px;
   cursor: pointer;

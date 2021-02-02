@@ -116,6 +116,18 @@
                            pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">%</i></p>
                 </div>
+
+                <div class="input-group normal-sale hidden" id="profit">
+                    <input type="text" class="middle" placeholder="월순수입 -> 예) 300" name="monthlyProfit" value="${offer.interest}"
+                           pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="icon"><i class="fas">만</i></p>
+                </div>
+
+                <div class="input-group office-type hidden">
+                    <input type="text" class="middle" placeholder="권시비 -> 예) 300" name="monthlyProfit" value="${offer.interest}"
+                           pattern="^[0-9]{1,3}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="icon"><i class="fas">만</i></p>
+                </div>
             </div>
         </div>
 

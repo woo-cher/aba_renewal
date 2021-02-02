@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>아바 관리자모드</title>
+    <title>아바 매물등록</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/web-resources/scss/component/form.css">
@@ -445,19 +445,72 @@
 
     function dynamicFormEventListener() {
         $('input[name="dealType"]').on("change", function (e) {
-            if (e.currentTarget.value === 'SALE') {
-                $('.normal-rental').attr('style', 'display: none !important;');
-                $('.normal-sale').removeClass('hidden');
-
-                $('#deposit').prop('placeholder', '총 보증금');
-                $('#monthlyPrice').prop('placeholder', '월 임대총액');
-            } else {
-                $('.normal-rental').removeAttr('style');
-                $('.normal-sale').addClass('hidden');
-
-                $('#deposit').prop('placeholder', '보증금');
-                $('#monthlyPrice').prop('placeholder', '월 가격');
-            }
+            dynamicConverter()
         });
+
+        $('input[name="type"]').on("change", function (e) {
+            dynamicConverter()
+        });
+    }
+
+    function dynamicConverter() {
+        let dealType = $('input[name="dealType"]:checked').prop('value');
+        let offerType = $('input[name="type"]:checked').prop('value');
+
+        let normalSaleEl = $('.normal-sale');
+        let normalRentalEl = $('.normal-rental');
+        let noneAptField = $('.none-apt');
+        let aptField = $('.apt');
+        let officeEl = $('.office-type');
+
+        let isRoomType = ['ONE_ROOM', 'TWO_THREE_ROOM'].includes(offerType);
+        let isOfficeType = ['SHOP', 'OFFICE'].includes(offerType);
+        let isAptType = ['APT', 'EFFICIENCY_APT'].includes(offerType);
+
+        if (isAptType) {
+            $('#remodeling').removeClass('hidden')
+            $('#term-box').addClass('hidden');
+            $('.total-floor').removeClass('hidden');
+        } else {
+            $('#remodeling').addClass('hidden');
+            $('#term-box').removeClass('hidden');
+            $('.total-floor').addClass('hidden');
+        }
+
+        if (dealType === 'SALE') {
+            normalSaleEl.removeClass('hidden');
+            normalRentalEl.addClass('hidden');
+            officeEl.addClass('hidden');
+            $('.total-floor').removeClass('hidden');
+
+            $('#deposit').prop('placeholder', '총 보증금');
+            $('#monthlyPrice').prop('placeholder', '월 임대총액');
+
+            if (isOfficeType || isAptType) {
+                $('.dong-ho-box').removeClass('hidden');
+            } else {
+                $('.dong-ho-box').addClass('hidden');
+            }
+
+            if (offerType !== 'APT' && offerType !== 'EFFICIENCY_APT') {
+                $('#profit').removeClass('hidden');
+                noneAptField.removeClass('hidden');
+                aptField.addClass('hidden');
+            } else {
+                $('#profit').addClass('hidden');
+                $('.dong-ho-box').remove('hidden');
+                noneAptField.addClass('hidden');
+                aptField.removeClass('hidden');
+            }
+        } else {
+            normalRentalEl.removeClass('hidden');
+            normalSaleEl.addClass('hidden');
+
+            isRoomType ? $('.room-type').removeClass('hidden') : $('.room-type').addClass('hidden');
+            isOfficeType ? officeEl.removeClass('hidden') : officeEl.addClass('hidden');
+
+            $('#deposit').prop('placeholder', '보증금');
+            $('#monthlyPrice').prop('placeholder', '월 가격');
+        }
     }
 </script>

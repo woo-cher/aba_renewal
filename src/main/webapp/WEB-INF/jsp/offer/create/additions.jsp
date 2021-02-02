@@ -2,53 +2,61 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <section class="form-control mt-0" hidden>
-    <div class="form-label">
-        <i class="fas fa-circle"></i>
-        <span>옵션 정보</span>
+    <div class="normal-rental room-type">
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>옵션 정보</span>
+        </div>
+        <ul class="checkbox-container p-1 check-area">
+            <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
+                <li class="checkbox-list" style="width: 15%;">
+                    <c:choose>
+                        <c:when test="${fn:contains(offer.offerAddition.optionCategory, vs.index)}">
+                            <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check" checked>
+                        </c:when>
+                        <c:otherwise>
+                            <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check">
+                        </c:otherwise>
+                    </c:choose>
+                    <label for="option${vs.index}">
+                            ${option.value}
+                    </label>
+                </li>
+            </c:forEach>
+            <div class="error-box"></div>
+        </ul>
     </div>
-    <ul class="checkbox-container p-1 check-area">
-        <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
-            <li class="checkbox-list" style="width: 15%;">
-                <c:choose>
-                    <c:when test="${fn:contains(offer.offerAddition.optionCategory, vs.index)}">
-                        <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check" checked>
-                    </c:when>
-                    <c:otherwise>
-                        <input id="option${vs.index}" type="checkbox" name="offerAddition.optionCategory" value="${vs.index}" class="check">
-                    </c:otherwise>
-                </c:choose>
-                <label for="option${vs.index}">
-                        ${option.value}
-                </label>
-            </li>
-        </c:forEach>
-        <div class="error-box"></div>
-    </ul>
 
     <div class="form-label">
         <i class="fas fa-circle"></i>
         <span>부가 정보</span>
     </div>
     <ul class="checkbox-container p-1">
-        <li class="checkbox-list" style="width: 15%;">
+        <li class="checkbox-list normal-rental" style="width: 15%;">
             <input id="tenant" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="tenant">세입자 있음</label>
         </li>
-        <li class="checkbox-list" style="width: 15%;">
+        <li class="checkbox-list" style="width: 15%;" id="term-box">
             <input id="term" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="term">단기 가능</label>
         </li>
-        <li class="checkbox-list" style="width: 15%;">
+        <li class="checkbox-list normal-sale" style="width: 15%;">
             <input id="elevator" type="checkbox" name="offerAddition.hasElevator" value=true class="check"
                    onchange="elevatorTrigger($(this))"
             >
             <label for="elevator">승강기 있음</label>
         </li>
-        <li class="checkbox-list" style="width: 15%;">
+        <li class="checkbox-list hidden" style="width: 15%;" id="remodeling">
+            <input id="apt" type="checkbox" name="offerAddition.remodeling" value=true class="check"
+                   onchange="elevatorTrigger($(this))"
+            >
+            <label for="elevator">리모델링</label>
+        </li>
+        <li class="checkbox-list normal-rental" style="width: 15%;">
             <input id="parking" type="checkbox" name="offerAddition.canParking" class="check">
             <label for="parking">주차 가능</label>
         </li>
-        <li class="checkbox-list" style="width: 15%;">
+        <li class="checkbox-list normal-rental" style="width: 15%;">
             <input id="pet" type="checkbox" name="offerAddition.canPet" class="check">
             <label for="pet">반려 가능</label>
         </li>
@@ -69,31 +77,47 @@
         </div>
     </div>
 
-    <div class="form-label">
-        <i class="fas fa-circle"></i>
-        <span>관리비 항목</span>
+    <div class="normal-rental room-type">
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>관리비 항목</span>
+        </div>
+        <ul class="checkbox-container p-1 check-area">
+            <c:forEach var="manage" items="${manages}" begin="1" varStatus="vs">
+                <li class="checkbox-list" style="width: 15%;">
+                    <c:choose>
+                        <c:when test="${fn:contains(offer.offerAddition.managementCategory, vs.index)}">
+                            <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check" checked>
+                        </c:when>
+                        <c:otherwise>
+                            <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check">
+                        </c:otherwise>
+                    </c:choose>
+                    <label for="manage${vs.index}">
+                            ${manage.value}
+                    </label>
+                </li>
+                <div class="error-box"></div>
+                <c:if test="${manage.value eq '엘리베이터'}">
+                    <script>$('#manage5').parent().hide()</script>
+                </c:if>
+            </c:forEach>
+        </ul>
     </div>
-    <ul class="checkbox-container p-1 check-area">
-        <c:forEach var="manage" items="${manages}" begin="1" varStatus="vs">
-            <li class="checkbox-list" style="width: 15%;">
-                <c:choose>
-                    <c:when test="${fn:contains(offer.offerAddition.managementCategory, vs.index)}">
-                        <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check" checked>
-                    </c:when>
-                    <c:otherwise>
-                        <input id="manage${vs.index}" type="checkbox" name="offerAddition.managementCategory" value="${vs.index}" class="check">
-                    </c:otherwise>
-                </c:choose>
-                <label for="manage${vs.index}">
-                        ${manage.value}
-                </label>
-            </li>
-            <div class="error-box"></div>
-            <c:if test="${manage.value eq '엘리베이터'}">
-                <script>$('#manage5').parent().hide()</script>
-            </c:if>
-        </c:forEach>
-    </ul>
+
+    <div class="office-type hidden">
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>업종 정보</span>
+        </div>
+        <div class="input-group">
+            <p class="icon w-max p-1"><i class="fas">현재업종</i></p>
+            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 네일샵" value="">
+            <p class="short"></p>
+            <p class="icon w-max p-1"><i class="fas">제한업종</i></p>
+            <input type="text" class="short" name="offerAddition.tenant" placeholder="예) 유흥업" value="">
+        </div>
+    </div>
 
     <div class="form-label">
         <i class="fas fa-circle"></i>
