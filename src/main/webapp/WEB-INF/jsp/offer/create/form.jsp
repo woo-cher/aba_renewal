@@ -468,20 +468,27 @@
         let isAptType = ['APT', 'EFFICIENCY_APT'].includes(offerType);
 
         if (isAptType) {
-            $('#remodeling').removeClass('hidden')
+            $('#remodeling').removeClass('hidden');
             $('#term-box').addClass('hidden');
             $('.total-floor').removeClass('hidden');
+            $('.floor-box').addClass('hidden');
+            $('.apt-area').removeClass('hidden');
         } else {
             $('#remodeling').addClass('hidden');
             $('#term-box').removeClass('hidden');
             $('.total-floor').addClass('hidden');
+            $('.floor-box').removeClass('hidden');
+            $('.apt-area').addClass('hidden');
         }
 
         if (dealType === 'SALE') {
             normalSaleEl.removeClass('hidden');
             normalRentalEl.addClass('hidden');
             officeEl.addClass('hidden');
+
             $('.total-floor').removeClass('hidden');
+            $('.floor-box').addClass('hidden');
+            $('input[value="TWO_THREE_ROOM"]').parent().hide();
 
             $('#deposit').prop('placeholder', '총 보증금');
             $('#monthlyPrice').prop('placeholder', '월 임대총액');
@@ -505,6 +512,8 @@
         } else {
             normalRentalEl.removeClass('hidden');
             normalSaleEl.addClass('hidden');
+
+            $('input[value="TWO_THREE_ROOM"]').parent().show();
 
             isRoomType ? $('.room-type').removeClass('hidden') : $('.room-type').addClass('hidden');
             isOfficeType ? officeEl.removeClass('hidden') : officeEl.addClass('hidden');

@@ -73,7 +73,7 @@
         </ul>
     </div>
 
-    <div class="normal-rental">
+    <div class="floor-box">
         <div class="form-label">
             <i class="fas fa-circle"></i>
             <span>해당층</span>
@@ -121,7 +121,24 @@
         </div>
     </div>
 
-    <div class="normal-sale hidden">
+    <div class="apt-area hidden">
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>아파트 면적 정보 (공급면적 / 전용면적)</span>
+        </div>
+        <div class="input-group p-1 check-area">
+            <input type="text" class="short" placeholder="예) 745.1" name="offerAddress.landArea" value="${offer.offerAddress.landArea}"
+                   pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="icon"><i class="fas">㎡</i></p>
+            <p class="short">/</p>
+            <input type="text" class="short" placeholder="예) 539" name="offerAddress.landArea" value="${offer.offerAddress.landArea}"
+                   pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="icon"><i class="fas">㎡</i></p>
+            <div class="error-box"></div>
+        </div>
+    </div>
+
+    <div class="normal-sale none-apt hidden">
         <div class="form-label">
             <i class="fas fa-circle"></i>
             <span>면적정보 (건물 연면적 / 대지 면적)</span>
