@@ -36,7 +36,7 @@
             <input id="tenant" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="tenant">세입자 있음</label>
         </li>
-        <li class="checkbox-list" style="width: 15%;" id="term-box">
+        <li class="checkbox-list room-type" style="width: 15%;" id="term-box">
             <input id="term" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="term">단기 가능</label>
         </li>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -23,6 +24,7 @@
 <c:choose>
     <c:when test="${isUpdate}">
         <c:set var="actionUrl" value="/offers/update" />
+        <c:set var="households" value="${fn:split(offer.offerAddition.householdInfo, ',')}" />
     </c:when>
     <c:otherwise>
         <c:set var="actionUrl" value="/offers/create" />
@@ -128,6 +130,9 @@
         </c:if>
 
         <c:if test="${isUpdate}">
+            $('input[name="dealType"]').trigger('change');
+            $('input[name="type"]').trigger('change');
+
             <c:if test="${offer.offerAddress.floor eq -1}">
                 $('#floorUnder').click();
                 $('#floor').val('반지하');
@@ -146,12 +151,12 @@
                 $('#isExistDong').prop('checked', true);
                 dongTrigger($('#dong'));
             </c:if>
-            <c:if test="${offer.offerAddition.tenant ne '무'}">
+            <c:if test="${offer.offerAddition.tenant ne '무' && offer.offerAddition.tenant ne null}">
                 $("#tenant").prop('checked', true);
                 dynamicFormTrigger($('#tenant'));
                 $('#tenantDesc').find('input').val("${offer.offerAddition.tenant}")
             </c:if>
-            <c:if test="${offer.offerAddition.term ne 0}">
+            <c:if test="${offer.offerAddition.term ne 0 && offer.offerAddition.term ne null}">
                 $('#term').prop('checked', true);
                 dynamicFormTrigger($('#term'));
                 $('#howTerm').find('input').val("${offer.offerAddition.term}")
@@ -417,6 +422,7 @@
 
         $('#thumbnail').val(thumbnail);
     }
+
 
     function doSubmit(e) {
         $('.hidden').find('input').attr('disabled', true);
