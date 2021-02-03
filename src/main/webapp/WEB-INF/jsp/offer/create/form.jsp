@@ -48,7 +48,7 @@
                 <i class="fas fa-arrow-alt-circle-right"></i>
             </p>
         </div>
-        <div class="bottom-navbar submit" onclick="doSubmit()" hidden>
+        <div class="bottom-navbar submit" onclick="doSubmit(event)" hidden>
             <p class="nav-bottom aba txt-lg">
             <c:choose>
                 <c:when test="${isUpdate}">매물수정</c:when>
@@ -418,7 +418,8 @@
         $('#thumbnail').val(thumbnail);
     }
 
-    function doSubmit() {
+    function doSubmit(e) {
+        $('.hidden').find('input').attr('disabled', true);
         $('#submit').click();
         window.opener.close();
     }
