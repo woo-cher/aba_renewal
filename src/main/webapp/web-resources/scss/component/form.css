@@ -170,6 +170,11 @@ article[class=content-wrap] h3 {
   font-size: 18px;
   padding: 2%;
 }
+.form-control .form-label span.required:after {
+  content: "＊";
+  color: red;
+  font-weight: 900;
+}
 .form-control .form-label.before:before {
   content: "●";
   padding: 0 2%;

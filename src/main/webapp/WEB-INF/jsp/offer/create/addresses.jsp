@@ -3,7 +3,7 @@
 <section class="form-control mt-0" hidden>
     <div class="form-label">
         <i class="fas fa-circle"></i>
-        <span>소재지</span>
+        <span class="required">소재지</span>
     </div>
     <div class="input-group p-1 check-area">
         <input autofocus readonly type="text" class="middle" id="jibun" placeholder="지번주소" name="offerAddress.jibun" value="${offer.offerAddress.jibun}">
@@ -54,7 +54,7 @@
     <div class="dong-ho-box">
         <div class="form-label">
             <i class="fas fa-circle"></i>
-            <span>호실 정보</span>
+            <span class="required">호실 정보</span>
         </div>
         <div class="input-group p-1 check-area">
             <p class="icon"><i class="fas">동</i></p>
@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    <div class="apt-area hidden">
+    <div class="apt hidden">
         <div class="form-label">
             <i class="fas fa-circle"></i>
             <span>아파트 면적 정보 (공급면적 / 전용면적)</span>
@@ -182,7 +182,7 @@
 
     <div class="form-label">
         <i class="fas fa-circle"></i>
-        <span>주요 위치</span>
+        <span class="required">주요 위치</span>
     </div>
     <div class="input-group p-1 check-area">
         <input type="text" class="short" placeholder="예) 아바경찰서" name="offerAddress.nearLocation" value="${offer.offerAddress.nearLocation}"

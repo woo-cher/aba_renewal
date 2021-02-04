@@ -62,7 +62,8 @@
 
         <article class="content-wrap" style="width: 750px;">
             <div class="content-name" id="top">
-                <h3>
+                <h3 class="relative">
+                    <span class="txt-sm invalid absolute" style="right: 0; bottom: 0">* : 필수입력</span>
                     <span class="aba">아바</span>
                     <span class="header mini">매물등록</span>
                 </h3>
@@ -483,13 +484,13 @@
             $('#term-box').addClass('hidden');
             $('.total-floor').removeClass('hidden');
             $('.floor-box').addClass('hidden');
-            $('.apt-area').removeClass('hidden');
+            aptField.removeClass('hidden')
         } else {
             $('#remodeling').addClass('hidden');
             $('#term-box').removeClass('hidden');
             $('.total-floor').addClass('hidden');
             $('.floor-box').removeClass('hidden');
-            $('.apt-area').addClass('hidden');
+            aptField.addClass('hidden')
         }
 
         if (dealType === 'SALE') {
@@ -513,12 +514,10 @@
             if (offerType !== 'APT' && offerType !== 'EFFICIENCY_APT') {
                 $('#profit').removeClass('hidden');
                 noneAptField.removeClass('hidden');
-                aptField.addClass('hidden');
             } else {
                 $('#profit').addClass('hidden');
                 $('.dong-ho-box').remove('hidden');
                 noneAptField.addClass('hidden');
-                aptField.removeClass('hidden');
             }
         } else {
             normalRentalEl.removeClass('hidden');

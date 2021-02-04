@@ -115,6 +115,12 @@ article[class='content-wrap'] {
     font-size: 18px;
     padding: 2%;
 
+    span.required:after {
+      content: "＊";
+      color: red;
+      font-weight: 900;
+    }
+
     &.before {
       &:before {
         @include before-css;

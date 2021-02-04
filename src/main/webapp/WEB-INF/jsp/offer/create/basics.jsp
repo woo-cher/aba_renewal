@@ -5,7 +5,7 @@
         <div class="deal-type">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>거래유형</span>
+                <span class="required">거래유형</span>
             </div>
             <ul class="checkbox-container form type pt-1 check-area">
                 <c:forEach begin="1" var="type" items="${dealTypes}" varStatus="vs">
@@ -28,7 +28,7 @@
         <div class="offer-type">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>매물분류</span>
+                <span class="required">매물분류</span>
             </div>
             <ul class="checkbox-container form type pt-1 check-area">
                 <c:forEach begin="1" var="type" items="${offerTypes}" varStatus="vs">
@@ -51,7 +51,7 @@
         <div class="heating-type">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>난방유형</span>
+                <span class="required">난방유형</span>
             </div>
             <ul class="checkbox-container form type pt-1 check-area">
                 <c:forEach begin="1" var="type" items="${heatingTypes}" varStatus="vs">
@@ -74,7 +74,7 @@
         <div class="offer-deal">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>매물가격 (보증금 / 월가격 + 관리비)</span>
+                <span class="required">매물가격 (보증금 / 월가격 + 관리비)</span>
             </div>
             <div class="form-category p-1 full check-area">
                 <div class="input-group">
@@ -134,7 +134,7 @@
         <div class="year pt-3">
             <div class="form-label">
                 <i class="fas fa-circle"></i>
-                <span>준공년도 / 문의 연락처</span>
+                <span class="required">준공년도 / 문의 연락처</span>
             </div>
             <div class="form-category p-1 check-area">
                 <div class="input-group">

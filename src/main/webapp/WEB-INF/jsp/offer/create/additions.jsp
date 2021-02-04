@@ -27,6 +27,45 @@
         </ul>
     </div>
 
+    <div class="apt hidden">
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>현관구조 / 방향</span>
+        </div>
+        <div class="input-group p-1 check-area">
+            <input type="text" class="short" placeholder="현관구조" name="offerAddition.frontStructure" value="${offer.offerAddition.frontStructure}"
+                   pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="short">/</p>
+            <input type="text" class="short" placeholder="방향" name="offerAddition.direction" value="${offer.offerAddition.direction}"
+                   pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
+            <div class="error-box"></div>
+        </div>
+
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>입주가능일</span>
+        </div>
+        <div class="input-group p-1 check-area">
+            <input type="text" class="large" placeholder="입주가능일" name="offerAddition.moveIn" value="${offer.offerAddition.moveIn}"
+                   pattern="^[0-9- 가-힣]{1,20}" onkeyup="formValidatorWithRegex($(this))">
+        </div>
+
+        <div class="form-label">
+            <i class="fas fa-circle"></i>
+            <span>방 / 욕실 개수</span>
+        </div>
+        <div class="input-group p-1 check-area">
+            <input type="text" class="short" placeholder="방 갯수" name="offerAddition.rooms" value="${offer.offerAddition.rooms}"
+                   pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="icon"><i class="fas">개</i></p>
+            <p class="short">/</p>
+            <input type="text" class="short" placeholder="욕실 갯수" name="offerAddition.bathrooms" value="${offer.offerAddition.bathrooms}"
+                   pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="icon"><i class="fas">개</i></p>
+            <div class="error-box"></div>
+        </div>
+    </div>
+
     <div class="form-label">
         <i class="fas fa-circle"></i>
         <span>부가 정보</span>
@@ -59,6 +98,10 @@
         <li class="checkbox-list normal-rental" style="width: 15%;">
             <input id="pet" type="checkbox" name="offerAddition.canPet" class="check">
             <label for="pet">반려 가능</label>
+        </li>
+        <li class="checkbox-list apt hidden" style="width: max-content;">
+            <input id="cool" type="checkbox" name="offerAddition.hasCool" class="check">
+            <label for="pet">냉방시설 있음</label>
         </li>
     </ul>
 
