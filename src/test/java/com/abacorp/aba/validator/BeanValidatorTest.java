@@ -1,15 +1,21 @@
 package com.abacorp.aba.validator;
 
-import com.abacorp.aba.model.offer.group.BasicGroup;
+import com.abacorp.aba.core.service.OfferService;
+import com.abacorp.aba.factory.OfferGroupFactory;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
-import com.abacorp.aba.model.offer.group.OfficeGroup;
+import com.abacorp.aba.model.offer.group.BasicGroup;
+import com.abacorp.aba.model.offer.group.GroupMapper;
+import com.abacorp.aba.model.type.DealType;
+import com.abacorp.aba.model.type.OfferType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -49,6 +55,27 @@ public class BeanValidatorTest {
         this.constraintViolations.addAll(validator.validate(offer, BasicGroup.class));
 
         log.info("offer : {}", offer);
+
+        for (ConstraintViolation cv : this.constraintViolations) {
+            log.info("cv : {}", cv);
+        }
+    }
+
+    @Test
+    public void validateModule() {
+        Offer offer = Offer.builder()
+                .type(OfferType.ONE_ROOM)
+                .dealType(DealType.SALE)
+                .deposit("0")
+                .build();
+
+        OfferService service = new OfferService();
+        OfferGroupFactory factory = new OfferGroupFactory();
+
+        Class<? extends GroupMapper> groupClazz = factory.groupCreator(offer.getType(), offer.getDealType());
+        log.info("{}", groupClazz);
+
+        this.constraintViolations = service.validateOffer(offer);
 
         for (ConstraintViolation cv : this.constraintViolations) {
             log.info("cv : {}", cv);

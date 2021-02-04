@@ -1,11 +1,13 @@
 package com.abacorp.aba.core.service;
 
 import com.abacorp.aba.core.repository.OfferRepository;
+import com.abacorp.aba.factory.OfferGroupFactory;
+import com.abacorp.aba.model.User;
+import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
-import com.abacorp.aba.model.User;
-import com.abacorp.aba.model.dto.MapFiltersDto;
+import com.abacorp.aba.model.offer.group.GroupMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.FieldError;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -208,5 +214,18 @@ public class OfferService {
         }
 
         return floor;
+    }
+
+    public <G extends GroupMapper> List<ConstraintViolation<Offer>> validateOffer(Offer offer) {
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        List<ConstraintViolation<Offer>> constraintViolations;
+        OfferGroupFactory factory = new OfferGroupFactory();
+
+        constraintViolations = new ArrayList<>(validator.validate(offer));
+        constraintViolations.addAll(
+                validator.validate(offer, factory.groupCreator(offer.getType(), offer.getDealType()))
+        );
+
+        return constraintViolations;
     }
 }
