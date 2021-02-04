@@ -3,6 +3,10 @@ package com.abacorp.aba.model.offer;
 import com.abacorp.aba.model.User;
 import com.abacorp.aba.model.dto.KeyValueDto;
 import com.abacorp.aba.model.mapper.ModelMapper;
+import com.abacorp.aba.model.offer.group.BasicGroup;
+import com.abacorp.aba.model.offer.group.OfficeGroup;
+import com.abacorp.aba.model.offer.group.RentalGroup;
+import com.abacorp.aba.model.offer.group.SaleGroup;
 import com.abacorp.aba.model.type.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -23,7 +27,7 @@ import java.util.List;
 public class Offer extends ModelMapper {
     private User user;
 
-    @NotBlank(message = "보증금을 알려주세요", groups = RentalGroup.class)
+    @NotBlank(message = "보증금을 알려주세요")
     private String deposit;
     @NotBlank(message = "월세를 알려주세요", groups = RentalGroup.class)
     private String monthlyPrice;
@@ -38,20 +42,19 @@ public class Offer extends ModelMapper {
     private String investmentMoney;
     @NotBlank(message = "이자를 알려주세요", groups = SaleGroup.class)
     private String interest;
-    @NotBlank(message = "월순수익을 알려주세요", groups = SaleGroup.class)
     private String monthlyProfit;
 
     @NotBlank(message = "권시비를 알려주세요", groups = OfficeGroup.class)
     private String suppliesPrice;
 
-    @NotBlank(message = "집주인 혹은 본인 연락처를 알려주세요", groups = BasicGroup.class)
+    @NotBlank(message = "집주인 혹은 본인 연락처를 알려주세요")
     private String inquiryTel;
     private String completionYear;
-    @NotNull(message = "매물분류를 선택하세요", groups = BasicGroup.class)
+    @NotNull(message = "매물분류를 선택하세요")
     private OfferType type;
-    @NotNull(message = "거래유형을 선택하세요", groups = BasicGroup.class)
+    @NotNull(message = "거래유형을 선택하세요")
     private DealType dealType;
-    @NotNull(message = "난방유형을 선택하세요", groups = BasicGroup.class)
+    @NotNull(message = "난방유형을 선택하세요")
     private HeatingType heatingType;
     private HeatingMethodType heatingMethodType;
     private OfferStatusType status;

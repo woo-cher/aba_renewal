@@ -93,13 +93,6 @@ public class OfferController {
         return mv;
     }
 
-    @RequestMapping(value = {"/test/create"}, method = RequestMethod.POST)
-    @ResponseBody
-    public <O extends ModelMapper> O test(@ModelAttribute O model) throws IOException {
-        log.info("Model: {}", model);
-        return model;
-    }
-
     @RequestMapping(value = {"/create", "/update"}, method = RequestMethod.POST)
     public ModelAndView createAndUpdate(@ModelAttribute @Valid Offer offer, BindingResult bindingResult,
                                         HttpServletRequest request) throws IOException {

@@ -94,6 +94,46 @@ public class OfferService {
         return 1;
     }
 
+    public int getFormProcessIndex(List<FieldError> errors) {
+        Map<String, Boolean> clazzMap = new HashMap<>();
+
+        clazzMap.put("offer", false);
+        clazzMap.put("offerAddress", false);
+        clazzMap.put("offerAddition", false);
+
+        for (FieldError error : errors) {
+            if (error.getField().contains("offerAddress")) {
+                clazzMap.put("offerAddress", true);
+            } else if (error.getField().contains("offerAddition")) {
+                clazzMap.put("offerAddition", true);
+            } else {
+                clazzMap.put("offer", true);
+            }
+        }
+
+        if (clazzMap.get("offer")) {
+            return 0;
+        } else if (clazzMap.get("offerAddress")) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    public boolean isOwner(String registerId, User sessionUser) {
+        User register = userService.findByUserId(registerId);
+
+        return register.equals(sessionUser);
+    }
+
+    public List<Offer> searchOffers(String keyword) {
+        return offerRepository.selectOffersByKeyword(keyword);
+    }
+
+    public List<Offer> getOffersByFilter(MapFiltersDto dto) {
+        return offerRepository.selectOffersByFilter(dto);
+    }
+
     private void uploadImages(Offer offer) throws IOException {
         List<MultipartFile> offerImages = offer.getFiles();
 
@@ -168,45 +208,5 @@ public class OfferService {
         }
 
         return floor;
-    }
-
-    public int getFormProcessIndex(List<FieldError> errors) {
-        Map<String, Boolean> clazzMap = new HashMap<>();
-
-        clazzMap.put("offer", false);
-        clazzMap.put("offerAddress", false);
-        clazzMap.put("offerAddition", false);
-
-        for (FieldError error : errors) {
-            if (error.getField().contains("offerAddress")) {
-                clazzMap.put("offerAddress", true);
-            } else if (error.getField().contains("offerAddition")) {
-                clazzMap.put("offerAddition", true);
-            } else {
-                clazzMap.put("offer", true);
-            }
-        }
-
-        if (clazzMap.get("offer")) {
-            return 0;
-        } else if (clazzMap.get("offerAddress")) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    public boolean isOwner(String registerId, User sessionUser) {
-        User register = userService.findByUserId(registerId);
-
-        return register.equals(sessionUser);
-    }
-
-    public List<Offer> searchOffers(String keyword) {
-        return offerRepository.selectOffersByKeyword(keyword);
-    }
-
-    public List<Offer> getOffersByFilter(MapFiltersDto dto) {
-        return offerRepository.selectOffersByFilter(dto);
     }
 }

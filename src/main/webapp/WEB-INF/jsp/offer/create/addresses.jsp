@@ -32,17 +32,17 @@
             <span>세대 및 동 정보</span>
         </div>
         <div class="input-group p-1 check-area">
-            <input type="text" class="short" placeholder="총 세대수" name="" value="${offer.offerAddress.dong}"
+            <input type="text" class="short" placeholder="총 세대수" name="OfferAddition.households" value="${offer.offerAddition.households}"
                    pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">세대</i></p>
             <p class="short"></p>
 
-            <input type="text" class="short" placeholder="총 동수" name="" value="${offer.offerAddress.dong}"
+            <input type="text" class="short" placeholder="총 동수" name="OfferAddition.totalDong" value="${offer.offerAddition.totalDong}"
                    pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">개</i></p>
             <p class="short"></p>
 
-            <input type="text" class="short" placeholder="총 주차수" name="" value="${offer.offerAddress.dong}"
+            <input type="text" class="short" placeholder="총 주차수" name="OfferAddition.totalParking" value="${offer.offerAddition.totalParking}"
                    pattern="^[0-9]{1,3}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">대</i></p>
         </div>
@@ -132,7 +132,7 @@
                    pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">㎡</i></p>
             <p class="short">/</p>
-            <input type="text" class="short" placeholder="예) 539" name="offerAddress.landArea" value="${offer.offerAddress.landArea}"
+            <input type="text" class="short" placeholder="예) 539" name="offerAddress.buildingArea" value="${offer.offerAddress.buildingArea}"
                    pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">㎡</i></p>
             <div class="error-box"></div>

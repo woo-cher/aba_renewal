@@ -1,8 +1,10 @@
 package com.abacorp.aba.validator;
 
+import com.abacorp.aba.model.offer.group.BasicGroup;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
+import com.abacorp.aba.model.offer.group.OfficeGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +46,7 @@ public class BeanValidatorTest {
                 .build();
 
         this.constraintViolations = new ArrayList<>(validator.validate(offer));
+        this.constraintViolations.addAll(validator.validate(offer, BasicGroup.class));
 
         log.info("offer : {}", offer);
 
