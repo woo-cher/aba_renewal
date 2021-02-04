@@ -203,8 +203,12 @@
             this.on('complete', function (file) {
                 $('.dz-remove').html(`<i class='fas fa-minus-circle' style="cursor: pointer;"></i>`);
                 $('.dz-remove').css('margin-top', 10);
+
                 $('.dz-image').css('width', 100);
                 $('.dz-image').css('height', 100);
+
+                $('.dz-image').find('img').css('width', 100);
+                $('.dz-image').find('img').css('height', 100);
 
                 <c:if test="${!isUpdate}">
                     thumbDesignationTrigger();
@@ -252,7 +256,7 @@
                 <c:forEach var="keyValueDto" items="${offer.imageUrls}" varStatus="vs">
                     var fileName = '${keyValueDto.key}';
                     var url = '${keyValueDto.url}';
-                    var mockFile = { name: fileName, size: 1000, type: 'image/png' };
+                    var mockFile = { name: fileName, size: 100, width: 100, height: 100, type: 'image/png' };
 
                     this.emit("addedfile", mockFile);
                     this.emit("thumbnail", mockFile, url);
