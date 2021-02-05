@@ -25,7 +25,7 @@ public class OfferAddress {
     @NotBlank(message = "호수를 알려주세요")
     private String ho;
     private String entrance;
-    @NotBlank(message = "호실 비밀번호를 알려주세요")
+    @NotBlank(message = "호실 암호를 알려주세요")
     private String door;
     private String floor;
     @NotBlank(message = "주요위치를 알려주세요")

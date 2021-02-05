@@ -42,8 +42,9 @@
 }
 
 .error-box {
-  position: fixed;
-  right: 18%;
+  position: absolute;
+  top: 5px;
+  right: -12.5vw;
 }
 
 /* Checkbox */

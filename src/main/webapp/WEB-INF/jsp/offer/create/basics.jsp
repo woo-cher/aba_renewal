@@ -3,9 +3,10 @@
 <section class="form-control mt-0">
     <div class="form-warp">
         <div class="deal-type">
-            <div class="form-label">
+            <div class="form-label relative">
                 <i class="fas fa-circle"></i>
                 <span class="required">거래유형</span>
+                <div class="error-box"></div>
             </div>
             <ul class="checkbox-container form type pt-1 check-area">
                 <c:forEach begin="1" var="type" items="${dealTypes}" varStatus="vs">
@@ -21,14 +22,14 @@
                         <label for="dealType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
-                <div class="error-box"></div>
             </ul>
         </div>
 
         <div class="offer-type">
-            <div class="form-label">
+            <div class="form-label relative">
                 <i class="fas fa-circle"></i>
                 <span class="required">매물분류</span>
+                <div class="error-box"></div>
             </div>
             <ul class="checkbox-container form type pt-1 check-area">
                 <c:forEach begin="1" var="type" items="${offerTypes}" varStatus="vs">
@@ -44,14 +45,14 @@
                         <label for="offerType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
-                <div class="error-box"></div>
             </ul>
         </div>
 
         <div class="heating-type">
-            <div class="form-label">
+            <div class="form-label relative">
                 <i class="fas fa-circle"></i>
                 <span class="required">난방유형</span>
+                <div class="error-box"></div>
             </div>
             <ul class="checkbox-container form type pt-1 check-area">
                 <c:forEach begin="1" var="type" items="${heatingTypes}" varStatus="vs">
@@ -67,17 +68,16 @@
                         <label for="heatingType${vs.index}">${type.value}</label>
                     </li>
                 </c:forEach>
-                <div class="error-box"></div>
             </ul>
         </div>
 
         <div class="offer-deal">
-            <div class="form-label">
+            <div class="form-label relative">
                 <i class="fas fa-circle"></i>
                 <span class="required">매물가격 (보증금 / 월가격 + 관리비)</span>
+                <div class="error-box"></div>
             </div>
             <div class="form-category p-1 full check-area">
-                <div class="error-box"></div>
                 <div class="input-group">
                     <input type="text" class="middle price-group" id="deposit" placeholder="보증금" name="deposit" value="${offer.deposit}"
                            pattern="^[0-9]{1,5}" onkeyup="formValidatorWithRegex($(this))">
@@ -132,9 +132,10 @@
         </div>
 
         <div class="year pt-3">
-            <div class="form-label">
+            <div class="form-label relative">
                 <i class="fas fa-circle"></i>
                 <span class="required">준공년도 / 문의 연락처</span>
+                <div class="error-box"></div>
             </div>
             <div class="form-category p-1 check-area">
                 <div class="input-group">
@@ -142,7 +143,6 @@
                            pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">년</i></p>
                     <p class="short">/</p>
-                    <div class="error-box"></div>
                     <input type="text" class="middle" id="inquiryTel" placeholder="010-0000-0000" name="inquiryTel" value="${offer.inquiryTel}"
                            pattern="^[0-9-]{1,13}" onkeyup="formValidatorWithRegex($(this))">
                 </div>
