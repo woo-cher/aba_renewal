@@ -9,6 +9,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class OfferAddition {
     private String term;
     @NotBlank(message = "세입자 정보를 알려주세요")
     private String tenant;
-    @NotBlank(message = "세대 정보를 알려주세요", groups = SaleGroup.class)
+    @Pattern(regexp = "[가-힣0-9a-zA-Z]+", message = "세대 정보를 알려주세요", groups = SaleGroup.class)
     private String householdInfo; // 세대정보 (1층 세대/2층 세대 .../n층 세대)
     @NotBlank(message = "현재업종을 알려주세요", groups = OfficeGroup.class)
     private String industry;

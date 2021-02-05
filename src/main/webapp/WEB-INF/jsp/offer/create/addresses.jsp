@@ -29,6 +29,7 @@
         <div class="form-label relative">
             <i class="fas fa-circle"></i>
             <span>세대 및 동 정보</span>
+            <div class="error-box"></div>
         </div>
         <div class="input-group p-1 check-area">
             <input type="text" class="short" placeholder="총 세대수" name="OfferAddition.households" value="${offer.offerAddition.households}"
@@ -159,34 +160,39 @@
                 <span>세대정보</span>
                 <div class="error-box"></div>
             </div>
-            <div class="input-group p-1 check-area">
-                <input type="text" class="short" placeholder="지하세대" name="OfferAddition.householdInfo" value="${households[0]}">
-                <p class="short">/</p>
-                <input type="text" class="short" placeholder="1층세대" name="OfferAddition.householdInfo" value=${households[1]}>
-                <p class="short">/</p>
-                <input type="text" class="short" placeholder="2층세대" name="OfferAddition.householdInfo" value=${households[2]}>
-            </div>
 
-            <div class="input-group p-1 check-area">
-                <input type="text" class="short" placeholder="3층세대" name="OfferAddition.householdInfo" value=${households[3]}>
-                <p class="short">/</p>
-                <input type="text" class="short" placeholder="4층세대" name="OfferAddition.householdInfo" value=${households[4]}>
-                <p class="short">/</p>
-                <input type="text" class="short" placeholder="5층세대" name="OfferAddition.householdInfo" value=${households[5]}>
-                <p class="short">/</p>
-                <input type="text" class="short" placeholder="6층세대" name="OfferAddition.householdInfo" value=${households[6]}>
+            <div class="check-area">
+                <div class="input-group p-1">
+                    <input type="text" class="short" placeholder="지하세대" name="offerAddition.householdInfo" value="${households[0]}">
+                    <p class="short">/</p>
+                    <input type="text" class="short" placeholder="1층세대" name="offerAddition.householdInfo" value=${households[1]}>
+                    <p class="short">/</p>
+                    <input type="text" class="short" placeholder="2층세대" name="offerAddition.householdInfo" value=${households[2]}>
+                </div>
+
+                <div class="input-group p-1">
+                    <input type="text" class="short" placeholder="3층세대" name="offerAddition.householdInfo" value=${households[3]}>
+                    <p class="short">/</p>
+                    <input type="text" class="short" placeholder="4층세대" name="offerAddition.householdInfo" value=${households[4]}>
+                    <p class="short">/</p>
+                    <input type="text" class="short" placeholder="5층세대" name="offerAddition.householdInfo" value=${households[5]}>
+                    <p class="short">/</p>
+                    <input type="text" class="short" placeholder="6층세대" name="offerAddition.householdInfo" value=${households[6]}>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="form-label relative">
-        <i class="fas fa-circle"></i>
-        <span class="required">주요 위치</span>
-        <div class="error-box"></div>
-    </div>
-    <div class="input-group p-1 check-area">
-        <input type="text" class="short" placeholder="예) 아바경찰서" name="offerAddress.nearLocation" value="${offer.offerAddress.nearLocation}"
-               pattern="^[가-힣 ]{1,7}" onkeyup="formValidatorWithRegex($(this))">
-        <p class="icon"><i class="fas">부근</i></p>
+    <div>
+        <div class="form-label relative">
+            <i class="fas fa-circle"></i>
+            <span class="required">주요 위치</span>
+            <div class="error-box"></div>
+        </div>
+        <div class="input-group p-1 check-area">
+            <input type="text" class="short" placeholder="예) 아바경찰서" name="offerAddress.nearLocation" value="${offer.offerAddress.nearLocation}"
+                   pattern="^[가-힣 ]{1,7}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="icon"><i class="fas">부근</i></p>
+        </div>
     </div>
 </section>

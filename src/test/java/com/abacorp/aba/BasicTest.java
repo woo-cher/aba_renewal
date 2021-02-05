@@ -105,4 +105,15 @@ public class BasicTest {
         String type = "투∙쓰리룸";
         log.info("{}", OfferType.createWhenContainsValue(type));
     }
+
+    @Test
+    public void splitOnlyComma() {
+        String target = ",,,,,";
+        String[] splited = target.split(",");
+        log.info("result : {}, {}", splited, splited.length);
+
+        target = "옷가게,상가,,,";
+        splited = target.split(",");
+        log.info("result : {}, {}", splited, splited.length);
+    }
 }
