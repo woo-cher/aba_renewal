@@ -8,6 +8,7 @@ import com.abacorp.aba.model.offer.OfferAddress;
 import com.abacorp.aba.model.offer.group.BasicGroup;
 import com.abacorp.aba.model.offer.group.GroupMapper;
 import com.abacorp.aba.model.type.DealType;
+import com.abacorp.aba.model.type.HeatingType;
 import com.abacorp.aba.model.type.OfferType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -66,19 +67,31 @@ public class BeanValidatorTest {
         Offer offer = Offer.builder()
                 .type(OfferType.ONE_ROOM)
                 .dealType(DealType.SALE)
-                .deposit("0")
+                .inquiryTel("010-1234-1234")
+                .interest("3")
+                .heatingType(HeatingType.OIL)
                 .build();
 
         OfferService service = new OfferService();
         OfferGroupFactory factory = new OfferGroupFactory();
 
-        Class<? extends GroupMapper> groupClazz = factory.groupCreator(offer.getType(), offer.getDealType());
-        log.info("{}", groupClazz);
+        Class<? extends GroupMapper> groupClazz = factory.groupCreator(offer);
 
         this.constraintViolations = service.validateOffer(offer);
 
-        for (ConstraintViolation cv : this.constraintViolations) {
+        log.info("{}", this.constraintViolations.size());
+        for (ConstraintViolation<Offer> cv : this.constraintViolations) {
             log.info("cv : {}", cv);
+        }
+    }
+
+    private void printConstraintViolation(List<ConstraintViolation<Offer>> constraintViolations) {
+        if (constraintViolations.size() != 0) {
+            for (ConstraintViolation<Offer> cv : this.constraintViolations) {
+                log.info("cv : {}", cv);
+            }
+        } else {
+            log.error("constraintViolations size is '0'");
         }
     }
 }

@@ -50,9 +50,9 @@ public class Offer extends ModelMapper {
     @NotBlank(message = "집주인 혹은 본인 연락처를 알려주세요")
     private String inquiryTel;
     private String completionYear;
-    @NotNull(message = "매물분류를 선택하세요")
+    @NotNull(message = "매물분류를 선택하세요", groups = BasicGroup.class)
     private OfferType type;
-    @NotNull(message = "거래유형을 선택하세요")
+    @NotNull(message = "거래유형을 선택하세요", groups = BasicGroup.class)
     private DealType dealType;
     @NotNull(message = "난방유형을 선택하세요")
     private HeatingType heatingType;

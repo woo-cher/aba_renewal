@@ -5,7 +5,7 @@
     <div class="normal-rental room-type">
         <div class="form-label">
             <i class="fas fa-circle"></i>
-            <span>옵션 정보</span>
+            <span class="required">옵션 정보</span>
         </div>
         <ul class="checkbox-container p-1 check-area">
             <c:forEach var="option" items="${options}" begin="1" varStatus="vs">
@@ -123,7 +123,7 @@
     <div class="normal-rental room-type">
         <div class="form-label">
             <i class="fas fa-circle"></i>
-            <span>관리비 항목</span>
+            <span class="required">관리비 항목</span>
         </div>
         <ul class="checkbox-container p-1 check-area">
             <c:forEach var="manage" items="${manages}" begin="1" varStatus="vs">

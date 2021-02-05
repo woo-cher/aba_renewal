@@ -7,6 +7,7 @@ import com.abacorp.aba.model.dto.MapFiltersDto;
 import com.abacorp.aba.model.offer.Offer;
 import com.abacorp.aba.model.offer.OfferAddition;
 import com.abacorp.aba.model.offer.OfferAddress;
+import com.abacorp.aba.model.offer.group.BasicGroup;
 import com.abacorp.aba.model.offer.group.GroupMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,17 +101,19 @@ public class OfferService {
         return 1;
     }
 
-    public int getFormProcessIndex(List<FieldError> errors) {
+    public int getFormProcessIndex(List<ConstraintViolation<Offer>> constraintViolations) {
         Map<String, Boolean> clazzMap = new HashMap<>();
 
         clazzMap.put("offer", false);
         clazzMap.put("offerAddress", false);
         clazzMap.put("offerAddition", false);
 
-        for (FieldError error : errors) {
-            if (error.getField().contains("offerAddress")) {
+        for (ConstraintViolation<Offer> cv : constraintViolations) {
+            String fieldName = cv.getPropertyPath().toString();
+
+            if (fieldName.contains("offerAddress")) {
                 clazzMap.put("offerAddress", true);
-            } else if (error.getField().contains("offerAddition")) {
+            } else if (fieldName.contains("offerAddition")) {
                 clazzMap.put("offerAddition", true);
             } else {
                 clazzMap.put("offer", true);
@@ -216,16 +219,24 @@ public class OfferService {
         return floor;
     }
 
-    public <G extends GroupMapper> List<ConstraintViolation<Offer>> validateOffer(Offer offer) {
+    public List<ConstraintViolation<Offer>> validateOffer(Offer offer) {
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         List<ConstraintViolation<Offer>> constraintViolations;
         OfferGroupFactory factory = new OfferGroupFactory();
 
-        constraintViolations = new ArrayList<>(validator.validate(offer));
-        constraintViolations.addAll(
-                validator.validate(offer, factory.groupCreator(offer.getType(), offer.getDealType()))
-        );
+        Class<? extends GroupMapper> group = factory.groupCreator(offer);
+        log.info("second : {}", group);
 
+        if (group.equals(BasicGroup.class)) {
+            log.info("if true");
+            constraintViolations = new ArrayList<>(validator.validate(offer, group));
+        } else {
+            log.info("if false");
+            constraintViolations = new ArrayList<>(validator.validate(offer));
+            constraintViolations.addAll(validator.validate(offer, group));
+        }
+
+        log.info("validate result : {}", constraintViolations);
         return constraintViolations;
     }
 }

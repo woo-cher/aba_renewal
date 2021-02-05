@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
@@ -94,14 +95,15 @@ public class OfferController {
     }
 
     @RequestMapping(value = {"/create", "/update"}, method = RequestMethod.POST)
-    public ModelAndView createAndUpdate(@ModelAttribute @Valid Offer offer, BindingResult bindingResult,
-                                        HttpServletRequest request) throws IOException {
-
+    public ModelAndView createAndUpdate(@ModelAttribute Offer offer, HttpServletRequest request) throws IOException {
         log.info("offer : {}", offer);
+        List<ConstraintViolation<Offer>> cv;
         StringBuffer requestUrl = request.getRequestURL();
 
-        if (bindingResult.hasErrors()) {
-            List<FieldError> errors = bindingResult.getFieldErrors();
+        cv = offerService.validateOffer(offer);
+        log.info("First : {}", cv);
+
+        if (cv.size() != 0) {
             boolean isUpdate = requestUrl.toString().contains("update");
 
             setFormViewAndObject(mv);
@@ -113,8 +115,8 @@ public class OfferController {
                 mv.addObject("isUpdate", true);
             }
 
-            mv.addObject("processIndex", offerService.getFormProcessIndex(errors));
-            mv.addObject("errors", errors);
+            mv.addObject("processIndex", offerService.getFormProcessIndex(cv));
+            mv.addObject("errors", cv);
             mv.addObject("offer", offer);
 
             return mv;

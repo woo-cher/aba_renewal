@@ -114,8 +114,8 @@
             let fieldName, errorMessage, selector;
 
             <c:forEach var="error" items="${errors}">
-                fieldName = `${error.getField()}`;
-                errorMessage = `${error.getDefaultMessage()}`;
+                fieldName = `${error.getPropertyPath()}`;
+                errorMessage = `${error.getMessageTemplate()}`;
                 selector = $('input[name="' + fieldName + '"]').parents('.check-area');
                 selector.addClass('invalid b-1r');
                 selector.find('.error-box').append(
@@ -428,9 +428,9 @@
         $('#thumbnail').val(thumbnail);
     }
 
-
     function doSubmit(e) {
         $('.hidden').find('input').attr('disabled', true);
+        $('input.hidden').attr('disabled', true);
         $('#submit').click();
         window.opener.close();
     }
