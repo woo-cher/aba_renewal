@@ -29,9 +29,9 @@ public class Offer extends ModelMapper {
 
     @NotBlank(message = "보증금을 알려주세요")
     private String deposit;
-    @NotBlank(message = "월세를 알려주세요", groups = RentalGroup.class)
+    @NotBlank(message = "월세를 알려주세요", groups = {RentalGroup.class, OfficeGroup.class})
     private String monthlyPrice;
-    @NotBlank(message = "관리비를 알려주세요", groups = RentalGroup.class)
+    @NotBlank(message = "관리비를 알려주세요", groups = {RentalGroup.class, OfficeGroup.class})
     private String managementPrice;
 
     @NotBlank(message = "융자금을 알려주세요", groups = SaleGroup.class)

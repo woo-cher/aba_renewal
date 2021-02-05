@@ -228,15 +228,13 @@ public class OfferService {
         log.info("second : {}", group);
 
         if (group.equals(BasicGroup.class)) {
-            log.info("if true");
             constraintViolations = new ArrayList<>(validator.validate(offer, group));
         } else {
-            log.info("if false");
             constraintViolations = new ArrayList<>(validator.validate(offer));
             constraintViolations.addAll(validator.validate(offer, group));
         }
 
-        log.info("validate result : {}", constraintViolations);
+        log.info("validate[{}] result : {}", constraintViolations.size(), constraintViolations);
         return constraintViolations;
     }
 }

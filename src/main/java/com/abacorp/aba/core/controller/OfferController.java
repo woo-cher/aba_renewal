@@ -101,7 +101,6 @@ public class OfferController {
         StringBuffer requestUrl = request.getRequestURL();
 
         cv = offerService.validateOffer(offer);
-        log.info("First : {}", cv);
 
         if (cv.size() != 0) {
             boolean isUpdate = requestUrl.toString().contains("update");

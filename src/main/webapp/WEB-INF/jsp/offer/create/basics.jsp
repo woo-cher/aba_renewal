@@ -77,6 +77,7 @@
                 <span class="required">매물가격 (보증금 / 월가격 + 관리비)</span>
             </div>
             <div class="form-category p-1 full check-area">
+                <div class="error-box"></div>
                 <div class="input-group">
                     <input type="text" class="middle price-group" id="deposit" placeholder="보증금" name="deposit" value="${offer.deposit}"
                            pattern="^[0-9]{1,5}" onkeyup="formValidatorWithRegex($(this))">
@@ -91,7 +92,6 @@
                         <input type="text" id="managementPrice" placeholder="관리비" name="managementPrice" value="${offer.managementPrice}"
                                pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
                         <p class="icon"><i class="fas">만</i></p>
-                        <div class="error-box"></div>
                     </div>
                 </div>
 

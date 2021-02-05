@@ -110,7 +110,9 @@
         </c:if>
 
         <c:if test="${not empty errors}">
+            $('input[name="dealType"]').trigger('change');
             $('.error').remove();
+
             let fieldName, errorMessage, selector;
 
             <c:forEach var="error" items="${errors}">
@@ -466,6 +468,8 @@
     }
 
     function dynamicConverter() {
+        $('.error').remove();
+
         let dealType = $('input[name="dealType"]:checked').prop('value');
         let offerType = $('input[name="type"]:checked').prop('value');
 
