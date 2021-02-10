@@ -104,10 +104,12 @@
                    pattern="^[0-9]{1,2}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">층</i></p>
         </div>
+    </div>
 
+    <div class="normal-rental">
         <div class="form-label relative">
             <i class="fas fa-circle"></i>
-            <span>입구 / 호실 비밀번호</span>
+            <span class="required">입구 / 호실 비밀번호</span>
             <div class="error-box"></div>
         </div>
         <div class="input-group p-1 check-area">

@@ -1,6 +1,5 @@
 package com.abacorp.aba.model.offer;
 
-import com.abacorp.aba.model.offer.group.BasicGroup;
 import com.abacorp.aba.model.offer.group.OfficeGroup;
 import com.abacorp.aba.model.offer.group.SaleGroup;
 import com.abacorp.aba.model.type.ManagementCategoryType;
@@ -8,7 +7,6 @@ import com.abacorp.aba.model.type.OptionType;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
@@ -38,9 +36,7 @@ public class OfferAddition {
     private String industry;
     @NotBlank(message = "제한업종을 알려주세요", groups = OfficeGroup.class)
     private String restrictedIndustry;
-    @NotNull(message = "옵션을 선택해주세요")
     private String optionCategory;
-    @NotNull(message = "관리비 항목을 선택해주세요")
     private String managementCategory;
     private boolean hasElevator;
     private boolean canParking;

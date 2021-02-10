@@ -34,10 +34,10 @@
             <div class="error-box"></div>
         </div>
         <div class="input-group p-1 check-area">
-            <input type="text" class="short" placeholder="현관구조" name="offerAddition.frontStructure" value="${offer.offerAddition.frontStructure}"
+            <input type="text" class="short" placeholder="(계단식 / 복합식)" name="offerAddition.frontStructure" value="${offer.offerAddition.frontStructure}"
                    pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
             <p class="short">/</p>
-            <input type="text" class="short" placeholder="방향" name="offerAddition.direction" value="${offer.offerAddition.direction}"
+            <input type="text" class="short" placeholder="(남향 / 동향 / 서향 ...)" name="offerAddition.direction" value="${offer.offerAddition.direction}"
                    pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
         </div>
 
@@ -86,10 +86,10 @@
             <label for="elevator">승강기 있음</label>
         </li>
         <li class="checkbox-list hidden" style="width: 15%;" id="remodeling">
-            <input id="apt" type="checkbox" name="offerAddition.remodeling" value=true class="check"
+            <input id="remodel" type="checkbox" name="offerAddition.remodeling" value=true class="check"
                    onchange="elevatorTrigger($(this))"
             >
-            <label for="elevator">리모델링</label>
+            <label for="remodel">리모델링</label>
         </li>
         <li class="checkbox-list normal-rental" style="width: 15%;">
             <input id="parking" type="checkbox" name="offerAddition.canParking" class="check">

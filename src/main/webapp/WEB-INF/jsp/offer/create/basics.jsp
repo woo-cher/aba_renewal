@@ -74,7 +74,7 @@
         <div class="offer-deal">
             <div class="form-label relative">
                 <i class="fas fa-circle"></i>
-                <span class="required">매물가격 (보증금 / 월가격 + 관리비)</span>
+                <span class="required">매물가격</span>
                 <div class="error-box"></div>
             </div>
             <div class="form-category p-1 full check-area">
@@ -96,14 +96,14 @@
                 </div>
 
                 <div class="input-group normal-sale hidden">
-                    <input type="text" class="middle" id="salePrice" placeholder="매매가 -> 예) 3.5" name="salePrice" value="${offer.salePrice}"
+                    <input type="text" class="middle" id="salePrice" placeholder="매매가 -> 예) 25000" name="salePrice" value="${offer.salePrice}"
                            pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
-                    <p class="icon"><i class="fas">억</i></p>
+                    <p class="icon"><i class="fas">만</i></p>
 
                     <p class="short"></p>
                     <input type="text" class="middle" id="investmentMoney" placeholder="투자금액" name="investmentMoney" value="${offer.investmentMoney}"
                            pattern="^[0-9.]{1,3}" onkeyup="formValidatorWithRegex($(this))">
-                    <p class="icon"><i class="fas">억</i></p>
+                    <p class="icon"><i class="fas">만</i></p>
                 </div>
 
                 <div class="input-group normal-sale hidden">
