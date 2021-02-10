@@ -240,7 +240,7 @@
     <update id="updateOffer" parameterType="offer">
         UPDATE offers
         SET deposit = #{deposit}, monthly_price = #{monthlyPrice}, management_price = #{managementPrice},
-            sale_price = #{salePrice}, investmentMoney = #{investmentMoney}, loan = #{loan}, interest = #{interest},
+            sale_price = #{salePrice}, investment_money = #{investmentMoney}, loan = #{loan}, interest = #{interest},
             monthly_profit = #{monthlyProfit}, supplies_price = #{suppliesPrice},
             type = #{type}, deal_type = #{dealType}, heating_type = #{heatingType}, inquiry_tel = #{inquiryTel},
             completion_year = #{completionYear}, description = #{description}, thumbnail = #{thumbnail}, video_url = #{videoUrl},

@@ -34,11 +34,9 @@
             <div class="error-box"></div>
         </div>
         <div class="input-group p-1 check-area">
-            <input type="text" class="short" placeholder="(계단식 / 복합식)" name="offerAddition.frontStructure" value="${offer.offerAddition.frontStructure}"
-                   pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
+            <input type="text" class="short" placeholder="(계단식 / 복합식)" name="offerAddition.frontStructure" value="${offer.offerAddition.frontStructure}">
             <p class="short">/</p>
-            <input type="text" class="short" placeholder="(남향 / 동향 / 서향 ...)" name="offerAddition.direction" value="${offer.offerAddition.direction}"
-                   pattern="^[0-9.]{1}" onkeyup="formValidatorWithRegex($(this))">
+            <input type="text" class="short" placeholder="(남향 / 동향 / 서향 ...)" name="offerAddition.direction" value="${offer.offerAddition.direction}">
         </div>
 
         <div class="form-label relative">
@@ -168,7 +166,7 @@
         <span>부가 설명</span>
     </div>
     <input type="text" name="description" placeholder="예) 벽지 재공사 예정이라고 합니다~" value="${offer.description}"
-           pattern="^[가-힣#*~!() ]{1,50}" onkeyup="formValidatorWithRegex($(this))">
+           pattern="^[0-9가-힣-#*~:!() ]{1,50}" onkeyup="formValidatorWithRegex($(this))">
 
     <div class="form-label relative">
         <i class="fas fa-circle"></i>

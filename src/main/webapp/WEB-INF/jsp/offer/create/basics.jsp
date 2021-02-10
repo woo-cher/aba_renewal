@@ -140,7 +140,7 @@
             <div class="form-category p-1 check-area">
                 <div class="input-group">
                     <input type="text" class="short" id="completionYear" placeholder="1991" name="completionYear" value="${offer.completionYear}"
-                           pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+                           pattern="^[0-9/]{1,7}" onkeyup="formValidatorWithRegex($(this))">
                     <p class="icon"><i class="fas">년</i></p>
                     <p class="short">/</p>
                     <input type="text" class="middle" id="inquiryTel" placeholder="010-0000-0000" name="inquiryTel" value="${offer.inquiryTel}"

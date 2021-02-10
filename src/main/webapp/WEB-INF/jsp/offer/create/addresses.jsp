@@ -64,7 +64,7 @@
             <p class="short"></p>
             <p class="icon"><i class="fas">호실</i></p>
             <input type="text" class="middle" id="ho" placeholder="예) 102호, 103호" name="offerAddress.ho" value="${offer.offerAddress.ho}"
-                   pattern="^[0-9, 호]{1,20}" onkeyup="formValidatorWithRegex($(this))">
+                   pattern="^[0-9,가-힣 ]{1,20}" onkeyup="formValidatorWithRegex($(this))">
         </div>
         <ul class="checkbox-container p-0 w-half">
             <li class="checkbox-list w-65">
@@ -131,11 +131,11 @@
         </div>
         <div class="input-group p-1 check-area">
             <input type="text" class="short" placeholder="예) 745.1" name="offerAddress.landArea" value="${offer.offerAddress.landArea}"
-                   pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+                   pattern="^[0-9.]{1,6}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">㎡</i></p>
             <p class="short">/</p>
             <input type="text" class="short" placeholder="예) 539" name="offerAddress.buildingArea" value="${offer.offerAddress.buildingArea}"
-                   pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+                   pattern="^[0-9.]{1,6}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">㎡</i></p>
         </div>
     </div>

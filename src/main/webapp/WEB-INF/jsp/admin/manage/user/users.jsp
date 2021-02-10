@@ -7,10 +7,10 @@
         <span class="mini-header">전체 회원들을 통합으로 관리합니다.</span>
     </header>
     <div class="btn-group">
-        <button class="aba reverse" type="button">
-            <i class="fas fa-user-plus"></i>
-            계정 생성
-        </button>
+<%--        <button class="aba reverse" type="button">--%>
+<%--            <i class="fas fa-user-plus"></i>--%>
+<%--            계정 생성--%>
+<%--        </button>--%>
         <button class="aba" type="button" onclick="$('.admin-filter').slideToggle()">
             <i class="fas fa-align-justify"></i>
             사용자 필터
