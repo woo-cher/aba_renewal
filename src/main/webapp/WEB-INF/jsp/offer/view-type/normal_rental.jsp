@@ -3,7 +3,9 @@
 
 <div class="row bb">
     <p class="key">매물구분</p>
-    <p class="value">${offer.offerAddition.rooms}</p>
+    <p class="value">
+        ${offer.offerAddition.rooms eq null ? "정보없음" : offer.offerAddition.rooms}
+    </p>
     <p class="key">입구</p>
     <p class="value">
         <c:choose>
@@ -67,7 +69,7 @@
 <div class="row bb">
     <p class="key">단기임대</p>
     <p class="value">
-        ${offer.offerAddition.term == null ? "불가능" : offer.offerAddition.term}
-        ${offer.offerAddition.term == null ? "" : "개월"}
+        ${offer.offerAddition.term == null || offer.offerAddition.term == 0 ? "불가능" : offer.offerAddition.term}
+        ${offer.offerAddition.term == null || offer.offerAddition.term == 0 ? "" : "개월"}
     </p>
 </div>

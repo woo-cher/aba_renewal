@@ -188,7 +188,7 @@
     <div>
         <div class="form-label relative">
             <i class="fas fa-circle"></i>
-            <span class="required">주요 위치</span>
+            <span>주요 위치</span>
             <div class="error-box"></div>
         </div>
         <div class="input-group p-1 check-area">

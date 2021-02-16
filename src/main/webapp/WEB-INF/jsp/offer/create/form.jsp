@@ -128,6 +128,11 @@
             </c:forEach>
         </c:if>
 
+        <c:if test="${offer.offerAddress.dong eq null}">
+            $('#isExistDong').prop('checked', true);
+            dongTrigger($('#dong'));
+        </c:if>
+
         <c:if test="${!isUpdate}">
             $('#thumbTrigger').attr('style', 'display:none !important');
         </c:if>
@@ -149,10 +154,6 @@
             </c:if>
             <c:if test="${offer.offerAddress.door eq '없음'}">
                 $('#door').next('.icon-with-check').click();
-            </c:if>
-            <c:if test="${offer.offerAddress.dong eq null}">
-                $('#isExistDong').prop('checked', true);
-                dongTrigger($('#dong'));
             </c:if>
             <c:if test="${offer.offerAddition.tenant ne '무' && offer.offerAddition.tenant ne null}">
                 $("#tenant").prop('checked', true);

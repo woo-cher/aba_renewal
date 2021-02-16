@@ -31,7 +31,6 @@ public class OfferAddress {
     @NotBlank(message = "호실 암호를 알려주세요", groups = {RentalGroup.class, AptGroup.class, OfficeGroup.class})
     private String door;
     private String floor;
-    @NotBlank(message = "주요위치를 알려주세요")
     private String nearLocation;
     private String belongsTo;
     private String buildingArea;

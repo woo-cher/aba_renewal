@@ -1,6 +1,7 @@
 package com.abacorp.aba.model.offer;
 
 import com.abacorp.aba.model.offer.group.OfficeGroup;
+import com.abacorp.aba.model.offer.group.RentalGroup;
 import com.abacorp.aba.model.offer.group.SaleGroup;
 import com.abacorp.aba.model.type.ManagementCategoryType;
 import com.abacorp.aba.model.type.OptionType;
@@ -26,7 +27,7 @@ import java.util.List;
 @ToString
 public class OfferAddition {
     private int offerId;
-    @NotBlank(message = "단기 개월을 알려주세요")
+    @NotBlank(message = "단기 개월을 알려주세요", groups = RentalGroup.class)
     private String term;
     @NotBlank(message = "세입자 정보를 알려주세요")
     private String tenant;
