@@ -23,27 +23,44 @@
 </div>
 
 <div class="row bb">
-    <p class="key">난방방식</p>
-    <p class="value">${offer.heatingMethodType.value}</p>
+<%--    <p class="key">난방방식</p>--%>
+<%--    <p class="value">${offer.heatingMethodType.value}</p>--%>
+    <p class="key">입주가능일</p>
+    <p class="value">
+        <c:choose>
+            <c:when test="${isPremium}">
+                ${offer.offerAddition.moveIn ne "" ? offer.offerAddition.moveIn : "정보없음"}
+            </c:when>
+            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
+        </c:choose>
+    </p>
     <p class="key">총세대수</p>
-    <p class="value">${offer.offerAddition.households} 세대</p>
+    <p class="value">
+        ${offer.offerAddition.households ne "" ? offer.offerAddition.households.concat(" 세대") : "정보없음"}
+    </p>
 </div>
 
 <div class="row bb">
     <p class="key">총동수</p>
-    <p class="value">${offer.offerAddition.totalDong} 개동</p>
+    <p class="value">
+        ${offer.offerAddition.totalDong ne "" ? offer.offerAddition.totalDong.concat("동") : "정보없음"}
+    </p>
     <p class="key">총주차수</p>
-    <p class="value">${offer.offerAddition.totalParking} 대</p>
+    <p class="value">
+        ${offer.offerAddition.totalParking ne "" ? offer.offerAddition.totalParking.concat(" 대") : "정보없음"}
+    </p>
 </div>
 
 <div class="row bb">
     <p class="key">전체층</p>
-    <p class="value">총 ${offer.offerAddress.floor}층</p>
+    <p class="value">
+        ${offer.offerAddress.floor ne "" ? "총 ".concat(offer.offerAddress.floor).concat("층") : "정보없음"}
+    </p>
     <p class="key">해당동</p>
     <p class="value">
         <c:choose>
             <c:when test="${isPremium}">
-                ${offer.offerAddress.dong}
+                ${offer.offerAddress.dong.concat("동")}
             </c:when>
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
@@ -52,16 +69,24 @@
 
 <div class="row bb">
     <p class="key">현관구조</p>
-    <p class="value">${offer.offerAddition.frontStructure}</p>
+    <p class="value">
+        ${offer.offerAddition.frontStructure ne "" ? offer.offerAddition.frontStructure : "정보없음"}
+    </p>
     <p class="key">방향</p>
-    <p class="value">${offer.offerAddition.direction}</p>
+    <p class="value">
+        ${offer.offerAddition.direction ne "" ? offer.offerAddition.direction : "정보없음"}
+    </p>
 </div>
 
 <div class="row bb">
     <p class="key">공급면적</p>
-    <p class="value">${offer.offerAddress.landArea}㎡</p>
+    <p class="value">
+        ${offer.offerAddress.landArea ne "" ? offer.offerAddress.landArea.concat("㎡") : "정보없음"}
+    </p>
     <p class="key">전용면적</p>
-    <p class="value">${offer.offerAddress.buildingArea}㎡</p>
+    <p class="value">
+        ${offer.offerAddress.buildingArea ne "" ? offer.offerAddress.buildingArea.concat("㎡") : "정보없음"}
+    </p>
 </div>
 
 <div class="row bb">
@@ -86,19 +111,14 @@
 </div>
 
 <div class="row bb">
-    <p class="key">입주가능일</p>
-    <p class="value">
-        <c:choose>
-            <c:when test="${isPremium}">
-                ${offer.offerAddition.moveIn}
-            </c:when>
-            <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
-        </c:choose>
-    </p>
     <p class="key">리모델링</p>
     <p class="value">
         ${offer.offerAddition.remodeling ? "O" : "X"}
     </p>
+    <c:if test="${offer.type eq 'APT'}">
+        <p class="key">확장여부</p>
+        <p class="value">${offer.offerAddition.builtIn ? "O" : "X"}</p>
+    </c:if>
 </div>
 
 <div class="row bb">
@@ -123,10 +143,3 @@
         </p>
     </c:if>
 </div>
-
-<c:if test="${offer.type eq 'APT'}">
-    <div class="row bb">
-        <p class="key">확장여부</p>
-        <p class="value">${offer.offerAddition.builtIn ? "O" : "X"}</p>
-    </div>
-</c:if>

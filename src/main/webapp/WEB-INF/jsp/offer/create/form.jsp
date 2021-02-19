@@ -21,10 +21,10 @@
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
 </head>
 
+<c:set var="households" value="${fn:split(offer.offerAddition.householdInfo, ',')}" />
 <c:choose>
     <c:when test="${isUpdate}">
         <c:set var="actionUrl" value="/offers/update" />
-        <c:set var="households" value="${fn:split(offer.offerAddition.householdInfo, ',')}" />
     </c:when>
     <c:otherwise>
         <c:set var="actionUrl" value="/offers/create" />
@@ -94,6 +94,7 @@
 
 <script>
     $(document).ready(function () {
+        console.log(window.opener)
         if (window.opener !== null) {
             $('header').remove();
         }
@@ -432,6 +433,11 @@
     }
 
     function doSubmit(e) {
+        $('.household-info').each(function (i, el) {
+            if ($(el).val() === '') {
+                $(el).val("정보없음");
+            }
+        });
         $('.hidden').find('input').attr('disabled', true);
         $('input.hidden').attr('disabled', true);
         $('#submit').click();
@@ -477,6 +483,7 @@
         let normalSaleEl = $('.normal-sale');
         let normalRentalEl = $('.normal-rental');
         let noneAptField = $('.none-apt');
+        let pyeongField = $('.pyeong');
         let aptField = $('.apt');
         let officeEl = $('.office-type');
 
@@ -495,7 +502,17 @@
             $('#term-box').removeClass('hidden');
             $('.total-floor').addClass('hidden');
             $('.floor-box').removeClass('hidden');
-            aptField.addClass('hidden')
+            aptField.addClass('hidden');
+
+            if (isOfficeType) {
+                pyeongField.removeClass('hidden');
+                $('.land').addClass('hidden');
+                $('#land').text("상가면적");
+            } else {
+                pyeongField.addClass('hidden');
+                $('.land').removeClass('hidden');
+                $('#land').text("면적정보 (건물 연면적 / 대지 면적)");
+            }
         }
 
         if (dealType === 'SALE') {

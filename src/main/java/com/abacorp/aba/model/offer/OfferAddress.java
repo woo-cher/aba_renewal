@@ -24,7 +24,7 @@ public class OfferAddress {
     private String jibun;
     private String road;
     private String dong;
-    @NotBlank(message = "호수를 알려주세요")
+    @NotBlank(message = "호수를 알려주세요", groups = {RentalGroup.class, AptGroup.class, OfficeGroup.class})
     private String ho;
     @NotBlank(message = "입구 암호를 알려주세요", groups = {RentalGroup.class, AptGroup.class, OfficeGroup.class})
     private String entrance;

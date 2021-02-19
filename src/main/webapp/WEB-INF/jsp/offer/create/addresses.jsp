@@ -51,29 +51,6 @@
     <input type="hidden" id="latitude" name="offerAddress.latitude" value="${offer.offerAddress.latitude}">
     <input type="hidden" id="longitude" name="offerAddress.longitude" value="${offer.offerAddress.longitude}">
 
-    <div class="dong-ho-box">
-        <div class="form-label relative">
-            <i class="fas fa-circle"></i>
-            <span class="required">호실 정보</span>
-            <div class="error-box"></div>
-        </div>
-        <div class="input-group p-1 check-area">
-            <p class="icon"><i class="fas">동</i></p>
-            <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong" value="${offer.offerAddress.dong}"
-                   pattern="^[0-9]{1,4}" onkeyup="formValidatorWithRegex($(this))">
-            <p class="short"></p>
-            <p class="icon"><i class="fas">호실</i></p>
-            <input type="text" class="middle" id="ho" placeholder="예) 102호, 103호" name="offerAddress.ho" value="${offer.offerAddress.ho}"
-                   pattern="^[0-9,가-힣 ]{1,20}" onkeyup="formValidatorWithRegex($(this))">
-        </div>
-        <ul class="checkbox-container p-0 w-half">
-            <li class="checkbox-list w-65">
-                <input type="checkbox" class="check" id="isExistDong" onclick="dongTrigger($('#dong'))">
-                <label for="isExistDong">동 정보가 없습니다</label>
-            </li>
-        </ul>
-    </div>
-
     <div class="floor-box">
         <div class="form-label relative">
             <i class="fas fa-circle"></i>
@@ -106,6 +83,29 @@
         </div>
     </div>
 
+    <div class="dong-ho-box">
+        <div class="form-label relative">
+            <i class="fas fa-circle"></i>
+            <span class="required">호실 정보</span>
+            <div class="error-box"></div>
+        </div>
+        <div class="input-group p-1 check-area">
+            <p class="icon"><i class="fas">동</i></p>
+            <input type="text" class="short" placeholder="예) 3동" name="offerAddress.dong" id="dong" value="${offer.offerAddress.dong}"
+                   pattern="^[0-9a-zA-Z]{1,4}" onkeyup="formValidatorWithRegex($(this))">
+            <p class="short"></p>
+            <p class="icon"><i class="fas">호실</i></p>
+            <input type="text" class="middle" id="ho" placeholder="예) 102호, 103호" name="offerAddress.ho" value="${offer.offerAddress.ho}"
+                   pattern="^[0-9,가-힣 ]{1,20}" onkeyup="formValidatorWithRegex($(this))">
+        </div>
+        <ul class="checkbox-container p-0 w-half">
+            <li class="checkbox-list w-65">
+                <input type="checkbox" class="check" id="isExistDong" onclick="dongTrigger($('#dong'))">
+                <label for="isExistDong">동 정보가 없습니다</label>
+            </li>
+        </ul>
+    </div>
+
     <div class="normal-rental">
         <div class="form-label relative">
             <i class="fas fa-circle"></i>
@@ -125,6 +125,10 @@
 
     <div class="apt hidden">
         <div class="form-label relative">
+            <span class="aba absolute c-pointer txt-sm" style="right: 0;"
+                  onclick="window.open('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%ED%8F%89+%EA%B3%84%EC%82%B0%EA%B8%B0')">
+                네이버 평 계산
+            </span>
             <i class="fas fa-circle"></i>
             <span>아파트 면적 정보 (공급면적 / 전용면적)</span>
             <div class="error-box"></div>
@@ -140,23 +144,27 @@
         </div>
     </div>
 
-    <div class="normal-sale none-apt hidden">
+    <div class="pyeong none-apt hidden">
         <div class="form-label relative">
+            <span class="aba absolute c-pointer txt-sm" style="right: 0;"
+                  onclick="window.open('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%ED%8F%89+%EA%B3%84%EC%82%B0%EA%B8%B0')">
+                네이버 평 계산
+            </span>
             <i class="fas fa-circle"></i>
-            <span>면적정보 (건물 연면적 / 대지 면적)</span>
+            <span id="land">면적정보 (건물 연면적 / 대지 면적)</span>
             <div class="error-box"></div>
         </div>
         <div class="input-group p-1 check-area">
             <input type="text" class="short" placeholder="예) 745.1" name="offerAddress.buildingArea" value="${offer.offerAddress.buildingArea}"
                    pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
             <p class="icon"><i class="fas">㎡</i></p>
-            <p class="short">/</p>
-            <input type="text" class="short" placeholder="예) 539" name="offerAddress.landArea" value="${offer.offerAddress.landArea}"
+            <p class="short land">/</p>
+            <input type="text" class="short land" placeholder="예) 539" name="offerAddress.landArea" value="${offer.offerAddress.landArea}"
                    pattern="^[0-9.]{1,4}" onkeyup="formValidatorWithRegex($(this))">
-            <p class="icon"><i class="fas">㎡</i></p>
+            <p class="icon land"><i class="fas">㎡</i></p>
         </div>
 
-        <div class="none-apt">
+        <div class="normal-sale">
             <div class="form-label relative">
                 <i class="fas fa-circle"></i>
                 <span>세대정보</span>
@@ -165,21 +173,28 @@
 
             <div class="check-area">
                 <div class="input-group p-1">
-                    <input type="text" class="short" placeholder="지하세대" name="offerAddition.householdInfo" value="${households[0]}">
-                    <p class="short">/</p>
-                    <input type="text" class="short" placeholder="1층세대" name="offerAddition.householdInfo" value=${households[1]}>
-                    <p class="short">/</p>
-                    <input type="text" class="short" placeholder="2층세대" name="offerAddition.householdInfo" value=${households[2]}>
+                    <input type="text" class="short household-info" placeholder="지하세대" name="offerAddition.householdInfo" value="${households[0]}"
+                           pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="short">,</p>
+                    <input type="text" class="short household-info" placeholder="1층세대" name="offerAddition.householdInfo" value="${households[1]}"
+                            pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="short">,</p>
+                    <input type="text" class="short household-info" placeholder="2층세대" name="offerAddition.householdInfo" value="${households[2]}"
+                            pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
                 </div>
 
                 <div class="input-group p-1">
-                    <input type="text" class="short" placeholder="3층세대" name="offerAddition.householdInfo" value=${households[3]}>
-                    <p class="short">/</p>
-                    <input type="text" class="short" placeholder="4층세대" name="offerAddition.householdInfo" value=${households[4]}>
-                    <p class="short">/</p>
-                    <input type="text" class="short" placeholder="5층세대" name="offerAddition.householdInfo" value=${households[5]}>
-                    <p class="short">/</p>
-                    <input type="text" class="short" placeholder="6층세대" name="offerAddition.householdInfo" value=${households[6]}>
+                    <input type="text" class="short household-info" placeholder="3층세대" name="offerAddition.householdInfo" value="${households[3]}"
+                            pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="short">,</p>
+                    <input type="text" class="short household-info" placeholder="4층세대" name="offerAddition.householdInfo" value="${households[4]}"
+                            pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="short">,</p>
+                    <input type="text" class="short household-info" placeholder="5층세대" name="offerAddition.householdInfo" value="${households[5]}"
+                            pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
+                    <p class="short">,</p>
+                    <input type="text" class="short household-info" placeholder="6층세대" name="offerAddition.householdInfo" value="${households[6]}"
+                            pattern="^[0-9가-힣/ ]{1,15}" onkeyup="formValidatorWithRegex($(this))">
                 </div>
             </div>
         </div>

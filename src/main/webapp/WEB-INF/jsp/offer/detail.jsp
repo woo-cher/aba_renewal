@@ -91,7 +91,9 @@
                             <c:when test="${isPremium}">
                                 <span class="leading-1d25">
                                     ${offer.offerAddress.jibun}
-                                    <span class="aba">${offer.offerAddress.buildingName}</span>
+                                    <span class="aba">
+                                            ${offer.offerAddress.buildingName eq "없음" ? "" : offer.offerAddress.buildingName}
+                                    </span>
                                 </span>
                             </c:when>
                             <c:otherwise>${offer.offerAddress.belongsTo} ***-**</c:otherwise>
@@ -276,36 +278,37 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        console.log('${isPremium}')
-    <c:choose>
-        <c:when test="${isPremium}">
-        let lat = ${offer.offerAddress.latitude};
-        let lng = ${offer.offerAddress.longitude};
+        $('#header').remove();
 
-        let map = new kakao.maps.Map(document.getElementById("map-location"), {
-            center: new kakao.maps.LatLng(${offer.offerAddress.latitude}, ${offer.offerAddress.longitude}),
-            level: 3,
-            minLevel: 2,
-            maxLevel: 3
-        });
+        <c:choose>
+            <c:when test="${isPremium}">
+            let lat = ${offer.offerAddress.latitude};
+            let lng = ${offer.offerAddress.longitude};
 
-        let imageSrc = '/web-resources/img/offer/detail_map_icon.png',
-            imageSize = new kakao.maps.Size(25, 35),
-            imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
-            let marker = new kakao.maps.Marker({
-                position: new kakao.maps.LatLng(lat, lng),
-                image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+            let map = new kakao.maps.Map(document.getElementById("map-location"), {
+                center: new kakao.maps.LatLng(${offer.offerAddress.latitude}, ${offer.offerAddress.longitude}),
+                level: 3,
+                minLevel: 2,
+                maxLevel: 3
             });
 
-            marker.setMap(map);
-        </c:when>
-        <c:otherwise>
-            let selector = $('#map-location');
-            selector.addClass('f-c');
-            selector.css('border', '1px solid gray');
-            selector.append(`<i class="fas fa-lock" style="font-size: 5rem;"></i>`)
-        </c:otherwise>
-    </c:choose>
+            let imageSrc = '/web-resources/img/offer/detail_map_icon.png',
+                imageSize = new kakao.maps.Size(25, 35),
+                imageOption = { offset: new kakao.maps.Point(20, 35) }; // ??
+                let marker = new kakao.maps.Marker({
+                    position: new kakao.maps.LatLng(lat, lng),
+                    image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+                });
+
+                marker.setMap(map);
+            </c:when>
+            <c:otherwise>
+                let selector = $('#map-location');
+                selector.addClass('f-c');
+                selector.css('border', '1px solid gray');
+                selector.append(`<i class="fas fa-lock" style="font-size: 5rem;"></i>`)
+            </c:otherwise>
+        </c:choose>
     });
 
     $(".albery-container").albery({

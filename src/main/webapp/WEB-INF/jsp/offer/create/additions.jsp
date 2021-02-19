@@ -73,7 +73,7 @@
             <input id="tenant" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="tenant">세입자 있음</label>
         </li>
-        <li class="checkbox-list room-type" style="width: 15%;" id="term-box">
+        <li class="checkbox-list room-type normal-rental" style="width: 15%;" id="term-box">
             <input id="term" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="term">단기 가능</label>
         </li>
@@ -89,6 +89,10 @@
             >
             <label for="remodel">리모델링</label>
         </li>
+        <li class="checkbox-list apt hidden" style="width: 15%;">
+            <input id="builtIn" type="checkbox" name="offerAddition.builtIn" class="check">
+            <label for="builtIn">확장공사</label>
+        </li>
         <li class="checkbox-list normal-rental" style="width: 15%;">
             <input id="parking" type="checkbox" name="offerAddition.canParking" class="check">
             <label for="parking">주차 가능</label>
@@ -99,7 +103,7 @@
         </li>
         <li class="checkbox-list apt hidden" style="width: max-content;">
             <input id="cool" type="checkbox" name="offerAddition.hasCool" class="check">
-            <label for="pet">냉방시설 있음</label>
+            <label for="cool">냉방시설 있음</label>
         </li>
     </ul>
 
@@ -154,10 +158,12 @@
         </div>
         <div class="input-group flex-center check-area">
             <p class="icon w-max p-1"><i class="fas">현재업종</i></p>
-            <input type="text" class="short" name="offerAddition.industry" placeholder="예) 네일샵" value="">
+            <input type="text" class="short" name="offerAddition.industry" placeholder="예) 네일샵"
+                   value="${offer.offerAddition.industry}">
             <p class="short"></p>
             <p class="icon w-max p-1"><i class="fas">제한업종</i></p>
-            <input type="text" class="short" name="offerAddition.restrictedIndustry" placeholder="예) 유흥업" value="">
+            <input type="text" class="short" name="offerAddition.restrictedIndustry" placeholder="예) 유흥업"
+                   value="${offer.offerAddition.restrictedIndustry}">
         </div>
     </div>
 

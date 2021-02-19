@@ -7,7 +7,9 @@
     <p class="key">층정보</p>
     <p class="value">
         <c:choose>
-            <c:when test="${isPremium}">${offer.offerAddress.floor}</c:when>
+            <c:when test="${isPremium}">
+                ${offer.offerAddress.floor eq -1 ? "반지하" : offer.offerAddress.floor eq 100 ? "옥탑" : offer.offerAddress.floor}
+            </c:when>
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
     </p>

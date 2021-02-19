@@ -60,17 +60,17 @@ public class OfferApi {
         log.info("page : {}", page);
 
         if (userId != null && page == null) {
-            return (List<O>) service.getOffersByUserId(userId);
+            return service.getOffersByUserId(userId);
         }
 
         PageInfo<Offer> offers = userId == null ?
 
                 PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
                         () -> service.getOffers()) :
-                PageHelper.startPage(page, 3).doSelectPageInfo(
+                PageHelper.startPage(page, OFFERS_PER_PAGE).doSelectPageInfo(
                         () -> service.getOffersByUserId(userId));
 
-        return (P) offers;
+        return offers;
     }
 
     @RequestMapping(value = "/offers/{offer}", method = RequestMethod.DELETE)

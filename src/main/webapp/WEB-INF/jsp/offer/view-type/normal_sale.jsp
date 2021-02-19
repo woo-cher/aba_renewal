@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="households" value="${fn:split(offer.offerAddition.householdInfo, '/')}" />
+<c:set var="households" value="${fn:split(offer.offerAddition.householdInfo, ',')}" />
 <c:set var="salePrice" value="${offer.salePrice / 10000}" />
-<c:set var="loan" value="${offer.loan / 10000}" />
-<c:set var="totalDeposit" value="${offer.deposit / 10000}" />
-<c:set var="investment" value="${offer.investmentMoney / 10000}" />
+<c:set var="loan" value="${fn:length(offer.loan) > 4 ? offer.loan / 10000 : offer.loan}" />
+<c:set var="totalDeposit" value="${fn:length(offer.deposit) > 4 ? offer.deposit / 10000 : offer.deposit}" />
+<c:set var="investment" value="${fn:length(offer.investmentMoney) > 4 ? offer.investmentMoney / 10000 : offer.investmentMoney}" />
 
 <div class="row bb">
     <p class="key">엘리베이터</p>
@@ -52,12 +52,12 @@
 
 <div class="row bb">
     <p class="key">총 보증금</p>
-    <p class="value">${totalDeposit}${fn:length(offer.deposit) > 4 ? "억" : "만"}</p>
+    <p class="value">${totalDeposit}${fn:length(offer.deposit) > 4 ? "억" : ""}</p>
     <p class="key">융자금</p>
     <p class="value">
         <c:choose>
             <c:when test="${isPremium}">
-                ${fn:replace(loan, ".0", "")}${fn:length(offer.loan) > 4 ? "억" : "만"}
+                ${fn:replace(loan, ".0", "")}${fn:length(offer.loan) > 4 ? "억" : ""}
             </c:when>
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>
@@ -86,7 +86,7 @@
     <p class="value">
         <c:choose>
             <c:when test="${isPremium}">
-                ${fn:replace(investment, ".0", "")}${fn:length(offer.investmentMoney) > 4 ? "억" : "만"}
+                ${fn:replace(investment, ".0", "")}${fn:length(offer.investmentMoney) > 4 ? "억" : ""}
             </c:when>
             <c:otherwise><i class="fas fa-lock"></i></c:otherwise>
         </c:choose>

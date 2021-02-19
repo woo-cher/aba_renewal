@@ -60,6 +60,7 @@
     let sessionUserId = '${sessionUser.userId}';
 
     $(document).ready(function () {
+        console.log(window.opener)
         if (window.opener !== null) {
             alert("매물 수정 완료 :)");
             window.close();
