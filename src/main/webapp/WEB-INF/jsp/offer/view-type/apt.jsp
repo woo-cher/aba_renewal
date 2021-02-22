@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="salePrice" value="${fn:length(offer.salePrice) > 4 ? offer.salePrice / 10000 : offer.salePrice}" />
-<c:set var="loan" value="${offer.loan / 10000}" />
+<c:set var="loan" value="${fn:length(offer.loan) > 4 ? offer.loan / 10000 : offer.loan}" />
 
 <div class="row bb">
     <c:choose>

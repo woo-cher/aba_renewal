@@ -69,7 +69,7 @@
         <span>부가 정보</span>
     </div>
     <ul class="checkbox-container p-1">
-        <li class="checkbox-list normal-rental" style="width: 15%;">
+        <li class="checkbox-list normal-rental apt" style="width: 15%;">
             <input id="tenant" type="checkbox" class="check" onchange="dynamicFormTrigger($(this))">
             <label for="tenant">세입자 있음</label>
         </li>

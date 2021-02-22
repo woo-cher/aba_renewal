@@ -74,7 +74,7 @@
                     <input type="radio" class="check" id="floorTop" name="none"
                            onchange="floorTrigger()"
                     >
-                    <label for="floorTop">옥탑방</label>
+                    <label for="floorTop">옥탑</label>
                 </li>
             </ul>
             <input type="text" class="short" placeholder="예) 3" name="offerAddress.floor" id="floor" value="${offer.offerAddress.floor}"

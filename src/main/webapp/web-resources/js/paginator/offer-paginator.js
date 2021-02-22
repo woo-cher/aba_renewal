@@ -42,8 +42,8 @@ class OfferPaginator extends PageHelper {
                     <td>${offer.offerAddress.ho !== null ? offer.offerAddress.ho : "정보없음"}</td>
                     <td>${offer.type.value} / ${offer.dealType.value}</td>
                     <td>
-                        <span>${offer.deposit}/${offer.monthlyPrice} +</span>
-                        <span class="aba"> ${offer.managementPrice}</span>
+                        <span>${offer.deposit}/${offer.monthlyPrice}</span>
+                        <span class="aba">${offer.managementPrice !== null ? "+" + offer.managementPrice : ""}</span>
                     </td>
                     <td class="aba status" onclick="dialogInitializer($('#status-dialog'), null, ${offerId})">${offer.status.value}</td>
                     <td>${offer.createdAt.slice(2, 10).replaceAll("-", ".")}</td>

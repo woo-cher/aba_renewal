@@ -112,6 +112,12 @@
 
         <c:if test="${not empty errors}">
             $('input[name="dealType"]').trigger('change');
+            $('.household-info').val('');
+            $('.price-group').each(function (i, el) {
+                if ($(el).val() === '0') {
+                    $(el).val('');
+                }
+            });
             $('.error').remove();
 
             let fieldName, errorMessage, selector;
@@ -440,6 +446,13 @@
         });
         $('.hidden').find('input').attr('disabled', true);
         $('input.hidden').attr('disabled', true);
+
+        $('.price-group').each(function (i, el) {
+            if ($(el).val() === '') {
+                $(el).val(0);
+            }
+        });
+
         $('#submit').click();
         window.opener.close();
     }
@@ -527,9 +540,12 @@
             $('#deposit').prop('placeholder', '총 보증금');
             $('#monthlyPrice').prop('placeholder', '월 임대총액');
 
-            if (isOfficeType || isAptType) {
+            if (isAptType) {
                 $('.dong-ho-box').removeClass('hidden');
             } else {
+                pyeongField.addClass('hidden');
+                $('.land').removeClass('hidden');
+                $('#land').text("면적정보 (건물 연면적 / 대지 면적)");
                 $('.dong-ho-box').addClass('hidden');
             }
 
