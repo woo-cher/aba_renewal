@@ -28,6 +28,7 @@ public class MapFiltersDto {
     private String[] offerStatus;
     private String maxDeposit;
     private String maxMonthlyPrice;
+    private String maxSalePrice;
 
     /* Detail Filters */
     @JsonProperty

@@ -136,6 +136,7 @@ function addFiltersOfReqBody(reqBody) {
     reqBody['offerStatus'] = filtersDto.offerStatus;
     reqBody['maxDeposit'] = filtersDto.deposit;
     reqBody['maxMonthlyPrice'] = filtersDto.monthlyPrice;
+    reqBody['maxSalePrice'] = filtersDto.salePrice;
     reqBody['isParking'] = filtersDto.isParking;
     reqBody['isNotTenant'] = filtersDto.isNotTenant;
     reqBody['isPet'] = filtersDto.isPet;

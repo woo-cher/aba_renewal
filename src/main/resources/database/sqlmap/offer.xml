@@ -121,6 +121,7 @@
         </if>
         <if test="maxDeposit != 0">AND (ofs.deposit BETWEEN 0 AND #{maxDeposit})</if>
         <if test="maxMonthlyPrice != 0">AND (ofs.monthly_price BETWEEN 0 AND #{maxMonthlyPrice})</if>
+        <if test="maxSalePrice != 0">AND (ofs.sale_price BETWEEN 0 AND #{maxSalePrice})</if>
         <if test="isParking">AND (adds.can_parking = TRUE)</if>
         <if test="isNotTenant">AND (adds.tenant LIKE '%무%')</if>
         <if test="hasElevator">AND (adds.has_elevator = TRUE)</if>

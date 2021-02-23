@@ -89,12 +89,33 @@
 
                     <div class="custom-slider">
                         <input type="range" min="0" value="47" step="1" list="deposit-vals" name="deposit"
-                               class="slider" id="deposit" oninput="set_deposit_slide_value($(this), $('#deposit-val'))"
+                               class="slider" id="deposit" oninput="set_array_slide_value($(this), $('#deposit-val'), depositValues)"
                                onchange="updateDtoModel($(this))"
                         />
                         <datalist id="deposit-vals">
                             <option value="0">0</option>
                             <option value="15000">1억 3,000만</option>
+                            <option value="-1">∞</option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <div class="detail-container deal">
+                    <header class="detail-header">
+                        <p class="title">
+                            매매가
+                            <span class="caption slide" id="sale-val">무제한</span>
+                        </p>
+                    </header>
+
+                    <div class="custom-slider">
+                        <input type="range" min="0" value="24" step="1" list="sale-vals" name="salePrice"
+                               class="slider" id="salePrice" oninput="set_array_slide_value($(this), $('#sale-val'), salePriceValues)"
+                               onchange="updateDtoModel($(this))"
+                        />
+                        <datalist id="sale-vals">
+                            <option value="0">0</option>
+                            <option value="0">무제한</option>
                             <option value="-1">∞</option>
                         </datalist>
                     </div>
@@ -302,11 +323,15 @@
         '16000', '17000', '18000', '19000', '20000', '25000', '30000', '35000', '40000', '45000', '50000', '55000', '60000',
         '65000', '70000', '75000', '80000', '85000', '90000', '95000', '0'];
 
-    $(document).ready(function () {
+    let salePriceValues = ['0', '3000', '5000', '10000', '15000', '20000', '25000', '30000', '35000', '40000', '45000', '50000',
+        '55000', '60000', '70000', '80000', '90000', '100000', '110000', '120000', '130000', '140000', '150000', '0'];
+
+   $(document).ready(function () {
         let coll = document.getElementsByClassName("collapsible");
         let last;
 
         $('#deposit').prop('max', depositValues.length - 1);
+        $('#salePrice').prop('max', salePriceValues.length - 1);
 
         for (let i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
@@ -339,6 +364,7 @@
         offerStatus: [],
         deposit: '0',
         monthlyPrice: '0',
+        salePrice: '0',
         isParking: false,
         isNotTenant: false,
         hasElevator: false,
@@ -366,6 +392,7 @@
                 case 'offer-detail':
                     filtersDto['deposit'] = '0';
                     filtersDto['monthlyPrice'] = '0';
+                    filtersDto['salePrice'] = '0';
                     filtersDto['isParking'] = false;
                     filtersDto['isNotTenant'] = false;
                     filtersDto['hasElevator'] = false;
@@ -393,13 +420,15 @@
                 filtersDto[key].push(focus.val())
         } else if (typeof element === 'boolean') {
             filtersDto[key] = !focus.is(":checked");
-        } else if (focus.attr('name') === "deposit") {
+        } else if (focus.attr('name') === 'deposit') {
             filtersDto[key] = depositValues[focus.val()];
+        } else if (focus.attr('name') === 'salePrice') {
+            filtersDto[key] = salePriceValues[focus.val()];
         } else {
             filtersDto[key] = focus.val();
         }
 
-        console.log(filtersDto)
+        console.log(filtersDto);
         doFiltering();
     }
 
@@ -419,13 +448,13 @@
         }
     }
 
-    function set_deposit_slide_value(focus, valueArea) {
+    function set_array_slide_value(focus, valueArea, dataList) {
         let index = focus.val();
-        let value = depositValues[index];
+        let value = dataList[index];
 
-        let size = depositValues.length;
-        let min = depositValues[0];
-        let max = depositValues[size];
+        let size = dataList.length;
+        let min = dataList[0];
+        let max = dataList[size];
 
         if (value === min || value === max) {
             value = "무제한";
