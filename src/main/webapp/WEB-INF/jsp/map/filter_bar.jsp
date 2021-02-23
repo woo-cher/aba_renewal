@@ -100,7 +100,7 @@
                     </div>
                 </div>
 
-                <div class="detail-container deal">
+                <div class="detail-container deal sale-filter">
                     <header class="detail-header">
                         <p class="title">
                             매매가
@@ -326,12 +326,36 @@
     let salePriceValues = ['0', '3000', '5000', '10000', '15000', '20000', '25000', '30000', '35000', '40000', '45000', '50000',
         '55000', '60000', '70000', '80000', '90000', '100000', '110000', '120000', '130000', '140000', '150000', '0'];
 
-   $(document).ready(function () {
+    function hideCss(el) {
+        el.css('cursor', 'no-drop');
+        el.css('opacity', '.5');
+    }
+
+    function showCss(el) {
+        el.css('cursor', 'none');
+        el.css('opacity', '1');
+    }
+
+    $(document).ready(function () {
         let coll = document.getElementsByClassName("collapsible");
         let last;
 
         $('#deposit').prop('max', depositValues.length - 1);
         $('#salePrice').prop('max', salePriceValues.length - 1);
+
+        $('input[name="dealTypes"]').click(function (e) {
+            let saleBoxEl = $('.sale-filter');
+            let saleSliderEl = $('#salePrice');
+            let isSaleClicked = $('input[value="SALE"]').prop('checked');
+
+            if (filtersDto['dealTypes'].length === 0 || isSaleClicked) {
+                showCss(saleBoxEl);
+                saleSliderEl.removeAttr('disabled');
+            } else {
+                hideCss(saleBoxEl);
+                saleSliderEl.prop('disabled', true);
+            }
+        });
 
         for (let i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
