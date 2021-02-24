@@ -92,12 +92,14 @@
     });
 
     function onPrevOrNext(pageParam) {
-        pageHelper.prevOrNext(pageParam, () => {
-            let pageInfo = getOffers(pageParam);
+        let offerPageInfo = getOffersByFilter(pageParam);
+        pageHelper.setEndPage(offerPageInfo['pages']);
 
-            pageHelper.bindOffers(pageParam, pageInfo);
-            pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
-                pageHelper.bindOffers(page, getOffers(page))
+        pageHelper.prevOrNext(pageParam, () => {
+            // Do return filters offer;
+            pageHelper.bindOffers(pageParam, offerPageInfo);
+            pageHelper.pageCalculation(pageParam, offerPageInfo, (page) => {
+                pageHelper.bindOffers(page, getOffersByFilter(page))
             });
         })
     }

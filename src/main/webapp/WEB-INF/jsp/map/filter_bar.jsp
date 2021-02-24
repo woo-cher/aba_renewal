@@ -452,7 +452,6 @@
             filtersDto[key] = focus.val();
         }
 
-        console.log(filtersDto);
         doFiltering();
     }
 

@@ -42,7 +42,7 @@
                             <ul class="pages" style="display: contents;">
                                 <li class="active">1</li>
                             </ul>
-                            <button class="page prev p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
+                            <button class="page next p-0" onclick="onPrevOrNext(pageHelper.startPage + 5)">
                                 <img src="/web-resources/img/basic/keyboard_arrow_right-24px.svg">
                             </button>
                         </div>
@@ -101,9 +101,17 @@
     });
 
     function onPrevOrNext(pageParam) {
-        pageHelper.prevOrNext(pageParam, () => {
-            let pageInfo = getAllUsers(pageParam);
+        let keyword = $('#keyword').val();
+        let pageInfo;
 
+        if (keyword !== "") {
+            pageInfo = searchUser(keyword, 1);
+        } else {
+            pageInfo = getAllUsers(pageParam);
+        }
+
+        pageHelper.setEndPage(pageInfo['pages']);
+        pageHelper.prevOrNext(pageParam, () => {
             pageHelper.bindOffersByOwner(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
                 pageHelper.bindOffersByOwner(page, getAllUsers(page))

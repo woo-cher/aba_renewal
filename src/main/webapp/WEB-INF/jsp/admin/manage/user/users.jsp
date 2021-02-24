@@ -82,9 +82,22 @@
     });
 
     function onPrevOrNext(pageParam) {
-        pageHelper.prevOrNext(pageParam, () => {
-            let pageInfo = getUsersExceptAdmin(pageParam);
+        let pageInfo;
+        let keyword = $('#keyword').val();
 
+        if (keyword !== "") {
+            pageInfo = searchUser(keyword, 1);
+            console.log('case1', pageInfo);
+        } else if (userFilterDto['roles'].length === 0 || userFilterDto['userTypes'].length === 0) {
+            pageInfo = getUsersExceptAdmin(pageParam);
+            console.log('case2');
+        } else {
+            pageInfo = getUsersByFilter(userFilterDto)
+            console.log('case3');
+        }
+
+        pageHelper.setEndPage(pageInfo['pages']);
+        pageHelper.prevOrNext(pageParam, () => {
             pageHelper.bindUsers(pageParam, pageInfo);
             pageHelper.pageCalculation(pageParam, pageInfo, (page) => {
                 pageHelper.bindUsers(page, getUsersExceptAdmin(page))
