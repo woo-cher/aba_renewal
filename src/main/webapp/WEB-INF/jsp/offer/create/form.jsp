@@ -94,9 +94,9 @@
 
 <script>
     $(document).ready(function () {
-        console.log(window.opener)
         if (window.opener !== null) {
             $('header').remove();
+            $('input[name="dealType"]').trigger('change');
         }
 
         activateWithSelector('#leftNav > li');
