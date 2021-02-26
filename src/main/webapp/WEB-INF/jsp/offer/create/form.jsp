@@ -94,9 +94,8 @@
 
 <script>
     $(document).ready(function () {
-        if (window.opener !== null) {
+        if (getUrlParameter('offerId') !== undefined) {
             $('header').remove();
-            $('input[name="dealType"]').trigger('change');
         }
 
         activateWithSelector('#leftNav > li');
@@ -106,12 +105,13 @@
         leftNavEventListener();
         dynamicFormEventListener();
 
+        $('input[name="dealType"]').trigger('change');
+
         <c:if test="${not empty processIndex}">
             $('#leftNav').children().eq(${processIndex}).click();
         </c:if>
 
         <c:if test="${not empty errors}">
-            $('input[name="dealType"]').trigger('change');
             $('.household-info').val('');
             $('.price-group').each(function (i, el) {
                 if ($(el).val() === '0') {
@@ -145,14 +145,11 @@
         </c:if>
 
         <c:if test="${isUpdate}">
-            $('input[name="dealType"]').trigger('change');
-            $('input[name="type"]').trigger('change');
-
-            <c:if test="${offer.offerAddress.floor eq -1}">
+            <c:if test="${offer.offerAddress.floor eq '-1'}">
                 $('#floorUnder').click();
                 $('#floor').val('반지하');
             </c:if>
-            <c:if test="${offer.offerAddress.floor eq 100}">
+            <c:if test="${offer.offerAddress.floor eq '100'}">
                 $('#floorTop').click();
                 $('#floor').val('옥탑');
             </c:if>
@@ -200,7 +197,6 @@
         resizeWidth: 780,
         resizeHeight: 520,
         init: function () {
-            let fileCountOnServer = ${fn:length(offer.imageUrls)};
             let dropZone = this;
 
             function thumbDesignationTrigger() {
@@ -261,7 +257,10 @@
                 }
             });
 
+            <c:if test="${not empty offer.imageUrls}">
+            let fileCountOnServer = ${fn:length(offer.imageUrls)};
             dropZone.options.maxFiles = this.options.maxFiles - fileCountOnServer;
+            </c:if>
 
             <c:if test="${isUpdate}">
                 <c:forEach var="keyValueDto" items="${offer.imageUrls}" varStatus="vs">
