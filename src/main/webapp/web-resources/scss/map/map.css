@@ -69,11 +69,11 @@
   font-weight: normal;
 }
 .offer .offer-thumbs {
-  max-height: 178.88px;
   text-align: center;
   overflow: hidden;
 }
 .offer .offer-thumbs > img {
+  max-height: 167.88px;
   width: 100%;
 }
 .offer .offer-deal {

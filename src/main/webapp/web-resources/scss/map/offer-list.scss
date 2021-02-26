@@ -76,13 +76,14 @@
   }
 
   .offer-thumbs {
-    max-height: 178.88px;
     text-align: center;
-    //height: 270px;
     overflow: hidden;
+    //max-height: 178.88px;
+    //height: 270px;
   }
 
   .offer-thumbs > img {
+    max-height: 167.88px;
     width: 100%;
   }
 
