@@ -116,7 +116,7 @@
                             </ul>
                             <div class="form-control align-center" id="want-move" hidden>
                                 <a class="select-box" id="select-moveIn">
-                                    <span class="txt" id="moveIn-txt">11월중</span>
+                                    <span class="txt" id="moveIn-txt">월 선택</span>
                                     <span class="icon">
                                     <img src="/web-resources/img/basic/keyboard_arrow_down-24px.svg">
                                 </span>

@@ -160,7 +160,14 @@
                 <div class="albery-wrapper">
                     <c:forEach var="image" begin="0" items="${offer.imageUrls}" varStatus="vs">
                         <div class="albery-item">
-                            <img src="${image.url}">
+                            <!-- <img src="${image.url}"> -->
+                        </div>
+                    </c:forEach>
+
+                    <!-- S3 이용 불가 -->
+                    <c:forEach var="i" begin="1" end="9">
+                        <div class="albery-item">
+                            <img src="/web-resources/img/offer/detail_slide0${i}.jpg">
                         </div>
                     </c:forEach>
                 </div>
@@ -248,7 +255,14 @@
             <div class="line"></div>
             <h3>상세설명</h3>
             <div class="desc">
-                <p>${offer.description}</p>
+                <c:choose>
+                    <c:when test="${offer.description eq '' || empty offer.description}">
+                        <p class="aba txt-sm align-center">상세 설명이 없어요 :(</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p>${offer.description}</p>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>

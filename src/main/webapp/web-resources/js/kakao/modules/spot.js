@@ -1,7 +1,6 @@
 class Spot extends Overlay {
     constructor(mapElement) {
         super(mapElement);
-
         this.spotMap = new Map();
     }
 

@@ -146,7 +146,7 @@
                 errorBind(results, selector);
 
                 results.map((offer) => {
-                    result = offer.offerId + '번 매물 => ' + offer.jibun;
+                    result = offer.offerId + '번 매물 => ' + offer.buildingName;
 
                     const element = $(`<li>` + result + `</li>`);
                     element.on('click', () => {
@@ -184,9 +184,9 @@
     }
 
     function clickOfSearchResult(weight, clicked) {
-        const level = mapManager.getLevelByWeight(weight);
         const lat = Number(clicked.latitude);
         const lng = Number(clicked.longitude);
+        const level = mapManager.getLevelByWeight(weight);
 
         mapManager.setLevel(level, {});
         mapManager.setCenter(lat, lng);

@@ -123,10 +123,21 @@
                         <ul class="checkbox-container flex-center" id="moveIn" style="font-size: .8rem;">
                             <c:forEach begin="${month}" end="${month + 3}" varStatus="vs">
                                 <li class="checkbox-list">
-                                    <input id="moveIn${vs.index}" type="checkbox" name="moveIn" value="${vs.index}" class="check">
-                                    <label for="moveIn${vs.index}" onclick="updateDtoModel($(this).prev())">
+                                <c:choose>
+                                    <c:when test="${vs.index gt 12}">
+                                        <input id="moveIn${vs.index - 12}" type="checkbox" name="moveIn" value="${vs.index - 12}" class="check">
+                                        <label for="moveIn${vs.index - 12}" onclick="updateDtoModel($(this).prev())">
+                                            ${vs.index - 12}월중
+                                        </label>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input id="moveIn${vs.index}" type="checkbox" name="moveIn" value="${vs.index}" class="check">
+                                        <label for="moveIn${vs.index}" onclick="updateDtoModel($(this).prev())">
                                             ${vs.index}월중
-                                    </label>
+                                        </label>
+                                    </c:otherwise>
+                                </c:choose>
+
                                 </li>
                             </c:forEach>
                         </ul>

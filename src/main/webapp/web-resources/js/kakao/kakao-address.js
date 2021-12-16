@@ -37,7 +37,7 @@ function getAddress(target) {
             }
 
             // 우편번호
-            document.getElementById('post').value = data.zonecode;
+//            document.getElementById('post').value = data.zonecode;
 
             // 지번 주소를 선택 해야하는 유형인 경우, (예상 주소) 값을 지번으로 사용
             if(target === undefined) {
@@ -79,5 +79,5 @@ function setLatLngByRegion(target, latitude, longitude) {
         return
     }
 
-    loadMapWithMarker(mapIdForMarker, latitude, longitude);
+    loadMapWithMarker(mapIdForMarker, latitude, longitude, true);
 }

@@ -34,13 +34,13 @@
         )
         VALUES
         (
-            #{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role.name}, 0, current_timestamp, #{postCode},
+            #{userId}, #{password}, #{type}, #{name}, #{nickName}, #{email}, #{phone}, #{role}, 0, current_timestamp, #{postCode},
             #{jibunAddr}, #{roadAddr}, #{extraAddr}, #{agentName}, #{agentNumber}, #{agentPhone}, #{agentLeader}, #{locationX}, #{locationY}
         )
     </select>
 
     <select id="findAllUser" resultMap="user">
-        SELECT * FROM users
+        SELECT * FROM users WHERE type != "MASTER"
     </select>
 
     <select id="selectUserExceptAdmin" resultMap="user">

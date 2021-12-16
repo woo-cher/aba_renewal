@@ -154,6 +154,7 @@ public class UserService implements UserDetailsService {
      */
     @Transactional
     public void purchaseProduct(User sessionUser, int productId) {
+        log.info("?? : {}", productId);
         Product dbProduct = packageRepository.selectProductById(productId);
         log.info("Selected Product object : {}", dbProduct);
 

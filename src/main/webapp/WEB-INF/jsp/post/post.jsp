@@ -12,6 +12,12 @@
         <script src="/web-resources/js/page-helper.js"></script>
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
+
+        <style>
+            .main-container {
+                height: calc(100% - 70px);
+            }
+        </style>
     </head>
 
     <body>

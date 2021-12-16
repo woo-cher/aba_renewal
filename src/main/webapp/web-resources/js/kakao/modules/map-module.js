@@ -180,6 +180,8 @@ class MapModule {
 
                 offersArea.append(`
                     <li class="list-item">
+                        <input type="hidden" class="latitude" value="${offer.offerAddress.latitude}">
+                        <input type="hidden" class="longitude" value="${offer.offerAddress.longitude}">
                         <div class="offer-like">
                             <img src="/web-resources/img/offer/detail_head_icon-01.png" onclick="alert('준비중이예요 :)')">
                         </div>
@@ -203,7 +205,7 @@ class MapModule {
                                 </strong>
                             </p>
                             <p class="offer-addr">
-                                ${isPremium ? offer.offerAddress.jibun : offer.offerAddress.belongsTo + ' ***-**'}
+                                ${isPremium ? offer.offerAddress.jibun != null ? offer.offerAddress.jibun : '(건물명 없음)' : offer.offerAddress.belongsTo + ' ***-**'}
                             </p>
                             <p class="offer-building">
                                 ${isPremium ? offer.offerAddress.buildingName !== null ? offer.offerAddress.buildingName : '' : ''}
@@ -233,6 +235,29 @@ class MapModule {
                     </li>
                 `)
             }
+        }
+
+        // If spot level, add marker event of hover
+        if (this.level < 4) {
+            $(".list-item").hover(function (e) {
+                let element = $(e.currentTarget);
+                let latitude = parseFloat(element.find('.latitude').val());
+                let longitude = parseFloat(element.find('.longitude').val());
+
+                var imageSrc = '/web-resources/img/offer/detail_map_icon.png',
+                    imageSize = new kakao.maps.Size(25, 35),
+                    imageOption = {offset: new kakao.maps.Point(13, 45)};
+
+                var marker = new kakao.maps.Marker({
+                    position: new kakao.maps.LatLng(latitude, longitude),
+                    image: new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+                });
+
+                marker.setMap(mapManager.map);
+                mapManager.setCenter(latitude, longitude);
+            }, function() {
+                $("img[src='/web-resources/img/offer/detail_map_icon.png'").remove();
+            });
         }
     }
 
@@ -270,15 +295,20 @@ class MapModule {
     }
 }
 
-function loadMapWithMarker(mapElementId, latitude, longitude) {
+function loadMapWithMarker(mapElementId, latitude, longitude, isOfferDetail) {
     $('#' + mapElementId).show();
+    var map;
 
-    var map = new kakao.maps.Map(document.getElementById(mapElementId), {
-        center: new kakao.maps.LatLng(latitude, longitude),
-        level: 3,
-        minLevel: 2,
-        maxLevel: 10
-    });
+    if (isOfferDetail) {
+        map = new kakao.maps.Map(document.getElementById(mapElementId), {
+            center: new kakao.maps.LatLng(latitude, longitude),
+            level: 3,
+            minLevel: 2,
+            maxLevel: 10
+        });
+    } else {
+        map = this.map;
+    }
 
     var imageSrc = '/web-resources/img/offer/detail_map_icon.png',
         imageSize = new kakao.maps.Size(25, 35),

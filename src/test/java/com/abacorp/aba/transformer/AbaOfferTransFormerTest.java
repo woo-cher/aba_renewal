@@ -75,10 +75,8 @@ public class AbaOfferTransFormerTest {
         int row = 0;
         for (TemporaryAbaOffer abaOffer : mocks) {
             TransformStrategy<? extends OfferTransformTemplate> strategy = factory.getTransformer(abaOffer);
-            log.error("of strategy : {}", strategy);
-            log.error("{}", abaOffer);
             Offer target = strategy.transform(abaOffer);
-            log.info("{}", target);
+            log.info("target : {}", target);
             row += offerService.createOffer(target);
         }
     }

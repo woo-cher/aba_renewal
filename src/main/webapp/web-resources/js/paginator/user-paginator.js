@@ -63,7 +63,6 @@ class UserPaginator extends PageHelper {
         } else {
             for(let i = 0; i < users.length; i++) {
                 let user = users[i];
-
                 this.bindingArea.append(`
                     <tr>
                         <td onclick="foldTrigger($(this))">

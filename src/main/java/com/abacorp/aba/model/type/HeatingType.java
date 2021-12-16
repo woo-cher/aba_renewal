@@ -41,7 +41,7 @@ public enum HeatingType implements TypeMapper {
                 return heatingType;
             }
         }
-        return UNKNOWN;
+        return GAS;
     }
 
     @Override

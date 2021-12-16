@@ -11,10 +11,6 @@
             <i class="fas fa-user-plus"></i>
             매물 추가
         </button>
-        <button class="aba" type="button">
-            <i class="fas fa-align-justify"></i>
-            매물 필터
-        </button>
         <span class="relative">
             <input type="text" id="keyword" placeholder="검색" onkeypress="checkPressedKey(event)">
             <i class="fas fa-search search" onclick="doSearch()"></i>
@@ -172,7 +168,7 @@
                 <tr>
                     <td class="aba offer-id">${'${offer.id}'}</td>
                     <td class="offer${'${offer.id}'}">
-                        ${'${offer.offerAddress.jibun}'} ${'${offer.offerAddress.buildingName !== null ? offer.offerAddress.buildingName : ""}'}
+                        ${'${offer.offerAddress.buildingName !== null ? offer.offerAddress.buildingName : ""}'} ${'${offer.offerAddress.jibun !== null ? offer.offerAddress.jibun : ""}'}
                     </td>
                     <td>${'${offer.offerAddress.ho !== null ? offer.offerAddress.ho : "정보없음"}'}</td>
                     <td>${'${offer.type.value}'} / ${'${offer.dealType.value}'}</td>

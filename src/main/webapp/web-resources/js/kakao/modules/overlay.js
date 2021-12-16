@@ -61,7 +61,7 @@ class Overlay extends KakaoMap {
                 this.recover(this.last);
             }
 
-             this.eventManager = setTimeout(() => {
+            this.eventManager = setTimeout(() => {
                 if (!this.cacheMap.has(overlay.id)) {
                     this.polygons = this.getPolygons(getCoordinates(overlay.id));
                     this.cacheMap.set(overlay.id, this.polygons);

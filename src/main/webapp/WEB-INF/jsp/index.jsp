@@ -178,11 +178,18 @@
 				</div>
 
 				<ul class="txt">
-					<c:forEach var="post" items="${posts}" end="3">
-					<li class="txt01" onclick="location.href='/posts/${post.id}'">
-						<a>${post.title}</a>
-					</li>
-					</c:forEach>
+				    <c:choose>
+				        <c:when test="${not empty posts}">
+                            <c:forEach var="post" items="${posts}" end="3">
+                            <li class="txt01" onclick="location.href='/posts/${post.id}'">
+                                <a>${post.title}</a>
+                            </li>
+                            </c:forEach>
+				        </c:when>
+				        <c:otherwise>
+				            <p class="aba txt-lg pl-0 align-center">게시글이 존재하지 않아요 :(</p>
+				        </c:otherwise>
+				    </c:choose>
 				</ul>
 			</article>
 

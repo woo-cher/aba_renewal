@@ -5,11 +5,25 @@
 <head>
     <title>Login</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/web-resources/img/favicon.ico">
-
     <link rel="stylesheet" type="text/css" href="/web-resources/css/login.css">
-
     <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
+
+    <style>
+        .main-container {
+            height: calc(70% - 70px);
+            padding: 5% 0 7% 0 !important;
+        }
+
+        #form-box {
+            width : 47% !important;
+        }
+
+        #footer {
+            height: 30%;
+        }
+    </style>
 </head>
+
 <body class="over-hide">
 <div class="main-container">
         <section id="contents">
@@ -27,6 +41,7 @@
                                    pattern="^([A-Za-z0-9])+"
                                    oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                    oninput="this.setCustomValidity(''); this.checkValidity()"
+                                   autocomplete="off"
                             >
                         </label>
                         <label>

@@ -20,9 +20,7 @@
             <div class="box-content">
                 <div class="row flex item-center">
                     <label>프로필</label>
-                    <img width="200"
-                         src="https://abasystem.s3.ap-northeast-2.amazonaws.com/offer-images/70efdf2ec9b086079795c442636b55fb/a29df2d7efa890382afa8844d22626ca"
-                    >
+                    <img width="150" src="/web-resources/img/character.png">
                     <input type="hidden" class="w-65" readonly value="path">
                 </div>
                 <div class="row">

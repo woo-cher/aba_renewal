@@ -50,7 +50,9 @@ public class OfferService {
             return 0;
         }
 
-        offer.setThumbnail(getThumbnailPath(offer));
+//        offer.setThumbnail(getThumbnailPath(offer));
+        offer.setThumbnail("ABA_LOGO.png");
+
         log.info("Thumbnail : {}", offer.getThumbnail());
         offerRepository.updateOfferThumbnailById(offer);
 
@@ -150,9 +152,9 @@ public class OfferService {
             return;
         }
 
-        if (!offerImages.get(0).getOriginalFilename().isEmpty()) {
-            awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
-        }
+//        if (!offerImages.get(0).getOriginalFilename().isEmpty()) {
+//            awsS3Service.upload(offerImages, String.valueOf(offer.getId()));
+//        }
     }
 
     private String getThumbnailPath(Offer offer) {

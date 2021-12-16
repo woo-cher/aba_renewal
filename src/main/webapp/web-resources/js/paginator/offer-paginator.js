@@ -37,7 +37,7 @@ class OfferPaginator extends PageHelper {
                 <tr>
                     <td class="aba">${offerId}</td>
                     <td class="offer${offer.id}">
-                        ${offer.offerAddress.jibun}
+                        ${offer.offerAddress.buildingName}
                     </td>
                     <td>${offer.offerAddress.ho !== null ? offer.offerAddress.ho : "정보없음"}</td>
                     <td>${offer.type.value} / ${offer.dealType.value}</td>

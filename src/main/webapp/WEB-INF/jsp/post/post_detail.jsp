@@ -11,6 +11,12 @@
         <link rel="stylesheet" type="text/css" href="/web-resources/css/post_detail.css">
 
         <%@include file="/WEB-INF/jsp/commons/header.jspf"%>
+
+        <style>
+            .main-container {
+                height: calc(100% - 70px);
+            }
+        </style>
     </head>
 
     <body>

@@ -37,7 +37,7 @@ public class MapService {
         List<Overlay> overlays = overlayRepository.selectOverlaysByFilters(dto);
 
         for (Overlay overlay : overlays) {
-            dto.setBelongsTo(overlay.getName());
+            dto.setBelongsTo(overlay.getBelongsTo() + " " + overlay.getName());
             overlay.setCount(offerRepository.selectCountByFilters(dto));
         }
 
@@ -54,7 +54,6 @@ public class MapService {
 
     public Offer getOfferById(int id) {
         Offer offer = offerRepository.selectOfferById(id);
-
         OfferAddition addition = offer.getOfferAddition();
 
         OptionType[] optionTypes = OptionType.values();
@@ -82,7 +81,7 @@ public class MapService {
         addition.setOptionTypes(optionTypeList);
         addition.setManagementTypes(managementTypeList);
 
-        offer.setImageUrls(s3Service.getAllFileUrls(String.valueOf(id)));
+//        offer.setImageUrls(s3Service.getAllFileUrls(String.valueOf(id)));
 
         return offer;
     }

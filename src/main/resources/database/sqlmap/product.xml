@@ -8,6 +8,7 @@
         <result property="name" column="name" />
         <result property="price" column="price" />
         <result property="period" column="period" />
+        <result property="createdAt" column="created_at" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
     </resultMap>
 
     <insert id="insertProduct" parameterType="product">

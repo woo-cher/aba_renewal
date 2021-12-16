@@ -85,7 +85,6 @@
         SELECT * FROM requests WHERE phone = #{phone} ORDER BY created_at DESC
     </select>
 
-
     <delete id="deleteOfferRequestById" parameterType="int">
         DELETE FROM requests WHERE id = #{id}
     </delete>

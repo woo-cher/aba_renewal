@@ -27,7 +27,7 @@ public class OfferApi {
 
     @RequestMapping(value = "/maps/offers", method = RequestMethod.POST)
     public PageInfo<Offer> offersOfMap(@RequestBody MapFiltersDto dto) {
-        log.info("Dto : {}", dto);
+        log.info("Dtoo : {}", dto);
 
         if (dto.getBelongsTo() != null) {
             return PageHelper.startPage(dto.getPage(), OFFERS_PER_PAGE).doSelectPageInfo(

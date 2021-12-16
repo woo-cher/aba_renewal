@@ -121,7 +121,7 @@
                         <div class="input-group">
                             <c:if test="${empty sessionUser.userId}">
                                 <input required autofocus type="text" id="userId" class="middle" placeholder="아이디" name="userId"
-                                       pattern="^[A-Za-z][A-Za-z0-9]{1,12}"
+                                       pattern="^[A-Za-z0-9]{1,12}"
                                        oninvalid="this.setCustomValidity(`공백, 특수문자 또는 한글이 포함되네요 :(`)"
                                        oninput="this.setCustomValidity(''); this.checkValidity()"
                                        onkeyup="userIdValidator($(this))"
@@ -312,6 +312,8 @@
     let isFindAddress = false;
 
     $(document).ready(() => {
+        $('input').attr('autocomplete', 'off');
+
         <c:if test="${not empty sessionUser.userId}">
             agreeAll();
             isCanUsingId = true;

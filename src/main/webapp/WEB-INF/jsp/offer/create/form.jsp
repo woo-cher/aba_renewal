@@ -94,6 +94,8 @@
 
 <script>
     $(document).ready(function () {
+        $('input').attr('autocomplete', 'off');
+
         if (getUrlParameter('offerId') !== undefined) {
             $('header').remove();
         }
@@ -558,8 +560,8 @@
             }
         } else {
             normalRentalEl.removeClass('hidden');
+            $('.dong-ho-box').removeClass('hidden');
             normalSaleEl.addClass('hidden');
-
             $('input[value="TWO_THREE_ROOM"]').parent().show();
 
             isRoomType ? $('.room-type').removeClass('hidden') : $('.room-type').addClass('hidden');

@@ -233,11 +233,17 @@ function dialogInitialize() {
             }
         });
 
-        let month = new Date().getMonth();
+        let month = new Date().getMonth() + 1;
         $('#moveIn-dialog').empty();
 
         for(let i = 0; i < 4; i++) {
-            $('#moveIn-dialog').append('<li>' + ++month + '월중</li>')
+            if (month > 12) {
+                $('#moveIn-dialog').append('<li>' + (month - 12) + '월중</li>')
+            } else {
+                $('#moveIn-dialog').append('<li>' + month + '월중</li>')
+            }
+
+            month++;
         }
 
         dialogEventListener('moveIn-dialog', 'select-moveIn');
