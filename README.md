@@ -14,7 +14,8 @@
 
 ### [:one: Tech Stack](#one-tech-stack) <br>
 ### [:two: Package Structure](#two-package-structure) <br>
-### [:three: 기능 별 개발 방법](#three-기능-별-개발-방법) <br>
+### [:three: Table diagram](#three-Table-diagram) <br>
+### [:four: 기능 별 개발 방법](#four-기능-별-개발-방법) <br>
 
 <br>
 
@@ -88,7 +89,16 @@
  ...
 ```
 
-## :three: 기능 별 개발 방법
+<br>
+
+## :three: Table diagram
+![img](/readme-resources/diagram.png)
+
+<br>
+
+## :four: 기능 별 개발 방법
+
+### [:heavy_check_mark: 지도와 필터링](https://github.com/woo-cher/aba-renewal/wiki/%EC%A7%80%EB%8F%84%EC%99%80-%ED%95%84%ED%84%B0%EB%A7%81) <br>
 
 ### [:heavy_check_mark: Database Layer Access](https://github.com/woo-cher/aba-renewal/wiki/Database-Layer-Access) <br>
 
@@ -104,4 +114,3 @@
 
 ### [:heavy_check_mark: Validation](https://github.com/woo-cher/aba-renewal/wiki/Domain-Validation) <br>
 
-### [:heavy_check_mark: 지도와 필터링](https://github.com/woo-cher/aba-renewal/wiki/%EC%A7%80%EB%8F%84%EC%99%80-%ED%95%84%ED%84%B0%EB%A7%81) <br>
