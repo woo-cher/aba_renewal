@@ -1,28 +1,107 @@
-# springboot
+[레거시 시스템]: https://abasystem.co.kr
+[:heavy_check_mark: 로그인]: https://abasystem.co.kr
 
-[![Build Status](https://travis-ci.org/codecentric/springboot-sample-app.svg?branch=master)](https://travis-ci.org/codecentric/springboot-sample-app)
-[![Coverage Status](https://coveralls.io/repos/github/codecentric/springboot-sample-app/badge.svg?branch=master)](https://coveralls.io/github/codecentric/springboot-sample-app?branch=master)
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+# :house_with_garden: (주)아바 리뉴얼
 
-Minimal [Spring Boot](http://projects.spring.io/spring-boot/) sample app.
+![img](/readme-resources/main_page.png)
 
-## Requirements
+- 기존 **[레거시 시스템][]** 개선 및 기능 추가를 목표로 수행한 1인 프로젝트
+- 프로젝트 기간 : `2020.11.01` ~ `2021.02.28 (퇴사)`
 
-For building and running the application you need:
+<br>
 
-- [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-- [Maven](https://maven.apache.org)
+# :green_book: Contents
 
-## Running the application locally
+### [:one: Tech Stack](#one-tech-stack) <br>
+### [:two: Package Structure](#two-package-structure) <br>
+### [:three: 기능 별 개발 방법](#three-기능-별-개발-방법) <br>
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `de.codecentric.springbootsample.Application` class from your IDE.
+<br>
 
-Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
+## :one: Tech Stack
 
-```shell
-mvn spring-boot:run
+<table class="tg">
+<tbody>
+<tr>
+    <td><b>Architecture</b></td>
+    <td>Spring MVC, Rest Api</td>
+</tr>
+<tr>
+    <td><b>Network</b></td>
+    <td>Embedded Tomcat, Gabia Cloud</td>
+</tr>
+<tr>
+    <td><b>Dependency Injection</b></td>
+    <td>Maven</td>
+<tr>
+    <td><b>Back-end</b></td>
+    <td>Spring Security, Mybatis, Aws s3, Unit test</td>
+</tr>
+<tr>
+    <td><b>Front-end</b></td>
+    <td>Javascript, Jquery, Jsp & Jstl, Scss / css</td>
+</tr>
+<tr>
+    <td><b>API</b></td>
+    <td>Kakao map, Import (payment), Dropzone.js ...</td>
+</tr>
+<tr>
+    <td><b>Database</b></td>
+    <td>Mysql</td>
+</tr>
+<tr>
+    <td><b>Other Tool</b></td>
+    <td>Git issue, Slack, Navicat</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+## :two: Package Structure
+
+```
+📦 main
+ ┣ 📂 com.abacorp.aba
+ ┃ ┣ 📂 config
+ ┃ ┣ 📂 core
+ ┃ ┃ ┣ 📂 api
+ ┃ ┃ ┣ 📂 controller
+ ┃ ┃ ┣ 📂 service
+ ┃ ┃ ┣ 📂 repository
+ ┃ ┃ ┗ 📂 utils
+ ┃ ┣ 📂 factory
+ ┃ ┣ 📂 model
+ ┃ ┗ 📂 security
+ ┣ 📂 recources
+ ┃ ┣ 📂 database
+ ┃ ┃ ┗ 📂 sqlmap
+ ┣ 📂 webapp
+ ┃ ┣ 📂 WEB-INF
+ ┃ ┃ ┗ 📂 jsp
+ ┃ ┣ 📂 web-resources
+ ┃ ┃ ┣ 📂 css
+ ┃ ┃ ┣ 📂 font
+ ┃ ┃ ┣ 📂 img
+ ┃ ┃ ┣ 📂 js
+ ┗ ┗ ┗ 📂 scss
+ 📦 test
+ ...
 ```
 
-## Copyright
+## :three: 기능 별 개발 방법
 
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-sample-app/blob/master/LICENSE) file.
+### [:heavy_check_mark: Database Layer Access](https://github.com/woo-cher/aba-renewal/wiki/Database-Layer-Access) <br>
+
+### [:heavy_check_mark: View 처리](https://github.com/woo-cher/aba-renewal/wiki/View-%EC%B2%98%EB%A6%AC) <br>
+
+### [:heavy_check_mark: API 구현과 호출](https://github.com/woo-cher/aba-renewal/wiki/REST-API-%EB%B0%8F-%ED%98%B8%EC%B6%9C) <br>
+
+### [:heavy_check_mark: User 권한 및 역할](https://github.com/woo-cher/aba-renewal/wiki/%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B6%8C%ED%95%9C-%EB%B0%8F-%EC%97%AD%ED%95%A0%EC%97%90-%EB%94%B0%EB%A5%B8-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%91%EA%B7%BC-%EC%B2%98%EB%A6%AC)
+
+### [:heavy_check_mark: Domain Type](https://github.com/woo-cher/aba-renewal/wiki/Domain-Type-%EB%B6%84%EB%A5%98) <br> 
+
+### [:heavy_check_mark: 서버 유효성 검사](https://github.com/woo-cher/aba-renewal/wiki/%EC%84%9C%EB%B2%84-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC) <br>
+
+### [:heavy_check_mark: Validation](https://github.com/woo-cher/aba-renewal/wiki/Domain-Validation) <br>
+
+### [:heavy_check_mark: 지도와 필터링](https://github.com/woo-cher/aba-renewal/wiki/%EC%A7%80%EB%8F%84%EC%99%80-%ED%95%84%ED%84%B0%EB%A7%81) <br>
