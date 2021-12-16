@@ -14,7 +14,7 @@
 
 ### [:one: Tech Stack](#one-tech-stack) <br>
 ### [:two: Package Structure](#two-package-structure) <br>
-### [:three: Table diagram](#three-Table-diagram) <br>
+### [:three: Table diagram](#three-Table-relationship-diagram) <br>
 ### [:four: 기능 별 개발 방법](#four-기능-별-개발-방법) <br>
 
 <br>
@@ -91,7 +91,7 @@
 
 <br>
 
-## :three: Table diagram
+## :three: Table Relationship diagram
 ![img](/readme-resources/diagram.png)
 
 <br>
