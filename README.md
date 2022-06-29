@@ -101,7 +101,7 @@
 
 ### [:heavy_check_mark: 지도와 필터링](https://github.com/woo-cher/aba-renewal/wiki/%EC%A7%80%EB%8F%84%EC%99%80-%ED%95%84%ED%84%B0%EB%A7%81) <br>
 
-### [:heavy_check_mark: 지도 로직을 개선하기 위한 과정](https://github.com/woo-cher/aba-renewal/wiki/%EC%A7%80%EB%8F%84-%EB%A1%9C%EC%A7%81%EC%9D%84-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EA%B3%BC%EC%A0%95)
+### [:heavy_check_mark: 지도 성능을 개선하기 위한 과정](https://github.com/woo-cher/aba-renewal/wiki/%EC%A7%80%EB%8F%84-%EC%84%B1%EB%8A%A5%EC%9D%84-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EA%B3%BC%EC%A0%95)
 
 ### [:heavy_check_mark: Database Layer Access](https://github.com/woo-cher/aba-renewal/wiki/Database-Layer-Access) <br>
 
