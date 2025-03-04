@@ -1,12 +1,13 @@
-[레거시 시스템]: https://abasystem.co.kr
+[시연 영상]: https://youtu.be/RYoE_gpIKPg?si=QoYBDFCRfg30TRi4
 [:heavy_check_mark: 로그인]: https://abasystem.co.kr
 
 # :house_with_garden: (주)아바 리뉴얼
 
 ![img](/readme-resources/main_page.png)
 
-- 기존 **[레거시 시스템][]** 개선 및 기능 추가를 목표로 수행한 1인 프로젝트
+- 기존 **레거시 시스템** 개선 및 기능 추가를 목표로 수행한 1인 프로젝트
 - 프로젝트 기간 : `2020.11.01` ~ `2021.02.28 (퇴사)`
+- **[시연 영상][]**
 
 <br>
 
